@@ -7,19 +7,19 @@ Visão computacional e aprendizado de máquina
 
 Módulos:
 
-### admin_interface
+## admin_interface
 
 Interface para cadastramento de fontes de imagens, usuários, configuração de parâmetros, etc
 
-### image_aq
+## image_aq
 
 Aquisição de imagens. Serviço com Scripts que acessam as fontes de imagens cadastradas, validam, pré-processam, fazem reconhecimento de caracteres, validam, monitoram mudanças, etc e copiam para um diretório único. Disponibiliza seus dados em Restful API.
 
-### data_aq 
+## data_aq 
 
 Aquisição de dados. Serviço com scripts que acessam sistemas fechados e dados públicos, estruturados e não estruturados, guardando em coleções/Bancos de Dados. Disponibiliza seus dados em Restful API.
 
-### sentinela
+## sentinela
  
 Controla o data_aq, permite cruzamento de dados e gerenciamento, manual ou automático, de parâmetros de risco. Disponibiliza seus dados em Restful API.
 
