@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/IvanBrasilico/raspa-preco.svg?branch=master)](https://travis-ci.org/IvanBrasilico/raspa-preco) [![codecov](https://codecov.io/gh/IvanBrasilico/raspa-preco/branch/master/graph/badge.svg)](https://codecov.io/gh/IvanBrasilico/raspa-preco)
+[![Build Status](https://travis-ci.org/IvanBrasilico/AJNA_MOD.svg?branch=master)](https://travis-ci.org/IvanBrasilico/AJNA_MOD) [![codecov](https://codecov.io/gh/IvanBrasilico/AJNA_MOD/branch/master/graph/badge.svg)](https://codecov.io/gh/IvanBrasilico/AJNA_MOD)
 
 # AJNA
 
@@ -30,3 +30,7 @@ Interface para visualização e busca de imagens, recebimento de alertas e execu
 ## ml_code
 
 Coleção de algoritmos de machine learning plugáveis e servidos em WebService
+
+## notebooks
+
+Rascunhos. Aproveitar a interatividade e praticidade do Jupyter Notebook para fazer e documentar as análises exploratórias de dados, treinamento e teste de algoritmos de aprendizado e projetar/validar scripts de data_aq
