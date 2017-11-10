@@ -10,12 +10,12 @@ setup(
     author_email='brasilico.ivan@gmail.com',
     packages=find_packages(),
     install_requires=[
+        'pandas'
     ],
     setup_requires=['pytest-runner'],
     tests_require=['pytest'],
     test_suite="tests",
     package_data={
-        'botteryext/binput': ['/locale/*'],
     },
     extras_require={
         'dev': [
