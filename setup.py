@@ -1,14 +1,11 @@
-import ast
-import re
 from setuptools import find_packages, setup
-import os
 
 setup(
-    name='binput',
-    description='A Input Command for Bottery',
+    name='AJNA_MOD',
+    description='Visao computacional e Aprendizado de Maquina na Vigilancia Aduaneira',
     version='0.0.1',
-    url='https://github.com/IvanBrasilico',
-    license='MIT',
+    url='https://github.com/IvanBrasilico/AJNA_MOD',
+    license='GPL',
     author='Ivan Brasilico',
     author_email='brasilico.ivan@gmail.com',
     packages=find_packages(),
@@ -22,8 +19,10 @@ setup(
     },
     extras_require={
         'dev': [
+            'bandit',
             'coverage',
             'flake8',
+            'flake8-quotes',
             'isort',
             'pytest',
             'pytest-cov',
@@ -35,7 +34,7 @@ setup(
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: MIT License',
+        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
         'Operating System :: POSIX',
         'Operating System :: Microsoft :: Windows',
         'Operating System :: MacOS :: MacOS X',
