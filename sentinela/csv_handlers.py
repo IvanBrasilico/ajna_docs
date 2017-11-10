@@ -7,7 +7,8 @@ def muda_titulos_csv(csv_file, de_para_dict):
     """Apenas abre o arquivo e repassa para muda_titulos_lista"""
     with open(csv_file, 'r') as f:
         result = f.readlines()
-    return muda_titulos_lista(result, de_para_dict)
+    muda_titulos_lista(result, de_para_dict)
+    return result
 
 
 def muda_titulos_lista(lista, de_para_dict):
