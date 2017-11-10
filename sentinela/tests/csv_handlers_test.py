@@ -20,7 +20,7 @@ class TestCsvHandlers(unittest.TestCase):
         with open(CSV_TITLES_TEST) as csv:
             lista_old = csv.readlines()
         lista = muda_titulos_csv(CSV_TITLES_TEST,
-                                      TestCsvHandlers.titulos_novos)
+                                 TestCsvHandlers.titulos_novos)
         self.comparalistas(lista_old, lista)
 
     def test_muda_titulos_lista(self):
