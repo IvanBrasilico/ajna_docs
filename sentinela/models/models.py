@@ -1,8 +1,8 @@
 import enum
 import os
 
-from sqlalchemy import (Column, DateTime, Enum, ForeignKey, Integer,
-                        String, Table, create_engine)
+from sqlalchemy import (Column, DateTime, Enum, ForeignKey, Integer, String,
+                        Table, create_engine)
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, scoped_session, sessionmaker
 
