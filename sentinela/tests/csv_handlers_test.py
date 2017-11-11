@@ -1,7 +1,7 @@
 import unittest
 
-from sentinela.csv_handlers import (muda_titulos_csv,
-                                    muda_titulos_lista)
+from sentinela.utils.csv_handlers import (muda_titulos_csv,
+                                          muda_titulos_lista)
 
 CSV_TITLES_TEST = 'sentinela/tests/csv_title_example.csv'
 
