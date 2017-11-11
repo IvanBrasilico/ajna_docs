@@ -10,7 +10,9 @@ setup(
     author_email='brasilico.ivan@gmail.com',
     packages=find_packages(),
     install_requires=[
-        'pandas'
+        'pandas',
+        'sqlalchemy'
+
     ],
     setup_requires=['pytest-runner'],
     tests_require=['pytest'],
@@ -19,6 +21,7 @@ setup(
     },
     extras_require={
         'dev': [
+            'alembic',
             'bandit',
             'coverage',
             'flake8',
