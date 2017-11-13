@@ -1,19 +1,24 @@
+"""Modelo de dados necessário para app Sentinela"""
 import enum
 import os
 
-from sqlalchemy import (Column, DateTime, Enum, ForeignKey, Integer, String,
-                        Table, create_engine)
+from sqlalchemy import (Column, Enum, ForeignKey, Integer, String,
+                        create_engine)
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, scoped_session, sessionmaker
 
 
 class Filtro(enum.Enum):
-    startswith = 1
-    contains = 2
-    extractall = 3
+    """Enumerado para escolha do tipo de filtro a ser
+    aplicado no parâmetro de risco"""
+    igual = 1
+    comeca_com = 2
+    contem = 3
 
 
 class MySession():
+    """Para definir a sessão com o BD na aplicação. Para os
+    testes, passando o parâmetro test=True, um BD na memória"""
     def __init__(self, base, test=False):
         if test:
             path = ':memory:'
@@ -48,7 +53,7 @@ class ParametroRisco(Base):
     lista de valores que serão o filtro efetivo"""
     __tablename__ = 'parametrosrisco'
     id = Column(Integer, primary_key=True)
-    nome = Column(String(20), unique=True)
+    nome_campo = Column(String(20), unique=True)
     descricao = Column(String(200), unique=True)
     valores = relationship('ValorParametro', back_populates='risco')
 
@@ -66,7 +71,7 @@ class ValorParametro(Base):
         realizada (ver enum TipoFiltro)"""
     __tablename__ = 'valoresparametro'
     id = Column(Integer, primary_key=True)
-    nome_campo = Column(String(50), unique=True)
+    valor = Column(String(50), unique=True)
     tipo_filtro = Column(Enum(Filtro))
     risco_id = Column(Integer, ForeignKey('parametrosrisco.id'))
     risco = relationship(
