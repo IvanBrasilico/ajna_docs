@@ -36,21 +36,26 @@ def muda_titulos_lista(lista, de_para_dict):
     return result
 
 
-def sch_tocsv(sch, txt):
+def sch_tocsv(sch, txt, dest_path='/tmp'):
     """Pega um arquivo txt, aplica os cabecalhos e a informação de um sch,
     e o transforma em um csv padrão"""
+    cabecalhos = []
     for ind in range(len(sch)):
         if not isinstance(sch[ind], str):
             sch[ind] = str(sch[ind], 'iso-8859-1')
+        linha = sch[ind]
+        position_equal = linha.find('="')
+        position_quote = linha.find('" ')
+        position_col = linha.find('Col')
+        if position_equal != -1 and position_col == 0:
+            cabecalhos.append(linha[position_equal+2:position_quote])
     campo = str(sch[0])[2:-3]
-    filename = campo + '.csv'
-    cont = 0
+    filename = os.path.join(dest_path, campo + '.csv')
     with open(filename, 'w') as out:
         writer = csv.writer(out)
+        del txt[0]
+        writer.writerow(cabecalhos)
         for row in txt:
-            if cont == 0:
-                cont += 1
-                continue
             if not isinstance(row, str):
                 row = str(row, 'iso-8859-1')
             row = row.replace('"', '')

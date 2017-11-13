@@ -6,6 +6,7 @@ from sentinela.models.models import Filtro
 from sentinela.utils.gerente_risco import GerenteRisco
 
 CSV_RISCO_TEST = 'sentinela/tests/csv_risco_example.csv'
+CSV_NAMEDRISCO_TEST = 'sentinela/tests/csv_namedrisco_example.csv'
 
 
 class TestCsvHandlers(unittest.TestCase):
@@ -139,3 +140,30 @@ class TestCsvHandlers(unittest.TestCase):
         gerente.remove_risco(esportes)
         lista_risco = gerente.aplica_risco(lista)
         assert len(lista_risco) == 2
+
+    def test_aplica_namedcsv(self):
+        lista = self.lista
+        gerente = self.gerente
+        gerente.import_named_csv(CSV_NAMEDRISCO_TEST)
+        lista_risco = gerente.aplica_risco(lista)
+        assert len(lista_risco) == 5
+
+    def test_parametrostocsv(self):
+        lista = self.lista
+        gerente = self.gerente
+        gerente.import_named_csv(CSV_NAMEDRISCO_TEST)
+        lista_risco = gerente.aplica_risco(lista)
+        assert len(lista_risco) == 5
+        gerente.parametros_tocsv()
+        gerente.clear_risco()
+        gerente.parametros_fromcsv('alimento')
+        lista_risco = gerente.aplica_risco(lista)
+        assert len(lista_risco) == 2
+        gerente.clear_risco()
+        gerente.parametros_fromcsv('esporte')
+        lista_risco = gerente.aplica_risco(lista)
+        assert len(lista_risco) == 2
+        gerente.clear_risco()
+        gerente.parametros_fromcsv('horario')
+        lista_risco = gerente.aplica_risco(lista)
+        assert len(lista_risco) == 1

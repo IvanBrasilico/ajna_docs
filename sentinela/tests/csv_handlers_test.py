@@ -48,9 +48,9 @@ class TestCsvHandlers(unittest.TestCase):
         with open(filenames[0][0], 'r') as f:
             reader = csv.reader(f)
             lista2 = [linha for linha in reader]
-        assert len(lista) == len(lista2) + 1
+        assert len(lista) == len(lista2)
         print(lista[0])
-        assert lista[1][0][0:5] == lista2[0][0][0:5]
+        assert lista[1][0][0:5] == lista2[1][0][0:5]
 
     def test_sch_zip(self):
         filenames = sch_processing(SCH_ZIP_TEST)
@@ -61,6 +61,6 @@ class TestCsvHandlers(unittest.TestCase):
         with open(filenames[0][0], 'r') as f:
             reader = csv.reader(f)
             lista2 = [linha for linha in reader]
-        assert len(lista) == len(lista2) + 1
+        assert len(lista) == len(lista2)
         print(lista)
-        assert lista[1][0:5] == lista2[0][0][0:5]
+        assert lista[1][0:5] == lista2[1][0][0:5]
