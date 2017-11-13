@@ -1,8 +1,9 @@
+"""Testes para o módulo gerente_risco"""
 import csv
 import unittest
 
-from sentinela.utils.gerente_risco import GerenteRisco
 from sentinela.models.models import Filtro
+from sentinela.utils.gerente_risco import GerenteRisco
 
 CSV_RISCO_TEST = 'sentinela/tests/csv_risco_example.csv'
 

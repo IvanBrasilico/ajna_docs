@@ -1,10 +1,12 @@
 import csv
 import unittest
 
-from sentinela.utils.csv_handlers import (muda_titulos_csv,
-                                          muda_titulos_lista)
+from sentinela.utils.csv_handlers import (muda_titulos_csv, muda_titulos_lista,
+                                          sch_processing)
 
 CSV_TITLES_TEST = 'sentinela/tests/csv_title_example.csv'
+SCH_FILE_TEST = 'sentinela/tests/'
+SCH_ZIP_TEST = 'sentinela/tests/tests.zip'
 
 
 class TestCsvHandlers(unittest.TestCase):
@@ -38,5 +40,12 @@ class TestCsvHandlers(unittest.TestCase):
             assert new in ''.join(lista[0])
 
     def test_sch_dir(self):
+        sch_processing(SCH_FILE_TEST)
+        assert False
+
+
+
 
     def test_sch_zip(self):
+        sch_processing(SCH_ZIP_TEST)
+        assert False

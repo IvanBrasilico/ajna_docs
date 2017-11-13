@@ -1,15 +1,23 @@
-"""Classes para reunir tarefas repetitivas com arquivos csv
-e planilhas"""
+"""Classes para reunir tarefas repetitivas com arquivos csv e planilhas
+
+Padrão do arquivo csv usado é o mais simples possível:
+Nomes de campo na primeira linha
+Valores nas restantes
+Único separador é sempre a vírgula
+Fim de linha significa nova linha
+Para comparações, retira espaços antes e depois do conteúdo das colunas
+"""
 import csv
-import os
 import glob
-from zipfile import ZipFile, ZipInfo
+import os
+from io import StringIO
+from zipfile import ZipFile
 
 
 def muda_titulos_csv(csv_file, de_para_dict):
     """Apenas abre o arquivo e repassa para muda_titulos_lista"""
-    with open(csv_file, 'r') as f:
-        reader = csv.reader(f)
+    with open(csv_file, 'r') as csvfile:
+        reader = csv.reader(csvfile)
         result = [linha for linha in reader]
     result = muda_titulos_lista(result, de_para_dict)
     return result
@@ -30,7 +38,25 @@ def muda_titulos_lista(lista, de_para_dict):
 
 
 def sch_tocsv(sch, txt):
-    print(sch, txt)
+    """Pega um arquivo txt, aplica os cabecalhos e a informação de um sch,
+    e o transforma em um csv padrão"""
+    campo = str(sch[0])[2:-2]
+    #data = StringIO(txt.read())
+    #reader = csv.reader(data)
+    print(len(txt))
+    cont = 0
+    with open(campo + '.csv', 'w') as out:
+        writer = csv.writer(out)
+        for row in txt:
+            if row is bytes:
+                row = row.decode('iso-8859-1')
+            if cont < 5:
+                print(row)
+                cont += 1
+            row = row.replace('"', '')
+            row = row.split('\t')
+            writer.writerow(row)
+    # print(sch, txt)
 
 
 def sch_processing(path, mask_txt='0.txt'):
@@ -41,16 +67,26 @@ def sch_processing(path, mask_txt='0.txt'):
     Obs: não há procura recursiva, apenas no raiz do diretório"""
     if path.find('.zip') == -1:
         for sch in glob.glob(path + '*.sch'):
-            sch_name = os.path.basename(sch)
-            txt = glob.glob(os.path.join(
-                path, '*' + sch_name[3:-4] + mask_txt))[0]
-            sch_tocsv(sch, txt)
+            sch_name = sch
+            txt_name = glob.glob(os.path.join(
+                path, '*' + os.path.basename(sch_name)[3:-4] + mask_txt))[0]
+            with open(sch_name, encoding='iso-8859-1') as sch_file, \
+                    open(txt_name, encoding='iso-8859-1') as txt_file:
+                sch_content = sch_file.readlines()
+                txt_content = txt_file.readlines()
+                sch_tocsv(sch_content, txt_content)
     else:
         with ZipFile(path) as myzip:
             info_list = myzip.infolist()
             for info in info_list:
-                if info.filename.find('.sch'):
+                if info.filename.find('.sch') != -1:
+                    sch_name = info.filename
                     txt_search = sch_name[3:-4] + mask_txt
-                    for info in info_list:
-                        if info.filename.find(txt_search):
-                            sch_tocsv(sch, txt)
+                    for txtinfo in info_list:
+                        if txtinfo.filename.find(txt_search) != -1:
+                            txt_name = txtinfo.filename
+                            with myzip.open(sch_name) as sch_file:
+                                sch_content = sch_file.readlines()
+                            with myzip.open(txt_name) as txt_file:
+                                txt_content = txt_file.readlines()
+                            sch_tocsv(sch_content, txt_content)
