@@ -1,7 +1,15 @@
 from __future__ import with_statement
+
+from logging.config import fileConfig
+
 from alembic import context
 from sqlalchemy import engine_from_config, pool
-from logging.config import fileConfig
+
+# add your model's MetaData object here
+# for 'autogenerate' support
+# from myapp import mymodel
+# target_metadata = mymodel.Base.metadata
+from sentinela.models.models import Base, MySession
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -11,11 +19,6 @@ config = context.config
 # This line sets up loggers basically.
 fileConfig(config.config_file_name)
 
-# add your model's MetaData object here
-# for 'autogenerate' support
-# from myapp import mymodel
-# target_metadata = mymodel.Base.metadata
-from sentinela.models.models import MySession, Base
 mysession = MySession(Base)
 session = mysession.session
 engine = mysession.engine

@@ -3,8 +3,9 @@ de risco cadastrados nos dados. Utiliza pandas para realizar filtragem
 """
 import csv
 from collections import defaultdict
+
 import pandas as pd
-from sqlalchemy import exists
+
 from sentinela.models.models import Filtro, ParametroRisco, ValorParametro
 
 
