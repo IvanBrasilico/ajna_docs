@@ -1,5 +1,6 @@
 import csv
 import unittest
+from zipfile import ZipFile
 
 from sentinela.utils.csv_handlers import (muda_titulos_csv, muda_titulos_lista,
                                           sch_processing)
@@ -40,12 +41,26 @@ class TestCsvHandlers(unittest.TestCase):
             assert new in ''.join(lista[0])
 
     def test_sch_dir(self):
-        sch_processing(SCH_FILE_TEST)
-        assert False
-
-
-
+        filenames = sch_processing(SCH_FILE_TEST)
+        with open(filenames[0][1], 'r', encoding='iso-8859-1') as f:
+            reader = csv.reader(f)
+            lista = [linha for linha in reader]
+        with open(filenames[0][0], 'r') as f:
+            reader = csv.reader(f)
+            lista2 = [linha for linha in reader]
+        assert len(lista) == len(lista2) + 1
+        print(lista[0])
+        assert lista[1][0][0:5] == lista2[0][0][0:5]
 
     def test_sch_zip(self):
-        sch_processing(SCH_ZIP_TEST)
-        assert False
+        filenames = sch_processing(SCH_ZIP_TEST)
+        with ZipFile(SCH_ZIP_TEST) as myzip:
+            with myzip.open(filenames[0][1]) as zip_file:
+                lista = zip_file.readlines()
+                lista = [linha.decode('iso-8859-1') for linha in lista]
+        with open(filenames[0][0], 'r') as f:
+            reader = csv.reader(f)
+            lista2 = [linha for linha in reader]
+        assert len(lista) == len(lista2) + 1
+        print(lista)
+        assert lista[1][0:5] == lista2[0][0][0:5]

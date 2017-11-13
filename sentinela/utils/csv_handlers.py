@@ -10,7 +10,6 @@ Para comparações, retira espaços antes e depois do conteúdo das colunas
 import csv
 import glob
 import os
-from io import StringIO
 from zipfile import ZipFile
 
 
@@ -40,22 +39,25 @@ def muda_titulos_lista(lista, de_para_dict):
 def sch_tocsv(sch, txt):
     """Pega um arquivo txt, aplica os cabecalhos e a informação de um sch,
     e o transforma em um csv padrão"""
-    campo = str(sch[0])[2:-2]
-    #data = StringIO(txt.read())
-    #reader = csv.reader(data)
-    print(len(txt))
+    for ind in range(len(sch)):
+        if not isinstance(sch[ind], str):
+            sch[ind] = str(sch[ind], 'iso-8859-1')
+    campo = str(sch[0])[2:-3]
+    filename = campo + '.csv'
     cont = 0
-    with open(campo + '.csv', 'w') as out:
+    with open(filename, 'w') as out:
         writer = csv.writer(out)
         for row in txt:
-            if row is bytes:
-                row = row.decode('iso-8859-1')
-            if cont < 5:
-                print(row)
+            if cont == 0:
                 cont += 1
+                continue
+            if not isinstance(row, str):
+                row = str(row, 'iso-8859-1')
             row = row.replace('"', '')
+            row = row.replace('\r\n', '')
             row = row.split('\t')
             writer.writerow(row)
+    return filename
     # print(sch, txt)
 
 
@@ -65,6 +67,7 @@ def sch_processing(path, mask_txt='0.txt'):
     csv estilo "planilha", isto é, primeira linha de cabecalhos
     path: diretório ou arquivo .zip onde estão os arquivos .sch
     Obs: não há procura recursiva, apenas no raiz do diretório"""
+    filenames = []
     if path.find('.zip') == -1:
         for sch in glob.glob(path + '*.sch'):
             sch_name = sch
@@ -74,7 +77,8 @@ def sch_processing(path, mask_txt='0.txt'):
                     open(txt_name, encoding='iso-8859-1') as txt_file:
                 sch_content = sch_file.readlines()
                 txt_content = txt_file.readlines()
-                sch_tocsv(sch_content, txt_content)
+                csv_name = sch_tocsv(sch_content, txt_content)
+                filenames.append((csv_name, txt_name))
     else:
         with ZipFile(path) as myzip:
             info_list = myzip.infolist()
@@ -89,4 +93,6 @@ def sch_processing(path, mask_txt='0.txt'):
                                 sch_content = sch_file.readlines()
                             with myzip.open(txt_name) as txt_file:
                                 txt_content = txt_file.readlines()
-                            sch_tocsv(sch_content, txt_content)
+                            csv_name = sch_tocsv(sch_content, txt_content)
+                            filenames.append((csv_name, txt_name))
+    return filenames
