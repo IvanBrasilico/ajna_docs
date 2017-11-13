@@ -1,3 +1,4 @@
+import csv
 import unittest
 
 from sentinela.utils.csv_handlers import (muda_titulos_csv,
@@ -11,28 +12,31 @@ class TestCsvHandlers(unittest.TestCase):
                      'titulo2_old': 'titulo2_new'}
 
     def setUp(self):
-        pass
+        with open(CSV_TITLES_TEST, 'r') as f:
+            reader = csv.reader(f)
+            self.lista = [linha for linha in reader]
 
     def tearDown(self):
         pass
 
     def test_muda_titulos_csv(self):
-        with open(CSV_TITLES_TEST) as csv:
-            lista_old = csv.readlines()
-        lista = muda_titulos_csv(CSV_TITLES_TEST,
-                                 TestCsvHandlers.titulos_novos)
-        self.comparalistas(lista_old, lista)
+        lista_nova = muda_titulos_csv(CSV_TITLES_TEST,
+                                      TestCsvHandlers.titulos_novos)
+        self.comparalistas(self.lista, lista_nova)
 
     def test_muda_titulos_lista(self):
-        with open(CSV_TITLES_TEST) as csv:
-            lista = csv.readlines()
-        lista_old = list(lista)
-        muda_titulos_lista(lista, TestCsvHandlers.titulos_novos)
-        self.comparalistas(lista_old, lista)
+        lista_old = list(self.lista)
+        self.lista = muda_titulos_lista(self.lista,
+                                        TestCsvHandlers.titulos_novos)
+        self.comparalistas(lista_old, self.lista)
 
     def comparalistas(self, lista_old, lista):
         for old, new in TestCsvHandlers.titulos_novos.items():
-            assert old in lista_old[0]
-            assert new not in lista_old[0]
+            assert old in ''.join(lista_old[0])
+            assert new not in ''.join(lista_old[0])
         for old, new in TestCsvHandlers.titulos_novos.items():
-            assert new in lista[0]
+            assert new in ''.join(lista[0])
+
+    def test_sch_dir(self):
+
+    def test_sch_zip(self):

@@ -24,14 +24,16 @@ class TestModel(unittest.TestCase):
         assert risco.id is not None
 
     def test_valor(self):
-        risco = ParametroRisco('teste', 'teste')
-        valor = ValorParametro('teste', Filtro.startswith)
-        assert valor.nome_campo == 'teste'
-        assert valor.tipo_filtro is Filtro.startswith
+        risco = ParametroRisco('teste1', 'teste2')
+        valor = ValorParametro('teste3', Filtro.igual)
+        assert valor.nome_campo == 'teste3'
+        assert valor.tipo_filtro is Filtro.igual
         self.session.add(valor)
         self.session.commit()
         risco.valores.append(valor)
         self.session.add(risco)
         self.session.commit()
         assert len(risco.valores) == 1
-        assert risco.valores[0].nome_campo == 'teste'
+        valor = risco.valores[0]
+        assert valor.nome_campo == 'teste3'
+        assert valor.risco.nome == 'teste1'
