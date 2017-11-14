@@ -1,9 +1,13 @@
 import csv
 import unittest
 from zipfile import ZipFile
+import tempfile
+import os
 
 from sentinela.utils.csv_handlers import (muda_titulos_csv, muda_titulos_lista,
                                           sch_processing)
+
+tmpdir = tempfile.mkdtemp()
 
 CSV_TITLES_TEST = 'sentinela/tests/csv_title_example.csv'
 SCH_FILE_TEST = 'sentinela/tests/'
@@ -18,9 +22,13 @@ class TestCsvHandlers(unittest.TestCase):
         with open(CSV_TITLES_TEST, 'r') as f:
             reader = csv.reader(f)
             self.lista = [linha for linha in reader]
+        self.tmpdir = tempfile.mkdtemp()
+        # Ensure the file is read/write by the creator only
+        self.saved_umask = os.umask(0o077)
 
     def tearDown(self):
-        pass
+        os.umask(self.saved_umask)
+        os.rmdir(self.tmpdir)
 
     def test_muda_titulos_csv(self):
         lista_nova = muda_titulos_csv(CSV_TITLES_TEST,

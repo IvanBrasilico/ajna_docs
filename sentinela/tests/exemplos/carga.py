@@ -3,10 +3,11 @@ Teste funcional simulando utilização com uma base "real".
 A base é uma base do Sistema Siscomex Carga modificada por questões de sigilo.
 """
 import unittest
-from sentinela.utils.csv_handlers import (sch_processing)
-from sentinela.utils.gerente_risco import GerenteRisco
+
 from sentinela.models.models import (Base, Filtro, MySession, ParametroRisco,
                                      ValorParametro)
+from sentinela.utils.csv_handlers import sch_processing
+from sentinela.utils.gerente_risco import GerenteRisco
 
 CARGA_ZIP_TEST = '/home/ivan/Downloads/P1.zip'
 
