@@ -62,6 +62,7 @@ def sch_tocsv(sch, txt, dest_path='/tmp'):
             row = row.replace('\r\n', '')
             row = row.split('\t')
             writer.writerow(row)
+
     return filename
     # print(sch, txt)
 
