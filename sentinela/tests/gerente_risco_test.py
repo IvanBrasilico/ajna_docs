@@ -1,5 +1,7 @@
 """Testes para o módulo gerente_risco"""
 import csv
+import os
+import tempfile
 import unittest
 
 from sentinela.models.models import Filtro
@@ -16,9 +18,13 @@ class TestCsvHandlers(unittest.TestCase):
             reader = csv.reader(f)
             self.lista = [linha for linha in reader]
         self.gerente = GerenteRisco()
+        self.tmpdir = tempfile.mkdtemp()
+        # Ensure the file is read/write by the creator only
+        self.saved_umask = os.umask(0o077)
 
     def tearDown(self):
-        pass
+        os.umask(self.saved_umask)
+        os.rmdir(self.tmpdir)
 
     def test_aplica_igual(self):
         lista = self.lista

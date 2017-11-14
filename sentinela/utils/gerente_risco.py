@@ -3,11 +3,14 @@ de risco cadastrados nos dados. Utiliza pandas para realizar filtragem
 """
 import csv
 import os
+import tempfile
 from collections import defaultdict
 
 import pandas as pd
 
 from sentinela.models.models import Filtro, ParametroRisco, ValorParametro
+
+tmpdir = tempfile.mkdtemp()
 
 
 def equality(listaoriginal, nomecampo, listavalores):
@@ -70,15 +73,15 @@ class GerenteRisco():
             cadastrado.
         arquivo: Arquivo csv contendo a lista a ser filtrada
         """
-        mensagem = "Arquivo não fornecido!"
+        mensagem = 'Arquivo não fornecido!'
         if arquivo:
-            mensagem = "Lista não fornecida!"
+            mensagem = 'Lista não fornecida!'
             with open(arquivo, 'r', encoding='iso-8859-1') as arq:
                 reader = csv.reader(arq)
                 lista = [linha for linha in reader]
 
         if not lista:
-            raise AttributeError("Erro! " + mensagem)
+            raise AttributeError('Erro! ' + mensagem)
 
         for r in range(len(lista)):
             lista[r] = list(map(str.strip, lista[r]))
@@ -101,7 +104,7 @@ class GerenteRisco():
         print(result)
         return result
 
-    def parametros_tocsv(self, dest_path='/tmp'):
+    def parametros_tocsv(self, dest_path=tmpdir):
         """Salva os parâmetros adicionados a um gerente em um arquivo csv
         Ver também: parametros_fromcsv"""
         for campo, dict_filtros in self.riscosativos.items():
@@ -114,7 +117,8 @@ class GerenteRisco():
                 writer = csv.writer(f)
                 writer.writerows(lista)
 
-    def parametros_fromcsv(self, campo, session=None, lista=None, dest_path='/tmp'):
+    def parametros_fromcsv(self, campo, session=None,
+                           lista=None, dest_path=tmpdir):
         """Abre um arquivo csv, recupera parâmetros configurados nele,
         adiciona à configuração do gerente e **também adiciona ao Banco de
         Dados ativo** caso não existam nele ainda. Para isso é preciso
