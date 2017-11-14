@@ -2,16 +2,16 @@
 Teste funcional simulando utilização com uma base "real".
 A base é uma base do Sistema Siscomex Carga modificada por questões de sigilo.
 """
-import unittest
-import tempfile
 import os
+import tempfile
+import unittest
 
 from sentinela.models.models import (Base, Filtro, MySession, ParametroRisco,
                                      ValorParametro)
 from sentinela.utils.csv_handlers import sch_processing
 from sentinela.utils.gerente_risco import GerenteRisco
 
-CARGA_ZIP_TEST = '/home/ivan/Downloads/P1.zip'
+CARGA_ZIP_TEST = '/home/ivan/Downloads/P.zip'
 
 
 class TestModel(unittest.TestCase):
@@ -29,14 +29,15 @@ class TestModel(unittest.TestCase):
         os.umask(self.saved_umask)
         os.rmdir(self.tmpdir)
 
-    def no_test_carga(self):
+    def test_carga(self):
         # Define parâmetros de risco. Na interface de usuário estes
         # valores deverão estar persistidos em Banco de Dados e/ou serem
         # exportados ou importados via arquivo .csv
         # (GerenteRisco parametros_tocsv e parametros_fromcsv)
         #########################################################
-        # Este teste, por padrão, não roda!! (precisa de extração e é pesado)
-        # Para fazê-lo rodar, renomeie o método para test_carga
+        # Este precisa de uma extração disponível e é pesado
+        # Para não rodar, renomeie o método para no_test_carga
+        # O pytest só chama os métodos começados com test
         #
         ###################
 
@@ -57,16 +58,19 @@ class TestModel(unittest.TestCase):
         risco2.valores.append(valor2)
         self.session.merge(risco2)
         self.session.commit()
-        filenames = sch_processing(CARGA_ZIP_TEST)
+        # Comentado para não rodar no Servidor
+        """filenames = sch_processing(CARGA_ZIP_TEST)
         print(filenames)
-        assert(len(filenames) == 14)
+        assert not filenames is None
+        # assert(len(filenames) == 14)
         gerente = GerenteRisco()
         gerente.add_risco(risco)
         print(risco.valores)
-        print(filenames[4][0])
         with open(filenames[4][0]) as show_the_head:
             head = [next(show_the_head) for x in range(5)]
         print(head)
         result = gerente.aplica_risco(arquivo=filenames[4][0])
         print(result)
         # assert False  # To view output, uncomment this
+        """
+        # TODO:  Testar gerente.aplica_juncao() em uma base do Carga

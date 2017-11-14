@@ -173,3 +173,42 @@ class TestCsvHandlers(unittest.TestCase):
         gerente.parametros_fromcsv('horario')
         lista_risco = gerente.aplica_risco(lista)
         assert len(lista_risco) == 1
+
+    def test_juntacsv(self):
+        gerente = self.gerente
+        autores = type('Tabela', (object, ),
+                       {'csv': 'autores.csv',
+                        'estrangeiro': 'livroid'
+                        })
+        sub_capitulos = type('Tabela', (object, ),
+                             {'csv': 'subcapitulos.csv',
+                              'estrangeiro': 'capituloid',
+                              'type': 'outer'
+                              })
+        capitulos = type('Tabela', (object, ),
+                         {'csv': 'capitulos.csv',
+                          'primario': 'id',
+                          'estrangeiro': 'livroid',
+                          'filhos': [sub_capitulos]
+                          })
+        autores_livro = type('Tabela', (object, ),
+                             {'nome': 'autores_livro',
+                              'csv': 'livros.csv',
+                              'primario': 'id',
+                              'filhos': [autores]
+                              })
+        capitulos_livro = type('Tabela', (object, ),
+                               {'nome': 'capitulos_livro',
+                                'csv': 'livros.csv',
+                                'primario': 'id',
+                                'filhos': [capitulos]
+                                })
+        path = 'sentinela/tests/juncoes'
+        result = gerente.aplica_juncao(autores_livro, path=path)
+        print(result)
+        assert len(result) == 3
+        # TODO: Melhorar verificações (asserts) desta parte
+        result = gerente.aplica_juncao(capitulos_livro, path=path)
+        assert len(result) == 8
+        print(result)
+        # assert False # Uncomment to view output

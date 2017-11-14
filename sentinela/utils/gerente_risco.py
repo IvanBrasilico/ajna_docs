@@ -190,3 +190,26 @@ class GerenteRisco():
                     ind += 1
         for key, value in listas.items():
             self.parametros_fromcsv(key, session, value)
+
+    def recurse_merge(self, tabela):
+        if tabela.filhos:
+            if len(tabela.filhos) == 1:
+                return tabela.filhos[0]
+
+    def aplica_juncao(self, tabela, path=tmpdir, arvore=False):
+        paifilename = os.path.join(path, tabela.csv)
+        dfpai = pd.read_csv(paifilename)
+        for filho in tabela.filhos:
+            if hasattr(filho, 'filhos') and filho.filhos:
+                dffilho = self.aplica_juncao(filho, path, arvore)
+            else:
+                filhofilename = os.path.join(path, filho.csv)
+                dffilho = pd.read_csv(filhofilename)
+            if hasattr(filho, 'type'):
+                how = filho.type
+            else:
+                how = 'inner'
+            result = dfpai.merge(dffilho, how=how,
+                                 left_on=tabela.primario,
+                                 right_on=filho.estrangeiro)
+        return result
