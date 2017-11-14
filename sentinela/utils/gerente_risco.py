@@ -107,7 +107,7 @@ class GerenteRisco():
         print(result)
         return result
 
-    def parametros_tocsv(self, dest_path=tmpdir):
+    def parametros_tocsv(self, path=tmpdir):
         """Salva os parâmetros adicionados a um gerente em um arquivo csv
         Ver também: parametros_fromcsv"""
         for campo, dict_filtros in self.riscosativos.items():
@@ -116,12 +116,12 @@ class GerenteRisco():
             for tipo_filtro, lista_filtros in dict_filtros.items():
                 for valor in lista_filtros:
                     lista.append((valor, tipo_filtro.name))
-            with open(os.path.join(dest_path, campo + '.csv'), 'w') as f:
+            with open(os.path.join(path, campo + '.csv'), 'w') as f:
                 writer = csv.writer(f)
                 writer.writerows(lista)
 
     def parametros_fromcsv(self, campo, session=None,
-                           lista=None, dest_path=tmpdir):
+                           lista=None, path=tmpdir):
         """Abre um arquivo csv, recupera parâmetros configurados nele,
         adiciona à configuração do gerente e **também adiciona ao Banco de
         Dados ativo** caso não existam nele ainda. Para isso é preciso
@@ -139,7 +139,7 @@ class GerenteRisco():
         O arquivo .csv ou a lista DEVEM estar no formato valor, tipo_filtro
         """
         if not lista:
-            with open(os.path.join(dest_path, campo + '.csv'), 'r') as f:
+            with open(os.path.join(path, campo + '.csv'), 'r') as f:
                 reader = csv.reader(f)
                 lista = [linha for linha in reader]
                 lista = lista[1:]
@@ -185,8 +185,10 @@ class GerenteRisco():
             for linha in reader:
                 ind = 0
                 for coluna in linha:
-                    listas[cabecalho[ind].strip()].append(
-                        [coluna.strip(), filtro.name])
+                    coluna = coluna.strip()
+                    if coluna:
+                        listas[cabecalho[ind].strip()].append(
+                            [coluna, filtro.name])
                     ind += 1
         for key, value in listas.items():
             self.parametros_fromcsv(key, session, value)
