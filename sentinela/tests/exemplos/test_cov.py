@@ -12,6 +12,7 @@ from sentinela.utils.csv_handlers import muda_titulos_csv
 from sentinela.utils.gerente_risco import GerenteRisco
 
 PLANILHA_TEST = '/home/ivan/Downloads/planilhaBTP.csv'
+CSV_NAMEDRISCO_TEST = 'sentinela/tests/csv_namedrisco_example.csv'
 
 
 class TestModel(unittest.TestCase):
@@ -30,4 +31,11 @@ class TestModel(unittest.TestCase):
         os.rmdir(self.tmpdir)
 
     def test_planilhas(self):
-        pass
+        gerente = GerenteRisco()
+        gerente.import_named_csv(CSV_NAMEDRISCO_TEST)
+        gerente.parametros_tocsv(path='.')
+        gerente.clear_risco()
+        gerente.parametros_fromcsv('alimento', path='.')
+
+
+
