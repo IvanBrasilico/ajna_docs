@@ -2,9 +2,9 @@
 Teste funcional simulando utilização com uma base "real".
 A base é uma base do Sistema Siscomex Carga modificada por questões de sigilo.
 """
-import unittest
-import tempfile
 import os
+import tempfile
+import unittest
 
 from sentinela.models.models import (Base, Filtro, MySession, ParametroRisco,
                                      ValorParametro)

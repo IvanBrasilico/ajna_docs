@@ -10,8 +10,9 @@ Para comparações, retira espaços antes e depois do conteúdo das colunas
 import csv
 import glob
 import os
-from zipfile import ZipFile
 import tempfile
+from zipfile import ZipFile
+
 tmpdir = tempfile.mkdtemp()
 
 

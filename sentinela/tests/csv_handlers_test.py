@@ -1,8 +1,8 @@
 import csv
+import os
+import tempfile
 import unittest
 from zipfile import ZipFile
-import tempfile
-import os
 
 from sentinela.utils.csv_handlers import (muda_titulos_csv, muda_titulos_lista,
                                           sch_processing)

@@ -79,3 +79,41 @@ class ValorParametro(Base):
     def __init__(self, nome, tipo):
         self.valor = nome
         self.tipo_filtro = tipo
+
+
+class BaseOriginal(Base):
+    """Metadado sobre as bases de dados disponíveis/integradas.
+    Caminho: caminho no disco onde os dados da importação da base
+    (normalmente arquivos csv) estão guardados"""
+    __tablename__ = 'bases'
+    id = Column(Integer, primary_key=True)
+    nome = Column(String(20), unique=True)
+    caminho = Column(String(200), unique=True)
+    tabelas = relationship('Tabela', back_populates='base')
+
+    def __init__(self, nome, caminho):
+        self.nome_campo = nome
+        self.caminho = caminho
+
+
+class Tabela(Base):
+    """Metadado sobre os csvs capturados. Para mapear relações entre os
+    csvs capturados e permitir junção automática se necessário.
+    Utilizado por GerenteRisco.aplica_juncao()
+    Ver gerente_risco_test.test_juntacsv """
+    __tablename__ = 'tabelas'
+    id = Column(Integer, primary_key=True)
+    csv = Column(String(20), unique=True)
+    descricao = Column(String(200), unique=True)
+    primario = Column(Integer)
+    estrangeiro = Column(Integer)
+    pai_id = Column(Integer, ForeignKey('tabelas.id'))
+    filhos = relationship('Tabela')
+    pai = relationship('Tabela', remote_side=[id])
+
+    base_id = Column(Integer, ForeignKey('bases.id'))
+    base = relationship(
+        'BaseOriginal', back_populates='tabelas')
+
+    def __init__(self, csv):
+        self.csv = csv
