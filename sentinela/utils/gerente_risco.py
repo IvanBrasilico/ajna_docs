@@ -16,6 +16,7 @@ tmpdir = tempfile.mkdtemp()
 def equality(listaoriginal, nomecampo, listavalores):
     df = pd.DataFrame(listaoriginal[1:], columns=listaoriginal[0])
     df = df[df[nomecampo].isin(listavalores)]
+    print(df[nomecampo][:9])
     return df.values.tolist()
 
 
@@ -86,7 +87,9 @@ class GerenteRisco():
         for r in range(len(lista)):
             lista[r] = list(map(str.strip, lista[r]))
         headers = set(lista[0])
+        print('Headers:', headers)
         riscos = set(list(self.riscosativos.keys()))
+        print('Riscos:', riscos)
         aplicar = headers & riscos   # UNION OF SETS
         print('Aplicar:', aplicar)
         result = []

@@ -3,6 +3,8 @@ Teste funcional simulando utilização com uma base "real".
 A base é uma base do Sistema Siscomex Carga modificada por questões de sigilo.
 """
 import unittest
+import tempfile
+import os
 
 from sentinela.models.models import (Base, Filtro, MySession, ParametroRisco,
                                      ValorParametro)
@@ -18,29 +20,53 @@ class TestModel(unittest.TestCase):
         self.session = mysession.session
         self.engine = mysession.engine
         Base.metadata.create_all(self.engine)
+        self.tmpdir = tempfile.mkdtemp()
+        # Ensure the file is read/write by the creator only
+        self.saved_umask = os.umask(0o077)
 
     def tearDown(self):
         Base.metadata.drop_all(self.engine)
+        os.umask(self.saved_umask)
+        os.rmdir(self.tmpdir)
 
-    def test_carga(self):
+    def no_test_carga(self):
         # Define parâmetros de risco. Na interface de usuário estes
         # valores deverão estar persistidos em Banco de Dados e/ou serem
         # exportados ou importados via arquivo .csv
         # (GerenteRisco parametros_tocsv e parametros_fromcsv)
+        #########################################################
+        # Este teste, por padrão, não roda!! (precisa de extração e é pesado)
+        # Para fazê-lo rodar, renomeie o método para test_carga
+        #
+        ###################
 
-        risco = ParametroRisco('teste', 'CNPJ do Consignatario')
+        risco = ParametroRisco('CPFCNPJConsignatario', 'CNPJ do Consignatario')
         self.session.add(risco)
-        valor = ValorParametro('00000000000001', Filtro.igual)
+        # Adicionar um CNPJ que exista na extração, para testar...
+        valor = ValorParametro('42581413000157', Filtro.igual)
         self.session.add(valor)
-        self.session.commit()
         risco.valores.append(valor)
         self.session.merge(risco)
+
+        risco2 = ParametroRisco('DescricaoMercadoria', 'Descrição')
+        self.session.add(risco2)
+        # Adicionar uma mercadoria que exista na extração, para testar...
+        valor2 = ValorParametro('PILLOW', Filtro.contem)
+        self.session.add(valor2)
+        self.session.commit()
+        risco2.valores.append(valor2)
+        self.session.merge(risco2)
         self.session.commit()
         filenames = sch_processing(CARGA_ZIP_TEST)
         print(filenames)
         assert(len(filenames) == 14)
         gerente = GerenteRisco()
         gerente.add_risco(risco)
-        result = gerente.aplica_risco(arquivo=filenames[1][0])
+        print(risco.valores)
+        print(filenames[4][0])
+        with open(filenames[4][0]) as show_the_head:
+            head = [next(show_the_head) for x in range(5)]
+        print(head)
+        result = gerente.aplica_risco(arquivo=filenames[4][0])
         print(result)
-        assert False  # To view output, uncomment this
+        # assert False  # To view output, uncomment this

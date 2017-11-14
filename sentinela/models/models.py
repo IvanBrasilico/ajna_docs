@@ -57,7 +57,7 @@ class ParametroRisco(Base):
     valores = relationship('ValorParametro', back_populates='risco')
 
     def __init__(self, nome, descricao=''):
-        self.nome = nome
+        self.nome_campo = nome
         self.descricao = descricao
 
 
@@ -77,5 +77,5 @@ class ValorParametro(Base):
         'ParametroRisco', back_populates='valores')
 
     def __init__(self, nome, tipo):
-        self.nome_campo = nome
+        self.valor = nome
         self.tipo_filtro = tipo
