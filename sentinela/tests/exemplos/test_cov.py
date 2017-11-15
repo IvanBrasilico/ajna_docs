@@ -33,6 +33,6 @@ class TestModel(unittest.TestCase):
     def test_planilhas(self):
         gerente = GerenteRisco()
         gerente.import_named_csv(CSV_NAMEDRISCO_TEST)
-        gerente.parametros_tocsv()  # path='.')
+        gerente.parametros_tocsv(self.tmpdir)  # path='.')
         gerente.clear_risco()
-        gerente.parametros_fromcsv('alimento')  # , path='.')
+        gerente.parametros_fromcsv('alimento', self.tmpdir)  # , path='.')
