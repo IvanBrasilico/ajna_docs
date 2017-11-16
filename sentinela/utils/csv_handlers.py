@@ -63,8 +63,10 @@ def sch_tocsv(sch, txt, dest_path=tmpdir):
                 row = str(row, 'iso-8859-1')
             row = row.replace('"', '')
             row = row.replace('\r\n', '')
+            row = row.replace('\n', '')
             row = row.split('\t')
-            writer.writerow(row)
+            if row:
+                writer.writerow(row)
 
     return filename
     # print(sch, txt)
