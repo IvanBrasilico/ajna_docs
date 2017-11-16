@@ -99,8 +99,9 @@ class BaseOriginal(Base):
 class Tabela(Base):
     """Metadado sobre os csvs capturados. Para mapear relações entre os
     csvs capturados e permitir junção automática se necessário.
-    Utilizado por GerenteRisco.aplica_juncao()
-    Ver gerente_risco_test.test_juntacsv """
+    Utilizado por "GerenteRisco.aplica_juncao()"
+    Ver "gerente_risco_test.test_juntacsv()"
+    """
     __tablename__ = 'tabelas'
     id = Column(Integer, primary_key=True)
     csv = Column(String(20), unique=True)

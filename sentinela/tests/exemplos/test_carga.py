@@ -27,7 +27,6 @@ class TestModel(unittest.TestCase):
     def tearDown(self):
         Base.metadata.drop_all(self.engine)
         os.umask(self.saved_umask)
-        os.rmdir(self.tmpdir)
 
     def test_carga(self):
         # Define parâmetros de risco. Na interface de usuário estes

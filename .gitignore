@@ -106,3 +106,4 @@ ENV/
 bottery_core
 settings.py
 codacy.sh
+_build

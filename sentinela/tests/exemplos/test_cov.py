@@ -1,6 +1,7 @@
-"""Exemplo de utilização no sistema CARGA.
+"""Exemplo de utilização no sistema COV.
 Teste funcional simulando utilização com uma base "real".
-A base é uma base do Sistema Siscomex Carga modificada por questões de sigilo.
+A base é uma planilha dos sistemas dos terminais
+modificada por questões de sigilo.
 """
 import os
 import tempfile
@@ -28,11 +29,11 @@ class TestModel(unittest.TestCase):
     def tearDown(self):
         Base.metadata.drop_all(self.engine)
         os.umask(self.saved_umask)
-        os.rmdir(self.tmpdir)
 
     def test_planilhas(self):
         gerente = GerenteRisco()
         gerente.import_named_csv(CSV_NAMEDRISCO_TEST)
         gerente.parametros_tocsv(self.tmpdir)  # path='.')
         gerente.clear_risco()
-        gerente.parametros_fromcsv('alimento', self.tmpdir)  # , path='.')
+        gerente.parametros_fromcsv('alimento', path=self.tmpdir)
+        # , path='.')

@@ -3,14 +3,19 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to AJNA's documentation!
-================================
+Bem-vindo à documentação do sistema AJNA
+========================================
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 3
+   :caption: Conteúdo:
+   :glob:
 
-
+   docs/modules.rst
+   docs/manuais.rst
+   docs/UserStories.rst
+   docs/Arquitetura.rst
+   docs/codigofonte.rst
 
 Indices and tables
 ==================
