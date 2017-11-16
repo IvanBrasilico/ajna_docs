@@ -18,7 +18,7 @@ tmpdir = tempfile.mkdtemp()
 
 def muda_titulos_csv(csv_file, de_para_dict):
     """Apenas abre o arquivo e repassa para muda_titulos_lista"""
-    with open(csv_file, 'r') as csvfile:
+    with open(csv_file, 'r', newline='') as csvfile:
         reader = csv.reader(csvfile)
         result = [linha for linha in reader]
     result = muda_titulos_lista(result, de_para_dict)
@@ -54,7 +54,7 @@ def sch_tocsv(sch, txt, dest_path=tmpdir):
             cabecalhos.append(linha[position_equal + 2:position_quote])
     campo = str(sch[0])[2:-3]
     filename = os.path.join(dest_path, campo + '.csv')
-    with open(filename, 'w') as out:
+    with open(filename, 'w', newline='') as out:
         writer = csv.writer(out)
         del txt[0]
         writer.writerow(cabecalhos)
@@ -82,8 +82,10 @@ def sch_processing(path, mask_txt='0.txt'):
             sch_name = sch
             txt_name = glob.glob(os.path.join(
                 path, '*' + os.path.basename(sch_name)[3:-4] + mask_txt))[0]
-            with open(sch_name, encoding='iso-8859-1') as sch_file, \
-                    open(txt_name, encoding='iso-8859-1') as txt_file:
+            with open(sch_name, encoding='iso-8859-1',
+                      newline='') as sch_file, \
+                    open(txt_name, encoding='iso-8859-1',
+                         newline='') as txt_file:
                 sch_content = sch_file.readlines()
                 txt_content = txt_file.readlines()
                 csv_name = sch_tocsv(sch_content, txt_content)
