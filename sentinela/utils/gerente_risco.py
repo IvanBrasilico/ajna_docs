@@ -77,7 +77,7 @@ class GerenteRisco():
         mensagem = 'Arquivo não fornecido!'
         if arquivo:
             mensagem = 'Lista não fornecida!'
-            with open(arquivo, 'r', encoding='iso-8859-1') as arq:
+            with open(arquivo, 'r', encoding='iso-8859-1', newline='') as arq:
                 reader = csv.reader(arq)
                 lista = [linha for linha in reader]
 
@@ -116,7 +116,8 @@ class GerenteRisco():
             for tipo_filtro, lista_filtros in dict_filtros.items():
                 for valor in lista_filtros:
                     lista.append((valor, tipo_filtro.name))
-            with open(os.path.join(path, campo + '.csv'), 'w') as f:
+            with open(os.path.join(path, campo + '.csv'),
+                      'w', newline='') as f:
                 writer = csv.writer(f)
                 writer.writerows(lista)
 
@@ -139,7 +140,8 @@ class GerenteRisco():
         O arquivo .csv ou a lista DEVEM estar no formato valor, tipo_filtro
         """
         if not lista:
-            with open(os.path.join(path, campo + '.csv'), 'r') as f:
+            with open(os.path.join(path, campo + '.csv'),
+                      'r', newline='') as f:
                 reader = csv.reader(f)
                 lista = [linha for linha in reader]
                 lista = lista[1:]
@@ -178,7 +180,7 @@ class GerenteRisco():
         arquivo: Nome e caminho do arquivo .csv
         session: sessão ativa com BD
         filtro: Tipo de filtro a ser assumido como padrão"""
-        with open(arquivo, 'r') as f:
+        with open(arquivo, 'r', newline='') as f:
             reader = csv.reader(f)
             cabecalho = next(reader)
             listas = defaultdict(list)
