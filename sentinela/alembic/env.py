@@ -1,16 +1,8 @@
 from __future__ import with_statement
-
-from logging.config import fileConfig
-
 from alembic import context
 from sqlalchemy import engine_from_config, pool
-
-# add your model's MetaData object here
-# for 'autogenerate' support
-# from myapp import mymodel
-# target_metadata = mymodel.Base.metadata
+from logging.config import fileConfig
 from sentinela.models.models import Base, MySession
-
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
@@ -19,16 +11,21 @@ config = context.config
 # This line sets up loggers basically.
 fileConfig(config.config_file_name)
 
-mysession = MySession(Base)
-session = mysession.session
-engine = mysession.engine
-target_metadata = Base.metadata
-
+# add your model's MetaData object here
+# for 'autogenerate' support
+# from myapp import mymodel
+# target_metadata = mymodel.Base.metadata
+target_metadata = None
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
+
+mysession = MySession(Base)
+session = mysession.session
+engine = mysession.engine
+target_metadata = Base.metadata
 
 
 def run_migrations_offline():
@@ -59,7 +56,11 @@ def run_migrations_online():
 
     """
     connectable = engine
-
+    """_from_config(
+        config.get_section(config.config_ini_section),
+        prefix='sqlalchemy.',
+        poolclass=pool.NullPool)
+    """
     with connectable.connect() as connection:
         context.configure(
             connection=connection,
