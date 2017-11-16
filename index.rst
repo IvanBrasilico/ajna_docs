@@ -3,23 +3,23 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Bem-vindo à documentação do sistema AJNA
-========================================
+    Bem-vindo à documentação do sistema AJNA
+    ========================================
 
-.. toctree::
-   :maxdepth: 3
-   :caption: Conteúdo:
-   :glob:
+    .. toctree::
+    :maxdepth: 3
+    :caption: Conteúdo:
+    :glob:
 
-   docs/modules.rst
-   docs/manuais.rst
-   docs/UserStories.rst
-   docs/Arquitetura.rst
-   docs/codigofonte.rst
+    doc/modules.rst
+    doc/manuais.rst
+    doc/UserStories.rst
+    doc/Arquitetura.rst
+    doc/codigofonte.rst
 
-Indices and tables
-==================
+    Indices and tables
+    ==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+    * :ref:`genindex`
+    * :ref:`modindex`
+    * :ref:`search`
