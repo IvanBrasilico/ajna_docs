@@ -55,6 +55,9 @@ class ParametroRisco(Base):
     nome_campo = Column(String(20), unique=True)
     descricao = Column(String(200), unique=True)
     valores = relationship('ValorParametro', back_populates='risco')
+    base_id = Column(Integer, ForeignKey('bases.id'))
+    base = relationship(
+        'BaseOriginal', back_populates='tabelas')
 
     def __init__(self, nome, descricao=''):
         self.nome_campo = nome
