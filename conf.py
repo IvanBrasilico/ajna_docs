@@ -74,7 +74,7 @@ language = 'pt-BR'
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', '.tox', 'venv']
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -166,8 +166,8 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc, 'AJNA', 'AJNA Documentation',
-     author, 'AJNA', 'One line description of project.',
-     'Miscellaneous'),
+     author, 'RFB', 'Visão computacional e aprendizagem de máquina aplicados à Vigilância Aduaneira.',
+     'Python'),
 ]
 
 

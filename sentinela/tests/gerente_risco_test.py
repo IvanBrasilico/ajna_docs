@@ -24,7 +24,6 @@ class TestCsvHandlers(unittest.TestCase):
 
     def tearDown(self):
         os.umask(self.saved_umask)
-        os.rmdir(self.tmpdir)
 
     def test_aplica_igual(self):
         lista = self.lista
