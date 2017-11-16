@@ -18,6 +18,7 @@ class Filtro(enum.Enum):
 class MySession():
     """Para definir a sessão com o BD na aplicação. Para os
     testes, passando o parâmetro test=True, um BD na memória"""
+
     def __init__(self, base, test=False):
         if test:
             path = ':memory:'
@@ -67,10 +68,10 @@ class ParametroRisco(Base):
 class ValorParametro(Base):
     """Um valor de parametro a ser aplicado como filtro em uma
     fonte de dados
-    nomecampo = nome do campo da fonte de dados
-        a ser aplicado filtro
-    tipofiltro = tipo de função de filtragem a ser
-        realizada (ver enum TipoFiltro)"""
+    nomecampo = nome do campo da fonte de dados a ser aplicado filtro
+    tipofiltro = tipo de função de filtragem a ser realizada
+    (ver enum TipoFiltro)
+    """
     __tablename__ = 'valoresparametro'
     id = Column(Integer, primary_key=True)
     valor = Column(String(50), unique=True)
