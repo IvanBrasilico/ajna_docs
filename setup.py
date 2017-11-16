@@ -11,6 +11,9 @@ setup(
     packages=find_packages(),
     install_requires=[
         'Flask',
+        'Flask-BootStrap',
+        'Flask-cors',
+        'Flask-nav',
         'pandas',
         'sqlalchemy'
 

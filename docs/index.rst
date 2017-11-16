@@ -6,20 +6,21 @@
     Bem-vindo à documentação do sistema AJNA
     ========================================
 
-    .. toctree::
-    :maxdepth: 3
-    :caption: Conteúdo:
-    :glob:
+.. toctree::
+   :maxdepth: 3
+   :caption: Conteúdo:
+   :glob:
 
-    doc/modules.rst
-    doc/manuais.rst
-    doc/UserStories.rst
-    doc/Arquitetura.rst
-    doc/codigofonte.rst
+   modules.rst
+   manuais.rst
+   UserStories.rst
+   Arquitetura.rst
+   codigofonte.rst
 
-    Indices and tables
-    ==================
 
-    * :ref:`genindex`
-    * :ref:`modindex`
-    * :ref:`search`
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
