@@ -1,4 +1,4 @@
-`Voltar ao Indice <../index.html>`_
+`Voltar ao Indice <index.html>`_
 
 Manuais de Usuário
 ============================
