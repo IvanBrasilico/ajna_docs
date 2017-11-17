@@ -1,4 +1,4 @@
-`Voltar ao Indice <../index.html>`_
+`Voltar ao Indice <index.html>`_
 
 
 Manual de Usuário do Sentinela

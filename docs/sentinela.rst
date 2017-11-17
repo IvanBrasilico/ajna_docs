@@ -2,7 +2,7 @@
 .. contents:: Tópicos
  :depth: 2
 
-`Voltar ao Indice <../index.html>`_
+`Voltar ao Indice <index.html>`_
 
 =========
 SENTINELA
