@@ -7,9 +7,7 @@ import os
 import tempfile
 import unittest
 
-from sentinela.models.models import (Base, Filtro, MySession, ParametroRisco,
-                                     ValorParametro)
-from sentinela.utils.csv_handlers import muda_titulos_csv
+from sentinela.models.models import Base, MySession
 from sentinela.utils.gerente_risco import GerenteRisco
 
 PLANILHA_TEST = '/home/ivan/Downloads/planilhaBTP.csv'

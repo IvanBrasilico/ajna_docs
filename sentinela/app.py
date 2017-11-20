@@ -3,6 +3,9 @@
 Módulo Sentinela - AJNA
 =======================
 
+Interface do Usuário - WEB
+--------------------------
+
 Módulo responsável por gerenciar bases de dados importadas/acessadas pelo AJNA,
 administrando estas e as cruzando com parâmetros de risco.
 
@@ -10,7 +13,7 @@ Serve para a administração, pré-tratamento e visualização dos dados importa
 assim como para acompanhamento de registros de log e detecção de problemas nas
 conexões internas.
 
-Adicionalmente, permite o cruzamento entre bases a aplicação de filtros /
+Adicionalmente, permite o merge entre bases a aplicação de filtros /
 parâmetros de risco.
 """
 import logging
@@ -18,12 +21,12 @@ import os
 
 from flask import Flask, flash, redirect, render_template, request, url_for
 from flask_bootstrap import Bootstrap
-from flask_cors import CORS
+# from flask_cors import CORS
 from flask_nav import Nav
 from flask_nav.elements import Navbar, View
 from werkzeug.utils import secure_filename
 
-from sentinela.models.models import Base, BaseOriginal, Filtro, MySession
+from sentinela.models.models import Base, BaseOriginal, MySession
 from sentinela.utils.csv_handlers import sch_processing
 from sentinela.utils.gerente_risco import GerenteRisco
 
@@ -34,7 +37,7 @@ engine = mysession.engine
 logging.basicConfig(level=os.environ.get('LOGLEVEL', 'INFO'))
 
 app = Flask(__name__, static_url_path='/static')
-CORS(app)
+# CORS(app)
 Bootstrap(app)
 nav = Nav()
 
@@ -138,7 +141,8 @@ def mynavbar():
 
 
 nav.init_app(app)
+
+app.config['DEBUG'] = os.environ.get('DEBUG', 'None') == '1'
+
 if __name__ == '__main__':
-    app.config['TEMPLATE_AUTO_RELOAD'] = True
-    app.config['DEBUG'] = True
     app.run()

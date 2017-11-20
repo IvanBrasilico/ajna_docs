@@ -11,7 +11,7 @@ CSV_RISCO_TEST = 'sentinela/tests/csv_risco_example.csv'
 CSV_NAMEDRISCO_TEST = 'sentinela/tests/csv_namedrisco_example.csv'
 
 
-class TestCsvHandlers(unittest.TestCase):
+class TestGerenteRisco(unittest.TestCase):
 
     def setUp(self):
         with open(CSV_RISCO_TEST, 'r') as f:
@@ -206,8 +206,18 @@ class TestCsvHandlers(unittest.TestCase):
         result = gerente.aplica_juncao(autores_livro, path=path)
         print(result)
         assert len(result) == 3
+        print(list(result['livroid'].items()))
+        assert list(result['livroid'].items()) == [(0, 1), (1, 1), (2, 2)]
         # TODO: Melhorar verificações (asserts) desta parte
         result = gerente.aplica_juncao(capitulos_livro, path=path)
         assert len(result) == 8
+        assert list(result['livroid'].items()) == [(0, 1),
+                                                   (1, 1),
+                                                   (2, 1),
+                                                   (3, 1),
+                                                   (4, 1),
+                                                   (5, 1),
+                                                   (6, 2),
+                                                   (7, 2)]
         print(result)
-        # assert False # Uncomment to view output
+        # assert False  # Uncomment to view output
