@@ -13,7 +13,6 @@ conexões internas.
 Adicionalmente, permite o cruzamento entre bases a aplicação de filtros /
 parâmetros de risco.
 """
-import csv
 import logging
 import os
 
@@ -24,9 +23,8 @@ from flask_nav import Nav
 from flask_nav.elements import Navbar, View
 from werkzeug.utils import secure_filename
 
-from sentinela.models.models import (Base, Filtro, MySession, ParametroRisco,
-                                     ValorParametro)
-from sentinela.utils.csv_handlers import muda_titulos_csv
+from sentinela.models.models import (Base, BaseOriginal, Filtro, MySession)
+from sentinela.utils.csv_handlers import sch_processing
 from sentinela.utils.gerente_risco import GerenteRisco
 
 mysession = MySession(Base)
@@ -47,17 +45,6 @@ ALLOWED_EXTENSIONS = set(['txt', 'csv', 'zip'])
 # app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 memory_log = []
 memory_report = {}
-
-
-def read_conteiners_csv():
-    """Abre a lista a ser trabalhada. Lista deve ser gerada a partir de
-    uma extracão do Carga"""
-    with open(os.path.join(path, containers_file)) as csvfile:
-        reader = csv.DictReader(csvfile, delimiter=',', quotechar='"')
-        container_list = {}
-        for row in reader:
-            container_list[row['Conteiner']] = row
-        return container_list
 
 
 def allowed_file(filename):
@@ -106,6 +93,41 @@ def list_files():
     return render_template('risco.html', lista_arquivos=lista_arquivos)
 
 
+@app.route('/base/<filename>')
+def base(filename):
+    bases = session.query(BaseOriginal).all()
+    return render_template('bases.html',
+                           bases=bases,
+                           filename=filename)
+
+
+@app.route('/aplica_risco')
+def aplica_risco():
+    baseid = request.args.get('base')
+    filename = request.args.get('filename')
+    gerente = GerenteRisco()
+    bases = session.query(BaseOriginal).all()
+    abase = session.query(BaseOriginal).filter(
+        BaseOriginal.id == baseid).first()
+    filenames = sch_processing(os.path.join(UPLOAD_FOLDER,
+                                            secure_filename(filename)))
+    gerente.set_base(abase)
+    # Preferencialmente vai tentar processar o arquivo de conhecimentos
+    # Se não houver, pega o primeiro da lista mesmo
+    # Depois será utilizado o aplica_juncao no lugar desta "gambiarra"
+    ind = 0
+    for cont, afile in enumerate(filenames):
+        if afile[0].find("Conhecimento"):
+            ind = cont
+            break
+    lista_risco = gerente.aplica_risco(arquivo=filenames[ind][0])
+    return render_template('bases.html',
+                           bases=bases,
+                           baseid=baseid,
+                           filename=filename,
+                           lista_risco=lista_risco)
+
+
 @nav.navigation()
 def mynavbar():
     return Navbar(
@@ -118,4 +140,5 @@ def mynavbar():
 nav.init_app(app)
 if __name__ == '__main__':
     app.config['DEBUG'] = True
+    app.config["TEMPLATE_AUTO_RELOAD"] = True
     app.run()
