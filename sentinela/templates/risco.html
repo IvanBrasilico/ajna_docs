@@ -19,7 +19,9 @@
                 {% for arquivo in lista_arquivos %}
                 <tr>
                     <td>{{arquivo}}</td>
-                    <td><button class="btn-default">Selecionar</button></td>
+                    <td><button class="btn-default"
+                         onclick="window.location.replace('/base/{{arquivo}}');"
+                        >Selecionar</button></td>
                 </tr>
                 {% endfor %}
             </table>
