@@ -1,5 +1,4 @@
 import unittest
-from datetime import date
 
 from sentinela.models.models import (Base, BaseOriginal, Filtro, MySession,
                                      ParametroRisco, ValorParametro)
