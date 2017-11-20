@@ -1,7 +1,5 @@
 """Exemplo de utilização no sistema COV.
 Teste funcional simulando utilização com uma base "real".
-A base é uma planilha dos sistemas dos terminais
-modificada por questões de sigilo.
 """
 import os
 import tempfile
