@@ -72,7 +72,7 @@ class TestModel(unittest.TestCase):
         ###################
         filenames = sch_processing(CARGA_ZIP_TEST)
         print(filenames)
-        assert not filenames is None
+        assert filenames is not None
         # assert(len(filenames) == 14)
         base = carrega_carga(self.session)
         gerente = GerenteRisco()
@@ -82,7 +82,7 @@ class TestModel(unittest.TestCase):
         # Se não houver, pega o primeiro da lista mesmo
         ind = 0
         for index, filename in enumerate(filenames):
-            if filename[0].find("Conhecimento"):
+            if filename[0].find('Conhecimento'):
                 ind = index
                 break
         with open(filenames[ind][0]) as show_the_head:
