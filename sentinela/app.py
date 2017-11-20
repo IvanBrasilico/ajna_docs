@@ -23,7 +23,7 @@ from flask_nav import Nav
 from flask_nav.elements import Navbar, View
 from werkzeug.utils import secure_filename
 
-from sentinela.models.models import (Base, BaseOriginal, Filtro, MySession)
+from sentinela.models.models import Base, BaseOriginal, Filtro, MySession
 from sentinela.utils.csv_handlers import sch_processing
 from sentinela.utils.gerente_risco import GerenteRisco
 
@@ -117,7 +117,7 @@ def aplica_risco():
     # Depois será utilizado o aplica_juncao no lugar desta "gambiarra"
     ind = 0
     for cont, afile in enumerate(filenames):
-        if afile[0].find("Conhecimento"):
+        if afile[0].find('Conhecimento'):
             ind = cont
             break
     lista_risco = gerente.aplica_risco(arquivo=filenames[ind][0])
@@ -139,6 +139,6 @@ def mynavbar():
 
 nav.init_app(app)
 if __name__ == '__main__':
+    app.config['TEMPLATE_AUTO_RELOAD'] = True
     app.config['DEBUG'] = True
-    app.config["TEMPLATE_AUTO_RELOAD"] = True
     app.run()
