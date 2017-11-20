@@ -16,7 +16,6 @@ setup(
         'Flask-nav',
         'pandas',
         'sqlalchemy'
-
     ],
     setup_requires=['pytest-runner'],
     tests_require=['pytest'],
@@ -36,6 +35,7 @@ setup(
             'pytest-mock',
             'sphinx',
             'testfixtures',
+            'tox'
         ],
     },
     classifiers=[

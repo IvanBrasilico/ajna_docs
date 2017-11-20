@@ -1,12 +1,10 @@
-`Voltar ao Indice <../index.html>`_
+`Voltar ao Indice <index.html>`_
 
 ==================
 Módulos do Sistema
 ==================
 
-AJNA
-====
-Visão computacional e aprendizado de máquina
+AJNA - Visão computacional e aprendizado de máquina
 
 admin_interface
 ---------------

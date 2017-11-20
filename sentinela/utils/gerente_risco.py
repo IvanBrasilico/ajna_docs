@@ -8,7 +8,8 @@ from collections import defaultdict
 
 import pandas as pd
 
-from sentinela.models.models import Filtro, ParametroRisco, ValorParametro
+from sentinela.models.models import (BaseOriginal, Filtro, ParametroRisco,
+                                     ValorParametro)
 
 tmpdir = tempfile.mkdtemp()
 
@@ -49,26 +50,65 @@ class GerenteRisco():
 
     def __init__(self):
         self.riscosativos = {}
+        self.riscos = []
+        self.base = None
 
-    def add_risco(self, parametrorisco):
+    def set_base(self, base, session=None):
+        """Vincula o Gerente a um objeto BaseOriginal
+        Atenção: TODOS os parâmetros de risco ativos no Gerente serão
+        adicionados a esta base!!!
+        TODOS os parâmetros de risco vinculados à BaseOriginal serão
+        adicionados aos riscos ativos!!!
+        """
+        self.base = base
+        if session and self.riscos:
+            for risco in self.riscos:
+                self.base.parametros.append(risco)
+            session.merge(base)
+            session.commit()
+        self.riscos = self.base.parametros
+
+    def cria_base(self, nomebase, session):
+        base = session.query(BaseOriginal).filter(
+            BaseOriginal.nome == nomebase).first()
+        if not base:
+            base = BaseOriginal(nomebase)
+        self.set_base(base, session)
+
+    def add_risco(self, parametrorisco, session=None):
         """Configura os parametros de risco ativos"""
         dict_filtros = defaultdict(list)
         for valor in parametrorisco.valores:
             dict_filtros[valor.tipo_filtro].append(valor.valor)
         self.riscosativos[parametrorisco.nome_campo] = dict_filtros
+        self.riscos.append(parametrorisco)
+        if session and self.base:
+            self.base.parametros.append(parametrorisco)
+            session.merge(self.base)
+            session.commit()
 
-    def remove_risco(self, parametrorisco):
+    def remove_risco(self, parametrorisco, session=None):
         """Configura os parametros de risco ativos"""
         self.riscosativos.pop(parametrorisco.nome_campo, None)
+        self.riscos.remove(parametrorisco)
+        if session and self.base:
+            self.base.parametros.remove(parametrorisco)
+            session.merge(self.base)
+            session.commit()
 
-    def clear_risco(self):
+    def clear_risco(self, session=None):
         """Zera os parametros de risco ativos"""
         self.riscosativos = {}
+        self.riscos.clear()
+        if session and self.base:
+            self.base.parametros.clear()
+            session.merge(self.base)
+            session.commit()
 
     def aplica_risco(self, lista=None, arquivo=None):
         """Compara a linha de título da lista recebida com a lista de nomes
         de campo que possuem parâmetros de risco ativos. Após, chama para cada
-         campo encontrado a função de filtragem
+        campo encontrado a função de filtragem
         lista: Lista a ser filtrada, primeira linha deve conter os nomes dos
             campos idênticos aos definidos no nome_campo do parâmetro de risco
             cadastrado.
@@ -146,23 +186,25 @@ class GerenteRisco():
                 lista = [linha for linha in reader]
                 lista = lista[1:]
         if session:
-            parametro = session.query(
-                ParametroRisco).filter(ParametroRisco.nome == campo).first()
+            parametro = session.query(ParametroRisco).filter(
+                ParametroRisco.nome_campo == campo).first()
             if not parametro:
                 parametro = ParametroRisco(campo)
                 session.add(parametro)
+                session.commit()
             for linha in lista:
                 if parametro.id:
                     valor = session.query(ValorParametro).filter(
                         ValorParametro.valor == linha[0],
                         ValorParametro.risco_id == parametro.id).first()
-                    valor.tipo_filtro = Filtro[linha[1]]
-                    session.merge(valor)
                     if not valor:
                         valor = ValorParametro(linha[0].strip(),
                                                linha[1].strip())
                         session.add(valor)
-                        parametro.valores.append(valor)
+                    else:
+                        valor.tipo_filtro = Filtro[linha[1]]
+                        session.merge(valor)
+                    parametro.valores.append(valor)
             session.merge(parametro)
             session.commit()
             self.add_risco(parametro)
@@ -177,9 +219,14 @@ class GerenteRisco():
         A primeira linha contém o campo a ser filtrado e as linhas
         seguintes os valores do filtro. Cria filtros na memória, e no
         Banco de Dados caso session seja informada.
-        arquivo: Nome e caminho do arquivo .csv
-        session: sessão ativa com BD
-        filtro: Tipo de filtro a ser assumido como padrão"""
+
+        @params
+
+            arquivo: Nome e caminho do arquivo .csv
+            session: sessão ativa com BD
+            filtro: Tipo de filtro a ser assumido como padrão
+
+        """
         with open(arquivo, 'r', newline='') as f:
             reader = csv.reader(f)
             cabecalho = next(reader)

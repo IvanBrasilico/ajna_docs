@@ -1,0 +1,39 @@
+{% extends "layout.html" %} {% block content %}
+<div id="main" class="container-fluid">
+    <div id="top" class="row">
+        <h2>Escolha o Padrão de Risco a aplicar na Base de Dados:</h2>
+        <div class="col-md-12">
+            <p>{{filename}}</p>
+            <select name="base" id="base">
+                {% for base in bases %}
+                <option value="{{ base.id }}">{{ base.nome }}</option>
+                {% endfor %}
+            </select>
+            <button class="btn-default" onclick="aplica_risco()">Aplicar</button>
+        </div>
+    </div>
+    <div id="list" class="row">
+        <div class="table-responsive col-md-12">
+            <table>
+                {% for row in lista_riscos %}
+                <tr>
+                    {% for col in row %}
+                    <td>{{col}}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
+            &nbsp;
+        </div>
+    </div>
+    <div id="bottom" class="row">
+        AJNA - Receita Federal do Brasil 2017
+    </div>
+</div>
+<!-- /#main -->
+{% endblock %} {% block scripts %} {{super()}}
+<script>
+    function aplica_risco() {
+        window.location.assign('/aplica_risco?filename={{filename}}&base=' + $("#base").val())
+    }
+</script> {% endblock %}
