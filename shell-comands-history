@@ -72,6 +72,8 @@ Inicia com sphinx-quickstart
 Aí é só colocar o nome dos módulos assim no arquivo .rst:
 .. automodule:: raspapreco.utils.site_scraper
     :members:
+# Bom guia/exemplo de Sphinx:
+# http://sphinxcontrib-napoleon.readthedocs.io/en/latest/index.html
 
 # Configuração do Celery
 sudo apt install rabbitmq-server

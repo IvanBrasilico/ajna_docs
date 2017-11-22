@@ -66,15 +66,15 @@ class TestGerenteRisco(unittest.TestCase):
         gerente.add_risco(horarios)
         lista_risco = gerente.aplica_risco(lista)
         print(lista_risco)
-        assert len(lista_risco) == 5
+        assert len(lista_risco) == 6
         gerente.remove_risco(horarios)
         lista_risco = gerente.aplica_risco(lista)
         print(lista_risco)
-        assert len(lista_risco) == 4
+        assert len(lista_risco) == 5
         gerente.remove_risco(esportes)
         lista_risco = gerente.aplica_risco(lista)
         print(lista_risco)
-        assert len(lista_risco) == 2
+        assert len(lista_risco) == 3
 
     def test_aplica_comeca_com(self):
         lista = self.lista
@@ -106,10 +106,10 @@ class TestGerenteRisco(unittest.TestCase):
         gerente.add_risco(alimentos)
         gerente.add_risco(esportes)
         lista_risco = gerente.aplica_risco(lista)
-        assert len(lista_risco) == 4
+        assert len(lista_risco) == 5
         gerente.remove_risco(esportes)
         lista_risco = gerente.aplica_risco(lista)
-        assert len(lista_risco) == 2
+        assert len(lista_risco) == 3
 
     def test_aplica_contem(self):
         lista = self.lista
@@ -141,37 +141,37 @@ class TestGerenteRisco(unittest.TestCase):
         gerente.add_risco(alimentos)
         gerente.add_risco(esportes)
         lista_risco = gerente.aplica_risco(lista)
-        assert len(lista_risco) == 4
+        assert len(lista_risco) == 5
         gerente.remove_risco(esportes)
         lista_risco = gerente.aplica_risco(lista)
-        assert len(lista_risco) == 2
+        assert len(lista_risco) == 3
 
     def test_aplica_namedcsv(self):
         lista = self.lista
         gerente = self.gerente
         gerente.import_named_csv(CSV_NAMEDRISCO_TEST)
         lista_risco = gerente.aplica_risco(lista)
-        assert len(lista_risco) == 5
+        assert len(lista_risco) == 6
 
     def test_parametrostocsv(self):
         lista = self.lista
         gerente = self.gerente
         gerente.import_named_csv(CSV_NAMEDRISCO_TEST)
         lista_risco = gerente.aplica_risco(lista)
-        assert len(lista_risco) == 5
+        assert len(lista_risco) == 6
         gerente.parametros_tocsv()
         gerente.clear_risco()
         gerente.parametros_fromcsv('alimento')
         lista_risco = gerente.aplica_risco(lista)
-        assert len(lista_risco) == 2
+        assert len(lista_risco) == 3
         gerente.clear_risco()
         gerente.parametros_fromcsv('esporte')
         lista_risco = gerente.aplica_risco(lista)
-        assert len(lista_risco) == 2
+        assert len(lista_risco) == 3
         gerente.clear_risco()
         gerente.parametros_fromcsv('horario')
         lista_risco = gerente.aplica_risco(lista)
-        assert len(lista_risco) == 1
+        assert len(lista_risco) == 2
 
     def test_juntacsv(self):
         gerente = self.gerente

@@ -85,8 +85,3 @@ Observação:
 A ação acima deve implementar um pipeline facilmente reproduzível.
 Pode ser agregado / assembled dados de importações, um ranking manual
 (black-list), etc.
-
-
-
-
-
