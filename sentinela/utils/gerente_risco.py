@@ -53,7 +53,7 @@ class GerenteRisco():
     o Banco de Dados e arquivos csv de parâmetros, para permitir que
     Usuário importe e exporte parâmetros de risco.
 
-    Attributes:
+    Args:
         pre_processers: dict de funções para pré-processar lista. Função
         DEVE esperar uma lista como primeiro parâmetro
 
@@ -61,12 +61,16 @@ class GerenteRisco():
         'key' do pre_processer como kargs.
 
         Ex:
+
         gerente.pre_processers['mudatitulo'] = muda_titulos
+
         gerente.pre_processers_params['mudatitulo'] = {'de_para_dict': {}}
 
         Os atributos abaixo NÂO devem ser acessados diretamente. A classe
         os gerencia internamente.
+
         riscosativos: dict descreve "riscos" (compilado dos ParametrosRisco)
+
         base: BaseOriginal ativa
     """
 
@@ -152,7 +156,7 @@ class GerenteRisco():
         for ind, linha in enumerate(lista):
             lista[ind] = list(map(str.strip, linha))
         # Aplicar pre_processers
-        for key, value in self.pre_processers.items():
+        for key in self.pre_processers:
             self.pre_processers[key](lista,
                                      **self.pre_processers_params[key])
         headers = set(lista[0])
@@ -175,8 +179,8 @@ class GerenteRisco():
 
     def parametros_tocsv(self, path=tmpdir):
         """Salva os parâmetros adicionados a um gerente em um arquivo csv
-        Ver também:
-        parametros_fromcsv <parametros_fromcsv>
+
+        Ver também: :py:func:`parametros_fromcsv`
         """
         for campo, dict_filtros in self._riscosativos.items():
             lista = []
@@ -200,8 +204,9 @@ class GerenteRisco():
         em import_named_csv)
 
         Ver também:
-        parametros_tocsv <parametros_tocsv>
-        import_named_csv <import_named_csv>
+
+        :py:func:`parametros_tocsv`
+        :py:func:`import_named_csv`
 
         Args:
             campo: nome do campo a ser filtrado e deve ser também
@@ -254,8 +259,7 @@ class GerenteRisco():
         seguintes os valores do filtro. Cria filtros na memória, e no
         Banco de Dados caso session seja informada.
 
-        @params
-
+        Args:
             arquivo: Nome e caminho do arquivo .csv
             session: sessão ativa com BD
             filtro: Tipo de filtro a ser assumido como padrão
