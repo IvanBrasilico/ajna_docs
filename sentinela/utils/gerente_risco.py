@@ -47,72 +47,97 @@ filter_functions = {
 
 
 class GerenteRisco():
+    """Classe que aplica parâmetros de risco e/ou junção em listas
+
+    São fornecidos também metodos para facilitar o de/para entre
+    o Banco de Dados e arquivos csv de parâmetros, para permitir que
+    Usuário importe e exporte parâmetros de risco.
+
+    Attributes:
+        pre_processers: dict de funções para pré-processar lista. Função
+        DEVE esperar uma lista como primeiro parâmetro
+
+        pre_processers_params: se houver, será passado para função com mesmo
+        'key' do pre_processer como kargs.
+
+        Ex:
+        gerente.pre_processers['mudatitulo'] = muda_titulos
+        gerente.pre_processers_params['mudatitulo'] = {'de_para_dict': {}}
+
+        Os atributos abaixo NÂO devem ser acessados diretamente. A classe
+        os gerencia internamente.
+        riscosativos: dict descreve "riscos" (compilado dos ParametrosRisco)
+        base: BaseOriginal ativa
+    """
 
     def __init__(self):
-        self.riscosativos = {}
-        self.riscos = []
-        self.base = None
+        self.pre_processers = {}
+        self.pre_processers_params = {}
+        self._riscosativos = {}
+        self._base = None
 
-    def set_base(self, base, session=None):
+    def set_base(self, base):
         """Vincula o Gerente a um objeto BaseOriginal
         Atenção: TODOS os parâmetros de risco ativos no Gerente serão
-        adicionados a esta base!!!
+        zerados!!!
         TODOS os parâmetros de risco vinculados à BaseOriginal serão
         adicionados aos riscos ativos!!!
         """
-        self.base = base
-        if session and self.riscos:
-            for risco in self.riscos:
-                self.base.parametros.append(risco)
-            session.merge(base)
-            session.commit()
-        self.riscos = self.base.parametros
+        self._base = base
+        self._riscosativos = {}
+        for parametro in self._base.parametros:
+            self.add_risco(parametro)
 
     def cria_base(self, nomebase, session):
         base = session.query(BaseOriginal).filter(
             BaseOriginal.nome == nomebase).first()
         if not base:
             base = BaseOriginal(nomebase)
-        self.set_base(base, session)
+        self.set_base(base)
 
     def add_risco(self, parametrorisco, session=None):
         """Configura os parametros de risco ativos"""
         dict_filtros = defaultdict(list)
         for valor in parametrorisco.valores:
             dict_filtros[valor.tipo_filtro].append(valor.valor)
-        self.riscosativos[parametrorisco.nome_campo] = dict_filtros
-        self.riscos.append(parametrorisco)
-        if session and self.base:
-            self.base.parametros.append(parametrorisco)
-            session.merge(self.base)
+        self._riscosativos[parametrorisco.nome_campo] = dict_filtros
+        if session and self._base:
+            self._base.parametros.append(parametrorisco)
+            session.merge(self._base)
             session.commit()
 
     def remove_risco(self, parametrorisco, session=None):
         """Configura os parametros de risco ativos"""
-        self.riscosativos.pop(parametrorisco.nome_campo, None)
-        self.riscos.remove(parametrorisco)
-        if session and self.base:
-            self.base.parametros.remove(parametrorisco)
-            session.merge(self.base)
+        self._riscosativos.pop(parametrorisco.nome_campo, None)
+        if session and self._base:
+            self._base.parametros.remove(parametrorisco)
+            session.merge(self._base)
             session.commit()
 
     def clear_risco(self, session=None):
         """Zera os parametros de risco ativos"""
-        self.riscosativos = {}
-        self.riscos.clear()
-        if session and self.base:
-            self.base.parametros.clear()
-            session.merge(self.base)
+        self._riscosativos = {}
+        if session and self._base:
+            self._base.parametros.clear()
+            session.merge(self._base)
             session.commit()
 
     def aplica_risco(self, lista=None, arquivo=None):
         """Compara a linha de título da lista recebida com a lista de nomes
         de campo que possuem parâmetros de risco ativos. Após, chama para cada
-        campo encontrado a função de filtragem
-        lista: Lista a ser filtrada, primeira linha deve conter os nomes dos
-            campos idênticos aos definidos no nome_campo do parâmetro de risco
-            cadastrado.
-        arquivo: Arquivo csv contendo a lista a ser filtrada
+        campo encontrado a função de filtragem. Somente um dos parâmetros
+        precisa ser passado. Caso na lista do pipeline estejam cadastradas
+        funções de pré-processamento, serão aplicadas.
+
+        Args:
+            lista (list): Lista a ser filtrada, primeira linha deve conter os
+            nomes dos campos idênticos aos definidos no nome_campo
+            do parâmetro de risco cadastrado.
+            OU
+            arquivo (str): Arquivo csv de onde carregar a lista a ser filtrada
+
+        Returns:
+            lista contendo os campos filtrados. 1ª linha com nomes de campo
         """
         mensagem = 'Arquivo não fornecido!'
         if arquivo:
@@ -120,21 +145,23 @@ class GerenteRisco():
             with open(arquivo, 'r', encoding='iso-8859-1', newline='') as arq:
                 reader = csv.reader(arq)
                 lista = [linha for linha in reader]
-
         if not lista:
             raise AttributeError('Erro! ' + mensagem)
-
-        for r in range(len(lista)):
-            lista[r] = list(map(str.strip, lista[r]))
+        # Precaução: retirar espaços mortos de todo item
+        # da lista para evitar erros de comparação
+        for ind, linha in enumerate(lista):
+            lista[ind] = list(map(str.strip, linha))
+        # Aplicar pre_processers
+        for key, value in self.pre_processers.items():
+            self.pre_processers[key](lista,
+                                     **self.pre_processers_params[key])
         headers = set(lista[0])
-        print('Headers:', headers)
-        riscos = set(list(self.riscosativos.keys()))
-        print('Riscos:', riscos)
+        riscos = set(list(self._riscosativos.keys()))
         aplicar = headers & riscos   # UNION OF SETS
-        print('Aplicar:', aplicar)
         result = []
+        result.append(lista[0])
         for campo in aplicar:
-            dict_filtros = self.riscosativos.get(campo)
+            dict_filtros = self._riscosativos.get(campo)
             for tipo_filtro, lista_filtros in dict_filtros.items():
                 filter_function = filter_functions.get(tipo_filtro)
                 if filter_function is None:
@@ -144,13 +171,14 @@ class GerenteRisco():
                 result_campo = filter_function(lista, campo, lista_filtros)
                 for linha in result_campo:
                     result.append(linha)
-        print(result)
         return result
 
     def parametros_tocsv(self, path=tmpdir):
         """Salva os parâmetros adicionados a um gerente em um arquivo csv
-        Ver também: parametros_fromcsv"""
-        for campo, dict_filtros in self.riscosativos.items():
+        Ver também:
+        parametros_fromcsv <parametros_fromcsv>
+        """
+        for campo, dict_filtros in self._riscosativos.items():
             lista = []
             lista.append(('valor', 'tipo_filtro'))
             for tipo_filtro, lista_filtros in dict_filtros.items():
@@ -163,17 +191,23 @@ class GerenteRisco():
 
     def parametros_fromcsv(self, campo, session=None,
                            lista=None, path=tmpdir):
-        """Abre um arquivo csv, recupera parâmetros configurados nele,
+        """
+        Abre um arquivo csv, recupera parâmetros configurados nele,
         adiciona à configuração do gerente e **também adiciona ao Banco de
         Dados ativo** caso não existam nele ainda. Para isso é preciso
         passar a session como parâmetro, senão cria apenas na memória
         Pode receber uma lista no lugar de um arquivo csv (como implementado
         em import_named_csv)
-        Ver também: parametros_tocsv, import_named_csv
-        campo: nome do campo a ser filtrado e deve ser também
+
+        Ver também:
+        parametros_tocsv <parametros_tocsv>
+        import_named_csv <import_named_csv>
+
+        Args:
+            campo: nome do campo a ser filtrado e deve ser também
             o nome do arquivo .csv
-        session: a sessão com o banco de dados
-        lista: passar uma lista pré-prenchida para usar a função com outros
+            session: a sessão com o banco de dados
+            lista: passar uma lista pré-prenchida para usar a função com outros
             tipos de fontes/arquivos. Se passada uma lista, função não
             abrirá arquivo .csv, usará os valores da função
 
@@ -212,7 +246,7 @@ class GerenteRisco():
             dict_filtros = defaultdict(list)
             for linha in lista:
                 dict_filtros[Filtro[linha[1]]].append(linha[0])
-            self.riscosativos[campo] = dict_filtros
+            self._riscosativos[campo] = dict_filtros
 
     def import_named_csv(self, arquivo, session=None, filtro=Filtro.igual):
         """Abre um arquivo csv, cada coluna sendo um filtro.
