@@ -4,8 +4,9 @@ import tempfile
 import unittest
 from zipfile import ZipFile
 
-from sentinela.utils.csv_handlers import (muda_titulos_csv, muda_titulos_lista,
-                                          sanitizar, sch_processing)
+from sentinela.utils.csv_handlers import (ascii_sanitizar, muda_titulos_csv,
+                                          muda_titulos_lista, sanitizar,
+                                          sch_processing, unicode_sanitizar)
 
 tmpdir = tempfile.mkdtemp()
 
@@ -74,24 +75,26 @@ class TestCsvHandlers(unittest.TestCase):
         assert lista[1][0:5] == lista2[1][0][0:5]
 
     def test_sanitizar(self):
-        teste = 'teste'
-        esperado = 'teste'
-        sanitizado = sanitizar(teste)
-        assert sanitizado == esperado
-        teste = 'Cafézinho'
-        esperado = 'cafezinho'
-        sanitizado = sanitizar(teste)
-        assert teste != sanitizado
-        assert sanitizado == esperado
-        teste = 'LOUCO     dos  espAçõs e   Tabulações!!!'
-        esperado = 'louco dos espacos e tabulacoes!!!'
-        sanitizado = sanitizar(teste)
-        assert teste != sanitizado
-        assert sanitizado == esperado
-        teste = 'Cafézinho não pode estar frio!!! 2017-11-28. ' + \
-            'teste Sentença comprida, Ruian  Metals ou ruian metals?'
-        esperado = 'cafezinho nao pode estar frio!!! 2017-11-28. ' + \
-            'teste sentenca comprida, ruian metals ou ruian metals?'
-        sanitizado = sanitizar(teste)
-        assert teste != sanitizado
-        assert sanitizado == esperado
+        for norm_function in {ascii_sanitizar,
+                              unicode_sanitizar}:
+            teste = 'teste'
+            esperado = 'teste'
+            sanitizado = sanitizar(teste, norm_function=norm_function)
+            assert sanitizado == esperado
+            teste = 'Cafézinho'
+            esperado = 'cafezinho'
+            sanitizado = sanitizar(teste, norm_function=norm_function)
+            assert teste != sanitizado
+            assert sanitizado == esperado
+            teste = 'LOUCO     dos  espAçõs e   Tabulações!!!'
+            esperado = 'louco dos espacos e tabulacoes!!!'
+            sanitizado = sanitizar(teste, norm_function=norm_function)
+            assert teste != sanitizado
+            assert sanitizado == esperado
+            teste = 'Cafézinho não pode estar frio!!! 2017-11-28. ' + \
+                'teste Sentença comprida, Ruian  Metals ou ruian metals?'
+            esperado = 'cafezinho nao pode estar frio!!! 2017-11-28. ' + \
+                'teste sentenca comprida, ruian metals ou ruian metals?'
+            sanitizado = sanitizar(teste, norm_function=norm_function)
+            assert teste != sanitizado
+            assert sanitizado == esperado
