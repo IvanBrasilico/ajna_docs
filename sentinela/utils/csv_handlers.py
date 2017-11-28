@@ -9,12 +9,14 @@ Para comparações, retira espaços antes e depois do conteúdo das colunas
 """
 import csv
 import glob
+import io
 import os
 import tempfile
 import unicodedata
 from zipfile import ZipFile
 
 tmpdir = tempfile.mkdtemp()
+ENCODE = 'latin1'
 
 
 def ascii_sanitizar(text):
@@ -54,7 +56,7 @@ def sanitizar(text, norm_function=unicode_sanitizar):
 
 def muda_titulos_csv(csv_file, de_para_dict):
     """Apenas abre o arquivo e repassa para muda_titulos_lista"""
-    with open(csv_file, 'r', newline='') as csvfile:
+    with open(csv_file, 'r', encoding=ENCODE, newline='') as csvfile:
         reader = csv.reader(csvfile)
         result = [linha for linha in reader]
     result = muda_titulos_lista(result, de_para_dict)
@@ -81,7 +83,7 @@ def sch_tocsv(sch, txt, dest_path=tmpdir):
     cabecalhos = []
     for ind in range(len(sch)):
         if not isinstance(sch[ind], str):
-            sch[ind] = str(sch[ind], 'iso-8859-1')
+            sch[ind] = str(sch[ind], ENCODE)
         linha = sch[ind]
         position_equal = linha.find('="')
         position_quote = linha.find('" ')
@@ -90,17 +92,11 @@ def sch_tocsv(sch, txt, dest_path=tmpdir):
             cabecalhos.append(linha[position_equal + 2:position_quote])
     campo = str(sch[0])[2:-3]
     filename = os.path.join(dest_path, campo + '.csv')
-    with open(filename, 'w', newline='') as out:
+    with open(filename, 'w', encoding=ENCODE, newline='') as out:
         writer = csv.writer(out)
         del txt[0]
         writer.writerow(cabecalhos)
         for row in txt:
-            if not isinstance(row, str):
-                row = str(row, 'iso-8859-1')
-            row = row.replace('"', '')
-            row = row.replace('\r\n', '')
-            row = row.replace('\n', '')
-            row = row.split('\t')
             if row:
                 writer.writerow(row)
 
@@ -120,12 +116,13 @@ def sch_processing(path, mask_txt='0.txt'):
             sch_name = sch
             txt_name = glob.glob(os.path.join(
                 path, '*' + os.path.basename(sch_name)[3:-4] + mask_txt))[0]
-            with open(sch_name, encoding='iso-8859-1',
+            with open(sch_name, encoding=ENCODE,
                       newline='') as sch_file, \
-                    open(txt_name, encoding='iso-8859-1',
+                    open(txt_name, encoding=ENCODE,
                          newline='') as txt_file:
                 sch_content = sch_file.readlines()
-                txt_content = txt_file.readlines()
+                reader = csv.reader(txt_file, delimiter='\t')
+                txt_content = [linha for linha in reader]
                 csv_name = sch_tocsv(sch_content, txt_content)
                 filenames.append((csv_name, txt_name))
     else:
@@ -139,9 +136,19 @@ def sch_processing(path, mask_txt='0.txt'):
                         if txtinfo.filename.find(txt_search) != -1:
                             txt_name = txtinfo.filename
                             with myzip.open(sch_name) as sch_file:
-                                sch_content = sch_file.readlines()
+                                sch_content = io.TextIOWrapper(
+                                    sch_file,
+                                    encoding=ENCODE, newline=''
+                                ).readlines()
                             with myzip.open(txt_name) as txt_file:
-                                txt_content = txt_file.readlines()
-                            csv_name = sch_tocsv(sch_content, txt_content)
-                            filenames.append((csv_name, txt_name))
+                                txt_io = io.TextIOWrapper(
+                                    txt_file,
+                                    encoding=ENCODE, newline=''
+                                )
+                                reader = csv.reader(txt_io, delimiter='\t')
+                                txt_content = [linha for linha in reader]
+
+                                print('CONTENT', txt_content[:3])
+                    csv_name = sch_tocsv(sch_content, txt_content)
+                    filenames.append((csv_name, txt_name))
     return filenames

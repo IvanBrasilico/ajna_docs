@@ -1,4 +1,5 @@
 import csv
+import io
 import os
 import tempfile
 import unittest
@@ -6,7 +7,8 @@ from zipfile import ZipFile
 
 from sentinela.utils.csv_handlers import (ascii_sanitizar, muda_titulos_csv,
                                           muda_titulos_lista, sanitizar,
-                                          sch_processing, unicode_sanitizar)
+                                          sch_processing, unicode_sanitizar,
+                                          ENCODE)
 
 tmpdir = tempfile.mkdtemp()
 
@@ -20,7 +22,7 @@ class TestCsvHandlers(unittest.TestCase):
                      'titulo2_old': 'titulo2_new'}
 
     def setUp(self):
-        with open(CSV_TITLES_TEST, 'r') as f:
+        with open(CSV_TITLES_TEST, 'r', encoding=ENCODE, newline='') as f:
             reader = csv.reader(f)
             self.lista = [linha for linha in reader]
         self.tmpdir = tempfile.mkdtemp()
@@ -51,11 +53,11 @@ class TestCsvHandlers(unittest.TestCase):
 
     def test_sch_dir(self):
         filenames = sch_processing(SCH_FILE_TEST)
-        with open(filenames[0][1], 'r', encoding='iso-8859-1') as f:
-            reader = csv.reader(f)
+        with open(filenames[0][1], 'r', encoding=ENCODE, newline='') as txt_file:
+            reader=csv.reader(txt_file, delimiter='\t')
             lista = [linha for linha in reader]
-        with open(filenames[0][0], 'r') as f:
-            reader = csv.reader(f)
+        with open(filenames[0][0], 'r', encoding=ENCODE, newline='') as csv_file:
+            reader = csv.reader(csv_file)
             lista2 = [linha for linha in reader]
         assert len(lista) == len(lista2)
         print(lista[0])
@@ -65,14 +67,21 @@ class TestCsvHandlers(unittest.TestCase):
         filenames = sch_processing(SCH_ZIP_TEST)
         with ZipFile(SCH_ZIP_TEST) as myzip:
             with myzip.open(filenames[0][1]) as zip_file:
-                lista = zip_file.readlines()
-                lista = [linha.decode('iso-8859-1') for linha in lista]
-        with open(filenames[0][0], 'r') as f:
-            reader = csv.reader(f)
+                zip_io = io.TextIOWrapper(
+                    zip_file,
+                    encoding=ENCODE, newline=None
+                )
+                reader=csv.reader(zip_io, delimiter='\t')
+                lista = [linha for linha in reader]
+        print(filenames[0][1])
+        print(filenames[0][0])
+        with open(filenames[0][0], 'r', encoding=ENCODE, newline='') as txt_file:
+            reader = csv.reader(txt_file)
             lista2 = [linha for linha in reader]
         assert len(lista) == len(lista2)
-        print(lista)
-        assert lista[1][0:5] == lista2[1][0][0:5]
+        print('test_sch lista', lista[:2])
+        print('test_sch lista2', lista2[:2])
+        assert lista[1][0:5] == lista2[1][0:5]
 
     def test_sanitizar(self):
         for norm_function in {ascii_sanitizar,
