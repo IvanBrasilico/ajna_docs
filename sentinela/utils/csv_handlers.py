@@ -11,9 +11,27 @@ import csv
 import glob
 import os
 import tempfile
+import unicodedata
 from zipfile import ZipFile
 
 tmpdir = tempfile.mkdtemp()
+
+
+def sanitizador(text):
+    """Remove espaços à direita e esquerda, espaços adicionais entre
+    palavras e marcas de diacríticos (acentos e caracteres especiais)
+    Retorna NFC normalizado
+    """
+    text = text.strip()
+    text = text.casefold()
+    norm_txt = unicodedata.normalize('NFD', text)
+    shaved = ''.join(char for char in norm_txt
+                     if not unicodedata.combining(char))
+    text = unicodedata.normalize('NFC', shaved)
+    word_list = text.split()
+    text = ' '.join(word.strip() for word in word_list
+                    if len(word.strip()))
+    return text
 
 
 def muda_titulos_csv(csv_file, de_para_dict):
