@@ -17,7 +17,7 @@ from zipfile import ZipFile
 tmpdir = tempfile.mkdtemp()
 
 
-def sanitizador(text):
+def sanitizar(text):
     """Remove espaços à direita e esquerda, espaços adicionais entre
     palavras e marcas de diacríticos (acentos e caracteres especiais)
     Retorna NFC normalizado
@@ -49,7 +49,7 @@ def muda_titulos_lista(lista, de_para_dict):
     cabecalho = []
     for titulo in lista[0]:
         # Se título não está no de_para, retorna ele mesmo
-        titulo = titulo.strip()
+        titulo = sanitizar(titulo)
         novo_titulo = de_para_dict.get(titulo, titulo)
         cabecalho.append(novo_titulo)
     result = [cabecalho]
