@@ -17,17 +17,35 @@ from zipfile import ZipFile
 tmpdir = tempfile.mkdtemp()
 
 
-def sanitizar(text):
+def ascii_sanitizar(text):
+    """Remove espaços à direita e esquerda, espaços adicionais entre
+    palavras e marcas de diacríticos (acentos e caracteres especiais)
+    Retorna NFC normalizado
+    """
+    return unicodedata.normalize('NFKD', text) \
+        .encode('ASCII', 'ignore') \
+        .decode('ASCII')
+
+
+def unicode_sanitizar(text):
+    """Remove espaços à direita e esquerda, espaços adicionais entre
+    palavras e marcas de diacríticos (acentos e caracteres especiais)
+    Retorna NFC normalizado
+    """
+    norm_txt = unicodedata.normalize('NFD', text)
+    shaved = ''.join(char for char in norm_txt
+                     if not unicodedata.combining(char))
+    return unicodedata.normalize('NFC', shaved)
+
+
+def sanitizar(text, norm_function=unicode_sanitizar):
     """Remove espaços à direita e esquerda, espaços adicionais entre
     palavras e marcas de diacríticos (acentos e caracteres especiais)
     Retorna NFC normalizado
     """
     text = text.strip()
     text = text.casefold()
-    norm_txt = unicodedata.normalize('NFD', text)
-    shaved = ''.join(char for char in norm_txt
-                     if not unicodedata.combining(char))
-    text = unicodedata.normalize('NFC', shaved)
+    text = norm_function(text)
     word_list = text.split()
     text = ' '.join(word.strip() for word in word_list
                     if len(word.strip()))
