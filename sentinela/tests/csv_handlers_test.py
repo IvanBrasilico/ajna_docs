@@ -5,10 +5,10 @@ import tempfile
 import unittest
 from zipfile import ZipFile
 
-from sentinela.utils.csv_handlers import (ascii_sanitizar, muda_titulos_csv,
-                                          muda_titulos_lista, sanitizar,
-                                          sch_processing, unicode_sanitizar,
-                                          ENCODE)
+from sentinela.utils.csv_handlers import (ENCODE, ascii_sanitizar,
+                                          muda_titulos_csv, muda_titulos_lista,
+                                          sanitizar, sch_processing,
+                                          unicode_sanitizar)
 
 tmpdir = tempfile.mkdtemp()
 
@@ -53,10 +53,12 @@ class TestCsvHandlers(unittest.TestCase):
 
     def test_sch_dir(self):
         filenames = sch_processing(SCH_FILE_TEST)
-        with open(filenames[0][1], 'r', encoding=ENCODE, newline='') as txt_file:
-            reader=csv.reader(txt_file, delimiter='\t')
+        with open(filenames[0][1], 'r', encoding=ENCODE,
+                  newline='') as txt_file:
+            reader = csv.reader(txt_file, delimiter='\t')
             lista = [linha for linha in reader]
-        with open(filenames[0][0], 'r', encoding=ENCODE, newline='') as csv_file:
+        with open(filenames[0][0], 'r', encoding=ENCODE,
+                  newline='') as csv_file:
             reader = csv.reader(csv_file)
             lista2 = [linha for linha in reader]
         assert len(lista) == len(lista2)
@@ -71,11 +73,12 @@ class TestCsvHandlers(unittest.TestCase):
                     zip_file,
                     encoding=ENCODE, newline=None
                 )
-                reader=csv.reader(zip_io, delimiter='\t')
+                reader = csv.reader(zip_io, delimiter='\t')
                 lista = [linha for linha in reader]
         print(filenames[0][1])
         print(filenames[0][0])
-        with open(filenames[0][0], 'r', encoding=ENCODE, newline='') as txt_file:
+        with open(filenames[0][0], 'r', encoding=ENCODE,
+                  newline='') as txt_file:
             reader = csv.reader(txt_file)
             lista2 = [linha for linha in reader]
         assert len(lista) == len(lista2)
