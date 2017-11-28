@@ -12,6 +12,7 @@ from sentinela.models.models import (BaseOriginal, Filtro, ParametroRisco,
                                      ValorParametro)
 
 tmpdir = tempfile.mkdtemp()
+ENCODE = 'latin1'
 
 
 def equality(listaoriginal, nomecampo, listavalores):
@@ -146,7 +147,7 @@ class GerenteRisco():
         mensagem = 'Arquivo não fornecido!'
         if arquivo:
             mensagem = 'Lista não fornecida!'
-            with open(arquivo, 'r', encoding='iso-8859-1', newline='') as arq:
+            with open(arquivo, 'r', encoding=ENCODE, newline='') as arq:
                 reader = csv.reader(arq)
                 lista = [linha for linha in reader]
         if not lista:
@@ -189,7 +190,7 @@ class GerenteRisco():
                 for valor in lista_filtros:
                     lista.append((valor, tipo_filtro.name))
             with open(os.path.join(path, campo + '.csv'),
-                      'w', newline='') as f:
+                      'w', encoding=ENCODE, newline='') as f:
                 writer = csv.writer(f)
                 writer.writerows(lista)
 
@@ -220,7 +221,7 @@ class GerenteRisco():
         """
         if not lista:
             with open(os.path.join(path, campo + '.csv'),
-                      'r', newline='') as f:
+                      'r', encoding=ENCODE, newline='') as f:
                 reader = csv.reader(f)
                 lista = [linha for linha in reader]
                 lista = lista[1:]
@@ -265,7 +266,7 @@ class GerenteRisco():
             filtro: Tipo de filtro a ser assumido como padrão
 
         """
-        with open(arquivo, 'r', newline='') as f:
+        with open(arquivo, 'r', encoding=ENCODE, newline='') as f:
             reader = csv.reader(f)
             cabecalho = next(reader)
             listas = defaultdict(list)
