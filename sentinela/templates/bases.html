@@ -24,14 +24,15 @@
     </div>
     <div id="list" class="row">
         <div class="table-responsive col-md-12">
+            <h4>Lista de Riscos</h4>
             <table>
-                {% for row in lista_riscos %}
+                {% for row in lista_risco %}
                 <tr>
                     {% for col in row %}
                     <td>{{col}}</td>
                     {% endfor %}
                 </tr>
-                {% endfor %} {% if not lista_riscos %}
+                {% endfor %} {% if not lista_risco %}
                 <tr>
                     <td>Sem resultados.</td>
                 </tr>
