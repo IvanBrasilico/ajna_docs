@@ -104,7 +104,7 @@ def sch_tocsv(sch, txt, dest_path=tmpdir):
     # print(sch, txt)
 
 
-def sch_processing(path, mask_txt='0.txt'):
+def sch_processing(path, mask_txt='0.txt', dest_path=tmpdir):
     """Processa lotes de extração que gerem arquivos txt csv e arquivos sch
     (txt contém os dados e sch descreve o schema), transformando-os em arquivos
     csv estilo "planilha", isto é, primeira linha de cabecalhos
@@ -124,7 +124,7 @@ def sch_processing(path, mask_txt='0.txt'):
                 reader = csv.reader(txt_file, delimiter='\t')
                 txt_content = [linha for linha in reader]
                 csv_name = sch_tocsv(sch_content, txt_content)
-                filenames.append((csv_name, txt_name))
+                filenames.append((csv_name, txt_name), dest_path)
     else:
         with ZipFile(path) as myzip:
             info_list = myzip.infolist()
@@ -149,6 +149,6 @@ def sch_processing(path, mask_txt='0.txt'):
                                 txt_content = [linha for linha in reader]
 
                                 print('CONTENT', txt_content[:3])
-                    csv_name = sch_tocsv(sch_content, txt_content)
+                    csv_name = sch_tocsv(sch_content, txt_content, dest_path)
                     filenames.append((csv_name, txt_name))
     return filenames

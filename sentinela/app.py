@@ -18,6 +18,7 @@ parâmetros de risco.
 """
 import logging
 import os
+import datetime
 
 from flask import Flask, flash, redirect, render_template, request, url_for
 from flask_bootstrap import Bootstrap
@@ -42,12 +43,10 @@ Bootstrap(app)
 nav = Nav()
 
 path = os.path.dirname(os.path.abspath(__file__))
-containers_file = 'conteiners.csv'
 UPLOAD_FOLDER = os.path.join(path, 'files')
+CSV_FOLDER = os.path.join(path, 'CSV')
 ALLOWED_EXTENSIONS = set(['txt', 'csv', 'zip'])
 # app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-memory_log = []
-memory_report = {}
 
 
 def allowed_file(filename):
@@ -61,12 +60,10 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/risco', methods=['GET', 'POST'])
+@app.route('/upload_file', methods=['GET', 'POST'])
 def upload_file():
-    """Função simplificada para upload do arquivo CSV de extração
-    Arquivo precisa de uma coluna chamada Conteiner e uma coluna chamada Lacre
+    """Função simplificada para upload do arquivo de uma extração
     """
-    print('risco')
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:
@@ -93,41 +90,71 @@ def list_files():
     """
     lista_arquivos = [file for file in
                       os.listdir(UPLOAD_FOLDER) if allowed_file(file)]
-    return render_template('risco.html', lista_arquivos=lista_arquivos)
+    bases = session.query(BaseOriginal).all()
+    return render_template('risco.html', lista_arquivos=lista_arquivos,
+                           bases=bases)
 
 
-@app.route('/base/<filename>')
-def base(filename):
+@app.route('/importa')
+def importa():
+    baseid = request.args.get('base')
+    filename = request.args.get('filename')
+    data = request.args.get('data')
+    if not data:
+        data = datetime.date.today().strftime('%Y%m%d')
+    dest_path = os.path.join(CSV_FOLDER, baseid, data[:4], data[4:])
+    if not os.path.exists(dest_path):
+        os.makedirs(dest_path)
+    try:
+        sch_processing(os.path.join(UPLOAD_FOLDER,
+                                    secure_filename(filename)),
+                       dest_path=dest_path)
+        return redirect(url_for('risco'))
+    except Exception as err:
+        pass
+    return redirect(url_for('list_files'))
+
+
+@app.route('/risco')
+def risco():
+    lista_arquivos = []
+    for base in os.listdir(CSV_FOLDER):
+        for ano in os.listdir(os.path.join(CSV_FOLDER, base)):
+            for mesdia in os.listdir(os.path.join(CSV_FOLDER, base, ano)):
+                lista_arquivos.append(base + '/' + ano + '/' + mesdia)
     bases = session.query(BaseOriginal).all()
     return render_template('bases.html',
-                           bases=bases,
-                           filename=filename)
+                           lista_arquivos=lista_arquivos,
+                           bases=bases)
 
 
 @app.route('/aplica_risco')
 def aplica_risco():
     baseid = request.args.get('base')
-    filename = request.args.get('filename')
+    path = request.args.get('filename')
     gerente = GerenteRisco()
     bases = session.query(BaseOriginal).all()
     abase = session.query(BaseOriginal).filter(
         BaseOriginal.id == baseid).first()
-    filenames = sch_processing(os.path.join(UPLOAD_FOLDER,
-                                            secure_filename(filename)))
+    filenames = os.listdir(os.path.join(CSV_FOLDER, path))
+    print(filenames)
     gerente.set_base(abase)
     # Preferencialmente vai tentar processar o arquivo de conhecimentos
     # Se não houver, pega o primeiro da lista mesmo
     # Depois será utilizado o aplica_juncao no lugar desta "gambiarra"
     ind = 0
     for cont, afile in enumerate(filenames):
-        if afile[0].find('Conhecimento'):
+        if afile.find('Conhecimento'):
             ind = cont
             break
-    lista_risco = gerente.aplica_risco(arquivo=filenames[ind][0])
+    #######################
+    lista_risco = gerente.aplica_risco(arquivo=os.path.join(CSV_FOLDER,
+                                                            path,
+                                                            filenames[ind]))
     return render_template('bases.html',
                            bases=bases,
                            baseid=baseid,
-                           filename=filename,
+                           filename=path,
                            lista_risco=lista_risco)
 
 
@@ -136,7 +163,8 @@ def mynavbar():
     return Navbar(
         'AJNA - Módulo Sentinela',
         View('Home', 'index'),
-        View('Risco', 'upload_file'),
+        View('Importação', 'list_files'),
+        View('Risco', 'risco'),
     )
 
 

@@ -2,7 +2,7 @@
 <div id="main" class="container-fluid">
     <div id="top" class="row">
         <div class="col-md-12">
-            <h4>Este formulário permite o UPLOAD de arquivo para checagem</h4>
+            <h4>Este formulário permite o UPLOAD de arquivo csv ou sch-txt, ou zip contendo estes</h4>
             <form action="/risco" method="post" enctype="multipart/form-data" id="frmrisco">
                 <h3>
                     <i>Informe um arquivo </i>
@@ -15,16 +15,28 @@
     </div>
     <div id="list" class="row">
         <div class="table-responsive col-md-12">
+            <h4>Arquivos já carregados no Servidor</h4>
             <table>
-                {% for arquivo in lista_arquivos %}
+                {% for filename in lista_arquivos %}
                 <tr>
-                    <td>{{arquivo}}</td>
-                    <td><button class="btn-default"
-                         onclick="window.location.replace('/base/{{arquivo}}');"
-                        >Selecionar</button></td>
+                    <td>{{filename}}</td>
+                    <td>
+                        <button class="btn-default" onclick="importar('{{filename}}')">Importar</button>
+                    </td>
                 </tr>
                 {% endfor %}
             </table>
+            <h4>Indicar nome da Base que está sendo importada e data (opcional)</h4>
+            Base:
+            <select name="base" id="base">
+                {% for base in bases %}
+                <option value="{{ base.id }}">{{ base.nome }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            Data:
+            <input type="text" id="data">
+            </input>
             &nbsp;
         </div>
     </div>
@@ -33,4 +45,11 @@
     </div>
 </div>
 <!-- /#main -->
-{% endblock %}
+{% endblock %} {% block scripts %} {{super()}}
+<script>
+    function importar(filename) {
+        window.location.assign('/importa?filename=' + filename +
+            '&base=' + $("#base").val() +
+            "&data=" + $("#data").val())
+    }
+</script> {% endblock %}

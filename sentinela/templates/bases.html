@@ -1,7 +1,7 @@
 {% extends "layout.html" %} {% block content %}
 <div id="main" class="container-fluid">
     <div id="top" class="row">
-        <h2>Escolha o Padrão de Risco a aplicar na Base de Dados:</h2>
+        <h2>Escolha o Padrão de Risco a aplicar e a Base de Dados:</h2>
         <div class="col-md-12">
             <p>{{filename}}</p>
             <select name="base" id="base">
@@ -9,7 +9,17 @@
                 <option value="{{ base.id }}">{{ base.nome }}</option>
                 {% endfor %}
             </select>
-            <button class="btn-default" onclick="aplica_risco()">Aplicar</button>
+            <h4>Bases carregadas no Servidor</h4>
+            <table>
+                {% for filename in lista_arquivos %}
+                <tr>
+                    <td>{{filename}}</td>
+                    <td>
+                        <button class="btn-default" onclick="aplica_risco('{{filename}}')">Aplicar</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
         </div>
     </div>
     <div id="list" class="row">
@@ -21,7 +31,11 @@
                     <td>{{col}}</td>
                     {% endfor %}
                 </tr>
-                {% endfor %}
+                {% endfor %} {% if not lista_riscos %}
+                <tr>
+                    <td>Sem resultados.</td>
+                </tr>
+                {% endif %}
             </table>
             &nbsp;
         </div>
@@ -33,7 +47,8 @@
 <!-- /#main -->
 {% endblock %} {% block scripts %} {{super()}}
 <script>
-    function aplica_risco() {
-        window.location.assign('/aplica_risco?filename={{filename}}&base=' + $("#base").val())
+    function aplica_risco(filename) {
+        window.location.assign('/aplica_risco?filename=' + filename +
+                               '&base=' + $("#base").val())
     }
 </script> {% endblock %}
