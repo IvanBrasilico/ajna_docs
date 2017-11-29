@@ -137,20 +137,21 @@ def aplica_risco():
     abase = session.query(BaseOriginal).filter(
         BaseOriginal.id == baseid).first()
     filenames = os.listdir(os.path.join(CSV_FOLDER, path))
-    print(filenames)
     gerente.set_base(abase)
     # Preferencialmente vai tentar processar o arquivo de conhecimentos
     # Se não houver, pega o primeiro da lista mesmo
     # Depois será utilizado o aplica_juncao no lugar desta "gambiarra"
     ind = 0
     for cont, afile in enumerate(filenames):
-        if afile.find('Conhecimento'):
+        if afile.find('Conhecimento') != -1:
             ind = cont
             break
     #######################
-    lista_risco = gerente.aplica_risco(arquivo=os.path.join(CSV_FOLDER,
-                                                            path,
-                                                            filenames[ind]))
+    arquivo = os.path.join(CSV_FOLDER,
+                           path,
+                           filenames[ind])
+    lista_risco = gerente.aplica_risco(arquivo=arquivo)
+    print(lista_risco[:2])
     return render_template('bases.html',
                            bases=bases,
                            baseid=baseid,

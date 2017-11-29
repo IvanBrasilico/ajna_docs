@@ -18,7 +18,6 @@ ENCODE = 'latin1'
 def equality(listaoriginal, nomecampo, listavalores):
     df = pd.DataFrame(listaoriginal[1:], columns=listaoriginal[0])
     df = df[df[nomecampo].isin(listavalores)]
-    print(df[nomecampo][:9])
     return df.values.tolist()
 
 
@@ -27,7 +26,7 @@ def startswith(listaoriginal, nomecampo, listavalores):
     result = []
     for valor in listavalores:
         df = df[df[nomecampo].str.startswith(valor, na=False)]
-        result.append(df.values.tolist())
+        result.extend(df.values.tolist())
     return result
 
 
@@ -36,7 +35,7 @@ def contains(listaoriginal, nomecampo, listavalores):
     result = []
     for valor in listavalores:
         df = df[df[nomecampo].str.contains(valor, na=False)]
-        result.append(df.values.tolist())
+        result.extend(df.values.tolist())
     return result
 
 
