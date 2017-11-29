@@ -108,3 +108,5 @@ settings.py
 codacy.sh
 _build
 */alembic/*
+*/CSV*
+*/files/*

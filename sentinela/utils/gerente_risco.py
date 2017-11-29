@@ -161,8 +161,11 @@ class GerenteRisco():
             self.pre_processers[key](lista,
                                      **self.pre_processers_params[key])
         headers = set(lista[0])
+        print(headers)
         riscos = set(list(self._riscosativos.keys()))
+        print(riscos)
         aplicar = headers & riscos   # UNION OF SETS
+        print(aplicar)
         result = []
         result.append(lista[0])
         for campo in aplicar:
