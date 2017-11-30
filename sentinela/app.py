@@ -27,7 +27,7 @@ from flask_nav import Nav
 from flask_nav.elements import Navbar, View
 from werkzeug.utils import secure_filename
 
-from sentinela.models.models import Base, BaseOriginal, MySession
+from sentinela.models.models import Base, BaseOriginal, MySession, Tabela
 from sentinela.utils.csv_handlers import sch_processing
 from sentinela.utils.gerente_risco import GerenteRisco
 
@@ -138,21 +138,33 @@ def aplica_risco():
     bases = session.query(BaseOriginal).all()
     abase = session.query(BaseOriginal).filter(
         BaseOriginal.id == baseid).first()
-    filenames = os.listdir(os.path.join(CSV_FOLDER, path))
+    base_csv = os.path.join(CSV_FOLDER, path)
     gerente.set_base(abase)
+    tabela = session.query(Tabela).filter(
+        Tabela.id == 1).first()
+    lista_risco = gerente.aplica_juncao(tabela, path=base_csv, filtrar=True,
+                                        campos=['Conhecimento',
+                                                'Container',
+                                                'CPFCNPJConsignatario',
+                                                'DescricaoMercadoria',
+                                                'IdentificacaoEmbarcador'
+                                                ])
     # Preferencialmente vai tentar processar o arquivo de conhecimentos
     # Se não houver, pega o primeiro da lista mesmo
     # Depois será utilizado o aplica_juncao no lugar desta "gambiarra"
+    """
+    filenames = os.listdir(base_csv)
     ind = 0
     for cont, afile in enumerate(filenames):
         if afile.find('Conhecimento') != -1:
             ind = cont
             break
-    #######################
     arquivo = os.path.join(CSV_FOLDER,
                            path,
                            filenames[ind])
     lista_risco = gerente.aplica_risco(arquivo=arquivo)
+    """
+    #######################
     print(lista_risco[:2])
     return render_template('bases.html',
                            bases=bases,

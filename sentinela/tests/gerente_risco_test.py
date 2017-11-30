@@ -206,17 +206,8 @@ class TestGerenteRisco(unittest.TestCase):
         result = gerente.aplica_juncao(autores_livro, path=path)
         print(result)
         assert len(result) == 3
-        print(list(result['livroid'].items()))
-        assert list(result['livroid'].items()) == [(0, 1), (1, 1), (2, 2)]
         result = gerente.aplica_juncao(capitulos_livro, path=path)
+        print(result)
         assert len(result) == 8
-        assert list(result['livroid'].items()) == [(0, 1),
-                                                   (1, 1),
-                                                   (2, 1),
-                                                   (3, 1),
-                                                   (4, 1),
-                                                   (5, 1),
-                                                   (6, 2),
-                                                   (7, 2)]
         print(result)
         # assert False  # Uncomment to view output
