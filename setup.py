@@ -29,6 +29,7 @@ setup(
             'coverage',
             'flake8',
             'flake8-quotes',
+            'flask-webtest',
             'isort',
             'pytest',
             'pytest-cov',
