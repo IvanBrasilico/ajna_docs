@@ -123,8 +123,8 @@ def sch_processing(path, mask_txt='0.txt', dest_path=tmpdir):
                 sch_content = sch_file.readlines()
                 reader = csv.reader(txt_file, delimiter='\t')
                 txt_content = [linha for linha in reader]
-                csv_name = sch_tocsv(sch_content, txt_content)
-                filenames.append((csv_name, txt_name), dest_path)
+                csv_name = sch_tocsv(sch_content, txt_content, dest_path)
+                filenames.append((csv_name, txt_name))
     else:
         with ZipFile(path) as myzip:
             info_list = myzip.infolist()

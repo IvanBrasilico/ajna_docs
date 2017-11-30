@@ -25,8 +25,8 @@ def startswith(listaoriginal, nomecampo, listavalores):
     df = pd.DataFrame(listaoriginal[1:], columns=listaoriginal[0])
     result = []
     for valor in listavalores:
-        df = df[df[nomecampo].str.startswith(valor, na=False)]
-        result.extend(df.values.tolist())
+        df_filtered = df[df[nomecampo].str.startswith(valor, na=False)]
+        result.extend(df_filtered.values.tolist())
     return result
 
 
@@ -34,8 +34,8 @@ def contains(listaoriginal, nomecampo, listavalores):
     df = pd.DataFrame(listaoriginal[1:], columns=listaoriginal[0])
     result = []
     for valor in listavalores:
-        df = df[df[nomecampo].str.contains(valor, na=False)]
-        result.extend(df.values.tolist())
+        df_filtered = df[df[nomecampo].str.contains(valor, na=False)]
+        result.extend(df_filtered.values.tolist())
     return result
 
 
@@ -160,13 +160,12 @@ class GerenteRisco():
             self.pre_processers[key](lista,
                                      **self.pre_processers_params[key])
         headers = set(lista[0])
-        print(headers)
         riscos = set(list(self._riscosativos.keys()))
-        print(riscos)
         aplicar = headers & riscos   # UNION OF SETS
-        print(aplicar)
         result = []
         result.append(lista[0])
+        # print(aplicar)
+        # print(self._riscosativos)
         for campo in aplicar:
             dict_filtros = self._riscosativos.get(campo)
             for tipo_filtro, lista_filtros in dict_filtros.items():
@@ -175,8 +174,9 @@ class GerenteRisco():
                     raise NotImplementedError('Função de filtro' +
                                               tipo_filtro.name +
                                               ' não implementada.')
-                result_campo = filter_function(lista, campo, lista_filtros)
-                for linha in result_campo:
+                result_filter = filter_function(lista, campo, lista_filtros)
+                # print('result_filter', result_filter)
+                for linha in result_filter:
                     result.append(linha)
         return result
 

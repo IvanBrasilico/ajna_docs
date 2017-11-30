@@ -208,7 +208,6 @@ class TestGerenteRisco(unittest.TestCase):
         assert len(result) == 3
         print(list(result['livroid'].items()))
         assert list(result['livroid'].items()) == [(0, 1), (1, 1), (2, 2)]
-        # TODO: Melhorar verificações (asserts) desta parte
         result = gerente.aplica_juncao(capitulos_livro, path=path)
         assert len(result) == 8
         assert list(result['livroid'].items()) == [(0, 1),

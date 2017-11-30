@@ -16,9 +16,9 @@ conexões internas.
 Adicionalmente, permite o merge entre bases a aplicação de filtros /
 parâmetros de risco.
 """
+import datetime
 import logging
 import os
-import datetime
 
 from flask import Flask, flash, redirect, render_template, request, url_for
 from flask_bootstrap import Bootstrap
@@ -97,22 +97,24 @@ def list_files():
 
 @app.route('/importa')
 def importa():
+    erro = ''
     baseid = request.args.get('base')
     filename = request.args.get('filename')
     data = request.args.get('data')
-    if not data:
+    if data is None:
         data = datetime.date.today().strftime('%Y%m%d')
-    dest_path = os.path.join(CSV_FOLDER, baseid, data[:4], data[4:])
-    if not os.path.exists(dest_path):
-        os.makedirs(dest_path)
-    try:
-        sch_processing(os.path.join(UPLOAD_FOLDER,
-                                    secure_filename(filename)),
-                       dest_path=dest_path)
-        return redirect(url_for('risco'))
-    except Exception as err:
-        pass
-    return redirect(url_for('list_files'))
+    if baseid is not None and filename is not None:
+        dest_path = os.path.join(CSV_FOLDER, baseid, data[:4], data[4:])
+        if not os.path.exists(dest_path):
+            os.makedirs(dest_path)
+        try:
+            sch_processing(os.path.join(UPLOAD_FOLDER,
+                                        secure_filename(filename)),
+                           dest_path=dest_path)
+            return redirect(url_for('risco'))
+        except Exception as err:
+            erro = err.__cause__
+    return redirect(url_for('list_files', erro=erro))
 
 
 @app.route('/risco')
