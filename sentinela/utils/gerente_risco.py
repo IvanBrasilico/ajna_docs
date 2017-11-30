@@ -302,7 +302,8 @@ class GerenteRisco():
                 dffilho = self.aplica_juncao(filho, path, e_filho=True)
             else:
                 filhofilename = os.path.join(path, filho.csv)
-                dffilho = pd.read_csv(filhofilename, encoding=ENCODE, dtype=str)
+                dffilho = pd.read_csv(filhofilename, encoding=ENCODE,
+                                      dtype=str)
             if hasattr(filho, 'type'):
                 how = filho.type
             else:
