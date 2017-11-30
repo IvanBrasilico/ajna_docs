@@ -154,7 +154,12 @@ class GerenteRisco():
         # Precaução: retirar espaços mortos de todo item
         # da lista para evitar erros de comparação
         for ind, linha in enumerate(lista):
-            lista[ind] = list(map(str.strip, linha))
+            linha_striped = []
+            for item in linha:
+                if isinstance(item, str):
+                    item = item.strip()
+                linha_striped.append(item)
+            lista[ind] = linha_striped
         # Aplicar pre_processers
         for key in self.pre_processers:
             self.pre_processers[key](lista,
@@ -288,20 +293,28 @@ class GerenteRisco():
             if len(tabela.filhos) == 1:
                 return tabela.filhos[0]
 
-    def aplica_juncao(self, tabela, path=tmpdir, arvore=False):
+    def aplica_juncao(self, tabela, path=tmpdir, filtrar=False, campos=None,
+                      filho=False):
         paifilename = os.path.join(path, tabela.csv)
-        dfpai = pd.read_csv(paifilename)
+        dfpai = pd.read_csv(paifilename, encoding=ENCODE)
         for filho in tabela.filhos:
             if hasattr(filho, 'filhos') and filho.filhos:
-                dffilho = self.aplica_juncao(filho, path, arvore)
+                dffilho = self.aplica_juncao(filho, path, filho=True)
             else:
                 filhofilename = os.path.join(path, filho.csv)
-                dffilho = pd.read_csv(filhofilename)
+                dffilho = pd.read_csv(filhofilename, encoding=ENCODE)
             if hasattr(filho, 'type'):
                 how = filho.type
             else:
                 how = 'inner'
-            result = dfpai.merge(dffilho, how=how,
-                                 left_on=tabela.primario,
-                                 right_on=filho.estrangeiro)
-        return result
+            result_df = dfpai.merge(dffilho, how=how,
+                                    left_on=tabela.primario,
+                                    right_on=filho.estrangeiro)
+        if filho:
+            return result_df
+        if campos:
+            df = result_df[campos]
+        result_list = df.values.tolist()
+        if filtrar:
+            return self.aplica_risco(result_list)
+        return result_list
