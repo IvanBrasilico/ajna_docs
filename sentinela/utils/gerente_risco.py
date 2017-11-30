@@ -294,15 +294,15 @@ class GerenteRisco():
                 return tabela.filhos[0]
 
     def aplica_juncao(self, tabela, path=tmpdir, filtrar=False, campos=None,
-                      filho=False):
+                      e_filho=False):
         paifilename = os.path.join(path, tabela.csv)
-        dfpai = pd.read_csv(paifilename, encoding=ENCODE)
+        dfpai = pd.read_csv(paifilename, encoding=ENCODE, dtype=str)
         for filho in tabela.filhos:
             if hasattr(filho, 'filhos') and filho.filhos:
-                dffilho = self.aplica_juncao(filho, path, filho=True)
+                dffilho = self.aplica_juncao(filho, path, e_filho=True)
             else:
                 filhofilename = os.path.join(path, filho.csv)
-                dffilho = pd.read_csv(filhofilename, encoding=ENCODE)
+                dffilho = pd.read_csv(filhofilename, encoding=ENCODE, dtype=str)
             if hasattr(filho, 'type'):
                 how = filho.type
             else:
@@ -310,11 +310,13 @@ class GerenteRisco():
             result_df = dfpai.merge(dffilho, how=how,
                                     left_on=tabela.primario,
                                     right_on=filho.estrangeiro)
-        if filho:
+        if e_filho:
             return result_df
+        result_list = []
         if campos:
-            df = result_df[campos]
-        result_list = df.values.tolist()
+            result_df = result_df[campos]
+            result_list = [campos]
+        result_list.extend(result_df.values.tolist())
         if filtrar:
             return self.aplica_risco(result_list)
         return result_list

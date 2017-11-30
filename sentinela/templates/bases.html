@@ -9,6 +9,7 @@
                 <option value="{{ base.id }}">{{ base.nome }}</option>
                 {% endfor %}
             </select>
+            {% if lista_arquivos %}
             <h4>Bases carregadas no Servidor</h4>
             <table>
                 {% for filename in lista_arquivos %}
@@ -20,11 +21,15 @@
                 </tr>
                 {% endfor %}
             </table>
+            {% endif %}
         </div>
     </div>
     <div id="list" class="row">
         <div class="table-responsive col-md-12">
             <h4>Lista de Riscos</h4>
+            {% if csv_salvo %}
+            <a href="/static/{{csv_salvo}}">Baixar planilha</a>
+            {% endif %}
             <table>
                 {% for row in lista_risco %}
                 <tr>
