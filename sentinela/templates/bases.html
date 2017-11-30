@@ -3,7 +3,8 @@
     <div id="top" class="row">
         <h2>Escolha o Padrão de Risco a aplicar e a Base de Dados:</h2>
         <div class="col-md-12">
-            <p>{{filename}}</p>
+            <p>Nome do arquivo: {{filename}}</p>
+            <nobr>Perfil:</nobr>
             <select name="base" id="base">
                 {% for base in bases %}
                 <option value="{{ base.id }}">{{ base.nome }}</option>
@@ -23,12 +24,18 @@
         </div>
     </div>
     <div id="list" class="row">
-        <div class="table-responsive col-md-12">
-            <h4>Lista de Riscos</h4>
-            <table>
+        <div class="table-responsive col-sm-2">
+            <h4>Lista de Riscos:</h4>
+            <table class="inlineTable table table-striped table-bordered table-hover table-responsive" cellspacing="0" cellpadding="0"
+                id="campos">
                 {% for row in lista_risco %}
+                <th align="center"> >> </th>
+                <th>Headers </th>
                 <tr>
                     {% for col in row %}
+                    <td align="center">
+                        <input type="checkbox" name="chave">
+                    </td>
                     <td>{{col}}</td>
                     {% endfor %}
                 </tr>
@@ -40,16 +47,60 @@
             </table>
             &nbsp;
         </div>
+        <div class="table-responsive col-sm-2">
+            <h3>Filtros: </h3>
+            <table class="inlineTable table table-striped table-bordered table-hover table-responsive" id="filtros">
+                <tr>
+                    <th align="center">
+                        << </th>
+                            <th>Campos </th>
+                </tr>
+            </table>
+            &nbsp;
+        </div>
+        <div class="form-group">
+            <label for="nome">Valores:</label>
+            <input type="text" class="form-control" id="nome" name="nome">
+            <div class="col-xs-4">
+                <button class="btn btn-block btn-primary btn-default" id="btnsaveprocedimento">
+                    <i class="fa fa-save"></i>&nbsp;Adicionar
+                </button>
+            </div>
+        </div>
+        <div class="table-responsive col-sm-2">
+            <table class="inlineTable table table-striped table-bordered table-hover table-responsive" id="valores">
+                <tr>
+                    <td></td>
+                </tr>
+            </table>
+            &nbsp;
+        </div>
     </div>
-    <div id="bottom" class="row">
-        AJNA - Receita Federal do Brasil 2017
-    </div>
+</div>
+<div id="bottom" class="row">
+    AJNA - Receita Federal do Brasil 2017
+</div>
 </div>
 <!-- /#main -->
 {% endblock %} {% block scripts %} {{super()}}
 <script>
     function aplica_risco(filename) {
         window.location.assign('/aplica_risco?filename=' + filename +
-                               '&base=' + $("#base").val())
+            '&base=' + $("#base").val())
+    }
+    //consulta as tabelas.
+    var campos = document.querySelector("#campos tbody");
+    var filtros = document.querySelector("#filtros tbody");
+
+    var chave = document.querySelectorAll("input[type='checkbox'][name='chave']");
+
+    var adicionarOnClick = function () {
+        var text = this.parentNode.parentNode;
+        var opcao = this.checked ? filtros.appendChild(text) : campos.appendChild(text);
+    };
+
+    //registrando o evento criado acima para todos os checkbox.
+    for (var indice in chave) {
+        chave[indice].onclick = adicionarOnClick;
     }
 </script> {% endblock %}
