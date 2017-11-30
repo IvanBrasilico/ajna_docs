@@ -60,13 +60,16 @@ class FlaskTestCase(unittest.TestCase):
         data = self.data(rv)
         print(data)
         assert b'Lista de Riscos' in data
+
     """
+    # Gerar arquivos para poder fazer este teste automático
     def test_aplica_risco(self):
-        rv = self.app.get('/aplica_risco?filename=tests.zip&base=1')
+        rv = self.app.get('/aplica_risco?filename=../tests&base=1')
         print(rv)
-        assert b'tests.zip' in rv.data
+        # assert b'tests.zip' in rv.data
         assert b'<select name="base"' in rv.data
     """
+
     def _post(self, url, data):
         rv = self.app.post(url, data=data, follow_redirects=True)
         print(rv)

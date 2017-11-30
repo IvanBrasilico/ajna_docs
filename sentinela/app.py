@@ -16,6 +16,7 @@ conexões internas.
 Adicionalmente, permite o merge entre bases a aplicação de filtros /
 parâmetros de risco.
 """
+import csv
 import datetime
 import logging
 import os
@@ -29,7 +30,7 @@ from werkzeug.utils import secure_filename
 
 from sentinela.models.models import Base, BaseOriginal, MySession, Tabela
 from sentinela.utils.csv_handlers import sch_processing
-from sentinela.utils.gerente_risco import GerenteRisco
+from sentinela.utils.gerente_risco import ENCODE, GerenteRisco
 
 mysession = MySession(Base)
 session = mysession.session
@@ -42,9 +43,9 @@ app = Flask(__name__, static_url_path='/static')
 Bootstrap(app)
 nav = Nav()
 
-path = os.path.dirname(os.path.abspath(__file__))
-UPLOAD_FOLDER = os.path.join(path, 'files')
-CSV_FOLDER = os.path.join(path, 'CSV')
+APP_PATH = os.path.dirname(os.path.abspath(__file__))
+UPLOAD_FOLDER = os.path.join(APP_PATH, 'files')
+CSV_FOLDER = os.path.join(APP_PATH, 'CSV')
 ALLOWED_EXTENSIONS = set(['txt', 'csv', 'zip'])
 # app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -149,27 +150,21 @@ def aplica_risco():
                                                 'DescricaoMercadoria',
                                                 'IdentificacaoEmbarcador'
                                                 ])
-    # Preferencialmente vai tentar processar o arquivo de conhecimentos
-    # Se não houver, pega o primeiro da lista mesmo
-    # Depois será utilizado o aplica_juncao no lugar desta "gambiarra"
-    """
-    filenames = os.listdir(base_csv)
-    ind = 0
-    for cont, afile in enumerate(filenames):
-        if afile.find('Conhecimento') != -1:
-            ind = cont
-            break
-    arquivo = os.path.join(CSV_FOLDER,
-                           path,
-                           filenames[ind])
-    lista_risco = gerente.aplica_risco(arquivo=arquivo)
-    """
-    #######################
-    print(lista_risco[:2])
+    print(lista_risco)
+    static_path = app.config.get('STATIC_FOLDER', 'static')
+    csv_salvo = os.path.join(APP_PATH, static_path, 'baixar.csv')
+    try:
+        os.remove(csv_salvo)
+    except IOError:
+        pass
+    with open(csv_salvo, 'w', encoding=ENCODE) as csv_out:
+        writer = csv.writer(csv_out)
+        writer.writerows(lista_risco)
     return render_template('bases.html',
                            bases=bases,
                            baseid=baseid,
                            filename=path,
+                           csv_salvo=os.path.basename(csv_salvo),
                            lista_risco=lista_risco)
 
 
