@@ -1,4 +1,4 @@
--e git+https://github.com/IvanBrasilico/AJNA_MOD.git@0fe4c753e4affe52b1681d92af45ec7c79ffb23c#egg=AJNA_MOD
+# -e git+https://github.com/IvanBrasilico/AJNA_MOD.git@0fe4c753e4affe52b1681d92af45ec7c79ffb23c#egg=AJNA_MOD
 alabaster==0.7.10
 alembic==0.9.6
 astroid==1.5.3
