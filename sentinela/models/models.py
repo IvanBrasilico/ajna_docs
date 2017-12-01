@@ -141,8 +141,8 @@ class Tabela(Base):
     """
     __tablename__ = 'tabelas'
     id = Column(Integer, primary_key=True)
-    csv = Column(String(20), unique=True)
-    descricao = Column(String(200), unique=True)
+    csv = Column(String(20))
+    descricao = Column(String(200))
     primario = Column(Integer)
     estrangeiro = Column(Integer)
     pai_id = Column(Integer, ForeignKey('tabelas.id'))
@@ -152,5 +152,9 @@ class Tabela(Base):
     visao = relationship(
         'Visao', back_populates='tabelas')
 
-    def __init__(self, csv):
+    def __init__(self, csv, primario, estrangeiro, pai_id, visao_id):
         self.csv = csv
+        self.primario = primario
+        self.estrangeiro = estrangeiro
+        self.pai_id = pai_id
+        self.visao_id = visao_id

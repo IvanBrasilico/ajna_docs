@@ -28,7 +28,8 @@ from flask_nav import Nav
 from flask_nav.elements import Navbar, View
 from werkzeug.utils import secure_filename
 
-from sentinela.models.models import Base, BaseOriginal, MySession, Tabela
+from sentinela.models.models import (Base, BaseOriginal, MySession,
+                                     Tabela, Visao)
 from sentinela.utils.csv_handlers import sch_processing
 from sentinela.utils.gerente_risco import ENCODE, GerenteRisco
 
@@ -121,35 +122,39 @@ def importa():
 @app.route('/risco')
 def risco():
     lista_arquivos = []
-    for base in os.listdir(CSV_FOLDER):
+    baseid = request.args.get('base')
+    print(baseid)
+    if baseid:
+        bases = [baseid]
+    else:
+        bases = os.listdir(CSV_FOLDER)
+    for base in bases:
         for ano in os.listdir(os.path.join(CSV_FOLDER, base)):
             for mesdia in os.listdir(os.path.join(CSV_FOLDER, base, ano)):
                 lista_arquivos.append(base + '/' + ano + '/' + mesdia)
     bases = session.query(BaseOriginal).all()
+    visoes = session.query(Visao).all()
     return render_template('bases.html',
                            lista_arquivos=lista_arquivos,
-                           bases=bases)
+                           bases=bases,
+                           visoes=visoes)
 
 
 @app.route('/aplica_risco')
 def aplica_risco():
     baseid = request.args.get('base')
+    visaoid = request.args.get('visao')
     path = request.args.get('filename')
     gerente = GerenteRisco()
     bases = session.query(BaseOriginal).all()
+    visoes = session.query(Visao).all()
     abase = session.query(BaseOriginal).filter(
         BaseOriginal.id == baseid).first()
     base_csv = os.path.join(CSV_FOLDER, path)
     gerente.set_base(abase)
-    tabela = session.query(Tabela).filter(
-        Tabela.id == 1).first()
-    lista_risco = gerente.aplica_juncao(tabela, path=base_csv, filtrar=True,
-                                        campos=['Conhecimento',
-                                                'Container',
-                                                'CPFCNPJConsignatario',
-                                                'DescricaoMercadoria',
-                                                'IdentificacaoEmbarcador'
-                                                ])
+    avisao = session.query(Visao).filter(
+        Visao.id == visaoid).first()
+    lista_risco = gerente.aplica_juncao(avisao, path=base_csv, filtrar=True)
     print(lista_risco)
     static_path = app.config.get('STATIC_FOLDER', 'static')
     csv_salvo = os.path.join(APP_PATH, static_path, 'baixar.csv')
