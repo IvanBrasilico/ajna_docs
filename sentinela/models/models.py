@@ -53,7 +53,7 @@ class ParametroRisco(Base):
     lista de valores que serão o filtro efetivo"""
     __tablename__ = 'parametrosrisco'
     id = Column(Integer, primary_key=True)
-    nome_campo = Column(String(20), unique=True)
+    nome_campo = Column(String(20))
     descricao = Column(String(200))
     valores = relationship('ValorParametro', back_populates='risco')
     base_id = Column(Integer, ForeignKey('bases.id'))
@@ -93,7 +93,6 @@ class BaseOriginal(Base):
     id = Column(Integer, primary_key=True)
     nome = Column(String(20), unique=True)
     caminho = Column(String(200), unique=True)
-    tabelas = relationship('Tabela', back_populates='base')
     parametros = relationship('ParametroRisco', back_populates='base')
 
     def __init__(self, nome, caminho=None):
@@ -101,11 +100,44 @@ class BaseOriginal(Base):
         self.caminho = caminho
 
 
+class Visao(Base):
+    """Metadado sobre os csvs capturados. Para mapear relações entre os
+    csvs capturados e permitir junção automática se necessário.
+    Utilizado por "GerenteRisco.aplica_juncao()"
+    Ver :py:func:`gerente_risco.aplica_juncao`
+    """
+    __tablename__ = 'visoes'
+    id = Column(Integer, primary_key=True)
+    nome = Column(String(50), unique=True)
+    tabelas = relationship('Tabela', back_populates='visao')
+    colunas = relationship('Coluna', back_populates='visao')
+
+    def __init__(self, csv):
+        self.csv = csv
+
+
+class Coluna(Base):
+    """Metadado sobre os csvs capturados. Define os campos que
+    serão exibidos na junção.
+    Utilizado por "GerenteRisco.aplica_juncao()"
+    Ver :py:func:`gerente_risco.aplica_juncao`
+    """
+    __tablename__ = 'colunas'
+    id = Column(Integer, primary_key=True)
+    nome = Column(String(50))
+    visao_id = Column(Integer, ForeignKey('visoes.id'))
+    visao = relationship(
+        'Visao', back_populates='colunas')
+
+    def __init__(self, csv):
+        self.csv = csv
+
+
 class Tabela(Base):
     """Metadado sobre os csvs capturados. Para mapear relações entre os
     csvs capturados e permitir junção automática se necessário.
     Utilizado por "GerenteRisco.aplica_juncao()"
-    Ver "gerente_risco_test.test_juntacsv()"
+    Ver :py:func:`gerente_risco.aplica_juncao`
     """
     __tablename__ = 'tabelas'
     id = Column(Integer, primary_key=True)
@@ -116,10 +148,9 @@ class Tabela(Base):
     pai_id = Column(Integer, ForeignKey('tabelas.id'))
     filhos = relationship('Tabela')
     pai = relationship('Tabela', remote_side=[id])
-
-    base_id = Column(Integer, ForeignKey('bases.id'))
-    base = relationship(
-        'BaseOriginal', back_populates='tabelas')
+    visao_id = Column(Integer, ForeignKey('visoes.id'))
+    visao = relationship(
+        'Visao', back_populates='tabelas')
 
     def __init__(self, csv):
         self.csv = csv
