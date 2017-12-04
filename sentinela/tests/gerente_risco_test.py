@@ -177,10 +177,22 @@ class TestGerenteRisco(unittest.TestCase):
         gerente = self.gerente
         autores = type('Tabela', (object, ),
                        {'csv': 'autores.csv',
+                        'primario': 'id',
                         'estrangeiro': 'livroid'
                         })
+        livro = type('Tabela', (object, ),
+                     {'csv': 'livros.csv',
+                      'primario': 'id',
+                      'filhos': [autores]
+                      })
+        autores_livro = type('Visao', (object, ),
+                             {'nome': 'autores_livro',
+                              'tabelas': [livro, autores],
+                              'colunas': []
+                              })
         sub_capitulos = type('Tabela', (object, ),
                              {'csv': 'subcapitulos.csv',
+                              'primario': 'id',
                               'estrangeiro': 'capituloid',
                               'type': 'outer'
                               })
@@ -190,24 +202,17 @@ class TestGerenteRisco(unittest.TestCase):
                           'estrangeiro': 'livroid',
                           'filhos': [sub_capitulos]
                           })
-        autores_livro = type('Tabela', (object, ),
-                             {'nome': 'autores_livro',
-                              'csv': 'livros.csv',
-                              'primario': 'id',
-                              'filhos': [autores]
-                              })
-        capitulos_livro = type('Tabela', (object, ),
+        capitulos_livro = type('Visao', (object, ),
                                {'nome': 'capitulos_livro',
-                                'csv': 'livros.csv',
-                                'primario': 'id',
-                                'filhos': [capitulos]
+                                'tabelas': [livro, capitulos, sub_capitulos],
+                                'colunas': []
                                 })
         path = 'sentinela/tests/juncoes'
         result = gerente.aplica_juncao(autores_livro, path=path)
         print(result)
-        assert len(result) == 3
+        assert len(result) == 4
         result = gerente.aplica_juncao(capitulos_livro, path=path)
         print(result)
-        assert len(result) == 8
+        assert len(result) == 9
         print(result)
         # assert False  # Uncomment to view output

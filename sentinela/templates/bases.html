@@ -9,6 +9,11 @@
                 <option value="{{ base.id }}">{{ base.nome }}</option>
                 {% endfor %}
             </select>
+            <select name="visao" id="visao">
+                {% for visao in visoes %}
+                <option value="{{ visao.id }}">{{ visao.nome }}</option>
+                {% endfor %}
+            </select>
             {% if lista_arquivos %}
             <h4>Bases carregadas no Servidor</h4>
             <table>
@@ -54,6 +59,8 @@
 <script>
     function aplica_risco(filename) {
         window.location.assign('/aplica_risco?filename=' + filename +
-                               '&base=' + $("#base").val())
+            '&base=' + $("#base").val() +
+            '&visao=' + $("#visao").val()
+        )
     }
 </script> {% endblock %}

@@ -56,7 +56,7 @@ class FlaskTestCase(unittest.TestCase):
         assert b'Redirecting...' in data
 
     def test_risco(self):
-        rv = self.app.get('/risco')
+        rv = self.app.get('/risco?base=1')
         data = self.data(rv)
         print(data)
         assert b'Lista de Riscos' in data
