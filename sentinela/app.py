@@ -119,7 +119,7 @@ def importa():
     return redirect(url_for('list_files', erro=erro))
 
 
-@app.route('/risco')
+@app.route('/risco', methods=['POST'])
 def risco():
     lista_arquivos = []
     baseid = request.args.get('base')
@@ -130,11 +130,11 @@ def risco():
         bases = os.listdir(CSV_FOLDER)
     for base in bases:
         for ano in os.listdir(os.path.join(CSV_FOLDER, base)):
-            for mesdia in os.listdir(os.path.join(CSV_FOLDER, base, ano)):
+            for mesdia in os.listdir(os.path.join(CSV_FOLDER)):
                 lista_arquivos.append(base + '/' + ano + '/' + mesdia)
     bases = session.query(BaseOriginal).all()
     visoes = session.query(Visao).all()
-    return render_template('bases.html',
+    return render_template('bases-adauto.html',
                            lista_arquivos=lista_arquivos,
                            bases=bases,
                            visoes=visoes)
@@ -165,7 +165,7 @@ def aplica_risco():
     with open(csv_salvo, 'w', encoding=ENCODE) as csv_out:
         writer = csv.writer(csv_out)
         writer.writerows(lista_risco)
-    return render_template('bases.html',
+    return render_template('bases-adauto.html',
                            bases=bases,
                            baseid=baseid,
                            filename=path,

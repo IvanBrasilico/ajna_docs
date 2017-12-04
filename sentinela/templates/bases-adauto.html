@@ -3,10 +3,18 @@
     <div id="top" class="row">
         <h2>Escolha o Padrão de Risco a aplicar e a Base de Dados:</h2>
         <div class="col-md-12">
-            <p>Arquivo: {{filename}}</p>
+            <nobr>
+                <h4>Arquivo: </h4>
+                <p>{{filename}}</p>
+            </nobr>
             <select name="base" id="base">
                 {% for base in bases %}
                 <option value="{{ base.id }}">{{ base.nome }}</option>
+                {% endfor %}
+            </select>
+            <select name="visao" id="visao">
+                {% for visao in visoes %}
+                <option value="{{ visao.id }}">{{ visao.nome }}</option>
                 {% endfor %}
             </select>
             {% if lista_arquivos %}
@@ -24,13 +32,55 @@
             {% endif %}
         </div>
     </div>
+    <div class="table-responsive col-sm-2">
+        <h4>Campos a Filtrar: </h4>
+        <table class="inlineTable table table-striped table-bordered table-hover table-responsive" cellspacing="0" cellpadding="0"
+            id="campos">
+            <th>Campos </th>
+            <tr>
+                <td id="campo" align="center">
+                    <input type="checkbox" name="chave">Teste
+                </td>
+            </tr>
+            <tr>
+                <td id="campo" align="center">
+                    <input type="checkbox" name="chave">Teste
+                </td>
+            </tr>
+        </table>
+    </div>
     <div id="list" class="row">
+        <div class="table-responsive col-sm-3">
+            <h4>Filtros: </h4>
+            <table class="inlineTable table table-striped table-bordered table-hover table-responsive" id="filtros">
+                        <th>Campos </th>
+                        <tr></tr>
+            </table>
+            &nbsp;
+        </div>
+        <h4>Valores: </h4>
+        <form id="frmvalores" onsubmit="add_td()" class="form-inline">
+            <div class="form-group">
+                <input id="inp" class="form-control form-control-sm" type="text">
+            </div>
+            <div class="form-group">
+                <button onclick="add_td()" id="btn_aplicar" type="button" class="btn btn-success">Aplicar</button>
+            </div>
+        </form>
+        &nbsp;
+        <div class="table-responsive col-sm-3">
+            <table class="inlineTable table table-striped table-bordered table-hover table-responsive" id="valores">
+                <tr>
+                </tr>
+            </table>
+            &nbsp;
+        </div>
         <div class="table-responsive col-md-12">
             <h4>Lista de Riscos</h4>
             {% if csv_salvo %}
             <a href="/static/{{csv_salvo}}">Baixar planilha</a>
             {% endif %}
-            <table>
+            <table class="inlineTable table table-striped table-bordered table-hover table-responsive" id="riscos">
                 {% for row in lista_risco %}
                 <tr>
                     {% for col in row %}
@@ -54,6 +104,47 @@
 <script>
     function aplica_risco(filename) {
         window.location.assign('/aplica_risco?filename=' + filename +
-                               '&base=' + $("#base").val())
+            '&base=' + $("#base").val() +
+            '&visao=' + $("#visao").val()
+        )
+    }
+
+    var campos = document.querySelector("#campos tbody");
+    var valores = document.querySelector("#valores tbody");
+    var filtros = document.querySelector("#filtros tbody");
+    var chave = document.querySelectorAll("input[type='checkbox'][name='chave']");
+
+    function clona(element) {
+        $(filtros).append(
+            $('<tr>').append(
+                $('<td>').text($(element.parentNode.parentNode).val())
+            )
+        )
+    }
+    function remove(element) {
+        $(element).find('id', 'cln').remove();
+
+    }
+
+    function add_td() {
+        $(valores).append(
+            $('<tr>').append(
+                $('<td>').text($("#inp").val()),
+                $('<td align="center">').html('<input type="button" class="btn  btn-danger" value="x" onclick="deleteRow(this)" />')
+            ));
+        $("#inp").val('');
+    }
+
+    function deleteRow(atd) {
+        var atr = atd.parentNode.parentNode;
+        atr.parentNode.removeChild(atr);
+    }
+
+    var adicionarOnClick = function () {
+        var escopo = this.checked ? clona(this.parentNode.parentNode) : remove(this.parentNode.parentNode)
+    };
+
+    for (var indice in chave) {
+        chave[indice].onclick = adicionarOnClick;
     }
 </script> {% endblock %}
