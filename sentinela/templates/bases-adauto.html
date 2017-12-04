@@ -1,0 +1,59 @@
+{% extends "layout.html" %} {% block content %}
+<div id="main" class="container-fluid">
+    <div id="top" class="row">
+        <h2>Escolha o Padrão de Risco a aplicar e a Base de Dados:</h2>
+        <div class="col-md-12">
+            <p>Arquivo: {{filename}}</p>
+            <select name="base" id="base">
+                {% for base in bases %}
+                <option value="{{ base.id }}">{{ base.nome }}</option>
+                {% endfor %}
+            </select>
+            {% if lista_arquivos %}
+            <h4>Bases carregadas no Servidor</h4>
+            <table>
+                {% for filename in lista_arquivos %}
+                <tr>
+                    <td>{{filename}}</td>
+                    <td>
+                        <button class="btn-default" onclick="aplica_risco('{{filename}}')">Aplicar</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% endif %}
+        </div>
+    </div>
+    <div id="list" class="row">
+        <div class="table-responsive col-md-12">
+            <h4>Lista de Riscos</h4>
+            {% if csv_salvo %}
+            <a href="/static/{{csv_salvo}}">Baixar planilha</a>
+            {% endif %}
+            <table>
+                {% for row in lista_risco %}
+                <tr>
+                    {% for col in row %}
+                    <td>{{col}}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %} {% if not lista_risco %}
+                <tr>
+                    <td>Sem resultados.</td>
+                </tr>
+                {% endif %}
+            </table>
+            &nbsp;
+        </div>
+    </div>
+    <div id="bottom" class="row">
+        AJNA - Receita Federal do Brasil 2017
+    </div>
+</div>
+{% endblock %} {% block scripts %} {{super()}}
+<script>
+    function aplica_risco(filename) {
+        window.location.assign('/aplica_risco?filename=' + filename +
+                               '&base=' + $("#base").val())
+    }
+</script> {% endblock %}
