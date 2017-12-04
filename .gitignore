@@ -110,3 +110,5 @@ _build
 */alembic/*
 */CSV*
 */files/*
+
+\.vscode/settings\.json
