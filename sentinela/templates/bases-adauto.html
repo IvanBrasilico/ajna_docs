@@ -32,39 +32,35 @@
             {% endif %}
         </div>
     </div>
-    <div class="table-responsive col-sm-2">
-        <h4>Campos a Filtrar: </h4>
-        <table class="inlineTable table table-striped table-bordered table-hover table-responsive" cellspacing="0" cellpadding="0"
-            id="campos">
-            <th>Campos </th>
-            <tr>
-                <td id="campo" align="center">
-                    <input type="checkbox" name="chave">Teste
-                </td>
-            </tr>
-            <tr>
-                <td id="campo" align="center">
-                    <input type="checkbox" name="chave">Teste
-                </td>
-            </tr>
-        </table>
-    </div>
+
     <div id="list" class="row">
         <div class="table-responsive col-sm-3">
-            <h4>Filtros: </h4>
+            <h4>Campos importados: </h4>
+            <table class="inlineTable table table-striped table-bordered table-hover table-responsive" cellspacing="0" cellpadding="0"
+                id="campos">
+                <th>Campos </th>
+                <tr>
+                    <td id="campo" align="center">
+                        nome
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="table-responsive col-sm-3">
+            <h4>Campos selecionados para filtro: </h4>
             <table class="inlineTable table table-striped table-bordered table-hover table-responsive" id="filtros">
-                        <th>Campos </th>
-                        <tr></tr>
+                <th>Campos </th>
+                <tr></tr>
             </table>
             &nbsp;
         </div>
-        <h4>Valores: </h4>
+        <h4>Valores dos filtros: </h4>
         <form id="frmvalores" onsubmit="add_td()" class="form-inline">
             <div class="form-group">
                 <input id="inp" class="form-control form-control-sm" type="text">
             </div>
             <div class="form-group">
-                <button onclick="add_td()" id="btn_aplicar" type="button" class="btn btn-success">Aplicar</button>
+                <button onclick="add_td()" id="btn_aplicar" type="button" class="btn btn-default">OK</button>
             </div>
         </form>
         &nbsp;
@@ -109,42 +105,47 @@
         )
     }
 
+    function mostra_valores(atd) {
+        alert($(atd).text())
+
+    }
+
     var campos = document.querySelector("#campos tbody");
     var valores = document.querySelector("#valores tbody");
     var filtros = document.querySelector("#filtros tbody");
-    var chave = document.querySelectorAll("input[type='checkbox'][name='chave']");
-
-    function clona(element) {
-        $(filtros).append(
-            $('<tr>').append(
-                $('<td>').text($(element.parentNode.parentNode).val())
-            )
-        )
-    }
-    function remove(element) {
-        $(element).find('id', 'cln').remove();
-
-    }
 
     function add_td() {
-        $(valores).append(
-            $('<tr>').append(
-                $('<td>').text($("#inp").val()),
-                $('<td align="center">').html('<input type="button" class="btn  btn-danger" value="x" onclick="deleteRow(this)" />')
-            ));
-        $("#inp").val('');
+        var val = $("#inp").val();
+        if (val != '') {
+            $(valores).append(
+                $('<tr>').append(
+                    $('<td align="center" ondblclick="delete_td(this)">').text(val)
+                ));
+            $("#inp").val('');
+        }
     }
 
-    function deleteRow(atd) {
+    function delete_row(atd) {
         var atr = atd.parentNode.parentNode;
         atr.parentNode.removeChild(atr);
     }
 
-    var adicionarOnClick = function () {
-        var escopo = this.checked ? clona(this.parentNode.parentNode) : remove(this.parentNode.parentNode)
-    };
-
-    for (var indice in chave) {
-        chave[indice].onclick = adicionarOnClick;
+    function add_row(atd) {
+        var atr = atd.parentNode;
+        $(filtros).append($('<tr>').append($('<td  onclick="mostra_valores(this)" ondblclick="delete_td(this)" align="center">').append($(atr).text().trim())));
     }
+    function delete_td(atd) {
+        var atr = atd;
+        atr.parentNode.removeChild(atr);
+    }
+
+    $("#campos td").click(function () {
+        add_row(this);
+    })
+
+    $("#filtros td").click(function () {
+        alert($("#filtros td:eq(0)").text())
+        alert($(this).eq(0).text())
+    });
+
 </script> {% endblock %}
