@@ -2,7 +2,7 @@
 <div id="main" class="container-fluid">
     <div id="top" class="row">
         <h2>Escolha o Padrão de Risco a aplicar e a Base de Dados:</h2>
-        <div class="col-md-12">
+        <div class="col-sm-6">
             <nobr>
                 <h4>Arquivo: </h4>
                 <p>{{filename}}</p>
@@ -19,33 +19,43 @@
             </select>
             {% if lista_arquivos %}
             <h4>Bases carregadas no Servidor</h4>
-            <table>
-                {% for filename in lista_arquivos %}
-                <tr>
-                    <td>{{filename}}</td>
-                    <td>
-                        <button class="btn-default" onclick="aplica_risco('{{filename}}')">Aplicar</button>
-                    </td>
-                </tr>
-                {% endfor %}
-            </table>
-            {% endif %}
+            <div class="col-sm-3">
+                <table class="inlineTable table table-striped table-bordered table-hover table-responsive" cellspacing="0" cellpadding="0"
+                    id="bases">
+                    {% for filename in lista_arquivos %}
+                    <tr>
+                        <td id="campo" align="center">{{filename}}</td>
+                        <td>
+                            <button class="btn-default" onclick="aplica_risco('{{filename}}')">Aplicar</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                {% endif %}
+            </div>
         </div>
     </div>
-
+    <div class="table-responsive col-md-12">
+        <h4>Lista de Riscos</h4>
+        {% if csv_salvo %}
+        <a href="/static/{{csv_salvo}}">Baixar planilha</a>
+        {% endif %}
+        <table class="inlineTable table table-striped table-bordered table-hover table-responsive" id="riscos">
+            {% for row in lista_risco %}
+            <tr>
+                {% for col in row %}
+                <td>{{col}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %} {% if not lista_risco %}
+            <tr>
+                <td>Sem resultados.</td>
+            </tr>
+            {% endif %}
+        </table>
+        &nbsp;
+    </div>
     <div id="list" class="row">
-        <div class="table-responsive col-sm-3">
-            <h4>Campos importados: </h4>
-            <table class="inlineTable table table-striped table-bordered table-hover table-responsive" cellspacing="0" cellpadding="0"
-                id="campos">
-                <th>Campos </th>
-                <tr>
-                    <td id="campo" align="center">
-                        nome
-                    </td>
-                </tr>
-            </table>
-        </div>
         <div class="table-responsive col-sm-3">
             <h4>Campos selecionados para filtro: </h4>
             <table class="inlineTable table table-striped table-bordered table-hover table-responsive" id="filtros">
@@ -54,40 +64,23 @@
             </table>
             &nbsp;
         </div>
-        <h4>Valores dos filtros: </h4>
-        <form id="frmvalores" onsubmit="add_td()" class="form-inline">
-            <div class="form-group">
-                <input id="inp" class="form-control form-control-sm" type="text">
+        <h4>&nbsp;&nbsp; Valores dos filtros: </h4>
+        <form id="frmvalores" onsubmit="add_td()" class="form-group" align="center">
+            <div class="form-group col-sm-4">
+                <input id="inp" class="form-control" type="text">
             </div>
-            <div class="form-group">
-                <button onclick="add_td()" id="btn_aplicar" type="button" class="btn btn-default">OK</button>
+            <div class="form-group col-sm-1">
+                <button onclick="add_td()" id="btn_ok" type="button" class="btn btn-default">OK</button>
+            </div>
+            &nbsp; &nbsp; &nbsp;
+            <div class="form-group col-sm-2">
+                <button onclick="" id="btnaplicar" type="button" class="btn btn-success">Aplicar</button>
             </div>
         </form>
         &nbsp;
-        <div class="table-responsive col-sm-3">
+        <div class="table-responsive col-sm-4">
             <table class="inlineTable table table-striped table-bordered table-hover table-responsive" id="valores">
-                <tr>
-                </tr>
-            </table>
-            &nbsp;
-        </div>
-        <div class="table-responsive col-md-12">
-            <h4>Lista de Riscos</h4>
-            {% if csv_salvo %}
-            <a href="/static/{{csv_salvo}}">Baixar planilha</a>
-            {% endif %}
-            <table class="inlineTable table table-striped table-bordered table-hover table-responsive" id="riscos">
-                {% for row in lista_risco %}
-                <tr>
-                    {% for col in row %}
-                    <td>{{col}}</td>
-                    {% endfor %}
-                </tr>
-                {% endfor %} {% if not lista_risco %}
-                <tr>
-                    <td>Sem resultados.</td>
-                </tr>
-                {% endif %}
+                <tr></tr>
             </table>
             &nbsp;
         </div>
@@ -105,12 +98,6 @@
         )
     }
 
-    function mostra_valores(atd) {
-        alert($(atd).text())
-
-    }
-
-    var campos = document.querySelector("#campos tbody");
     var valores = document.querySelector("#valores tbody");
     var filtros = document.querySelector("#filtros tbody");
 
@@ -125,27 +112,18 @@
         }
     }
 
-    function delete_row(atd) {
-        var atr = atd.parentNode.parentNode;
-        atr.parentNode.removeChild(atr);
-    }
-
     function add_row(atd) {
         var atr = atd.parentNode;
-        $(filtros).append($('<tr>').append($('<td  onclick="mostra_valores(this)" ondblclick="delete_td(this)" align="center">').append($(atr).text().trim())));
+        $(filtros).append($('<tr>').append($('<td ondblclick="delete_td(this)" align="center">').append($(atr).text().trim())));
     }
+
     function delete_td(atd) {
         var atr = atd;
         atr.parentNode.removeChild(atr);
     }
 
-    $("#campos td").click(function () {
+    $("#bases td").dblclick(function () {
         add_row(this);
     })
-
-    $("#filtros td").click(function () {
-        alert($("#filtros td:eq(0)").text())
-        alert($(this).eq(0).text())
-    });
 
 </script> {% endblock %}
