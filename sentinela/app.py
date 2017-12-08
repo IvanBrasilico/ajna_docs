@@ -119,7 +119,7 @@ def importa():
     return redirect(url_for('list_files', erro=erro))
 
 
-@app.route('/risco', methods=['POST'])
+@app.route('/risco', methods=['POST', 'GET'])
 def risco():
     lista_arquivos = []
     baseid = request.args.get('base')
@@ -186,6 +186,6 @@ def mynavbar():
 nav.init_app(app)
 
 app.config['DEBUG'] = os.environ.get('DEBUG', 'None') == '1'
-
+app.secret_key = 'sk'
 if __name__ == '__main__':
     app.run()
