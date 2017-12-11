@@ -29,7 +29,7 @@ from flask_nav.elements import Navbar, View
 from werkzeug.utils import secure_filename
 
 from sentinela.models.models import (Base, BaseOrigem, BaseOriginal, MySession,
-                                     Tabela, Visao)
+                                     ParametroRisco, Visao)
 from sentinela.utils.csv_handlers import sch_processing
 from sentinela.utils.gerente_risco import ENCODE, GerenteRisco
 
@@ -61,6 +61,15 @@ def allowed_file(filename):
 def index():
     return render_template('index.html')
 
+@app.route('/valores_parametro/<parametro_id>')
+def valores_parametro(parametro_id):
+    valores = []
+    risco = session.query(ParametroRisco).filter(
+        ParametroRisco.id == parametro_id
+    ).first()
+    if risco:
+        valores = risco.valores
+    return render_template('valores.html', valores=valores)
 
 @app.route('/upload_file', methods=['GET', 'POST'])
 def upload_file():
@@ -120,20 +129,61 @@ def importa():
 
 
 @app.route('/risco', methods=['POST', 'GET'])
+@app.route('/aplica_risco')
 def risco():
     lista_arquivos = []
-    baseid = request.args.get('baseid', '')
+    baseid = request.args.get('baseid', '0')
     padraoid = request.args.get('padraoid')
     visaoid = request.args.get('visaoid')
+    path = request.args.get('filename')
+    parametros_ativos = request.args.get('parametros')
+    if parametros_ativos:
+        parametros_ativos = parametros_ativos.split(',')
     try:
         for ano in os.listdir(os.path.join(CSV_FOLDER, baseid)):
             for mesdia in os.listdir(os.path.join(CSV_FOLDER, baseid, ano)):
-                lista_arquivos.append(baseid + '/' + ano + '/' + mesdia)
+                lista_arquivos.append(ano + '/' + mesdia)
     except FileNotFoundError:
         pass
     bases = session.query(BaseOrigem).all()
     padroes = session.query(BaseOriginal).all()
     visoes = session.query(Visao).all()
+    parametros = []
+    if padraoid:
+        padrao = session.query(BaseOriginal).filter(
+            BaseOriginal.id == padraoid
+        ).first()
+        if padrao:
+            parametros = padrao.parametros
+    if not path:
+        return render_template('bases.html',
+                               lista_arquivos=lista_arquivos,
+                               bases=bases,
+                               padroes=padroes,
+                               visoes=visoes,
+                               baseid=baseid,
+                               padraoid=padraoid,
+                               visaoid=visaoid,
+                               parametros=parametros)
+    # if path aplica_risco
+    gerente = GerenteRisco()
+    opadrao = session.query(BaseOriginal).filter(
+        BaseOriginal.id == padraoid).first()
+    base_csv = os.path.join(CSV_FOLDER, baseid, path)
+    gerente.set_base(opadrao)
+    avisao = session.query(Visao).filter(
+        Visao.id == visaoid).first()
+    lista_risco = gerente.aplica_juncao(avisao, path=base_csv, filtrar=True,
+                                        parametros_ativos=parametros_ativos)
+    static_path = app.config.get('STATIC_FOLDER', 'static')
+    csv_salvo = os.path.join(APP_PATH, static_path, 'baixar.csv')
+    try:
+        os.remove(csv_salvo)
+    except IOError:
+        pass
+    with open(csv_salvo, 'w', encoding=ENCODE) as csv_out:
+        writer = csv.writer(csv_out)
+        writer.writerows(lista_risco)
     return render_template('bases.html',
                            lista_arquivos=lista_arquivos,
                            bases=bases,
@@ -141,7 +191,11 @@ def risco():
                            visoes=visoes,
                            baseid=baseid,
                            padraoid=padraoid,
-                           visaoid=visaoid)
+                           visaoid=visaoid,
+                           parametros=parametros,
+                           filename=path,
+                           csv_salvo=os.path.basename(csv_salvo),
+                           lista_risco=lista_risco)
 
 
 @app.route('/risco2', methods=['POST', 'GET'])
@@ -163,45 +217,6 @@ def risco2():
                            lista_arquivos=lista_arquivos,
                            bases=bases,
                            visoes=visoes)
-
-
-@app.route('/aplica_risco')
-def aplica_risco():
-    baseid = request.args.get('baseid')
-    padraoid = request.args.get('padraoid')
-    visaoid = request.args.get('visaoid')
-    path = request.args.get('filename')
-    gerente = GerenteRisco()
-    bases = session.query(BaseOrigem).all()
-    padroes = session.query(BaseOriginal).all()
-    visoes = session.query(Visao).all()
-    opadrao = session.query(BaseOriginal).filter(
-        BaseOriginal.id == padraoid).first()
-    base_csv = os.path.join(CSV_FOLDER, path)
-    gerente.set_base(opadrao)
-    avisao = session.query(Visao).filter(
-        Visao.id == visaoid).first()
-    lista_risco = gerente.aplica_juncao(avisao, path=base_csv, filtrar=True)
-    print(lista_risco)
-    static_path = app.config.get('STATIC_FOLDER', 'static')
-    csv_salvo = os.path.join(APP_PATH, static_path, 'baixar.csv')
-    try:
-        os.remove(csv_salvo)
-    except IOError:
-        pass
-    with open(csv_salvo, 'w', encoding=ENCODE) as csv_out:
-        writer = csv.writer(csv_out)
-        writer.writerows(lista_risco)
-    return render_template('bases.html',
-                           bases=bases,
-                           baseid=baseid,
-                           padroes=padroes,
-                           padraoid=padraoid,
-                           visoes=visoes,
-                           visaoid=visaoid,
-                           filename=path,
-                           csv_salvo=os.path.basename(csv_salvo),
-                           lista_risco=lista_risco)
 
 
 @app.route('/aplica_risco2')
@@ -233,6 +248,7 @@ def aplica_risco2():
                            bases=bases,
                            baseid=baseid,
                            filename=path,
+                           visoes=visoes,
                            csv_salvo=os.path.basename(csv_salvo),
                            lista_risco=lista_risco)
 
