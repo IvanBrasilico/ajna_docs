@@ -1,0 +1,105 @@
+{% extends "layout.html" %} {% block content %}
+<div id="main" class="container-fluid">
+    <div id="top" class="row">
+        <h2>Escolha o Padrão de Risco a aplicar e a Base de Dados:</h2>
+        <div class="col-sm-6">
+            <h4>Padrões de risco: </h4>
+            <select name="padrao" id="padrao">
+                <option value="0">Selecionar</option>
+                {% for padrao in padroes %}
+                <option value="{{ padrao.id }}" {% if padrao.id|int()==padraoid|int() %} selected="selected" {% endif %}>{{ padrao.nome }}
+                </option>
+                {% endfor %}
+            </select>
+            {% if parametros %}
+            <h4>Parâmetros de risco cadastrados</h4>
+            <div id="list" class="row">
+                <form id="frmvalores" onsubmit="add_row()" class="form-group">
+                    <div class="form-group col-sm-4">
+                        <input id="inp" class="form-control" type="text">
+                    </div>
+                    <div class="form-group col-sm-1">
+                        <button onclick="add_row()" id="btn_ok" type="button" class="btn btn-default">OK</button>
+                    </div>
+                </form>
+                <table class="inlineTable table table-striped table-bordered table-hover table-responsive" cellspacing="0" cellpadding="0"
+                    id="parametros">
+                    {% for parametro in parametros %}
+                    <tr>
+                        <td id="campo" align="center">{{parametro.nome_campo}}</td>
+                        <td>
+                                <input type="button" class="btn  btn-danger" value="x" onclick="delete_row(this)" align="center"/>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="table-responsive col-md-12">
+    <h4>Lista de Valores do Parâmetro</h4>
+    <table class="inlineTable table table-striped table-bordered table-hover table-responsive" id="riscos">
+        {% for row in lista_risco %}
+        <tr>
+            {% for col in row %}
+            <td>{{col}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %} {% if not lista_risco %}
+        <tr>
+            <td>Sem resultados.</td>
+        </tr>
+        {% endif %}
+    </table>
+    &nbsp;
+</div>
+
+<div id="bottom" class="row">
+    AJNA - Receita Federal do Brasil 2017
+</div>
+</div>
+{% endblock %} {% block scripts %} {{super()}}
+<script>
+    function aplica_risco(filename) {
+        window.location.assign('/aplica_risco2?filename=' + filename +
+            '&base=' + $("#base").val() +
+            '&visao=' + $("#visao").val()
+        )
+    }
+
+    var parametros = document.querySelector("#parametros tbody");
+    var filtros = document.querySelector("#filtros tbody");
+
+    function add_row() {
+        var val = $("#inp").val();
+        if (val != '') {
+            $(parametros).append(
+                $('<tr>').append(
+                    $('<td align="center">').text(val),
+                    $('<td>').html('<input type="button" class="btn  btn-danger" value="x" onclick="delete_row(this)" align="center"/>')
+                ));
+            $("#inp").val('');
+        }
+    }
+
+    function delete_row(atd) {
+        var atr = atd.parentNode.parentNode;
+        atr.parentNode.removeChild(atr);
+    }
+
+    $("#bases td").dblclick(function () {
+        add_row(this);
+    })
+
+    $(function () {
+        var submit_form = function (e) {
+            window.location.assign('/edita_risco?padraoid=' + $("#padrao").val() +
+                '&riscoid=' + $("#risco").val()
+            )
+        };
+        $('#padrao').bind('change', submit_form);
+    });
+
+</script> {% endblock %}

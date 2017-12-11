@@ -4,29 +4,23 @@
         <h2>Escolha o Padrão de Risco a aplicar e a Base de Dados:</h2>
         <div class="col-sm-6">
             <nobr>
-                <h4>Arquivo: </h4>
-                <p>{{filename}}</p>
+                <h4>Padrões de risco: </h4>
             </nobr>
-            <select name="base" id="base">
-                {% for base in bases %}
-                <option value="{{ base.id }}">{{ base.nome }}</option>
+            <select name="padrao" id="padrao">
+                {% for padrao in padroes %}
+                <option value="{{ padrao.id }}">{{ padrao.nome }}</option>
                 {% endfor %}
             </select>
-            <select name="visao" id="visao">
-                {% for visao in visoes %}
-                <option value="{{ visao.id }}">{{ visao.nome }}</option>
-                {% endfor %}
-            </select>
-            {% if lista_arquivos %}
-            <h4>Bases carregadas no Servidor</h4>
+            {% if parametros %}
+            <h4>Parâmetros de risco cadastrados</h4>
             <div class="col-sm-3">
                 <table class="inlineTable table table-striped table-bordered table-hover table-responsive" cellspacing="0" cellpadding="0"
                     id="bases">
-                    {% for filename in lista_arquivos %}
+                    {% for parametro in parametros %}
                     <tr>
-                        <td id="campo" align="center">{{filename}}</td>
+                        <td id="campo" align="center">{{parametro.nome_campo}}</td>
                         <td>
-                            <button class="btn-default" onclick="aplica_risco('{{filename}}')">Aplicar</button>
+                            Excluir
                         </td>
                     </tr>
                     {% endfor %}
@@ -36,10 +30,7 @@
         </div>
     </div>
     <div class="table-responsive col-md-12">
-        <h4>Lista de Riscos</h4>
-        {% if csv_salvo %}
-        <a href="/static/{{csv_salvo}}">Baixar planilha</a>
-        {% endif %}
+        <h4>Lista de Valores do Parâmetro</h4>
         <table class="inlineTable table table-striped table-bordered table-hover table-responsive" id="riscos">
             {% for row in lista_risco %}
             <tr>

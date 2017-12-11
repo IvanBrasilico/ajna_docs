@@ -202,25 +202,21 @@ def risco():
                            lista_risco=lista_risco)
 
 
-@app.route('/risco2', methods=['POST', 'GET'])
-def risco2():
-    lista_arquivos = []
-    baseid = request.args.get('base')
-    print(baseid)
-    if baseid:
-        bases = [baseid]
-    else:
-        bases = os.listdir(CSV_FOLDER)
-    for base in bases:
-        for ano in os.listdir(os.path.join(CSV_FOLDER, base)):
-            for mesdia in os.listdir(os.path.join(CSV_FOLDER)):
-                lista_arquivos.append(base + '/' + ano + '/' + mesdia)
-    bases = session.query(BaseOriginal).all()
-    visoes = session.query(Visao).all()
-    return render_template('bases-adauto.html',
-                           lista_arquivos=lista_arquivos,
-                           bases=bases,
-                           visoes=visoes)
+@app.route('/edita_risco', methods=['POST', 'GET'])
+def edita_risco():
+    padraoid = request.args.get('padraoid')
+    padroes = session.query(BaseOriginal).all()
+    parametros = []
+    if padraoid:
+        padrao = session.query(BaseOriginal).filter(
+            BaseOriginal.id == padraoid
+        ).first()
+        if padrao:
+            parametros = padrao.parametros
+    return render_template('editarisco.html',
+                           padraoid=padraoid,
+                           padroes=padroes,
+                           parametros=parametros)
 
 
 @app.route('/aplica_risco2')
@@ -264,7 +260,7 @@ def mynavbar():
         View('Home', 'index'),
         View('Importar Bases', 'list_files'),
         View('Aplica Risco', 'risco'),
-        View('Edita Riscos', 'risco2'),
+        View('Edita Riscos', 'edita_risco'),
     )
 
 

@@ -46,8 +46,8 @@ class FlaskTestCase(unittest.TestCase):
         assert b'input type="file"' in data
         rp = self.app.post('/upload_file', data={'file': ''})
         self.assertTrue(rp.status_code == 302)
-        data = self.data(rp)
-        assert b'Redirecting...' in data
+        data2 = self.data(rp)
+        assert b'Redirecting...' in data2
 
     def test_listfiles(self):
         rv = self.app.get('/list_files')
@@ -62,13 +62,27 @@ class FlaskTestCase(unittest.TestCase):
     def test_risco(self):
         rv = self.app.get('/risco?base=1')
         data = self.data(rv)
-        print(data)
+        dt = rv.get_data(as_text=True)
         assert b'Lista de Riscos' in data
+        rp = self.app.post('/risco', data={'file': 'file1'})
+        data2 = self.data(rp)
+        assert b'Escolha Base' in data2
 
     def _post(self, url, data):
         rv = self.app.post(url, data=data, follow_redirects=True)
         print(rv)
 
+    def test_valores(self):
+        valores = [1, 2, 3]
+        rv = self.app.get('/valores_parametro/{valores}')
+        data = self.data(rv)
+        dt = rv.get_data(as_text=True)
+        assert b'Lista de Valores' in data
+
+    def test_risco2(self):
+        rv = self.app.get('/risco2?base=1')
+        data = self.data(rv)
+        assert b'AJNA' in data
 
 """
     # Gerar arquivos para poder fazer este teste automático
