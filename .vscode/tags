@@ -407,7 +407,7 @@ BYTE_ORDER	../venv/lib/python3.5/plat-x86_64-linux-gnu/IN.py	/^BYTE_ORDER = __BY
 BYTE_ORDER	../venv/lib/python3.5/plat-x86_64-linux-gnu/TYPES.py	/^BYTE_ORDER = __BYTE_ORDER$/;"	kind:variable	line:130
 Base	../sentinela/models/models.py	/^Base = declarative_base()$/;"	kind:variable	line:47
 BaseOrigem	../sentinela/models/models.py	/^class BaseOrigem(Base):$/;"	kind:class	line:50
-BaseOriginal	../sentinela/models/models.py	/^class BaseOriginal(Base): # TODO: Renomear para PadraoRisco, tirar campo caminho$/;"	kind:class	line:64
+BaseOriginal	../sentinela/models/models.py	/^class BaseOriginal(Base):$/;"	kind:class	line:64
 Binnumber	../.tox/check/lib/python3.5/tokenize.py	/^Binnumber = r'0[bB][01]+'$/;"	kind:variable	line:123
 Binnumber	../.tox/docs/lib/python3.5/tokenize.py	/^Binnumber = r'0[bB][01]+'$/;"	kind:variable	line:123
 Binnumber	../.tox/py35/lib/python3.5/tokenize.py	/^Binnumber = r'0[bB][01]+'$/;"	kind:variable	line:123
@@ -1719,7 +1719,7 @@ CodecRegistryError	../.tox/py35/lib/python3.5/encodings/__init__.py	/^class Code
 CodecRegistryError	../.tox/py36/lib/python3.6/encodings/__init__.py	/^class CodecRegistryError(LookupError, SystemError):$/;"	kind:class	line:40
 CodecRegistryError	../venv/lib/python3.5/encodings/__init__.py	/^class CodecRegistryError(LookupError, SystemError):$/;"	kind:class	line:39
 Collection	../.tox/py36/lib/python3.6/_collections_abc.py	/^class Collection(Sized, Iterable, Container):$/;"	kind:class	line:388
-Coluna	../sentinela/models/models.py	/^class Coluna(Base):$/;"	kind:class	line:133
+Coluna	../sentinela/models/models.py	/^class Coluna(Base):$/;"	kind:class	line:134
 Comment	../.tox/check/lib/python3.5/tokenize.py	/^Comment = r'#[^\\r\\n]*'$/;"	kind:variable	line:118
 Comment	../.tox/docs/lib/python3.5/tokenize.py	/^Comment = r'#[^\\r\\n]*'$/;"	kind:variable	line:118
 Comment	../.tox/py35/lib/python3.5/tokenize.py	/^Comment = r'#[^\\r\\n]*'$/;"	kind:variable	line:118
@@ -4920,6 +4920,7 @@ NAME	../.tox/py36/lib/python3.6/token.py	/^NAME = 1$/;"	kind:variable	line:14
 NAME	../venv/lib/python3.5/token.py	/^NAME = 1$/;"	kind:variable	line:14
 NAMESPACES	../.tox/check/bin/rst2odt_prepstyles.py	/^NAMESPACES = {$/;"	kind:variable	line:22
 NAMESPACES	../.tox/docs/bin/rst2odt_prepstyles.py	/^NAMESPACES = {$/;"	kind:variable	line:22
+NAMESPACES	../.tox/py35/bin/rst2odt_prepstyles.py	/^NAMESPACES = {$/;"	kind:variable	line:22
 NAMESPACES	../.tox/py36/bin/rst2odt_prepstyles.py	/^NAMESPACES = {$/;"	kind:variable	line:22
 NAMESPACES	../venv/bin/rst2odt_prepstyles.py	/^NAMESPACES = {$/;"	kind:variable	line:22
 NEWLINE	../.tox/check/lib/python3.5/token.py	/^NEWLINE = 4$/;"	kind:variable	line:17
@@ -5303,7 +5304,7 @@ P_WAIT	../.tox/check/lib/python3.5/os.py	/^    P_WAIT = 0$/;"	kind:variable	line
 P_WAIT	../.tox/docs/lib/python3.5/os.py	/^    P_WAIT = 0$/;"	kind:variable	line:885
 P_WAIT	../.tox/py35/lib/python3.5/os.py	/^    P_WAIT = 0$/;"	kind:variable	line:885
 P_WAIT	../venv/lib/python3.5/os.py	/^    P_WAIT = 0$/;"	kind:variable	line:885
-ParametroRisco	../sentinela/models/models.py	/^class ParametroRisco(Base):$/;"	kind:class	line:79
+ParametroRisco	../sentinela/models/models.py	/^class ParametroRisco(Base):$/;"	kind:class	line:80
 PathEntryFinder	../.tox/check/lib/python3.5/importlib/abc.py	/^class PathEntryFinder(Finder):$/;"	kind:class	line:79
 PathEntryFinder	../.tox/docs/lib/python3.5/importlib/abc.py	/^class PathEntryFinder(Finder):$/;"	kind:class	line:79
 PathEntryFinder	../.tox/py35/lib/python3.5/importlib/abc.py	/^class PathEntryFinder(Finder):$/;"	kind:class	line:79
@@ -7699,7 +7700,7 @@ TYPES.py	../.tox/check/lib/python3.5/plat-x86_64-linux-gnu/TYPES.py	1;"	kind:fil
 TYPES.py	../.tox/docs/lib/python3.5/plat-x86_64-linux-gnu/TYPES.py	1;"	kind:file	line:1
 TYPES.py	../.tox/py35/lib/python3.5/plat-x86_64-linux-gnu/TYPES.py	1;"	kind:file	line:1
 TYPES.py	../venv/lib/python3.5/plat-x86_64-linux-gnu/TYPES.py	1;"	kind:file	line:1
-Tabela	../sentinela/models/models.py	/^class Tabela(Base):$/;"	kind:class	line:150
+Tabela	../sentinela/models/models.py	/^class Tabela(Base):$/;"	kind:class	line:151
 TarError	../.tox/check/lib/python3.5/tarfile.py	/^class TarError(Exception):$/;"	kind:class	line:267
 TarError	../.tox/docs/lib/python3.5/tarfile.py	/^class TarError(Exception):$/;"	kind:class	line:267
 TarError	../.tox/py35/lib/python3.5/tarfile.py	/^class TarError(Exception):$/;"	kind:class	line:267
@@ -7950,14 +7951,14 @@ VERSION	../.tox/docs/lib/python3.5/random.py	/^    VERSION = 3     # used by get
 VERSION	../.tox/py35/lib/python3.5/random.py	/^    VERSION = 3     # used by getstate\/setstate$/;"	kind:variable	line:82
 VERSION	../.tox/py36/lib/python3.6/random.py	/^    VERSION = 3     # used by getstate\/setstate$/;"	kind:variable	line:85
 VERSION	../venv/lib/python3.5/random.py	/^    VERSION = 3     # used by getstate\/setstate$/;"	kind:variable	line:82
-ValorParametro	../sentinela/models/models.py	/^class ValorParametro(Base):$/;"	kind:class	line:97
+ValorParametro	../sentinela/models/models.py	/^class ValorParametro(Base):$/;"	kind:class	line:98
 ValuesView	../.tox/check/lib/python3.5/_collections_abc.py	/^class ValuesView(MappingView):$/;"	kind:class	line:682
 ValuesView	../.tox/docs/lib/python3.5/_collections_abc.py	/^class ValuesView(MappingView):$/;"	kind:class	line:682
 ValuesView	../.tox/py35/lib/python3.5/_collections_abc.py	/^class ValuesView(MappingView):$/;"	kind:class	line:682
 ValuesView	../.tox/py36/lib/python3.6/_collections_abc.py	/^class ValuesView(MappingView):$/;"	kind:class	line:749
 ValuesView	../venv/lib/python3.5/_collections_abc.py	/^class ValuesView(MappingView):$/;"	kind:class	line:682
 Verbose	../.tox/py36/lib/python3.6/sre_parse.py	/^class Verbose(Exception):$/;"	kind:class	line:71
-Visao	../sentinela/models/models.py	/^class Visao(Base):$/;"	kind:class	line:117
+Visao	../sentinela/models/models.py	/^class Visao(Base):$/;"	kind:class	line:118
 WHITESPACE	../.tox/check/lib/python3.5/sre_parse.py	/^WHITESPACE = frozenset(" \\t\\n\\r\\v\\f")$/;"	kind:variable	line:26
 WHITESPACE	../.tox/docs/lib/python3.5/sre_parse.py	/^WHITESPACE = frozenset(" \\t\\n\\r\\v\\f")$/;"	kind:variable	line:26
 WHITESPACE	../.tox/py35/lib/python3.5/sre_parse.py	/^WHITESPACE = frozenset(" \\t\\n\\r\\v\\f")$/;"	kind:variable	line:26
@@ -11164,13 +11165,13 @@ __init__	../.tox/py36/lib/python3.6/weakref.py	/^    def __init__(self, dict=Non
 __init__	../.tox/py36/lib/python3.6/weakref.py	/^    def __init__(self, ob, callback, key):$/;"	kind:member	line:339
 __init__	../.tox/py36/lib/python3.6/weakref.py	/^    def __init__(self, obj, func, *args, **kwargs):$/;"	kind:member	line:526
 __init__	../sentinela/models/models.py	/^    def __init__(self, base, test=False):$/;"	kind:member	line:22
-__init__	../sentinela/models/models.py	/^    def __init__(self, csv):$/;"	kind:member	line:129
-__init__	../sentinela/models/models.py	/^    def __init__(self, csv):$/;"	kind:member	line:146
-__init__	../sentinela/models/models.py	/^    def __init__(self, csv, primario, estrangeiro, pai_id, visao_id):$/;"	kind:member	line:169
+__init__	../sentinela/models/models.py	/^    def __init__(self, csv):$/;"	kind:member	line:130
+__init__	../sentinela/models/models.py	/^    def __init__(self, csv):$/;"	kind:member	line:147
+__init__	../sentinela/models/models.py	/^    def __init__(self, csv, primario, estrangeiro, pai_id, visao_id):$/;"	kind:member	line:170
 __init__	../sentinela/models/models.py	/^    def __init__(self, nome, caminho=None):$/;"	kind:member	line:59
-__init__	../sentinela/models/models.py	/^    def __init__(self, nome, caminho=None):$/;"	kind:member	line:74
-__init__	../sentinela/models/models.py	/^    def __init__(self, nome, descricao=''):$/;"	kind:member	line:92
-__init__	../sentinela/models/models.py	/^    def __init__(self, nome, tipo):$/;"	kind:member	line:112
+__init__	../sentinela/models/models.py	/^    def __init__(self, nome, caminho=None):$/;"	kind:member	line:75
+__init__	../sentinela/models/models.py	/^    def __init__(self, nome, descricao=''):$/;"	kind:member	line:93
+__init__	../sentinela/models/models.py	/^    def __init__(self, nome, tipo):$/;"	kind:member	line:113
 __init__	../sentinela/utils/gerente_risco.py	/^    def __init__(self):$/;"	kind:member	line:77
 __init__	../venv/lib/python3.5/__future__.py	/^    def __init__(self, optionalRelease, mandatoryRelease, compiler_flag):$/;"	kind:member	line:79
 __init__	../venv/lib/python3.5/_collections_abc.py	/^    def __init__(self, mapping):$/;"	kind:member	line:631
@@ -12538,13 +12539,13 @@ __subclasshook__	../venv/lib/python3.5/_collections_abc.py	/^    def __subclassh
 __subclasshook__	../venv/lib/python3.5/_collections_abc.py	/^    def __subclasshook__(cls, C):$/;"	kind:member	line:341
 __subclasshook__	../venv/lib/python3.5/_collections_abc.py	/^    def __subclasshook__(cls, C):$/;"	kind:member	line:74
 __subclasshook__	../venv/lib/python3.5/_collections_abc.py	/^    def __subclasshook__(cls, C):$/;"	kind:member	line:93
-__tablename__	../sentinela/models/models.py	/^    __tablename__ = 'bases'$/;"	kind:variable	line:68
+__tablename__	../sentinela/models/models.py	/^    __tablename__ = 'bases'$/;"	kind:variable	line:69
 __tablename__	../sentinela/models/models.py	/^    __tablename__ = 'basesorigem'$/;"	kind:variable	line:54
-__tablename__	../sentinela/models/models.py	/^    __tablename__ = 'colunas'$/;"	kind:variable	line:139
-__tablename__	../sentinela/models/models.py	/^    __tablename__ = 'parametrosrisco'$/;"	kind:variable	line:83
-__tablename__	../sentinela/models/models.py	/^    __tablename__ = 'tabelas'$/;"	kind:variable	line:156
-__tablename__	../sentinela/models/models.py	/^    __tablename__ = 'valoresparametro'$/;"	kind:variable	line:104
-__tablename__	../sentinela/models/models.py	/^    __tablename__ = 'visoes'$/;"	kind:variable	line:123
+__tablename__	../sentinela/models/models.py	/^    __tablename__ = 'colunas'$/;"	kind:variable	line:140
+__tablename__	../sentinela/models/models.py	/^    __tablename__ = 'parametrosrisco'$/;"	kind:variable	line:84
+__tablename__	../sentinela/models/models.py	/^    __tablename__ = 'tabelas'$/;"	kind:variable	line:157
+__tablename__	../sentinela/models/models.py	/^    __tablename__ = 'valoresparametro'$/;"	kind:variable	line:105
+__tablename__	../sentinela/models/models.py	/^    __tablename__ = 'visoes'$/;"	kind:variable	line:124
 __time_t_defined	../.tox/check/lib/python3.5/plat-x86_64-linux-gnu/IN.py	/^__time_t_defined = 1$/;"	kind:variable	line:338
 __time_t_defined	../.tox/check/lib/python3.5/plat-x86_64-linux-gnu/TYPES.py	/^__time_t_defined = 1$/;"	kind:variable	line:110
 __time_t_defined	../.tox/docs/lib/python3.5/plat-x86_64-linux-gnu/IN.py	/^__time_t_defined = 1$/;"	kind:variable	line:338
@@ -14825,10 +14826,9 @@ any	../.tox/docs/lib/python3.5/tokenize.py	/^def any(*choices): return group(*ch
 any	../.tox/py35/lib/python3.5/tokenize.py	/^def any(*choices): return group(*choices) + '*'$/;"	kind:function	line:112
 any	../.tox/py36/lib/python3.6/tokenize.py	/^def any(*choices): return group(*choices) + '*'$/;"	kind:function	line:113
 any	../venv/lib/python3.5/tokenize.py	/^def any(*choices): return group(*choices) + '*'$/;"	kind:function	line:112
-aplica_juncao	../sentinela/utils/gerente_risco.py	/^    def aplica_juncao(self, visao, path=tmpdir, filtrar=False):$/;"	kind:member	line:291
-aplica_risco	../sentinela/app.py	/^def aplica_risco():$/;"	kind:function	line:169
-aplica_risco	../sentinela/utils/gerente_risco.py	/^    def aplica_risco(self, lista=None, arquivo=None):$/;"	kind:member	line:129
-aplica_risco2	../sentinela/app.py	/^def aplica_risco2():$/;"	kind:function	line:208
+aplica_juncao	../sentinela/utils/gerente_risco.py	/^    def aplica_juncao(self, visao, path=tmpdir, filtrar=False,$/;"	kind:member	line:295
+aplica_risco	../sentinela/utils/gerente_risco.py	/^    def aplica_risco(self, lista=None, arquivo=None, parametros_ativos=None):$/;"	kind:member	line:129
+aplica_risco2	../sentinela/app.py	/^def aplica_risco2():$/;"	kind:function	line:225
 app	../sentinela/app.py	/^app = Flask(__name__, static_url_path='\/static')$/;"	kind:variable	line:42
 app.py	../sentinela/app.py	1;"	kind:file	line:1
 app_test.py	../sentinela/tests/app_test.py	1;"	kind:file	line:1
@@ -14954,7 +14954,7 @@ base	../.tox/check/bin/activate_this.py	/^base = os.path.dirname(os.path.dirname
 base	../.tox/docs/bin/activate_this.py	/^base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	kind:variable	line:18
 base	../.tox/py35/bin/activate_this.py	/^base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	kind:variable	line:18
 base	../.tox/py36/bin/activate_this.py	/^base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	kind:variable	line:18
-base	../sentinela/models/models.py	/^    base = relationship($/;"	kind:variable	line:89
+base	../sentinela/models/models.py	/^    base = relationship($/;"	kind:variable	line:90
 base	../venv/bin/activate_this.py	/^base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	kind:variable	line:18
 base64.py	../.tox/check/lib/python3.5/base64.py	1;"	kind:file	line:1
 base64.py	../.tox/docs/lib/python3.5/base64.py	1;"	kind:file	line:1
@@ -14976,7 +14976,7 @@ base64_encode	../.tox/docs/lib/python3.5/encodings/base64_codec.py	/^def base64_
 base64_encode	../.tox/py35/lib/python3.5/encodings/base64_codec.py	/^def base64_encode(input, errors='strict'):$/;"	kind:function	line:13
 base64_encode	../.tox/py36/lib/python3.6/encodings/base64_codec.py	/^def base64_encode(input, errors='strict'):$/;"	kind:function	line:13
 base64_encode	../venv/lib/python3.5/encodings/base64_codec.py	/^def base64_encode(input, errors='strict'):$/;"	kind:function	line:13
-base_id	../sentinela/models/models.py	/^    base_id = Column(Integer, ForeignKey('bases.id'))$/;"	kind:variable	line:88
+base_id	../sentinela/models/models.py	/^    base_id = Column(Integer, ForeignKey('bases.id'))$/;"	kind:variable	line:89
 basename	../.tox/check/lib/python3.5/ntpath.py	/^def basename(p):$/;"	kind:function	line:230
 basename	../.tox/check/lib/python3.5/posixpath.py	/^def basename(p):$/;"	kind:function	line:136
 basename	../.tox/docs/lib/python3.5/ntpath.py	/^def basename(p):$/;"	kind:function	line:230
@@ -15160,7 +15160,7 @@ calc_chksums	../.tox/py35/lib/python3.5/tarfile.py	/^def calc_chksums(buf):$/;"	
 calc_chksums	../.tox/py36/lib/python3.6/tarfile.py	/^def calc_chksums(buf):$/;"	kind:function	line:222
 calc_chksums	../venv/lib/python3.5/tarfile.py	/^def calc_chksums(buf):$/;"	kind:function	line:215
 caminho	../sentinela/models/models.py	/^    caminho = Column(String(200), unique=True)$/;"	kind:variable	line:57
-caminho	../sentinela/models/models.py	/^    caminho = Column(String(200), unique=True)$/;"	kind:variable	line:71
+caminho	../sentinela/models/models.py	/^    caminho = Column(String(200), unique=True)$/;"	kind:variable	line:72
 capitalize	../.tox/check/lib/python3.5/collections/__init__.py	/^    def capitalize(self): return self.__class__(self.data.capitalize())$/;"	kind:member	line:1160
 capitalize	../.tox/docs/lib/python3.5/collections/__init__.py	/^    def capitalize(self): return self.__class__(self.data.capitalize())$/;"	kind:member	line:1160
 capitalize	../.tox/py35/lib/python3.5/collections/__init__.py	/^    def capitalize(self): return self.__class__(self.data.capitalize())$/;"	kind:member	line:1160
@@ -16056,7 +16056,7 @@ codecs.py	../.tox/docs/lib/python3.5/codecs.py	1;"	kind:file	line:1
 codecs.py	../.tox/py35/lib/python3.5/codecs.py	1;"	kind:file	line:1
 codecs.py	../.tox/py36/lib/python3.6/codecs.py	1;"	kind:file	line:1
 codecs.py	../venv/lib/python3.5/codecs.py	1;"	kind:file	line:1
-colunas	../sentinela/models/models.py	/^    colunas = relationship('Coluna', back_populates='visao')$/;"	kind:variable	line:127
+colunas	../sentinela/models/models.py	/^    colunas = relationship('Coluna', back_populates='visao')$/;"	kind:variable	line:128
 comeca_com	../sentinela/models/models.py	/^    comeca_com = 2$/;"	kind:variable	line:14
 commonpath	../.tox/check/lib/python3.5/ntpath.py	/^def commonpath(paths):$/;"	kind:function	line:604
 commonpath	../.tox/check/lib/python3.5/posixpath.py	/^def commonpath(paths):$/;"	kind:function	line:468
@@ -16540,7 +16540,7 @@ create_ustar_header	../.tox/py35/lib/python3.5/tarfile.py	/^    def create_ustar
 create_ustar_header	../.tox/py36/lib/python3.6/tarfile.py	/^    def create_ustar_header(self, info, encoding, errors):$/;"	kind:member	line:817
 create_ustar_header	../venv/lib/python3.5/tarfile.py	/^    def create_ustar_header(self, info, encoding, errors):$/;"	kind:member	line:810
 cria_base	../sentinela/utils/gerente_risco.py	/^    def cria_base(self, nomebase, session):$/;"	kind:member	line:95
-csv	../sentinela/models/models.py	/^    csv = Column(String(20))$/;"	kind:variable	line:158
+csv	../sentinela/models/models.py	/^    csv = Column(String(20))$/;"	kind:variable	line:159
 csv_handlers.py	../sentinela/utils/csv_handlers.py	1;"	kind:file	line:1
 csv_handlers_test.py	../sentinela/tests/csv_handlers_test.py	1;"	kind:file	line:1
 curdir	../.tox/check/lib/python3.5/ntpath.py	/^curdir = '.'$/;"	kind:variable	line:24
@@ -18239,8 +18239,8 @@ dereference	../.tox/docs/lib/python3.5/tarfile.py	/^    dereference = False     
 dereference	../.tox/py35/lib/python3.5/tarfile.py	/^    dereference = False         # If true, add content of linked file to the$/;"	kind:variable	line:1381
 dereference	../.tox/py36/lib/python3.6/tarfile.py	/^    dereference = False         # If true, add content of linked file to the$/;"	kind:variable	line:1388
 dereference	../venv/lib/python3.5/tarfile.py	/^    dereference = False         # If true, add content of linked file to the$/;"	kind:variable	line:1381
-descricao	../sentinela/models/models.py	/^    descricao = Column(String(200))$/;"	kind:variable	line:159
-descricao	../sentinela/models/models.py	/^    descricao = Column(String(200))$/;"	kind:variable	line:86
+descricao	../sentinela/models/models.py	/^    descricao = Column(String(200))$/;"	kind:variable	line:160
+descricao	../sentinela/models/models.py	/^    descricao = Column(String(200))$/;"	kind:variable	line:87
 description	../.tox/check/bin/rst2html.py	/^description = ('Generates (X)HTML documents from standalone reStructuredText '$/;"	kind:variable	line:20
 description	../.tox/check/bin/rst2html4.py	/^description = ('Generates (X)HTML documents from standalone reStructuredText '$/;"	kind:variable	line:23
 description	../.tox/check/bin/rst2html5.py	/^description = (u'Generates HTML 5 documents from standalone '$/;"	kind:variable	line:31
@@ -18267,6 +18267,19 @@ description	../.tox/docs/bin/rst2xetex.py	/^description = ('Generates LaTeX docu
 description	../.tox/docs/bin/rst2xml.py	/^description = ('Generates Docutils-native XML from standalone '$/;"	kind:variable	line:20
 description	../.tox/docs/bin/rstpep2html.py	/^                description=description)$/;"	kind:variable	line:25
 description	../.tox/docs/bin/rstpep2html.py	/^description = ('Generates (X)HTML from reStructuredText-format PEP files.  '$/;"	kind:variable	line:21
+description	../.tox/py35/bin/rst2html.py	/^description = ('Generates (X)HTML documents from standalone reStructuredText '$/;"	kind:variable	line:20
+description	../.tox/py35/bin/rst2html4.py	/^description = ('Generates (X)HTML documents from standalone reStructuredText '$/;"	kind:variable	line:23
+description	../.tox/py35/bin/rst2html5.py	/^description = (u'Generates HTML 5 documents from standalone '$/;"	kind:variable	line:31
+description	../.tox/py35/bin/rst2latex.py	/^description = ('Generates LaTeX documents from standalone reStructuredText '$/;"	kind:variable	line:19
+description	../.tox/py35/bin/rst2man.py	/^description = ("Generates plain unix manual documents.  " + default_description)$/;"	kind:variable	line:24
+description	../.tox/py35/bin/rst2odt.py	/^    description=description)$/;"	kind:variable	line:29
+description	../.tox/py35/bin/rst2odt.py	/^description = ('Generates OpenDocument\/OpenOffice\/ODF documents from '$/;"	kind:variable	line:22
+description	../.tox/py35/bin/rst2pseudoxml.py	/^description = ('Generates pseudo-XML from standalone reStructuredText '$/;"	kind:variable	line:20
+description	../.tox/py35/bin/rst2s5.py	/^description = ('Generates S5 (X)HTML slideshow documents from standalone '$/;"	kind:variable	line:21
+description	../.tox/py35/bin/rst2xetex.py	/^description = ('Generates LaTeX documents from standalone reStructuredText '$/;"	kind:variable	line:19
+description	../.tox/py35/bin/rst2xml.py	/^description = ('Generates Docutils-native XML from standalone '$/;"	kind:variable	line:20
+description	../.tox/py35/bin/rstpep2html.py	/^                description=description)$/;"	kind:variable	line:25
+description	../.tox/py35/bin/rstpep2html.py	/^description = ('Generates (X)HTML from reStructuredText-format PEP files.  '$/;"	kind:variable	line:21
 description	../.tox/py36/bin/rst2html.py	/^description = ('Generates (X)HTML documents from standalone reStructuredText '$/;"	kind:variable	line:20
 description	../.tox/py36/bin/rst2html4.py	/^description = ('Generates (X)HTML documents from standalone reStructuredText '$/;"	kind:variable	line:23
 description	../.tox/py36/bin/rst2html5.py	/^description = (u'Generates HTML 5 documents from standalone '$/;"	kind:variable	line:31
@@ -20109,7 +20122,7 @@ escape	../.tox/docs/lib/python3.5/re.py	/^def escape(pattern):$/;"	kind:function
 escape	../.tox/py35/lib/python3.5/re.py	/^def escape(pattern):$/;"	kind:function	line:240
 escape	../.tox/py36/lib/python3.6/re.py	/^def escape(pattern):$/;"	kind:function	line:249
 escape	../venv/lib/python3.5/re.py	/^def escape(pattern):$/;"	kind:function	line:240
-estrangeiro	../sentinela/models/models.py	/^    estrangeiro = Column(Integer)$/;"	kind:variable	line:161
+estrangeiro	../sentinela/models/models.py	/^    estrangeiro = Column(Integer)$/;"	kind:variable	line:162
 euc_jis_2004.py	../.tox/check/lib/python3.5/encodings/euc_jis_2004.py	1;"	kind:file	line:1
 euc_jis_2004.py	../.tox/docs/lib/python3.5/encodings/euc_jis_2004.py	1;"	kind:file	line:1
 euc_jis_2004.py	../.tox/py35/lib/python3.5/encodings/euc_jis_2004.py	1;"	kind:file	line:1
@@ -20355,7 +20368,7 @@ fileobject	../.tox/docs/lib/python3.5/tarfile.py	/^    fileobject = ExFileObject
 fileobject	../.tox/py35/lib/python3.5/tarfile.py	/^    fileobject = ExFileObject   # The file-object for extractfile().$/;"	kind:variable	line:1399
 fileobject	../.tox/py36/lib/python3.6/tarfile.py	/^    fileobject = ExFileObject   # The file-object for extractfile().$/;"	kind:variable	line:1406
 fileobject	../venv/lib/python3.5/tarfile.py	/^    fileobject = ExFileObject   # The file-object for extractfile().$/;"	kind:variable	line:1399
-filhos	../sentinela/models/models.py	/^    filhos = relationship('Tabela')$/;"	kind:variable	line:163
+filhos	../sentinela/models/models.py	/^    filhos = relationship('Tabela')$/;"	kind:variable	line:164
 filter	../.tox/check/lib/python3.5/fnmatch.py	/^def filter(names, pat):$/;"	kind:function	line:48
 filter	../.tox/check/lib/python3.5/re.py	/^    def filter(match, template=template):$/;"	kind:function	line:329
 filter	../.tox/docs/lib/python3.5/fnmatch.py	/^def filter(names, pat):$/;"	kind:function	line:48
@@ -22041,13 +22054,13 @@ iconcat	../.tox/docs/lib/python3.5/operator.py	/^def iconcat(a, b):$/;"	kind:fun
 iconcat	../.tox/py35/lib/python3.5/operator.py	/^def iconcat(a, b):$/;"	kind:function	line:347
 iconcat	../.tox/py36/lib/python3.6/operator.py	/^def iconcat(a, b):$/;"	kind:function	line:347
 iconcat	../venv/lib/python3.5/operator.py	/^def iconcat(a, b):$/;"	kind:function	line:347
-id	../sentinela/models/models.py	/^    id = Column(Integer, primary_key=True)$/;"	kind:variable	line:105
-id	../sentinela/models/models.py	/^    id = Column(Integer, primary_key=True)$/;"	kind:variable	line:124
-id	../sentinela/models/models.py	/^    id = Column(Integer, primary_key=True)$/;"	kind:variable	line:140
-id	../sentinela/models/models.py	/^    id = Column(Integer, primary_key=True)$/;"	kind:variable	line:157
+id	../sentinela/models/models.py	/^    id = Column(Integer, primary_key=True)$/;"	kind:variable	line:106
+id	../sentinela/models/models.py	/^    id = Column(Integer, primary_key=True)$/;"	kind:variable	line:125
+id	../sentinela/models/models.py	/^    id = Column(Integer, primary_key=True)$/;"	kind:variable	line:141
+id	../sentinela/models/models.py	/^    id = Column(Integer, primary_key=True)$/;"	kind:variable	line:158
 id	../sentinela/models/models.py	/^    id = Column(Integer, primary_key=True)$/;"	kind:variable	line:55
-id	../sentinela/models/models.py	/^    id = Column(Integer, primary_key=True)$/;"	kind:variable	line:69
-id	../sentinela/models/models.py	/^    id = Column(Integer, primary_key=True)$/;"	kind:variable	line:84
+id	../sentinela/models/models.py	/^    id = Column(Integer, primary_key=True)$/;"	kind:variable	line:70
+id	../sentinela/models/models.py	/^    id = Column(Integer, primary_key=True)$/;"	kind:variable	line:85
 idna.py	../.tox/check/lib/python3.5/encodings/idna.py	1;"	kind:file	line:1
 idna.py	../.tox/docs/lib/python3.5/encodings/idna.py	1;"	kind:file	line:1
 idna.py	../.tox/py35/lib/python3.5/encodings/idna.py	1;"	kind:file	line:1
@@ -22104,8 +22117,8 @@ import_module	../.tox/docs/lib/python3.5/importlib/__init__.py	/^def import_modu
 import_module	../.tox/py35/lib/python3.5/importlib/__init__.py	/^def import_module(name, package=None):$/;"	kind:function	line:108
 import_module	../.tox/py36/lib/python3.6/importlib/__init__.py	/^def import_module(name, package=None):$/;"	kind:function	line:108
 import_module	../venv/lib/python3.5/importlib/__init__.py	/^def import_module(name, package=None):$/;"	kind:function	line:108
-import_named_csv	../sentinela/utils/gerente_risco.py	/^    def import_named_csv(self, arquivo, session=None, filtro=Filtro.igual):$/;"	kind:member	line:264
-importa	../sentinela/app.py	/^def importa():$/;"	kind:function	line:101
+import_named_csv	../sentinela/utils/gerente_risco.py	/^    def import_named_csv(self, arquivo, session=None, filtro=Filtro.igual):$/;"	kind:member	line:268
+importa	../sentinela/app.py	/^def importa():$/;"	kind:function	line:112
 imul	../.tox/check/lib/python3.5/operator.py	/^def imul(a, b):$/;"	kind:function	line:370
 imul	../.tox/docs/lib/python3.5/operator.py	/^def imul(a, b):$/;"	kind:function	line:370
 imul	../.tox/py35/lib/python3.5/operator.py	/^def imul(a, b):$/;"	kind:function	line:370
@@ -22845,7 +22858,7 @@ list	../.tox/docs/lib/python3.5/tarfile.py	/^    def list(self, verbose=True, *,
 list	../.tox/py35/lib/python3.5/tarfile.py	/^    def list(self, verbose=True, *, members=None):$/;"	kind:member	line:1857
 list	../.tox/py36/lib/python3.6/tarfile.py	/^    def list(self, verbose=True, *, members=None):$/;"	kind:member	line:1868
 list	../venv/lib/python3.5/tarfile.py	/^    def list(self, verbose=True, *, members=None):$/;"	kind:member	line:1857
-list_files	../sentinela/app.py	/^def list_files():$/;"	kind:function	line:90
+list_files	../sentinela/app.py	/^def list_files():$/;"	kind:function	line:101
 list_iterator	../.tox/check/lib/python3.5/_collections_abc.py	/^list_iterator = type(iter([]))$/;"	kind:variable	line:41
 list_iterator	../.tox/docs/lib/python3.5/_collections_abc.py	/^list_iterator = type(iter([]))$/;"	kind:variable	line:41
 list_iterator	../.tox/py35/lib/python3.5/_collections_abc.py	/^list_iterator = type(iter([]))$/;"	kind:variable	line:41
@@ -23069,6 +23082,7 @@ main	../.tox/docs/lib/python3.5/keyword.py	/^def main():$/;"	kind:function	line:
 main	../.tox/docs/lib/python3.5/site.py	/^def main():$/;"	kind:function	line:668
 main	../.tox/docs/lib/python3.5/tarfile.py	/^def main():$/;"	kind:function	line:2457
 main	../.tox/docs/lib/python3.5/tokenize.py	/^def main():$/;"	kind:function	line:715
+main	../.tox/py35/bin/rst2odt_prepstyles.py	/^def main():$/;"	kind:function	line:54
 main	../.tox/py35/lib/python3.5/base64.py	/^def main():$/;"	kind:function	line:564
 main	../.tox/py35/lib/python3.5/keyword.py	/^def main():$/;"	kind:function	line:55
 main	../.tox/py35/lib/python3.5/site.py	/^def main():$/;"	kind:function	line:668
@@ -23304,7 +23318,7 @@ mul	../.tox/docs/lib/python3.5/operator.py	/^def mul(a, b):$/;"	kind:function	li
 mul	../.tox/py35/lib/python3.5/operator.py	/^def mul(a, b):$/;"	kind:function	line:104
 mul	../.tox/py36/lib/python3.6/operator.py	/^def mul(a, b):$/;"	kind:function	line:104
 mul	../venv/lib/python3.5/operator.py	/^def mul(a, b):$/;"	kind:function	line:104
-mynavbar	../sentinela/app.py	/^def mynavbar():$/;"	kind:function	line:241
+mynavbar	../sentinela/app.py	/^def mynavbar():$/;"	kind:function	line:259
 mysession	../sentinela/alembic/env.py	/^mysession = MySession(Base)$/;"	kind:variable	line:29
 mysession	../sentinela/app.py	/^mysession = MySession(Base)$/;"	kind:variable	line:36
 mysession	../sentinela/tests/exemplos/test_carga.py	/^    mysession = MySession(Base, test=False)$/;"	kind:variable	line:101
@@ -23416,10 +23430,10 @@ nlargest	../.tox/py35/lib/python3.5/heapq.py	/^def nlargest(n, iterable, key=Non
 nlargest	../.tox/py36/lib/python3.6/heapq.py	/^def nlargest(n, iterable, key=None):$/;"	kind:function	line:524
 nlargest	../venv/lib/python3.5/heapq.py	/^def nlargest(n, iterable, key=None):$/;"	kind:function	line:524
 nome	../sentinela/models/models.py	/^    nome = Column(String(20), unique=True)$/;"	kind:variable	line:56
-nome	../sentinela/models/models.py	/^    nome = Column(String(20), unique=True)$/;"	kind:variable	line:70
-nome	../sentinela/models/models.py	/^    nome = Column(String(50))$/;"	kind:variable	line:141
-nome	../sentinela/models/models.py	/^    nome = Column(String(50), unique=True)$/;"	kind:variable	line:125
-nome_campo	../sentinela/models/models.py	/^    nome_campo = Column(String(20))$/;"	kind:variable	line:85
+nome	../sentinela/models/models.py	/^    nome = Column(String(20), unique=True)$/;"	kind:variable	line:71
+nome	../sentinela/models/models.py	/^    nome = Column(String(50))$/;"	kind:variable	line:142
+nome	../sentinela/models/models.py	/^    nome = Column(String(50), unique=True)$/;"	kind:variable	line:126
+nome_campo	../sentinela/models/models.py	/^    nome_campo = Column(String(20))$/;"	kind:variable	line:86
 normalize	../.tox/check/lib/python3.5/locale.py	/^def normalize(localename):$/;"	kind:function	line:375
 normalize	../.tox/docs/lib/python3.5/locale.py	/^def normalize(localename):$/;"	kind:function	line:375
 normalize	../.tox/py35/lib/python3.5/locale.py	/^def normalize(localename):$/;"	kind:function	line:375
@@ -23611,6 +23625,7 @@ os.py	../.tox/py36/lib/python3.6/os.py	1;"	kind:file	line:1
 os.py	../venv/lib/python3.5/os.py	1;"	kind:file	line:1
 output	../.tox/check/bin/rst2odt.py	/^output = publish_cmdline_to_binary(reader=reader, writer=writer,$/;"	kind:variable	line:28
 output	../.tox/docs/bin/rst2odt.py	/^output = publish_cmdline_to_binary(reader=reader, writer=writer,$/;"	kind:variable	line:28
+output	../.tox/py35/bin/rst2odt.py	/^output = publish_cmdline_to_binary(reader=reader, writer=writer,$/;"	kind:variable	line:28
 output	../.tox/py36/bin/rst2odt.py	/^output = publish_cmdline_to_binary(reader=reader, writer=writer,$/;"	kind:variable	line:28
 output	../venv/bin/rst2odt.py	/^output = publish_cmdline_to_binary(reader=reader, writer=writer,$/;"	kind:variable	line:28
 p	../.tox/check/lib/python3.5/collections/__main__.py	/^p = Point(x=10, y=20)$/;"	kind:variable	line:9
@@ -23619,16 +23634,16 @@ p	../.tox/py35/lib/python3.5/collections/__main__.py	/^p = Point(x=10, y=20)$/;"
 p	../venv/lib/python3.5/collections/__main__.py	/^p = Point(x=10, y=20)$/;"	kind:variable	line:9
 package_data	../setup.py	/^    package_data={$/;"	kind:variable	line:23
 packages	../setup.py	/^    packages=find_packages(),$/;"	kind:variable	line:11
-pai	../sentinela/models/models.py	/^    pai = relationship('Tabela', remote_side=[id])$/;"	kind:variable	line:164
-pai_id	../sentinela/models/models.py	/^    pai_id = Column(Integer, ForeignKey('tabelas.id'))$/;"	kind:variable	line:162
+pai	../sentinela/models/models.py	/^    pai = relationship('Tabela', remote_side=[id])$/;"	kind:variable	line:165
+pai_id	../sentinela/models/models.py	/^    pai_id = Column(Integer, ForeignKey('tabelas.id'))$/;"	kind:variable	line:163
 palmos.py	../.tox/check/lib/python3.5/encodings/palmos.py	1;"	kind:file	line:1
 palmos.py	../.tox/docs/lib/python3.5/encodings/palmos.py	1;"	kind:file	line:1
 palmos.py	../.tox/py35/lib/python3.5/encodings/palmos.py	1;"	kind:file	line:1
 palmos.py	../.tox/py36/lib/python3.6/encodings/palmos.py	1;"	kind:file	line:1
 palmos.py	../venv/lib/python3.5/encodings/palmos.py	1;"	kind:file	line:1
-parametros	../sentinela/models/models.py	/^    parametros = relationship('ParametroRisco', back_populates='base')$/;"	kind:variable	line:72
-parametros_fromcsv	../sentinela/utils/gerente_risco.py	/^    def parametros_fromcsv(self, campo, session=None,$/;"	kind:member	line:204
-parametros_tocsv	../sentinela/utils/gerente_risco.py	/^    def parametros_tocsv(self, path=tmpdir):$/;"	kind:member	line:188
+parametros	../sentinela/models/models.py	/^    parametros = relationship('ParametroRisco', back_populates='base')$/;"	kind:variable	line:73
+parametros_fromcsv	../sentinela/utils/gerente_risco.py	/^    def parametros_fromcsv(self, campo, session=None,$/;"	kind:member	line:208
+parametros_tocsv	../sentinela/utils/gerente_risco.py	/^    def parametros_tocsv(self, path=tmpdir):$/;"	kind:member	line:192
 pardir	../.tox/check/lib/python3.5/ntpath.py	/^pardir = '..'$/;"	kind:variable	line:25
 pardir	../.tox/check/lib/python3.5/posixpath.py	/^pardir = '..'$/;"	kind:variable	line:31
 pardir	../.tox/docs/lib/python3.5/ntpath.py	/^pardir = '..'$/;"	kind:variable	line:25
@@ -23857,6 +23872,7 @@ prepare_class	../.tox/py36/lib/python3.6/types.py	/^def prepare_class(name, base
 prepare_class	../venv/lib/python3.5/types.py	/^def prepare_class(name, bases=(), kwds=None):$/;"	kind:function	line:59
 prepstyle	../.tox/check/bin/rst2odt_prepstyles.py	/^def prepstyle(filename):$/;"	kind:function	line:27
 prepstyle	../.tox/docs/bin/rst2odt_prepstyles.py	/^def prepstyle(filename):$/;"	kind:function	line:27
+prepstyle	../.tox/py35/bin/rst2odt_prepstyles.py	/^def prepstyle(filename):$/;"	kind:function	line:27
 prepstyle	../.tox/py36/bin/rst2odt_prepstyles.py	/^def prepstyle(filename):$/;"	kind:function	line:27
 prepstyle	../venv/bin/rst2odt_prepstyles.py	/^def prepstyle(filename):$/;"	kind:function	line:27
 prev_sys_path	../.tox/check/bin/activate_this.py	/^prev_sys_path = list(sys.path)$/;"	kind:variable	line:23
@@ -23869,7 +23885,7 @@ prf	../.tox/docs/lib/python3.5/hashlib.py	/^        def prf(msg, inner=inner, ou
 prf	../.tox/py35/lib/python3.5/hashlib.py	/^        def prf(msg, inner=inner, outer=outer):$/;"	kind:function	line:173
 prf	../.tox/py36/lib/python3.6/hashlib.py	/^        def prf(msg, inner=inner, outer=outer):$/;"	kind:function	line:200
 prf	../venv/lib/python3.5/hashlib.py	/^        def prf(msg, inner=inner, outer=outer):$/;"	kind:function	line:173
-primario	../sentinela/models/models.py	/^    primario = Column(Integer)$/;"	kind:variable	line:160
+primario	../sentinela/models/models.py	/^    primario = Column(Integer)$/;"	kind:variable	line:161
 print_function	../.tox/check/lib/python3.5/__future__.py	/^print_function = _Feature((2, 6, 0, "alpha", 2),$/;"	kind:variable	line:126
 print_function	../.tox/docs/lib/python3.5/__future__.py	/^print_function = _Feature((2, 6, 0, "alpha", 2),$/;"	kind:variable	line:126
 print_function	../.tox/py35/lib/python3.5/__future__.py	/^print_function = _Feature((2, 6, 0, "alpha", 2),$/;"	kind:variable	line:126
@@ -24044,6 +24060,7 @@ readable	../.tox/py36/lib/python3.6/tarfile.py	/^    def readable(self):$/;"	kin
 readable	../venv/lib/python3.5/tarfile.py	/^    def readable(self):$/;"	kind:member	line:636
 reader	../.tox/check/bin/rst2odt.py	/^reader = Reader()$/;"	kind:variable	line:27
 reader	../.tox/docs/bin/rst2odt.py	/^reader = Reader()$/;"	kind:variable	line:27
+reader	../.tox/py35/bin/rst2odt.py	/^reader = Reader()$/;"	kind:variable	line:27
 reader	../.tox/py36/bin/rst2odt.py	/^reader = Reader()$/;"	kind:variable	line:27
 reader	../venv/bin/rst2odt.py	/^reader = Reader()$/;"	kind:variable	line:27
 readinto	../.tox/check/lib/python3.5/tarfile.py	/^    def readinto(self, b):$/;"	kind:member	line:697
@@ -24462,10 +24479,10 @@ rindex	../.tox/docs/lib/python3.5/collections/__init__.py	/^    def rindex(self,
 rindex	../.tox/py35/lib/python3.5/collections/__init__.py	/^    def rindex(self, sub, start=0, end=_sys.maxsize):$/;"	kind:member	line:1218
 rindex	../.tox/py36/lib/python3.6/collections/__init__.py	/^    def rindex(self, sub, start=0, end=_sys.maxsize):$/;"	kind:member	line:1223
 rindex	../venv/lib/python3.5/collections/__init__.py	/^    def rindex(self, sub, start=0, end=_sys.maxsize):$/;"	kind:member	line:1218
-risco	../sentinela/app.py	/^def risco():$/;"	kind:function	line:123
-risco	../sentinela/models/models.py	/^    risco = relationship($/;"	kind:variable	line:109
-risco2	../sentinela/app.py	/^def risco2():$/;"	kind:function	line:148
-risco_id	../sentinela/models/models.py	/^    risco_id = Column(Integer, ForeignKey('parametrosrisco.id'))$/;"	kind:variable	line:108
+risco	../sentinela/app.py	/^def risco():$/;"	kind:function	line:135
+risco	../sentinela/models/models.py	/^    risco = relationship($/;"	kind:variable	line:110
+risco2	../sentinela/app.py	/^def risco2():$/;"	kind:function	line:204
+risco_id	../sentinela/models/models.py	/^    risco_id = Column(Integer, ForeignKey('parametrosrisco.id'))$/;"	kind:variable	line:109
 rjust	../.tox/check/lib/python3.5/collections/__init__.py	/^    def rjust(self, width, *args):$/;"	kind:member	line:1220
 rjust	../.tox/docs/lib/python3.5/collections/__init__.py	/^    def rjust(self, width, *args):$/;"	kind:member	line:1220
 rjust	../.tox/py35/lib/python3.5/collections/__init__.py	/^    def rjust(self, width, *args):$/;"	kind:member	line:1220
@@ -24523,50 +24540,62 @@ rsplit	../.tox/py36/lib/python3.6/collections/__init__.py	/^    def rsplit(self,
 rsplit	../venv/lib/python3.5/collections/__init__.py	/^    def rsplit(self, sep=None, maxsplit=-1):$/;"	kind:member	line:1228
 rst2html.py	../.tox/check/bin/rst2html.py	1;"	kind:file	line:1
 rst2html.py	../.tox/docs/bin/rst2html.py	1;"	kind:file	line:1
+rst2html.py	../.tox/py35/bin/rst2html.py	1;"	kind:file	line:1
 rst2html.py	../.tox/py36/bin/rst2html.py	1;"	kind:file	line:1
 rst2html.py	../venv/bin/rst2html.py	1;"	kind:file	line:1
 rst2html4.py	../.tox/check/bin/rst2html4.py	1;"	kind:file	line:1
 rst2html4.py	../.tox/docs/bin/rst2html4.py	1;"	kind:file	line:1
+rst2html4.py	../.tox/py35/bin/rst2html4.py	1;"	kind:file	line:1
 rst2html4.py	../.tox/py36/bin/rst2html4.py	1;"	kind:file	line:1
 rst2html4.py	../venv/bin/rst2html4.py	1;"	kind:file	line:1
 rst2html5.py	../.tox/check/bin/rst2html5.py	1;"	kind:file	line:1
 rst2html5.py	../.tox/docs/bin/rst2html5.py	1;"	kind:file	line:1
+rst2html5.py	../.tox/py35/bin/rst2html5.py	1;"	kind:file	line:1
 rst2html5.py	../.tox/py36/bin/rst2html5.py	1;"	kind:file	line:1
 rst2html5.py	../venv/bin/rst2html5.py	1;"	kind:file	line:1
 rst2latex.py	../.tox/check/bin/rst2latex.py	1;"	kind:file	line:1
 rst2latex.py	../.tox/docs/bin/rst2latex.py	1;"	kind:file	line:1
+rst2latex.py	../.tox/py35/bin/rst2latex.py	1;"	kind:file	line:1
 rst2latex.py	../.tox/py36/bin/rst2latex.py	1;"	kind:file	line:1
 rst2latex.py	../venv/bin/rst2latex.py	1;"	kind:file	line:1
 rst2man.py	../.tox/check/bin/rst2man.py	1;"	kind:file	line:1
 rst2man.py	../.tox/docs/bin/rst2man.py	1;"	kind:file	line:1
+rst2man.py	../.tox/py35/bin/rst2man.py	1;"	kind:file	line:1
 rst2man.py	../.tox/py36/bin/rst2man.py	1;"	kind:file	line:1
 rst2man.py	../venv/bin/rst2man.py	1;"	kind:file	line:1
 rst2odt.py	../.tox/check/bin/rst2odt.py	1;"	kind:file	line:1
 rst2odt.py	../.tox/docs/bin/rst2odt.py	1;"	kind:file	line:1
+rst2odt.py	../.tox/py35/bin/rst2odt.py	1;"	kind:file	line:1
 rst2odt.py	../.tox/py36/bin/rst2odt.py	1;"	kind:file	line:1
 rst2odt.py	../venv/bin/rst2odt.py	1;"	kind:file	line:1
 rst2odt_prepstyles.py	../.tox/check/bin/rst2odt_prepstyles.py	1;"	kind:file	line:1
 rst2odt_prepstyles.py	../.tox/docs/bin/rst2odt_prepstyles.py	1;"	kind:file	line:1
+rst2odt_prepstyles.py	../.tox/py35/bin/rst2odt_prepstyles.py	1;"	kind:file	line:1
 rst2odt_prepstyles.py	../.tox/py36/bin/rst2odt_prepstyles.py	1;"	kind:file	line:1
 rst2odt_prepstyles.py	../venv/bin/rst2odt_prepstyles.py	1;"	kind:file	line:1
 rst2pseudoxml.py	../.tox/check/bin/rst2pseudoxml.py	1;"	kind:file	line:1
 rst2pseudoxml.py	../.tox/docs/bin/rst2pseudoxml.py	1;"	kind:file	line:1
+rst2pseudoxml.py	../.tox/py35/bin/rst2pseudoxml.py	1;"	kind:file	line:1
 rst2pseudoxml.py	../.tox/py36/bin/rst2pseudoxml.py	1;"	kind:file	line:1
 rst2pseudoxml.py	../venv/bin/rst2pseudoxml.py	1;"	kind:file	line:1
 rst2s5.py	../.tox/check/bin/rst2s5.py	1;"	kind:file	line:1
 rst2s5.py	../.tox/docs/bin/rst2s5.py	1;"	kind:file	line:1
+rst2s5.py	../.tox/py35/bin/rst2s5.py	1;"	kind:file	line:1
 rst2s5.py	../.tox/py36/bin/rst2s5.py	1;"	kind:file	line:1
 rst2s5.py	../venv/bin/rst2s5.py	1;"	kind:file	line:1
 rst2xetex.py	../.tox/check/bin/rst2xetex.py	1;"	kind:file	line:1
 rst2xetex.py	../.tox/docs/bin/rst2xetex.py	1;"	kind:file	line:1
+rst2xetex.py	../.tox/py35/bin/rst2xetex.py	1;"	kind:file	line:1
 rst2xetex.py	../.tox/py36/bin/rst2xetex.py	1;"	kind:file	line:1
 rst2xetex.py	../venv/bin/rst2xetex.py	1;"	kind:file	line:1
 rst2xml.py	../.tox/check/bin/rst2xml.py	1;"	kind:file	line:1
 rst2xml.py	../.tox/docs/bin/rst2xml.py	1;"	kind:file	line:1
+rst2xml.py	../.tox/py35/bin/rst2xml.py	1;"	kind:file	line:1
 rst2xml.py	../.tox/py36/bin/rst2xml.py	1;"	kind:file	line:1
 rst2xml.py	../venv/bin/rst2xml.py	1;"	kind:file	line:1
 rstpep2html.py	../.tox/check/bin/rstpep2html.py	1;"	kind:file	line:1
 rstpep2html.py	../.tox/docs/bin/rstpep2html.py	1;"	kind:file	line:1
+rstpep2html.py	../.tox/py35/bin/rstpep2html.py	1;"	kind:file	line:1
 rstpep2html.py	../.tox/py36/bin/rstpep2html.py	1;"	kind:file	line:1
 rstpep2html.py	../venv/bin/rstpep2html.py	1;"	kind:file	line:1
 rstrip	../.tox/check/lib/python3.5/collections/__init__.py	/^    def rstrip(self, chars=None):$/;"	kind:member	line:1224
@@ -25297,7 +25326,7 @@ t	../.tox/docs/lib/python3.5/copy.py	/^t = getattr(types, "CodeType", None)$/;"	
 t	../.tox/py35/lib/python3.5/copy.py	/^t = getattr(types, "CodeType", None)$/;"	kind:variable	line:117
 t	../.tox/py36/lib/python3.6/copy.py	/^t = getattr(types, "CodeType", None)$/;"	kind:variable	line:118
 t	../venv/lib/python3.5/copy.py	/^t = getattr(types, "CodeType", None)$/;"	kind:variable	line:117
-tabelas	../sentinela/models/models.py	/^    tabelas = relationship('Tabela', back_populates='visao')$/;"	kind:variable	line:126
+tabelas	../sentinela/models/models.py	/^    tabelas = relationship('Tabela', back_populates='visao')$/;"	kind:variable	line:127
 tabsize	../.tox/check/lib/python3.5/tokenize.py	/^tabsize = 8$/;"	kind:variable	line:217
 tabsize	../.tox/docs/lib/python3.5/tokenize.py	/^tabsize = 8$/;"	kind:variable	line:217
 tabsize	../.tox/py35/lib/python3.5/tokenize.py	/^tabsize = 8$/;"	kind:variable	line:217
@@ -25427,7 +25456,7 @@ throw	../.tox/py36/lib/python3.6/types.py	/^    def throw(self, tp, *rest):$/;"	
 throw	../venv/lib/python3.5/_collections_abc.py	/^    def throw(self, typ, val=None, tb=None):$/;"	kind:member	line:115
 throw	../venv/lib/python3.5/_collections_abc.py	/^    def throw(self, typ, val=None, tb=None):$/;"	kind:member	line:261
 throw	../venv/lib/python3.5/types.py	/^    def throw(self, tp, *rest):$/;"	kind:member	line:178
-tipo_filtro	../sentinela/models/models.py	/^    tipo_filtro = Column(Enum(Filtro))$/;"	kind:variable	line:107
+tipo_filtro	../sentinela/models/models.py	/^    tipo_filtro = Column(Enum(Filtro))$/;"	kind:variable	line:108
 tis_620.py	../.tox/check/lib/python3.5/encodings/tis_620.py	1;"	kind:file	line:1
 tis_620.py	../.tox/docs/lib/python3.5/encodings/tis_620.py	1;"	kind:file	line:1
 tis_620.py	../.tox/py35/lib/python3.5/encodings/tis_620.py	1;"	kind:file	line:1
@@ -25639,7 +25668,7 @@ upgrade	../sentinela/alembic/versions/4c1bd8ab2343_juncao_metadados5.py	/^def up
 upgrade	../sentinela/alembic/versions/8bf819bcefa4_juncao_metadados4.py	/^def upgrade():$/;"	kind:function	line:19
 upgrade	../sentinela/alembic/versions/df8881d27d15_juncao_metadados6.py	/^def upgrade():$/;"	kind:function	line:19
 upgrade	../sentinela/alembic/versions/f1c880f46616_padraorisco.py	/^def upgrade():$/;"	kind:function	line:19
-upload_file	../sentinela/app.py	/^def upload_file():$/;"	kind:function	line:66
+upload_file	../sentinela/app.py	/^def upload_file():$/;"	kind:function	line:77
 upper	../.tox/check/lib/python3.5/collections/__init__.py	/^    def upper(self): return self.__class__(self.data.upper())$/;"	kind:member	line:1238
 upper	../.tox/docs/lib/python3.5/collections/__init__.py	/^    def upper(self): return self.__class__(self.data.upper())$/;"	kind:member	line:1238
 upper	../.tox/py35/lib/python3.5/collections/__init__.py	/^    def upper(self): return self.__class__(self.data.upper())$/;"	kind:member	line:1238
@@ -25737,8 +25766,9 @@ valid_opts	../.tox/py36/lib/python3.6/config-3.6dm-x86_64-linux-gnu/python-confi
 valid_opts	../.tox/py36/lib/python3.6/config-3.6m-x86_64-linux-gnu/python-config.py	/^valid_opts = ['prefix', 'exec-prefix', 'includes', 'libs', 'cflags',$/;"	kind:variable	line:11
 valid_opts	../venv/bin/python-config	/^valid_opts = ['prefix', 'exec-prefix', 'includes', 'libs', 'cflags',$/;"	kind:variable	line:7
 valid_opts	../venv/lib/python3.5/config-3.5m-x86_64-linux-gnu/python-config.py	/^valid_opts = ['prefix', 'exec-prefix', 'includes', 'libs', 'cflags',$/;"	kind:variable	line:11
-valor	../sentinela/models/models.py	/^    valor = Column(String(50), unique=True)$/;"	kind:variable	line:106
-valores	../sentinela/models/models.py	/^    valores = relationship('ValorParametro', back_populates='risco')$/;"	kind:variable	line:87
+valor	../sentinela/models/models.py	/^    valor = Column(String(50), unique=True)$/;"	kind:variable	line:107
+valores	../sentinela/models/models.py	/^    valores = relationship('ValorParametro', back_populates='risco')$/;"	kind:variable	line:88
+valores_parametro	../sentinela/app.py	/^def valores_parametro(parametro_id):$/;"	kind:function	line:66
 value	../.tox/py36/lib/python3.6/enum.py	/^    def value(self):$/;"	kind:member	line:598
 value	../.tox/py36/lib/python3.6/enum.py	/^    value = _auto_null$/;"	kind:variable	line:55
 valuerefs	../.tox/check/lib/python3.5/weakref.py	/^    def valuerefs(self):$/;"	kind:member	line:280
@@ -25783,10 +25813,10 @@ virtual_install_main_packages	../.tox/docs/lib/python3.5/site.py	/^def virtual_i
 virtual_install_main_packages	../.tox/py35/lib/python3.5/site.py	/^def virtual_install_main_packages():$/;"	kind:function	line:552
 virtual_install_main_packages	../.tox/py36/lib/python3.6/site.py	/^def virtual_install_main_packages():$/;"	kind:function	line:552
 virtual_install_main_packages	../venv/lib/python3.5/site.py	/^def virtual_install_main_packages():$/;"	kind:function	line:552
-visao	../sentinela/models/models.py	/^    visao = relationship($/;"	kind:variable	line:143
-visao	../sentinela/models/models.py	/^    visao = relationship($/;"	kind:variable	line:166
-visao_id	../sentinela/models/models.py	/^    visao_id = Column(Integer, ForeignKey('visoes.id'))$/;"	kind:variable	line:142
-visao_id	../sentinela/models/models.py	/^    visao_id = Column(Integer, ForeignKey('visoes.id'))$/;"	kind:variable	line:165
+visao	../sentinela/models/models.py	/^    visao = relationship($/;"	kind:variable	line:144
+visao	../sentinela/models/models.py	/^    visao = relationship($/;"	kind:variable	line:167
+visao_id	../sentinela/models/models.py	/^    visao_id = Column(Integer, ForeignKey('visoes.id'))$/;"	kind:variable	line:143
+visao_id	../sentinela/models/models.py	/^    visao_id = Column(Integer, ForeignKey('visoes.id'))$/;"	kind:variable	line:166
 vonmisesvariate	../.tox/check/lib/python3.5/random.py	/^    def vonmisesvariate(self, mu, kappa):$/;"	kind:member	line:426
 vonmisesvariate	../.tox/check/lib/python3.5/random.py	/^vonmisesvariate = _inst.vonmisesvariate$/;"	kind:variable	line:731
 vonmisesvariate	../.tox/docs/lib/python3.5/random.py	/^    def vonmisesvariate(self, mu, kappa):$/;"	kind:member	line:426
@@ -25940,6 +25970,7 @@ writelines	../venv/lib/python3.5/codecs.py	/^    def writelines(self, list):$/;"
 writelines	../venv/lib/python3.5/tempfile.py	/^    def writelines(self, iterable):$/;"	kind:member	line:909
 writer	../.tox/check/bin/rst2odt.py	/^writer = Writer()$/;"	kind:variable	line:26
 writer	../.tox/docs/bin/rst2odt.py	/^writer = Writer()$/;"	kind:variable	line:26
+writer	../.tox/py35/bin/rst2odt.py	/^writer = Writer()$/;"	kind:variable	line:26
 writer	../.tox/py36/bin/rst2odt.py	/^writer = Writer()$/;"	kind:variable	line:26
 writer	../venv/bin/rst2odt.py	/^writer = Writer()$/;"	kind:variable	line:26
 wsgi_sentinela.py	../wsgi_sentinela.py	1;"	kind:file	line:1

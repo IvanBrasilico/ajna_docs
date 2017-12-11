@@ -138,7 +138,7 @@ def risco():
     padraoid = request.args.get('padraoid')
     visaoid = request.args.get('visaoid')
     path = request.args.get('filename')
-    parametros_ativos = request.args.get('parametros')
+    parametros_ativos = request.args.get('parametros_ativos')
     if parametros_ativos:
         parametros_ativos = parametros_ativos.split(',')
     try:
@@ -166,7 +166,8 @@ def risco():
                                baseid=baseid,
                                padraoid=padraoid,
                                visaoid=visaoid,
-                               parametros=parametros)
+                               parametros=parametros,
+                               parametros_ativos=parametros_ativos)
     # if path aplica_risco
     gerente = GerenteRisco()
     opadrao = session.query(BaseOriginal).filter(
@@ -195,6 +196,7 @@ def risco():
                            padraoid=padraoid,
                            visaoid=visaoid,
                            parametros=parametros,
+                           parametros_ativos=parametros_ativos,
                            filename=path,
                            csv_salvo=os.path.basename(csv_salvo),
                            lista_risco=lista_risco)
