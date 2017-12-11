@@ -47,6 +47,35 @@ class MySession():
 Base = declarative_base()
 
 
+class BaseOrigem(Base):
+    """Metadado sobre as bases de dados disponíveis/integradas.
+    Caminho: caminho no disco onde os dados da importação da base
+    (normalmente arquivos csv) estão guardados"""
+    __tablename__ = 'basesorigem'
+    id = Column(Integer, primary_key=True)
+    nome = Column(String(20), unique=True)
+    caminho = Column(String(200), unique=True)
+
+    def __init__(self, nome, caminho=None):
+        self.nome = nome
+        self.caminho = caminho
+
+
+class BaseOriginal(Base): # TODO: Renomear para PadraoRisco, tirar campo caminho
+    """Metadado sobre as bases de dados disponíveis/integradas.
+    Caminho: caminho no disco onde os dados da importação da base
+    (normalmente arquivos csv) estão guardados"""
+    __tablename__ = 'bases'
+    id = Column(Integer, primary_key=True)
+    nome = Column(String(20), unique=True)
+    caminho = Column(String(200), unique=True)
+    parametros = relationship('ParametroRisco', back_populates='base')
+
+    def __init__(self, nome, caminho=None):
+        self.nome = nome
+        self.caminho = caminho
+
+
 class ParametroRisco(Base):
     """Nomeia um parâmetro de risco que pode ser aplicado
     como filtro em um Banco de Dados. Um parâmetro tem uma
@@ -83,21 +112,6 @@ class ValorParametro(Base):
     def __init__(self, nome, tipo):
         self.valor = nome
         self.tipo_filtro = tipo
-
-
-class BaseOriginal(Base):
-    """Metadado sobre as bases de dados disponíveis/integradas.
-    Caminho: caminho no disco onde os dados da importação da base
-    (normalmente arquivos csv) estão guardados"""
-    __tablename__ = 'bases'
-    id = Column(Integer, primary_key=True)
-    nome = Column(String(20), unique=True)
-    caminho = Column(String(200), unique=True)
-    parametros = relationship('ParametroRisco', back_populates='base')
-
-    def __init__(self, nome, caminho=None):
-        self.nome = nome
-        self.caminho = caminho
 
 
 class Visao(Base):
