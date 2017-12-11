@@ -65,11 +65,11 @@ def index():
 @app.route('/valores_parametro/<parametro_id>')
 def valores_parametro(parametro_id):
     valores = []
-    risco = session.query(ParametroRisco).filter(
+    paramrisco = session.query(ParametroRisco).filter(
         ParametroRisco.id == parametro_id
     ).first()
-    if risco:
-        valores = risco.valores
+    if paramrisco:
+        valores = paramrisco.valores
     return render_template('valores.html', valores=valores)
 
 

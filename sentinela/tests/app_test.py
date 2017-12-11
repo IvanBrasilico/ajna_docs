@@ -62,7 +62,7 @@ class FlaskTestCase(unittest.TestCase):
     def test_risco(self):
         rv = self.app.get('/risco?base=1')
         data = self.data(rv)
-        dt = rv.get_data(as_text=True)
+        # dt = rv.get_data(as_text=True)
         assert b'Lista de Riscos' in data
         rp = self.app.post('/risco', data={'file': 'file1'})
         data2 = self.data(rp)
@@ -73,16 +73,17 @@ class FlaskTestCase(unittest.TestCase):
         print(rv)
 
     def test_valores(self):
-        valores = [1, 2, 3]
+        # valores = [1, 2, 3]
         rv = self.app.get('/valores_parametro/{valores}')
         data = self.data(rv)
-        dt = rv.get_data(as_text=True)
+        # dt = rv.get_data(as_text=True)
         assert b'Lista de Valores' in data
 
     def test_risco2(self):
-        rv = self.app.get('/risco2?base=1')
+        rv = self.app.get('/edita_risco?padraoid=1')
         data = self.data(rv)
         assert b'AJNA' in data
+
 
 """
     # Gerar arquivos para poder fazer este teste automático
