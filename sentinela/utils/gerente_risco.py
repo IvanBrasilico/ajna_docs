@@ -126,7 +126,7 @@ class GerenteRisco():
             session.merge(self._base)
             session.commit()
 
-    def aplica_risco(self, lista=None, arquivo=None):
+    def aplica_risco(self, lista=None, arquivo=None, parametros_ativos=None):
         """Compara a linha de título da lista recebida com a lista de nomes
         de campo que possuem parâmetros de risco ativos. Após, chama para cada
         campo encontrado a função de filtragem. Somente um dos parâmetros
@@ -165,8 +165,12 @@ class GerenteRisco():
             self.pre_processers[key](lista,
                                      **self.pre_processers_params[key])
         headers = set(lista[0])
-        riscos = set(list(self._riscosativos.keys()))
-        aplicar = headers & riscos   # UNION OF SETS
+        print('Ativos:', parametros_ativos)
+        if parametros_ativos:
+            riscos = set(parametros_ativos)
+        else:
+            riscos = set(list(self._riscosativos.keys()))
+        aplicar = headers & riscos   # INTERSECTION OF SETS
         result = []
         result.append(lista[0])
         # print(aplicar)
@@ -288,12 +292,13 @@ class GerenteRisco():
         for key, value in listas.items():
             self.parametros_fromcsv(key, session, value)
 
-    def aplica_juncao(self, visao, path=tmpdir, filtrar=False):
+    def aplica_juncao(self, visao, path=tmpdir, filtrar=False,
+                      parametros_ativos=None):
         numero_juncoes = len(visao.tabelas)
         tabela = visao.tabelas[numero_juncoes - 1]
         filhofilename = os.path.join(path, tabela.csv)
         dffilho = pd.read_csv(filhofilename, encoding=ENCODE,
-                                dtype=str)
+                              dtype=str)
         if hasattr(tabela, 'type'):
             how = tabela.type
         else:
@@ -305,11 +310,11 @@ class GerenteRisco():
         for r in range(numero_juncoes - 2, 0, -1):
             paifilhofilename = os.path.join(path, visao.tabelas[r].csv)
             dfpaifilho = pd.read_csv(paifilhofilename, encoding=ENCODE,
-                                dtype=str)
+                                     dtype=str)
             print(tabela.csv, tabela.estrangeiro, tabela.primario)
             dffilho = dfpaifilho.merge(dffilho, how=how,
-                                    left_on=tabela.primario,
-                                    right_on=tabela.estrangeiro)
+                                       left_on=tabela.primario,
+                                       right_on=tabela.estrangeiro)
             tabela = visao.tabelas[r]
             paifilhofilename = os.path.join(path, tabela.csv)
             if hasattr(tabela, 'type'):
@@ -331,5 +336,5 @@ class GerenteRisco():
             result_list = [result_df.columns.tolist()]
         result_list.extend(result_df.values.tolist())
         if filtrar:
-            return self.aplica_risco(result_list)
+            return self.aplica_risco(result_list, parametros_ativos=parametros_ativos)
         return result_list

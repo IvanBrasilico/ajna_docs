@@ -61,7 +61,8 @@ class BaseOrigem(Base):
         self.caminho = caminho
 
 
-class BaseOriginal(Base): # TODO: Renomear para PadraoRisco, tirar campo caminho
+class BaseOriginal(Base):
+    # TODO: Renomear para PadraoRisco, tirar campo caminho
     """Metadado sobre as bases de dados disponíveis/integradas.
     Caminho: caminho no disco onde os dados da importação da base
     (normalmente arquivos csv) estão guardados"""

@@ -44,7 +44,7 @@ class FlaskTestCase(unittest.TestCase):
         rv = self.app.get('/upload_file')
         data = self.data(rv)
         assert b'input type="file"' in data
-        rp = self.app.post('/upload_file', data={'file':''})
+        rp = self.app.post('/upload_file', data={'file': ''})
         self.assertTrue(rp.status_code == 302)
         data = self.data(rp)
         assert b'Redirecting...' in data
@@ -64,11 +64,12 @@ class FlaskTestCase(unittest.TestCase):
         data = self.data(rv)
         print(data)
         assert b'Lista de Riscos' in data
-    
+
     def _post(self, url, data):
         rv = self.app.post(url, data=data, follow_redirects=True)
         print(rv)
-    
+
+
 """
     # Gerar arquivos para poder fazer este teste automático
     def test_aplica_risco(self):
@@ -77,4 +78,3 @@ class FlaskTestCase(unittest.TestCase):
         # assert b'tests.zip' in rv.data
         assert b'<select name="base"' in rv.data
 """
-    

@@ -3,8 +3,7 @@
     <div id="top" class="row">
         <h3>Escolha Base, Padrão de Risco e a Visualização. Após, clique em "Aplicar" ao lado da base desejada</h3>
         <div class="col-md-12">
-            <p>{{filename}}</p>
-            <p>Base Original: {{baseid}}
+            <p>Base Original:
                 <select name="base" id="base">
                     <option value="0">Selecionar</option>
                     {% for base in bases %}
@@ -13,7 +12,7 @@
                     {% endfor %}
                 </select>
             </p>
-            <p>Padrão de Risco: {{padraoid}}
+            <p>Padrão de Risco:
                 <select name="padrao" id="padrao">
                     <option value="0">Selecionar</option>
                     {% for padrao in padroes %}
@@ -22,6 +21,25 @@
                     {% endfor %}
                 </select>
             </p>
+            <h4>Parâmetros ativos</h4>
+            <table>
+                {% for parametro in parametros %}
+                <tr>
+                    <td>{{parametro.nome_campo}}</td>
+                    <td>
+                        <input type="checkbox" name="parametro" value="{{parametro.nome_campo}}" checked>
+                    </td>
+                    <td>
+                        <a href="/valores_parametro/{{parametro.id}}" target="_blank">Ver valores</a>
+                    </td>
+                </tr>
+                {% endfor %}{% if not parametros %}
+                <tr>
+                    <td>Sem parâmetros cadastrados.</td>
+                </tr>
+                {% endif %}
+            </table>
+
             <p>Visualização:
                 <select name="visao" id="visao">
                     <option value="0">Selecionar</option>
@@ -50,7 +68,7 @@
     </div>
     <div id="list" class="row">
         <div class="table-responsive col-md-12">
-            <h4>Lista de Riscos</h4>
+            <h4>Lista de Riscos da Base {{filename}}</h4>
             {% if csv_salvo %}
             <a href="/static/{{csv_salvo}}">Baixar planilha</a>
             {% endif %}
@@ -77,16 +95,25 @@
 {% endblock %} {% block scripts %} {{super()}}
 <script>
     function aplica_risco(filename) {
+        parametros_selecionados = [];
+        $("input:checkbox[name=parametro]:checked").each(function(){
+            parametros_selecionados.push($(this).val());
+        });
         window.location.assign('/aplica_risco?filename=' + filename +
+            '&baseid=' + $("#base").val() +
             '&padraoid=' + $("#padrao").val() +
-            '&visaoid=' + $("#visao").val()
+            '&visaoid=' + $("#visao").val() +
+            '&parametros=' + parametros_selecionados
         )
     }
     $(function () {
         var submit_form = function (e) {
-            window.location.assign('/risco?baseid=' + $("#base").val()
+            window.location.assign('/risco?baseid=' + $("#base").val() +
+                '&padraoid=' + $("#padrao").val() +
+                '&visaoid=' + $("#visao").val()
             )
         };
         $('#base').bind('change', submit_form);
+        $('#padrao').bind('change', submit_form);
     });
 </script> {% endblock %}
