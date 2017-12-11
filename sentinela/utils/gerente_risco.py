@@ -336,5 +336,6 @@ class GerenteRisco():
             result_list = [result_df.columns.tolist()]
         result_list.extend(result_df.values.tolist())
         if filtrar:
-            return self.aplica_risco(result_list, parametros_ativos=parametros_ativos)
+            return self.aplica_risco(result_list,
+                                     parametros_ativos=parametros_ativos)
         return result_list

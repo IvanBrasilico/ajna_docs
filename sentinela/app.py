@@ -61,6 +61,7 @@ def allowed_file(filename):
 def index():
     return render_template('index.html')
 
+
 @app.route('/valores_parametro/<parametro_id>')
 def valores_parametro(parametro_id):
     valores = []
@@ -70,6 +71,7 @@ def valores_parametro(parametro_id):
     if risco:
         valores = risco.valores
     return render_template('valores.html', valores=valores)
+
 
 @app.route('/upload_file', methods=['GET', 'POST'])
 def upload_file():
