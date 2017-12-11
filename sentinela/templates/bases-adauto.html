@@ -92,7 +92,7 @@
 {% endblock %} {% block scripts %} {{super()}}
 <script>
     function aplica_risco(filename) {
-        window.location.assign('/aplica_risco?filename=' + filename +
+        window.location.assign('/aplica_risco2?filename=' + filename +
             '&base=' + $("#base").val() +
             '&visao=' + $("#visao").val()
         )

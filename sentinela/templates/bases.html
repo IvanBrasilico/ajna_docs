@@ -1,20 +1,36 @@
 {% extends "layout.html" %} {% block content %}
 <div id="main" class="container-fluid">
     <div id="top" class="row">
-        <h2>Escolha o Padrão de Risco a aplicar e a Base de Dados:</h2>
+        <h3>Escolha Base, Padrão de Risco e a Visualização. Após, clique em "Aplicar" ao lado da base desejada</h3>
         <div class="col-md-12">
             <p>{{filename}}</p>
-            <select name="base" id="base">
-                {% for base in bases %}
-                <option value="{{ base.id }}">{{ base.nome }}</option>
-                {% endfor %}
-            </select>
-            <select name="visao" id="visao">
-                {% for visao in visoes %}
-                <option value="{{ visao.id }}">{{ visao.nome }}</option>
-                {% endfor %}
-            </select>
-            {% if lista_arquivos %}
+            <p>Base Original: {{baseid}}
+                <select name="base" id="base">
+                    <option value="0">Selecionar</option>
+                    {% for base in bases %}
+                    <option value="{{ base.id }}" {% if base.id|int()==baseid|int() %} selected="selected" {% endif %}>{{ base.nome }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </p>
+            <p>Padrão de Risco: {{padraoid}}
+                <select name="padrao" id="padrao">
+                    <option value="0">Selecionar</option>
+                    {% for padrao in padroes %}
+                    <option value="{{ padrao.id }}"{% if padrao.id|int()==padraoid|int() %} selected="selected" {% endif %}>{{ padrao.nome }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </p>
+            <p>Visualização:
+                <select name="visao" id="visao">
+                    <option value="0">Selecionar</option>
+                    {% for visao in visoes %}
+                    <option value="{{ visao.id }}"{% if visao.id|int()==visaoid|int() %} selected="selected" {% endif %}>{{ visao.nome }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </p>
             <h4>Bases carregadas no Servidor</h4>
             <table>
                 {% for filename in lista_arquivos %}
@@ -24,9 +40,12 @@
                         <button class="btn-default" onclick="aplica_risco('{{filename}}')">Aplicar</button>
                     </td>
                 </tr>
-                {% endfor %}
+                {% endfor %}{% if not lista_arquivos %}
+                <tr>
+                    <td>Sem bases importadas.</td>
+                </tr>
+                {% endif %}
             </table>
-            {% endif %}
         </div>
     </div>
     <div id="list" class="row">
@@ -59,8 +78,15 @@
 <script>
     function aplica_risco(filename) {
         window.location.assign('/aplica_risco?filename=' + filename +
-            '&base=' + $("#base").val() +
-            '&visao=' + $("#visao").val()
+            '&padraoid=' + $("#padrao").val() +
+            '&visaoid=' + $("#visao").val()
         )
     }
+    $(function () {
+        var submit_form = function (e) {
+            window.location.assign('/risco?baseid=' + $("#base").val()
+            )
+        };
+        $('#base').bind('change', submit_form);
+    });
 </script> {% endblock %}

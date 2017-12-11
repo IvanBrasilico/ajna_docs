@@ -28,7 +28,7 @@ from flask_nav import Nav
 from flask_nav.elements import Navbar, View
 from werkzeug.utils import secure_filename
 
-from sentinela.models.models import (Base, BaseOriginal, MySession,
+from sentinela.models.models import (Base, BaseOrigem, BaseOriginal, MySession,
                                      Tabela, Visao)
 from sentinela.utils.csv_handlers import sch_processing
 from sentinela.utils.gerente_risco import ENCODE, GerenteRisco
@@ -122,6 +122,31 @@ def importa():
 @app.route('/risco', methods=['POST', 'GET'])
 def risco():
     lista_arquivos = []
+    baseid = request.args.get('baseid', '')
+    padraoid = request.args.get('padraoid')
+    visaoid = request.args.get('visaoid')
+    try:
+        for ano in os.listdir(os.path.join(CSV_FOLDER, baseid)):
+            for mesdia in os.listdir(os.path.join(CSV_FOLDER, baseid, ano)):
+                lista_arquivos.append(baseid + '/' + ano + '/' + mesdia)
+    except FileNotFoundError:
+        pass
+    bases = session.query(BaseOrigem).all()
+    padroes = session.query(BaseOriginal).all()
+    visoes = session.query(Visao).all()
+    return render_template('bases.html',
+                           lista_arquivos=lista_arquivos,
+                           bases=bases,
+                           padroes=padroes,
+                           visoes=visoes,
+                           baseid=baseid,
+                           padraoid=padraoid,
+                           visaoid=visaoid)
+
+
+@app.route('/risco2', methods=['POST', 'GET'])
+def risco2():
+    lista_arquivos = []
     baseid = request.args.get('base')
     print(baseid)
     if baseid:
@@ -142,6 +167,45 @@ def risco():
 
 @app.route('/aplica_risco')
 def aplica_risco():
+    baseid = request.args.get('baseid')
+    padraoid = request.args.get('padraoid')
+    visaoid = request.args.get('visaoid')
+    path = request.args.get('filename')
+    gerente = GerenteRisco()
+    bases = session.query(BaseOrigem).all()
+    padroes = session.query(BaseOriginal).all()
+    visoes = session.query(Visao).all()
+    opadrao = session.query(BaseOriginal).filter(
+        BaseOriginal.id == padraoid).first()
+    base_csv = os.path.join(CSV_FOLDER, path)
+    gerente.set_base(opadrao)
+    avisao = session.query(Visao).filter(
+        Visao.id == visaoid).first()
+    lista_risco = gerente.aplica_juncao(avisao, path=base_csv, filtrar=True)
+    print(lista_risco)
+    static_path = app.config.get('STATIC_FOLDER', 'static')
+    csv_salvo = os.path.join(APP_PATH, static_path, 'baixar.csv')
+    try:
+        os.remove(csv_salvo)
+    except IOError:
+        pass
+    with open(csv_salvo, 'w', encoding=ENCODE) as csv_out:
+        writer = csv.writer(csv_out)
+        writer.writerows(lista_risco)
+    return render_template('bases.html',
+                           bases=bases,
+                           baseid=baseid,
+                           padroes=padroes,
+                           padraoid=padraoid,
+                           visoes=visoes,
+                           visaoid=visaoid,
+                           filename=path,
+                           csv_salvo=os.path.basename(csv_salvo),
+                           lista_risco=lista_risco)
+
+
+@app.route('/aplica_risco2')
+def aplica_risco2():
     baseid = request.args.get('base')
     visaoid = request.args.get('visao')
     path = request.args.get('filename')
@@ -178,8 +242,9 @@ def mynavbar():
     return Navbar(
         'AJNA - Módulo Sentinela',
         View('Home', 'index'),
-        View('Importação', 'list_files'),
-        View('Risco', 'risco'),
+        View('Importar Bases', 'list_files'),
+        View('Aplica Risco', 'risco'),
+        View('Edita Riscos', 'risco2'),
     )
 
 
