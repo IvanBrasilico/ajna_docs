@@ -27,7 +27,16 @@
                 <tr>
                     <td>{{parametro.nome_campo}}</td>
                     <td>
-                        <input type="checkbox" name="parametro" value="{{parametro.nome_campo}}" checked>
+                        {% if parametros_ativos %}
+                            <input type="checkbox" name="parametro" value="{{parametro.nome_campo}}"
+                            {% if parametro.nome_campo in parametros_ativos %}
+                             checked
+                            {% endif %}
+                            >
+                        {% else %}
+                            <input type="checkbox" name="parametro" value="{{parametro.nome_campo}}" checked>
+                        {% endif %}
+
                     </td>
                     <td>
                         <a href="/valores_parametro/{{parametro.id}}" target="_blank">Ver valores</a>
@@ -103,7 +112,7 @@
             '&baseid=' + $("#base").val() +
             '&padraoid=' + $("#padrao").val() +
             '&visaoid=' + $("#visao").val() +
-            '&parametros=' + parametros_selecionados
+            '&parametros_ativos=' + parametros_selecionados
         )
     }
     $(function () {
