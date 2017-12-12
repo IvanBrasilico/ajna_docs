@@ -124,7 +124,7 @@ def importa():
             sch_processing(os.path.join(UPLOAD_FOLDER,
                                         secure_filename(filename)),
                            dest_path=dest_path)
-            return redirect(url_for('risco'))
+            return redirect(url_for('risco', baseid=baseid))
         except Exception as err:
             erro = err.__cause__
     return redirect(url_for('list_files', erro=erro))
