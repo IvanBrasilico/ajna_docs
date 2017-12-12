@@ -189,7 +189,6 @@ class GerenteRisco():
                     result.append(linha)
         return result
 
-
     def parametro_tocsv(self, campo, path=tmpdir):
         """Salva os valores do parâmetro de risco em um arquivo csv
         no formato 'valor', 'tipo_filtro'"""
@@ -203,7 +202,7 @@ class GerenteRisco():
                 lista.append((valor, tipo_filtro.name))
         filename = os.path.join(path, campo + '.csv')
         with open(filename,
-                 'w', encoding=ENCODE, newline='') as f:
+                  'w', encoding=ENCODE, newline='') as f:
             writer = csv.writer(f)
             writer.writerows(lista)
         return filename
