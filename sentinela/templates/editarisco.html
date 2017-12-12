@@ -14,21 +14,21 @@
             {% if parametros %}
             <h4>Parâmetros de risco cadastrados</h4>
             <div id="list" class="row">
-                <form id="frmvalores" onsubmit="add_row()" class="form-group">
+                <form id="frmvalores" class="form-group">
                     <div class="form-group col-sm-4">
-                        <input id="inp" class="form-control" type="text">
+                        <input id="parametro_risco" class="form-control" type="text">
                     </div>
                     <div class="form-group col-sm-1">
-                        <button onclick="add_row()" id="btn_ok" type="button" class="btn btn-default">OK</button>
+                        <button onclick="adicionar_parametro()" id="btn_ok" type="button" class="btn btn-default">OK</button>
                     </div>
                 </form>
                 <table class="inlineTable table table-striped table-bordered table-hover table-responsive" cellspacing="0" cellpadding="0"
                     id="parametros">
                     {% for parametro in parametros %}
                     <tr>
-                        <td id="campo" align="center">{{parametro.nome_campo}}</td>
-                        <td>
-                                <input type="button" class="btn  btn-danger" value="x" onclick="delete_row(this)" align="center"/>
+                        <td id="{{ parametro.id }}" align="center">{{parametro.nome_campo}}</td>
+                        <td align="center">
+                            <input type="button" class="btn  btn-danger" value="x" onclick="exclui_parametro({{ parametro.id }})" />
                         </td>
                     </tr>
                     {% endfor %}
@@ -40,22 +40,38 @@
 </div>
 <div class="table-responsive col-md-12">
     <h4>Lista de Valores do Parâmetro</h4>
+    <form id="frmvalores" onsubmit="add_row()" class="form-group">
+        <div class="form-group col-sm-4">
+            <input id="valor" class="form-control" type="text">
+        </div>
+        <div class="form-group col-sm-4">
+            <select name="filtro" id="tipofiltro">
+                <option value="0">Selecionar</option>
+                <option value="igual">Filtro.igual</option>
+                <option value="comeca_com">Filtro.comeca_com</option>
+                <option value="contem">Filtro.contem</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <button onclick="adicionar_valor()" id="btn_incluir" type="button" class="btn btn-default">Incluir</button>
+        </div>
+    </form>
     <table class="inlineTable table table-striped table-bordered table-hover table-responsive" id="riscos">
-        {% for row in lista_risco %}
+        {% for valor in valores %}
         <tr>
-            {% for col in row %}
-            <td>{{col}}</td>
-            {% endfor %}
+            <td>{{valor.valor}}</td>
+            <td>{{valor.tipo_filtro}}</td>
+            <td align="center">
+                <input type="button" class="btn  btn-danger" value="x" onclick="exclui_valor({{ valor.id }})" />
+            </td>
         </tr>
-        {% endfor %} {% if not lista_risco %}
+        {% endfor %} {% if not valores %}
         <tr>
             <td>Sem resultados.</td>
         </tr>
         {% endif %}
     </table>
-    &nbsp;
 </div>
-
 <div id="bottom" class="row">
     AJNA - Receita Federal do Brasil 2017
 </div>
@@ -68,30 +84,53 @@
             '&visao=' + $("#visao").val()
         )
     }
+    function valor_parametro(nome_campo) {
+        window.location.assign('/edita_risco?padraoid=' + $("#padrao").val() + '&nome_campo=' + nome_campo)
+    }
 
     var parametros = document.querySelector("#parametros tbody");
-    var filtros = document.querySelector("#filtros tbody");
+    var valores = document.querySelector("#riscos tbody")
 
-    function add_row() {
-        var val = $("#inp").val();
-        if (val != '') {
-            $(parametros).append(
-                $('<tr>').append(
-                    $('<td align="center">').text(val),
-                    $('<td>').html('<input type="button" class="btn  btn-danger" value="x" onclick="delete_row(this)" align="center"/>')
-                ));
-            $("#inp").val('');
+    function adicionar_parametro() {
+        var risco = $("#parametro_risco").val();
+        if (risco != '') {
+            window.location.assign('/adiciona_parametro?padraoid=' + $("#padrao").val() +
+                '&risco_novo=' + risco
+            )
         }
     }
 
-    function delete_row(atd) {
-        var atr = atd.parentNode.parentNode;
-        atr.parentNode.removeChild(atr);
+    function adicionar_valor() {
+        var novo_valor = $("#valor").val();
+        var filtro = $("#tipofiltro").val();
+        if(novo_valor != '' && filtro != 0){
+            window.location.assign('/adiciona_valor?padraoid=' + $("#padrao").val() + 
+            '&riscoid=' +$("#riscos").val() +
+                '&novo_valor=' + novo_valor
+            )
+        }
     }
 
-    $("#bases td").dblclick(function () {
-        add_row(this);
+    function excluir_valor(valorid){
+        window.location.assign('/exclui_valor?padraoid=' + $("#padrao").val() +
+            '&riscoid=' + $("#risco").val()
+        )
+    }
+
+    function exclui_parametro(riscoid) {
+        window.location.assign('/exclui_parametro?padraoid=' + $("#padrao").val() +
+            '&riscoid=' + riscoid
+        )
+    }
+
+    $('#parametros td').click(function () {
+        var val = $(this).attr('id');
+        alert(val)
     })
+
+    function mostra_valores(row) {
+        alert($(row).text())
+    }
 
     $(function () {
         var submit_form = function (e) {

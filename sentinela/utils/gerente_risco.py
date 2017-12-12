@@ -189,21 +189,30 @@ class GerenteRisco():
                     result.append(linha)
         return result
 
+    def parametro_tocsv(self, campo, path=tmpdir):
+        """Salva os valores do parâmetro de risco em um arquivo csv
+        no formato 'valor', 'tipo_filtro'"""
+        lista = []
+        lista.append(('valor', 'tipo_filtro'))
+        dict_filtros = self._riscosativos.get(campo)
+        if dict_filtros is None:
+            return False
+        for tipo_filtro, lista_filtros in dict_filtros.items():
+            for valor in lista_filtros:
+                lista.append((valor, tipo_filtro.name))
+        filename = os.path.join(path, campo + '.csv')
+        with open(filename,
+                  'w', encoding=ENCODE, newline='') as f:
+            writer = csv.writer(f)
+            writer.writerows(lista)
+        return filename
+
     def parametros_tocsv(self, path=tmpdir):
         """Salva os parâmetros adicionados a um gerente em um arquivo csv
-
         Ver também: :py:func:`parametros_fromcsv`
         """
-        for campo, dict_filtros in self._riscosativos.items():
-            lista = []
-            lista.append(('valor', 'tipo_filtro'))
-            for tipo_filtro, lista_filtros in dict_filtros.items():
-                for valor in lista_filtros:
-                    lista.append((valor, tipo_filtro.name))
-            with open(os.path.join(path, campo + '.csv'),
-                      'w', encoding=ENCODE, newline='') as f:
-                writer = csv.writer(f)
-                writer.writerows(lista)
+        for campo in self._riscosativos:
+            self.parametro_tocsv(campo, path=path)
 
     def parametros_fromcsv(self, campo, session=None,
                            lista=None, path=tmpdir):
