@@ -16,7 +16,7 @@ setup(
         'Flask-cors',
         'Flask-nav',
         'imageio',
-        'lxml'
+        'lxml',
         'pandas',
         'sqlalchemy'
     ],
