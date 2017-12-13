@@ -16,63 +16,58 @@
                 <select name="padrao" id="padrao">
                     <option value="0">Selecionar</option>
                     {% for padrao in padroes %}
-                    <option value="{{ padrao.id }}"{% if padrao.id|int()==padraoid|int() %} selected="selected" {% endif %}>{{ padrao.nome }}
+                    <option value="{{ padrao.id }}" {% if padrao.id|int()==padraoid|int() %} selected="selected" {% endif %}>{{ padrao.nome }}
                     </option>
                     {% endfor %}
                 </select>
             </p>
             <h4>Parâmetros ativos</h4>
-            <table>
-                {% for parametro in parametros %}
-                <tr>
-                    <td>{{parametro.nome_campo}}</td>
-                    <td>
-                        {% if parametros_ativos %}
-                            <input type="checkbox" name="parametro" value="{{parametro.nome_campo}}"
-                            {% if parametro.nome_campo in parametros_ativos %}
-                             checked
-                            {% endif %}
-                            >
-                        {% else %}
-                            <input type="checkbox" name="parametro" value="{{parametro.nome_campo}}" checked>
-                        {% endif %}
-
-                    </td>
-                    <td>
-                        <a href="/valores_parametro/{{parametro.id}}" target="_blank">Ver valores</a>
-                    </td>
-                </tr>
-                {% endfor %}{% if not parametros %}
-                <tr>
-                    <td>Sem parâmetros cadastrados.</td>
-                </tr>
-                {% endif %}
-            </table>
-
-            <p>Visualização:
-                <select name="visao" id="visao">
-                    <option value="0">Selecionar</option>
-                    {% for visao in visoes %}
-                    <option value="{{ visao.id }}"{% if visao.id|int()==visaoid|int() %} selected="selected" {% endif %}>{{ visao.nome }}
-                    </option>
-                    {% endfor %}
-                </select>
-            </p>
-            <h4>Bases carregadas no Servidor</h4>
-            <table>
-                {% for filename in lista_arquivos %}
-                <tr>
-                    <td>{{filename}}</td>
-                    <td>
-                        <button class="btn-default" onclick="aplica_risco('{{filename}}')">Aplicar</button>
-                    </td>
-                </tr>
-                {% endfor %}{% if not lista_arquivos %}
-                <tr>
-                    <td>Sem bases importadas.</td>
-                </tr>
-                {% endif %}
-            </table>
+            <div class="col-sm-4">
+                <table class="table table-striped table-bordered table-hover table-responsive" cellspacing="0" cellpadding="0">
+                    {% for parametro in parametros %}
+                    <tr>
+                        <td>{{parametro.nome_campo}}</td>
+                        <td>
+                            {% if parametros_ativos %}
+                            <input type="checkbox" name="parametro" value="{{parametro.nome_campo}}" {% if parametro.nome_campo in parametros_ativos
+                                %} checked {% endif %}> {% else %}
+                            <input type="checkbox" name="parametro" value="{{parametro.nome_campo}}" checked> {% endif %}
+                        </td>
+                        <td>
+                            <a href="/valores_parametro/{{parametro.id}}" target="_blank">Ver valores</a>
+                        </td>
+                    </tr>
+                    {% endfor %}{% if not parametros %}
+                    <tr>
+                        <td>Sem parâmetros cadastrados.</td>
+                    </tr>
+                    {% endif %}
+                </table>
+                <p>Visualização:
+                    <select name="visao" id="visao">
+                        <option value="0">Selecionar</option>
+                        {% for visao in visoes %}
+                        <option value="{{ visao.id }}" {% if visao.id|int()==visaoid|int() %} selected="selected" {% endif %}>{{ visao.nome }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </p>
+                <h4>Bases carregadas no Servidor</h4>
+                <table>
+                    {% for filename in lista_arquivos %}
+                    <tr>
+                        <td>{{filename}}</td>
+                        <td>
+                            <button class="btn-default" onclick="aplica_risco('{{filename}}')">Aplicar</button>
+                        </td>
+                    </tr>
+                    {% endfor %}{% if not lista_arquivos %}
+                    <tr>
+                        <td>Sem bases importadas.</td>
+                    </tr>
+                    {% endif %}
+                </table>
+            </div>
         </div>
     </div>
     <div id="list" class="row">
@@ -81,7 +76,7 @@
             {% if csv_salvo %}
             <a href="/static/{{csv_salvo}}">Baixar planilha</a>
             {% endif %}
-            <table>
+            <table class="inlineTable table table-striped table-bordered table-hover table-responsive" cellspacing="0" cellpadding="0">
                 {% for row in lista_risco %}
                 <tr>
                     {% for col in row %}
@@ -105,7 +100,7 @@
 <script>
     function aplica_risco(filename) {
         parametros_selecionados = [];
-        $("input:checkbox[name=parametro]:checked").each(function(){
+        $("input:checkbox[name=parametro]:checked").each(function () {
             parametros_selecionados.push($(this).val());
         });
         window.location.assign('/aplica_risco?filename=' + filename +
