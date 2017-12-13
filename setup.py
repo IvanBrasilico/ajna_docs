@@ -12,6 +12,7 @@ setup(
     install_requires=[
         'Flask',
         'Flask-BootStrap',
+        'Flask-Login',
         'Flask-cors',
         'Flask-nav',
         'imageio',
