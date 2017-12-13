@@ -184,7 +184,7 @@ def risco():
         os.remove(csv_salvo)
     except IOError:
         pass
-    with open(csv_salvo, 'w', encoding=ENCODE) as csv_out:
+    with open(csv_salvo, 'w', encoding=ENCODE, newline='') as csv_out:
         writer = csv.writer(csv_out)
         writer.writerows(lista_risco)
     return render_template('bases.html',
