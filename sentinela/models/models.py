@@ -46,7 +46,6 @@ class MySession():
 
 Base = declarative_base()
 
-
 class BaseOrigem(Base):
     """Metadado sobre as bases de dados disponíveis/integradas.
     Caminho: caminho no disco onde os dados da importação da base

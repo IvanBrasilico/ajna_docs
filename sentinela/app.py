@@ -27,9 +27,11 @@ from flask_bootstrap import Bootstrap
 from flask_nav import Nav
 from flask_nav.elements import Navbar, View
 from werkzeug.utils import secure_filename
+from flask_login import LoginManager, UserMixin, \
+                                login_required, login_user
 
 from sentinela.models.models import (Base, BaseOrigem, BaseOriginal, MySession,
-                                     ParametroRisco, Visao)
+                                     ParametroRisco, Visao, ValorParametro)
 from sentinela.utils.csv_handlers import sch_processing
 from sentinela.utils.gerente_risco import ENCODE, GerenteRisco
 
@@ -213,10 +215,20 @@ def edita_risco():
         ).first()
         if padrao:
             parametros = padrao.parametros
-    return render_template('editarisco.html',
-                           padraoid=padraoid,
+    id_parametro = request.args.get('id_parametro') 
+    valores = [] 
+    if id_parametro: 
+        valor = session.query(ParametroRisco).filter( 
+                ParametroRisco.id == id_parametro
+                ).first() 
+        if valor: 
+            valores = valor.valores 
+    return render_template('editarisco.html', 
+                           padraoid=padraoid, 
                            padroes=padroes,
-                           parametros=parametros)
+                           id_parametro= id_parametro,
+                           parametros=parametros, 
+                           valores=valores) 
 
 
 @app.route('/aplica_risco2')
@@ -253,6 +265,49 @@ def aplica_risco2():
                            lista_risco=lista_risco)
 
 
+@app.route('/exclui_parametro') 
+def exclui_parametro(): 
+    padraoid = request.args.get('padraoid') 
+    riscoid = request.args.get('riscoid') 
+    risco = session.query(ParametroRisco).filter(ParametroRisco.id == riscoid ).delete() 
+    session.commit() 
+    return redirect(url_for('edita_risco', padraoid=padraoid)) 
+ 
+ 
+@app.route('/adiciona_parametro') 
+def adiciona_parametro(): 
+    padraoid = request.args.get('padraoid') 
+    risco_novo = request.args.get('risco_novo') 
+    risco = ParametroRisco(risco_novo) 
+    risco.base_id = padraoid 
+    session.add(risco) 
+    session.commit() 
+    return redirect(url_for('edita_risco', padraoid=padraoid)) 
+
+
+@app.route('/adiciona_valor')
+def adiciona_valor():
+    padraoid = request.args.get('padraoid')
+    novo_valor = request.args.get('novo_valor')
+    tipo_filtro = request.args.get('filtro')
+    riscoid = request.args.get('riscoid')
+    valor = ValorParametro(novo_valor, tipo_filtro)
+    valor.risco_id = riscoid
+    session.add(valor)
+    session.commit()
+    return redirect(url_for('edita_risco', padraoid=padraoid, id_parametro=riscoid))
+
+
+@app.route('/exclui_valor') 
+def exclui_valor(): 
+    padraoid = request.args.get('padraoid') 
+    riscoid = request.args.get('riscoid') 
+    valorid = request.args.get('valorid')
+    risco = session.query(ValorParametro).filter(ValorParametro.id == valorid ).delete() 
+    session.commit() 
+    return redirect(url_for('edita_risco', padraoid=padraoid, id_parametro=riscoid))
+
+
 @nav.navigation()
 def mynavbar():
     return Navbar(
@@ -265,6 +320,48 @@ def mynavbar():
 
 
 nav.init_app(app)
+"""
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = "login"
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']        
+        if password == username + "_secret":
+            id = username.split('user')[1]
+            user = User(id)
+            login_user(user)
+            return redirect(request.args.get("next"))
+        else:
+            return abort(401)
+    else:
+        return render_template('index.html')
+
+
+class User():
+    user_database = {'ivan': ('ivan', 'ivan')}
+
+    def __init__(self, id):
+        self.id = id
+        self.name = "user" + str(id)
+        self.password = self.name + "_secret"
+        
+    def __repr__(self):
+        return "%d/%s/%s" % (self.id, self.name, self.password)
+
+    @classmethod
+    def get(cls, id):
+        return cls.user_database.get(id)
+
+
+@app.errorhandler(401)
+def page_not_found(e):
+    return Response('<p>Login failed</p>')
+"""
 
 app.config['DEBUG'] = os.environ.get('DEBUG', 'None') == '1'
 app.secret_key = 'sk'
