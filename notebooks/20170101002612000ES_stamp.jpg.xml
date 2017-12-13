@@ -1,0 +1,25 @@
+<annotation>
+	<folder>/home/ivan/Área de trabalho/2017/01/01/BSIU2580749</folder>
+	<filename>20170101002612000ES_stamp.jpg</filename>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>600</width>
+		<height>243</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>cc</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>120</xmin>
+			<ymin>28</ymin>
+			<xmax>326</xmax>
+			<ymax>198</ymax>
+		</bndbox>
+	</object>
+</annotation>
