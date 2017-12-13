@@ -2,11 +2,12 @@
 # -*- coding: utf8 -*-
 # FROM LabelImg
 # https://github.com/IvanBrasilico/labelImg/blob/master/libs/pascal_voc_io.py
+import codecs
 import sys
 from xml.etree import ElementTree
 from xml.etree.ElementTree import Element, SubElement
+
 from lxml import etree
-import codecs
 
 XML_EXT = '.xml'
 ENCODE_METHOD = 'utf-8'
