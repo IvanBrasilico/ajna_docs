@@ -4,7 +4,7 @@
         <h2>Escolha o Padrão de Risco a aplicar e a Base de Dados:</h2>
         <div class="col-sm-6">
             <h4>Padrões de risco: </h4>
-            <select name="padrao" id="padrao">
+            <select name="padrao" id="padrao" >
                 <option value="0">Selecionar</option>
                 {% for padrao in padroes %}
                 <option value="{{ padrao.id }}" {% if padrao.id|int()==padraoid|int() %} selected="selected" {% endif %}>{{ padrao.nome }}
@@ -27,7 +27,7 @@
                     {% for parametro in parametros %}
                     <tr>
                         <td id="{{ parametro.id }}" align="center">{{parametro.nome_campo}}</td>
-                        <td align="center">
+                        <td id="{{ parametro.id }}" align="center">
                             <input type="button" class="btn  btn-danger" value="x" onclick="exclui_parametro({{ parametro.id }})" />
                         </td>
                     </tr>
@@ -41,6 +41,11 @@
 <div class="table-responsive col-md-12">
     <h4>Lista de Valores do Parâmetro</h4>
     <form id="frmvalores" onsubmit="add_row()" class="form-group">
+        {% if id_parametro %}
+        <div class="form-group col-sm-1">
+            <input id="id_risco" class="form-control" type="text" value="{{ id_parametro }}" disabled>
+        </div>
+        {% endif %}
         <div class="form-group col-sm-4">
             <input id="valor" class="form-control" type="text">
         </div>
@@ -53,7 +58,7 @@
             </select>
         </div>
         <div class="form-group">
-            <button onclick="adicionar_valor()" id="btn_incluir" type="button" class="btn btn-default">Incluir</button>
+            <button onclick="adicionar_valor()" id="btn_incluir" type="button" class="btn btn-success">Incluir</button>
         </div>
     </form>
     <table class="inlineTable table table-striped table-bordered table-hover table-responsive" id="riscos">
@@ -84,8 +89,8 @@
             '&visao=' + $("#visao").val()
         )
     }
-    function valor_parametro(nome_campo) {
-        window.location.assign('/edita_risco?padraoid=' + $("#padrao").val() + '&nome_campo=' + nome_campo)
+    function valor_parametro(id_parametro) {
+        window.location.assign('/edita_risco?padraoid=' + $("#padrao").val() + '&id_parametro=' + id_parametro)
     }
 
     var parametros = document.querySelector("#parametros tbody");
@@ -100,37 +105,32 @@
         }
     }
 
+    function exclui_parametro(riscoid) {
+        window.location.assign('/exclui_parametro?padraoid=' + $("#padrao").val() + '&riscoid=' + riscoid)
+    }
+
     function adicionar_valor() {
         var novo_valor = $("#valor").val();
         var filtro = $("#tipofiltro").val();
-        if(novo_valor != '' && filtro != 0){
-            window.location.assign('/adiciona_valor?padraoid=' + $("#padrao").val() + 
-            '&riscoid=' +$("#riscos").val() +
-                '&novo_valor=' + novo_valor
+        var id_risco = $("#id_risco").val();
+        if (novo_valor != '' && filtro != 0 && id_risco != undefined) {
+            window.location.assign('/adiciona_valor?padraoid=' + $("#padrao").val() +
+                '&riscoid=' + id_risco + '&novo_valor=' + novo_valor + '&filtro=' + filtro
             )
+
         }
     }
 
-    function excluir_valor(valorid){
+    function exclui_valor(valorid) {
         window.location.assign('/exclui_valor?padraoid=' + $("#padrao").val() +
-            '&riscoid=' + $("#risco").val()
+            '&riscoid=' + $("#id_risco").val() + '&valorid=' + valorid
         )
     }
 
-    function exclui_parametro(riscoid) {
-        window.location.assign('/exclui_parametro?padraoid=' + $("#padrao").val() +
-            '&riscoid=' + riscoid
-        )
-    }
-
-    $('#parametros td').click(function () {
-        var val = $(this).attr('id');
-        alert(val)
+    $('#parametros td:first-child').click( function () {
+        var id_risco = $(this).attr('id')
+        valor_parametro(id_risco)
     })
-
-    function mostra_valores(row) {
-        alert($(row).text())
-    }
 
     $(function () {
         var submit_form = function (e) {
@@ -141,4 +141,9 @@
         $('#padrao').bind('change', submit_form);
     });
 
-</script> {% endblock %}
+</script>
+<style>
+    .row-clicked {
+        background-color: silver;
+    }
+</style> {% endblock %}
