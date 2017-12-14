@@ -1,6 +1,6 @@
 import unittest
 
-from sentinela.models.models import (Base, BaseOriginal, Filtro, DePara, MySession,
+from sentinela.models.models import (Base, BaseOrigem, BaseOriginal, Filtro, DePara, MySession,
                                      ParametroRisco, Tabela, ValorParametro)
 
 
@@ -87,7 +87,10 @@ class TestModel(unittest.TestCase):
 
     def test_depara(self):
         session = self.session
-        depara = DePara('antigo', 'novo')
+        base = BaseOrigem('Planilha_BTP')
+        self.session.add(base)
+        self.session.commit()
+        depara = DePara('antigo', 'novo', base)
         assert depara.titulo_ant == 'antigo'
         assert depara.titulo_novo == 'novo'
         session.add(depara)
