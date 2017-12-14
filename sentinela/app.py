@@ -33,10 +33,6 @@ from sentinela.models.models import (Base, BaseOrigem, BaseOriginal, MySession,
 from sentinela.utils.csv_handlers import sch_processing
 from sentinela.utils.gerente_risco import ENCODE, GerenteRisco
 
-# from flask_login import LoginManager, UserMixin, \
-#    login_required, login_user
-
-
 mysession = MySession(Base)
 session = mysession.session
 engine = mysession.engine
@@ -326,50 +322,11 @@ def mynavbar():
 
 
 nav.init_app(app)
-"""
-
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view = "login"
-
-@app.route("/login", methods=["GET", "POST"])
-def login():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        if password == username + "_secret":
-            id = username.split('user')[1]
-            user = User(id)
-            login_user(user)
-            return redirect(request.args.get("next"))
-        else:
-            return abort(401)
-    else:
-        return render_template('index.html')
 
 
-class User():
-    user_database = {'ivan': ('ivan', 'ivan')}
-
-    def __init__(self, id):
-        self.id = id
-        self.name = "user" + str(id)
-        self.password = self.name + "_secret"
-
-    def __repr__(self):
-        return "%d/%s/%s" % (self.id, self.name, self.password)
-
-    @classmethod
-    def get(cls, id):
-        return cls.user_database.get(id)
-
-
-@app.errorhandler(401)
-def page_not_found(e):
-    return Response('<p>Login failed</p>')
-"""
 
 app.config['DEBUG'] = os.environ.get('DEBUG', 'None') == '1'
 app.secret_key = 'sk'
+
 if __name__ == '__main__':
     app.run()
