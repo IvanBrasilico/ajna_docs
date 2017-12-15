@@ -1,7 +1,8 @@
 import unittest
 
-from sentinela.models.models import (Base, BaseOrigem, BaseOriginal, Filtro, DePara, MySession,
-                                     ParametroRisco, Tabela, ValorParametro)
+from sentinela.models.models import (Base, BaseOrigem, BaseOriginal, DePara,
+                                     Filtro, MySession, ParametroRisco, Tabela,
+                                     ValorParametro)
 
 
 class TestModel(unittest.TestCase):

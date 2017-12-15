@@ -24,6 +24,7 @@ import os
 from flask import Flask, flash, redirect, render_template, request, url_for
 from flask_bootstrap import Bootstrap
 # from flask_cors import CORS
+from flask_login import login_required
 from flask_nav import Nav
 from flask_nav.elements import Navbar, View
 from werkzeug.utils import secure_filename
@@ -62,6 +63,7 @@ def index():
     return render_template('index.html')
 
 
+@login_required
 @app.route('/valores_parametro/<parametro_id>')
 def valores_parametro(parametro_id):
     valores = []
@@ -322,7 +324,6 @@ def mynavbar():
 
 
 nav.init_app(app)
-
 
 
 app.config['DEBUG'] = os.environ.get('DEBUG', 'None') == '1'
