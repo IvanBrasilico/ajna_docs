@@ -1,7 +1,7 @@
 {% extends "layout.html" %} {% block content %}
 <div id="main" class="container-fluid">
     <div id="top" class="row">
-        <h2>Escolha o Padrão de Risco a aplicar e a Base de Dados:</h2>
+        <h3>Escolha o Padrão de Risco a editar:</h2>
     </div>
     <div class="row">
         <div class="col-sm-6">
@@ -24,10 +24,9 @@
                         <button onclick="adicionar_parametro()" id="btn_ok" type="button" class="btn btn-default">OK</button>
                     </div>
                 </form>
-                <table class="inlineTable table table-bordered table-hover table-responsive" cellspacing="0" cellpadding="0"
-                    id="parametros">
+                <table class="inlineTable table table-bordered table-hover table-responsive" cellspacing="0" cellpadding="0" id="parametros">
                     {% for parametro in parametros %}
-                    <tr id="{{ parametro.id }}"{% if parametro.id|int()==id_parametro|int() %} class="row-clicked" {% endif %}>
+                    <tr id="{{ parametro.id }}" {% if parametro.id|int()==id_parametro|int() %} class="row-clicked" {% endif %}>
                         <td id="{{ parametro.id }}" align="center">{{parametro.nome_campo}}</td>
                         <td align="center">
                             <input type="button" class="btn  btn-danger" value="x" onclick="exclui_parametro({{ parametro.id }})" />
@@ -39,7 +38,7 @@
             </div>
         </div>
         {% if parametros %}
-        <div class="table-responsive col-sm-5">
+        <div class="table-responsive col-sm-6">
             <h4>Lista de Valores do Parâmetro</h4>
             <form id="frmvalores" onsubmit="add_row()" class="form-group">
                 {% if id_parametro %}
