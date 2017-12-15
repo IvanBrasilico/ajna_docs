@@ -249,7 +249,7 @@ AF_X25	../.tox/check/lib/python3.5/plat-x86_64-linux-gnu/IN.py	/^AF_X25 = PF_X25
 AF_X25	../.tox/docs/lib/python3.5/plat-x86_64-linux-gnu/IN.py	/^AF_X25 = PF_X25$/;"	kind:variable	line:627
 AF_X25	../.tox/py35/lib/python3.5/plat-x86_64-linux-gnu/IN.py	/^AF_X25 = PF_X25$/;"	kind:variable	line:627
 AF_X25	../venv/lib/python3.5/plat-x86_64-linux-gnu/IN.py	/^AF_X25 = PF_X25$/;"	kind:variable	line:627
-ALLOWED_EXTENSIONS	../sentinela/app.py	/^ALLOWED_EXTENSIONS = set(['txt', 'csv', 'zip'])$/;"	kind:variable	line:50
+ALLOWED_EXTENSIONS	../sentinela/app.py	/^ALLOWED_EXTENSIONS = set(['txt', 'csv', 'zip'])$/;"	kind:variable	line:54
 AMPER	../.tox/check/lib/python3.5/token.py	/^AMPER = 19$/;"	kind:variable	line:32
 AMPER	../.tox/docs/lib/python3.5/token.py	/^AMPER = 19$/;"	kind:variable	line:32
 AMPER	../.tox/py35/lib/python3.5/token.py	/^AMPER = 19$/;"	kind:variable	line:32
@@ -260,7 +260,7 @@ AMPEREQUAL	../.tox/docs/lib/python3.5/token.py	/^AMPEREQUAL = 41$/;"	kind:variab
 AMPEREQUAL	../.tox/py35/lib/python3.5/token.py	/^AMPEREQUAL = 41$/;"	kind:variable	line:54
 AMPEREQUAL	../.tox/py36/lib/python3.6/token.py	/^AMPEREQUAL = 41$/;"	kind:variable	line:54
 AMPEREQUAL	../venv/lib/python3.5/token.py	/^AMPEREQUAL = 41$/;"	kind:variable	line:54
-APP_PATH	../sentinela/app.py	/^APP_PATH = os.path.dirname(os.path.abspath(__file__))$/;"	kind:variable	line:47
+APP_PATH	../sentinela/app.py	/^APP_PATH = os.path.dirname(os.path.abspath(__file__))$/;"	kind:variable	line:51
 AREGTYPE	../.tox/check/lib/python3.5/tarfile.py	/^AREGTYPE = b"\\0"                # regular file$/;"	kind:variable	line:83
 AREGTYPE	../.tox/docs/lib/python3.5/tarfile.py	/^AREGTYPE = b"\\0"                # regular file$/;"	kind:variable	line:83
 AREGTYPE	../.tox/py35/lib/python3.5/tarfile.py	/^AREGTYPE = b"\\0"                # regular file$/;"	kind:variable	line:83
@@ -1118,7 +1118,7 @@ CSIGNAL	../.tox/check/lib/python3.5/plat-x86_64-linux-gnu/TYPES.py	/^CSIGNAL = 0
 CSIGNAL	../.tox/docs/lib/python3.5/plat-x86_64-linux-gnu/TYPES.py	/^CSIGNAL = 0x000000ff$/;"	kind:variable	line:87
 CSIGNAL	../.tox/py35/lib/python3.5/plat-x86_64-linux-gnu/TYPES.py	/^CSIGNAL = 0x000000ff$/;"	kind:variable	line:87
 CSIGNAL	../venv/lib/python3.5/plat-x86_64-linux-gnu/TYPES.py	/^CSIGNAL = 0x000000ff$/;"	kind:variable	line:87
-CSV_FOLDER	../sentinela/app.py	/^CSV_FOLDER = os.path.join(APP_PATH, 'CSV')$/;"	kind:variable	line:49
+CSV_FOLDER	../sentinela/app.py	/^CSV_FOLDER = os.path.join(APP_PATH, 'CSV')$/;"	kind:variable	line:53
 CSV_NAMEDRISCO_TEST	../sentinela/tests/exemplos/test_cov.py	/^CSV_NAMEDRISCO_TEST = 'sentinela\/tests\/csv_namedrisco_example.csv'$/;"	kind:variable	line:12
 CSV_NAMEDRISCO_TEST	../sentinela/tests/gerente_risco_test.py	/^CSV_NAMEDRISCO_TEST = 'sentinela\/tests\/csv_namedrisco_example.csv'$/;"	kind:variable	line:11
 CSV_RISCO_TEST	../sentinela/tests/gerente_risco_test.py	/^CSV_RISCO_TEST = 'sentinela\/tests\/csv_risco_example.csv'$/;"	kind:variable	line:10
@@ -1964,6 +1964,7 @@ ENABLE_USER_SITE	../.tox/py36/lib/python3.6/site.py	/^ENABLE_USER_SITE = None$/;
 ENABLE_USER_SITE	../venv/lib/python3.5/site.py	/^ENABLE_USER_SITE = None$/;"	kind:variable	line:81
 ENCODE	../sentinela/utils/csv_handlers.py	/^ENCODE = 'latin1'$/;"	kind:variable	line:19
 ENCODE	../sentinela/utils/gerente_risco.py	/^ENCODE = 'latin1'$/;"	kind:variable	line:15
+ENCODE_METHOD	../image_aq/utils/pascal_voc_io.py	/^ENCODE_METHOD = 'utf-8'$/;"	kind:variable	line:13
 ENCODING	../.tox/check/lib/python3.5/tarfile.py	/^    ENCODING = "utf-8"$/;"	kind:variable	line:145
 ENCODING	../.tox/check/lib/python3.5/tarfile.py	/^    ENCODING = sys.getfilesystemencoding()$/;"	kind:variable	line:147
 ENCODING	../.tox/check/lib/python3.5/tokenize.py	/^ENCODING = N_TOKENS + 2$/;"	kind:variable	line:48
@@ -2029,6 +2030,11 @@ EncodedFile	../.tox/docs/lib/python3.5/codecs.py	/^def EncodedFile(file, data_en
 EncodedFile	../.tox/py35/lib/python3.5/codecs.py	/^def EncodedFile(file, data_encoding, file_encoding=None, errors='strict'):$/;"	kind:function	line:904
 EncodedFile	../.tox/py36/lib/python3.6/codecs.py	/^def EncodedFile(file, data_encoding, file_encoding=None, errors='strict'):$/;"	kind:function	line:904
 EncodedFile	../venv/lib/python3.5/codecs.py	/^def EncodedFile(file, data_encoding, file_encoding=None, errors='strict'):$/;"	kind:function	line:904
+Enhance	../.tox/check/bin/enhancer.py	/^class Enhance(tkinter.Frame):$/;"	kind:class	line:23
+Enhance	../.tox/docs/bin/enhancer.py	/^class Enhance(tkinter.Frame):$/;"	kind:class	line:23
+Enhance	../.tox/py35/bin/enhancer.py	/^class Enhance(tkinter.Frame):$/;"	kind:class	line:23
+Enhance	../.tox/py36/bin/enhancer.py	/^class Enhance(tkinter.Frame):$/;"	kind:class	line:23
+Enhance	../venv/bin/enhancer.py	/^class Enhance(tkinter.Frame):$/;"	kind:class	line:23
 Enum	../.tox/py36/lib/python3.6/enum.py	/^Enum = None$/;"	kind:variable	line:109
 Enum	../.tox/py36/lib/python3.6/enum.py	/^class Enum(metaclass=EnumMeta):$/;"	kind:class	line:509
 EnumMeta	../.tox/py36/lib/python3.6/enum.py	/^class EnumMeta(type):$/;"	kind:class	line:112
@@ -4595,6 +4601,11 @@ InspectLoader	../.tox/py36/lib/python3.6/importlib/abc.py	/^class InspectLoader(
 InspectLoader	../venv/lib/python3.5/importlib/abc.py	/^class InspectLoader(Loader):$/;"	kind:class	line:186
 IntEnum	../.tox/py36/lib/python3.6/enum.py	/^class IntEnum(int, Enum):$/;"	kind:class	line:639
 IntFlag	../.tox/py36/lib/python3.6/enum.py	/^class IntFlag(int, Flag):$/;"	kind:class	line:755
+Interval	../.tox/check/bin/explode.py	/^class Interval(object):$/;"	kind:class	line:16
+Interval	../.tox/docs/bin/explode.py	/^class Interval(object):$/;"	kind:class	line:16
+Interval	../.tox/py35/bin/explode.py	/^class Interval(object):$/;"	kind:class	line:16
+Interval	../.tox/py36/bin/explode.py	/^class Interval(object):$/;"	kind:class	line:16
+Interval	../venv/bin/explode.py	/^class Interval(object):$/;"	kind:class	line:16
 Intnumber	../.tox/check/lib/python3.5/tokenize.py	/^Intnumber = group(Hexnumber, Binnumber, Octnumber, Decnumber)$/;"	kind:variable	line:126
 Intnumber	../.tox/docs/lib/python3.5/tokenize.py	/^Intnumber = group(Hexnumber, Binnumber, Octnumber, Decnumber)$/;"	kind:variable	line:126
 Intnumber	../.tox/py35/lib/python3.5/tokenize.py	/^Intnumber = group(Hexnumber, Binnumber, Octnumber, Decnumber)$/;"	kind:variable	line:126
@@ -5241,6 +5252,11 @@ PF_X25	../.tox/check/lib/python3.5/plat-x86_64-linux-gnu/IN.py	/^PF_X25 = 9$/;"	
 PF_X25	../.tox/docs/lib/python3.5/plat-x86_64-linux-gnu/IN.py	/^PF_X25 = 9$/;"	kind:variable	line:582
 PF_X25	../.tox/py35/lib/python3.5/plat-x86_64-linux-gnu/IN.py	/^PF_X25 = 9$/;"	kind:variable	line:582
 PF_X25	../venv/lib/python3.5/plat-x86_64-linux-gnu/IN.py	/^PF_X25 = 9$/;"	kind:variable	line:582
+PILDriver	../.tox/check/bin/pildriver.py	/^class PILDriver(object):$/;"	kind:class	line:56
+PILDriver	../.tox/docs/bin/pildriver.py	/^class PILDriver(object):$/;"	kind:class	line:56
+PILDriver	../.tox/py35/bin/pildriver.py	/^class PILDriver(object):$/;"	kind:class	line:56
+PILDriver	../.tox/py36/bin/pildriver.py	/^class PILDriver(object):$/;"	kind:class	line:56
+PILDriver	../venv/bin/pildriver.py	/^class PILDriver(object):$/;"	kind:class	line:56
 PKG_DIRECTORY	../.tox/check/lib/python3.5/imp.py	/^PKG_DIRECTORY = 5$/;"	kind:variable	line:41
 PKG_DIRECTORY	../.tox/docs/lib/python3.5/imp.py	/^PKG_DIRECTORY = 5$/;"	kind:variable	line:41
 PKG_DIRECTORY	../.tox/py35/lib/python3.5/imp.py	/^PKG_DIRECTORY = 5$/;"	kind:variable	line:41
@@ -5304,7 +5320,14 @@ P_WAIT	../.tox/check/lib/python3.5/os.py	/^    P_WAIT = 0$/;"	kind:variable	line
 P_WAIT	../.tox/docs/lib/python3.5/os.py	/^    P_WAIT = 0$/;"	kind:variable	line:885
 P_WAIT	../.tox/py35/lib/python3.5/os.py	/^    P_WAIT = 0$/;"	kind:variable	line:885
 P_WAIT	../venv/lib/python3.5/os.py	/^    P_WAIT = 0$/;"	kind:variable	line:885
+PaintCanvas	../.tox/check/bin/painter.py	/^class PaintCanvas(tkinter.Canvas):$/;"	kind:class	line:25
+PaintCanvas	../.tox/docs/bin/painter.py	/^class PaintCanvas(tkinter.Canvas):$/;"	kind:class	line:25
+PaintCanvas	../.tox/py35/bin/painter.py	/^class PaintCanvas(tkinter.Canvas):$/;"	kind:class	line:25
+PaintCanvas	../.tox/py36/bin/painter.py	/^class PaintCanvas(tkinter.Canvas):$/;"	kind:class	line:25
+PaintCanvas	../venv/bin/painter.py	/^class PaintCanvas(tkinter.Canvas):$/;"	kind:class	line:25
 ParametroRisco	../sentinela/models/models.py	/^class ParametroRisco(Base):$/;"	kind:class	line:80
+PascalVocReader	../image_aq/utils/pascal_voc_io.py	/^class PascalVocReader:$/;"	kind:class	line:131
+PascalVocWriter	../image_aq/utils/pascal_voc_io.py	/^class PascalVocWriter:$/;"	kind:class	line:15
 PathEntryFinder	../.tox/check/lib/python3.5/importlib/abc.py	/^class PathEntryFinder(Finder):$/;"	kind:class	line:79
 PathEntryFinder	../.tox/docs/lib/python3.5/importlib/abc.py	/^class PathEntryFinder(Finder):$/;"	kind:class	line:79
 PathEntryFinder	../.tox/py35/lib/python3.5/importlib/abc.py	/^class PathEntryFinder(Finder):$/;"	kind:class	line:79
@@ -7830,6 +7853,21 @@ UF_OPAQUE	../.tox/docs/lib/python3.5/stat.py	/^UF_OPAQUE    = 0x00000008  # dire
 UF_OPAQUE	../.tox/py35/lib/python3.5/stat.py	/^UF_OPAQUE    = 0x00000008  # directory is opaque when viewed through a union stack$/;"	kind:variable	line:101
 UF_OPAQUE	../.tox/py36/lib/python3.6/stat.py	/^UF_OPAQUE    = 0x00000008  # directory is opaque when viewed through a union stack$/;"	kind:variable	line:101
 UF_OPAQUE	../venv/lib/python3.5/stat.py	/^UF_OPAQUE    = 0x00000008  # directory is opaque when viewed through a union stack$/;"	kind:variable	line:101
+UI	../.tox/check/bin/player.py	/^class UI(tkinter.Label):$/;"	kind:class	line:22
+UI	../.tox/check/bin/thresholder.py	/^class UI(tkinter.Frame):$/;"	kind:class	line:23
+UI	../.tox/check/bin/viewer.py	/^class UI(tkinter.Label):$/;"	kind:class	line:22
+UI	../.tox/docs/bin/player.py	/^class UI(tkinter.Label):$/;"	kind:class	line:22
+UI	../.tox/docs/bin/thresholder.py	/^class UI(tkinter.Frame):$/;"	kind:class	line:23
+UI	../.tox/docs/bin/viewer.py	/^class UI(tkinter.Label):$/;"	kind:class	line:22
+UI	../.tox/py35/bin/player.py	/^class UI(tkinter.Label):$/;"	kind:class	line:22
+UI	../.tox/py35/bin/thresholder.py	/^class UI(tkinter.Frame):$/;"	kind:class	line:23
+UI	../.tox/py35/bin/viewer.py	/^class UI(tkinter.Label):$/;"	kind:class	line:22
+UI	../.tox/py36/bin/player.py	/^class UI(tkinter.Label):$/;"	kind:class	line:22
+UI	../.tox/py36/bin/thresholder.py	/^class UI(tkinter.Frame):$/;"	kind:class	line:23
+UI	../.tox/py36/bin/viewer.py	/^class UI(tkinter.Label):$/;"	kind:class	line:22
+UI	../venv/bin/player.py	/^class UI(tkinter.Label):$/;"	kind:class	line:22
+UI	../venv/bin/thresholder.py	/^class UI(tkinter.Frame):$/;"	kind:class	line:23
+UI	../venv/bin/viewer.py	/^class UI(tkinter.Label):$/;"	kind:class	line:22
 UINT16_C	../.tox/check/lib/python3.5/plat-x86_64-linux-gnu/IN.py	/^def UINT16_C(c):$/;"	kind:function	line:222
 UINT16_C	../.tox/docs/lib/python3.5/plat-x86_64-linux-gnu/IN.py	/^def UINT16_C(c):$/;"	kind:function	line:222
 UINT16_C	../.tox/py35/lib/python3.5/plat-x86_64-linux-gnu/IN.py	/^def UINT16_C(c):$/;"	kind:function	line:222
@@ -7899,7 +7937,7 @@ UIO_MAXIOV	../.tox/docs/lib/python3.5/plat-x86_64-linux-gnu/IN.py	/^UIO_MAXIOV =
 UIO_MAXIOV	../.tox/py35/lib/python3.5/plat-x86_64-linux-gnu/IN.py	/^UIO_MAXIOV = 1024$/;"	kind:variable	line:565
 UIO_MAXIOV	../venv/lib/python3.5/plat-x86_64-linux-gnu/IN.py	/^UIO_MAXIOV = 1024$/;"	kind:variable	line:565
 UNICODE	../.tox/py36/lib/python3.6/re.py	/^    UNICODE = sre_compile.SRE_FLAG_UNICODE # assume unicode "locale"$/;"	kind:variable	line:146
-UPLOAD_FOLDER	../sentinela/app.py	/^UPLOAD_FOLDER = os.path.join(APP_PATH, 'files')$/;"	kind:variable	line:48
+UPLOAD_FOLDER	../sentinela/app.py	/^UPLOAD_FOLDER = os.path.join(APP_PATH, 'files')$/;"	kind:variable	line:52
 USER_BASE	../.tox/check/lib/python3.5/site.py	/^USER_BASE = None$/;"	kind:variable	line:84
 USER_BASE	../.tox/docs/lib/python3.5/site.py	/^USER_BASE = None$/;"	kind:variable	line:84
 USER_BASE	../.tox/py35/lib/python3.5/site.py	/^USER_BASE = None$/;"	kind:variable	line:84
@@ -7946,10 +7984,20 @@ VBAREQUAL	../.tox/py35/lib/python3.5/token.py	/^VBAREQUAL = 42$/;"	kind:variable
 VBAREQUAL	../.tox/py36/lib/python3.6/token.py	/^VBAREQUAL = 42$/;"	kind:variable	line:55
 VBAREQUAL	../venv/lib/python3.5/token.py	/^VBAREQUAL = 42$/;"	kind:variable	line:55
 VERBOSE	../.tox/py36/lib/python3.6/re.py	/^    VERBOSE = sre_compile.SRE_FLAG_VERBOSE # ignore whitespace and comments$/;"	kind:variable	line:149
+VERSION	../.tox/check/bin/pilfont.py	/^VERSION = "0.4"$/;"	kind:variable	line:22
+VERSION	../.tox/check/bin/pilprint.py	/^VERSION = "pilprint 0.3\/2003-05-05"$/;"	kind:variable	line:20
 VERSION	../.tox/check/lib/python3.5/random.py	/^    VERSION = 3     # used by getstate\/setstate$/;"	kind:variable	line:82
+VERSION	../.tox/docs/bin/pilfont.py	/^VERSION = "0.4"$/;"	kind:variable	line:22
+VERSION	../.tox/docs/bin/pilprint.py	/^VERSION = "pilprint 0.3\/2003-05-05"$/;"	kind:variable	line:20
 VERSION	../.tox/docs/lib/python3.5/random.py	/^    VERSION = 3     # used by getstate\/setstate$/;"	kind:variable	line:82
+VERSION	../.tox/py35/bin/pilfont.py	/^VERSION = "0.4"$/;"	kind:variable	line:22
+VERSION	../.tox/py35/bin/pilprint.py	/^VERSION = "pilprint 0.3\/2003-05-05"$/;"	kind:variable	line:20
 VERSION	../.tox/py35/lib/python3.5/random.py	/^    VERSION = 3     # used by getstate\/setstate$/;"	kind:variable	line:82
+VERSION	../.tox/py36/bin/pilfont.py	/^VERSION = "0.4"$/;"	kind:variable	line:22
+VERSION	../.tox/py36/bin/pilprint.py	/^VERSION = "pilprint 0.3\/2003-05-05"$/;"	kind:variable	line:20
 VERSION	../.tox/py36/lib/python3.6/random.py	/^    VERSION = 3     # used by getstate\/setstate$/;"	kind:variable	line:85
+VERSION	../venv/bin/pilfont.py	/^VERSION = "0.4"$/;"	kind:variable	line:22
+VERSION	../venv/bin/pilprint.py	/^VERSION = "pilprint 0.3\/2003-05-05"$/;"	kind:variable	line:20
 VERSION	../venv/lib/python3.5/random.py	/^    VERSION = 3     # used by getstate\/setstate$/;"	kind:variable	line:82
 ValorParametro	../sentinela/models/models.py	/^class ValorParametro(Base):$/;"	kind:class	line:98
 ValuesView	../.tox/check/lib/python3.5/_collections_abc.py	/^class ValuesView(MappingView):$/;"	kind:class	line:682
@@ -8020,6 +8068,7 @@ XHDTYPE	../.tox/docs/lib/python3.5/tarfile.py	/^XHDTYPE = b"x"                  
 XHDTYPE	../.tox/py35/lib/python3.5/tarfile.py	/^XHDTYPE = b"x"                  # POSIX.1-2001 extended header$/;"	kind:variable	line:96
 XHDTYPE	../.tox/py36/lib/python3.6/tarfile.py	/^XHDTYPE = b"x"                  # POSIX.1-2001 extended header$/;"	kind:variable	line:103
 XHDTYPE	../venv/lib/python3.5/tarfile.py	/^XHDTYPE = b"x"                  # POSIX.1-2001 extended header$/;"	kind:variable	line:96
+XML_EXT	../image_aq/utils/pascal_voc_io.py	/^XML_EXT = '.xml'$/;"	kind:variable	line:12
 _85encode	../.tox/check/lib/python3.5/base64.py	/^def _85encode(b, chars, chars2, pad=False, foldnuls=False, foldspaces=False):$/;"	kind:function	line:287
 _85encode	../.tox/docs/lib/python3.5/base64.py	/^def _85encode(b, chars, chars2, pad=False, foldnuls=False, foldspaces=False):$/;"	kind:function	line:287
 _85encode	../.tox/py35/lib/python3.5/base64.py	/^def _85encode(b, chars, chars2, pad=False, foldnuls=False, foldspaces=False):$/;"	kind:function	line:287
@@ -10556,6 +10605,7 @@ __getattribute__	../.tox/docs/lib/python3.5/importlib/util.py	/^    def __getatt
 __getattribute__	../.tox/py35/lib/python3.5/importlib/util.py	/^    def __getattribute__(self, attr):$/;"	kind:member	line:216
 __getattribute__	../.tox/py36/lib/python3.6/importlib/util.py	/^    def __getattribute__(self, attr):$/;"	kind:member	line:211
 __getattribute__	../venv/lib/python3.5/importlib/util.py	/^    def __getattribute__(self, attr):$/;"	kind:member	line:216
+__getitem__	../.tox/check/bin/explode.py	/^    def __getitem__(self, index):$/;"	kind:member	line:44
 __getitem__	../.tox/check/lib/python3.5/_collections_abc.py	/^    def __getitem__(self, index):$/;"	kind:member	line:808
 __getitem__	../.tox/check/lib/python3.5/_collections_abc.py	/^    def __getitem__(self, key):$/;"	kind:member	line:589
 __getitem__	../.tox/check/lib/python3.5/collections/__init__.py	/^    def __getitem__(self, i): return self.data[i]$/;"	kind:member	line:1045
@@ -10567,6 +10617,7 @@ __getitem__	../.tox/check/lib/python3.5/os.py	/^    def __getitem__(self, key):$
 __getitem__	../.tox/check/lib/python3.5/sre_parse.py	/^    def __getitem__(self, index):$/;"	kind:member	line:157
 __getitem__	../.tox/check/lib/python3.5/weakref.py	/^    def __getitem__(self, key):$/;"	kind:member	line:130
 __getitem__	../.tox/check/lib/python3.5/weakref.py	/^    def __getitem__(self, key):$/;"	kind:member	line:364
+__getitem__	../.tox/docs/bin/explode.py	/^    def __getitem__(self, index):$/;"	kind:member	line:44
 __getitem__	../.tox/docs/lib/python3.5/_collections_abc.py	/^    def __getitem__(self, index):$/;"	kind:member	line:808
 __getitem__	../.tox/docs/lib/python3.5/_collections_abc.py	/^    def __getitem__(self, key):$/;"	kind:member	line:589
 __getitem__	../.tox/docs/lib/python3.5/collections/__init__.py	/^    def __getitem__(self, i): return self.data[i]$/;"	kind:member	line:1045
@@ -10578,6 +10629,7 @@ __getitem__	../.tox/docs/lib/python3.5/os.py	/^    def __getitem__(self, key):$/
 __getitem__	../.tox/docs/lib/python3.5/sre_parse.py	/^    def __getitem__(self, index):$/;"	kind:member	line:157
 __getitem__	../.tox/docs/lib/python3.5/weakref.py	/^    def __getitem__(self, key):$/;"	kind:member	line:130
 __getitem__	../.tox/docs/lib/python3.5/weakref.py	/^    def __getitem__(self, key):$/;"	kind:member	line:364
+__getitem__	../.tox/py35/bin/explode.py	/^    def __getitem__(self, index):$/;"	kind:member	line:44
 __getitem__	../.tox/py35/lib/python3.5/_collections_abc.py	/^    def __getitem__(self, index):$/;"	kind:member	line:808
 __getitem__	../.tox/py35/lib/python3.5/_collections_abc.py	/^    def __getitem__(self, key):$/;"	kind:member	line:589
 __getitem__	../.tox/py35/lib/python3.5/collections/__init__.py	/^    def __getitem__(self, i): return self.data[i]$/;"	kind:member	line:1045
@@ -10589,6 +10641,7 @@ __getitem__	../.tox/py35/lib/python3.5/os.py	/^    def __getitem__(self, key):$/
 __getitem__	../.tox/py35/lib/python3.5/sre_parse.py	/^    def __getitem__(self, index):$/;"	kind:member	line:157
 __getitem__	../.tox/py35/lib/python3.5/weakref.py	/^    def __getitem__(self, key):$/;"	kind:member	line:130
 __getitem__	../.tox/py35/lib/python3.5/weakref.py	/^    def __getitem__(self, key):$/;"	kind:member	line:364
+__getitem__	../.tox/py36/bin/explode.py	/^    def __getitem__(self, index):$/;"	kind:member	line:44
 __getitem__	../.tox/py36/lib/python3.6/_collections_abc.py	/^    def __getitem__(self, index):$/;"	kind:member	line:876
 __getitem__	../.tox/py36/lib/python3.6/_collections_abc.py	/^    def __getitem__(self, key):$/;"	kind:member	line:654
 __getitem__	../.tox/py36/lib/python3.6/collections/__init__.py	/^    def __getitem__(self, i): return self.data[i]$/;"	kind:member	line:1050
@@ -10601,6 +10654,7 @@ __getitem__	../.tox/py36/lib/python3.6/os.py	/^    def __getitem__(self, key):$/
 __getitem__	../.tox/py36/lib/python3.6/sre_parse.py	/^    def __getitem__(self, index):$/;"	kind:member	line:163
 __getitem__	../.tox/py36/lib/python3.6/weakref.py	/^    def __getitem__(self, key):$/;"	kind:member	line:134
 __getitem__	../.tox/py36/lib/python3.6/weakref.py	/^    def __getitem__(self, key):$/;"	kind:member	line:393
+__getitem__	../venv/bin/explode.py	/^    def __getitem__(self, index):$/;"	kind:member	line:44
 __getitem__	../venv/lib/python3.5/_collections_abc.py	/^    def __getitem__(self, index):$/;"	kind:member	line:808
 __getitem__	../venv/lib/python3.5/_collections_abc.py	/^    def __getitem__(self, key):$/;"	kind:member	line:589
 __getitem__	../venv/lib/python3.5/collections/__init__.py	/^    def __getitem__(self, i): return self.data[i]$/;"	kind:member	line:1045
@@ -10798,6 +10852,12 @@ __index__	../.tox/docs/lib/python3.5/operator.py	/^__index__ = index$/;"	kind:va
 __index__	../.tox/py35/lib/python3.5/operator.py	/^__index__ = index$/;"	kind:variable	line:431
 __index__	../.tox/py36/lib/python3.6/operator.py	/^__index__ = index$/;"	kind:variable	line:431
 __index__	../venv/lib/python3.5/operator.py	/^__index__ = index$/;"	kind:variable	line:431
+__init__	../.tox/check/bin/enhancer.py	/^    def __init__(self, master, image, name, enhancer, lo, hi):$/;"	kind:member	line:24
+__init__	../.tox/check/bin/explode.py	/^    def __init__(self, interval="0"):$/;"	kind:member	line:18
+__init__	../.tox/check/bin/painter.py	/^    def __init__(self, master, image):$/;"	kind:member	line:26
+__init__	../.tox/check/bin/player.py	/^    def __init__(self, master, im):$/;"	kind:member	line:24
+__init__	../.tox/check/bin/thresholder.py	/^    def __init__(self, master, im, value=128):$/;"	kind:member	line:24
+__init__	../.tox/check/bin/viewer.py	/^    def __init__(self, master, im):$/;"	kind:member	line:24
 __init__	../.tox/check/lib/python3.5/__future__.py	/^    def __init__(self, optionalRelease, mandatoryRelease, compiler_flag):$/;"	kind:member	line:79
 __init__	../.tox/check/lib/python3.5/_collections_abc.py	/^    def __init__(self, mapping):$/;"	kind:member	line:631
 __init__	../.tox/check/lib/python3.5/_dummy_thread.py	/^    def __init__(self):$/;"	kind:member	line:99
@@ -10890,6 +10950,12 @@ __init__	../.tox/check/lib/python3.5/weakref.py	/^    def __init__(*args, **kw):
 __init__	../.tox/check/lib/python3.5/weakref.py	/^    def __init__(self, dict=None):$/;"	kind:member	line:325
 __init__	../.tox/check/lib/python3.5/weakref.py	/^    def __init__(self, ob, callback, key):$/;"	kind:member	line:310
 __init__	../.tox/check/lib/python3.5/weakref.py	/^    def __init__(self, obj, func, *args, **kwargs):$/;"	kind:member	line:497
+__init__	../.tox/docs/bin/enhancer.py	/^    def __init__(self, master, image, name, enhancer, lo, hi):$/;"	kind:member	line:24
+__init__	../.tox/docs/bin/explode.py	/^    def __init__(self, interval="0"):$/;"	kind:member	line:18
+__init__	../.tox/docs/bin/painter.py	/^    def __init__(self, master, image):$/;"	kind:member	line:26
+__init__	../.tox/docs/bin/player.py	/^    def __init__(self, master, im):$/;"	kind:member	line:24
+__init__	../.tox/docs/bin/thresholder.py	/^    def __init__(self, master, im, value=128):$/;"	kind:member	line:24
+__init__	../.tox/docs/bin/viewer.py	/^    def __init__(self, master, im):$/;"	kind:member	line:24
 __init__	../.tox/docs/lib/python3.5/__future__.py	/^    def __init__(self, optionalRelease, mandatoryRelease, compiler_flag):$/;"	kind:member	line:79
 __init__	../.tox/docs/lib/python3.5/_collections_abc.py	/^    def __init__(self, mapping):$/;"	kind:member	line:631
 __init__	../.tox/docs/lib/python3.5/_dummy_thread.py	/^    def __init__(self):$/;"	kind:member	line:99
@@ -10982,6 +11048,12 @@ __init__	../.tox/docs/lib/python3.5/weakref.py	/^    def __init__(*args, **kw):$
 __init__	../.tox/docs/lib/python3.5/weakref.py	/^    def __init__(self, dict=None):$/;"	kind:member	line:325
 __init__	../.tox/docs/lib/python3.5/weakref.py	/^    def __init__(self, ob, callback, key):$/;"	kind:member	line:310
 __init__	../.tox/docs/lib/python3.5/weakref.py	/^    def __init__(self, obj, func, *args, **kwargs):$/;"	kind:member	line:497
+__init__	../.tox/py35/bin/enhancer.py	/^    def __init__(self, master, image, name, enhancer, lo, hi):$/;"	kind:member	line:24
+__init__	../.tox/py35/bin/explode.py	/^    def __init__(self, interval="0"):$/;"	kind:member	line:18
+__init__	../.tox/py35/bin/painter.py	/^    def __init__(self, master, image):$/;"	kind:member	line:26
+__init__	../.tox/py35/bin/player.py	/^    def __init__(self, master, im):$/;"	kind:member	line:24
+__init__	../.tox/py35/bin/thresholder.py	/^    def __init__(self, master, im, value=128):$/;"	kind:member	line:24
+__init__	../.tox/py35/bin/viewer.py	/^    def __init__(self, master, im):$/;"	kind:member	line:24
 __init__	../.tox/py35/lib/python3.5/__future__.py	/^    def __init__(self, optionalRelease, mandatoryRelease, compiler_flag):$/;"	kind:member	line:79
 __init__	../.tox/py35/lib/python3.5/_collections_abc.py	/^    def __init__(self, mapping):$/;"	kind:member	line:631
 __init__	../.tox/py35/lib/python3.5/_dummy_thread.py	/^    def __init__(self):$/;"	kind:member	line:99
@@ -11074,6 +11146,12 @@ __init__	../.tox/py35/lib/python3.5/weakref.py	/^    def __init__(*args, **kw):$
 __init__	../.tox/py35/lib/python3.5/weakref.py	/^    def __init__(self, dict=None):$/;"	kind:member	line:325
 __init__	../.tox/py35/lib/python3.5/weakref.py	/^    def __init__(self, ob, callback, key):$/;"	kind:member	line:310
 __init__	../.tox/py35/lib/python3.5/weakref.py	/^    def __init__(self, obj, func, *args, **kwargs):$/;"	kind:member	line:497
+__init__	../.tox/py36/bin/enhancer.py	/^    def __init__(self, master, image, name, enhancer, lo, hi):$/;"	kind:member	line:24
+__init__	../.tox/py36/bin/explode.py	/^    def __init__(self, interval="0"):$/;"	kind:member	line:18
+__init__	../.tox/py36/bin/painter.py	/^    def __init__(self, master, image):$/;"	kind:member	line:26
+__init__	../.tox/py36/bin/player.py	/^    def __init__(self, master, im):$/;"	kind:member	line:24
+__init__	../.tox/py36/bin/thresholder.py	/^    def __init__(self, master, im, value=128):$/;"	kind:member	line:24
+__init__	../.tox/py36/bin/viewer.py	/^    def __init__(self, master, im):$/;"	kind:member	line:24
 __init__	../.tox/py36/lib/python3.6/__future__.py	/^    def __init__(self, optionalRelease, mandatoryRelease, compiler_flag):$/;"	kind:member	line:79
 __init__	../.tox/py36/lib/python3.6/_collections_abc.py	/^    def __init__(self, mapping):$/;"	kind:member	line:698
 __init__	../.tox/py36/lib/python3.6/_dummy_thread.py	/^    def __init__(self):$/;"	kind:member	line:99
@@ -11164,6 +11242,8 @@ __init__	../.tox/py36/lib/python3.6/weakref.py	/^    def __init__(*args, **kw):$
 __init__	../.tox/py36/lib/python3.6/weakref.py	/^    def __init__(self, dict=None):$/;"	kind:member	line:354
 __init__	../.tox/py36/lib/python3.6/weakref.py	/^    def __init__(self, ob, callback, key):$/;"	kind:member	line:339
 __init__	../.tox/py36/lib/python3.6/weakref.py	/^    def __init__(self, obj, func, *args, **kwargs):$/;"	kind:member	line:526
+__init__	../image_aq/utils/pascal_voc_io.py	/^    def __init__(self, filepath):$/;"	kind:member	line:133
+__init__	../image_aq/utils/pascal_voc_io.py	/^    def __init__(self, foldername, filename, imgSize,databaseSrc='Unknown', localImgPath=None):$/;"	kind:member	line:17
 __init__	../sentinela/models/models.py	/^    def __init__(self, base, test=False):$/;"	kind:member	line:22
 __init__	../sentinela/models/models.py	/^    def __init__(self, csv):$/;"	kind:member	line:130
 __init__	../sentinela/models/models.py	/^    def __init__(self, csv):$/;"	kind:member	line:147
@@ -11173,6 +11253,12 @@ __init__	../sentinela/models/models.py	/^    def __init__(self, nome, caminho=No
 __init__	../sentinela/models/models.py	/^    def __init__(self, nome, descricao=''):$/;"	kind:member	line:93
 __init__	../sentinela/models/models.py	/^    def __init__(self, nome, tipo):$/;"	kind:member	line:113
 __init__	../sentinela/utils/gerente_risco.py	/^    def __init__(self):$/;"	kind:member	line:77
+__init__	../venv/bin/enhancer.py	/^    def __init__(self, master, image, name, enhancer, lo, hi):$/;"	kind:member	line:24
+__init__	../venv/bin/explode.py	/^    def __init__(self, interval="0"):$/;"	kind:member	line:18
+__init__	../venv/bin/painter.py	/^    def __init__(self, master, image):$/;"	kind:member	line:26
+__init__	../venv/bin/player.py	/^    def __init__(self, master, im):$/;"	kind:member	line:24
+__init__	../venv/bin/thresholder.py	/^    def __init__(self, master, im, value=128):$/;"	kind:member	line:24
+__init__	../venv/bin/viewer.py	/^    def __init__(self, master, im):$/;"	kind:member	line:24
 __init__	../venv/lib/python3.5/__future__.py	/^    def __init__(self, optionalRelease, mandatoryRelease, compiler_flag):$/;"	kind:member	line:79
 __init__	../venv/lib/python3.5/_collections_abc.py	/^    def __init__(self, mapping):$/;"	kind:member	line:631
 __init__	../venv/lib/python3.5/_dummy_thread.py	/^    def __init__(self):$/;"	kind:member	line:99
@@ -14714,6 +14800,8 @@ add	../venv/lib/python3.5/_collections_abc.py	/^    def add(self, value):$/;"	ki
 add	../venv/lib/python3.5/_weakrefset.py	/^    def add(self, item):$/;"	kind:member	line:81
 add	../venv/lib/python3.5/operator.py	/^def add(a, b):$/;"	kind:function	line:75
 add	../venv/lib/python3.5/tarfile.py	/^    def add(self, name, arcname=None, recursive=True, exclude=None, *, filter=None):$/;"	kind:member	line:1889
+addBndBox	../image_aq/utils/pascal_voc_io.py	/^    def addBndBox(self, xmin, ymin, xmax, ymax, name, difficult):$/;"	kind:member	line:80
+addShape	../image_aq/utils/pascal_voc_io.py	/^    def addShape(self, label, bndbox, difficult):$/;"	kind:member	line:147
 add_extension	../.tox/check/lib/python3.5/copyreg.py	/^def add_extension(module, name, code):$/;"	kind:function	line:158
 add_extension	../.tox/docs/lib/python3.5/copyreg.py	/^def add_extension(module, name, code):$/;"	kind:function	line:158
 add_extension	../.tox/py35/lib/python3.5/copyreg.py	/^def add_extension(module, name, code):$/;"	kind:function	line:158
@@ -14760,6 +14848,8 @@ addusersitepackages	../.tox/docs/lib/python3.5/site.py	/^def addusersitepackages
 addusersitepackages	../.tox/py35/lib/python3.5/site.py	/^def addusersitepackages(known_paths):$/;"	kind:function	line:309
 addusersitepackages	../.tox/py36/lib/python3.6/site.py	/^def addusersitepackages(known_paths):$/;"	kind:function	line:309
 addusersitepackages	../venv/lib/python3.5/site.py	/^def addusersitepackages(known_paths):$/;"	kind:function	line:309
+adiciona_parametro	../sentinela/app.py	/^def adiciona_parametro():$/;"	kind:function	line:281
+adiciona_valor	../sentinela/app.py	/^def adiciona_valor():$/;"	kind:function	line:292
 algorithms_available	../.tox/check/lib/python3.5/hashlib.py	/^algorithms_available = set(__always_supported)$/;"	kind:variable	line:60
 algorithms_available	../.tox/docs/lib/python3.5/hashlib.py	/^algorithms_available = set(__always_supported)$/;"	kind:variable	line:60
 algorithms_available	../.tox/py35/lib/python3.5/hashlib.py	/^algorithms_available = set(__always_supported)$/;"	kind:variable	line:60
@@ -14805,7 +14895,7 @@ allocate_lock	../.tox/docs/lib/python3.5/_dummy_thread.py	/^def allocate_lock():
 allocate_lock	../.tox/py35/lib/python3.5/_dummy_thread.py	/^def allocate_lock():$/;"	kind:function	line:74
 allocate_lock	../.tox/py36/lib/python3.6/_dummy_thread.py	/^def allocate_lock():$/;"	kind:function	line:74
 allocate_lock	../venv/lib/python3.5/_dummy_thread.py	/^def allocate_lock():$/;"	kind:function	line:74
-allowed_file	../sentinela/app.py	/^def allowed_file(filename):$/;"	kind:function	line:54
+allowed_file	../sentinela/app.py	/^def allowed_file(filename):$/;"	kind:function	line:58
 altsep	../.tox/check/lib/python3.5/ntpath.py	/^altsep = '\/'$/;"	kind:variable	line:29
 altsep	../.tox/check/lib/python3.5/posixpath.py	/^altsep = None$/;"	kind:variable	line:36
 altsep	../.tox/docs/lib/python3.5/ntpath.py	/^altsep = '\/'$/;"	kind:variable	line:29
@@ -14828,8 +14918,8 @@ any	../.tox/py36/lib/python3.6/tokenize.py	/^def any(*choices): return group(*ch
 any	../venv/lib/python3.5/tokenize.py	/^def any(*choices): return group(*choices) + '*'$/;"	kind:function	line:112
 aplica_juncao	../sentinela/utils/gerente_risco.py	/^    def aplica_juncao(self, visao, path=tmpdir, filtrar=False,$/;"	kind:member	line:304
 aplica_risco	../sentinela/utils/gerente_risco.py	/^    def aplica_risco(self, lista=None, arquivo=None, parametros_ativos=None):$/;"	kind:member	line:129
-aplica_risco2	../sentinela/app.py	/^def aplica_risco2():$/;"	kind:function	line:223
-app	../sentinela/app.py	/^app = Flask(__name__, static_url_path='\/static')$/;"	kind:variable	line:42
+aplica_risco2	../sentinela/app.py	/^def aplica_risco2():$/;"	kind:function	line:237
+app	../sentinela/app.py	/^app = Flask(__name__, static_url_path='\/static')$/;"	kind:variable	line:46
 app.py	../sentinela/app.py	1;"	kind:file	line:1
 app_test.py	../sentinela/tests/app_test.py	1;"	kind:file	line:1
 append	../.tox/check/lib/python3.5/_collections_abc.py	/^    def append(self, value):$/;"	kind:member	line:897
@@ -14852,6 +14942,7 @@ append	../venv/lib/python3.5/_collections_abc.py	/^    def append(self, value):$
 append	../venv/lib/python3.5/collections/__init__.py	/^    def append(self, item): self.data.append(item)$/;"	kind:member	line:1074
 append	../venv/lib/python3.5/importlib/_bootstrap_external.py	/^    def append(self, item):$/;"	kind:member	line:989
 append	../venv/lib/python3.5/sre_parse.py	/^    def append(self, code):$/;"	kind:member	line:165
+appendObjects	../image_aq/utils/pascal_voc_io.py	/^    def appendObjects(self, top):$/;"	kind:member	line:86
 ascii.py	../.tox/check/lib/python3.5/encodings/ascii.py	1;"	kind:file	line:1
 ascii.py	../.tox/docs/lib/python3.5/encodings/ascii.py	1;"	kind:file	line:1
 ascii.py	../.tox/py35/lib/python3.5/encodings/ascii.py	1;"	kind:file	line:1
@@ -15066,10 +15157,10 @@ blocksize	../.tox/docs/lib/python3.5/hmac.py	/^    blocksize = 64  # 512-bit HMA
 blocksize	../.tox/py35/lib/python3.5/hmac.py	/^    blocksize = 64  # 512-bit HMAC; can be changed in subclasses.$/;"	kind:variable	line:24
 blocksize	../.tox/py36/lib/python3.6/hmac.py	/^    blocksize = 64  # 512-bit HMAC; can be changed in subclasses.$/;"	kind:variable	line:24
 blocksize	../venv/lib/python3.5/hmac.py	/^    blocksize = 64  # 512-bit HMAC; can be changed in subclasses.$/;"	kind:variable	line:24
-branch_labels	../sentinela/alembic/versions/4c1bd8ab2343_juncao_metadados5.py	/^branch_labels = None$/;"	kind:variable	line:15
-branch_labels	../sentinela/alembic/versions/8bf819bcefa4_juncao_metadados4.py	/^branch_labels = None$/;"	kind:variable	line:15
-branch_labels	../sentinela/alembic/versions/df8881d27d15_juncao_metadados6.py	/^branch_labels = None$/;"	kind:variable	line:15
-branch_labels	../sentinela/alembic/versions/f1c880f46616_padraorisco.py	/^branch_labels = None$/;"	kind:variable	line:15
+branch_labels	../sentinela/alembic/versions/4c1bd8ab2343_juncao_metadados5.py	/^branch_labels = None$/;"	kind:variable	line:14
+branch_labels	../sentinela/alembic/versions/8bf819bcefa4_juncao_metadados4.py	/^branch_labels = None$/;"	kind:variable	line:14
+branch_labels	../sentinela/alembic/versions/df8881d27d15_juncao_metadados6.py	/^branch_labels = None$/;"	kind:variable	line:14
+branch_labels	../sentinela/alembic/versions/f1c880f46616_padraorisco.py	/^branch_labels = None$/;"	kind:variable	line:14
 build_ext	../.tox/check/lib/python3.5/distutils/__init__.py	/^    class build_ext(old_build_ext):$/;"	kind:class	line:37
 build_ext	../.tox/docs/lib/python3.5/distutils/__init__.py	/^    class build_ext(old_build_ext):$/;"	kind:class	line:37
 build_ext	../.tox/py35/lib/python3.5/distutils/__init__.py	/^    class build_ext(old_build_ext):$/;"	kind:class	line:37
@@ -15314,7 +15405,7 @@ chown	../.tox/py36/lib/python3.6/shutil.py	/^def chown(path, user=None, group=No
 chown	../.tox/py36/lib/python3.6/tarfile.py	/^    def chown(self, tarinfo, targetpath, numeric_owner):$/;"	kind:member	line:2224
 chown	../venv/lib/python3.5/shutil.py	/^def chown(path, user=None, group=None):$/;"	kind:function	line:1007
 chown	../venv/lib/python3.5/tarfile.py	/^    def chown(self, tarinfo, targetpath, numeric_owner):$/;"	kind:member	line:2212
-classifiers	../setup.py	/^    classifiers=[$/;"	kind:variable	line:42
+classifiers	../setup.py	/^    classifiers=[$/;"	kind:variable	line:45
 cleanup	../.tox/check/lib/python3.5/tempfile.py	/^    def cleanup(self):$/;"	kind:member	line:949
 cleanup	../.tox/docs/lib/python3.5/tempfile.py	/^    def cleanup(self):$/;"	kind:member	line:949
 cleanup	../.tox/py35/lib/python3.5/tempfile.py	/^    def cleanup(self):$/;"	kind:member	line:949
@@ -16113,6 +16204,11 @@ contains	../.tox/py36/lib/python3.6/operator.py	/^def contains(a, b):$/;"	kind:f
 contains	../sentinela/utils/gerente_risco.py	/^def contains(listaoriginal, nomecampo, listavalores):$/;"	kind:function	line:33
 contains	../venv/lib/python3.5/operator.py	/^def contains(a, b):$/;"	kind:function	line:153
 contem	../sentinela/models/models.py	/^    contem = 3$/;"	kind:variable	line:15
+convert	../.tox/check/bin/pilconvert.py	/^convert = None$/;"	kind:variable	line:53
+convert	../.tox/docs/bin/pilconvert.py	/^convert = None$/;"	kind:variable	line:53
+convert	../.tox/py35/bin/pilconvert.py	/^convert = None$/;"	kind:variable	line:53
+convert	../.tox/py36/bin/pilconvert.py	/^convert = None$/;"	kind:variable	line:53
+convert	../venv/bin/pilconvert.py	/^convert = None$/;"	kind:variable	line:53
 cookie_re	../.tox/check/lib/python3.5/tokenize.py	/^cookie_re = re.compile(r'^[ \\t\\f]*#.*?coding[:=][ \\t]*([-\\w.]+)', re.ASCII)$/;"	kind:variable	line:36
 cookie_re	../.tox/docs/lib/python3.5/tokenize.py	/^cookie_re = re.compile(r'^[ \\t\\f]*#.*?coding[:=][ \\t]*([-\\w.]+)', re.ASCII)$/;"	kind:variable	line:36
 cookie_re	../.tox/py35/lib/python3.5/tokenize.py	/^cookie_re = re.compile(r'^[ \\t\\f]*#.*?coding[:=][ \\t]*([-\\w.]+)', re.ASCII)$/;"	kind:variable	line:36
@@ -18230,10 +18326,10 @@ delocalize	../.tox/docs/lib/python3.5/locale.py	/^def delocalize(string):$/;"	ki
 delocalize	../.tox/py35/lib/python3.5/locale.py	/^def delocalize(string):$/;"	kind:function	line:303
 delocalize	../.tox/py36/lib/python3.6/locale.py	/^def delocalize(string):$/;"	kind:function	line:303
 delocalize	../venv/lib/python3.5/locale.py	/^def delocalize(string):$/;"	kind:function	line:303
-depends_on	../sentinela/alembic/versions/4c1bd8ab2343_juncao_metadados5.py	/^depends_on = None$/;"	kind:variable	line:16
-depends_on	../sentinela/alembic/versions/8bf819bcefa4_juncao_metadados4.py	/^depends_on = None$/;"	kind:variable	line:16
-depends_on	../sentinela/alembic/versions/df8881d27d15_juncao_metadados6.py	/^depends_on = None$/;"	kind:variable	line:16
-depends_on	../sentinela/alembic/versions/f1c880f46616_padraorisco.py	/^depends_on = None$/;"	kind:variable	line:16
+depends_on	../sentinela/alembic/versions/4c1bd8ab2343_juncao_metadados5.py	/^depends_on = None$/;"	kind:variable	line:15
+depends_on	../sentinela/alembic/versions/8bf819bcefa4_juncao_metadados4.py	/^depends_on = None$/;"	kind:variable	line:15
+depends_on	../sentinela/alembic/versions/df8881d27d15_juncao_metadados6.py	/^depends_on = None$/;"	kind:variable	line:15
+depends_on	../sentinela/alembic/versions/f1c880f46616_padraorisco.py	/^depends_on = None$/;"	kind:variable	line:15
 dereference	../.tox/check/lib/python3.5/tarfile.py	/^    dereference = False         # If true, add content of linked file to the$/;"	kind:variable	line:1381
 dereference	../.tox/docs/lib/python3.5/tarfile.py	/^    dereference = False         # If true, add content of linked file to the$/;"	kind:variable	line:1381
 dereference	../.tox/py35/lib/python3.5/tarfile.py	/^    dereference = False         # If true, add content of linked file to the$/;"	kind:variable	line:1381
@@ -18241,6 +18337,7 @@ dereference	../.tox/py36/lib/python3.6/tarfile.py	/^    dereference = False     
 dereference	../venv/lib/python3.5/tarfile.py	/^    dereference = False         # If true, add content of linked file to the$/;"	kind:variable	line:1381
 descricao	../sentinela/models/models.py	/^    descricao = Column(String(200))$/;"	kind:variable	line:160
 descricao	../sentinela/models/models.py	/^    descricao = Column(String(200))$/;"	kind:variable	line:87
+description	../.tox/check/bin/pilprint.py	/^def description(filepath, image):$/;"	kind:function	line:28
 description	../.tox/check/bin/rst2html.py	/^description = ('Generates (X)HTML documents from standalone reStructuredText '$/;"	kind:variable	line:20
 description	../.tox/check/bin/rst2html4.py	/^description = ('Generates (X)HTML documents from standalone reStructuredText '$/;"	kind:variable	line:23
 description	../.tox/check/bin/rst2html5.py	/^description = (u'Generates HTML 5 documents from standalone '$/;"	kind:variable	line:31
@@ -18254,6 +18351,7 @@ description	../.tox/check/bin/rst2xetex.py	/^description = ('Generates LaTeX doc
 description	../.tox/check/bin/rst2xml.py	/^description = ('Generates Docutils-native XML from standalone '$/;"	kind:variable	line:20
 description	../.tox/check/bin/rstpep2html.py	/^                description=description)$/;"	kind:variable	line:25
 description	../.tox/check/bin/rstpep2html.py	/^description = ('Generates (X)HTML from reStructuredText-format PEP files.  '$/;"	kind:variable	line:21
+description	../.tox/docs/bin/pilprint.py	/^def description(filepath, image):$/;"	kind:function	line:28
 description	../.tox/docs/bin/rst2html.py	/^description = ('Generates (X)HTML documents from standalone reStructuredText '$/;"	kind:variable	line:20
 description	../.tox/docs/bin/rst2html4.py	/^description = ('Generates (X)HTML documents from standalone reStructuredText '$/;"	kind:variable	line:23
 description	../.tox/docs/bin/rst2html5.py	/^description = (u'Generates HTML 5 documents from standalone '$/;"	kind:variable	line:31
@@ -18267,6 +18365,7 @@ description	../.tox/docs/bin/rst2xetex.py	/^description = ('Generates LaTeX docu
 description	../.tox/docs/bin/rst2xml.py	/^description = ('Generates Docutils-native XML from standalone '$/;"	kind:variable	line:20
 description	../.tox/docs/bin/rstpep2html.py	/^                description=description)$/;"	kind:variable	line:25
 description	../.tox/docs/bin/rstpep2html.py	/^description = ('Generates (X)HTML from reStructuredText-format PEP files.  '$/;"	kind:variable	line:21
+description	../.tox/py35/bin/pilprint.py	/^def description(filepath, image):$/;"	kind:function	line:28
 description	../.tox/py35/bin/rst2html.py	/^description = ('Generates (X)HTML documents from standalone reStructuredText '$/;"	kind:variable	line:20
 description	../.tox/py35/bin/rst2html4.py	/^description = ('Generates (X)HTML documents from standalone reStructuredText '$/;"	kind:variable	line:23
 description	../.tox/py35/bin/rst2html5.py	/^description = (u'Generates HTML 5 documents from standalone '$/;"	kind:variable	line:31
@@ -18280,6 +18379,7 @@ description	../.tox/py35/bin/rst2xetex.py	/^description = ('Generates LaTeX docu
 description	../.tox/py35/bin/rst2xml.py	/^description = ('Generates Docutils-native XML from standalone '$/;"	kind:variable	line:20
 description	../.tox/py35/bin/rstpep2html.py	/^                description=description)$/;"	kind:variable	line:25
 description	../.tox/py35/bin/rstpep2html.py	/^description = ('Generates (X)HTML from reStructuredText-format PEP files.  '$/;"	kind:variable	line:21
+description	../.tox/py36/bin/pilprint.py	/^def description(filepath, image):$/;"	kind:function	line:28
 description	../.tox/py36/bin/rst2html.py	/^description = ('Generates (X)HTML documents from standalone reStructuredText '$/;"	kind:variable	line:20
 description	../.tox/py36/bin/rst2html4.py	/^description = ('Generates (X)HTML documents from standalone reStructuredText '$/;"	kind:variable	line:23
 description	../.tox/py36/bin/rst2html5.py	/^description = (u'Generates HTML 5 documents from standalone '$/;"	kind:variable	line:31
@@ -18294,6 +18394,7 @@ description	../.tox/py36/bin/rst2xml.py	/^description = ('Generates Docutils-nat
 description	../.tox/py36/bin/rstpep2html.py	/^                description=description)$/;"	kind:variable	line:25
 description	../.tox/py36/bin/rstpep2html.py	/^description = ('Generates (X)HTML from reStructuredText-format PEP files.  '$/;"	kind:variable	line:21
 description	../setup.py	/^    description='Visao computacional e Aprendizado de Maquina na Vigilancia Aduaneira',$/;"	kind:variable	line:5
+description	../venv/bin/pilprint.py	/^def description(filepath, image):$/;"	kind:function	line:28
 description	../venv/bin/rst2html.py	/^description = ('Generates (X)HTML documents from standalone reStructuredText '$/;"	kind:variable	line:20
 description	../venv/bin/rst2html4.py	/^description = ('Generates (X)HTML documents from standalone reStructuredText '$/;"	kind:variable	line:23
 description	../venv/bin/rst2html5.py	/^description = (u'Generates HTML 5 documents from standalone '$/;"	kind:variable	line:31
@@ -18438,19 +18539,229 @@ division	../.tox/docs/lib/python3.5/__future__.py	/^division = _Feature((2, 2, 0
 division	../.tox/py35/lib/python3.5/__future__.py	/^division = _Feature((2, 2, 0, "alpha", 2),$/;"	kind:variable	line:114
 division	../.tox/py36/lib/python3.6/__future__.py	/^division = _Feature((2, 2, 0, "alpha", 2),$/;"	kind:variable	line:114
 division	../venv/lib/python3.5/__future__.py	/^division = _Feature((2, 2, 0, "alpha", 2),$/;"	kind:variable	line:114
+do_add	../.tox/check/bin/pildriver.py	/^    def do_add(self):$/;"	kind:member	line:409
+do_add	../.tox/docs/bin/pildriver.py	/^    def do_add(self):$/;"	kind:member	line:409
+do_add	../.tox/py35/bin/pildriver.py	/^    def do_add(self):$/;"	kind:member	line:409
+do_add	../.tox/py36/bin/pildriver.py	/^    def do_add(self):$/;"	kind:member	line:409
+do_add	../venv/bin/pildriver.py	/^    def do_add(self):$/;"	kind:member	line:409
+do_blend	../.tox/check/bin/pildriver.py	/^    def do_blend(self):$/;"	kind:member	line:132
+do_blend	../.tox/docs/bin/pildriver.py	/^    def do_blend(self):$/;"	kind:member	line:132
+do_blend	../.tox/py35/bin/pildriver.py	/^    def do_blend(self):$/;"	kind:member	line:132
+do_blend	../.tox/py36/bin/pildriver.py	/^    def do_blend(self):$/;"	kind:member	line:132
+do_blend	../venv/bin/pildriver.py	/^    def do_blend(self):$/;"	kind:member	line:132
+do_brightness	../.tox/check/bin/pildriver.py	/^    def do_brightness(self):$/;"	kind:member	line:457
+do_brightness	../.tox/docs/bin/pildriver.py	/^    def do_brightness(self):$/;"	kind:member	line:457
+do_brightness	../.tox/py35/bin/pildriver.py	/^    def do_brightness(self):$/;"	kind:member	line:457
+do_brightness	../.tox/py36/bin/pildriver.py	/^    def do_brightness(self):$/;"	kind:member	line:457
+do_brightness	../venv/bin/pildriver.py	/^    def do_brightness(self):$/;"	kind:member	line:457
+do_clear	../.tox/check/bin/pildriver.py	/^    def do_clear(self):$/;"	kind:member	line:81
+do_clear	../.tox/docs/bin/pildriver.py	/^    def do_clear(self):$/;"	kind:member	line:81
+do_clear	../.tox/py35/bin/pildriver.py	/^    def do_clear(self):$/;"	kind:member	line:81
+do_clear	../.tox/py36/bin/pildriver.py	/^    def do_clear(self):$/;"	kind:member	line:81
+do_clear	../venv/bin/pildriver.py	/^    def do_clear(self):$/;"	kind:member	line:81
+do_color	../.tox/check/bin/pildriver.py	/^    def do_color(self):$/;"	kind:member	line:435
+do_color	../.tox/docs/bin/pildriver.py	/^    def do_color(self):$/;"	kind:member	line:435
+do_color	../.tox/py35/bin/pildriver.py	/^    def do_color(self):$/;"	kind:member	line:435
+do_color	../.tox/py36/bin/pildriver.py	/^    def do_color(self):$/;"	kind:member	line:435
+do_color	../venv/bin/pildriver.py	/^    def do_color(self):$/;"	kind:member	line:435
+do_composite	../.tox/check/bin/pildriver.py	/^    def do_composite(self):$/;"	kind:member	line:142
+do_composite	../.tox/docs/bin/pildriver.py	/^    def do_composite(self):$/;"	kind:member	line:142
+do_composite	../.tox/py35/bin/pildriver.py	/^    def do_composite(self):$/;"	kind:member	line:142
+do_composite	../.tox/py36/bin/pildriver.py	/^    def do_composite(self):$/;"	kind:member	line:142
+do_composite	../venv/bin/pildriver.py	/^    def do_composite(self):$/;"	kind:member	line:142
+do_contrast	../.tox/check/bin/pildriver.py	/^    def do_contrast(self):$/;"	kind:member	line:446
+do_contrast	../.tox/docs/bin/pildriver.py	/^    def do_contrast(self):$/;"	kind:member	line:446
+do_contrast	../.tox/py35/bin/pildriver.py	/^    def do_contrast(self):$/;"	kind:member	line:446
+do_contrast	../.tox/py36/bin/pildriver.py	/^    def do_contrast(self):$/;"	kind:member	line:446
+do_contrast	../venv/bin/pildriver.py	/^    def do_contrast(self):$/;"	kind:member	line:446
+do_convert	../.tox/check/bin/pildriver.py	/^    def do_convert(self):$/;"	kind:member	line:166
+do_convert	../.tox/docs/bin/pildriver.py	/^    def do_convert(self):$/;"	kind:member	line:166
+do_convert	../.tox/py35/bin/pildriver.py	/^    def do_convert(self):$/;"	kind:member	line:166
+do_convert	../.tox/py36/bin/pildriver.py	/^    def do_convert(self):$/;"	kind:member	line:166
+do_convert	../venv/bin/pildriver.py	/^    def do_convert(self):$/;"	kind:member	line:166
+do_copy	../.tox/check/bin/pildriver.py	/^    def do_copy(self):$/;"	kind:member	line:175
+do_copy	../.tox/docs/bin/pildriver.py	/^    def do_copy(self):$/;"	kind:member	line:175
+do_copy	../.tox/py35/bin/pildriver.py	/^    def do_copy(self):$/;"	kind:member	line:175
+do_copy	../.tox/py36/bin/pildriver.py	/^    def do_copy(self):$/;"	kind:member	line:175
+do_copy	../venv/bin/pildriver.py	/^    def do_copy(self):$/;"	kind:member	line:175
+do_crop	../.tox/check/bin/pildriver.py	/^    def do_crop(self):$/;"	kind:member	line:182
+do_crop	../.tox/docs/bin/pildriver.py	/^    def do_crop(self):$/;"	kind:member	line:182
+do_crop	../.tox/py35/bin/pildriver.py	/^    def do_crop(self):$/;"	kind:member	line:182
+do_crop	../.tox/py36/bin/pildriver.py	/^    def do_crop(self):$/;"	kind:member	line:182
+do_crop	../venv/bin/pildriver.py	/^    def do_crop(self):$/;"	kind:member	line:182
+do_darker	../.tox/check/bin/pildriver.py	/^    def do_darker(self):$/;"	kind:member	line:369
+do_darker	../.tox/docs/bin/pildriver.py	/^    def do_darker(self):$/;"	kind:member	line:369
+do_darker	../.tox/py35/bin/pildriver.py	/^    def do_darker(self):$/;"	kind:member	line:369
+do_darker	../.tox/py36/bin/pildriver.py	/^    def do_darker(self):$/;"	kind:member	line:369
+do_darker	../venv/bin/pildriver.py	/^    def do_darker(self):$/;"	kind:member	line:369
+do_difference	../.tox/check/bin/pildriver.py	/^    def do_difference(self):$/;"	kind:member	line:379
+do_difference	../.tox/docs/bin/pildriver.py	/^    def do_difference(self):$/;"	kind:member	line:379
+do_difference	../.tox/py35/bin/pildriver.py	/^    def do_difference(self):$/;"	kind:member	line:379
+do_difference	../.tox/py36/bin/pildriver.py	/^    def do_difference(self):$/;"	kind:member	line:379
+do_difference	../venv/bin/pildriver.py	/^    def do_difference(self):$/;"	kind:member	line:379
+do_draft	../.tox/check/bin/pildriver.py	/^    def do_draft(self):$/;"	kind:member	line:195
+do_draft	../.tox/docs/bin/pildriver.py	/^    def do_draft(self):$/;"	kind:member	line:195
+do_draft	../.tox/py35/bin/pildriver.py	/^    def do_draft(self):$/;"	kind:member	line:195
+do_draft	../.tox/py36/bin/pildriver.py	/^    def do_draft(self):$/;"	kind:member	line:195
+do_draft	../venv/bin/pildriver.py	/^    def do_draft(self):$/;"	kind:member	line:195
+do_dup	../.tox/check/bin/pildriver.py	/^    def do_dup(self):$/;"	kind:member	line:95
+do_dup	../.tox/docs/bin/pildriver.py	/^    def do_dup(self):$/;"	kind:member	line:95
+do_dup	../.tox/py35/bin/pildriver.py	/^    def do_dup(self):$/;"	kind:member	line:95
+do_dup	../.tox/py36/bin/pildriver.py	/^    def do_dup(self):$/;"	kind:member	line:95
+do_dup	../venv/bin/pildriver.py	/^    def do_dup(self):$/;"	kind:member	line:95
+do_filter	../.tox/check/bin/pildriver.py	/^    def do_filter(self):$/;"	kind:member	line:205
+do_filter	../.tox/docs/bin/pildriver.py	/^    def do_filter(self):$/;"	kind:member	line:205
+do_filter	../.tox/py35/bin/pildriver.py	/^    def do_filter(self):$/;"	kind:member	line:205
+do_filter	../.tox/py36/bin/pildriver.py	/^    def do_filter(self):$/;"	kind:member	line:205
+do_filter	../venv/bin/pildriver.py	/^    def do_filter(self):$/;"	kind:member	line:205
+do_format	../.tox/check/bin/pildriver.py	/^    def do_format(self):$/;"	kind:member	line:326
+do_format	../.tox/docs/bin/pildriver.py	/^    def do_format(self):$/;"	kind:member	line:326
+do_format	../.tox/py35/bin/pildriver.py	/^    def do_format(self):$/;"	kind:member	line:326
+do_format	../.tox/py36/bin/pildriver.py	/^    def do_format(self):$/;"	kind:member	line:326
+do_format	../venv/bin/pildriver.py	/^    def do_format(self):$/;"	kind:member	line:326
+do_getbbox	../.tox/check/bin/pildriver.py	/^    def do_getbbox(self):$/;"	kind:member	line:215
+do_getbbox	../.tox/docs/bin/pildriver.py	/^    def do_getbbox(self):$/;"	kind:member	line:215
+do_getbbox	../.tox/py35/bin/pildriver.py	/^    def do_getbbox(self):$/;"	kind:member	line:215
+do_getbbox	../.tox/py36/bin/pildriver.py	/^    def do_getbbox(self):$/;"	kind:member	line:215
+do_getbbox	../venv/bin/pildriver.py	/^    def do_getbbox(self):$/;"	kind:member	line:215
+do_getextrema	../.tox/check/bin/pildriver.py	/^    def do_getextrema(self):$/;"	kind:member	line:226
+do_getextrema	../.tox/docs/bin/pildriver.py	/^    def do_getextrema(self):$/;"	kind:member	line:226
+do_getextrema	../.tox/py35/bin/pildriver.py	/^    def do_getextrema(self):$/;"	kind:member	line:226
+do_getextrema	../.tox/py36/bin/pildriver.py	/^    def do_getextrema(self):$/;"	kind:member	line:226
+do_getextrema	../venv/bin/pildriver.py	/^    def do_getextrema(self):$/;"	kind:member	line:226
+do_invert	../.tox/check/bin/pildriver.py	/^    def do_invert(self):$/;"	kind:member	line:351
+do_invert	../.tox/docs/bin/pildriver.py	/^    def do_invert(self):$/;"	kind:member	line:351
+do_invert	../.tox/py35/bin/pildriver.py	/^    def do_invert(self):$/;"	kind:member	line:351
+do_invert	../.tox/py36/bin/pildriver.py	/^    def do_invert(self):$/;"	kind:member	line:351
+do_invert	../venv/bin/pildriver.py	/^    def do_invert(self):$/;"	kind:member	line:351
+do_lighter	../.tox/check/bin/pildriver.py	/^    def do_lighter(self):$/;"	kind:member	line:359
+do_lighter	../.tox/docs/bin/pildriver.py	/^    def do_lighter(self):$/;"	kind:member	line:359
+do_lighter	../.tox/py35/bin/pildriver.py	/^    def do_lighter(self):$/;"	kind:member	line:359
+do_lighter	../.tox/py36/bin/pildriver.py	/^    def do_lighter(self):$/;"	kind:member	line:359
+do_lighter	../venv/bin/pildriver.py	/^    def do_lighter(self):$/;"	kind:member	line:359
+do_merge	../.tox/check/bin/pildriver.py	/^    def do_merge(self):$/;"	kind:member	line:152
+do_merge	../.tox/docs/bin/pildriver.py	/^    def do_merge(self):$/;"	kind:member	line:152
+do_merge	../.tox/py35/bin/pildriver.py	/^    def do_merge(self):$/;"	kind:member	line:152
+do_merge	../.tox/py36/bin/pildriver.py	/^    def do_merge(self):$/;"	kind:member	line:152
+do_merge	../venv/bin/pildriver.py	/^    def do_merge(self):$/;"	kind:member	line:152
+do_mode	../.tox/check/bin/pildriver.py	/^    def do_mode(self):$/;"	kind:member	line:333
+do_mode	../.tox/docs/bin/pildriver.py	/^    def do_mode(self):$/;"	kind:member	line:333
+do_mode	../.tox/py35/bin/pildriver.py	/^    def do_mode(self):$/;"	kind:member	line:333
+do_mode	../.tox/py36/bin/pildriver.py	/^    def do_mode(self):$/;"	kind:member	line:333
+do_mode	../venv/bin/pildriver.py	/^    def do_mode(self):$/;"	kind:member	line:333
+do_multiply	../.tox/check/bin/pildriver.py	/^    def do_multiply(self):$/;"	kind:member	line:389
+do_multiply	../.tox/docs/bin/pildriver.py	/^    def do_multiply(self):$/;"	kind:member	line:389
+do_multiply	../.tox/py35/bin/pildriver.py	/^    def do_multiply(self):$/;"	kind:member	line:389
+do_multiply	../.tox/py36/bin/pildriver.py	/^    def do_multiply(self):$/;"	kind:member	line:389
+do_multiply	../venv/bin/pildriver.py	/^    def do_multiply(self):$/;"	kind:member	line:389
+do_new	../.tox/check/bin/pildriver.py	/^    def do_new(self):$/;"	kind:member	line:115
+do_new	../.tox/docs/bin/pildriver.py	/^    def do_new(self):$/;"	kind:member	line:115
+do_new	../.tox/py35/bin/pildriver.py	/^    def do_new(self):$/;"	kind:member	line:115
+do_new	../.tox/py36/bin/pildriver.py	/^    def do_new(self):$/;"	kind:member	line:115
+do_new	../venv/bin/pildriver.py	/^    def do_new(self):$/;"	kind:member	line:115
+do_offset	../.tox/check/bin/pildriver.py	/^    def do_offset(self):$/;"	kind:member	line:235
+do_offset	../.tox/docs/bin/pildriver.py	/^    def do_offset(self):$/;"	kind:member	line:235
+do_offset	../.tox/py35/bin/pildriver.py	/^    def do_offset(self):$/;"	kind:member	line:235
+do_offset	../.tox/py36/bin/pildriver.py	/^    def do_offset(self):$/;"	kind:member	line:235
+do_offset	../venv/bin/pildriver.py	/^    def do_offset(self):$/;"	kind:member	line:235
+do_open	../.tox/check/bin/pildriver.py	/^    def do_open(self):$/;"	kind:member	line:125
+do_open	../.tox/docs/bin/pildriver.py	/^    def do_open(self):$/;"	kind:member	line:125
+do_open	../.tox/py35/bin/pildriver.py	/^    def do_open(self):$/;"	kind:member	line:125
+do_open	../.tox/py36/bin/pildriver.py	/^    def do_open(self):$/;"	kind:member	line:125
+do_open	../venv/bin/pildriver.py	/^    def do_open(self):$/;"	kind:member	line:125
+do_paste	../.tox/check/bin/pildriver.py	/^    def do_paste(self):$/;"	kind:member	line:245
+do_paste	../.tox/docs/bin/pildriver.py	/^    def do_paste(self):$/;"	kind:member	line:245
+do_paste	../.tox/py35/bin/pildriver.py	/^    def do_paste(self):$/;"	kind:member	line:245
+do_paste	../.tox/py36/bin/pildriver.py	/^    def do_paste(self):$/;"	kind:member	line:245
+do_paste	../venv/bin/pildriver.py	/^    def do_paste(self):$/;"	kind:member	line:245
+do_pop	../.tox/check/bin/pildriver.py	/^    def do_pop(self):$/;"	kind:member	line:88
+do_pop	../.tox/docs/bin/pildriver.py	/^    def do_pop(self):$/;"	kind:member	line:88
+do_pop	../.tox/py35/bin/pildriver.py	/^    def do_pop(self):$/;"	kind:member	line:88
+do_pop	../.tox/py36/bin/pildriver.py	/^    def do_pop(self):$/;"	kind:member	line:88
+do_pop	../venv/bin/pildriver.py	/^    def do_pop(self):$/;"	kind:member	line:88
+do_resize	../.tox/check/bin/pildriver.py	/^    def do_resize(self):$/;"	kind:member	line:261
+do_resize	../.tox/docs/bin/pildriver.py	/^    def do_resize(self):$/;"	kind:member	line:261
+do_resize	../.tox/py35/bin/pildriver.py	/^    def do_resize(self):$/;"	kind:member	line:261
+do_resize	../.tox/py36/bin/pildriver.py	/^    def do_resize(self):$/;"	kind:member	line:261
+do_resize	../venv/bin/pildriver.py	/^    def do_resize(self):$/;"	kind:member	line:261
+do_rotate	../.tox/check/bin/pildriver.py	/^    def do_rotate(self):$/;"	kind:member	line:271
+do_rotate	../.tox/docs/bin/pildriver.py	/^    def do_rotate(self):$/;"	kind:member	line:271
+do_rotate	../.tox/py35/bin/pildriver.py	/^    def do_rotate(self):$/;"	kind:member	line:271
+do_rotate	../.tox/py36/bin/pildriver.py	/^    def do_rotate(self):$/;"	kind:member	line:271
+do_rotate	../venv/bin/pildriver.py	/^    def do_rotate(self):$/;"	kind:member	line:271
+do_save	../.tox/check/bin/pildriver.py	/^    def do_save(self):$/;"	kind:member	line:280
+do_save	../.tox/docs/bin/pildriver.py	/^    def do_save(self):$/;"	kind:member	line:280
+do_save	../.tox/py35/bin/pildriver.py	/^    def do_save(self):$/;"	kind:member	line:280
+do_save	../.tox/py36/bin/pildriver.py	/^    def do_save(self):$/;"	kind:member	line:280
+do_save	../venv/bin/pildriver.py	/^    def do_save(self):$/;"	kind:member	line:280
+do_save2	../.tox/check/bin/pildriver.py	/^    def do_save2(self):$/;"	kind:member	line:289
+do_save2	../.tox/docs/bin/pildriver.py	/^    def do_save2(self):$/;"	kind:member	line:289
+do_save2	../.tox/py35/bin/pildriver.py	/^    def do_save2(self):$/;"	kind:member	line:289
+do_save2	../.tox/py36/bin/pildriver.py	/^    def do_save2(self):$/;"	kind:member	line:289
+do_save2	../venv/bin/pildriver.py	/^    def do_save2(self):$/;"	kind:member	line:289
+do_screen	../.tox/check/bin/pildriver.py	/^    def do_screen(self):$/;"	kind:member	line:399
+do_screen	../.tox/docs/bin/pildriver.py	/^    def do_screen(self):$/;"	kind:member	line:399
+do_screen	../.tox/py35/bin/pildriver.py	/^    def do_screen(self):$/;"	kind:member	line:399
+do_screen	../.tox/py36/bin/pildriver.py	/^    def do_screen(self):$/;"	kind:member	line:399
+do_screen	../venv/bin/pildriver.py	/^    def do_screen(self):$/;"	kind:member	line:399
+do_sharpness	../.tox/check/bin/pildriver.py	/^    def do_sharpness(self):$/;"	kind:member	line:468
+do_sharpness	../.tox/docs/bin/pildriver.py	/^    def do_sharpness(self):$/;"	kind:member	line:468
+do_sharpness	../.tox/py35/bin/pildriver.py	/^    def do_sharpness(self):$/;"	kind:member	line:468
+do_sharpness	../.tox/py36/bin/pildriver.py	/^    def do_sharpness(self):$/;"	kind:member	line:468
+do_sharpness	../venv/bin/pildriver.py	/^    def do_sharpness(self):$/;"	kind:member	line:468
+do_show	../.tox/check/bin/pildriver.py	/^    def do_show(self):$/;"	kind:member	line:299
+do_show	../.tox/docs/bin/pildriver.py	/^    def do_show(self):$/;"	kind:member	line:299
+do_show	../.tox/py35/bin/pildriver.py	/^    def do_show(self):$/;"	kind:member	line:299
+do_show	../.tox/py36/bin/pildriver.py	/^    def do_show(self):$/;"	kind:member	line:299
+do_show	../venv/bin/pildriver.py	/^    def do_show(self):$/;"	kind:member	line:299
+do_size	../.tox/check/bin/pildriver.py	/^    def do_size(self):$/;"	kind:member	line:340
+do_size	../.tox/docs/bin/pildriver.py	/^    def do_size(self):$/;"	kind:member	line:340
+do_size	../.tox/py35/bin/pildriver.py	/^    def do_size(self):$/;"	kind:member	line:340
+do_size	../.tox/py36/bin/pildriver.py	/^    def do_size(self):$/;"	kind:member	line:340
+do_size	../venv/bin/pildriver.py	/^    def do_size(self):$/;"	kind:member	line:340
+do_subtract	../.tox/check/bin/pildriver.py	/^    def do_subtract(self):$/;"	kind:member	line:421
+do_subtract	../.tox/docs/bin/pildriver.py	/^    def do_subtract(self):$/;"	kind:member	line:421
+do_subtract	../.tox/py35/bin/pildriver.py	/^    def do_subtract(self):$/;"	kind:member	line:421
+do_subtract	../.tox/py36/bin/pildriver.py	/^    def do_subtract(self):$/;"	kind:member	line:421
+do_subtract	../venv/bin/pildriver.py	/^    def do_subtract(self):$/;"	kind:member	line:421
+do_swap	../.tox/check/bin/pildriver.py	/^    def do_swap(self):$/;"	kind:member	line:106
+do_swap	../.tox/docs/bin/pildriver.py	/^    def do_swap(self):$/;"	kind:member	line:106
+do_swap	../.tox/py35/bin/pildriver.py	/^    def do_swap(self):$/;"	kind:member	line:106
+do_swap	../.tox/py36/bin/pildriver.py	/^    def do_swap(self):$/;"	kind:member	line:106
+do_swap	../venv/bin/pildriver.py	/^    def do_swap(self):$/;"	kind:member	line:106
+do_thumbnail	../.tox/check/bin/pildriver.py	/^    def do_thumbnail(self):$/;"	kind:member	line:306
+do_thumbnail	../.tox/docs/bin/pildriver.py	/^    def do_thumbnail(self):$/;"	kind:member	line:306
+do_thumbnail	../.tox/py35/bin/pildriver.py	/^    def do_thumbnail(self):$/;"	kind:member	line:306
+do_thumbnail	../.tox/py36/bin/pildriver.py	/^    def do_thumbnail(self):$/;"	kind:member	line:306
+do_thumbnail	../venv/bin/pildriver.py	/^    def do_thumbnail(self):$/;"	kind:member	line:306
+do_transpose	../.tox/check/bin/pildriver.py	/^    def do_transpose(self):$/;"	kind:member	line:315
+do_transpose	../.tox/docs/bin/pildriver.py	/^    def do_transpose(self):$/;"	kind:member	line:315
+do_transpose	../.tox/py35/bin/pildriver.py	/^    def do_transpose(self):$/;"	kind:member	line:315
+do_transpose	../.tox/py36/bin/pildriver.py	/^    def do_transpose(self):$/;"	kind:member	line:315
+do_transpose	../venv/bin/pildriver.py	/^    def do_transpose(self):$/;"	kind:member	line:315
+do_verbose	../.tox/check/bin/pildriver.py	/^    def do_verbose(self):$/;"	kind:member	line:60
+do_verbose	../.tox/docs/bin/pildriver.py	/^    def do_verbose(self):$/;"	kind:member	line:60
+do_verbose	../.tox/py35/bin/pildriver.py	/^    def do_verbose(self):$/;"	kind:member	line:60
+do_verbose	../.tox/py36/bin/pildriver.py	/^    def do_verbose(self):$/;"	kind:member	line:60
+do_verbose	../venv/bin/pildriver.py	/^    def do_verbose(self):$/;"	kind:member	line:60
 dots	../.tox/check/lib/python3.5/encodings/idna.py	/^dots = re.compile("[\\u002E\\u3002\\uFF0E\\uFF61]")$/;"	kind:variable	line:7
 dots	../.tox/docs/lib/python3.5/encodings/idna.py	/^dots = re.compile("[\\u002E\\u3002\\uFF0E\\uFF61]")$/;"	kind:variable	line:7
 dots	../.tox/py35/lib/python3.5/encodings/idna.py	/^dots = re.compile("[\\u002E\\u3002\\uFF0E\\uFF61]")$/;"	kind:variable	line:7
 dots	../.tox/py36/lib/python3.6/encodings/idna.py	/^dots = re.compile("[\\u002E\\u3002\\uFF0E\\uFF61]")$/;"	kind:variable	line:7
 dots	../venv/lib/python3.5/encodings/idna.py	/^dots = re.compile("[\\u002E\\u3002\\uFF0E\\uFF61]")$/;"	kind:variable	line:7
-down_revision	../sentinela/alembic/versions/4c1bd8ab2343_juncao_metadados5.py	/^down_revision = '8bf819bcefa4'$/;"	kind:variable	line:14
-down_revision	../sentinela/alembic/versions/8bf819bcefa4_juncao_metadados4.py	/^down_revision = None$/;"	kind:variable	line:14
-down_revision	../sentinela/alembic/versions/df8881d27d15_juncao_metadados6.py	/^down_revision = '4c1bd8ab2343'$/;"	kind:variable	line:14
-down_revision	../sentinela/alembic/versions/f1c880f46616_padraorisco.py	/^down_revision = 'df8881d27d15'$/;"	kind:variable	line:14
-downgrade	../sentinela/alembic/versions/4c1bd8ab2343_juncao_metadados5.py	/^def downgrade():$/;"	kind:function	line:25
-downgrade	../sentinela/alembic/versions/8bf819bcefa4_juncao_metadados4.py	/^def downgrade():$/;"	kind:function	line:25
-downgrade	../sentinela/alembic/versions/df8881d27d15_juncao_metadados6.py	/^def downgrade():$/;"	kind:function	line:25
-downgrade	../sentinela/alembic/versions/f1c880f46616_padraorisco.py	/^def downgrade():$/;"	kind:function	line:32
+down_revision	../sentinela/alembic/versions/4c1bd8ab2343_juncao_metadados5.py	/^down_revision = '8bf819bcefa4'$/;"	kind:variable	line:13
+down_revision	../sentinela/alembic/versions/8bf819bcefa4_juncao_metadados4.py	/^down_revision = None$/;"	kind:variable	line:13
+down_revision	../sentinela/alembic/versions/df8881d27d15_juncao_metadados6.py	/^down_revision = '4c1bd8ab2343'$/;"	kind:variable	line:13
+down_revision	../sentinela/alembic/versions/f1c880f46616_padraorisco.py	/^down_revision = 'df8881d27d15'$/;"	kind:variable	line:13
+downgrade	../sentinela/alembic/versions/4c1bd8ab2343_juncao_metadados5.py	/^def downgrade():$/;"	kind:function	line:24
+downgrade	../sentinela/alembic/versions/8bf819bcefa4_juncao_metadados4.py	/^def downgrade():$/;"	kind:function	line:24
+downgrade	../sentinela/alembic/versions/df8881d27d15_juncao_metadados6.py	/^def downgrade():$/;"	kind:function	line:24
+downgrade	../sentinela/alembic/versions/f1c880f46616_padraorisco.py	/^def downgrade():$/;"	kind:function	line:31
+driver	../.tox/check/bin/pildriver.py	/^    driver = PILDriver()$/;"	kind:variable	line:506
+driver	../.tox/docs/bin/pildriver.py	/^    driver = PILDriver()$/;"	kind:variable	line:506
+driver	../.tox/py35/bin/pildriver.py	/^    driver = PILDriver()$/;"	kind:variable	line:506
+driver	../.tox/py36/bin/pildriver.py	/^    driver = PILDriver()$/;"	kind:variable	line:506
+driver	../venv/bin/pildriver.py	/^    driver = PILDriver()$/;"	kind:variable	line:506
 dump	../.tox/check/lib/python3.5/sre_constants.py	/^    def dump(f, d, prefix):$/;"	kind:function	line:181
 dump	../.tox/check/lib/python3.5/sre_parse.py	/^    def dump(self, level=0):$/;"	kind:member	line:111
 dump	../.tox/docs/lib/python3.5/sre_constants.py	/^    def dump(f, d, prefix):$/;"	kind:function	line:181
@@ -18461,7 +18772,7 @@ dump	../.tox/py36/lib/python3.6/sre_constants.py	/^    def dump(f, d, prefix):$/
 dump	../.tox/py36/lib/python3.6/sre_parse.py	/^    def dump(self, level=0):$/;"	kind:member	line:117
 dump	../venv/lib/python3.5/sre_constants.py	/^    def dump(f, d, prefix):$/;"	kind:function	line:181
 dump	../venv/lib/python3.5/sre_parse.py	/^    def dump(self, level=0):$/;"	kind:member	line:111
-edita_risco	../sentinela/app.py	/^def edita_risco():$/;"	kind:function	line:206
+edita_risco	../sentinela/app.py	/^def edita_risco():$/;"	kind:function	line:210
 elements	../.tox/check/lib/python3.5/collections/__init__.py	/^    def elements(self):$/;"	kind:member	line:550
 elements	../.tox/docs/lib/python3.5/collections/__init__.py	/^    def elements(self):$/;"	kind:member	line:550
 elements	../.tox/py35/lib/python3.5/collections/__init__.py	/^    def elements(self):$/;"	kind:member	line:550
@@ -20061,8 +20372,13 @@ endswith	../.tox/py35/lib/python3.5/collections/__init__.py	/^    def endswith(s
 endswith	../.tox/py36/lib/python3.6/collections/__init__.py	/^    def endswith(self, suffix, start=0, end=_sys.maxsize):$/;"	kind:member	line:1180
 endswith	../venv/lib/python3.5/collections/__init__.py	/^    def endswith(self, suffix, start=0, end=_sys.maxsize):$/;"	kind:member	line:1175
 engine	../sentinela/alembic/env.py	/^engine = mysession.engine$/;"	kind:variable	line:31
-engine	../sentinela/app.py	/^engine = mysession.engine$/;"	kind:variable	line:38
+engine	../sentinela/app.py	/^engine = mysession.engine$/;"	kind:variable	line:42
 engine	../sentinela/models/models.py	/^    def engine(self):$/;"	kind:member	line:43
+enhancer.py	../.tox/check/bin/enhancer.py	1;"	kind:file	line:1
+enhancer.py	../.tox/docs/bin/enhancer.py	1;"	kind:file	line:1
+enhancer.py	../.tox/py35/bin/enhancer.py	1;"	kind:file	line:1
+enhancer.py	../.tox/py36/bin/enhancer.py	1;"	kind:file	line:1
+enhancer.py	../venv/bin/enhancer.py	1;"	kind:file	line:1
 enum.py	../.tox/py36/lib/python3.6/enum.py	1;"	kind:file	line:1
 env.py	../sentinela/alembic/env.py	1;"	kind:file	line:1
 environ	../.tox/check/lib/python3.5/os.py	/^environ = _createenviron()$/;"	kind:variable	line:810
@@ -20150,6 +20466,8 @@ exact_type	../.tox/py35/lib/python3.5/tokenize.py	/^    def exact_type(self):$/;
 exact_type	../.tox/py36/lib/python3.6/tokenize.py	/^    def exact_type(self):$/;"	kind:member	line:106
 exact_type	../venv/lib/python3.5/tokenize.py	/^    def exact_type(self):$/;"	kind:member	line:105
 exclude_patterns	../docs/conf.py	/^exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', '.tox', 'venv']$/;"	kind:variable	line:77
+exclui_parametro	../sentinela/app.py	/^def exclui_parametro():$/;"	kind:function	line:271
+exclui_valor	../sentinela/app.py	/^def exclui_valor():$/;"	kind:function	line:306
 exec_module	../.tox/check/lib/python3.5/importlib/_bootstrap.py	/^    def exec_module(module):$/;"	kind:member	line:810
 exec_module	../.tox/check/lib/python3.5/importlib/_bootstrap.py	/^    def exec_module(self, module):$/;"	kind:member	line:746
 exec_module	../.tox/check/lib/python3.5/importlib/_bootstrap_external.py	/^    def exec_module(self, module):$/;"	kind:member	line:1019
@@ -20215,6 +20533,11 @@ execusercustomize	../.tox/docs/lib/python3.5/site.py	/^def execusercustomize():$
 execusercustomize	../.tox/py35/lib/python3.5/site.py	/^def execusercustomize():$/;"	kind:function	line:660
 execusercustomize	../.tox/py36/lib/python3.6/site.py	/^def execusercustomize():$/;"	kind:function	line:660
 execusercustomize	../venv/lib/python3.5/site.py	/^def execusercustomize():$/;"	kind:function	line:660
+execute	../.tox/check/bin/pildriver.py	/^    def execute(self, list):$/;"	kind:member	line:481
+execute	../.tox/docs/bin/pildriver.py	/^    def execute(self, list):$/;"	kind:member	line:481
+execute	../.tox/py35/bin/pildriver.py	/^    def execute(self, list):$/;"	kind:member	line:481
+execute	../.tox/py36/bin/pildriver.py	/^    def execute(self, list):$/;"	kind:member	line:481
+execute	../venv/bin/pildriver.py	/^    def execute(self, list):$/;"	kind:member	line:481
 execvp	../.tox/check/lib/python3.5/os.py	/^def execvp(file, args):$/;"	kind:function	line:609
 execvp	../.tox/docs/lib/python3.5/os.py	/^def execvp(file, args):$/;"	kind:function	line:609
 execvp	../.tox/py35/lib/python3.5/os.py	/^def execvp(file, args):$/;"	kind:function	line:609
@@ -20281,6 +20604,11 @@ expandvars	../.tox/py36/lib/python3.6/ntpath.py	/^def expandvars(path):$/;"	kind
 expandvars	../.tox/py36/lib/python3.6/posixpath.py	/^def expandvars(path):$/;"	kind:function	line:276
 expandvars	../venv/lib/python3.5/ntpath.py	/^def expandvars(path):$/;"	kind:function	line:353
 expandvars	../venv/lib/python3.5/posixpath.py	/^def expandvars(path):$/;"	kind:function	line:266
+explode.py	../.tox/check/bin/explode.py	1;"	kind:file	line:1
+explode.py	../.tox/docs/bin/explode.py	1;"	kind:file	line:1
+explode.py	../.tox/py35/bin/explode.py	1;"	kind:file	line:1
+explode.py	../.tox/py36/bin/explode.py	1;"	kind:file	line:1
+explode.py	../venv/bin/explode.py	1;"	kind:file	line:1
 expovariate	../.tox/check/lib/python3.5/random.py	/^    def expovariate(self, lambd):$/;"	kind:member	line:407
 expovariate	../.tox/check/lib/python3.5/random.py	/^expovariate = _inst.expovariate$/;"	kind:variable	line:730
 expovariate	../.tox/docs/lib/python3.5/random.py	/^    def expovariate(self, lambd):$/;"	kind:member	line:407
@@ -20317,7 +20645,7 @@ extractfile	../.tox/docs/lib/python3.5/tarfile.py	/^    def extractfile(self, me
 extractfile	../.tox/py35/lib/python3.5/tarfile.py	/^    def extractfile(self, member):$/;"	kind:member	line:2053
 extractfile	../.tox/py36/lib/python3.6/tarfile.py	/^    def extractfile(self, member):$/;"	kind:member	line:2064
 extractfile	../venv/lib/python3.5/tarfile.py	/^    def extractfile(self, member):$/;"	kind:member	line:2053
-extras_require	../setup.py	/^    extras_require={$/;"	kind:variable	line:25
+extras_require	../setup.py	/^    extras_require={$/;"	kind:variable	line:28
 extsep	../.tox/check/lib/python3.5/ntpath.py	/^extsep = '.'$/;"	kind:variable	line:26
 extsep	../.tox/check/lib/python3.5/posixpath.py	/^extsep = '.'$/;"	kind:variable	line:32
 extsep	../.tox/docs/lib/python3.5/ntpath.py	/^extsep = '.'$/;"	kind:variable	line:26
@@ -20359,6 +20687,16 @@ filemode	../.tox/py36/lib/python3.6/stat.py	/^def filemode(mode):$/;"	kind:funct
 filemode	../.tox/py36/lib/python3.6/tarfile.py	/^def filemode(mode):$/;"	kind:function	line:260
 filemode	../venv/lib/python3.5/stat.py	/^def filemode(mode):$/;"	kind:function	line:139
 filemode	../venv/lib/python3.5/tarfile.py	/^def filemode(mode):$/;"	kind:function	line:253
+filename	../.tox/check/bin/player.py	/^    filename = sys.argv[1]$/;"	kind:variable	line:77
+filename	../.tox/check/bin/viewer.py	/^    filename = sys.argv[1]$/;"	kind:variable	line:46
+filename	../.tox/docs/bin/player.py	/^    filename = sys.argv[1]$/;"	kind:variable	line:77
+filename	../.tox/docs/bin/viewer.py	/^    filename = sys.argv[1]$/;"	kind:variable	line:46
+filename	../.tox/py35/bin/player.py	/^    filename = sys.argv[1]$/;"	kind:variable	line:77
+filename	../.tox/py35/bin/viewer.py	/^    filename = sys.argv[1]$/;"	kind:variable	line:46
+filename	../.tox/py36/bin/player.py	/^    filename = sys.argv[1]$/;"	kind:variable	line:77
+filename	../.tox/py36/bin/viewer.py	/^    filename = sys.argv[1]$/;"	kind:variable	line:46
+filename	../venv/bin/player.py	/^    filename = sys.argv[1]$/;"	kind:variable	line:77
+filename	../venv/bin/viewer.py	/^    filename = sys.argv[1]$/;"	kind:variable	line:46
 fileno	../.tox/check/lib/python3.5/tempfile.py	/^    def fileno(self):$/;"	kind:member	line:843
 fileno	../.tox/docs/lib/python3.5/tempfile.py	/^    def fileno(self):$/;"	kind:member	line:843
 fileno	../.tox/py35/lib/python3.5/tempfile.py	/^    def fileno(self):$/;"	kind:member	line:843
@@ -20369,6 +20707,16 @@ fileobject	../.tox/docs/lib/python3.5/tarfile.py	/^    fileobject = ExFileObject
 fileobject	../.tox/py35/lib/python3.5/tarfile.py	/^    fileobject = ExFileObject   # The file-object for extractfile().$/;"	kind:variable	line:1399
 fileobject	../.tox/py36/lib/python3.6/tarfile.py	/^    fileobject = ExFileObject   # The file-object for extractfile().$/;"	kind:variable	line:1406
 fileobject	../venv/lib/python3.5/tarfile.py	/^    fileobject = ExFileObject   # The file-object for extractfile().$/;"	kind:variable	line:1399
+files	../.tox/check/bin/pilfont.py	/^    files = files + glob.glob(f)$/;"	kind:variable	line:35
+files	../.tox/check/bin/pilfont.py	/^files = []$/;"	kind:variable	line:33
+files	../.tox/docs/bin/pilfont.py	/^    files = files + glob.glob(f)$/;"	kind:variable	line:35
+files	../.tox/docs/bin/pilfont.py	/^files = []$/;"	kind:variable	line:33
+files	../.tox/py35/bin/pilfont.py	/^    files = files + glob.glob(f)$/;"	kind:variable	line:35
+files	../.tox/py35/bin/pilfont.py	/^files = []$/;"	kind:variable	line:33
+files	../.tox/py36/bin/pilfont.py	/^    files = files + glob.glob(f)$/;"	kind:variable	line:35
+files	../.tox/py36/bin/pilfont.py	/^files = []$/;"	kind:variable	line:33
+files	../venv/bin/pilfont.py	/^    files = files + glob.glob(f)$/;"	kind:variable	line:35
+files	../venv/bin/pilfont.py	/^files = []$/;"	kind:variable	line:33
 filhos	../sentinela/models/models.py	/^    filhos = relationship('Tabela')$/;"	kind:variable	line:164
 filter	../.tox/check/lib/python3.5/fnmatch.py	/^def filter(names, pat):$/;"	kind:function	line:48
 filter	../.tox/check/lib/python3.5/re.py	/^    def filter(match, template=template):$/;"	kind:function	line:329
@@ -20602,6 +20950,26 @@ formatwarning	../.tox/docs/lib/python3.5/warnings.py	/^def formatwarning(message
 formatwarning	../.tox/py35/lib/python3.5/warnings.py	/^def formatwarning(message, category, filename, lineno, line=None):$/;"	kind:function	line:22
 formatwarning	../.tox/py36/lib/python3.6/warnings.py	/^def formatwarning(message, category, filename, lineno, line=None):$/;"	kind:function	line:15
 formatwarning	../venv/lib/python3.5/warnings.py	/^def formatwarning(message, category, filename, lineno, line=None):$/;"	kind:function	line:22
+fp	../.tox/check/bin/pilfont.py	/^        fp = open(f, "rb")$/;"	kind:variable	line:43
+fp	../.tox/check/bin/pilprint.py	/^            fp = p.stdin$/;"	kind:variable	line:83
+fp	../.tox/check/bin/pilprint.py	/^            fp = sys.stdout$/;"	kind:variable	line:85
+fp	../.tox/docs/bin/pilfont.py	/^        fp = open(f, "rb")$/;"	kind:variable	line:43
+fp	../.tox/docs/bin/pilprint.py	/^            fp = p.stdin$/;"	kind:variable	line:83
+fp	../.tox/docs/bin/pilprint.py	/^            fp = sys.stdout$/;"	kind:variable	line:85
+fp	../.tox/py35/bin/pilfont.py	/^        fp = open(f, "rb")$/;"	kind:variable	line:43
+fp	../.tox/py35/bin/pilprint.py	/^            fp = p.stdin$/;"	kind:variable	line:83
+fp	../.tox/py35/bin/pilprint.py	/^            fp = sys.stdout$/;"	kind:variable	line:85
+fp	../.tox/py36/bin/pilfont.py	/^        fp = open(f, "rb")$/;"	kind:variable	line:43
+fp	../.tox/py36/bin/pilprint.py	/^            fp = p.stdin$/;"	kind:variable	line:83
+fp	../.tox/py36/bin/pilprint.py	/^            fp = sys.stdout$/;"	kind:variable	line:85
+fp	../venv/bin/pilfont.py	/^        fp = open(f, "rb")$/;"	kind:variable	line:43
+fp	../venv/bin/pilprint.py	/^            fp = p.stdin$/;"	kind:variable	line:83
+fp	../venv/bin/pilprint.py	/^            fp = sys.stdout$/;"	kind:variable	line:85
+frames	../.tox/check/bin/explode.py	/^frames = Interval(",".join(sys.argv[3:]))$/;"	kind:variable	line:77
+frames	../.tox/docs/bin/explode.py	/^frames = Interval(",".join(sys.argv[3:]))$/;"	kind:variable	line:77
+frames	../.tox/py35/bin/explode.py	/^frames = Interval(",".join(sys.argv[3:]))$/;"	kind:variable	line:77
+frames	../.tox/py36/bin/explode.py	/^frames = Interval(",".join(sys.argv[3:]))$/;"	kind:variable	line:77
+frames	../venv/bin/explode.py	/^frames = Interval(",".join(sys.argv[3:]))$/;"	kind:variable	line:77
 frombuf	../.tox/check/lib/python3.5/tarfile.py	/^    def frombuf(cls, buf, encoding, errors):$/;"	kind:member	line:1015
 frombuf	../.tox/docs/lib/python3.5/tarfile.py	/^    def frombuf(cls, buf, encoding, errors):$/;"	kind:member	line:1015
 frombuf	../.tox/py35/lib/python3.5/tarfile.py	/^    def frombuf(cls, buf, encoding, errors):$/;"	kind:member	line:1015
@@ -20723,6 +21091,7 @@ ge	../.tox/docs/lib/python3.5/operator.py	/^def ge(a, b):$/;"	kind:function	line
 ge	../.tox/py35/lib/python3.5/operator.py	/^def ge(a, b):$/;"	kind:function	line:43
 ge	../.tox/py36/lib/python3.6/operator.py	/^def ge(a, b):$/;"	kind:function	line:43
 ge	../venv/lib/python3.5/operator.py	/^def ge(a, b):$/;"	kind:function	line:43
+genXML	../image_aq/utils/pascal_voc_io.py	/^    def genXML(self):$/;"	kind:member	line:37
 generate_generalized_integer	../.tox/check/lib/python3.5/encodings/punycode.py	/^def generate_generalized_integer(N, bias):$/;"	kind:function	line:78
 generate_generalized_integer	../.tox/docs/lib/python3.5/encodings/punycode.py	/^def generate_generalized_integer(N, bias):$/;"	kind:function	line:78
 generate_generalized_integer	../.tox/py35/lib/python3.5/encodings/punycode.py	/^def generate_generalized_integer(N, bias):$/;"	kind:function	line:78
@@ -20796,6 +21165,7 @@ getOptionalRelease	../.tox/docs/lib/python3.5/__future__.py	/^    def getOptiona
 getOptionalRelease	../.tox/py35/lib/python3.5/__future__.py	/^    def getOptionalRelease(self):$/;"	kind:member	line:84
 getOptionalRelease	../.tox/py36/lib/python3.6/__future__.py	/^    def getOptionalRelease(self):$/;"	kind:member	line:84
 getOptionalRelease	../venv/lib/python3.5/__future__.py	/^    def getOptionalRelease(self):$/;"	kind:member	line:84
+getShapes	../image_aq/utils/pascal_voc_io.py	/^    def getShapes(self):$/;"	kind:member	line:144
 get_archive_formats	../.tox/check/lib/python3.5/shutil.py	/^def get_archive_formats():$/;"	kind:function	line:715
 get_archive_formats	../.tox/docs/lib/python3.5/shutil.py	/^def get_archive_formats():$/;"	kind:function	line:715
 get_archive_formats	../.tox/py35/lib/python3.5/shutil.py	/^def get_archive_formats():$/;"	kind:function	line:715
@@ -21858,11 +22228,21 @@ gi_yieldfrom	../.tox/docs/lib/python3.5/types.py	/^    def gi_yieldfrom(self):$/
 gi_yieldfrom	../.tox/py35/lib/python3.5/types.py	/^    def gi_yieldfrom(self):$/;"	kind:member	line:192
 gi_yieldfrom	../.tox/py36/lib/python3.6/types.py	/^    def gi_yieldfrom(self):$/;"	kind:member	line:197
 gi_yieldfrom	../venv/lib/python3.5/types.py	/^    def gi_yieldfrom(self):$/;"	kind:member	line:192
+gifmaker.py	../.tox/check/bin/gifmaker.py	1;"	kind:file	line:1
+gifmaker.py	../.tox/docs/bin/gifmaker.py	1;"	kind:file	line:1
+gifmaker.py	../.tox/py35/bin/gifmaker.py	1;"	kind:file	line:1
+gifmaker.py	../.tox/py36/bin/gifmaker.py	1;"	kind:file	line:1
+gifmaker.py	../venv/bin/gifmaker.py	1;"	kind:file	line:1
 global_matches	../.tox/check/lib/python3.5/rlcompleter.py	/^    def global_matches(self, text):$/;"	kind:member	line:102
 global_matches	../.tox/docs/lib/python3.5/rlcompleter.py	/^    def global_matches(self, text):$/;"	kind:member	line:102
 global_matches	../.tox/py35/lib/python3.5/rlcompleter.py	/^    def global_matches(self, text):$/;"	kind:member	line:102
 global_matches	../.tox/py36/lib/python3.6/rlcompleter.py	/^    def global_matches(self, text):$/;"	kind:member	line:102
 global_matches	../venv/lib/python3.5/rlcompleter.py	/^    def global_matches(self, text):$/;"	kind:member	line:102
+globfix	../.tox/check/bin/pilfile.py	/^def globfix(files):$/;"	kind:function	line:68
+globfix	../.tox/docs/bin/pilfile.py	/^def globfix(files):$/;"	kind:function	line:68
+globfix	../.tox/py35/bin/pilfile.py	/^def globfix(files):$/;"	kind:function	line:68
+globfix	../.tox/py36/bin/pilfile.py	/^def globfix(files):$/;"	kind:function	line:68
+globfix	../venv/bin/pilfile.py	/^def globfix(files):$/;"	kind:function	line:68
 group	../.tox/check/lib/python3.5/tokenize.py	/^def group(*choices): return '(' + '|'.join(choices) + ')'$/;"	kind:function	line:111
 group	../.tox/docs/lib/python3.5/tokenize.py	/^def group(*choices): return '(' + '|'.join(choices) + ')'$/;"	kind:function	line:111
 group	../.tox/py35/lib/python3.5/tokenize.py	/^def group(*choices): return '(' + '|'.join(choices) + ')'$/;"	kind:function	line:111
@@ -21964,6 +22344,21 @@ hp_roman8.py	../.tox/docs/lib/python3.5/encodings/hp_roman8.py	1;"	kind:file	lin
 hp_roman8.py	../.tox/py35/lib/python3.5/encodings/hp_roman8.py	1;"	kind:file	line:1
 hp_roman8.py	../.tox/py36/lib/python3.6/encodings/hp_roman8.py	1;"	kind:file	line:1
 hp_roman8.py	../venv/lib/python3.5/encodings/hp_roman8.py	1;"	kind:file	line:1
+html	../.tox/check/bin/explode.py	/^    html = 1$/;"	kind:variable	line:57
+html	../.tox/check/bin/explode.py	/^    html = open(file+".html", "w")$/;"	kind:variable	line:92
+html	../.tox/check/bin/explode.py	/^html = 0$/;"	kind:variable	line:54
+html	../.tox/docs/bin/explode.py	/^    html = 1$/;"	kind:variable	line:57
+html	../.tox/docs/bin/explode.py	/^    html = open(file+".html", "w")$/;"	kind:variable	line:92
+html	../.tox/docs/bin/explode.py	/^html = 0$/;"	kind:variable	line:54
+html	../.tox/py35/bin/explode.py	/^    html = 1$/;"	kind:variable	line:57
+html	../.tox/py35/bin/explode.py	/^    html = open(file+".html", "w")$/;"	kind:variable	line:92
+html	../.tox/py35/bin/explode.py	/^html = 0$/;"	kind:variable	line:54
+html	../.tox/py36/bin/explode.py	/^    html = 1$/;"	kind:variable	line:57
+html	../.tox/py36/bin/explode.py	/^    html = open(file+".html", "w")$/;"	kind:variable	line:92
+html	../.tox/py36/bin/explode.py	/^html = 0$/;"	kind:variable	line:54
+html	../venv/bin/explode.py	/^    html = 1$/;"	kind:variable	line:57
+html	../venv/bin/explode.py	/^    html = open(file+".html", "w")$/;"	kind:variable	line:92
+html	../venv/bin/explode.py	/^html = 0$/;"	kind:variable	line:54
 html_sidebars	../docs/conf.py	/^html_sidebars = {$/;"	kind:variable	line:109
 html_static_path	../docs/conf.py	/^html_static_path = ['_static']$/;"	kind:variable	line:102
 html_theme	../docs/conf.py	/^html_theme = 'alabaster'$/;"	kind:variable	line:91
@@ -22056,6 +22451,10 @@ iconcat	../.tox/docs/lib/python3.5/operator.py	/^def iconcat(a, b):$/;"	kind:fun
 iconcat	../.tox/py35/lib/python3.5/operator.py	/^def iconcat(a, b):$/;"	kind:function	line:347
 iconcat	../.tox/py36/lib/python3.6/operator.py	/^def iconcat(a, b):$/;"	kind:function	line:347
 iconcat	../venv/lib/python3.5/operator.py	/^def iconcat(a, b):$/;"	kind:function	line:347
+id	../.tox/check/bin/pilfile.py	/^        id = sorted(Image.ID)$/;"	kind:variable	line:51
+id	../.tox/docs/bin/pilfile.py	/^        id = sorted(Image.ID)$/;"	kind:variable	line:51
+id	../.tox/py35/bin/pilfile.py	/^        id = sorted(Image.ID)$/;"	kind:variable	line:51
+id	../.tox/py36/bin/pilfile.py	/^        id = sorted(Image.ID)$/;"	kind:variable	line:51
 id	../sentinela/models/models.py	/^    id = Column(Integer, primary_key=True)$/;"	kind:variable	line:106
 id	../sentinela/models/models.py	/^    id = Column(Integer, primary_key=True)$/;"	kind:variable	line:125
 id	../sentinela/models/models.py	/^    id = Column(Integer, primary_key=True)$/;"	kind:variable	line:141
@@ -22063,6 +22462,7 @@ id	../sentinela/models/models.py	/^    id = Column(Integer, primary_key=True)$/;
 id	../sentinela/models/models.py	/^    id = Column(Integer, primary_key=True)$/;"	kind:variable	line:55
 id	../sentinela/models/models.py	/^    id = Column(Integer, primary_key=True)$/;"	kind:variable	line:70
 id	../sentinela/models/models.py	/^    id = Column(Integer, primary_key=True)$/;"	kind:variable	line:85
+id	../venv/bin/pilfile.py	/^        id = sorted(Image.ID)$/;"	kind:variable	line:51
 idna.py	../.tox/check/lib/python3.5/encodings/idna.py	1;"	kind:file	line:1
 idna.py	../.tox/docs/lib/python3.5/encodings/idna.py	1;"	kind:file	line:1
 idna.py	../.tox/py35/lib/python3.5/encodings/idna.py	1;"	kind:file	line:1
@@ -22099,6 +22499,71 @@ ilshift	../.tox/docs/lib/python3.5/operator.py	/^def ilshift(a, b):$/;"	kind:fun
 ilshift	../.tox/py35/lib/python3.5/operator.py	/^def ilshift(a, b):$/;"	kind:function	line:360
 ilshift	../.tox/py36/lib/python3.6/operator.py	/^def ilshift(a, b):$/;"	kind:function	line:360
 ilshift	../venv/lib/python3.5/operator.py	/^def ilshift(a, b):$/;"	kind:function	line:360
+im	../.tox/check/bin/enhancer.py	/^im = Image.open(sys.argv[1])$/;"	kind:variable	line:55
+im	../.tox/check/bin/explode.py	/^im = Image.open(infile)$/;"	kind:variable	line:88
+im	../.tox/check/bin/gifmaker.py	/^    im = Image.open(sys.argv[1])$/;"	kind:variable	line:30
+im	../.tox/check/bin/painter.py	/^    im = im.convert("RGB")$/;"	kind:variable	line:80
+im	../.tox/check/bin/painter.py	/^im = Image.open(sys.argv[1])$/;"	kind:variable	line:77
+im	../.tox/check/bin/pilconvert.py	/^        im = im.convert(convert)$/;"	kind:variable	line:92
+im	../.tox/check/bin/pilconvert.py	/^    im = Image.open(argv[0])$/;"	kind:variable	line:89
+im	../.tox/check/bin/pilfile.py	/^        im = Image.open(file)$/;"	kind:variable	line:82
+im	../.tox/check/bin/pilprint.py	/^            im = im.convert("L")$/;"	kind:variable	line:79
+im	../.tox/check/bin/pilprint.py	/^        im = Image.open(filepath)$/;"	kind:variable	line:73
+im	../.tox/check/bin/thresholder.py	/^    im = im.convert("L")$/;"	kind:variable	line:74
+im	../.tox/check/bin/thresholder.py	/^im = Image.open(sys.argv[1])$/;"	kind:variable	line:71
+im	../.tox/check/bin/viewer.py	/^    im = Image.open(filename)$/;"	kind:variable	line:51
+im	../.tox/docs/bin/enhancer.py	/^im = Image.open(sys.argv[1])$/;"	kind:variable	line:55
+im	../.tox/docs/bin/explode.py	/^im = Image.open(infile)$/;"	kind:variable	line:88
+im	../.tox/docs/bin/gifmaker.py	/^    im = Image.open(sys.argv[1])$/;"	kind:variable	line:30
+im	../.tox/docs/bin/painter.py	/^    im = im.convert("RGB")$/;"	kind:variable	line:80
+im	../.tox/docs/bin/painter.py	/^im = Image.open(sys.argv[1])$/;"	kind:variable	line:77
+im	../.tox/docs/bin/pilconvert.py	/^        im = im.convert(convert)$/;"	kind:variable	line:92
+im	../.tox/docs/bin/pilconvert.py	/^    im = Image.open(argv[0])$/;"	kind:variable	line:89
+im	../.tox/docs/bin/pilfile.py	/^        im = Image.open(file)$/;"	kind:variable	line:82
+im	../.tox/docs/bin/pilprint.py	/^            im = im.convert("L")$/;"	kind:variable	line:79
+im	../.tox/docs/bin/pilprint.py	/^        im = Image.open(filepath)$/;"	kind:variable	line:73
+im	../.tox/docs/bin/thresholder.py	/^    im = im.convert("L")$/;"	kind:variable	line:74
+im	../.tox/docs/bin/thresholder.py	/^im = Image.open(sys.argv[1])$/;"	kind:variable	line:71
+im	../.tox/docs/bin/viewer.py	/^    im = Image.open(filename)$/;"	kind:variable	line:51
+im	../.tox/py35/bin/enhancer.py	/^im = Image.open(sys.argv[1])$/;"	kind:variable	line:55
+im	../.tox/py35/bin/explode.py	/^im = Image.open(infile)$/;"	kind:variable	line:88
+im	../.tox/py35/bin/gifmaker.py	/^    im = Image.open(sys.argv[1])$/;"	kind:variable	line:30
+im	../.tox/py35/bin/painter.py	/^    im = im.convert("RGB")$/;"	kind:variable	line:80
+im	../.tox/py35/bin/painter.py	/^im = Image.open(sys.argv[1])$/;"	kind:variable	line:77
+im	../.tox/py35/bin/pilconvert.py	/^        im = im.convert(convert)$/;"	kind:variable	line:92
+im	../.tox/py35/bin/pilconvert.py	/^    im = Image.open(argv[0])$/;"	kind:variable	line:89
+im	../.tox/py35/bin/pilfile.py	/^        im = Image.open(file)$/;"	kind:variable	line:82
+im	../.tox/py35/bin/pilprint.py	/^            im = im.convert("L")$/;"	kind:variable	line:79
+im	../.tox/py35/bin/pilprint.py	/^        im = Image.open(filepath)$/;"	kind:variable	line:73
+im	../.tox/py35/bin/thresholder.py	/^    im = im.convert("L")$/;"	kind:variable	line:74
+im	../.tox/py35/bin/thresholder.py	/^im = Image.open(sys.argv[1])$/;"	kind:variable	line:71
+im	../.tox/py35/bin/viewer.py	/^    im = Image.open(filename)$/;"	kind:variable	line:51
+im	../.tox/py36/bin/enhancer.py	/^im = Image.open(sys.argv[1])$/;"	kind:variable	line:55
+im	../.tox/py36/bin/explode.py	/^im = Image.open(infile)$/;"	kind:variable	line:88
+im	../.tox/py36/bin/gifmaker.py	/^    im = Image.open(sys.argv[1])$/;"	kind:variable	line:30
+im	../.tox/py36/bin/painter.py	/^    im = im.convert("RGB")$/;"	kind:variable	line:80
+im	../.tox/py36/bin/painter.py	/^im = Image.open(sys.argv[1])$/;"	kind:variable	line:77
+im	../.tox/py36/bin/pilconvert.py	/^        im = im.convert(convert)$/;"	kind:variable	line:92
+im	../.tox/py36/bin/pilconvert.py	/^    im = Image.open(argv[0])$/;"	kind:variable	line:89
+im	../.tox/py36/bin/pilfile.py	/^        im = Image.open(file)$/;"	kind:variable	line:82
+im	../.tox/py36/bin/pilprint.py	/^            im = im.convert("L")$/;"	kind:variable	line:79
+im	../.tox/py36/bin/pilprint.py	/^        im = Image.open(filepath)$/;"	kind:variable	line:73
+im	../.tox/py36/bin/thresholder.py	/^    im = im.convert("L")$/;"	kind:variable	line:74
+im	../.tox/py36/bin/thresholder.py	/^im = Image.open(sys.argv[1])$/;"	kind:variable	line:71
+im	../.tox/py36/bin/viewer.py	/^    im = Image.open(filename)$/;"	kind:variable	line:51
+im	../venv/bin/enhancer.py	/^im = Image.open(sys.argv[1])$/;"	kind:variable	line:55
+im	../venv/bin/explode.py	/^im = Image.open(infile)$/;"	kind:variable	line:88
+im	../venv/bin/gifmaker.py	/^    im = Image.open(sys.argv[1])$/;"	kind:variable	line:30
+im	../venv/bin/painter.py	/^    im = im.convert("RGB")$/;"	kind:variable	line:80
+im	../venv/bin/painter.py	/^im = Image.open(sys.argv[1])$/;"	kind:variable	line:77
+im	../venv/bin/pilconvert.py	/^        im = im.convert(convert)$/;"	kind:variable	line:92
+im	../venv/bin/pilconvert.py	/^    im = Image.open(argv[0])$/;"	kind:variable	line:89
+im	../venv/bin/pilfile.py	/^        im = Image.open(file)$/;"	kind:variable	line:82
+im	../venv/bin/pilprint.py	/^            im = im.convert("L")$/;"	kind:variable	line:79
+im	../venv/bin/pilprint.py	/^        im = Image.open(filepath)$/;"	kind:variable	line:73
+im	../venv/bin/thresholder.py	/^    im = im.convert("L")$/;"	kind:variable	line:74
+im	../venv/bin/thresholder.py	/^im = Image.open(sys.argv[1])$/;"	kind:variable	line:71
+im	../venv/bin/viewer.py	/^    im = Image.open(filename)$/;"	kind:variable	line:51
 image_functions.py	../image_aq/utils/image_functions.py	1;"	kind:file	line:1
 imatmul	../.tox/check/lib/python3.5/operator.py	/^def imatmul(a, b):$/;"	kind:function	line:375
 imatmul	../.tox/docs/lib/python3.5/operator.py	/^def imatmul(a, b):$/;"	kind:function	line:375
@@ -22121,7 +22586,7 @@ import_module	../.tox/py35/lib/python3.5/importlib/__init__.py	/^def import_modu
 import_module	../.tox/py36/lib/python3.6/importlib/__init__.py	/^def import_module(name, package=None):$/;"	kind:function	line:108
 import_module	../venv/lib/python3.5/importlib/__init__.py	/^def import_module(name, package=None):$/;"	kind:function	line:108
 import_named_csv	../sentinela/utils/gerente_risco.py	/^    def import_named_csv(self, arquivo, session=None, filtro=Filtro.igual):$/;"	kind:member	line:277
-importa	../sentinela/app.py	/^def importa():$/;"	kind:function	line:112
+importa	../sentinela/app.py	/^def importa():$/;"	kind:function	line:116
 imul	../.tox/check/lib/python3.5/operator.py	/^def imul(a, b):$/;"	kind:function	line:370
 imul	../.tox/docs/lib/python3.5/operator.py	/^def imul(a, b):$/;"	kind:function	line:370
 imul	../.tox/py35/lib/python3.5/operator.py	/^def imul(a, b):$/;"	kind:function	line:370
@@ -22143,7 +22608,7 @@ index	../.tox/py36/lib/python3.6/_collections_abc.py	/^    def index(self, value
 index	../.tox/py36/lib/python3.6/collections/__init__.py	/^    def index(self, item, *args): return self.data.index(item, *args)$/;"	kind:member	line:1086
 index	../.tox/py36/lib/python3.6/collections/__init__.py	/^    def index(self, sub, start=0, end=_sys.maxsize):$/;"	kind:member	line:1192
 index	../.tox/py36/lib/python3.6/operator.py	/^def index(a):$/;"	kind:function	line:87
-index	../sentinela/app.py	/^def index():$/;"	kind:function	line:61
+index	../sentinela/app.py	/^def index():$/;"	kind:function	line:65
 index	../venv/lib/python3.5/_collections_abc.py	/^    def index(self, value, start=0, stop=None):$/;"	kind:member	line:831
 index	../venv/lib/python3.5/collections/__init__.py	/^    def index(self, item, *args): return self.data.index(item, *args)$/;"	kind:member	line:1081
 index	../venv/lib/python3.5/collections/__init__.py	/^    def index(self, sub, start=0, end=_sys.maxsize):$/;"	kind:member	line:1187
@@ -22153,6 +22618,11 @@ indexOf	../.tox/docs/lib/python3.5/operator.py	/^def indexOf(a, b):$/;"	kind:fun
 indexOf	../.tox/py35/lib/python3.5/operator.py	/^def indexOf(a, b):$/;"	kind:function	line:173
 indexOf	../.tox/py36/lib/python3.6/operator.py	/^def indexOf(a, b):$/;"	kind:function	line:173
 indexOf	../venv/lib/python3.5/operator.py	/^def indexOf(a, b):$/;"	kind:function	line:173
+infile	../.tox/check/bin/explode.py	/^infile = sys.argv[1]$/;"	kind:variable	line:74
+infile	../.tox/docs/bin/explode.py	/^infile = sys.argv[1]$/;"	kind:variable	line:74
+infile	../.tox/py35/bin/explode.py	/^infile = sys.argv[1]$/;"	kind:variable	line:74
+infile	../.tox/py36/bin/explode.py	/^infile = sys.argv[1]$/;"	kind:variable	line:74
+infile	../venv/bin/explode.py	/^infile = sys.argv[1]$/;"	kind:variable	line:74
 init_builtin	../.tox/check/lib/python3.5/imp.py	/^def init_builtin(name):$/;"	kind:function	line:317
 init_builtin	../.tox/docs/lib/python3.5/imp.py	/^def init_builtin(name):$/;"	kind:function	line:317
 init_builtin	../.tox/py35/lib/python3.5/imp.py	/^def init_builtin(name):$/;"	kind:function	line:317
@@ -22689,6 +23159,11 @@ itruediv	../.tox/docs/lib/python3.5/operator.py	/^def itruediv(a, b):$/;"	kind:f
 itruediv	../.tox/py35/lib/python3.5/operator.py	/^def itruediv(a, b):$/;"	kind:function	line:400
 itruediv	../.tox/py36/lib/python3.6/operator.py	/^def itruediv(a, b):$/;"	kind:function	line:400
 itruediv	../venv/lib/python3.5/operator.py	/^def itruediv(a, b):$/;"	kind:function	line:400
+ix	../.tox/check/bin/explode.py	/^ix = 1$/;"	kind:variable	line:86
+ix	../.tox/docs/bin/explode.py	/^ix = 1$/;"	kind:variable	line:86
+ix	../.tox/py35/bin/explode.py	/^ix = 1$/;"	kind:variable	line:86
+ix	../.tox/py36/bin/explode.py	/^ix = 1$/;"	kind:variable	line:86
+ix	../venv/bin/explode.py	/^ix = 1$/;"	kind:variable	line:86
 ixor	../.tox/check/lib/python3.5/operator.py	/^def ixor(a, b):$/;"	kind:function	line:405
 ixor	../.tox/docs/lib/python3.5/operator.py	/^def ixor(a, b):$/;"	kind:function	line:405
 ixor	../.tox/py35/lib/python3.5/operator.py	/^def ixor(a, b):$/;"	kind:function	line:405
@@ -22826,6 +23301,11 @@ length_hint	../.tox/docs/lib/python3.5/operator.py	/^def length_hint(obj, defaul
 length_hint	../.tox/py35/lib/python3.5/operator.py	/^def length_hint(obj, default=0):$/;"	kind:function	line:185
 length_hint	../.tox/py36/lib/python3.6/operator.py	/^def length_hint(obj, default=0):$/;"	kind:function	line:185
 length_hint	../venv/lib/python3.5/operator.py	/^def length_hint(obj, default=0):$/;"	kind:function	line:185
+letter	../.tox/check/bin/pilprint.py	/^letter = (1.0*72, 1.0*72, 7.5*72, 10.0*72)$/;"	kind:variable	line:25
+letter	../.tox/docs/bin/pilprint.py	/^letter = (1.0*72, 1.0*72, 7.5*72, 10.0*72)$/;"	kind:variable	line:25
+letter	../.tox/py35/bin/pilprint.py	/^letter = (1.0*72, 1.0*72, 7.5*72, 10.0*72)$/;"	kind:variable	line:25
+letter	../.tox/py36/bin/pilprint.py	/^letter = (1.0*72, 1.0*72, 7.5*72, 10.0*72)$/;"	kind:variable	line:25
+letter	../venv/bin/pilprint.py	/^letter = (1.0*72, 1.0*72, 7.5*72, 10.0*72)$/;"	kind:variable	line:25
 lexists	../.tox/check/lib/python3.5/ntpath.py	/^def lexists(path):$/;"	kind:function	line:256
 lexists	../.tox/check/lib/python3.5/posixpath.py	/^def lexists(path):$/;"	kind:function	line:168
 lexists	../.tox/docs/lib/python3.5/ntpath.py	/^def lexists(path):$/;"	kind:function	line:256
@@ -22861,7 +23341,7 @@ list	../.tox/docs/lib/python3.5/tarfile.py	/^    def list(self, verbose=True, *,
 list	../.tox/py35/lib/python3.5/tarfile.py	/^    def list(self, verbose=True, *, members=None):$/;"	kind:member	line:1857
 list	../.tox/py36/lib/python3.6/tarfile.py	/^    def list(self, verbose=True, *, members=None):$/;"	kind:member	line:1868
 list	../venv/lib/python3.5/tarfile.py	/^    def list(self, verbose=True, *, members=None):$/;"	kind:member	line:1857
-list_files	../sentinela/app.py	/^def list_files():$/;"	kind:function	line:101
+list_files	../sentinela/app.py	/^def list_files():$/;"	kind:function	line:105
 list_iterator	../.tox/check/lib/python3.5/_collections_abc.py	/^list_iterator = type(iter([]))$/;"	kind:variable	line:41
 list_iterator	../.tox/docs/lib/python3.5/_collections_abc.py	/^list_iterator = type(iter([]))$/;"	kind:variable	line:41
 list_iterator	../.tox/py35/lib/python3.5/_collections_abc.py	/^list_iterator = type(iter([]))$/;"	kind:variable	line:41
@@ -22967,6 +23447,16 @@ locked	../.tox/docs/lib/python3.5/_dummy_thread.py	/^    def locked(self):$/;"	k
 locked	../.tox/py35/lib/python3.5/_dummy_thread.py	/^    def locked(self):$/;"	kind:member	line:140
 locked	../.tox/py36/lib/python3.6/_dummy_thread.py	/^    def locked(self):$/;"	kind:member	line:140
 locked	../venv/lib/python3.5/_dummy_thread.py	/^    def locked(self):$/;"	kind:member	line:140
+logging_level	../.tox/check/bin/pilfile.py	/^        logging_level = "DEBUG"$/;"	kind:variable	line:63
+logging_level	../.tox/check/bin/pilfile.py	/^logging_level = "WARNING"$/;"	kind:variable	line:46
+logging_level	../.tox/docs/bin/pilfile.py	/^        logging_level = "DEBUG"$/;"	kind:variable	line:63
+logging_level	../.tox/docs/bin/pilfile.py	/^logging_level = "WARNING"$/;"	kind:variable	line:46
+logging_level	../.tox/py35/bin/pilfile.py	/^        logging_level = "DEBUG"$/;"	kind:variable	line:63
+logging_level	../.tox/py35/bin/pilfile.py	/^logging_level = "WARNING"$/;"	kind:variable	line:46
+logging_level	../.tox/py36/bin/pilfile.py	/^        logging_level = "DEBUG"$/;"	kind:variable	line:63
+logging_level	../.tox/py36/bin/pilfile.py	/^logging_level = "WARNING"$/;"	kind:variable	line:46
+logging_level	../venv/bin/pilfile.py	/^        logging_level = "DEBUG"$/;"	kind:variable	line:63
+logging_level	../venv/bin/pilfile.py	/^logging_level = "WARNING"$/;"	kind:variable	line:46
 lognormvariate	../.tox/check/lib/python3.5/random.py	/^    def lognormvariate(self, mu, sigma):$/;"	kind:member	line:395
 lognormvariate	../.tox/check/lib/python3.5/random.py	/^lognormvariate = _inst.lognormvariate$/;"	kind:variable	line:729
 lognormvariate	../.tox/docs/lib/python3.5/random.py	/^    def lognormvariate(self, mu, sigma):$/;"	kind:member	line:395
@@ -23299,6 +23789,16 @@ module_repr	../venv/lib/python3.5/importlib/_bootstrap.py	/^    def module_repr(
 module_repr	../venv/lib/python3.5/importlib/_bootstrap.py	/^    def module_repr(module):$/;"	kind:member	line:708
 module_repr	../venv/lib/python3.5/importlib/_bootstrap_external.py	/^    def module_repr(cls, module):$/;"	kind:member	line:999
 module_repr	../venv/lib/python3.5/importlib/abc.py	/^    def module_repr(self, module):$/;"	kind:member	line:157
+monochrome	../.tox/check/bin/pilprint.py	/^        monochrome = 0$/;"	kind:variable	line:62
+monochrome	../.tox/check/bin/pilprint.py	/^monochrome = 1    # reduce file size for most common case$/;"	kind:variable	line:52
+monochrome	../.tox/docs/bin/pilprint.py	/^        monochrome = 0$/;"	kind:variable	line:62
+monochrome	../.tox/docs/bin/pilprint.py	/^monochrome = 1    # reduce file size for most common case$/;"	kind:variable	line:52
+monochrome	../.tox/py35/bin/pilprint.py	/^        monochrome = 0$/;"	kind:variable	line:62
+monochrome	../.tox/py35/bin/pilprint.py	/^monochrome = 1    # reduce file size for most common case$/;"	kind:variable	line:52
+monochrome	../.tox/py36/bin/pilprint.py	/^        monochrome = 0$/;"	kind:variable	line:62
+monochrome	../.tox/py36/bin/pilprint.py	/^monochrome = 1    # reduce file size for most common case$/;"	kind:variable	line:52
+monochrome	../venv/bin/pilprint.py	/^        monochrome = 0$/;"	kind:variable	line:62
+monochrome	../venv/bin/pilprint.py	/^monochrome = 1    # reduce file size for most common case$/;"	kind:variable	line:52
 most_common	../.tox/check/lib/python3.5/collections/__init__.py	/^    def most_common(self, n=None):$/;"	kind:member	line:537
 most_common	../.tox/docs/lib/python3.5/collections/__init__.py	/^    def most_common(self, n=None):$/;"	kind:member	line:537
 most_common	../.tox/py35/lib/python3.5/collections/__init__.py	/^    def most_common(self, n=None):$/;"	kind:member	line:537
@@ -23321,9 +23821,9 @@ mul	../.tox/docs/lib/python3.5/operator.py	/^def mul(a, b):$/;"	kind:function	li
 mul	../.tox/py35/lib/python3.5/operator.py	/^def mul(a, b):$/;"	kind:function	line:104
 mul	../.tox/py36/lib/python3.6/operator.py	/^def mul(a, b):$/;"	kind:function	line:104
 mul	../venv/lib/python3.5/operator.py	/^def mul(a, b):$/;"	kind:function	line:104
-mynavbar	../sentinela/app.py	/^def mynavbar():$/;"	kind:function	line:257
+mynavbar	../sentinela/app.py	/^def mynavbar():$/;"	kind:function	line:318
 mysession	../sentinela/alembic/env.py	/^mysession = MySession(Base)$/;"	kind:variable	line:29
-mysession	../sentinela/app.py	/^mysession = MySession(Base)$/;"	kind:variable	line:36
+mysession	../sentinela/app.py	/^mysession = MySession(Base)$/;"	kind:variable	line:40
 mysession	../sentinela/tests/exemplos/test_carga.py	/^    mysession = MySession(Base, test=False)$/;"	kind:variable	line:101
 mysession	../sentinela/tests/exemplos/test_cov.py	/^    mysession = MySession(Base, test=False)$/;"	kind:variable	line:49
 name	../.tox/check/lib/python3.5/hmac.py	/^    def name(self):$/;"	kind:member	line:87
@@ -23367,7 +23867,7 @@ namereplace_errors	../.tox/py36/lib/python3.6/codecs.py	/^    namereplace_errors
 namereplace_errors	../.tox/py36/lib/python3.6/codecs.py	/^    namereplace_errors = lookup_error("namereplace")$/;"	kind:variable	line:1087
 namereplace_errors	../venv/lib/python3.5/codecs.py	/^    namereplace_errors = None$/;"	kind:variable	line:1095
 namereplace_errors	../venv/lib/python3.5/codecs.py	/^    namereplace_errors = lookup_error("namereplace")$/;"	kind:variable	line:1087
-nav	../sentinela/app.py	/^nav = Nav()$/;"	kind:variable	line:45
+nav	../sentinela/app.py	/^nav = Nav()$/;"	kind:variable	line:49
 ne	../.tox/check/lib/python3.5/operator.py	/^def ne(a, b):$/;"	kind:function	line:39
 ne	../.tox/docs/lib/python3.5/operator.py	/^def ne(a, b):$/;"	kind:function	line:39
 ne	../.tox/py35/lib/python3.5/operator.py	/^def ne(a, b):$/;"	kind:function	line:39
@@ -23422,10 +23922,15 @@ newlines	../.tox/docs/lib/python3.5/tempfile.py	/^    def newlines(self):$/;"	ki
 newlines	../.tox/py35/lib/python3.5/tempfile.py	/^    def newlines(self):$/;"	kind:member	line:868
 newlines	../.tox/py36/lib/python3.6/tempfile.py	/^    def newlines(self):$/;"	kind:member	line:868
 newlines	../venv/lib/python3.5/tempfile.py	/^    def newlines(self):$/;"	kind:member	line:868
+next	../.tox/check/bin/player.py	/^    def next(self):$/;"	kind:member	line:42
 next	../.tox/check/lib/python3.5/tarfile.py	/^    def next(self):$/;"	kind:member	line:2258
+next	../.tox/docs/bin/player.py	/^    def next(self):$/;"	kind:member	line:42
 next	../.tox/docs/lib/python3.5/tarfile.py	/^    def next(self):$/;"	kind:member	line:2258
+next	../.tox/py35/bin/player.py	/^    def next(self):$/;"	kind:member	line:42
 next	../.tox/py35/lib/python3.5/tarfile.py	/^    def next(self):$/;"	kind:member	line:2258
+next	../.tox/py36/bin/player.py	/^    def next(self):$/;"	kind:member	line:42
 next	../.tox/py36/lib/python3.6/tarfile.py	/^    def next(self):$/;"	kind:member	line:2273
+next	../venv/bin/player.py	/^    def next(self):$/;"	kind:member	line:42
 next	../venv/lib/python3.5/tarfile.py	/^    def next(self):$/;"	kind:member	line:2258
 nlargest	../.tox/check/lib/python3.5/heapq.py	/^def nlargest(n, iterable, key=None):$/;"	kind:function	line:524
 nlargest	../.tox/docs/lib/python3.5/heapq.py	/^def nlargest(n, iterable, key=None):$/;"	kind:function	line:524
@@ -23616,6 +24121,11 @@ opt_flags	../.tox/py36/lib/python3.6/config-3.6dm-x86_64-linux-gnu/python-config
 opt_flags	../.tox/py36/lib/python3.6/config-3.6m-x86_64-linux-gnu/python-config.py	/^opt_flags = [flag for (flag, val) in opts]$/;"	kind:variable	line:30
 opt_flags	../venv/bin/python-config	/^opt_flags = [flag for (flag, val) in opts]$/;"	kind:variable	line:33
 opt_flags	../venv/lib/python3.5/config-3.5m-x86_64-linux-gnu/python-config.py	/^opt_flags = [flag for (flag, val) in opts]$/;"	kind:variable	line:30
+options	../.tox/check/bin/pilconvert.py	/^options = {}$/;"	kind:variable	line:55
+options	../.tox/docs/bin/pilconvert.py	/^options = {}$/;"	kind:variable	line:55
+options	../.tox/py35/bin/pilconvert.py	/^options = {}$/;"	kind:variable	line:55
+options	../.tox/py36/bin/pilconvert.py	/^options = {}$/;"	kind:variable	line:55
+options	../venv/bin/pilconvert.py	/^options = {}$/;"	kind:variable	line:55
 or_	../.tox/check/lib/python3.5/operator.py	/^def or_(a, b):$/;"	kind:function	line:116
 or_	../.tox/docs/lib/python3.5/operator.py	/^def or_(a, b):$/;"	kind:function	line:116
 or_	../.tox/py35/lib/python3.5/operator.py	/^def or_(a, b):$/;"	kind:function	line:116
@@ -23626,19 +24136,59 @@ os.py	../.tox/docs/lib/python3.5/os.py	1;"	kind:file	line:1
 os.py	../.tox/py35/lib/python3.5/os.py	1;"	kind:file	line:1
 os.py	../.tox/py36/lib/python3.6/os.py	1;"	kind:file	line:1
 os.py	../venv/lib/python3.5/os.py	1;"	kind:file	line:1
+outfile	../.tox/check/bin/explode.py	/^    outfile = file + "%03d" + ext$/;"	kind:variable	line:84
+outfile	../.tox/check/bin/explode.py	/^outfile = sys.argv[2]$/;"	kind:variable	line:75
+outfile	../.tox/docs/bin/explode.py	/^    outfile = file + "%03d" + ext$/;"	kind:variable	line:84
+outfile	../.tox/docs/bin/explode.py	/^outfile = sys.argv[2]$/;"	kind:variable	line:75
+outfile	../.tox/py35/bin/explode.py	/^    outfile = file + "%03d" + ext$/;"	kind:variable	line:84
+outfile	../.tox/py35/bin/explode.py	/^outfile = sys.argv[2]$/;"	kind:variable	line:75
+outfile	../.tox/py36/bin/explode.py	/^    outfile = file + "%03d" + ext$/;"	kind:variable	line:84
+outfile	../.tox/py36/bin/explode.py	/^outfile = sys.argv[2]$/;"	kind:variable	line:75
+outfile	../venv/bin/explode.py	/^    outfile = file + "%03d" + ext$/;"	kind:variable	line:84
+outfile	../venv/bin/explode.py	/^outfile = sys.argv[2]$/;"	kind:variable	line:75
 output	../.tox/check/bin/rst2odt.py	/^output = publish_cmdline_to_binary(reader=reader, writer=writer,$/;"	kind:variable	line:28
 output	../.tox/docs/bin/rst2odt.py	/^output = publish_cmdline_to_binary(reader=reader, writer=writer,$/;"	kind:variable	line:28
 output	../.tox/py35/bin/rst2odt.py	/^output = publish_cmdline_to_binary(reader=reader, writer=writer,$/;"	kind:variable	line:28
 output	../.tox/py36/bin/rst2odt.py	/^output = publish_cmdline_to_binary(reader=reader, writer=writer,$/;"	kind:variable	line:28
 output	../venv/bin/rst2odt.py	/^output = publish_cmdline_to_binary(reader=reader, writer=writer,$/;"	kind:variable	line:28
+output_format	../.tox/check/bin/pilconvert.py	/^output_format = None$/;"	kind:variable	line:52
+output_format	../.tox/docs/bin/pilconvert.py	/^output_format = None$/;"	kind:variable	line:52
+output_format	../.tox/py35/bin/pilconvert.py	/^output_format = None$/;"	kind:variable	line:52
+output_format	../.tox/py36/bin/pilconvert.py	/^output_format = None$/;"	kind:variable	line:52
+output_format	../venv/bin/pilconvert.py	/^output_format = None$/;"	kind:variable	line:52
+p	../.tox/check/bin/pilfont.py	/^            p = BdfFontFile.BdfFontFile(fp)$/;"	kind:variable	line:49
+p	../.tox/check/bin/pilfont.py	/^            p = PcfFontFile.PcfFontFile(fp)$/;"	kind:variable	line:46
+p	../.tox/check/bin/pilprint.py	/^            p = subprocess.Popen(printerArgs, stdin=subprocess.PIPE)$/;"	kind:variable	line:82
 p	../.tox/check/lib/python3.5/collections/__main__.py	/^p = Point(x=10, y=20)$/;"	kind:variable	line:9
+p	../.tox/docs/bin/pilfont.py	/^            p = BdfFontFile.BdfFontFile(fp)$/;"	kind:variable	line:49
+p	../.tox/docs/bin/pilfont.py	/^            p = PcfFontFile.PcfFontFile(fp)$/;"	kind:variable	line:46
+p	../.tox/docs/bin/pilprint.py	/^            p = subprocess.Popen(printerArgs, stdin=subprocess.PIPE)$/;"	kind:variable	line:82
 p	../.tox/docs/lib/python3.5/collections/__main__.py	/^p = Point(x=10, y=20)$/;"	kind:variable	line:9
+p	../.tox/py35/bin/pilfont.py	/^            p = BdfFontFile.BdfFontFile(fp)$/;"	kind:variable	line:49
+p	../.tox/py35/bin/pilfont.py	/^            p = PcfFontFile.PcfFontFile(fp)$/;"	kind:variable	line:46
+p	../.tox/py35/bin/pilprint.py	/^            p = subprocess.Popen(printerArgs, stdin=subprocess.PIPE)$/;"	kind:variable	line:82
 p	../.tox/py35/lib/python3.5/collections/__main__.py	/^p = Point(x=10, y=20)$/;"	kind:variable	line:9
+p	../.tox/py36/bin/pilfont.py	/^            p = BdfFontFile.BdfFontFile(fp)$/;"	kind:variable	line:49
+p	../.tox/py36/bin/pilfont.py	/^            p = PcfFontFile.PcfFontFile(fp)$/;"	kind:variable	line:46
+p	../.tox/py36/bin/pilprint.py	/^            p = subprocess.Popen(printerArgs, stdin=subprocess.PIPE)$/;"	kind:variable	line:82
+p	../venv/bin/pilfont.py	/^            p = BdfFontFile.BdfFontFile(fp)$/;"	kind:variable	line:49
+p	../venv/bin/pilfont.py	/^            p = PcfFontFile.PcfFontFile(fp)$/;"	kind:variable	line:46
+p	../venv/bin/pilprint.py	/^            p = subprocess.Popen(printerArgs, stdin=subprocess.PIPE)$/;"	kind:variable	line:82
 p	../venv/lib/python3.5/collections/__main__.py	/^p = Point(x=10, y=20)$/;"	kind:variable	line:9
-package_data	../setup.py	/^    package_data={$/;"	kind:variable	line:23
+package_data	../setup.py	/^    package_data={$/;"	kind:variable	line:26
 packages	../setup.py	/^    packages=find_packages(),$/;"	kind:variable	line:11
 pai	../sentinela/models/models.py	/^    pai = relationship('Tabela', remote_side=[id])$/;"	kind:variable	line:165
 pai_id	../sentinela/models/models.py	/^    pai_id = Column(Integer, ForeignKey('tabelas.id'))$/;"	kind:variable	line:163
+paint	../.tox/check/bin/painter.py	/^    def paint(self, event):$/;"	kind:member	line:45
+paint	../.tox/docs/bin/painter.py	/^    def paint(self, event):$/;"	kind:member	line:45
+paint	../.tox/py35/bin/painter.py	/^    def paint(self, event):$/;"	kind:member	line:45
+paint	../.tox/py36/bin/painter.py	/^    def paint(self, event):$/;"	kind:member	line:45
+paint	../venv/bin/painter.py	/^    def paint(self, event):$/;"	kind:member	line:45
+painter.py	../.tox/check/bin/painter.py	1;"	kind:file	line:1
+painter.py	../.tox/docs/bin/painter.py	1;"	kind:file	line:1
+painter.py	../.tox/py35/bin/painter.py	1;"	kind:file	line:1
+painter.py	../.tox/py36/bin/painter.py	1;"	kind:file	line:1
+painter.py	../venv/bin/painter.py	1;"	kind:file	line:1
 palmos.py	../.tox/check/lib/python3.5/encodings/palmos.py	1;"	kind:file	line:1
 palmos.py	../.tox/docs/lib/python3.5/encodings/palmos.py	1;"	kind:file	line:1
 palmos.py	../.tox/py35/lib/python3.5/encodings/palmos.py	1;"	kind:file	line:1
@@ -23683,6 +24233,7 @@ parse	../.tox/docs/lib/python3.5/sre_parse.py	/^def parse(str, flags=0, pattern=
 parse	../.tox/py35/lib/python3.5/sre_parse.py	/^def parse(str, flags=0, pattern=None):$/;"	kind:function	line:819
 parse	../.tox/py36/lib/python3.6/sre_parse.py	/^def parse(str, flags=0, pattern=None):$/;"	kind:function	line:844
 parse	../venv/lib/python3.5/sre_parse.py	/^def parse(str, flags=0, pattern=None):$/;"	kind:function	line:819
+parseXML	../image_aq/utils/pascal_voc_io.py	/^    def parseXML(self):$/;"	kind:member	line:155
 parse_template	../.tox/check/lib/python3.5/sre_parse.py	/^def parse_template(source, pattern):$/;"	kind:function	line:846
 parse_template	../.tox/docs/lib/python3.5/sre_parse.py	/^def parse_template(source, pattern):$/;"	kind:function	line:846
 parse_template	../.tox/py35/lib/python3.5/sre_parse.py	/^def parse_template(source, pattern):$/;"	kind:function	line:846
@@ -23703,6 +24254,7 @@ partition	../.tox/docs/lib/python3.5/collections/__init__.py	/^    def partition
 partition	../.tox/py35/lib/python3.5/collections/__init__.py	/^    def partition(self, sep):$/;"	kind:member	line:1206
 partition	../.tox/py36/lib/python3.6/collections/__init__.py	/^    def partition(self, sep):$/;"	kind:member	line:1211
 partition	../venv/lib/python3.5/collections/__init__.py	/^    def partition(self, sep):$/;"	kind:member	line:1206
+pascal_voc_io.py	../image_aq/utils/pascal_voc_io.py	1;"	kind:file	line:1
 path	../.tox/check/lib/python3.5/tarfile.py	/^    path = property(_getpath, _setpath)$/;"	kind:variable	line:761
 path	../.tox/docs/lib/python3.5/tarfile.py	/^    path = property(_getpath, _setpath)$/;"	kind:variable	line:761
 path	../.tox/py35/lib/python3.5/tarfile.py	/^    path = property(_getpath, _setpath)$/;"	kind:variable	line:761
@@ -23778,6 +24330,36 @@ pickle_complex	../.tox/docs/lib/python3.5/copyreg.py	/^    def pickle_complex(c)
 pickle_complex	../.tox/py35/lib/python3.5/copyreg.py	/^    def pickle_complex(c):$/;"	kind:function	line:34
 pickle_complex	../.tox/py36/lib/python3.6/copyreg.py	/^    def pickle_complex(c):$/;"	kind:function	line:34
 pickle_complex	../venv/lib/python3.5/copyreg.py	/^    def pickle_complex(c):$/;"	kind:function	line:34
+pilconvert.py	../.tox/check/bin/pilconvert.py	1;"	kind:file	line:1
+pilconvert.py	../.tox/docs/bin/pilconvert.py	1;"	kind:file	line:1
+pilconvert.py	../.tox/py35/bin/pilconvert.py	1;"	kind:file	line:1
+pilconvert.py	../.tox/py36/bin/pilconvert.py	1;"	kind:file	line:1
+pilconvert.py	../venv/bin/pilconvert.py	1;"	kind:file	line:1
+pildriver.py	../.tox/check/bin/pildriver.py	1;"	kind:file	line:1
+pildriver.py	../.tox/docs/bin/pildriver.py	1;"	kind:file	line:1
+pildriver.py	../.tox/py35/bin/pildriver.py	1;"	kind:file	line:1
+pildriver.py	../.tox/py36/bin/pildriver.py	1;"	kind:file	line:1
+pildriver.py	../venv/bin/pildriver.py	1;"	kind:file	line:1
+pilfile.py	../.tox/check/bin/pilfile.py	1;"	kind:file	line:1
+pilfile.py	../.tox/docs/bin/pilfile.py	1;"	kind:file	line:1
+pilfile.py	../.tox/py35/bin/pilfile.py	1;"	kind:file	line:1
+pilfile.py	../.tox/py36/bin/pilfile.py	1;"	kind:file	line:1
+pilfile.py	../venv/bin/pilfile.py	1;"	kind:file	line:1
+pilfont.py	../.tox/check/bin/pilfont.py	1;"	kind:file	line:1
+pilfont.py	../.tox/docs/bin/pilfont.py	1;"	kind:file	line:1
+pilfont.py	../.tox/py35/bin/pilfont.py	1;"	kind:file	line:1
+pilfont.py	../.tox/py36/bin/pilfont.py	1;"	kind:file	line:1
+pilfont.py	../venv/bin/pilfont.py	1;"	kind:file	line:1
+pilprint.py	../.tox/check/bin/pilprint.py	1;"	kind:file	line:1
+pilprint.py	../.tox/docs/bin/pilprint.py	1;"	kind:file	line:1
+pilprint.py	../.tox/py35/bin/pilprint.py	1;"	kind:file	line:1
+pilprint.py	../.tox/py36/bin/pilprint.py	1;"	kind:file	line:1
+pilprint.py	../venv/bin/pilprint.py	1;"	kind:file	line:1
+player.py	../.tox/check/bin/player.py	1;"	kind:file	line:1
+player.py	../.tox/docs/bin/player.py	1;"	kind:file	line:1
+player.py	../.tox/py35/bin/player.py	1;"	kind:file	line:1
+player.py	../.tox/py36/bin/player.py	1;"	kind:file	line:1
+player.py	../venv/bin/player.py	1;"	kind:file	line:1
 pop	../.tox/check/lib/python3.5/_collections_abc.py	/^    def pop(self):$/;"	kind:member	line:521
 pop	../.tox/check/lib/python3.5/_collections_abc.py	/^    def pop(self, index=-1):$/;"	kind:member	line:920
 pop	../.tox/check/lib/python3.5/_collections_abc.py	/^    def pop(self, key, default=__marker):$/;"	kind:member	line:722
@@ -23879,6 +24461,7 @@ prepstyle	../.tox/docs/bin/rst2odt_prepstyles.py	/^def prepstyle(filename):$/;"	
 prepstyle	../.tox/py35/bin/rst2odt_prepstyles.py	/^def prepstyle(filename):$/;"	kind:function	line:27
 prepstyle	../.tox/py36/bin/rst2odt_prepstyles.py	/^def prepstyle(filename):$/;"	kind:function	line:27
 prepstyle	../venv/bin/rst2odt_prepstyles.py	/^def prepstyle(filename):$/;"	kind:function	line:27
+prettify	../image_aq/utils/pascal_voc_io.py	/^    def prettify(self, elem):$/;"	kind:member	line:26
 prev_sys_path	../.tox/check/bin/activate_this.py	/^prev_sys_path = list(sys.path)$/;"	kind:variable	line:23
 prev_sys_path	../.tox/docs/bin/activate_this.py	/^prev_sys_path = list(sys.path)$/;"	kind:variable	line:23
 prev_sys_path	../.tox/py35/bin/activate_this.py	/^prev_sys_path = list(sys.path)$/;"	kind:variable	line:23
@@ -23895,7 +24478,27 @@ print_function	../.tox/docs/lib/python3.5/__future__.py	/^print_function = _Feat
 print_function	../.tox/py35/lib/python3.5/__future__.py	/^print_function = _Feature((2, 6, 0, "alpha", 2),$/;"	kind:variable	line:126
 print_function	../.tox/py36/lib/python3.6/__future__.py	/^print_function = _Feature((2, 6, 0, "alpha", 2),$/;"	kind:variable	line:126
 print_function	../venv/lib/python3.5/__future__.py	/^print_function = _Feature((2, 6, 0, "alpha", 2),$/;"	kind:variable	line:126
+printerArgs	../.tox/check/bin/pilprint.py	/^        printerArgs = ["lpr", "-P%s" % a]$/;"	kind:variable	line:68
+printerArgs	../.tox/check/bin/pilprint.py	/^        printerArgs = ["lpr"]$/;"	kind:variable	line:65
+printerArgs	../.tox/check/bin/pilprint.py	/^printerArgs = []  # print to stdout$/;"	kind:variable	line:51
+printerArgs	../.tox/docs/bin/pilprint.py	/^        printerArgs = ["lpr", "-P%s" % a]$/;"	kind:variable	line:68
+printerArgs	../.tox/docs/bin/pilprint.py	/^        printerArgs = ["lpr"]$/;"	kind:variable	line:65
+printerArgs	../.tox/docs/bin/pilprint.py	/^printerArgs = []  # print to stdout$/;"	kind:variable	line:51
+printerArgs	../.tox/py35/bin/pilprint.py	/^        printerArgs = ["lpr", "-P%s" % a]$/;"	kind:variable	line:68
+printerArgs	../.tox/py35/bin/pilprint.py	/^        printerArgs = ["lpr"]$/;"	kind:variable	line:65
+printerArgs	../.tox/py35/bin/pilprint.py	/^printerArgs = []  # print to stdout$/;"	kind:variable	line:51
+printerArgs	../.tox/py36/bin/pilprint.py	/^        printerArgs = ["lpr", "-P%s" % a]$/;"	kind:variable	line:68
+printerArgs	../.tox/py36/bin/pilprint.py	/^        printerArgs = ["lpr"]$/;"	kind:variable	line:65
+printerArgs	../.tox/py36/bin/pilprint.py	/^printerArgs = []  # print to stdout$/;"	kind:variable	line:51
+printerArgs	../venv/bin/pilprint.py	/^        printerArgs = ["lpr", "-P%s" % a]$/;"	kind:variable	line:68
+printerArgs	../venv/bin/pilprint.py	/^        printerArgs = ["lpr"]$/;"	kind:variable	line:65
+printerArgs	../venv/bin/pilprint.py	/^printerArgs = []  # print to stdout$/;"	kind:variable	line:51
 project	../docs/conf.py	/^project = 'AJNA'$/;"	kind:variable	line:54
+ps	../.tox/check/bin/pilprint.py	/^        ps = PSDraw.PSDraw(fp)$/;"	kind:variable	line:87
+ps	../.tox/docs/bin/pilprint.py	/^        ps = PSDraw.PSDraw(fp)$/;"	kind:variable	line:87
+ps	../.tox/py35/bin/pilprint.py	/^        ps = PSDraw.PSDraw(fp)$/;"	kind:variable	line:87
+ps	../.tox/py36/bin/pilprint.py	/^        ps = PSDraw.PSDraw(fp)$/;"	kind:variable	line:87
+ps	../venv/bin/pilprint.py	/^        ps = PSDraw.PSDraw(fp)$/;"	kind:variable	line:87
 ptcp154.py	../.tox/check/lib/python3.5/encodings/ptcp154.py	1;"	kind:file	line:1
 ptcp154.py	../.tox/docs/lib/python3.5/encodings/ptcp154.py	1;"	kind:file	line:1
 ptcp154.py	../.tox/py35/lib/python3.5/encodings/ptcp154.py	1;"	kind:file	line:1
@@ -23921,6 +24524,11 @@ purge	../.tox/docs/lib/python3.5/re.py	/^def purge():$/;"	kind:function	line:226
 purge	../.tox/py35/lib/python3.5/re.py	/^def purge():$/;"	kind:function	line:226
 purge	../.tox/py36/lib/python3.6/re.py	/^def purge():$/;"	kind:function	line:235
 purge	../venv/lib/python3.5/re.py	/^def purge():$/;"	kind:function	line:226
+push	../.tox/check/bin/pildriver.py	/^    def push(self, item):$/;"	kind:member	line:71
+push	../.tox/docs/bin/pildriver.py	/^    def push(self, item):$/;"	kind:member	line:71
+push	../.tox/py35/bin/pildriver.py	/^    def push(self, item):$/;"	kind:member	line:71
+push	../.tox/py36/bin/pildriver.py	/^    def push(self, item):$/;"	kind:member	line:71
+push	../venv/bin/pildriver.py	/^    def push(self, item):$/;"	kind:member	line:71
 pwd	../.tox/py36/lib/python3.6/tarfile.py	/^    pwd = None$/;"	kind:variable	line:55
 pygments_style	../docs/conf.py	/^pygments_style = 'sphinx'$/;"	kind:variable	line:80
 pylint	../venv/bin/pylint	1;"	kind:file	line:1
@@ -23947,6 +24555,11 @@ pyver	../.tox/py36/lib/python3.6/config-3.6dm-x86_64-linux-gnu/python-config.py	
 pyver	../.tox/py36/lib/python3.6/config-3.6m-x86_64-linux-gnu/python-config.py	/^pyver = sysconfig.get_config_var('VERSION')$/;"	kind:variable	line:27
 pyver	../venv/bin/python-config	/^pyver = sysconfig.get_config_var('VERSION')$/;"	kind:variable	line:30
 pyver	../venv/lib/python3.5/config-3.5m-x86_64-linux-gnu/python-config.py	/^pyver = sysconfig.get_config_var('VERSION')$/;"	kind:variable	line:27
+quiet	../.tox/check/bin/pilfile.py	/^        quiet = 1$/;"	kind:variable	line:59
+quiet	../.tox/docs/bin/pilfile.py	/^        quiet = 1$/;"	kind:variable	line:59
+quiet	../.tox/py35/bin/pilfile.py	/^        quiet = 1$/;"	kind:variable	line:59
+quiet	../.tox/py36/bin/pilfile.py	/^        quiet = 1$/;"	kind:variable	line:59
+quiet	../venv/bin/pilfile.py	/^        quiet = 1$/;"	kind:variable	line:59
 quopri_codec.py	../.tox/check/lib/python3.5/encodings/quopri_codec.py	1;"	kind:file	line:1
 quopri_codec.py	../.tox/docs/lib/python3.5/encodings/quopri_codec.py	1;"	kind:file	line:1
 quopri_codec.py	../.tox/py35/lib/python3.5/encodings/quopri_codec.py	1;"	kind:file	line:1
@@ -24132,6 +24745,11 @@ recursive_repr	../.tox/docs/lib/python3.5/reprlib.py	/^def recursive_repr(fillva
 recursive_repr	../.tox/py35/lib/python3.5/reprlib.py	/^def recursive_repr(fillvalue='...'):$/;"	kind:function	line:12
 recursive_repr	../.tox/py36/lib/python3.6/reprlib.py	/^def recursive_repr(fillvalue='...'):$/;"	kind:function	line:12
 recursive_repr	../venv/lib/python3.5/reprlib.py	/^def recursive_repr(fillvalue='...'):$/;"	kind:function	line:12
+redraw	../.tox/check/bin/thresholder.py	/^    def redraw(self, event=None):$/;"	kind:member	line:51
+redraw	../.tox/docs/bin/thresholder.py	/^    def redraw(self, event=None):$/;"	kind:member	line:51
+redraw	../.tox/py35/bin/thresholder.py	/^    def redraw(self, event=None):$/;"	kind:member	line:51
+redraw	../.tox/py36/bin/thresholder.py	/^    def redraw(self, event=None):$/;"	kind:member	line:51
+redraw	../venv/bin/thresholder.py	/^    def redraw(self, event=None):$/;"	kind:member	line:51
 register	../.tox/check/lib/python3.5/abc.py	/^    def register(cls, subclass):$/;"	kind:member	line:151
 register	../.tox/check/lib/python3.5/functools.py	/^    def register(cls, func=None):$/;"	kind:function	line:727
 register	../.tox/docs/lib/python3.5/abc.py	/^    def register(cls, subclass):$/;"	kind:member	line:151
@@ -24239,6 +24857,11 @@ renames	../.tox/docs/lib/python3.5/os.py	/^def renames(old, new):$/;"	kind:funct
 renames	../.tox/py35/lib/python3.5/os.py	/^def renames(old, new):$/;"	kind:function	line:270
 renames	../.tox/py36/lib/python3.6/os.py	/^def renames(old, new):$/;"	kind:function	line:249
 renames	../venv/lib/python3.5/os.py	/^def renames(old, new):$/;"	kind:function	line:270
+repair	../.tox/check/bin/painter.py	/^    def repair(self, box):$/;"	kind:member	line:55
+repair	../.tox/docs/bin/painter.py	/^    def repair(self, box):$/;"	kind:member	line:55
+repair	../.tox/py35/bin/painter.py	/^    def repair(self, box):$/;"	kind:member	line:55
+repair	../.tox/py36/bin/painter.py	/^    def repair(self, box):$/;"	kind:member	line:55
+repair	../venv/bin/painter.py	/^    def repair(self, box):$/;"	kind:member	line:55
 replace	../.tox/check/lib/python3.5/collections/__init__.py	/^    def replace(self, old, new, maxsplit=-1):$/;"	kind:member	line:1208
 replace	../.tox/docs/lib/python3.5/collections/__init__.py	/^    def replace(self, old, new, maxsplit=-1):$/;"	kind:member	line:1208
 replace	../.tox/py35/lib/python3.5/collections/__init__.py	/^    def replace(self, old, new, maxsplit=-1):$/;"	kind:member	line:1208
@@ -24469,10 +25092,10 @@ reverse	../.tox/py36/lib/python3.6/_collections_abc.py	/^    def reverse(self):$
 reverse	../.tox/py36/lib/python3.6/collections/__init__.py	/^    def reverse(self): self.data.reverse()$/;"	kind:member	line:1087
 reverse	../venv/lib/python3.5/_collections_abc.py	/^    def reverse(self):$/;"	kind:member	line:909
 reverse	../venv/lib/python3.5/collections/__init__.py	/^    def reverse(self): self.data.reverse()$/;"	kind:member	line:1082
-revision	../sentinela/alembic/versions/4c1bd8ab2343_juncao_metadados5.py	/^revision = '4c1bd8ab2343'$/;"	kind:variable	line:13
-revision	../sentinela/alembic/versions/8bf819bcefa4_juncao_metadados4.py	/^revision = '8bf819bcefa4'$/;"	kind:variable	line:13
-revision	../sentinela/alembic/versions/df8881d27d15_juncao_metadados6.py	/^revision = 'df8881d27d15'$/;"	kind:variable	line:13
-revision	../sentinela/alembic/versions/f1c880f46616_padraorisco.py	/^revision = 'f1c880f46616'$/;"	kind:variable	line:13
+revision	../sentinela/alembic/versions/4c1bd8ab2343_juncao_metadados5.py	/^revision = '4c1bd8ab2343'$/;"	kind:variable	line:12
+revision	../sentinela/alembic/versions/8bf819bcefa4_juncao_metadados4.py	/^revision = '8bf819bcefa4'$/;"	kind:variable	line:12
+revision	../sentinela/alembic/versions/df8881d27d15_juncao_metadados6.py	/^revision = 'df8881d27d15'$/;"	kind:variable	line:12
+revision	../sentinela/alembic/versions/f1c880f46616_padraorisco.py	/^revision = 'f1c880f46616'$/;"	kind:variable	line:12
 rfind	../.tox/check/lib/python3.5/collections/__init__.py	/^    def rfind(self, sub, start=0, end=_sys.maxsize):$/;"	kind:member	line:1214
 rfind	../.tox/docs/lib/python3.5/collections/__init__.py	/^    def rfind(self, sub, start=0, end=_sys.maxsize):$/;"	kind:member	line:1214
 rfind	../.tox/py35/lib/python3.5/collections/__init__.py	/^    def rfind(self, sub, start=0, end=_sys.maxsize):$/;"	kind:member	line:1214
@@ -24483,7 +25106,7 @@ rindex	../.tox/docs/lib/python3.5/collections/__init__.py	/^    def rindex(self,
 rindex	../.tox/py35/lib/python3.5/collections/__init__.py	/^    def rindex(self, sub, start=0, end=_sys.maxsize):$/;"	kind:member	line:1218
 rindex	../.tox/py36/lib/python3.6/collections/__init__.py	/^    def rindex(self, sub, start=0, end=_sys.maxsize):$/;"	kind:member	line:1223
 rindex	../venv/lib/python3.5/collections/__init__.py	/^    def rindex(self, sub, start=0, end=_sys.maxsize):$/;"	kind:member	line:1218
-risco	../sentinela/app.py	/^def risco():$/;"	kind:function	line:135
+risco	../sentinela/app.py	/^def risco():$/;"	kind:function	line:139
 risco	../sentinela/models/models.py	/^    risco = relationship($/;"	kind:variable	line:110
 risco_id	../sentinela/models/models.py	/^    risco_id = Column(Integer, ForeignKey('parametrosrisco.id'))$/;"	kind:variable	line:109
 rjust	../.tox/check/lib/python3.5/collections/__init__.py	/^    def rjust(self, width, *args):$/;"	kind:member	line:1220
@@ -24511,6 +25134,31 @@ rollover	../.tox/docs/lib/python3.5/tempfile.py	/^    def rollover(self):$/;"	ki
 rollover	../.tox/py35/lib/python3.5/tempfile.py	/^    def rollover(self):$/;"	kind:member	line:798
 rollover	../.tox/py36/lib/python3.6/tempfile.py	/^    def rollover(self):$/;"	kind:member	line:798
 rollover	../venv/lib/python3.5/tempfile.py	/^    def rollover(self):$/;"	kind:member	line:798
+root	../.tox/check/bin/enhancer.py	/^root = tkinter.Tk()$/;"	kind:variable	line:53
+root	../.tox/check/bin/painter.py	/^root = tkinter.Tk()$/;"	kind:variable	line:75
+root	../.tox/check/bin/player.py	/^    root = tkinter.Tk()$/;"	kind:variable	line:79
+root	../.tox/check/bin/thresholder.py	/^root = tkinter.Tk()$/;"	kind:variable	line:69
+root	../.tox/check/bin/viewer.py	/^    root = tkinter.Tk()$/;"	kind:variable	line:48
+root	../.tox/docs/bin/enhancer.py	/^root = tkinter.Tk()$/;"	kind:variable	line:53
+root	../.tox/docs/bin/painter.py	/^root = tkinter.Tk()$/;"	kind:variable	line:75
+root	../.tox/docs/bin/player.py	/^    root = tkinter.Tk()$/;"	kind:variable	line:79
+root	../.tox/docs/bin/thresholder.py	/^root = tkinter.Tk()$/;"	kind:variable	line:69
+root	../.tox/docs/bin/viewer.py	/^    root = tkinter.Tk()$/;"	kind:variable	line:48
+root	../.tox/py35/bin/enhancer.py	/^root = tkinter.Tk()$/;"	kind:variable	line:53
+root	../.tox/py35/bin/painter.py	/^root = tkinter.Tk()$/;"	kind:variable	line:75
+root	../.tox/py35/bin/player.py	/^    root = tkinter.Tk()$/;"	kind:variable	line:79
+root	../.tox/py35/bin/thresholder.py	/^root = tkinter.Tk()$/;"	kind:variable	line:69
+root	../.tox/py35/bin/viewer.py	/^    root = tkinter.Tk()$/;"	kind:variable	line:48
+root	../.tox/py36/bin/enhancer.py	/^root = tkinter.Tk()$/;"	kind:variable	line:53
+root	../.tox/py36/bin/painter.py	/^root = tkinter.Tk()$/;"	kind:variable	line:75
+root	../.tox/py36/bin/player.py	/^    root = tkinter.Tk()$/;"	kind:variable	line:79
+root	../.tox/py36/bin/thresholder.py	/^root = tkinter.Tk()$/;"	kind:variable	line:69
+root	../.tox/py36/bin/viewer.py	/^    root = tkinter.Tk()$/;"	kind:variable	line:48
+root	../venv/bin/enhancer.py	/^root = tkinter.Tk()$/;"	kind:variable	line:53
+root	../venv/bin/painter.py	/^root = tkinter.Tk()$/;"	kind:variable	line:75
+root	../venv/bin/player.py	/^    root = tkinter.Tk()$/;"	kind:variable	line:79
+root	../venv/bin/thresholder.py	/^root = tkinter.Tk()$/;"	kind:variable	line:69
+root	../venv/bin/viewer.py	/^    root = tkinter.Tk()$/;"	kind:variable	line:48
 rot13	../.tox/check/lib/python3.5/encodings/rot_13.py	/^def rot13(infile, outfile):$/;"	kind:function	line:108
 rot13	../.tox/docs/lib/python3.5/encodings/rot_13.py	/^def rot13(infile, outfile):$/;"	kind:function	line:108
 rot13	../.tox/py35/lib/python3.5/encodings/rot_13.py	/^def rot13(infile, outfile):$/;"	kind:function	line:108
@@ -24639,6 +25287,7 @@ sample	../.tox/py36/lib/python3.6/random.py	/^sample = _inst.sample$/;"	kind:var
 sample	../venv/lib/python3.5/random.py	/^    def sample(self, population, k):$/;"	kind:member	line:280
 sample	../venv/lib/python3.5/random.py	/^sample = _inst.sample$/;"	kind:variable	line:726
 sanitizar	../sentinela/utils/csv_handlers.py	/^def sanitizar(text, norm_function=unicode_sanitizar):$/;"	kind:function	line:43
+save	../image_aq/utils/pascal_voc_io.py	/^    def save(self, targetFile=None):$/;"	kind:member	line:116
 scan	../.tox/check/lib/python3.5/re.py	/^    def scan(self, string):$/;"	kind:member	line:361
 scan	../.tox/docs/lib/python3.5/re.py	/^    def scan(self, string):$/;"	kind:member	line:361
 scan	../.tox/py35/lib/python3.5/re.py	/^    def scan(self, string):$/;"	kind:member	line:361
@@ -24752,7 +25401,7 @@ sep	../.tox/py36/lib/python3.6/posixpath.py	/^sep = '\/'$/;"	kind:variable	line:
 sep	../venv/lib/python3.5/ntpath.py	/^sep = '\\\\'$/;"	kind:variable	line:27
 sep	../venv/lib/python3.5/posixpath.py	/^sep = '\/'$/;"	kind:variable	line:33
 session	../sentinela/alembic/env.py	/^session = mysession.session$/;"	kind:variable	line:30
-session	../sentinela/app.py	/^session = mysession.session$/;"	kind:variable	line:37
+session	../sentinela/app.py	/^session = mysession.session$/;"	kind:variable	line:41
 session	../sentinela/models/models.py	/^    def session(self):$/;"	kind:member	line:39
 setBEGINLIBPATH	../.tox/check/lib/python3.5/site.py	/^def setBEGINLIBPATH():$/;"	kind:function	line:362
 setBEGINLIBPATH	../.tox/docs/lib/python3.5/site.py	/^def setBEGINLIBPATH():$/;"	kind:function	line:362
@@ -24846,6 +25495,11 @@ sethelper	../.tox/docs/lib/python3.5/site.py	/^def sethelper():$/;"	kind:functio
 sethelper	../.tox/py35/lib/python3.5/site.py	/^def sethelper():$/;"	kind:function	line:507
 sethelper	../.tox/py36/lib/python3.6/site.py	/^def sethelper():$/;"	kind:function	line:507
 sethelper	../venv/lib/python3.5/site.py	/^def sethelper():$/;"	kind:function	line:507
+setinterval	../.tox/check/bin/explode.py	/^    def setinterval(self, interval):$/;"	kind:member	line:22
+setinterval	../.tox/docs/bin/explode.py	/^    def setinterval(self, interval):$/;"	kind:member	line:22
+setinterval	../.tox/py35/bin/explode.py	/^    def setinterval(self, interval):$/;"	kind:member	line:22
+setinterval	../.tox/py36/bin/explode.py	/^    def setinterval(self, interval):$/;"	kind:member	line:22
+setinterval	../venv/bin/explode.py	/^    def setinterval(self, interval):$/;"	kind:member	line:22
 setitem	../.tox/check/lib/python3.5/operator.py	/^def setitem(a, b, c):$/;"	kind:function	line:181
 setitem	../.tox/docs/lib/python3.5/operator.py	/^def setitem(a, b, c):$/;"	kind:function	line:181
 setitem	../.tox/py35/lib/python3.5/operator.py	/^def setitem(a, b, c):$/;"	kind:function	line:181
@@ -24932,7 +25586,7 @@ setter	../.tox/py35/lib/python3.5/types.py	/^    def setter(self, fset):$/;"	kin
 setter	../.tox/py36/lib/python3.6/types.py	/^    def setter(self, fset):$/;"	kind:member	line:160
 setter	../venv/lib/python3.5/types.py	/^    def setter(self, fset):$/;"	kind:member	line:155
 setup.py	../setup.py	1;"	kind:file	line:1
-setup_requires	../setup.py	/^    setup_requires=['pytest-runner'],$/;"	kind:variable	line:20
+setup_requires	../setup.py	/^    setup_requires=['pytest-runner'],$/;"	kind:variable	line:23
 shift_jis.py	../.tox/check/lib/python3.5/encodings/shift_jis.py	1;"	kind:file	line:1
 shift_jis.py	../.tox/docs/lib/python3.5/encodings/shift_jis.py	1;"	kind:file	line:1
 shift_jis.py	../.tox/py35/lib/python3.5/encodings/shift_jis.py	1;"	kind:file	line:1
@@ -25153,6 +25807,11 @@ sre_parse.py	../.tox/docs/lib/python3.5/sre_parse.py	1;"	kind:file	line:1
 sre_parse.py	../.tox/py35/lib/python3.5/sre_parse.py	1;"	kind:file	line:1
 sre_parse.py	../.tox/py36/lib/python3.6/sre_parse.py	1;"	kind:file	line:1
 sre_parse.py	../venv/lib/python3.5/sre_parse.py	1;"	kind:file	line:1
+stack	../.tox/check/bin/pildriver.py	/^    stack = []          # Stack of pending operations$/;"	kind:variable	line:69
+stack	../.tox/docs/bin/pildriver.py	/^    stack = []          # Stack of pending operations$/;"	kind:variable	line:69
+stack	../.tox/py35/bin/pildriver.py	/^    stack = []          # Stack of pending operations$/;"	kind:variable	line:69
+stack	../.tox/py36/bin/pildriver.py	/^    stack = []          # Stack of pending operations$/;"	kind:variable	line:69
+stack	../venv/bin/pildriver.py	/^    stack = []          # Stack of pending operations$/;"	kind:variable	line:69
 stack_size	../.tox/check/lib/python3.5/_dummy_thread.py	/^def stack_size(size=None):$/;"	kind:function	line:78
 stack_size	../.tox/docs/lib/python3.5/_dummy_thread.py	/^def stack_size(size=None):$/;"	kind:function	line:78
 stack_size	../.tox/py35/lib/python3.5/_dummy_thread.py	/^def stack_size(size=None):$/;"	kind:function	line:78
@@ -25440,12 +26099,17 @@ test_risco2	../sentinela/tests/app_test.py	/^    def test_risco2(self):$/;"	kind
 test_sanitizar	../sentinela/tests/csv_handlers_test.py	/^    def test_sanitizar(self):$/;"	kind:member	line:89
 test_sch_dir	../sentinela/tests/csv_handlers_test.py	/^    def test_sch_dir(self):$/;"	kind:member	line:54
 test_sch_zip	../sentinela/tests/csv_handlers_test.py	/^    def test_sch_zip(self):$/;"	kind:member	line:68
-test_suite	../setup.py	/^    test_suite="tests",$/;"	kind:variable	line:22
+test_suite	../setup.py	/^    test_suite="tests",$/;"	kind:variable	line:25
 test_tabela	../sentinela/tests/models_test.py	/^    def test_tabela(self):$/;"	kind:member	line:62
 test_upload_file	../sentinela/tests/app_test.py	/^    def test_upload_file(self):$/;"	kind:member	line:43
 test_valores	../sentinela/tests/app_test.py	/^    def test_valores(self):$/;"	kind:member	line:75
-tests_require	../setup.py	/^    tests_require=['pytest'],$/;"	kind:variable	line:21
+tests_require	../setup.py	/^    tests_require=['pytest'],$/;"	kind:variable	line:24
 texinfo_documents	../docs/conf.py	/^texinfo_documents = [$/;"	kind:variable	line:167
+thresholder.py	../.tox/check/bin/thresholder.py	1;"	kind:file	line:1
+thresholder.py	../.tox/docs/bin/thresholder.py	1;"	kind:file	line:1
+thresholder.py	../.tox/py35/bin/thresholder.py	1;"	kind:file	line:1
+thresholder.py	../.tox/py36/bin/thresholder.py	1;"	kind:file	line:1
+thresholder.py	../venv/bin/thresholder.py	1;"	kind:file	line:1
 throw	../.tox/check/lib/python3.5/_collections_abc.py	/^    def throw(self, typ, val=None, tb=None):$/;"	kind:member	line:115
 throw	../.tox/check/lib/python3.5/_collections_abc.py	/^    def throw(self, typ, val=None, tb=None):$/;"	kind:member	line:261
 throw	../.tox/check/lib/python3.5/types.py	/^    def throw(self, tp, *rest):$/;"	kind:member	line:178
@@ -25467,10 +26131,15 @@ tis_620.py	../.tox/docs/lib/python3.5/encodings/tis_620.py	1;"	kind:file	line:1
 tis_620.py	../.tox/py35/lib/python3.5/encodings/tis_620.py	1;"	kind:file	line:1
 tis_620.py	../.tox/py36/lib/python3.6/encodings/tis_620.py	1;"	kind:file	line:1
 tis_620.py	../venv/lib/python3.5/encodings/tis_620.py	1;"	kind:file	line:1
+title	../.tox/check/bin/pilprint.py	/^        title = description(filepath, im)$/;"	kind:variable	line:75
 title	../.tox/check/lib/python3.5/collections/__init__.py	/^    def title(self): return self.__class__(self.data.title())$/;"	kind:member	line:1235
+title	../.tox/docs/bin/pilprint.py	/^        title = description(filepath, im)$/;"	kind:variable	line:75
 title	../.tox/docs/lib/python3.5/collections/__init__.py	/^    def title(self): return self.__class__(self.data.title())$/;"	kind:member	line:1235
+title	../.tox/py35/bin/pilprint.py	/^        title = description(filepath, im)$/;"	kind:variable	line:75
 title	../.tox/py35/lib/python3.5/collections/__init__.py	/^    def title(self): return self.__class__(self.data.title())$/;"	kind:member	line:1235
+title	../.tox/py36/bin/pilprint.py	/^        title = description(filepath, im)$/;"	kind:variable	line:75
 title	../.tox/py36/lib/python3.6/collections/__init__.py	/^    def title(self): return self.__class__(self.data.title())$/;"	kind:member	line:1240
+title	../venv/bin/pilprint.py	/^        title = description(filepath, im)$/;"	kind:variable	line:75
 title	../venv/lib/python3.5/collections/__init__.py	/^    def title(self): return self.__class__(self.data.title())$/;"	kind:member	line:1235
 titulos_novos	../sentinela/tests/csv_handlers_test.py	/^    titulos_novos = {'titulo1_old': 'titulo1_new',$/;"	kind:variable	line:21
 tmpdir	../sentinela/tests/csv_handlers_test.py	/^tmpdir = tempfile.mkdtemp()$/;"	kind:variable	line:13
@@ -25502,6 +26171,11 @@ tokenize.py	../.tox/docs/lib/python3.5/tokenize.py	1;"	kind:file	line:1
 tokenize.py	../.tox/py35/lib/python3.5/tokenize.py	1;"	kind:file	line:1
 tokenize.py	../.tox/py36/lib/python3.6/tokenize.py	1;"	kind:file	line:1
 tokenize.py	../venv/lib/python3.5/tokenize.py	1;"	kind:file	line:1
+top	../.tox/check/bin/pildriver.py	/^    def top(self):$/;"	kind:member	line:75
+top	../.tox/docs/bin/pildriver.py	/^    def top(self):$/;"	kind:member	line:75
+top	../.tox/py35/bin/pildriver.py	/^    def top(self):$/;"	kind:member	line:75
+top	../.tox/py36/bin/pildriver.py	/^    def top(self):$/;"	kind:member	line:75
+top	../venv/bin/pildriver.py	/^    def top(self):$/;"	kind:member	line:75
 total_ordering	../.tox/check/lib/python3.5/functools.py	/^def total_ordering(cls):$/;"	kind:function	line:192
 total_ordering	../.tox/docs/lib/python3.5/functools.py	/^def total_ordering(cls):$/;"	kind:function	line:192
 total_ordering	../.tox/py35/lib/python3.5/functools.py	/^def total_ordering(cls):$/;"	kind:function	line:192
@@ -25629,36 +26303,46 @@ untokenize	../.tox/py36/lib/python3.6/tokenize.py	/^    def untokenize(self, ite
 untokenize	../.tox/py36/lib/python3.6/tokenize.py	/^def untokenize(iterable):$/;"	kind:function	line:317
 untokenize	../venv/lib/python3.5/tokenize.py	/^    def untokenize(self, iterable):$/;"	kind:member	line:245
 untokenize	../venv/lib/python3.5/tokenize.py	/^def untokenize(iterable):$/;"	kind:function	line:319
+update	../.tox/check/bin/enhancer.py	/^    def update(self, value):$/;"	kind:member	line:42
 update	../.tox/check/lib/python3.5/_collections_abc.py	/^    def update(*args, **kwds):$/;"	kind:member	line:756
 update	../.tox/check/lib/python3.5/_weakrefset.py	/^    def update(self, other):$/;"	kind:member	line:116
 update	../.tox/check/lib/python3.5/collections/__init__.py	/^    def update(*args, **kwds):$/;"	kind:member	line:581
 update	../.tox/check/lib/python3.5/hmac.py	/^    def update(self, msg):$/;"	kind:member	line:90
 update	../.tox/check/lib/python3.5/weakref.py	/^    def update(*args, **kwargs):$/;"	kind:member	line:261
 update	../.tox/check/lib/python3.5/weakref.py	/^    def update(self, dict=None, **kwargs):$/;"	kind:member	line:458
+update	../.tox/docs/bin/enhancer.py	/^    def update(self, value):$/;"	kind:member	line:42
 update	../.tox/docs/lib/python3.5/_collections_abc.py	/^    def update(*args, **kwds):$/;"	kind:member	line:756
 update	../.tox/docs/lib/python3.5/_weakrefset.py	/^    def update(self, other):$/;"	kind:member	line:116
 update	../.tox/docs/lib/python3.5/collections/__init__.py	/^    def update(*args, **kwds):$/;"	kind:member	line:581
 update	../.tox/docs/lib/python3.5/hmac.py	/^    def update(self, msg):$/;"	kind:member	line:90
 update	../.tox/docs/lib/python3.5/weakref.py	/^    def update(*args, **kwargs):$/;"	kind:member	line:261
 update	../.tox/docs/lib/python3.5/weakref.py	/^    def update(self, dict=None, **kwargs):$/;"	kind:member	line:458
+update	../.tox/py35/bin/enhancer.py	/^    def update(self, value):$/;"	kind:member	line:42
 update	../.tox/py35/lib/python3.5/_collections_abc.py	/^    def update(*args, **kwds):$/;"	kind:member	line:756
 update	../.tox/py35/lib/python3.5/_weakrefset.py	/^    def update(self, other):$/;"	kind:member	line:116
 update	../.tox/py35/lib/python3.5/collections/__init__.py	/^    def update(*args, **kwds):$/;"	kind:member	line:581
 update	../.tox/py35/lib/python3.5/hmac.py	/^    def update(self, msg):$/;"	kind:member	line:90
 update	../.tox/py35/lib/python3.5/weakref.py	/^    def update(*args, **kwargs):$/;"	kind:member	line:261
 update	../.tox/py35/lib/python3.5/weakref.py	/^    def update(self, dict=None, **kwargs):$/;"	kind:member	line:458
+update	../.tox/py36/bin/enhancer.py	/^    def update(self, value):$/;"	kind:member	line:42
 update	../.tox/py36/lib/python3.6/_collections_abc.py	/^    def update(*args, **kwds):$/;"	kind:member	line:824
 update	../.tox/py36/lib/python3.6/_weakrefset.py	/^    def update(self, other):$/;"	kind:member	line:116
 update	../.tox/py36/lib/python3.6/collections/__init__.py	/^    def update(*args, **kwds):$/;"	kind:member	line:586
 update	../.tox/py36/lib/python3.6/hmac.py	/^    def update(self, msg):$/;"	kind:member	line:90
 update	../.tox/py36/lib/python3.6/weakref.py	/^    def update(*args, **kwargs):$/;"	kind:member	line:288
 update	../.tox/py36/lib/python3.6/weakref.py	/^    def update(self, dict=None, **kwargs):$/;"	kind:member	line:487
+update	../venv/bin/enhancer.py	/^    def update(self, value):$/;"	kind:member	line:42
 update	../venv/lib/python3.5/_collections_abc.py	/^    def update(*args, **kwds):$/;"	kind:member	line:756
 update	../venv/lib/python3.5/_weakrefset.py	/^    def update(self, other):$/;"	kind:member	line:116
 update	../venv/lib/python3.5/collections/__init__.py	/^    def update(*args, **kwds):$/;"	kind:member	line:581
 update	../venv/lib/python3.5/hmac.py	/^    def update(self, msg):$/;"	kind:member	line:90
 update	../venv/lib/python3.5/weakref.py	/^    def update(*args, **kwargs):$/;"	kind:member	line:261
 update	../venv/lib/python3.5/weakref.py	/^    def update(self, dict=None, **kwargs):$/;"	kind:member	line:458
+update_scale	../.tox/check/bin/thresholder.py	/^    def update_scale(self, value):$/;"	kind:member	line:46
+update_scale	../.tox/docs/bin/thresholder.py	/^    def update_scale(self, value):$/;"	kind:member	line:46
+update_scale	../.tox/py35/bin/thresholder.py	/^    def update_scale(self, value):$/;"	kind:member	line:46
+update_scale	../.tox/py36/bin/thresholder.py	/^    def update_scale(self, value):$/;"	kind:member	line:46
+update_scale	../venv/bin/thresholder.py	/^    def update_scale(self, value):$/;"	kind:member	line:46
 update_wrapper	../.tox/check/lib/python3.5/functools.py	/^def update_wrapper(wrapper,$/;"	kind:function	line:43
 update_wrapper	../.tox/docs/lib/python3.5/functools.py	/^def update_wrapper(wrapper,$/;"	kind:function	line:43
 update_wrapper	../.tox/py35/lib/python3.5/functools.py	/^def update_wrapper(wrapper,$/;"	kind:function	line:43
@@ -25669,11 +26353,11 @@ updatecache	../.tox/docs/lib/python3.5/linecache.py	/^def updatecache(filename, 
 updatecache	../.tox/py35/lib/python3.5/linecache.py	/^def updatecache(filename, module_globals=None):$/;"	kind:function	line:82
 updatecache	../.tox/py36/lib/python3.6/linecache.py	/^def updatecache(filename, module_globals=None):$/;"	kind:function	line:82
 updatecache	../venv/lib/python3.5/linecache.py	/^def updatecache(filename, module_globals=None):$/;"	kind:function	line:82
-upgrade	../sentinela/alembic/versions/4c1bd8ab2343_juncao_metadados5.py	/^def upgrade():$/;"	kind:function	line:19
-upgrade	../sentinela/alembic/versions/8bf819bcefa4_juncao_metadados4.py	/^def upgrade():$/;"	kind:function	line:19
-upgrade	../sentinela/alembic/versions/df8881d27d15_juncao_metadados6.py	/^def upgrade():$/;"	kind:function	line:19
-upgrade	../sentinela/alembic/versions/f1c880f46616_padraorisco.py	/^def upgrade():$/;"	kind:function	line:19
-upload_file	../sentinela/app.py	/^def upload_file():$/;"	kind:function	line:77
+upgrade	../sentinela/alembic/versions/4c1bd8ab2343_juncao_metadados5.py	/^def upgrade():$/;"	kind:function	line:18
+upgrade	../sentinela/alembic/versions/8bf819bcefa4_juncao_metadados4.py	/^def upgrade():$/;"	kind:function	line:18
+upgrade	../sentinela/alembic/versions/df8881d27d15_juncao_metadados6.py	/^def upgrade():$/;"	kind:function	line:18
+upgrade	../sentinela/alembic/versions/f1c880f46616_padraorisco.py	/^def upgrade():$/;"	kind:function	line:18
+upload_file	../sentinela/app.py	/^def upload_file():$/;"	kind:function	line:81
 upper	../.tox/check/lib/python3.5/collections/__init__.py	/^    def upper(self): return self.__class__(self.data.upper())$/;"	kind:member	line:1238
 upper	../.tox/docs/lib/python3.5/collections/__init__.py	/^    def upper(self): return self.__class__(self.data.upper())$/;"	kind:member	line:1238
 upper	../.tox/py35/lib/python3.5/collections/__init__.py	/^    def upper(self): return self.__class__(self.data.upper())$/;"	kind:member	line:1238
@@ -25690,6 +26374,11 @@ urlsafe_b64encode	../.tox/docs/lib/python3.5/base64.py	/^def urlsafe_b64encode(s
 urlsafe_b64encode	../.tox/py35/lib/python3.5/base64.py	/^def urlsafe_b64encode(s):$/;"	kind:function	line:112
 urlsafe_b64encode	../.tox/py36/lib/python3.6/base64.py	/^def urlsafe_b64encode(s):$/;"	kind:function	line:111
 urlsafe_b64encode	../venv/lib/python3.5/base64.py	/^def urlsafe_b64encode(s):$/;"	kind:function	line:112
+usage	../.tox/check/bin/pilconvert.py	/^def usage():$/;"	kind:function	line:25
+usage	../.tox/docs/bin/pilconvert.py	/^def usage():$/;"	kind:function	line:25
+usage	../.tox/py35/bin/pilconvert.py	/^def usage():$/;"	kind:function	line:25
+usage	../.tox/py36/bin/pilconvert.py	/^def usage():$/;"	kind:function	line:25
+usage	../venv/bin/pilconvert.py	/^def usage():$/;"	kind:function	line:25
 utf_16.py	../.tox/check/lib/python3.5/encodings/utf_16.py	1;"	kind:file	line:1
 utf_16.py	../.tox/docs/lib/python3.5/encodings/utf_16.py	1;"	kind:file	line:1
 utf_16.py	../.tox/py35/lib/python3.5/encodings/utf_16.py	1;"	kind:file	line:1
@@ -25773,7 +26462,7 @@ valid_opts	../venv/bin/python-config	/^valid_opts = ['prefix', 'exec-prefix', 'i
 valid_opts	../venv/lib/python3.5/config-3.5m-x86_64-linux-gnu/python-config.py	/^valid_opts = ['prefix', 'exec-prefix', 'includes', 'libs', 'cflags',$/;"	kind:variable	line:11
 valor	../sentinela/models/models.py	/^    valor = Column(String(50), unique=True)$/;"	kind:variable	line:107
 valores	../sentinela/models/models.py	/^    valores = relationship('ValorParametro', back_populates='risco')$/;"	kind:variable	line:88
-valores_parametro	../sentinela/app.py	/^def valores_parametro(parametro_id):$/;"	kind:function	line:66
+valores_parametro	../sentinela/app.py	/^def valores_parametro(parametro_id):$/;"	kind:function	line:70
 value	../.tox/py36/lib/python3.6/enum.py	/^    def value(self):$/;"	kind:member	line:598
 value	../.tox/py36/lib/python3.6/enum.py	/^    value = _auto_null$/;"	kind:variable	line:55
 valuerefs	../.tox/check/lib/python3.5/weakref.py	/^    def valuerefs(self):$/;"	kind:member	line:280
@@ -25801,6 +26490,21 @@ values	../venv/lib/python3.5/_collections_abc.py	/^    def values(self):$/;"	kin
 values	../venv/lib/python3.5/collections/__init__.py	/^    def values(self):$/;"	kind:member	line:225
 values	../venv/lib/python3.5/weakref.py	/^    def values(self):$/;"	kind:member	line:220
 values	../venv/lib/python3.5/weakref.py	/^    def values(self):$/;"	kind:member	line:425
+verbose	../.tox/check/bin/pildriver.py	/^    verbose = 0$/;"	kind:variable	line:58
+verbose	../.tox/check/bin/pilfile.py	/^        verbose = 1$/;"	kind:variable	line:57
+verbose	../.tox/docs/bin/pildriver.py	/^    verbose = 0$/;"	kind:variable	line:58
+verbose	../.tox/docs/bin/pilfile.py	/^        verbose = 1$/;"	kind:variable	line:57
+verbose	../.tox/py35/bin/pildriver.py	/^    verbose = 0$/;"	kind:variable	line:58
+verbose	../.tox/py35/bin/pilfile.py	/^        verbose = 1$/;"	kind:variable	line:57
+verbose	../.tox/py36/bin/pildriver.py	/^    verbose = 0$/;"	kind:variable	line:58
+verbose	../.tox/py36/bin/pilfile.py	/^        verbose = 1$/;"	kind:variable	line:57
+verbose	../venv/bin/pildriver.py	/^    verbose = 0$/;"	kind:variable	line:58
+verbose	../venv/bin/pilfile.py	/^        verbose = 1$/;"	kind:variable	line:57
+verify	../.tox/check/bin/pilfile.py	/^        verify = 1$/;"	kind:variable	line:61
+verify	../.tox/docs/bin/pilfile.py	/^        verify = 1$/;"	kind:variable	line:61
+verify	../.tox/py35/bin/pilfile.py	/^        verify = 1$/;"	kind:variable	line:61
+verify	../.tox/py36/bin/pilfile.py	/^        verify = 1$/;"	kind:variable	line:61
+verify	../venv/bin/pilfile.py	/^        verify = 1$/;"	kind:variable	line:61
 version	../.tox/check/lib/python3.5/tarfile.py	/^version     = "0.9.0"$/;"	kind:variable	line:32
 version	../.tox/docs/lib/python3.5/tarfile.py	/^version     = "0.9.0"$/;"	kind:variable	line:32
 version	../.tox/py35/lib/python3.5/tarfile.py	/^version     = "0.9.0"$/;"	kind:variable	line:32
@@ -25808,6 +26512,11 @@ version	../.tox/py36/lib/python3.6/tarfile.py	/^version     = "0.9.0"$/;"	kind:v
 version	../docs/conf.py	/^version = '0.1a'$/;"	kind:variable	line:63
 version	../setup.py	/^    version='0.0.1',$/;"	kind:variable	line:6
 version	../venv/lib/python3.5/tarfile.py	/^version     = "0.9.0"$/;"	kind:variable	line:32
+viewer.py	../.tox/check/bin/viewer.py	1;"	kind:file	line:1
+viewer.py	../.tox/docs/bin/viewer.py	1;"	kind:file	line:1
+viewer.py	../.tox/py35/bin/viewer.py	1;"	kind:file	line:1
+viewer.py	../.tox/py36/bin/viewer.py	1;"	kind:file	line:1
+viewer.py	../venv/bin/viewer.py	1;"	kind:file	line:1
 virtual_addsitepackages	../.tox/check/lib/python3.5/site.py	/^def virtual_addsitepackages(known_paths):$/;"	kind:function	line:642
 virtual_addsitepackages	../.tox/docs/lib/python3.5/site.py	/^def virtual_addsitepackages(known_paths):$/;"	kind:function	line:642
 virtual_addsitepackages	../.tox/py35/lib/python3.5/site.py	/^def virtual_addsitepackages(known_paths):$/;"	kind:function	line:642
