@@ -55,10 +55,26 @@ class BaseOrigem(Base):
     id = Column(Integer, primary_key=True)
     nome = Column(String(20), unique=True)
     caminho = Column(String(200), unique=True)
+    deparas = relationship('DePara', back_populates='base')
 
     def __init__(self, nome, caminho=None):
         self.nome = nome
         self.caminho = caminho
+
+class DePara(Base):
+    __tablename__ = 'depara'
+    id = Column(Integer, primary_key=True)
+    titulo_ant = Column(String(50))
+    titulo_novo = Column(String(50))
+    base_id = Column(Integer, ForeignKey('basesorigem.id'))
+    base = relationship(
+        'BaseOrigem', back_populates='deparas')
+
+    def __init__(self, titulo_ant, titulo_novo, base):
+        self.titulo_ant = titulo_ant
+        self.titulo_novo = titulo_novo
+        self.base_id = base.id
+
 
 
 class BaseOriginal(Base):
