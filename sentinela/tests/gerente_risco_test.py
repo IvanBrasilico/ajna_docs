@@ -14,7 +14,7 @@ CSV_NAMEDRISCO_TEST = 'sentinela/tests/csv_namedrisco_example.csv'
 class TestGerenteRisco(unittest.TestCase):
 
     def setUp(self):
-        with open(CSV_RISCO_TEST, 'r') as f:
+        with open(CSV_RISCO_TEST, 'r', newline='') as f:
             reader = csv.reader(f)
             self.lista = [linha for linha in reader]
         self.gerente = GerenteRisco()

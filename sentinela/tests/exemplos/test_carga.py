@@ -18,9 +18,10 @@ CARGA_ZIP_TEST = 'sentinela/tests/tests.zip'
 
 
 def carrega_carga(session):
-    base = BaseOriginal('CARGA')
-    session.add(base)
-    risco = ParametroRisco('CPFCNPJConsignatario', 'CNPJ do Consignatario')
+    padraorisco = BaseOriginal('CARGA')
+    session.add(padraorisco)
+    session.commit()
+    risco = ParametroRisco('CPFCNPJConsignatario', 'CNPJ do Consignatario', padraorisco=padraorisco)
     session.add(risco)
     # Adicionar um CNPJ que exista na extração, para testar...
     valor = ValorParametro('42581413000157', Filtro.igual)
@@ -29,7 +30,7 @@ def carrega_carga(session):
     session.merge(risco)
     session.commit()
 
-    risco2 = ParametroRisco('DescricaoMercadoria', 'Descrição')
+    risco2 = ParametroRisco('DescricaoMercadoria', 'Descrição', padraorisco=padraorisco)
     session.add(risco2)
     # Adicionar uma mercadoria que exista na extração, para testar...
     valor2 = ValorParametro('PILLOW', Filtro.contem)
@@ -38,11 +39,9 @@ def carrega_carga(session):
     risco2.valores.append(valor2)
     session.merge(risco2)
     session.commit()
-    base.parametros.append(risco)
-    base.parametros.append(risco2)
-    session.merge(base)
+    session.merge(padraorisco)
     session.commit()
-    return base
+    return padraorisco
 
 
 class TestModel(unittest.TestCase):
@@ -74,10 +73,10 @@ class TestModel(unittest.TestCase):
         print(filenames)
         assert filenames is not None
         # assert(len(filenames) == 14)
-        base = carrega_carga(self.session)
+        padraorisco = carrega_carga(self.session)
         gerente = GerenteRisco()
-        gerente.set_base(base)
-        print(base.parametros[0].valores)
+        gerente.set_base(padraorisco)
+        print(padraorisco.parametros[0].valores)
         # Preferencialmente vai tentar processar o arquivo de conhecimentos
         # Se não houver, pega o primeiro da lista mesmo
         ind = 0

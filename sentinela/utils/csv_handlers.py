@@ -59,7 +59,9 @@ def muda_titulos_csv(csv_file, de_para_dict):
     with open(csv_file, 'r', encoding=ENCODE, newline='') as csvfile:
         reader = csv.reader(csvfile)
         result = [linha for linha in reader]
+    print(result)
     result = muda_titulos_lista(result, de_para_dict)
+    print(result)
     return result
 
 

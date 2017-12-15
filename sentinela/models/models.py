@@ -106,9 +106,10 @@ class ParametroRisco(Base):
     base = relationship(
         'BaseOriginal', back_populates='parametros')
 
-    def __init__(self, nome, descricao=''):
+    def __init__(self, nome, descricao='', padraorisco=None):
         self.nome_campo = nome
         self.descricao = descricao
+        self.base_id = padraorisco.id
 
 
 class ValorParametro(Base):

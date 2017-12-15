@@ -63,7 +63,7 @@ def index():
     return render_template('index.html')
 
 
-@login_required
+"""@login_required
 @app.route('/valores_parametro/<parametro_id>')
 def valores_parametro(parametro_id):
     valores = []
@@ -72,7 +72,7 @@ def valores_parametro(parametro_id):
     ).first()
     if paramrisco:
         valores = paramrisco.valores
-    return render_template('valores.html', valores=valores)
+    return render_template('bases.html', valores=valores)"""
 
 
 @app.route('/upload_file', methods=['GET', 'POST'])
@@ -159,6 +159,13 @@ def risco():
         ).first()
         if padrao:
             parametros = padrao.parametros
+    parametro_id = request.args.get('parametroid')
+    valores = []
+    paramrisco = session.query(ParametroRisco).filter(
+        ParametroRisco.id == parametro_id
+    ).first()
+    if paramrisco:
+        valores = paramrisco.valores
     if not path:
         return render_template('bases.html',
                                lista_arquivos=lista_arquivos,
@@ -166,6 +173,7 @@ def risco():
                                padroes=padroes,
                                visoes=visoes,
                                baseid=baseid,
+                               valores=valores,
                                padraoid=padraoid,
                                visaoid=visaoid,
                                parametros=parametros,
