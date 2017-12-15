@@ -6,6 +6,7 @@ import tempfile
 import unittest
 
 from sentinela.models.models import Base, BaseOrigem, DePara, MySession
+from sentinela.utils.csv_handlers import muda_titulos_lista
 from sentinela.utils.gerente_risco import GerenteRisco
 
 PLANILHA_TEST = '/home/ivan/Downloads/planilhaBTP.csv'
@@ -51,23 +52,25 @@ class TestModel(unittest.TestCase):
         depara2 = DePara('antigo2', 'novo2', base)
         self.session.add(depara2)
         self.session.commit()
-        de_para_dict = {depara.titulo_ant:depara.titulo_novo for depara in base.deparas}
+        de_para_dict = {
+            depara.titulo_ant: depara.titulo_novo for depara in base.deparas}
         print(de_para_dict)
-        # lista_old = 
-        # lista = muda_titulos_lista(lista_old, de_para_dict)
-        # for old, new in de_para_dict:
-           # assert old in ''.join(lista_old[0])
-           # assert new not in ''.join(lista_old[0])
-       # for old, new in de_para_dict:
-           # assert new in ''.join(lista[0])
-        # assert False
+        # TODO: Fazer planilha COV "FAKE" com títulos reais
+        # e linha de dados
+        lista_old = [['antigo1', 'antigo2'], ['dado1c1', 'dado1c2']]
+        lista = muda_titulos_lista(lista_old, de_para_dict)
+        for old, new in de_para_dict.items():
+            assert old in ''.join(lista_old[0])
+            assert new not in ''.join(lista_old[0])
+        for old, new in de_para_dict.items():
+            assert new in ''.join(lista[0])
 
 
 if __name__ == '__main__':
     # Cria no banco atualmente configurado os objetos de teste
     # Apenas para praticidade durante o período inicial de testes
     mysession = MySession(Base, test=False)
-    print("Atenção, entrando em Base REAL!!!!")
+    print('Atenção, entrando em Base REAL!!!!')
     # gerente = GerenteRisco()
     # gerente.import_named_csv(CSV_NAMEDRISCO_TEST, session=mysession.session)
     # gerente.cria_base('PLANILHA_COV', session=mysession.session)

@@ -61,6 +61,7 @@ class BaseOrigem(Base):
         self.nome = nome
         self.caminho = caminho
 
+
 class DePara(Base):
     __tablename__ = 'depara'
     id = Column(Integer, primary_key=True)
@@ -74,7 +75,6 @@ class DePara(Base):
         self.titulo_ant = titulo_ant
         self.titulo_novo = titulo_novo
         self.base_id = base.id
-
 
 
 class BaseOriginal(Base):
