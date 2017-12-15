@@ -27,14 +27,14 @@
                     {% for parametro in parametros %}
                     <tr>
                         <td>{{parametro.nome_campo}}</td>
-                        <td>
+                        <td align="center">
                             {% if parametros_ativos %}
                             <input type="checkbox" name="parametro" value="{{parametro.nome_campo}}" {% if parametro.nome_campo in parametros_ativos
                                 %} checked {% endif %}> {% else %}
                             <input type="checkbox" name="parametro" value="{{parametro.nome_campo}}" checked> {% endif %}
                         </td>
-                        <td>
-                            <a href="/valores_parametro/{{parametro.id}}" target="_blank">Ver valores</a>
+                        <td align="center">
+                            <input type="button" class="btn  btn-primary" value="Ver Valores" onclick="mostra_valores({{ parametro.id }})" />
                         </td>
                     </tr>
                     {% endfor %}{% if not parametros %}
@@ -96,7 +96,27 @@
         AJNA - Receita Federal do Brasil 2017
     </div>
 </div>
-{% endblock %} {% block scripts %} {{super()}}
+{% if valores %}
+<div id="valoresmodal" class="modal fade" role="dialog">
+    <div class="modal-content col-sm-6">
+        <div class="modal-body">
+            <div class="table-responsive col-md-12">
+                <h2>Lista de Valores do Parâmetro de Risco</h2>
+                <table class="inlineTable table table-striped table-bordered table-hover table-responsive" cellspacing="0" cellpadding="0"
+                    id="parametros" align="center">
+                    {% for valor in valores %}
+                    <tr>
+                        <td>{{valor.valor}}</td>
+                        <td>{{valor.tipo_filtro}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                &nbsp;
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %} {% endblock %} {% block scripts %} {{super()}}
 <script>
     function aplica_risco(filename) {
         parametros_selecionados = [];
@@ -120,4 +140,14 @@
         $('#base').bind('change', submit_form);
         $('#padrao').bind('change', submit_form);
     });
+    function mostra_valores(parametroid) {
+        window.location.assign('/risco?baseid=' + $("#base").val() +
+            '&padraoid=' + $("#padrao").val() +
+            '&visaoid=' + $("#visao").val() +
+            '&parametroid=' + parametroid
+        )
+    }
+    $(document).ready(function () {
+        $('#valoresmodal').modal();
+    })
 </script> {% endblock %}
