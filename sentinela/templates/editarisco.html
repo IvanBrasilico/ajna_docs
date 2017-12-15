@@ -2,9 +2,11 @@
 <div id="main" class="container-fluid">
     <div id="top" class="row">
         <h2>Escolha o Padrão de Risco a aplicar e a Base de Dados:</h2>
+    </div>
+    <div class="row">
         <div class="col-sm-6">
             <h4>Padrões de risco: </h4>
-            <select name="padrao" id="padrao" >
+            <select name="padrao" id="padrao">
                 <option value="0">Selecionar</option>
                 {% for padrao in padroes %}
                 <option value="{{ padrao.id }}" {% if padrao.id|int()==padraoid|int() %} selected="selected" {% endif %}>{{ padrao.nome }}
@@ -13,21 +15,21 @@
             </select>
             {% if parametros %}
             <h4>Parâmetros de risco cadastrados</h4>
-            <div id="list" class="row">
+            <div id="list" class="row col-sm-9">
                 <form id="frmvalores" class="form-group">
-                    <div class="form-group col-sm-4">
+                    <div class="form-group col-sm-9">
                         <input id="parametro_risco" class="form-control" type="text">
                     </div>
                     <div class="form-group col-sm-1">
                         <button onclick="adicionar_parametro()" id="btn_ok" type="button" class="btn btn-default">OK</button>
                     </div>
                 </form>
-                <table class="inlineTable table table-striped table-bordered table-hover table-responsive" cellspacing="0" cellpadding="0"
+                <table class="inlineTable table table-bordered table-hover table-responsive" cellspacing="0" cellpadding="0"
                     id="parametros">
                     {% for parametro in parametros %}
-                    <tr>
+                    <tr id="{{ parametro.id }}"{% if parametro.id|int()==id_parametro|int() %} class="row-clicked" {% endif %}>
                         <td id="{{ parametro.id }}" align="center">{{parametro.nome_campo}}</td>
-                        <td id="{{ parametro.id }}" align="center">
+                        <td align="center">
                             <input type="button" class="btn  btn-danger" value="x" onclick="exclui_parametro({{ parametro.id }})" />
                         </td>
                     </tr>
@@ -36,46 +38,49 @@
                 {% endif %}
             </div>
         </div>
+        {% if parametros %}
+        <div class="table-responsive col-sm-5">
+            <h4>Lista de Valores do Parâmetro</h4>
+            <form id="frmvalores" onsubmit="add_row()" class="form-group">
+                {% if id_parametro %}
+                <div class="form-group col-sm-2">
+                    <input id="id_risco" class="form-control" type="text" value="{{ id_parametro }}" disabled>
+                </div>
+                {% endif %}
+                <div class="form-group col-sm-4">
+                    <input id="valor" class="form-control" type="text">
+                </div>
+                <div class="form-group col-sm-4">
+                    <select name="filtro" id="tipofiltro">
+                        <option value="0">Selecionar</option>
+                        <option value="igual">Filtro.igual</option>
+                        <option value="comeca_com">Filtro.comeca_com</option>
+                        <option value="contem">Filtro.contem</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button onclick="adicionar_valor()" id="btn_incluir" type="button" class="btn btn-success">Incluir</button>
+                </div>
+            </form>
+
+            <table class="inlineTable table table-striped table-bordered table-hover table-responsive" id="riscos">
+                {% for valor in valores %}
+                <tr>
+                    <td>{{valor.valor}}</td>
+                    <td>{{valor.tipo_filtro}}</td>
+                    <td align="center">
+                        <input type="button" class="btn  btn-danger" value="x" onclick="exclui_valor({{ valor.id }})" />
+                    </td>
+                </tr>
+                {% endfor %} {% if not valores %}
+                <tr>
+                    <td>Sem resultados.</td>
+                </tr>
+                {% endif %}
+            </table>
+        </div>
+        {% endif %}
     </div>
-</div>
-<div class="table-responsive col-md-12">
-    <h4>Lista de Valores do Parâmetro</h4>
-    <form id="frmvalores" onsubmit="add_row()" class="form-group">
-        {% if id_parametro %}
-        <div class="form-group col-sm-1">
-            <input id="id_risco" class="form-control" type="text" value="{{ id_parametro }}" disabled>
-        </div>
-        {% endif %}
-        <div class="form-group col-sm-4">
-            <input id="valor" class="form-control" type="text">
-        </div>
-        <div class="form-group col-sm-4">
-            <select name="filtro" id="tipofiltro">
-                <option value="0">Selecionar</option>
-                <option value="igual">Filtro.igual</option>
-                <option value="comeca_com">Filtro.comeca_com</option>
-                <option value="contem">Filtro.contem</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <button onclick="adicionar_valor()" id="btn_incluir" type="button" class="btn btn-success">Incluir</button>
-        </div>
-    </form>
-    <table class="inlineTable table table-striped table-bordered table-hover table-responsive" id="riscos">
-        {% for valor in valores %}
-        <tr>
-            <td>{{valor.valor}}</td>
-            <td>{{valor.tipo_filtro}}</td>
-            <td align="center">
-                <input type="button" class="btn  btn-danger" value="x" onclick="exclui_valor({{ valor.id }})" />
-            </td>
-        </tr>
-        {% endfor %} {% if not valores %}
-        <tr>
-            <td>Sem resultados.</td>
-        </tr>
-        {% endif %}
-    </table>
 </div>
 <div id="bottom" class="row">
     AJNA - Receita Federal do Brasil 2017
@@ -83,6 +88,7 @@
 </div>
 {% endblock %} {% block scripts %} {{super()}}
 <script>
+
     function aplica_risco(filename) {
         window.location.assign('/aplica_risco2?filename=' + filename +
             '&base=' + $("#base").val() +
@@ -95,6 +101,7 @@
 
     var parametros = document.querySelector("#parametros tbody");
     var valores = document.querySelector("#riscos tbody")
+    var chave = document.querySelector("#parametros tbody")
 
     function adicionar_parametro() {
         var risco = $("#parametro_risco").val();
@@ -117,7 +124,6 @@
             window.location.assign('/adiciona_valor?padraoid=' + $("#padrao").val() +
                 '&riscoid=' + id_risco + '&novo_valor=' + novo_valor + '&filtro=' + filtro
             )
-
         }
     }
 
@@ -127,7 +133,7 @@
         )
     }
 
-    $('#parametros td:first-child').click( function () {
+    $('#parametros td:first-child').click(function () {
         var id_risco = $(this).attr('id')
         valor_parametro(id_risco)
     })
@@ -144,6 +150,6 @@
 </script>
 <style>
     .row-clicked {
-        background-color: silver;
+        background-color: slategrey;
     }
 </style> {% endblock %}
