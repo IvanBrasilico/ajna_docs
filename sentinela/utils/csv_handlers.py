@@ -93,7 +93,7 @@ def sch_tocsv(sch, txt, dest_path=tmpdir):
     campo = str(sch[0])[2:-3]
     filename = os.path.join(dest_path, campo + '.csv')
     with open(filename, 'w', encoding=ENCODE, newline='') as out:
-        writer = csv.writer(out)
+        writer = csv.writer(out, quotechar='"', quoting=csv.QUOTE_ALL)
         del txt[0]
         writer.writerow(cabecalhos)
         for row in txt:
