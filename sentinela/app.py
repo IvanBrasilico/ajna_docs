@@ -21,10 +21,11 @@ import datetime
 import logging
 import os
 
-from flask import Flask, flash, redirect, render_template, request, url_for
+from flask import (abort, Flask, flash, redirect, render_template, request,
+                   url_for)
 from flask_bootstrap import Bootstrap
 # from flask_cors import CORS
-from flask_login import login_required
+from flask_login import login_required, LoginManager, login_user
 from flask_nav import Nav
 from flask_nav.elements import Navbar, View
 from werkzeug.utils import secure_filename
@@ -44,6 +45,26 @@ app = Flask(__name__, static_url_path='/static')
 # CORS(app)
 Bootstrap(app)
 nav = Nav()
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
+users_repository = {'ajna': 'ajna'}
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('senha')
+        registeredUser = users_repository.get(username)
+        if registeredUser is not None and registeredUser == password:
+            print('Logged in..')
+            login_user(registeredUser)
+            return redirect(url_for('home'))
+        else:
+            return abort(401)
+    else:
+        return render_template('index.html')
+
 
 APP_PATH = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_PATH, 'files')
@@ -76,6 +97,7 @@ def valores_parametro(parametro_id):
 
 
 @app.route('/upload_file', methods=['GET', 'POST'])
+@login_required
 def upload_file():
     """Função simplificada para upload do arquivo de uma extração
     """
@@ -100,6 +122,7 @@ def upload_file():
 
 
 @app.route('/list_files')
+@login_required
 def list_files():
     """Lista arquivos csv disponíveis para trabalhar
     """
@@ -111,6 +134,7 @@ def list_files():
 
 
 @app.route('/importa')
+@login_required
 def importa():
     erro = ''
     baseid = request.args.get('base')
@@ -134,6 +158,7 @@ def importa():
 
 @app.route('/risco', methods=['POST', 'GET'])
 @app.route('/aplica_risco')
+@login_required
 def risco():
     lista_arquivos = []
     baseid = request.args.get('baseid', '0')
@@ -213,6 +238,7 @@ def risco():
 
 
 @app.route('/edita_risco', methods=['POST', 'GET'])
+@login_required
 def edita_risco():
     padraoid = request.args.get('padraoid')
     padroes = session.query(BaseOriginal).all()

@@ -14,22 +14,23 @@
         AJNA - Receita Federal do Brasil 2017
     </div>
     <div id="loginmodal" class="modal fade" role="dialog">
-        <div class="modal-content col-sm-6">
-            <div class="modal-body">
-                <form id="frmlogin">
-                    <h4>Login</h4>
-                    <div class="form-group">
-                        <label for="username">Nome:</label>
-                        <input type="text" class="form-control" id="username" name="username" autofocus="autofocus">
-                    </div>
-                    <div class="form-group">
-                        <label for="senha">Senha:</label>
-                        <input type="text" class="form-control" id="senha" name="senha">
-                    </div>
-                    <button class="btn btn-block btn-primary btn-default" id="btnlogin">
-                        <i class="fa fa-save"></i>&nbsp;Entrar
-                    </button>
-                </form>
+            <div class="modal-content col-sm-6">
+                <div class="modal-body">
+                    <form id="frmlogin" method="post" action="/login" enctype="multipart/form-data">
+                        <h4>Login</h4>
+                        <div class="form-group">
+                            <label for="username">Nome:</label>
+                            <input type="text" class="form-control" id="username" name="username" autofocus="autofocus">
+                        </div>
+                        <div class="form-group">
+                            <label for="senha">Senha:</label>
+                            <input type="text" class="form-control" id="senha" name="senha">
+                        </div>
+                        <button class="btn btn-block btn-primary btn-default" id="btnlogin">
+                            <i class="fa fa-save"></i>&nbsp;Entrar
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
