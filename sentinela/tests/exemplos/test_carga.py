@@ -21,7 +21,8 @@ def carrega_carga(session):
     padraorisco = BaseOriginal('CARGA')
     session.add(padraorisco)
     session.commit()
-    risco = ParametroRisco('CPFCNPJConsignatario', 'CNPJ do Consignatario', padraorisco=padraorisco)
+    risco = ParametroRisco('CPFCNPJConsignatario', 'CNPJ do Consignatario',
+                           padraorisco=padraorisco)
     session.add(risco)
     # Adicionar um CNPJ que exista na extração, para testar...
     valor = ValorParametro('42581413000157', Filtro.igual)
@@ -30,7 +31,8 @@ def carrega_carga(session):
     session.merge(risco)
     session.commit()
 
-    risco2 = ParametroRisco('DescricaoMercadoria', 'Descrição', padraorisco=padraorisco)
+    risco2 = ParametroRisco('DescricaoMercadoria',
+                            'Descrição', padraorisco=padraorisco)
     session.add(risco2)
     # Adicionar uma mercadoria que exista na extração, para testar...
     valor2 = ValorParametro('PILLOW', Filtro.contem)
