@@ -214,7 +214,7 @@ class GerenteRisco():
         for campo in self._riscosativos:
             self.parametro_tocsv(campo, path=path)
 
-    def parametros_fromcsv(self, campo, session=None,
+    def parametros_fromcsv(self, campo, session=None, padraorisco=None,
                            lista=None, path=tmpdir):
         """
         Abre um arquivo csv, recupera parâmetros configurados nele,
@@ -245,11 +245,11 @@ class GerenteRisco():
                 reader = csv.reader(f)
                 lista = [linha for linha in reader]
                 lista = lista[1:]
-        if session:
+        if session and padraorisco:
             parametro = session.query(ParametroRisco).filter(
                 ParametroRisco.nome_campo == campo).first()
             if not parametro:
-                parametro = ParametroRisco(campo)
+                parametro = ParametroRisco(campo, padraorisco=padraorisco)
                 session.add(parametro)
                 session.commit()
             for linha in lista:
@@ -274,7 +274,8 @@ class GerenteRisco():
                 dict_filtros[Filtro[linha[1]]].append(linha[0])
             self._riscosativos[campo] = dict_filtros
 
-    def import_named_csv(self, arquivo, session=None, filtro=Filtro.igual):
+    def import_named_csv(self, arquivo, session=None, padraorisco=None,
+     filtro=Filtro.igual):
         """Abre um arquivo csv, cada coluna sendo um filtro.
         A primeira linha contém o campo a ser filtrado e as linhas
         seguintes os valores do filtro. Cria filtros na memória, e no
@@ -299,7 +300,7 @@ class GerenteRisco():
                             [coluna, filtro.name])
                     ind += 1
         for key, value in listas.items():
-            self.parametros_fromcsv(key, session, value)
+            self.parametros_fromcsv(key, session, padraorisco, value)
 
     def aplica_juncao(self, visao, path=tmpdir, filtrar=False,
                       parametros_ativos=None):

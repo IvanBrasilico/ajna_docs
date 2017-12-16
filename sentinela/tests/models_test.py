@@ -1,7 +1,8 @@
 import unittest
 
-from sentinela.models.models import (Base, BaseOrigem, BaseOriginal, Filtro, DePara, MySession,
-                                     ParametroRisco, Tabela, ValorParametro)
+from sentinela.models.models import (Base, BaseOrigem, BaseOriginal, DePara,
+                                     Filtro, MySession, ParametroRisco, Tabela,
+                                     ValorParametro)
 
 
 class TestModel(unittest.TestCase):
@@ -15,7 +16,10 @@ class TestModel(unittest.TestCase):
         Base.metadata.drop_all(self.engine)
 
     def test1_risco(self):
-        risco = ParametroRisco('teste', 'teste')
+        base = BaseOriginal('nome', 'caminho')
+        self.session.add(base)
+        self.session.commit()
+        risco = ParametroRisco('teste', 'teste', base)
         assert risco.nome_campo == 'teste'
         assert risco.descricao == 'teste'
         self.session.add(risco)
@@ -23,7 +27,10 @@ class TestModel(unittest.TestCase):
         assert risco.id is not None
 
     def test2_valor(self):
-        risco = ParametroRisco('teste1', 'teste2')
+        base = BaseOriginal('nome', 'caminho')
+        self.session.add(base)
+        self.session.commit()
+        risco = ParametroRisco('teste1', 'teste2', base)
         assert risco.nome_campo == 'teste1'
         valor = ValorParametro('teste3', Filtro.igual)
         assert valor.valor == 'teste3'
@@ -45,13 +52,12 @@ class TestModel(unittest.TestCase):
         assert base.caminho == 'caminho'
         self.session.add(base)
         self.session.commit()
-        risco = ParametroRisco('teste', 'teste')
+        risco = ParametroRisco('teste', 'teste', base)
         self.session.add(risco)
         self.session.commit()
         assert risco.id is not None
         risco = self.session.query(ParametroRisco).filter(
             ParametroRisco.nome_campo == 'teste').first()
-        base.parametros.append(risco)
         self.session.merge(base)
         self.session.commit()
         assert len(base.parametros) == 1

@@ -61,6 +61,7 @@ class BaseOrigem(Base):
         self.nome = nome
         self.caminho = caminho
 
+
 class DePara(Base):
     __tablename__ = 'depara'
     id = Column(Integer, primary_key=True)
@@ -74,7 +75,6 @@ class DePara(Base):
         self.titulo_ant = titulo_ant
         self.titulo_novo = titulo_novo
         self.base_id = base.id
-
 
 
 class BaseOriginal(Base):
@@ -106,9 +106,10 @@ class ParametroRisco(Base):
     base = relationship(
         'BaseOriginal', back_populates='parametros')
 
-    def __init__(self, nome, descricao=''):
+    def __init__(self, nome, descricao='', padraorisco=None):
         self.nome_campo = nome
         self.descricao = descricao
+        self.base_id = padraorisco.id
 
 
 class ValorParametro(Base):
