@@ -26,7 +26,8 @@ from flask import (Flask, abort, flash, redirect, render_template, request,
                    url_for)
 from flask_bootstrap import Bootstrap
 # from flask_cors import CORS
-from flask_login import LoginManager, UserMixin, login_required, login_user
+from flask_login import (current_user, LoginManager, UserMixin,
+                         login_required, login_user, logout_user)
 from flask_nav import Nav
 from flask_nav.elements import Navbar, View
 from werkzeug.security import safe_str_cmp
@@ -108,6 +109,16 @@ def login():
         return render_template('index.html', form=request.form)
 
 
+@app.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    next = request.args.get('next')
+    if not is_safe_url(next):
+        next = None
+    return redirect(next or url_for('index'))
+
+
 APP_PATH = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_PATH, 'files')
 CSV_FOLDER = os.path.join(APP_PATH, 'CSV')
@@ -126,7 +137,7 @@ def index():
     return render_template('index.html')
 
 
-"""@login_required
+@login_required
 @app.route('/valores_parametro/<parametro_id>')
 def valores_parametro(parametro_id):
     valores = []
@@ -135,7 +146,7 @@ def valores_parametro(parametro_id):
     ).first()
     if paramrisco:
         valores = paramrisco.valores
-    return render_template('bases.html', valores=valores)"""
+    return render_template('bases.html', valores=valores)
 
 
 @app.route('/upload_file', methods=['GET', 'POST'])
@@ -390,18 +401,17 @@ def exclui_valor():
 
 @nav.navigation()
 def mynavbar():
+    items = [View('Home', 'index'),
+             View('Importar Bases', 'list_files'),
+             View('Aplica Risco', 'risco'),
+             View('Edita Riscos', 'edita_risco')]
+    if current_user.is_authenticated:
+        items.append(View('Sair', 'logout'))
     return Navbar(
-        'AJNA - Módulo Sentinela',
-        View('Home', 'index'),
-        View('Importar Bases', 'list_files'),
-        View('Aplica Risco', 'risco'),
-        View('Edita Riscos', 'edita_risco'),
-    )
+        'AJNA - Módulo Sentinela', *items)
 
 
 nav.init_app(app)
-
-
 app.config['DEBUG'] = os.environ.get('DEBUG', 'None') == '1'
 app.secret_key = 'sk'
 
