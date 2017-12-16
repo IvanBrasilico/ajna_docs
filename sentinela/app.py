@@ -25,11 +25,12 @@ from flask import (abort, Flask, flash, redirect, render_template, request,
                    url_for)
 from flask_bootstrap import Bootstrap
 # from flask_cors import CORS
-from flask_login import login_required, LoginManager, login_user
+from flask_login import login_required, LoginManager, login_user, UserMixin
 from flask_nav import Nav
 from flask_nav.elements import Navbar, View
+from urllib.parse import urlparse, urljoin
+from werkzeug.security import safe_str_cmp
 from werkzeug.utils import secure_filename
-
 from sentinela.models.models import (Base, BaseOrigem, BaseOriginal, MySession,
                                      ParametroRisco, ValorParametro, Visao)
 from sentinela.utils.csv_handlers import sch_processing
@@ -48,22 +49,62 @@ nav = Nav()
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
-users_repository = {'ajna': 'ajna'}
+
+
+class User(UserMixin):
+    user_database = {'ajna': ('ajna', 'ajna')}
+
+    def __init__(self, id, password):
+        self.id = id
+        self.name = str(id)
+        self.password = password
+
+    @classmethod
+    def get(cls, id):
+        return cls.user_database.get(id)
+
+
+def authenticate(username, password):
+    user_entry = User.get(username)
+    if user_entry is not None:
+        user = User(user_entry[0], user_entry[1])
+        if user and safe_str_cmp(user.password.encode('utf-8'),
+                                 password.encode('utf-8')):
+            return user
+    return None
+
+
+@login_manager.user_loader
+def load_user(userid):
+    user_entry = User.get(userid)
+    if user_entry is not None:
+        return User(user_entry[0], user_entry[1])
+
+
+def is_safe_url(target):
+    ref_url = urlparse(request.host_url)
+    test_url = urlparse(urljoin(request.host_url, target))
+    return test_url.scheme in ('http', 'https') and \
+        ref_url.netloc == test_url.netloc
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('senha')
-        registeredUser = users_repository.get(username)
-        if registeredUser is not None and registeredUser == password:
+        registeredUser = authenticate(username, password)
+        if registeredUser is not None:
             print('Logged in..')
             login_user(registeredUser)
-            return redirect(url_for('home'))
+            next = request.args.get('next')
+            if not is_safe_url(next):
+                return abort(400)
+            return redirect(next or url_for('index'))
         else:
             return abort(401)
     else:
-        return render_template('index.html')
+        return render_template('index.html', form=request.form)
 
 
 APP_PATH = os.path.dirname(os.path.abspath(__file__))
