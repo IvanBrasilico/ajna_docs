@@ -1,7 +1,5 @@
-from flask_login import LoginManager, login_user
 from flask import Response, abort, redirect, render_template, request, url_for
-
-
+from flask_login import LoginManager, login_user
 
 
 """

@@ -20,17 +20,18 @@ import csv
 import datetime
 import logging
 import os
+from urllib.parse import urljoin, urlparse
 
-from flask import (abort, Flask, flash, redirect, render_template, request,
+from flask import (Flask, abort, flash, redirect, render_template, request,
                    url_for)
 from flask_bootstrap import Bootstrap
 # from flask_cors import CORS
-from flask_login import login_required, LoginManager, login_user, UserMixin
+from flask_login import LoginManager, UserMixin, login_required, login_user
 from flask_nav import Nav
 from flask_nav.elements import Navbar, View
-from urllib.parse import urlparse, urljoin
 from werkzeug.security import safe_str_cmp
 from werkzeug.utils import secure_filename
+
 from sentinela.models.models import (Base, BaseOrigem, BaseOriginal, MySession,
                                      ParametroRisco, ValorParametro, Visao)
 from sentinela.utils.csv_handlers import sch_processing

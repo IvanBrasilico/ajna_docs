@@ -1,5 +1,6 @@
 import imageio
 
+
 def find_conteiner(afile):
     """Heuristic dumb walk algorithm
     Beginning on middle of top, left, right and bottom sizes,
