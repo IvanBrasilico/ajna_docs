@@ -92,15 +92,15 @@ class TestModel(unittest.TestCase):
             assert new not in ''.join(lista_old[0])
         for old, new in de_para_dict.items():
             assert new in ''.join(lista_nova[0])
-        gerente = GerenteRisco()
         padraorisco = BaseOriginal('PlanilhaCOV')
         self.session.add(padraorisco)
         self.session.commit()
-        gerente.import_named_csv(CSV_MATRIZRISCO_TEST, session=self.session,
-                                 padraorisco=padraorisco)
-        lista_risco = gerente.aplica_risco(arquivo=PLANILHA_TEST)
-        print(lista_risco)
-        assert False
+        # gerente = GerenteRisco()
+        # gerente.import_named_csv(CSV_MATRIZRISCO_TEST, session=self.session,
+        #                         padraorisco=padraorisco)
+        # lista_risco = gerente.aplica_risco(arquivo=PLANILHA_TEST)
+        # print(lista_risco)
+        # assert False
 
 
 if __name__ == '__main__':

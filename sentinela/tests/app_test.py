@@ -21,9 +21,17 @@ class FlaskTestCase(unittest.TestCase):
         else:
             app.app.testing = True
             self.app = app.app.test_client()
+        rv = self.login('ajna', 'ajna')
+        assert rv is not None
 
     def tearDown(self):
         pass
+
+    def login(self, username, senha):
+        return self.app.post('/login', data=dict(
+            username=username,
+            senha=senha
+        ), follow_redirects=True)
 
     def test_not_found(self):
         if self.http_server is None:
@@ -77,7 +85,8 @@ class FlaskTestCase(unittest.TestCase):
         rv = self.app.get('/valores_parametro/{valores}')
         data = self.data(rv)
         # dt = rv.get_data(as_text=True)
-        assert b'Lista de Valores' in data"""
+        assert b'Lista de Valores' in data
+    """
 
     def test_risco2(self):
         rv = self.app.get('/edita_risco?padraoid=1')
