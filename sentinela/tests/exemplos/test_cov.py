@@ -7,7 +7,7 @@ import unittest
 
 from sentinela.models.models import (Base, BaseOrigem, BaseOriginal, DePara,
                                      MySession)
-from sentinela.utils.csv_handlers import muda_titulos_lista, muda_titulos_csv
+from sentinela.utils.csv_handlers import muda_titulos_csv, muda_titulos_lista
 from sentinela.utils.gerente_risco import GerenteRisco
 
 PLANILHA_TEST = '/Users/47020753817/Downloads/WinPython-64bit-3.5.3.1Qt5/notebooks/btp 5 setembro.csv'
@@ -102,4 +102,3 @@ if __name__ == '__main__':
     # gerente = GerenteRisco()
     # gerente.import_named_csv(CSV_NAMEDRISCO_TEST, session=mysession.session)
     # gerente.cria_base('PLANILHA_COV', session=mysession.session)
-    
