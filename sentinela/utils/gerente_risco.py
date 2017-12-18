@@ -8,7 +8,7 @@ from collections import defaultdict
 
 import pandas as pd
 
-from sentinela.models.models import (BaseOriginal, Filtro, ParametroRisco,
+from sentinela.models.models import (PadraoRisco, Filtro, ParametroRisco,
                                      ValorParametro)
 
 tmpdir = tempfile.mkdtemp()
@@ -93,10 +93,10 @@ class GerenteRisco():
             self.add_risco(parametro)
 
     def cria_base(self, nomebase, session):
-        base = session.query(BaseOriginal).filter(
-            BaseOriginal.nome == nomebase).first()
+        base = session.query(PadraoRisco).filter(
+            PadraoRisco.nome == nomebase).first()
         if not base:
-            base = BaseOriginal(nomebase)
+            base = PadraoRisco(nomebase)
         self.set_base(base)
 
     def add_risco(self, parametrorisco, session=None):

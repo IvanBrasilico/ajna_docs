@@ -5,7 +5,7 @@ import os
 import tempfile
 import unittest
 
-from sentinela.models.models import (Base, BaseOrigem, BaseOriginal, DePara,
+from sentinela.models.models import (Base, BaseOrigem, PadraoRisco, DePara,
                                      MySession)
 from sentinela.utils.csv_handlers import muda_titulos_csv, muda_titulos_lista
 from sentinela.utils.gerente_risco import GerenteRisco
@@ -92,7 +92,7 @@ class TestModel(unittest.TestCase):
             assert new not in ''.join(lista_old[0])
         for old, new in de_para_dict.items():
             assert new in ''.join(lista_nova[0])
-        padraorisco = BaseOriginal('PlanilhaCOV')
+        padraorisco = PadraoRisco('PlanilhaCOV')
         self.session.add(padraorisco)
         self.session.commit()
         # gerente = GerenteRisco()

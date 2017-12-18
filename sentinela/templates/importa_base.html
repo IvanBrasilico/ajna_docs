@@ -4,6 +4,7 @@
         <div class="col-md-12">
             <h4>Este formulário permite o UPLOAD de arquivo csv ou sch-txt, ou zip contendo estes</h4>
             <form action="/upload_file" method="post" enctype="multipart/form-data" id="frmrisco">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                 <h3>
                     <i>Informe um arquivo </i>
                 </h3>
