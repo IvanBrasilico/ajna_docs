@@ -6,7 +6,7 @@ import os
 import tempfile
 import unittest
 
-from sentinela.models.models import (Base, BaseOriginal, Filtro, MySession,
+from sentinela.models.models import (Base, PadraoRisco, Filtro, MySession,
                                      ParametroRisco, ValorParametro)
 from sentinela.utils.csv_handlers import sch_processing
 from sentinela.utils.gerente_risco import GerenteRisco
@@ -18,7 +18,7 @@ CARGA_ZIP_TEST = 'sentinela/tests/tests.zip'
 
 
 def carrega_carga(session):
-    padraorisco = BaseOriginal('CARGA')
+    padraorisco = PadraoRisco('CARGA')
     session.add(padraorisco)
     session.commit()
     risco = ParametroRisco('CPFCNPJConsignatario', 'CNPJ do Consignatario',

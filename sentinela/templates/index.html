@@ -17,6 +17,7 @@
             <div class="modal-content col-sm-6">
                 <div class="modal-body">
                     <form id="frmlogin" method="post" action="/login" enctype="multipart/form-data">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                         <h4>Login</h4>
                         <div class="form-group">
                             <label for="username">Nome:</label>

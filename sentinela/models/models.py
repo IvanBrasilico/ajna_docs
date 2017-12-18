@@ -77,20 +77,17 @@ class DePara(Base):
         self.base_id = base.id
 
 
-class BaseOriginal(Base):
-    # TODO: Renomear para PadraoRisco, tirar campo caminho
+class PadraoRisco(Base):
     """Metadado sobre as bases de dados disponíveis/integradas.
     Caminho: caminho no disco onde os dados da importação da base
     (normalmente arquivos csv) estão guardados"""
     __tablename__ = 'bases'
     id = Column(Integer, primary_key=True)
     nome = Column(String(20), unique=True)
-    caminho = Column(String(200), unique=True)
-    parametros = relationship('ParametroRisco', back_populates='base')
+    parametros = relationship('ParametroRisco', back_populates='padraorisco')
 
-    def __init__(self, nome, caminho=None):
+    def __init__(self, nome):
         self.nome = nome
-        self.caminho = caminho
 
 
 class ParametroRisco(Base):
@@ -103,8 +100,8 @@ class ParametroRisco(Base):
     descricao = Column(String(200))
     valores = relationship('ValorParametro', back_populates='risco')
     base_id = Column(Integer, ForeignKey('bases.id'))
-    base = relationship(
-        'BaseOriginal', back_populates='parametros')
+    padraorisco = relationship(
+        'PadraoRisco', back_populates='parametros')
 
     def __init__(self, nome, descricao='', padraorisco=None):
         self.nome_campo = nome

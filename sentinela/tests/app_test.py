@@ -15,6 +15,10 @@ class FlaskTestCase(unittest.TestCase):
         # Ativar esta variável de ambiente na inicialização
         # do Servidor WEB para transformar em teste de integração
         self.http_server = os.environ.get('HTTP_SERVER')
+        # TODO: Pesquisar método para testar mesmo com CSRF habilitado
+        # https://gist.github.com/singingwolfboy/2fca1de64950d5dfed72
+        app.app.config['WTF_CSRF_ENABLED'] = False
+
         if self.http_server is not None:
             from webtest import TestApp
             self.app = TestApp(self.http_server)

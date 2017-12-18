@@ -30,10 +30,11 @@ from flask_login import (current_user, LoginManager, UserMixin,
                          login_required, login_user, logout_user)
 from flask_nav import Nav
 from flask_nav.elements import Navbar, View
+from flask_wtf.csrf import CSRFProtect
 from werkzeug.security import safe_str_cmp
 from werkzeug.utils import secure_filename
 
-from sentinela.models.models import (Base, BaseOrigem, BaseOriginal, MySession,
+from sentinela.models.models import (Base, BaseOrigem, PadraoRisco, MySession,
                                      ParametroRisco, ValorParametro, Visao)
 from sentinela.utils.csv_handlers import sch_processing
 from sentinela.utils.gerente_risco import ENCODE, GerenteRisco
@@ -47,6 +48,7 @@ logging.basicConfig(level=os.environ.get('LOGLEVEL', 'INFO'))
 app = Flask(__name__, static_url_path='/static')
 # CORS(app)
 Bootstrap(app)
+csrf = CSRFProtect(app)
 nav = Nav()
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -137,16 +139,16 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/list_files')
 @login_required
-@app.route('/valores_parametro/<parametro_id>')
-def valores_parametro(parametro_id):
-    valores = []
-    paramrisco = session.query(ParametroRisco).filter(
-        ParametroRisco.id == parametro_id
-    ).first()
-    if paramrisco:
-        valores = paramrisco.valores
-    return render_template('bases.html', valores=valores)
+def list_files():
+    """Lista arquivos csv disponíveis para trabalhar
+    """
+    lista_arquivos = [file for file in
+                      os.listdir(UPLOAD_FOLDER) if allowed_file(file)]
+    bases = session.query(PadraoRisco).all()
+    return render_template('importa_base.html', lista_arquivos=lista_arquivos,
+                           bases=bases)
 
 
 @app.route('/upload_file', methods=['GET', 'POST'])
@@ -171,19 +173,7 @@ def upload_file():
             filename = secure_filename(file.filename)
             file.save(os.path.join(UPLOAD_FOLDER, filename))
             return redirect(url_for('list_files'))
-    return render_template('risco.html')
-
-
-@app.route('/list_files')
-@login_required
-def list_files():
-    """Lista arquivos csv disponíveis para trabalhar
-    """
-    lista_arquivos = [file for file in
-                      os.listdir(UPLOAD_FOLDER) if allowed_file(file)]
-    bases = session.query(BaseOriginal).all()
-    return render_template('risco.html', lista_arquivos=lista_arquivos,
-                           bases=bases)
+    return render_template('importa_base.html')
 
 
 @app.route('/importa')
@@ -209,6 +199,18 @@ def importa():
     return redirect(url_for('list_files', erro=erro))
 
 
+@login_required
+@app.route('/valores_parametro/<parametro_id>')
+def valores_parametro(parametro_id):
+    valores = []
+    paramrisco = session.query(ParametroRisco).filter(
+        ParametroRisco.id == parametro_id
+    ).first()
+    if paramrisco:
+        valores = paramrisco.valores
+    return render_template('bases.html', valores=valores)
+
+
 @app.route('/risco', methods=['POST', 'GET'])
 @app.route('/aplica_risco')
 @login_required
@@ -228,12 +230,12 @@ def risco():
     except FileNotFoundError:
         pass
     bases = session.query(BaseOrigem).all()
-    padroes = session.query(BaseOriginal).all()
+    padroes = session.query(PadraoRisco).all()
     visoes = session.query(Visao).all()
     parametros = []
     if padraoid:
-        padrao = session.query(BaseOriginal).filter(
-            BaseOriginal.id == padraoid
+        padrao = session.query(PadraoRisco).filter(
+            PadraoRisco.id == padraoid
         ).first()
         if padrao:
             parametros = padrao.parametros
@@ -245,7 +247,7 @@ def risco():
     if paramrisco:
         valores = paramrisco.valores
     if not path:
-        return render_template('bases.html',
+        return render_template('aplica_risco.html',
                                lista_arquivos=lista_arquivos,
                                bases=bases,
                                padroes=padroes,
@@ -258,8 +260,8 @@ def risco():
                                parametros_ativos=parametros_ativos)
     # if path aplica_risco
     gerente = GerenteRisco()
-    opadrao = session.query(BaseOriginal).filter(
-        BaseOriginal.id == padraoid).first()
+    opadrao = session.query(PadraoRisco).filter(
+        PadraoRisco.id == padraoid).first()
     base_csv = os.path.join(CSV_FOLDER, baseid, path)
     gerente.set_base(opadrao)
     avisao = session.query(Visao).filter(
@@ -275,7 +277,7 @@ def risco():
     with open(csv_salvo, 'w', encoding=ENCODE, newline='') as csv_out:
         writer = csv.writer(csv_out)
         writer.writerows(lista_risco)
-    return render_template('bases.html',
+    return render_template('aplica_risco.html',
                            lista_arquivos=lista_arquivos,
                            bases=bases,
                            padroes=padroes,
@@ -294,11 +296,11 @@ def risco():
 @login_required
 def edita_risco():
     padraoid = request.args.get('padraoid')
-    padroes = session.query(BaseOriginal).all()
+    padroes = session.query(PadraoRisco).all()
     parametros = []
     if padraoid:
-        padrao = session.query(BaseOriginal).filter(
-            BaseOriginal.id == padraoid
+        padrao = session.query(PadraoRisco).filter(
+            PadraoRisco.id == padraoid
         ).first()
         if padrao:
             parametros = padrao.parametros
@@ -310,46 +312,12 @@ def edita_risco():
         ).first()
         if valor:
             valores = valor.valores
-    return render_template('editarisco.html',
+    return render_template('edita_risco.html',
                            padraoid=padraoid,
                            padroes=padroes,
                            id_parametro=id_parametro,
                            parametros=parametros,
                            valores=valores)
-
-
-@app.route('/aplica_risco2')
-def aplica_risco2():
-    baseid = request.args.get('base')
-    visaoid = request.args.get('visao')
-    path = request.args.get('filename')
-    gerente = GerenteRisco()
-    bases = session.query(BaseOriginal).all()
-    visoes = session.query(Visao).all()
-    abase = session.query(BaseOriginal).filter(
-        BaseOriginal.id == baseid).first()
-    base_csv = os.path.join(CSV_FOLDER, path)
-    gerente.set_base(abase)
-    avisao = session.query(Visao).filter(
-        Visao.id == visaoid).first()
-    lista_risco = gerente.aplica_juncao(avisao, path=base_csv, filtrar=True)
-    print(lista_risco)
-    static_path = app.config.get('STATIC_FOLDER', 'static')
-    csv_salvo = os.path.join(APP_PATH, static_path, 'baixar.csv')
-    try:
-        os.remove(csv_salvo)
-    except IOError:
-        pass
-    with open(csv_salvo, 'w', encoding=ENCODE) as csv_out:
-        writer = csv.writer(csv_out)
-        writer.writerows(lista_risco)
-    return render_template('bases-adauto.html',
-                           bases=bases,
-                           baseid=baseid,
-                           filename=path,
-                           visoes=visoes,
-                           csv_salvo=os.path.basename(csv_salvo),
-                           lista_risco=lista_risco)
 
 
 @app.route('/exclui_parametro')
@@ -413,7 +381,8 @@ def mynavbar():
 
 nav.init_app(app)
 app.config['DEBUG'] = os.environ.get('DEBUG', 'None') == '1'
-app.secret_key = 'sk'
+# TODO: generate secret key on separate conf file not on git
+app.secret_key = 'SK1234*!'
 
 if __name__ == '__main__':
     app.run()

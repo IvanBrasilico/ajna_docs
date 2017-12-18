@@ -2,10 +2,6 @@
 <div id="main" class="container-fluid">
     <div id="top" class="row">
         <h3>Escolha o Padrão de Risco a editar:</h2>
-    </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <h4>Padrões de risco: </h4>
             <select name="padrao" id="padrao">
                 <option value="0">Selecionar</option>
                 {% for padrao in padroes %}
@@ -13,6 +9,9 @@
                 </option>
                 {% endfor %}
             </select>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
             {% if parametros %}
             <h4>Parâmetros de risco cadastrados</h4>
             <div id="list" class="row col-sm-9">
