@@ -1,14 +1,15 @@
 {% extends "layout.html" %} {% block content %}
 <div id="main" class="container-fluid">
     <div id="top" class="row">
-        <h3>Escolha o Padrão de Risco a editar:</h2>
-            <select name="padrao" id="padrao">
-                <option value="0">Selecionar</option>
-                {% for padrao in padroes %}
-                <option value="{{ padrao.id }}" {% if padrao.id|int()==padraoid|int() %} selected="selected" {% endif %}>{{ padrao.nome }}
-                </option>
-                {% endfor %}
-            </select>
+        <h4><big><b>Escolha o Padrão de Risco a editar:</b></big>
+                <select name="padrao" id="padrao">
+                    <option value="0">Selecionar</option>
+                    {% for padrao in padroes %}
+                    <option value="{{ padrao.id }}" {% if padrao.id|int()==padraoid|int() %} selected="selected" {% endif %}>{{ padrao.nome }}
+                    </option>
+                    {% endfor %}
+                </select>
+        </h4>
     </div>
     <div class="row">
         <div class="col-sm-6">
@@ -37,14 +38,18 @@
             </div>
         </div>
         {% if parametros %}
+        <h4>Lista de Valores do Parâmetro
+            <button onclick="" id="btn_incluir" type="button" class="btn btn-primary" {% if not id_parametro %} disabled {% endif %}>Importar CSV</button>
+            <button onclick="" id="btn_incluir" type="button" class="btn btn-default" {% if not id_parametro %} disabled {% endif %}>Exportar CSV</button>
+        </h4>
         <div class="table-responsive col-sm-6">
-            <h4>Lista de Valores do Parâmetro</h4>
-            <form id="frmvalores" onsubmit="add_row()" class="form-group">
-                {% if id_parametro %}
+            {% if id_parametro %}
+            <form id="frmvalores" onsubmit="" class="form-group">
+
                 <div class="form-group col-sm-2">
                     <input id="id_risco" class="form-control" type="text" value="{{ id_parametro }}" disabled>
                 </div>
-                {% endif %}
+
                 <div class="form-group col-sm-4">
                     <input id="valor" class="form-control" type="text">
                 </div>
@@ -60,7 +65,7 @@
                     <button onclick="adicionar_valor()" id="btn_incluir" type="button" class="btn btn-success">Incluir</button>
                 </div>
             </form>
-
+            {% endif %}
             <table class="inlineTable table table-striped table-bordered table-hover table-responsive" id="riscos">
                 {% for valor in valores %}
                 <tr>
