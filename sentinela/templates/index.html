@@ -13,12 +13,15 @@
     <div id="bottom" class="row">
         AJNA - Receita Federal do Brasil 2017
     </div>
-    <div id="loginmodal" class="modal fade" role="dialog">
-            <div class="modal-content col-sm-6">
+    <div class="modal fade" id="loginmodal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title" id="ModalLabel">Login</h1>
+                </div>
                 <div class="modal-body">
                     <form id="frmlogin" method="post" action="/login" enctype="multipart/form-data">
-                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-                        <h4>Login</h4>
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
                         <div class="form-group">
                             <label for="username">Nome:</label>
                             <input type="text" class="form-control" id="username" name="username" autofocus="autofocus">
@@ -41,7 +44,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         {% if not current_user.is_authenticated %}
-            $('#loginmodal').modal();
+        $('#loginmodal').modal();
         {% endif %}
     })
 </script> {% endblock %}

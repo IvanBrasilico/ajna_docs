@@ -1,0 +1,94 @@
+{% extends "layout.html" %} {% block content %}
+<div id="main" class="container-fluid">
+    <div id="top" class="row">
+        <h4>
+            <big>
+                <b>Escolha a Base Origem:</b>
+            </big>
+        </h4>
+        <div class="col-md-12">
+            <h4>Base Original:
+                <select name="base" id="base">
+                    <option value="0">Selecionar</option>
+                    {% for base in bases %}
+                    <option value="{{ base.id }}" {% if base.id|int()==baseid|int() %} selected="selected" {% endif %}>{{ base.nome }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </h4>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                {% if baseid|int() > 1 %}
+                <h4>
+                    Lista de titulos:
+                </h4>
+                <form id="frmvalores" onsubmit="" class="form-group">
+                    <div class="form-group col-sm-4">
+                        <input id="titulo_ant" class="form-control" type="text">
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <input id="titulo_novo" class="form-control" type="text">
+                    </div>
+                    <div class="form-group">
+                        <button onclick="adicionar()" id="btn_incluir" type="button" class="btn btn-success">Incluir</button>
+                    </div>
+                </form>
+                {% endif %} {% if titulos %}
+                <br>
+                <div id="list" class="row col-sm-9">
+
+                    <table class="inlineTable table table-striped table-bordered table-hover table-responsive" cellspacing="0" cellpadding="0"
+                        id="titulos">
+                        <tr>
+                            <th align="center">Titulo Antigo</th>
+                            <th align="center">Titulo Novo</th>
+                            <th align="center">Excluir</th>
+                        </tr>
+                        {% for titulo in titulos %}
+                        <tr>
+                            <td id="{{ titulo.id }}" align="center">{{titulo.titulo_ant}}</td>
+                            <td id="{{ titulo.id }}" align="center">{{titulo.titulo_novo}}</td>
+                            <td align="center">
+                                <input type="button" class="btn  btn-danger" value="x" onclick="remover({{ titulo.id }})" />
+                            </td>
+                        </tr>
+                        {% endfor %} {% endif %} 
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="bottom" class="row">
+    AJNA - Receita Federal do Brasil 2017
+</div>
+{% endblock %} {% block scripts %} {{super()}}
+<script>
+    $(function () {
+        var submit_form = function (e) {
+            window.location.assign('/edita_depara?baseid=' + $("#base").val()
+            )
+        };
+        $('#base').bind('change', submit_form);
+    });
+
+    var parametros = document.querySelector("#titulos tbody");
+
+    function adicionar() {
+        var ant = $("#titulo_ant").val()
+        var novo = $("#titulo_novo").val()
+        if (ant != '' && novo != '') {
+            window.location.assign('/adiciona_depara?baseid=' + $("#base").val() +
+                '&antigo=' + ant + '&novo=' + novo
+            )
+        }
+    }
+
+    function remover(tituloid) {
+        window.location.assign('/exclui_depara?baseid=' + $("#base").val() +
+            '&tituloid=' + tituloid
+        )
+    }
+
+</script> {% endblock %}
