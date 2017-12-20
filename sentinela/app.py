@@ -34,8 +34,9 @@ from flask_wtf.csrf import CSRFProtect
 from werkzeug.security import safe_str_cmp
 from werkzeug.utils import secure_filename
 
-from sentinela.models.models import (Base, BaseOrigem, DePara, PadraoRisco, MySession,
-                                     ParametroRisco, ValorParametro, Visao)
+from sentinela.models.models import (Base, BaseOrigem, DePara, PadraoRisco,
+                                     MySession, ParametroRisco, ValorParametro,
+                                     Visao)
 from sentinela.utils.csv_handlers import sch_processing
 from sentinela.utils.gerente_risco import ENCODE, GerenteRisco
 
@@ -53,7 +54,7 @@ nav = Nav()
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
-login_manager.session_protection = "strong"
+login_manager.session_protection = 'strong'
 
 
 class User(UserMixin):
@@ -341,17 +342,17 @@ def importa_csv():
 @login_required
 def edita_depara():
     baseid = request.args.get('baseid')
-    bases = session.query(BaseOrigem).all()    
+    bases = session.query(BaseOrigem).all()
     titulos = []
     if baseid:
         base = session.query(BaseOrigem).filter(
             BaseOrigem.id == baseid
-            ).first()
+        ).first()
         if base:
             titulos = base.deparas
     return render_template('muda_titulos.html', bases=bases,
-                                                baseid=baseid,
-                                                titulos=titulos)
+                           baseid=baseid,
+                           titulos=titulos)
 
 
 @app.route('/adiciona_depara')
