@@ -37,7 +37,8 @@ from werkzeug.utils import secure_filename
 from sentinela.models.models import (Base, BaseOrigem, DePara, PadraoRisco,
                                      MySession, ParametroRisco, ValorParametro,
                                      Visao)
-from sentinela.utils.csv_handlers import sch_processing
+from sentinela.utils.csv_handlers import (ascii_sanitizar, ENCODE, sanitizar, 
+                                        sch_processing , unicode_sanitizar)  
 from sentinela.utils.gerente_risco import ENCODE, GerenteRisco
 
 mysession = MySession(Base)
@@ -322,20 +323,37 @@ def edita_risco():
                            valores=valores)
 
 
-@app.route('/importa_csv', methods=['POST', 'GET'])
+@app.route('/importa_csv/<padraoid>/<parametroid>', methods=['POST', 'GET'])
 @login_required
-def importa_csv():
-    baseid = request.args.get('baseid')
+def importa_csv(padraoid, parametroid):
     if request.method == 'POST':
         if 'csv' not in request.files:
             flash('No file part')
             return redirect(request.url)
-        csv = request.files['csv']
-        print('FILE***', csv.filename)
-        if csv.filename == '':
+        csvf = request.files['csv']
+        print('FILE***', csvf.filename)
+        if csvf.filename == '':
             flash('No selected file')
             return redirect(request.url)
-    return render_template('edita_risco.html')
+        if csvf and '.' in csvf.filename and \
+        csvf.filename.rsplit('.', 1)[1].lower() == 'csv':
+            print(csvf.filename)
+            filename = secure_filename(csvf.filename)
+            csvf.save(os.path.join(UPLOAD_FOLDER, filename))
+            lista = []
+            with open(os.path.join(UPLOAD_FOLDER, filename), 'r', encoding=ENCODE, newline='') as csvin:
+                reader = csv.reader(csvin)
+                lista = [linha for linha in reader]
+                for linha in lista[1:]:
+                    valor = sanitizar(linha[0], norm_function=unicode_sanitizar)
+                    tipo_filtro = sanitizar(linha[1], norm_function=unicode_sanitizar)
+                    novo_valor = ValorParametro(valor, tipo_filtro)
+                    novo_valor.risco_id = parametroid
+                    session.add(novo_valor)
+                session.commit()
+    return render_template('edita_risco.html', 
+                            padraoid=padraoid, 
+                            id_parametro=parametroid)
 
 
 @app.route('/edita_depara')
@@ -348,6 +366,7 @@ def edita_depara():
         base = session.query(BaseOrigem).filter(
             BaseOrigem.id == baseid
         ).first()
+        print(base.nome)
         if base:
             titulos = base.deparas
     return render_template('muda_titulos.html', bases=bases,
@@ -360,7 +379,11 @@ def adiciona_depara():
     baseid = request.args.get('baseid')
     titulo_antigo = request.args.get('antigo')
     titulo_novo = request.args.get('novo')
-    depara = DePara(titulo_antigo, titulo_novo, baseid)
+    if baseid:
+        base = session.query(BaseOrigem).filter(
+            BaseOrigem.id == baseid
+        ).first()
+    depara = DePara(titulo_antigo, titulo_novo, base)
     session.add(depara)
     session.commit()
     return redirect(url_for('edita_depara', baseid=baseid))
@@ -390,6 +413,7 @@ def exclui_parametro():
 def adiciona_parametro():
     padraoid = request.args.get('padraoid')
     risco_novo = request.args.get('risco_novo')
+    sanitizado = sanitizar(risco_novo, norm_function=unicode_sanitizar)
     risco = ParametroRisco(risco_novo)
     risco.base_id = padraoid
     session.add(risco)
@@ -402,8 +426,10 @@ def adiciona_valor():
     padraoid = request.args.get('padraoid')
     novo_valor = request.args.get('novo_valor')
     tipo_filtro = request.args.get('filtro')
+    valor = sanitizar(novo_valor, norm_function=unicode_sanitizar)
+    filtro = sanitizar(tipo_filtro, norm_function=unicode_sanitizar)
     riscoid = request.args.get('riscoid')
-    valor = ValorParametro(novo_valor, tipo_filtro)
+    valor = ValorParametro(valor, filtro)
     valor.risco_id = riscoid
     session.add(valor)
     session.commit()

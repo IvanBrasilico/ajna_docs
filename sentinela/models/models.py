@@ -74,7 +74,7 @@ class DePara(Base):
     def __init__(self, titulo_ant, titulo_novo, base):
         self.titulo_ant = titulo_ant
         self.titulo_novo = titulo_novo
-        self.base_id = base
+        self.base_id = base.id
 
 
 class PadraoRisco(Base):
@@ -106,7 +106,8 @@ class ParametroRisco(Base):
     def __init__(self, nome, descricao='', padraorisco=None):
         self.nome_campo = nome
         self.descricao = descricao
-        self.base_id = padraorisco.id
+        if padraorisco:
+            self.base_id = padraorisco.id
 
 
 class ValorParametro(Base):
