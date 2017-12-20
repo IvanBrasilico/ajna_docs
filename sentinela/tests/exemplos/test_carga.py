@@ -6,7 +6,7 @@ import os
 import tempfile
 import unittest
 
-from sentinela.models.models import (Base, PadraoRisco, Filtro, MySession,
+from sentinela.models.models import (Base, Filtro, MySession, PadraoRisco,
                                      ParametroRisco, ValorParametro)
 from sentinela.utils.csv_handlers import sch_processing
 from sentinela.utils.gerente_risco import GerenteRisco

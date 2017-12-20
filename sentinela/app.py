@@ -26,19 +26,18 @@ from flask import (Flask, abort, flash, redirect, render_template, request,
                    url_for)
 from flask_bootstrap import Bootstrap
 # from flask_cors import CORS
-from flask_login import (current_user, LoginManager, UserMixin,
-                         login_required, login_user, logout_user)
+from flask_login import (LoginManager, UserMixin, current_user, login_required,
+                         login_user, logout_user)
 from flask_nav import Nav
 from flask_nav.elements import Navbar, View
 from flask_wtf.csrf import CSRFProtect
-from werkzeug.security import safe_str_cmp
 from werkzeug.utils import secure_filename
 
-from sentinela.models.models import (Base, BaseOrigem, DePara, PadraoRisco,
-                                     MySession, ParametroRisco, ValorParametro,
-                                     Visao)
+from sentinela.models.models import (Base, BaseOrigem, DBUser, DePara,
+                                     MySession, PadraoRisco, ParametroRisco,
+                                     ValorParametro, Visao)
 from sentinela.utils.csv_handlers import sch_processing
-from sentinela.utils.gerente_risco import ENCODE, GerenteRisco
+from sentinela.utils.gerente_risco import ENCODE, GerenteRisco, tmpdir
 
 mysession = MySession(Base)
 session = mysession.session
@@ -58,33 +57,29 @@ login_manager.session_protection = 'strong'
 
 
 class User(UserMixin):
-    user_database = {'ajna': ('ajna', 'ajna')}
+    user_database = DBUser
 
-    def __init__(self, id, password):
+    def __init__(self, id):
         self.id = id
         self.name = str(id)
-        self.password = password
 
     @classmethod
-    def get(cls, id):
-        return cls.user_database.get(id)
+    def get(cls, username, password=None):
+        dbuser = cls.user_database.get(session, username, password)
+        if dbuser:
+            return User(dbuser.username)
+        return None
 
 
 def authenticate(username, password):
-    user_entry = User.get(username)
-    if user_entry is not None:
-        user = User(user_entry[0], user_entry[1])
-        if user and safe_str_cmp(user.password.encode('utf-8'),
-                                 password.encode('utf-8')):
-            return user
-    return None
+    user_entry = User.get(username, password)
+    return user_entry
 
 
 @login_manager.user_loader
 def load_user(userid):
     user_entry = User.get(userid)
-    if user_entry is not None:
-        return User(user_entry[0], user_entry[1])
+    return user_entry
 
 
 def is_safe_url(target):
@@ -99,10 +94,10 @@ def login():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('senha')
-        registeredUser = authenticate(username, password)
-        if registeredUser is not None:
+        registered_user = authenticate(username, password)
+        if registered_user is not None:
             print('Logged in..')
-            login_user(registeredUser)
+            login_user(registered_user)
             next = request.args.get('next')
             if not is_safe_url(next):
                 return abort(400)
@@ -146,9 +141,9 @@ def index():
 def list_files():
     """Lista arquivos csv disponíveis para trabalhar
     """
-    lista_arquivos = [file for file in
-                      os.listdir(UPLOAD_FOLDER) if allowed_file(file)]
-    bases = session.query(PadraoRisco).all()
+    lista_arquivos = sorted([file for file in
+                             os.listdir(UPLOAD_FOLDER) if allowed_file(file)])
+    bases = session.query(PadraoRisco).order_by(PadraoRisco.nome).all()
     return render_template('importa_base.html', lista_arquivos=lista_arquivos,
                            bases=bases)
 
@@ -164,14 +159,12 @@ def upload_file():
             flash('No file part')
             return redirect(request.url)
         file = request.files['file']
-        print('FILE***', file.filename)
         # if user does not select file, browser also
         # submit a empty part without filename
         if file.filename == '':
             flash('No selected file')
             return redirect(request.url)
         if file and allowed_file(file.filename):
-            print(file.filename)
             filename = secure_filename(file.filename)
             file.save(os.path.join(UPLOAD_FOLDER, filename))
             return redirect(url_for('list_files'))
@@ -185,7 +178,7 @@ def importa():
     baseid = request.args.get('base')
     filename = request.args.get('filename')
     data = request.args.get('data')
-    if data is None:
+    if not data:
         data = datetime.date.today().strftime('%Y%m%d')
     if baseid is not None and filename is not None:
         dest_path = os.path.join(CSV_FOLDER, baseid, data[:4], data[4:])
@@ -231,9 +224,9 @@ def risco():
                 lista_arquivos.append(ano + '/' + mesdia)
     except FileNotFoundError:
         pass
-    bases = session.query(BaseOrigem).all()
-    padroes = session.query(PadraoRisco).all()
-    visoes = session.query(Visao).all()
+    bases = session.query(BaseOrigem).order_by(BaseOrigem.nome).all()
+    padroes = session.query(PadraoRisco).order_by(PadraoRisco.nome).all()
+    visoes = session.query(Visao).order_by(Visao.nome).all()
     parametros = []
     if padraoid:
         padrao = session.query(PadraoRisco).filter(
@@ -298,7 +291,7 @@ def risco():
 @login_required
 def edita_risco():
     padraoid = request.args.get('padraoid')
-    padroes = session.query(PadraoRisco).all()
+    padroes = session.query(PadraoRisco).order_by(PadraoRisco.nome).all()
     parametros = []
     if padraoid:
         padrao = session.query(PadraoRisco).filter(
@@ -325,7 +318,11 @@ def edita_risco():
 @app.route('/importa_csv', methods=['POST', 'GET'])
 @login_required
 def importa_csv():
-    baseid = request.args.get('baseid')
+    padraoid = request.args.get('padraoid')
+    id_parametro = request.args.get('id_parametro')
+    if id_parametro:
+        parametro = session.query(ParametroRisco).filter(
+            ParametroRisco.id == id_parametro).first()
     if request.method == 'POST':
         if 'csv' not in request.files:
             flash('No file part')
@@ -335,45 +332,16 @@ def importa_csv():
         if csv.filename == '':
             flash('No selected file')
             return redirect(request.url)
-    return render_template('edita_risco.html')
-
-
-@app.route('/edita_depara')
-@login_required
-def edita_depara():
-    baseid = request.args.get('baseid')
-    bases = session.query(BaseOrigem).all()
-    titulos = []
-    if baseid:
-        base = session.query(BaseOrigem).filter(
-            BaseOrigem.id == baseid
-        ).first()
-        if base:
-            titulos = base.deparas
-    return render_template('muda_titulos.html', bases=bases,
-                           baseid=baseid,
-                           titulos=titulos)
-
-
-@app.route('/adiciona_depara')
-def adiciona_depara():
-    baseid = request.args.get('baseid')
-    titulo_antigo = request.args.get('antigo')
-    titulo_novo = request.args.get('novo')
-    depara = DePara(titulo_antigo, titulo_novo, baseid)
-    session.add(depara)
-    session.commit()
-    return redirect(url_for('edita_depara', baseid=baseid))
-
-
-@app.route('/exclui_depara')
-def exclui_depara():
-    baseid = request.args.get('baseid')
-    tituloid = request.args.get('tituloid')
-    session.query(DePara).filter(
-        DePara.id == tituloid).delete()
-    session.commit()
-    return redirect(url_for('edita_depara', baseid=baseid))
+        if parametro is None:
+            flash('Parâmetro de risco não selecionado!')
+            return redirect(request.url)
+        if csv and allowed_file(csv.filename):
+            csv.save(os.path.join(tmpdir, parametro.nome_campo))
+            gerente = GerenteRisco()
+            gerente.parametros_fromcsv(parametro.nome_campo,
+                                       session)
+    return redirect(url_for('edita_risco', padraoid=padraoid,
+                            id_parametro=id_parametro))
 
 
 @app.route('/exclui_parametro')
@@ -421,6 +389,44 @@ def exclui_valor():
     session.commit()
     return redirect(url_for('edita_risco', padraoid=padraoid,
                             id_parametro=riscoid))
+
+
+@app.route('/edita_depara')
+@login_required
+def edita_depara():
+    baseid = request.args.get('baseid')
+    bases = session.query(BaseOrigem).order_by(BaseOrigem.nome).all()
+    titulos = []
+    if baseid:
+        base = session.query(BaseOrigem).filter(
+            BaseOrigem.id == baseid
+        ).first()
+        if base:
+            titulos = base.deparas
+    return render_template('muda_titulos.html', bases=bases,
+                           baseid=baseid,
+                           titulos=titulos)
+
+
+@app.route('/adiciona_depara')
+def adiciona_depara():
+    baseid = request.args.get('baseid')
+    titulo_antigo = request.args.get('antigo')
+    titulo_novo = request.args.get('novo')
+    depara = DePara(titulo_antigo, titulo_novo, baseid)
+    session.add(depara)
+    session.commit()
+    return redirect(url_for('edita_depara', baseid=baseid))
+
+
+@app.route('/exclui_depara')
+def exclui_depara():
+    baseid = request.args.get('baseid')
+    tituloid = request.args.get('tituloid')
+    session.query(DePara).filter(
+        DePara.id == tituloid).delete()
+    session.commit()
+    return redirect(url_for('edita_depara', baseid=baseid))
 
 
 @nav.navigation()
