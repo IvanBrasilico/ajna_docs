@@ -245,7 +245,7 @@ class GerenteRisco():
                 reader = csv.reader(f)
                 lista = [linha for linha in reader]
                 lista = lista[1:]
-        if session and padraorisco:
+        if session:
             parametro = session.query(ParametroRisco).filter(
                 ParametroRisco.nome_campo == campo).first()
             if not parametro:
