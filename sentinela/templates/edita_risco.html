@@ -1,7 +1,10 @@
 {% extends "layout.html" %} {% block content %}
 <div id="main" class="container-fluid">
     <div id="top" class="row">
-        <h3>Escolha o Padrão de Risco a editar:</h2>
+        <h4>
+            <big>
+                <b>Escolha o Padrão de Risco a editar:</b>
+            </big>
             <select name="padrao" id="padrao">
                 <option value="0">Selecionar</option>
                 {% for padrao in padroes %}
@@ -9,6 +12,7 @@
                 </option>
                 {% endfor %}
             </select>
+        </h4>
     </div>
     <div class="row">
         <div class="col-sm-6">
@@ -37,14 +41,19 @@
             </div>
         </div>
         {% if parametros %}
+        <h4>Lista de Valores do Parâmetro
+            <button id="btn_incluir" type="button" class="btn btn-primary" data-toggle="modal" data-target="#importa_csv" {% if not id_parametro
+                %} disabled {% endif %}>Importar CSV</button>
+            <button onclick="" id="btn_incluir" type="button" class="btn btn-default" {% if not id_parametro %} disabled {% endif %}>Exportar CSV</button>
+        </h4>
         <div class="table-responsive col-sm-6">
-            <h4>Lista de Valores do Parâmetro</h4>
-            <form id="frmvalores" onsubmit="add_row()" class="form-group">
-                {% if id_parametro %}
+            {% if id_parametro %}
+            <form id="frmvalores" onsubmit="" class="form-group">
+
                 <div class="form-group col-sm-2">
                     <input id="id_risco" class="form-control" type="text" value="{{ id_parametro }}" disabled>
                 </div>
-                {% endif %}
+
                 <div class="form-group col-sm-4">
                     <input id="valor" class="form-control" type="text">
                 </div>
@@ -60,7 +69,7 @@
                     <button onclick="adicionar_valor()" id="btn_incluir" type="button" class="btn btn-success">Incluir</button>
                 </div>
             </form>
-
+            {% endif %}
             <table class="inlineTable table table-striped table-bordered table-hover table-responsive" id="riscos">
                 {% for valor in valores %}
                 <tr>
@@ -80,9 +89,31 @@
         {% endif %}
     </div>
 </div>
+<div class="modal fade" id="importa_csv" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="ModalLabel">Importar CSV</h1>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="/importa_csv" enctype="multipart/form-data">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                    <label class="btn btn-default btn-choose" for="csv">
+                        <input id="csv" name="csv" type="file" style="display:none" onchange="$('#upload-file-info').html(this.files[0].name)"> Escolha o CSV
+                    </label>
+                    <span class='label label-success' id="upload-file-info"></span>
+                    &nbsp;
+                    <input class="btn btn-primary" type="submit" value="Importar CSV" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div id="bottom" class="row">
     AJNA - Receita Federal do Brasil 2017
-</div>
 </div>
 {% endblock %} {% block scripts %} {{super()}}
 <script>
@@ -144,6 +175,11 @@
         };
         $('#padrao').bind('change', submit_form);
     });
+
+    function importa_csv(){
+        alert("Funciona")
+    }
+
 
 </script>
 <style>
