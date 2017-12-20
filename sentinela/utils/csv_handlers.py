@@ -125,7 +125,7 @@ def sch_processing(path, mask_txt='0.txt', dest_path=tmpdir):
                 sch_content = sch_file.readlines()
                 reader = csv.reader(txt_file, dialect='excel-tab')
                 txt_content = [linha for linha in reader]
-                ### RETIFICAR LINHAS!!!!
+                # RETIFICAR LINHAS!!!!
                 # Foram detectados arquivos com falha
                 # (TABs a mais, ver notebook ExploraCarga)
                 width_header = len(txt_content[0])
