@@ -165,7 +165,7 @@ class GerenteRisco():
             self.pre_processers[key](lista,
                                      **self.pre_processers_params[key])
         headers = set(lista[0])
-        print('Ativos:', parametros_ativos)
+        # print('Ativos:', parametros_ativos)
         if parametros_ativos:
             riscos = set(parametros_ativos)
         else:
@@ -313,7 +313,7 @@ class GerenteRisco():
             how = tabela.type
         else:
             how = 'inner'
-        print(tabela.csv, tabela.estrangeiro, tabela.primario)
+        # print(tabela.csv, tabela.estrangeiro, tabela.primario)
         # A primeira precisa ser "pulada", sempre é a junção 2 tabelas
         # de cada vez. Se numero_juncoes for >2, entrará aqui fazendo
         # a junção em cadeia desde o último até o primeiro filho
@@ -321,7 +321,7 @@ class GerenteRisco():
             paifilhofilename = os.path.join(path, visao.tabelas[r].csv)
             dfpaifilho = pd.read_csv(paifilhofilename, encoding=ENCODE,
                                      dtype=str)
-            print(tabela.csv, tabela.estrangeiro, tabela.primario)
+            # print(tabela.csv, tabela.estrangeiro, tabela.primario)
             dffilho = dfpaifilho.merge(dffilho, how=how,
                                        left_on=tabela.primario,
                                        right_on=tabela.estrangeiro)
