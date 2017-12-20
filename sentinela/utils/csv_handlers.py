@@ -59,9 +59,9 @@ def muda_titulos_csv(csv_file, de_para_dict):
     with open(csv_file, 'r', encoding=ENCODE, newline='') as csvfile:
         reader = csv.reader(csvfile)
         result = [linha for linha in reader]
-    print(result)
+    # print(result)
     result = muda_titulos_lista(result, de_para_dict)
-    print(result)
+    # print(result)
     return result
 
 
@@ -136,9 +136,9 @@ def sch_processing(path, mask_txt='0.txt', dest_path=tmpdir):
                         # uma coluna nula
                         for index, col in enumerate(linha):
                             if isinstance(col, str) and not col:
-                                width_linha -= 1
                                 linha.pop(index)
                                 break
+                        width_linha -= 1
                 csv_name = sch_tocsv(sch_content, txt_content, dest_path)
                 filenames.append((csv_name, txt_name))
     else:
@@ -164,7 +164,7 @@ def sch_processing(path, mask_txt='0.txt', dest_path=tmpdir):
                                 reader = csv.reader(txt_io, delimiter='\t')
                                 txt_content = [linha for linha in reader]
 
-                                print('CONTENT', txt_content[:3])
+                                # print('CONTENT', txt_content[:3])
                     csv_name = sch_tocsv(sch_content, txt_content, dest_path)
                     filenames.append((csv_name, txt_name))
     return filenames
