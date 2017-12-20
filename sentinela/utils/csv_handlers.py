@@ -123,8 +123,22 @@ def sch_processing(path, mask_txt='0.txt', dest_path=tmpdir):
                     open(txt_name, encoding=ENCODE,
                          newline='') as txt_file:
                 sch_content = sch_file.readlines()
-                reader = csv.reader(txt_file, delimiter='\t')
+                reader = csv.reader(txt_file, dialect='excel-tab')
                 txt_content = [linha for linha in reader]
+                ### RETIFICAR LINHAS!!!!
+                # Foram detectados arquivos com falha
+                # (TABs a mais, ver notebook ExploraCarga)
+                width_header = len(txt_content[0])
+                for ind, linha in enumerate(txt_content):
+                    width_linha = len(linha)
+                    while width_linha > width_header:
+                        # Caso haja colunas "sobrando" na linha, retirar
+                        # uma coluna nula
+                        for index, col in enumerate(linha):
+                            if isinstance(col, str) and not col:
+                                width_linha -= 1
+                                linha.pop(index)
+                                break
                 csv_name = sch_tocsv(sch_content, txt_content, dest_path)
                 filenames.append((csv_name, txt_name))
     else:
