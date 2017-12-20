@@ -39,7 +39,7 @@ from sentinela.models.models import (Base, BaseOrigem, DePara, PadraoRisco,
                                      Visao)
 from sentinela.utils.csv_handlers import (ascii_sanitizar, ENCODE, sanitizar, 
                                         sch_processing , unicode_sanitizar)  
-from sentinela.utils.gerente_risco import ENCODE, GerenteRisco
+from sentinela.utils.gerente_risco import ENCODE, GerenteRisco, tmpdir
 
 mysession = MySession(Base)
 session = mysession.session
@@ -335,25 +335,23 @@ def importa_csv(padraoid, parametroid):
         if csvf.filename == '':
             flash('No selected file')
             return redirect(request.url)
+        parametro = None
+        if parametroid:
+            parametro = session.query(ParametroRisco).filter(
+                ParametroRisco.id == parametroid).first()
+        if parametro is None:
+            flash('Não foi selecionado parametro de risco')
+            return redirect(request.url)
         if csvf and '.' in csvf.filename and \
         csvf.filename.rsplit('.', 1)[1].lower() == 'csv':
             print(csvf.filename)
             filename = secure_filename(csvf.filename)
-            csvf.save(os.path.join(UPLOAD_FOLDER, filename))
-            lista = []
-            with open(os.path.join(UPLOAD_FOLDER, filename), 'r', encoding=ENCODE, newline='') as csvin:
-                reader = csv.reader(csvin)
-                lista = [linha for linha in reader]
-                for linha in lista[1:]:
-                    valor = sanitizar(linha[0], norm_function=unicode_sanitizar)
-                    tipo_filtro = sanitizar(linha[1], norm_function=unicode_sanitizar)
-                    novo_valor = ValorParametro(valor, tipo_filtro)
-                    novo_valor.risco_id = parametroid
-                    session.add(novo_valor)
-                session.commit()
-    return render_template('edita_risco.html', 
-                            padraoid=padraoid, 
-                            id_parametro=parametroid)
+            csvf.save(os.path.join(tmpdir, parametro.nome_campo+'.csv'))
+            gerente = GerenteRisco()
+            gerente.parametros_fromcsv(parametro.nome_campo,
+                                   session=session)
+    return redirect(url_for('edita_risco', padraoid=padraoid,
+                            id_parametro=parametroid))
 
 
 @app.route('/edita_depara')
