@@ -34,7 +34,7 @@ from flask_wtf.csrf import CSRFProtect
 from werkzeug.security import safe_str_cmp
 from werkzeug.utils import secure_filename
 
-from sentinela.models.models import (Base, BaseOrigem, PadraoRisco, MySession,
+from sentinela.models.models import (Base, BaseOrigem, DePara, PadraoRisco, MySession,
                                      ParametroRisco, ValorParametro, Visao)
 from sentinela.utils.csv_handlers import sch_processing
 from sentinela.utils.gerente_risco import ENCODE, GerenteRisco
@@ -53,6 +53,7 @@ nav = Nav()
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
+login_manager.session_protection = "strong"
 
 
 class User(UserMixin):
@@ -320,6 +321,60 @@ def edita_risco():
                            valores=valores)
 
 
+@app.route('/importa_csv', methods=['POST', 'GET'])
+@login_required
+def importa_csv():
+    baseid = request.args.get('baseid')
+    if request.method == 'POST':
+        if 'csv' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        csv = request.files['csv']
+        print('FILE***', csv.filename)
+        if csv.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+    return render_template('edita_risco.html')
+
+
+@app.route('/edita_depara')
+@login_required
+def edita_depara():
+    baseid = request.args.get('baseid')
+    bases = session.query(BaseOrigem).all()    
+    titulos = []
+    if baseid:
+        base = session.query(BaseOrigem).filter(
+            BaseOrigem.id == baseid
+            ).first()
+        if base:
+            titulos = base.deparas
+    return render_template('muda_titulos.html', bases=bases,
+                                                baseid=baseid,
+                                                titulos=titulos)
+
+
+@app.route('/adiciona_depara')
+def adiciona_depara():
+    baseid = request.args.get('baseid')
+    titulo_antigo = request.args.get('antigo')
+    titulo_novo = request.args.get('novo')
+    depara = DePara(titulo_antigo, titulo_novo, baseid)
+    session.add(depara)
+    session.commit()
+    return redirect(url_for('edita_depara', baseid=baseid))
+
+
+@app.route('/exclui_depara')
+def exclui_depara():
+    baseid = request.args.get('baseid')
+    tituloid = request.args.get('tituloid')
+    session.query(DePara).filter(
+        DePara.id == tituloid).delete()
+    session.commit()
+    return redirect(url_for('edita_depara', baseid=baseid))
+
+
 @app.route('/exclui_parametro')
 def exclui_parametro():
     padraoid = request.args.get('padraoid')
@@ -371,8 +426,9 @@ def exclui_valor():
 def mynavbar():
     items = [View('Home', 'index'),
              View('Importar Bases', 'list_files'),
-             View('Aplica Risco', 'risco'),
-             View('Edita Riscos', 'edita_risco')]
+             View('Aplicar Risco', 'risco'),
+             View('Editar Riscos', 'edita_risco'),
+             View('Editar Titulos', 'edita_depara')]
     if current_user.is_authenticated:
         items.append(View('Sair', 'logout'))
     return Navbar(
