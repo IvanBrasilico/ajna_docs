@@ -8,7 +8,7 @@ from collections import defaultdict
 
 import pandas as pd
 
-from sentinela.models.models import (PadraoRisco, Filtro, ParametroRisco,
+from sentinela.models.models import (Filtro, PadraoRisco, ParametroRisco,
                                      ValorParametro)
 
 tmpdir = tempfile.mkdtemp()

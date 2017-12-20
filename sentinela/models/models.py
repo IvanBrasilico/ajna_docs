@@ -5,6 +5,7 @@ import os
 from sqlalchemy import Column, Enum, ForeignKey, Integer, String, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, scoped_session, sessionmaker
+from werkzeug.security import generate_password_hash  # , check_password_hash
 
 
 class Filtro(enum.Enum):
@@ -47,6 +48,43 @@ class MySession():
 Base = declarative_base()
 
 
+class DBUser(Base):
+    """Base de Usuários"""
+    __tablename__ = 'users'
+    id = Column(Integer, primary_key=True)
+    username = Column(String(20), unique=True)
+    _password = Column(String(200))
+
+    def __init__(self, username, password):
+        self.username = username
+        self._password = self.encript(password)
+
+    @classmethod
+    def encript(self, password):
+        """Receives plan text password, returns encripted version"""
+        # TODO: make a script to add Users, disable next line
+        # and test if it works
+        return password
+        return generate_password_hash(password)
+
+    @classmethod
+    def get(cls, session, username, password=None):
+        """Test if user exists, and if passed, if password
+        is correct
+        returns DBUser or None
+        """
+        if password:
+            dbuser = session.query(DBUser).filter(
+                DBUser.username == username,
+                DBUser._password == cls.encript(password)
+            ).first()
+        else:
+            dbuser = session.query(DBUser).filter(
+                DBUser.username == username,
+            ).first()
+        return dbuser
+
+
 class BaseOrigem(Base):
     """Metadado sobre as bases de dados disponíveis/integradas.
     Caminho: caminho no disco onde os dados da importação da base
@@ -74,7 +112,7 @@ class DePara(Base):
     def __init__(self, titulo_ant, titulo_novo, base):
         self.titulo_ant = titulo_ant
         self.titulo_novo = titulo_novo
-        self.base_id = base
+        self.base_id = base.id
 
 
 class PadraoRisco(Base):
