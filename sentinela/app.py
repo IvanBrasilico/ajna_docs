@@ -36,7 +36,8 @@ from werkzeug.utils import secure_filename
 from sentinela.models.models import (Base, BaseOrigem, DBUser, DePara,
                                      MySession, PadraoRisco, ParametroRisco,
                                      ValorParametro, Visao)
-from sentinela.utils.csv_handlers import sch_processing
+from sentinela.utils.csv_handlers import (ascii_sanitizar, sanitizar,
+                                        sch_processing , unicode_sanitizar)
 from sentinela.utils.gerente_risco import ENCODE, GerenteRisco, tmpdir
 
 mysession = MySession(Base)
@@ -315,33 +316,78 @@ def edita_risco():
                            valores=valores)
 
 
-@app.route('/importa_csv', methods=['POST', 'GET'])
+@app.route('/importa_csv/<padraoid>/<parametroid>', methods=['POST', 'GET'])
 @login_required
-def importa_csv():
-    padraoid = request.args.get('padraoid')
-    id_parametro = request.args.get('id_parametro')
-    if id_parametro:
-        parametro = session.query(ParametroRisco).filter(
-            ParametroRisco.id == id_parametro).first()
+def importa_csv(padraoid, parametroid):
     if request.method == 'POST':
         if 'csv' not in request.files:
             flash('No file part')
             return redirect(request.url)
-        csv = request.files['csv']
-        print('FILE***', csv.filename)
-        if csv.filename == '':
+        csvf = request.files['csv']
+        print('FILE***', csvf.filename)
+        if csvf.filename == '':
             flash('No selected file')
             return redirect(request.url)
+        parametro = None
+        if parametroid:
+            parametro = session.query(ParametroRisco).filter(
+                ParametroRisco.id == parametroid).first()
         if parametro is None:
-            flash('Parâmetro de risco não selecionado!')
+            flash('Não foi selecionado parametro de risco')
             return redirect(request.url)
-        if csv and allowed_file(csv.filename):
-            csv.save(os.path.join(tmpdir, parametro.nome_campo))
+        if csvf and '.' in csvf.filename and \
+        csvf.filename.rsplit('.', 1)[1].lower() == 'csv':
+            print(csvf.filename)
+            filename = secure_filename(csvf.filename)
+            csvf.save(os.path.join(tmpdir, parametro.nome_campo+'.csv'))
             gerente = GerenteRisco()
             gerente.parametros_fromcsv(parametro.nome_campo,
-                                       session)
+                                   session=session)
     return redirect(url_for('edita_risco', padraoid=padraoid,
-                            id_parametro=id_parametro))
+                            id_parametro=parametroid))
+
+
+@app.route('/edita_depara')
+@login_required
+def edita_depara():
+    baseid = request.args.get('baseid')
+    bases = session.query(BaseOrigem).all()
+    titulos = []
+    if baseid:
+        base = session.query(BaseOrigem).filter(
+            BaseOrigem.id == baseid
+        ).first()
+        print(base.nome)
+        if base:
+            titulos = base.deparas
+    return render_template('muda_titulos.html', bases=bases,
+                           baseid=baseid,
+                           titulos=titulos)
+
+
+@app.route('/adiciona_depara')
+def adiciona_depara():
+    baseid = request.args.get('baseid')
+    titulo_antigo = request.args.get('antigo')
+    titulo_novo = request.args.get('novo')
+    if baseid:
+        base = session.query(BaseOrigem).filter(
+            BaseOrigem.id == baseid
+        ).first()
+    depara = DePara(titulo_antigo, titulo_novo, base)
+    session.add(depara)
+    session.commit()
+    return redirect(url_for('edita_depara', baseid=baseid))
+
+
+@app.route('/exclui_depara')
+def exclui_depara():
+    baseid = request.args.get('baseid')
+    tituloid = request.args.get('tituloid')
+    session.query(DePara).filter(
+        DePara.id == tituloid).delete()
+    session.commit()
+    return redirect(url_for('edita_depara', baseid=baseid))
 
 
 @app.route('/exclui_parametro')
@@ -358,6 +404,7 @@ def exclui_parametro():
 def adiciona_parametro():
     padraoid = request.args.get('padraoid')
     risco_novo = request.args.get('risco_novo')
+    sanitizado = sanitizar(risco_novo, norm_function=unicode_sanitizar)
     risco = ParametroRisco(risco_novo)
     risco.base_id = padraoid
     session.add(risco)
@@ -370,8 +417,10 @@ def adiciona_valor():
     padraoid = request.args.get('padraoid')
     novo_valor = request.args.get('novo_valor')
     tipo_filtro = request.args.get('filtro')
+    valor = sanitizar(novo_valor, norm_function=unicode_sanitizar)
+    filtro = sanitizar(tipo_filtro, norm_function=unicode_sanitizar)
     riscoid = request.args.get('riscoid')
-    valor = ValorParametro(novo_valor, tipo_filtro)
+    valor = ValorParametro(valor, filtro)
     valor.risco_id = riscoid
     session.add(valor)
     session.commit()
