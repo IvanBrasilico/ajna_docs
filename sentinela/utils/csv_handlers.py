@@ -79,6 +79,26 @@ def muda_titulos_lista(lista, de_para_dict):
     return result
 
 
+def retificar_linhas(lista, cabecalhos):
+    # RETIFICAR LINHAS!!!!
+    # Foram detectados arquivos com falha
+    # (TABs a mais, ver notebook ExploraCarga)
+    width_header = len(cabecalhos)
+    for ind, linha in enumerate(lista):
+        width_linha = len(linha)
+        while width_linha > width_header:
+            # print('Detectado problema linha: ', ind)
+            # print('Largura linha:header', width_linha, ':', width_header)
+            # Caso haja colunas "sobrando" na linha, retirar
+            # uma coluna nula
+            for index, col in enumerate(linha):
+                if isinstance(col, str) and not col:
+                    # print('Eliminando coluna: ', index)
+                    linha.pop(index)
+                    break
+            width_linha -= 1
+
+
 def sch_tocsv(sch, txt, dest_path=tmpdir):
     """Pega um arquivo txt, aplica os cabecalhos e a informação de um sch,
     e o transforma em um csv padrão"""
@@ -98,6 +118,8 @@ def sch_tocsv(sch, txt, dest_path=tmpdir):
         writer = csv.writer(out, quotechar='"', quoting=csv.QUOTE_ALL)
         del txt[0]
         writer.writerow(cabecalhos)
+        # RETIFICAR LINHAS!!!!
+        retificar_linhas(txt, cabecalhos)
         for row in txt:
             if row:
                 writer.writerow(row)
@@ -123,24 +145,10 @@ def sch_processing(path, mask_txt='0.txt', dest_path=tmpdir):
                     open(txt_name, encoding=ENCODE,
                          newline='') as txt_file:
                 sch_content = sch_file.readlines()
-                reader = csv.reader(txt_file, dialect='excel-tab')
+                reader = csv.reader(txt_file, delimiter='\t')
                 txt_content = [linha for linha in reader]
-                # RETIFICAR LINHAS!!!!
-                # Foram detectados arquivos com falha
-                # (TABs a mais, ver notebook ExploraCarga)
-                width_header = len(txt_content[0])
-                for ind, linha in enumerate(txt_content):
-                    width_linha = len(linha)
-                    while width_linha > width_header:
-                        # Caso haja colunas "sobrando" na linha, retirar
-                        # uma coluna nula
-                        for index, col in enumerate(linha):
-                            if isinstance(col, str) and not col:
-                                linha.pop(index)
-                                break
-                        width_linha -= 1
-                csv_name = sch_tocsv(sch_content, txt_content, dest_path)
-                filenames.append((csv_name, txt_name))
+            csv_name = sch_tocsv(sch_content, txt_content, dest_path)
+            filenames.append((csv_name, txt_name))
     else:
         with ZipFile(path) as myzip:
             info_list = myzip.infolist()
@@ -163,8 +171,6 @@ def sch_processing(path, mask_txt='0.txt', dest_path=tmpdir):
                                 )
                                 reader = csv.reader(txt_io, delimiter='\t')
                                 txt_content = [linha for linha in reader]
-
-                                # print('CONTENT', txt_content[:3])
                     csv_name = sch_tocsv(sch_content, txt_content, dest_path)
                     filenames.append((csv_name, txt_name))
     return filenames

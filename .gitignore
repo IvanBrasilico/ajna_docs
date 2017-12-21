@@ -112,3 +112,4 @@ _build
 */files/*
 
 \.vscode/settings\.json
+tags
