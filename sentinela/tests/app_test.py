@@ -88,7 +88,8 @@ class FlaskTestCase(unittest.TestCase):
             rv = self.app.get('/upload_file')
         data = self.data(rv)
         assert b'="file"' in data
-        rv = self._post('/upload_file', data={'file': ''}, follow_redirects=False)
+        rv = self._post(
+            '/upload_file', data={'file': ''}, follow_redirects=False)
         self.assertTrue(rv.status_code == 302)
         data2 = self.data(rv)
         assert b'Redirecting..' in data2
@@ -129,7 +130,8 @@ class FlaskTestCase(unittest.TestCase):
             data['csrf_token'] = self.csrf_token
             rv = self.app.post(url, params=data)
         else:
-            rv = self.app.post(url, data=data, follow_redirects=follow_redirects)
+            rv = self.app.post(url, data=data,
+                               follow_redirects=follow_redirects)
         return rv
 
     """
