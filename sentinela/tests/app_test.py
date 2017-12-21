@@ -33,10 +33,16 @@ class FlaskTestCase(unittest.TestCase):
         assert rv is not None
 
     def login(self, username, senha):
-        return self.app.post('/login', data=dict(
-            username=username,
-            senha=senha
-        ), follow_redirects=True)
+        if self.http_server is not None:
+            return self.app.post('/login', dict(
+                username=username,
+                senha=senha
+            ))
+        else:
+            return self.app.post('/login', data=dict(
+                username=username,
+                senha=senha
+            ), follow_redirects=True)
 
     def logout(self):
         return self.app.get('/logout', follow_redirects=True)
