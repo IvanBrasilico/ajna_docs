@@ -44,7 +44,7 @@
         <h4>Lista de Valores do Parâmetro
             <button id="btn_incluir" type="button" class="btn btn-primary" data-toggle="modal" data-target="#importa_csv" {% if not riscoid
                 %} disabled {% endif %}>Importar CSV</button>
-            <button onclick="" id="btn_incluir" type="button" class="btn btn-default" {% if not riscoid %} disabled {% endif %}>Exportar CSV</button>
+            <button onclick="exporta_csv({{ riscoid }})" id="btn_incluir" type="button" class="btn btn-default" {% if not riscoid %} disabled {% endif %}>Exportar CSV</button>
         </h4>
         <div class="table-responsive col-sm-6">
             {% if riscoid %}
@@ -121,13 +121,6 @@
 </div>
 {% endblock %} {% block scripts %} {{super()}}
 <script>
-
-    function aplica_risco(filename) {
-        window.location.assign('/aplica_risco2?filename=' + filename +
-            '&base=' + $("#base").val() +
-            '&visao=' + $("#visao").val()
-        )
-    }
     function valor_parametro(riscoid) {
         window.location.assign('/edita_risco?padraoid=' + $("#padrao").val() + '&riscoid=' + riscoid)
     }
@@ -173,15 +166,16 @@
 
     $(function () {
         var submit_form = function (e) {
-            window.location.assign('/edita_risco?padraoid=' + $("#padrao").val() +
-                '&riscoid=' + $("#risco").val()
+            window.location.assign('/edita_risco?padraoid=' + $("#padrao").val()
             )
         };
         $('#padrao').bind('change', submit_form);
     });
 
-    function importa_csv() {
-        alert("Funciona")
+    function exporta_csv(riscoid) {
+        window.location.assign('/exporta_csv?padraoid=' + $("#padrao").val() +
+            '&riscoid=' + riscoid
+        )
     }
 
 
