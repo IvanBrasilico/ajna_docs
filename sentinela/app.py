@@ -48,6 +48,8 @@ logging.basicConfig(level=os.environ.get('LOGLEVEL', 'INFO'))
 
 app = Flask(__name__, static_url_path='/static')
 # CORS(app)
+# For now, comment CSRF for functional test (web_app_testing.py)
+# Later, implement CSRF on testing
 csrf = CSRFProtect(app)
 Bootstrap(app)
 nav = Nav()
@@ -55,6 +57,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 login_manager.session_protection = 'strong'
+CSV_DOWNLOAD = 'sentinela/files/'
 
 
 class User(UserMixin):
@@ -337,12 +340,37 @@ def importa_csv(padraoid, riscoid):
             return redirect(request.url)
         if csvf and '.' in csvf.filename and \
                 csvf.filename.rsplit('.', 1)[1].lower() == 'csv':
-            print(csvf.filename)
             # filename = secure_filename(csvf.filename)
-            csvf.save(os.path.join(tmpdir, riscoid.nome_campo + '.csv'))
+            csvf.save(os.path.join(tmpdir, risco.nome_campo + '.csv'))
+            print(csvf.filename)
             gerente = GerenteRisco()
-            gerente.parametros_fromcsv(riscoid.nome_campo,
-                                       session=session)
+            gerente.parametros_fromcsv(risco.nome_campo, session=session)
+    return redirect(url_for('edita_risco', padraoid=padraoid,
+                            riscoid=riscoid))
+
+
+@app.route('/exporta_csv', methods=['POST', 'GET'])
+@login_required
+def exporta_csv():
+    padraoid = request.args.get('padraoid')
+    riscoid = request.args.get('riscoid')
+    if riscoid:
+        risco = session.query(ParametroRisco).filter(
+            ParametroRisco.id == riscoid).first()
+        risco_all = session.query(ValorParametro).filter(
+            ValorParametro.risco_id == riscoid).all()
+    if risco_all is None:
+        flash('Não foi selecionado há valores para este parâmetro:', riscoid)
+        return redirect(request.url)
+    # gerente = GerenteRisco()
+    # gerente.parametro_tocsv(risco_all, path='sentinela/files/')
+    lista = [['valor', 'tipo_filtro']]
+    for valor in risco_all:
+        lista.append((valor.valor, valor.tipo_filtro))
+    filename = os.path.join(CSV_DOWNLOAD, risco.nome_campo + '.csv')
+    with open(filename, 'w', encoding=ENCODE, newline='') as f:
+        writer = csv.writer(f)
+        writer.writerows(lista)
     return redirect(url_for('edita_risco', padraoid=padraoid,
                             riscoid=riscoid))
 
@@ -458,6 +486,4 @@ app.config['DEBUG'] = os.environ.get('DEBUG', 'None') == '1'
 app.secret_key = 'SK1234*!'
 
 if __name__ == '__main__':
-    # Uncomment bellow to disable CSRF for functional test (web_app_testing.py)
-    # app.config['WTF_CSRF_ENABLED'] = False
     app.run()

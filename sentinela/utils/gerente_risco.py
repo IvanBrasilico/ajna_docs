@@ -260,9 +260,11 @@ class GerenteRisco():
                     if not valor:
                         valor = ValorParametro(linha[0].strip(),
                                                linha[1].strip())
+                        valor.risco_id = parametro.id
                         session.add(valor)
                     else:
                         valor.tipo_filtro = Filtro[linha[1]]
+                        valor.risco_id = parametro.id
                         session.merge(valor)
                     parametro.valores.append(valor)
             session.merge(parametro)
