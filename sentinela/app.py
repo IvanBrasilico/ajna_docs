@@ -48,8 +48,6 @@ logging.basicConfig(level=os.environ.get('LOGLEVEL', 'INFO'))
 
 app = Flask(__name__, static_url_path='/static')
 # CORS(app)
-# For now, comment CSRF for functional test (web_app_testing.py)
-# Later, implement CSRF on testing
 csrf = CSRFProtect(app)
 Bootstrap(app)
 nav = Nav()
@@ -461,4 +459,6 @@ app.config['DEBUG'] = os.environ.get('DEBUG', 'None') == '1'
 app.secret_key = 'SK1234*!'
 
 if __name__ == '__main__':
+    # Uncomment bellow to disable CSRF for functional test (web_app_testing.py)
+    # app.config['WTF_CSRF_ENABLED'] = False
     app.run()
