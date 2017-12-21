@@ -302,25 +302,25 @@ def edita_risco():
         ).first()
         if padrao:
             parametros = padrao.parametros
-    id_parametro = request.args.get('id_parametro')
+    riscoid = request.args.get('riscoid')
     valores = []
-    if id_parametro:
+    if riscoid:
         valor = session.query(ParametroRisco).filter(
-            ParametroRisco.id == id_parametro
+            ParametroRisco.id == riscoid
         ).first()
         if valor:
             valores = valor.valores
     return render_template('edita_risco.html',
                            padraoid=padraoid,
                            padroes=padroes,
-                           id_parametro=id_parametro,
+                           riscoid=riscoid,
                            parametros=parametros,
                            valores=valores)
 
 
-@app.route('/importa_csv/<padraoid>/<parametroid>', methods=['POST', 'GET'])
+@app.route('/importa_csv/<padraoid>/<riscoid>', methods=['POST', 'GET'])
 @login_required
-def importa_csv(padraoid, parametroid):
+def importa_csv(padraoid, riscoid):
     if request.method == 'POST':
         if 'csv' not in request.files:
             flash('No file part')
@@ -330,23 +330,23 @@ def importa_csv(padraoid, parametroid):
         if csvf.filename == '':
             flash('No selected file')
             return redirect(request.url)
-        parametro = None
-        if parametroid:
-            parametro = session.query(ParametroRisco).filter(
-                ParametroRisco.id == parametroid).first()
-        if parametro is None:
+        risco = None
+        if riscoid:
+            risco = session.query(ParametroRisco).filter(
+                ParametroRisco.id == riscoid).first()
+        if risco is None:
             flash('Não foi selecionado parametro de risco')
             return redirect(request.url)
         if csvf and '.' in csvf.filename and \
                 csvf.filename.rsplit('.', 1)[1].lower() == 'csv':
             print(csvf.filename)
             # filename = secure_filename(csvf.filename)
-            csvf.save(os.path.join(tmpdir, parametro.nome_campo + '.csv'))
+            csvf.save(os.path.join(tmpdir, riscoid.nome_campo + '.csv'))
             gerente = GerenteRisco()
-            gerente.parametros_fromcsv(parametro.nome_campo,
+            gerente.parametros_fromcsv(riscoid.nome_campo,
                                        session=session)
     return redirect(url_for('edita_risco', padraoid=padraoid,
-                            id_parametro=parametroid))
+                            riscoid=riscoid))
 
 
 @app.route('/exclui_parametro')
@@ -363,8 +363,8 @@ def exclui_parametro():
 def adiciona_parametro():
     padraoid = request.args.get('padraoid')
     risco_novo = request.args.get('risco_novo')
-    # sanitizado = sanitizar(risco_novo, norm_function=unicode_sanitizar)
-    risco = ParametroRisco(risco_novo)
+    sanitizado = sanitizar(risco_novo, norm_function=unicode_sanitizar)
+    risco = ParametroRisco(sanitizado)
     risco.base_id = padraoid
     session.add(risco)
     session.commit()
@@ -384,7 +384,7 @@ def adiciona_valor():
     session.add(valor)
     session.commit()
     return redirect(url_for('edita_risco', padraoid=padraoid,
-                            id_parametro=riscoid))
+                            riscoid=riscoid))
 
 
 @app.route('/exclui_valor')
@@ -396,7 +396,7 @@ def exclui_valor():
         ValorParametro.id == valorid).delete()
     session.commit()
     return redirect(url_for('edita_risco', padraoid=padraoid,
-                            id_parametro=riscoid))
+                            riscoid=riscoid))
 
 
 @app.route('/edita_depara')
@@ -409,7 +409,6 @@ def edita_depara():
         base = session.query(BaseOrigem).filter(
             BaseOrigem.id == baseid
         ).first()
-        print(base.nome)
         if base:
             titulos = base.deparas
     return render_template('muda_titulos.html', bases=bases,
