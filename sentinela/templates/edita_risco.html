@@ -96,14 +96,16 @@
                 <h1 class="modal-title" id="ModalLabel">Importar CSV</h1>
             </div>
             <div class="modal-body">
-                <form method="POST" action="/importa_csv" enctype="multipart/form-data">
+                <form method="POST" action="/importa_csv/{{ padraoid }}/{{ id_parametro }}" enctype="multipart/form-data">
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
                     <input type="hidden" name="padraoid" value="{{ padraoid }}" />
                     <input type="hidden" name="id_parametro" value="{{ id_parametro }}" />
                     <label class="btn btn-default btn-choose" for="csv">
                         <input id="csv" name="csv" type="file" style="display:none" onchange="$('#upload-file-info').html(this.files[0].name)"> Escolha o CSV
                     </label>
-                    <span class='label label-success' id="upload-file-info"></span>
+                    <big>
+                        <span class='label label-success' id="upload-file-info"></span>
+                    </big>
                     &nbsp;
                     <input class="btn btn-primary" type="submit" value="Importar CSV" />
                 </form>
@@ -178,7 +180,7 @@
         $('#padrao').bind('change', submit_form);
     });
 
-    function importa_csv(){
+    function importa_csv() {
         alert("Funciona")
     }
 

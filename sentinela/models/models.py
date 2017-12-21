@@ -144,7 +144,8 @@ class ParametroRisco(Base):
     def __init__(self, nome, descricao='', padraorisco=None):
         self.nome_campo = nome
         self.descricao = descricao
-        self.base_id = padraorisco.id
+        if padraorisco:
+            self.base_id = padraorisco.id
 
 
 class ValorParametro(Base):
