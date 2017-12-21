@@ -48,6 +48,8 @@ logging.basicConfig(level=os.environ.get('LOGLEVEL', 'INFO'))
 
 app = Flask(__name__, static_url_path='/static')
 # CORS(app)
+# For now, comment CSRF for functional test (web_app_testing.py)
+# Later, implement CSRF on testing
 csrf = CSRFProtect(app)
 Bootstrap(app)
 nav = Nav()
@@ -55,6 +57,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 login_manager.session_protection = 'strong'
+CSV_DOWNLOAD = 'sentinela/files/'
 
 
 class User(UserMixin):
@@ -300,25 +303,25 @@ def edita_risco():
         ).first()
         if padrao:
             parametros = padrao.parametros
-    id_parametro = request.args.get('id_parametro')
+    riscoid = request.args.get('riscoid')
     valores = []
-    if id_parametro:
+    if riscoid:
         valor = session.query(ParametroRisco).filter(
-            ParametroRisco.id == id_parametro
+            ParametroRisco.id == riscoid
         ).first()
         if valor:
             valores = valor.valores
     return render_template('edita_risco.html',
                            padraoid=padraoid,
                            padroes=padroes,
-                           id_parametro=id_parametro,
+                           riscoid=riscoid,
                            parametros=parametros,
                            valores=valores)
 
 
-@app.route('/importa_csv/<padraoid>/<parametroid>', methods=['POST', 'GET'])
+@app.route('/importa_csv/<padraoid>/<riscoid>', methods=['POST', 'GET'])
 @login_required
-def importa_csv(padraoid, parametroid):
+def importa_csv(padraoid, riscoid):
     if request.method == 'POST':
         if 'csv' not in request.files:
             flash('No file part')
@@ -328,23 +331,48 @@ def importa_csv(padraoid, parametroid):
         if csvf.filename == '':
             flash('No selected file')
             return redirect(request.url)
-        parametro = None
-        if parametroid:
-            parametro = session.query(ParametroRisco).filter(
-                ParametroRisco.id == parametroid).first()
-        if parametro is None:
+        risco = None
+        if riscoid:
+            risco = session.query(ParametroRisco).filter(
+                ParametroRisco.id == riscoid).first()
+        if risco is None:
             flash('Não foi selecionado parametro de risco')
             return redirect(request.url)
         if csvf and '.' in csvf.filename and \
                 csvf.filename.rsplit('.', 1)[1].lower() == 'csv':
-            print(csvf.filename)
             # filename = secure_filename(csvf.filename)
-            csvf.save(os.path.join(tmpdir, parametro.nome_campo + '.csv'))
+            csvf.save(os.path.join(tmpdir, risco.nome_campo + '.csv'))
+            print(csvf.filename)
             gerente = GerenteRisco()
-            gerente.parametros_fromcsv(parametro.nome_campo,
-                                       session=session)
+            gerente.parametros_fromcsv(risco.nome_campo, session=session)
     return redirect(url_for('edita_risco', padraoid=padraoid,
-                            id_parametro=parametroid))
+                            riscoid=riscoid))
+
+
+@app.route('/exporta_csv', methods=['POST', 'GET'])
+@login_required
+def exporta_csv():
+    padraoid = request.args.get('padraoid')
+    riscoid = request.args.get('riscoid')
+    if riscoid:
+        risco = session.query(ParametroRisco).filter(
+            ParametroRisco.id == riscoid).first()
+        risco_all = session.query(ValorParametro).filter(
+            ValorParametro.risco_id == riscoid).all()
+    if risco_all is None:
+        flash('Não foi selecionado há valores para este parâmetro:', riscoid)
+        return redirect(request.url)
+    # gerente = GerenteRisco()
+    # gerente.parametro_tocsv(risco_all, path='sentinela/files/')
+    lista = [['valor', 'tipo_filtro']]
+    for valor in risco_all:
+        lista.append((valor.valor, valor.tipo_filtro))
+    filename = os.path.join(CSV_DOWNLOAD, risco.nome_campo + '.csv')
+    with open(filename, 'w', encoding=ENCODE, newline='') as f:
+        writer = csv.writer(f)
+        writer.writerows(lista)
+    return redirect(url_for('edita_risco', padraoid=padraoid,
+                            riscoid=riscoid))
 
 
 @app.route('/exclui_parametro')
@@ -361,8 +389,8 @@ def exclui_parametro():
 def adiciona_parametro():
     padraoid = request.args.get('padraoid')
     risco_novo = request.args.get('risco_novo')
-    # sanitizado = sanitizar(risco_novo, norm_function=unicode_sanitizar)
-    risco = ParametroRisco(risco_novo)
+    sanitizado = sanitizar(risco_novo, norm_function=unicode_sanitizar)
+    risco = ParametroRisco(sanitizado)
     risco.base_id = padraoid
     session.add(risco)
     session.commit()
@@ -382,7 +410,7 @@ def adiciona_valor():
     session.add(valor)
     session.commit()
     return redirect(url_for('edita_risco', padraoid=padraoid,
-                            id_parametro=riscoid))
+                            riscoid=riscoid))
 
 
 @app.route('/exclui_valor')
@@ -394,7 +422,7 @@ def exclui_valor():
         ValorParametro.id == valorid).delete()
     session.commit()
     return redirect(url_for('edita_risco', padraoid=padraoid,
-                            id_parametro=riscoid))
+                            riscoid=riscoid))
 
 
 @app.route('/edita_depara')
@@ -407,7 +435,6 @@ def edita_depara():
         base = session.query(BaseOrigem).filter(
             BaseOrigem.id == baseid
         ).first()
-        print(base.nome)
         if base:
             titulos = base.deparas
     return render_template('muda_titulos.html', bases=bases,
@@ -459,6 +486,4 @@ app.config['DEBUG'] = os.environ.get('DEBUG', 'None') == '1'
 app.secret_key = 'SK1234*!'
 
 if __name__ == '__main__':
-    # Uncomment bellow to disable CSRF for functional test (web_app_testing.py)
-    # app.config['WTF_CSRF_ENABLED'] = False
     app.run()
