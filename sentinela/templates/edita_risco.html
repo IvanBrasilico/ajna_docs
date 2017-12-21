@@ -29,7 +29,7 @@
                 </form>
                 <table class="inlineTable table table-bordered table-hover table-responsive" cellspacing="0" cellpadding="0" id="parametros">
                     {% for parametro in parametros %}
-                    <tr id="{{ parametro.id }}" {% if parametro.id|int()==id_parametro|int() %} class="row-clicked" {% endif %}>
+                    <tr id="{{ parametro.id }}" {% if parametro.id|int()==riscoid|int() %} class="row-clicked" {% endif %}>
                         <td id="{{ parametro.id }}" align="center">{{parametro.nome_campo}}</td>
                         <td align="center">
                             <input type="button" class="btn  btn-danger" value="x" onclick="exclui_parametro({{ parametro.id }})" />
@@ -42,16 +42,16 @@
         </div>
         {% if parametros %}
         <h4>Lista de Valores do Parâmetro
-            <button id="btn_incluir" type="button" class="btn btn-primary" data-toggle="modal" data-target="#importa_csv" {% if not id_parametro
+            <button id="btn_incluir" type="button" class="btn btn-primary" data-toggle="modal" data-target="#importa_csv" {% if not riscoid
                 %} disabled {% endif %}>Importar CSV</button>
-            <button onclick="" id="btn_incluir" type="button" class="btn btn-default" {% if not id_parametro %} disabled {% endif %}>Exportar CSV</button>
+            <button onclick="" id="btn_incluir" type="button" class="btn btn-default" {% if not riscoid %} disabled {% endif %}>Exportar CSV</button>
         </h4>
         <div class="table-responsive col-sm-6">
-            {% if id_parametro %}
+            {% if riscoid %}
             <form id="frmvalores" onsubmit="" class="form-group">
 
                 <div class="form-group col-sm-2">
-                    <input id="id_risco" class="form-control" type="text" value="{{ id_parametro }}" disabled>
+                    <input id="id_risco" class="form-control" type="text" value="{{ riscoid }}" disabled>
                 </div>
 
                 <div class="form-group col-sm-4">
@@ -96,10 +96,10 @@
                 <h1 class="modal-title" id="ModalLabel">Importar CSV</h1>
             </div>
             <div class="modal-body">
-                <form method="POST" action="/importa_csv/{{ padraoid }}/{{ id_parametro }}" enctype="multipart/form-data">
+                <form method="POST" action="/importa_csv/{{ padraoid }}/{{ riscoid }}" enctype="multipart/form-data">
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
                     <input type="hidden" name="padraoid" value="{{ padraoid }}" />
-                    <input type="hidden" name="id_parametro" value="{{ id_parametro }}" />
+                    <input type="hidden" name="id_parametro" value="{{ riscoid }}" />
                     <label class="btn btn-default btn-choose" for="csv">
                         <input id="csv" name="csv" type="file" style="display:none" onchange="$('#upload-file-info').html(this.files[0].name)"> Escolha o CSV
                     </label>
@@ -128,8 +128,8 @@
             '&visao=' + $("#visao").val()
         )
     }
-    function valor_parametro(id_parametro) {
-        window.location.assign('/edita_risco?padraoid=' + $("#padrao").val() + '&id_parametro=' + id_parametro)
+    function valor_parametro(riscoid) {
+        window.location.assign('/edita_risco?padraoid=' + $("#padrao").val() + '&riscoid=' + riscoid)
     }
 
     var parametros = document.querySelector("#parametros tbody");
