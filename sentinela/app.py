@@ -48,8 +48,6 @@ logging.basicConfig(level=os.environ.get('LOGLEVEL', 'INFO'))
 
 app = Flask(__name__, static_url_path='/static')
 # CORS(app)
-# For now, comment CSRF for functional test (web_app_testing.py)
-# Later, implement CSRF on testing
 csrf = CSRFProtect(app)
 Bootstrap(app)
 nav = Nav()
