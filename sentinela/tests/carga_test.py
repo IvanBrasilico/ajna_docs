@@ -12,7 +12,7 @@ CARGA_BASE = '/home/ivan/pybr/AJNA_MOD/sentinela/CSV/1/2017/1221/'
 
 class TestModel(unittest.TestCase):
     def setUp(self):
-        mysession = MySession(Base, test=False)
+        mysession = MySession(Base, test=True)
         self.session = mysession.session
         self.engine = mysession.engine
         Base.metadata.create_all(self.engine)
