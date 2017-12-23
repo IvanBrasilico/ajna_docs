@@ -5,10 +5,26 @@
             <big>
                 <b>Escolha a Base a navegar:</b>
             </big>
-            <select name="modulo" id="modulo">
-                <option value="0">Selecionar</option>
+            <select name="module" id="module">
+                <option value="">Selecionar</option>
                 {% for modulo in list_modulos %}
-                <option value="{{ modulo }}" {% if base==selected_modulo %} selected="selected" {% endif %}>{{ modulo }}
+                <option value="{{ modulo }}" {% if modulo==selected_module %} selected="selected" {% endif %}>{{ modulo }}
+                </option>
+                {% endfor %}
+            </select>
+            <select name="model" id="model">
+                <option value="">Selecionar</option>
+                {% for model in list_models %}
+                <option value="{{ model }}" {% if model==selected_model %} selected="selected" {% endif %}>
+                    {{ model }}
+                </option>
+                {% endfor %}
+            </select>
+            <select name="field" id="field">
+                <option value="">Selecionar</option>
+                {% for field in list_fields %}
+                <option value="{{ field }}" {% if field==selected_field %} selected="selected" {% endif %}>
+                    {{ field }}
                 </option>
                 {% endfor %}
             </select>
@@ -55,62 +71,22 @@
         </div>
         {% endif %}
     </div>
-</div>
-<div id="bottom" class="row">
-    AJNA - Receita Federal do Brasil 2017
+    <div id="bottom" class="row">
+        AJNA - Receita Federal do Brasil 2017
+    </div>
 </div>
 {% endblock %} {% block scripts %} {{super()}}
 <script>
-    function valor_parametro(riscoid) {
-        window.location.assign('/edita_risco?padraoid=' + $("#padrao").val() + '&riscoid=' + riscoid)
-    }
-
-    var parametros = document.querySelector("#parametros tbody");
-    var valores = document.querySelector("#riscos tbody")
-    var chave = document.querySelector("#parametros tbody")
-
-    function adicionar_parametro() {
-        var risco = $("#parametro_risco").val();
-        if (risco != '') {
-            window.location.assign('/adiciona_parametro?padraoid=' + $("#padrao").val() +
-                '&risco_novo=' + risco
-            )
-        }
-    }
-
-    function exclui_parametro(riscoid) {
-        window.location.assign('/exclui_parametro?padraoid=' + $("#padrao").val() + '&riscoid=' + riscoid)
-    }
-
-    function adicionar_valor() {
-        var novo_valor = $("#valor").val();
-        var filtro = $("#tipofiltro").val();
-        var id_risco = $("#id_risco").val();
-        if (novo_valor != '' && filtro != 0 && id_risco != undefined) {
-            window.location.assign('/adiciona_valor?padraoid=' + $("#padrao").val() +
-                '&riscoid=' + id_risco + '&novo_valor=' + novo_valor + '&filtro=' + filtro
-            )
-        }
-    }
-
-    function exclui_valor(valorid) {
-        window.location.assign('/exclui_valor?padraoid=' + $("#padrao").val() +
-            '&riscoid=' + $("#id_risco").val() + '&valorid=' + valorid
-        )
-    }
-
-    $('#parametros td:first-child').click(function () {
-        var id_risco = $(this).attr('id')
-        valor_parametro(id_risco)
-    })
-
     $(function () {
         var submit_form = function (e) {
-            window.location.assign('/edita_risco?padraoid=' + $("#padrao").val()
+            window.location.assign('/navega_bases' +
+                '?selected_module=' + $("#module").val() +
+                '&selected_model=' + $("#model").val() +
+                '&selected_field=' + $("#field").val()
             )
         };
-        $('#padrao').bind('change', submit_form);
+        $('#module').bind('change', submit_form);
+        $('#model').bind('change', submit_form);
     });
 
-</script>
-{% endblock %}
+</script> {% endblock %}
