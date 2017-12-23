@@ -48,9 +48,8 @@ class Escala(Base):
     CodigoIMO = Column(String(7))
     atracacoes = relationship(
         'AtracDesatracEscala', back_populates='aescala')
-
-    """def __init__(self, numero):
-        self.Escala = numero"""
+    manifestos = relationship('EscalaManifesto',
+                              back_populates='aescala')
 
 
 class AtracDesatracEscala(Base):
@@ -65,11 +64,6 @@ class AtracDesatracEscala(Base):
     CodigoTerminal = Column(String(8))
     LocalAtracacao = Column(String(50))
 
-    """def __init__(self, escala, terminal_sigla, local):
-        self.Escala = escala.numero
-        self.CodigoTerminal = terminal_sigla
-        self.LocalAtracacao = local"""
-
 
 class Manifesto(Base):
     """Cópia dados sobre manifesto das extrações"""
@@ -80,9 +74,20 @@ class Manifesto(Base):
                                            back_populates='omanifesto')
     vazios = relationship('ContainerVazio',
                           back_populates='omanifesto')
+    escalas = relationship('EscalaManifesto',
+                           back_populates='omanifesto')
 
-    """def __init__(self, numero):
-        self.Manifesto = numero"""
+
+class EscalaManifesto(Base):
+    """Cópia dados sobre manifesto das extrações"""
+    __tablename__ = 'escalamanifesto'
+    id = Column(Integer, primary_key=True)
+    Manifesto = Column(String(13), ForeignKey('manifestos.Manifesto'))
+    Escala = Column(String(11), ForeignKey('escalas.Escala'))
+    aescala = relationship(
+        'Escala', back_populates='manifestos')
+    omanifesto = relationship(
+        'Manifesto', back_populates='escalas')
 
 
 class ManifestoConhecimento(Base):
@@ -99,10 +104,6 @@ class ManifestoConhecimento(Base):
     NomeTerminalCarregamento = Column(String(200))
     CodigoTerminalDescarregamento = Column(String(8))
     NomeTerminalDescarregamento = Column(String(200))
-
-    """def __init__(self, manifesto, conhecimento):
-        self.Manifesto = manifesto.numero
-        self.Conhecimento = conhecimento.numero"""
 
 
 class Conhecimento(Base):
@@ -207,7 +208,6 @@ class NCM(Base):
     Conhecimento = Column(String(15), ForeignKey('conhecimentos.Conhecimento'))
     Item = Column(String(4))
     NCM = Column(String(4))
-    PesoBrutoItem = Column(Numeric(asdecimal=False))
 
 
 class Veiculo(Base):
@@ -221,6 +221,7 @@ class Veiculo(Base):
     Chassi = Column(String(50))
     Marca = Column(String(200))
     Contramarca = Column(String(200))
+    PesoBrutoItem = Column(Numeric(asdecimal=False))
 
 
 class ContainerVazio(Base):
@@ -234,3 +235,20 @@ class ContainerVazio(Base):
     NomeTipo = Column(String(50))
     Capacidade = Column(String(2))
     Tara = Column(Numeric(asdecimal=False))
+
+
+def recursive_view(session, numero_escala):
+    escala = session.query(Escala).filter(
+        Escala.Escala == numero_escala
+    ).first()
+    result = []
+    if escala:
+        result.append(escala.Escala)
+        result.append(escala.CodigoIMO)
+        result.append(escala.atracacoes)
+    return result
+
+
+if __name__ == '__main__':
+    mysession = MySession(Base, test=False)
+    print(recursive_view(mysession.session, '1234567'))

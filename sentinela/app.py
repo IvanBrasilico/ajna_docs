@@ -33,11 +33,14 @@ from flask_nav.elements import Navbar, View
 from flask_wtf.csrf import CSRFProtect
 from werkzeug.utils import secure_filename
 
+from sentinela.conf import (ALLOWED_EXTENSIONS, APP_PATH, CSV_DOWNLOAD,
+                            CSV_FOLDER, UPLOAD_FOLDER)
 from sentinela.models.models import (Base, BaseOrigem, DBUser, DePara,
                                      MySession, PadraoRisco, ParametroRisco,
                                      ValorParametro, Visao)
 from sentinela.utils.csv_handlers import (sanitizar, sch_processing,
                                           unicode_sanitizar)
+from sentinela.utils.gerente_base import GerenteBase
 from sentinela.utils.gerente_risco import ENCODE, GerenteRisco, tmpdir
 
 mysession = MySession(Base)
@@ -55,7 +58,8 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 login_manager.session_protection = 'strong'
-CSV_DOWNLOAD = 'sentinela/files/'
+
+# app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
 class User(UserMixin):
@@ -118,13 +122,6 @@ def logout():
     if not is_safe_url(next):
         next = None
     return redirect(next or url_for('index'))
-
-
-APP_PATH = os.path.dirname(os.path.abspath(__file__))
-UPLOAD_FOLDER = os.path.join(APP_PATH, 'files')
-CSV_FOLDER = os.path.join(APP_PATH, 'CSV')
-ALLOWED_EXTENSIONS = set(['txt', 'csv', 'zip'])
-# app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
 def allowed_file(filename):
@@ -465,13 +462,32 @@ def exclui_depara():
     return redirect(url_for('edita_depara', baseid=baseid))
 
 
+@app.route('/navega_bases')
+def navega_bases():
+    selected_modulo = request.args.get('selected_modulo')
+    selected_model = request.args.get('selected_model')
+    filters = request.args.get('filters')
+    gerente = GerenteBase()
+    list_modulos = gerente.list_modulos
+    if selected_modulo:
+        gerente.set_module(selected_modulo)
+        list_models = gerente.list_models
+    return render_template('navega_bases.html',
+                           selected_modulo=selected_modulo,
+                           selected_model=selected_model,
+                           filters=filters,
+                           list_modulos=list_modulos,
+                           list_models=list_models)
+
+
 @nav.navigation()
 def mynavbar():
     items = [View('Home', 'index'),
              View('Importar Bases', 'list_files'),
              View('Aplicar Risco', 'risco'),
              View('Editar Riscos', 'edita_risco'),
-             View('Editar Titulos', 'edita_depara')]
+             View('Editar Titulos', 'edita_depara'),
+             View('Navega Bases', 'navega_bases')]
     if current_user.is_authenticated:
         items.append(View('Sair', 'logout'))
     return Navbar(

@@ -11,12 +11,10 @@ import csv
 import glob
 import io
 import os
-import tempfile
 import unicodedata
 from zipfile import ZipFile
 
-tmpdir = tempfile.mkdtemp()
-ENCODE = 'latin1'
+from sentinela.conf import ENCODE, tmpdir
 
 
 def ascii_sanitizar(text):
