@@ -1,0 +1,116 @@
+{% extends "layout.html" %} {% block content %}
+<div id="main" class="container-fluid">
+    <div id="top" class="row">
+        <h4>
+            <big>
+                <b>Escolha a Base a navegar:</b>
+            </big>
+            <select name="modulo" id="modulo">
+                <option value="0">Selecionar</option>
+                {% for modulo in list_modulos %}
+                <option value="{{ modulo }}" {% if base==selected_modulo %} selected="selected" {% endif %}>{{ modulo }}
+                </option>
+                {% endfor %}
+            </select>
+        </h4>
+    </div>
+    <div class="row">
+        {% if campos %}
+        <h4>Lista de Campos da Base
+        </h4>
+        <div class="table-responsive col-sm-6">
+            {% if riscoid %}
+            <form id="frmcampos" onsubmit="" class="form-group">
+                <div class="form-group col-sm-4">
+                    <input id="valor" class="form-control" type="text">
+                </div>
+                <div class="form-group col-sm-4">
+                    <select name="filtro" id="tipofiltro">
+                        <option value="0">Selecionar</option>
+                        <option value="igual">Filtro.igual</option>
+                        <option value="comeca_com">Filtro.comeca_com</option>
+                        <option value="contem">Filtro.contem</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button onclick="adicionar_valor()" id="btn_incluir" type="button" class="btn btn-success">Incluir</button>
+                </div>
+            </form>
+            {% endif %}
+            <table class="inlineTable table table-striped table-bordered table-hover table-responsive" id="riscos">
+                {% for valor in valores %}
+                <tr>
+                    <td>{{valor.valor}}</td>
+                    <td>{{valor.tipo_filtro}}</td>
+                    <td align="center">
+                        <input type="button" class="btn  btn-danger" value="x" onclick="exclui_valor({{ valor.id }})" />
+                    </td>
+                </tr>
+                {% endfor %} {% if not valores %}
+                <tr>
+                    <td>Sem resultados.</td>
+                </tr>
+                {% endif %}
+            </table>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<div id="bottom" class="row">
+    AJNA - Receita Federal do Brasil 2017
+</div>
+{% endblock %} {% block scripts %} {{super()}}
+<script>
+    function valor_parametro(riscoid) {
+        window.location.assign('/edita_risco?padraoid=' + $("#padrao").val() + '&riscoid=' + riscoid)
+    }
+
+    var parametros = document.querySelector("#parametros tbody");
+    var valores = document.querySelector("#riscos tbody")
+    var chave = document.querySelector("#parametros tbody")
+
+    function adicionar_parametro() {
+        var risco = $("#parametro_risco").val();
+        if (risco != '') {
+            window.location.assign('/adiciona_parametro?padraoid=' + $("#padrao").val() +
+                '&risco_novo=' + risco
+            )
+        }
+    }
+
+    function exclui_parametro(riscoid) {
+        window.location.assign('/exclui_parametro?padraoid=' + $("#padrao").val() + '&riscoid=' + riscoid)
+    }
+
+    function adicionar_valor() {
+        var novo_valor = $("#valor").val();
+        var filtro = $("#tipofiltro").val();
+        var id_risco = $("#id_risco").val();
+        if (novo_valor != '' && filtro != 0 && id_risco != undefined) {
+            window.location.assign('/adiciona_valor?padraoid=' + $("#padrao").val() +
+                '&riscoid=' + id_risco + '&novo_valor=' + novo_valor + '&filtro=' + filtro
+            )
+        }
+    }
+
+    function exclui_valor(valorid) {
+        window.location.assign('/exclui_valor?padraoid=' + $("#padrao").val() +
+            '&riscoid=' + $("#id_risco").val() + '&valorid=' + valorid
+        )
+    }
+
+    $('#parametros td:first-child').click(function () {
+        var id_risco = $(this).attr('id')
+        valor_parametro(id_risco)
+    })
+
+    $(function () {
+        var submit_form = function (e) {
+            window.location.assign('/edita_risco?padraoid=' + $("#padrao").val()
+            )
+        };
+        $('#padrao').bind('change', submit_form);
+    });
+
+</script>
+{% endblock %}

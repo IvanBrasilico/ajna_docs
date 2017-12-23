@@ -18,8 +18,7 @@ class TestModel(unittest.TestCase):
         Base.metadata.create_all(self.engine)
 
     def tearDown(self):
-        pass
-        # Base.metadata.drop_all(self.engine)
+        Base.metadata.drop_all(self.engine)
 
     def open_csvs(self, path):
         files = sorted(os.listdir(path))
@@ -56,7 +55,6 @@ class TestModel(unittest.TestCase):
                         afield = getattr(instance, campo)
                         if not callable(afield):
                             afield = row[campo]
-                    print('**', instance)
                     self.session.add(instance)
             except AttributeError as err:
                 print(err.args)

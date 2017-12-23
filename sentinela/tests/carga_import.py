@@ -1,19 +1,16 @@
 import csv
+import datetime
 import importlib
 import os
 
 import pandas as pd
 
+from sentinela.app import CSV_FOLDER
 from sentinela.models.carga import Base, MySession
 
-"""                                 Escala, AtracDesatracEscala, Manifesto,
-                                    ManifestoConhecimento, Conhecimento,
-                                    Container, CargaSolta, Granel, NCM)
-"""
-CARGA_BASE = '/home/ivan/pybr/AJNA_MOD/sentinela/CSV/1/2017/1221/'
+CARGA_BASE = os.path.join(CSV_FOLDER, '1/2017/1221/')
 
-
-mysession = MySession(Base, test=False)
+mysession = MySession(Base, test=True)
 session = mysession.session
 engine = mysession.engine
 Base.metadata.drop_all(engine)
@@ -29,7 +26,7 @@ for r in range(len(files)):
         lista = []
         for ind, linha in enumerate(reader):
             lista.append(linha)
-            if ind == MAX_LINES:
+            if ind > MAX_LINES:
                 break
     df = pd.DataFrame(lista[1:], columns=lista[0])
     dfs[files[r]] = df
@@ -45,14 +42,25 @@ for csvf, df in dataframes.items():
             instance = MyClass()
             for campo in df.columns:
                 try:
-                    setattr(instance, campo, row[campo])
-                    # afield = getattr(instance, campo)
-                    # if not callable(afield):
-                    #    afield = row[campo]
+                    val = row[campo]
+                    pos_parenteses = campo.find('(')
+                    if pos_parenteses != -1:
+                        campo = campo[:pos_parenteses]
+                    if campo in instance.__table__.c:
+                        ctype = instance.__table__.c[campo].type
+                        if str(ctype) == 'NUMERIC':
+                            val = val.replace(',', '.')
+                        elif str(ctype) == 'DATETIME':
+                            if val:
+                                val = datetime.datetime.strptime(
+                                    val, '%d/%m/%Y').date()
+                            else:
+                                val = None
+                        setattr(instance, campo, val)
                 except AttributeError:
                     pass
-            print('**', instance)
             session.add(instance)
+        print(i, ' registros importados')
         session.commit()
     except AttributeError as err:
         print(err.args)

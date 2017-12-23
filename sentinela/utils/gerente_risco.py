@@ -3,16 +3,13 @@ de risco cadastrados nos dados. Utiliza pandas para realizar filtragem
 """
 import csv
 import os
-import tempfile
 from collections import defaultdict
 
 import pandas as pd
 
+from sentinela.conf import ENCODE, tmpdir
 from sentinela.models.models import (Filtro, PadraoRisco, ParametroRisco,
                                      ValorParametro)
-
-tmpdir = tempfile.mkdtemp()
-ENCODE = 'latin1'
 
 
 def equality(listaoriginal, nomecampo, listavalores):
