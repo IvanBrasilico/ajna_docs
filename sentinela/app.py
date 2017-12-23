@@ -464,20 +464,27 @@ def exclui_depara():
 
 @app.route('/navega_bases')
 def navega_bases():
-    selected_modulo = request.args.get('selected_modulo')
+    selected_module = request.args.get('selected_module')
     selected_model = request.args.get('selected_model')
+    selected_field = request.args.get('selected_field')
     filters = request.args.get('filters')
     gerente = GerenteBase()
     list_modulos = gerente.list_modulos
-    if selected_modulo:
-        gerente.set_module(selected_modulo)
+    list_models = []
+    list_fields = []
+    if selected_module:
+        gerente.set_module(selected_module)
         list_models = gerente.list_models
+        if selected_model:
+            list_fields = gerente.dict_models[selected_model]['campos']
     return render_template('navega_bases.html',
-                           selected_modulo=selected_modulo,
+                           selected_module=selected_module,
                            selected_model=selected_model,
+                           selected_field=selected_field,
                            filters=filters,
                            list_modulos=list_modulos,
-                           list_models=list_models)
+                           list_models=list_models,
+                           list_fields=list_fields)
 
 
 @nav.navigation()
