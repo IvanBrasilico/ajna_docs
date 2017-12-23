@@ -50,5 +50,5 @@ class GerenteBase:
     @property
     def list_modulos(self):
         lista = [filename[:-3] for filename in os.listdir(PATH_MODULOS)
-                if filename.find('.py') != -1]
+                 if filename.find('.py') != -1]
         return sorted(lista)
