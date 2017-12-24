@@ -34,5 +34,6 @@ class TestModel(unittest.TestCase):
     def test_filtra(self):
         self.gerente.set_module('carga')
         afilter = Filtro('CPFCNPJNotificado', None, '000000')
-        dados = self.gerente.filtra('Conhecimento', [afilter], self.dbsession)
+        dados = self.gerente.filtra(
+            'Conhecimento', [afilter])  # , self.dbsession)
         assert dados is not None

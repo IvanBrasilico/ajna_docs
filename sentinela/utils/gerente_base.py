@@ -8,6 +8,7 @@ import os
 from collections import defaultdict
 
 from sentinela.conf import APP_PATH, CSV_FOLDER
+from sentinela.models.carga import Base, MySession
 
 PATH_MODULOS = os.path.join(APP_PATH, 'models')
 
@@ -48,14 +49,16 @@ class GerenteBase:
                 campos = [i for i in classe.__dict__.keys() if i[:1] != '_']
                 self.dict_models[classe.__name__]['campos'] = sorted(campos)
 
-    def filtra(self, base, filters, dbsession):
+    def filtra(self, base, filters):
         module = importlib.import_module(self.module_path)
         aclass = getattr(module, base)
+        dbsession = MySession(Base).session
         q = dbsession.query(aclass)
         for afilter in filters:
             afield = getattr(aclass, afilter.field)
             q.filter(afield == afilter.valor)
-        return q.all()
+        result = [list(row.__dict__.values()) for row in q.all()]
+        return result
 
     @property
     def list_models(self):
