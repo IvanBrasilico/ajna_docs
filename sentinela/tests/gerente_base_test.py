@@ -22,7 +22,7 @@ class TestModel(unittest.TestCase):
         self._escala(self.gerente.dict_models)
 
     def test_lista_dir(self):
-        pass
         # TODO: criar arquivo de testes
         # self.gerente.set_path('1/2017/1221')
         # self._escala(self.gerente.dict_models)
+        pass

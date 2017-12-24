@@ -34,7 +34,7 @@ from flask_wtf.csrf import CSRFProtect
 from werkzeug.utils import secure_filename
 
 from sentinela.conf import (ALLOWED_EXTENSIONS, APP_PATH, CSV_DOWNLOAD,
-                            CSV_FOLDER, UPLOAD_FOLDER)
+                            CSV_FOLDER, SECRET, UPLOAD_FOLDER)
 from sentinela.models.models import (Base, BaseOrigem, DBUser, DePara,
                                      MySession, PadraoRisco, ParametroRisco,
                                      ValorParametro, Visao)
@@ -503,8 +503,10 @@ def mynavbar():
 
 nav.init_app(app)
 app.config['DEBUG'] = os.environ.get('DEBUG', 'None') == '1'
-# TODO: generate secret key on separate conf file not on git
-app.secret_key = 'SK1234*!'
+if app.config['DEBUG'] is True:
+    app.jinja_env.auto_reload = True
+    app.config['TEMPLATES_AUTO_RELOAD'] = True
+app.secret_key = SECRET
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=app.config['DEBUG'])
