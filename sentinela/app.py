@@ -523,6 +523,7 @@ def exclui_filtro():
                             selected_field=selected_field,
                             filters=filters))
 
+
 @app.route('/consulta_bases_executar')
 def consulta_bases_executar():
     selected_module = request.args.get('selected_module')

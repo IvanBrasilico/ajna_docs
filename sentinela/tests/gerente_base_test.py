@@ -3,6 +3,7 @@ import unittest
 from sentinela.utils.gerente_base import Filtro, GerenteBase
 from sentinela.models.carga import Base, MySession
 
+
 class TestModel(unittest.TestCase):
     def setUp(self):
         self.gerente = GerenteBase()
