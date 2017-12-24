@@ -531,7 +531,7 @@ def consulta_bases_executar():
     filters = session.get('filters', [])
     gerente = GerenteBase()
     gerente.set_module(selected_module)
-    dados = gerente.filtra(selected_model, filters)
+    dados = gerente.filtra(selected_model, filters, dbsession)
     return redirect(url_for('navega_bases',
                             selected_module=selected_module,
                             selected_model=selected_model,

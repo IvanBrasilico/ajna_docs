@@ -15,6 +15,7 @@ setup(
         'Flask-Login',
         'Flask-cors',
         'Flask-nav',
+        'Flask-session',
         'Flask-wtf',
         'imageio',
         'lxml',
