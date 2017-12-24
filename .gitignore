@@ -115,4 +115,4 @@ _build
 tags
 SECRET
 carga.db
-*flask_session*
+*/flask_session/*

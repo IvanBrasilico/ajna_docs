@@ -532,13 +532,25 @@ def consulta_bases_executar():
     filters = session.get('filters', [])
     gerente = GerenteBase()
     gerente.set_module(selected_module)
-    dados = gerente.filtra(selected_model, filters, dbsession)
-    return redirect(url_for('navega_bases',
-                            selected_module=selected_module,
-                            selected_model=selected_model,
-                            selected_field=selected_field,
-                            filters=filters,
-                            dados=dados))
+    dados = gerente.filtra(selected_model, filters)
+    list_modulos = gerente.list_modulos
+    list_models = []
+    list_fields = []
+    if selected_module:
+        gerente.set_module(selected_module)
+        list_models = gerente.list_models
+        if selected_model:
+            list_fields = gerente.dict_models[selected_model]['campos']
+    # TODO: See how to make redirect passing data to consulta_bases on server
+    return render_template('navega_bases.html',
+                           selected_module=selected_module,
+                           selected_model=selected_model,
+                           selected_field=selected_field,
+                           filters=filters,
+                           list_modulos=list_modulos,
+                           list_models=list_models,
+                           list_fields=list_fields,
+                           dados=dados)
 
 
 @nav.navigation()
