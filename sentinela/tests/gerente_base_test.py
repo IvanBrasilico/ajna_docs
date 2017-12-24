@@ -1,11 +1,14 @@
 import unittest
 
-from sentinela.utils.gerente_base import GerenteBase
-
+from sentinela.utils.gerente_base import Filtro, GerenteBase
+from sentinela.models.carga import Base, MySession
 
 class TestModel(unittest.TestCase):
     def setUp(self):
         self.gerente = GerenteBase()
+        mysession = MySession(Base, test=False)
+        self.dbsession = mysession.session
+        self.engine = mysession.engine
 
     def tearDown(self):
         pass
@@ -26,3 +29,9 @@ class TestModel(unittest.TestCase):
         # self.gerente.set_path('1/2017/1221')
         # self._escala(self.gerente.dict_models)
         pass
+
+    def test_filtra(self):
+        self.gerente.set_module('carga')
+        afilter = Filtro('CPFCNPJNotificado', None, '000000')
+        dados = self.gerente.filtra('Conhecimento', [afilter], self.dbsession)
+        assert dados is not None

@@ -114,3 +114,4 @@ _build
 \.vscode/settings\.json
 tags
 SECRET
+carga.db
