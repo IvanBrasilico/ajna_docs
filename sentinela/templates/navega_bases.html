@@ -20,27 +20,25 @@
                 </option>
                 {% endfor %}
             </select>
-            <select name="field" id="field">
-                <option value="">Selecionar</option>
-                {% for field in list_fields %}
-                <option value="{{ field }}" {% if field==selected_field %} selected="selected" {% endif %}>
-                    {{ field }}
-                </option>
-                {% endfor %}
-            </select>
         </h4>
     </div>
     <div class="row">
-        {% if campos %}
+        {% if list_fields %}
         <h4>Lista de Campos da Base
         </h4>
-        <div class="table-responsive col-sm-6">
-            {% if riscoid %}
+        <div class="table-responsive col-sm-12">
             <form id="frmcampos" onsubmit="" class="form-group">
-                <div class="form-group col-sm-4">
-                    <input id="valor" class="form-control" type="text">
+                <div class="form-group col-sm-3">
+                    <select name="field" id="field">
+                        <option value="">Selecionar</option>
+                        {% for field in list_fields %}
+                        <option value="{{ field }}" {% if field==selected_field %} selected="selected" {% endif %}>
+                            {{ field }}
+                        </option>
+                        {% endfor %}
+                    </select>
                 </div>
-                <div class="form-group col-sm-4">
+                <div class="form-group col-sm-3">
                     <select name="filtro" id="tipofiltro">
                         <option value="0">Selecionar</option>
                         <option value="igual">Filtro.igual</option>
@@ -48,27 +46,49 @@
                         <option value="contem">Filtro.contem</option>
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-sm-3">
+                    <input id="valor" class="form-control" type="text">
+                </div>
+                <div class="form-group col-sm-1">
                     <button onclick="adicionar_valor()" id="btn_incluir" type="button" class="btn btn-success">Incluir</button>
                 </div>
+                <div class="form-group col-sm-1">
+                    <button onclick="consultar()" id="btn_consultar" type="button" class="btn btn-default">Consultar</button>
+                </div>
+                <div class="form-group col-sm-1">
+                </div>
             </form>
-            {% endif %}
-            <table class="inlineTable table table-striped table-bordered table-hover table-responsive" id="riscos">
-                {% for valor in valores %}
+            <table class="inlineTable table table-striped table-bordered table-hover table-responsive" id="filtros">
+                {% if filters %} {% for filter in filters %}
                 <tr>
-                    <td>{{valor.valor}}</td>
-                    <td>{{valor.tipo_filtro}}</td>
+                    <td>{{filter.field}}</td>
+                    <td>{{filter.tipo}}</td>
+                    <td>{{filter.valor}}</td>
                     <td align="center">
-                        <input type="button" class="btn  btn-danger" value="x" onclick="exclui_valor({{ valor.id }})" />
+                        <input type="button" class="btn  btn-danger" value="x" onclick="excluir_valor('{{loop.index0}}')" />
                     </td>
                 </tr>
-                {% endfor %} {% if not valores %}
+                {% endfor %} {% endif %} {% if not filters %}
                 <tr>
                     <td>Sem resultados.</td>
                 </tr>
                 {% endif %}
             </table>
-        </div>
+            <table class="inlineTable table table-striped table-bordered table-hover table-responsive" id="dados">
+                    {% if dados %}
+                    {% for row in dados %}
+                    <tr>
+                        {% for col in row %}
+                        <td>{{col}}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %} {% endif %} {% if not dados %}
+                    <tr>
+                        <td>Sem resultados.</td>
+                    </tr>
+                    {% endif %}
+                </table>
+            </div>
         {% endif %}
     </div>
     <div id="bottom" class="row">
@@ -88,5 +108,28 @@
         $('#module').bind('change', submit_form);
         $('#model').bind('change', submit_form);
     });
+    function adicionar_valor() {
+        var valor = $("#valor").val();
+        var filtro = $("#tipofiltro").val();
+        if (valor != '' && filtro != 0) {
+            window.location.assign('/adiciona_filtro' +
+                '?selected_module=' + $("#module").val() +
+                '&selected_model=' + $("#model").val() +
+                '&selected_field=' + $("#field").val() +
+                '&valor=' + valor +
+                '&filtro=' + filtro
+            )
+        }
+    }
+
+    function excluir_valor(filtroid) {
+        window.location.assign('/exclui_filtro' +
+            '?selected_module=' + $("#module").val() +
+            '&selected_model=' + $("#model").val() +
+            '&selected_field=' + $("#field").val() +
+            '&index=' + filtroid
+        )
+    }
+
 
 </script> {% endblock %}

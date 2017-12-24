@@ -12,6 +12,13 @@ from sentinela.conf import APP_PATH, CSV_FOLDER
 PATH_MODULOS = os.path.join(APP_PATH, 'models')
 
 
+class Filtro:
+    def __init__(self, field, tipo, valor):
+        self.field = field
+        self.tipo = tipo
+        self.valor = valor
+
+
 class GerenteBase:
     """Métodos para padronizar a manipulação de bases de dados
      no modelo do sistema sentinela"""
@@ -31,15 +38,24 @@ class GerenteBase:
 
     def set_module(self, model):
         """Lê a estrutura de 'tabelas' de um módulo SQLAlchemy"""
-        module_path = 'sentinela.models.' + model
-        module = importlib.import_module(module_path)
+        self.module_path = 'sentinela.models.' + model
+        module = importlib.import_module(self.module_path)
         classes = inspect.getmembers(module, inspect.isclass)
         self.dict_models = defaultdict(dict)
         for i, classe in classes:
-            print(classe.__name__)
+            # print(classe.__name__)
             if classe.__name__:
                 campos = [i for i in classe.__dict__.keys() if i[:1] != '_']
                 self.dict_models[classe.__name__]['campos'] = sorted(campos)
+
+    def filtra(self, base, filters, dbsession):
+        module = importlib.import_module(self.module_path)
+        aclass = getattr(module, base)
+        q = dbsession.query(aclass)
+        for afilter in filters:
+            afield = getattr(aclass, afilter.field)
+            q.filter(afield == afilter.valor)
+        return q.all()
 
     @property
     def list_models(self):

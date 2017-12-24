@@ -76,7 +76,7 @@
                     <td>{{valor.valor}}</td>
                     <td>{{valor.tipo_filtro}}</td>
                     <td align="center">
-                        <input type="button" class="btn  btn-danger" value="x" onclick="exclui_valor({{ valor.id }})" />
+                        <input type="button" class="btn  btn-danger" value="x" onclick="excluir_valor({{ valor.id }})" />
                     </td>
                 </tr>
                 {% endfor %} {% if not valores %}
@@ -153,7 +153,7 @@
         }
     }
 
-    function exclui_valor(valorid) {
+    function excluir_valor(valorid) {
         window.location.assign('/exclui_valor?padraoid=' + $("#padrao").val() +
             '&riscoid=' + $("#id_risco").val() + '&valorid=' + valorid
         )
