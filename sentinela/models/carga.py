@@ -51,6 +51,18 @@ class Escala(Base):
     manifestos = relationship('EscalaManifesto',
                               back_populates='aescala')
 
+    @property
+    def to_dict(self):
+        return {'Escala': self.Escala,
+                'CNPJAgenciaNavegacao': self.CNPJAgenciaNavegacao,
+                'CodigoIMO': self.CodigoIMO}
+
+    @property
+    def to_list(self):
+        return [self.Escala,
+                self.CNPJAgenciaNavegacao,
+                self.CodigoIMO]
+
 
 class AtracDesatracEscala(Base):
     """Cópia dados sobre escala das extrações"""
@@ -243,9 +255,9 @@ def recursive_view(session, numero_escala):
     ).first()
     result = []
     if escala:
-        result.append(escala.Escala)
-        result.append(escala.CodigoIMO)
-        result.append(escala.atracacoes)
+        result.append(Escala)
+        for escala_manifesto in escala.manifestos:
+            result.append(escala_manifesto.manifesto)
     return result
 
 
