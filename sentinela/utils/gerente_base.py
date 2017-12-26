@@ -49,11 +49,13 @@ class GerenteBase:
                 campos = [i for i in classe.__dict__.keys() if i[:1] != '_']
                 self.dict_models[classe.__name__]['campos'] = sorted(campos)
 
+    def set_session(self, adbsession):
+        self.dbsession = adbsession
+
     def filtra(self, base, filters):
         module = importlib.import_module(self.module_path)
         aclass = getattr(module, base)
-        dbsession = MySession(Base).session
-        q = dbsession.query(aclass)
+        q = self.dbsession.query(aclass)
         for afilter in filters:
             afield = getattr(aclass, afilter.field)
             q.filter(afield == afilter.valor)
@@ -71,3 +73,26 @@ class GerenteBase:
         lista = [filename[:-3] for filename in os.listdir(PATH_MODULOS)
                  if filename.find('.py') != -1]
         return sorted(lista)
+
+    def busca_pai(self, ainstance):
+        if ainstance.pai:
+            return self.busca_pai(ainstance.pai)
+        return ainstance
+
+    def recursive_tree(self, ainstance):
+        result = []
+        # ainstance = self.busca_pai(ainstance)
+        print(ainstance)
+        # result.append([key + ': ' + value for key, value in ainstance.to_dict.items()])
+        result.append(ainstance.to_dict)
+        if ainstance.filhos:
+            for arvore_filho in ainstance.filhos:
+                print('Arvore Filho', type(arvore_filho))
+                if isinstance(arvore_filho, list):
+                    for filho in arvore_filho:
+                        result.append(
+                            self.recursive_tree(filho)
+                        )
+                else:
+                    result.append(ainstance.to_dict)
+        return result

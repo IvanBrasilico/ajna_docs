@@ -1,6 +1,6 @@
 import unittest
 
-from sentinela.models.carga import Base, MySession
+from sentinela.models.carga import Base, Escala, MySession
 from sentinela.utils.gerente_base import Filtro, GerenteBase
 
 
@@ -36,6 +36,15 @@ class TestModel(unittest.TestCase):
         afilter = Filtro('CPFCNPJNotificado', None, '000000')
         assert afilter is not None
         # TODO: criar base carga de testes
+        self.gerente.set_session(self.dbsession)
         """dados = self.gerente.filtra(
             'Conhecimento', [afilter])  # , self.dbsession)
         assert dados is not None"""
+
+    def test_tree(self):
+        escala = self.dbsession.query(Escala).filter(
+            Escala.Escala == '15000365317'
+            ).first()
+        if escala:
+            print(self.gerente.recursive_tree(escala))
+        # assert False
