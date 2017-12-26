@@ -57,7 +57,7 @@ class GerenteBase:
         for afilter in filters:
             afield = getattr(aclass, afilter.field)
             q.filter(afield == afilter.valor)
-        result = [list(row.__dict__.values()) for row in q.all()]
+        result = [row.to_list for row in q.all()]
         return result
 
     @property

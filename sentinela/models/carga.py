@@ -63,6 +63,10 @@ class Escala(Base):
                 self.CNPJAgenciaNavegacao,
                 self.CodigoIMO]
 
+    @property
+    def filhos(self):
+        return [self.atracacoes, self.manifestos]
+
 
 class AtracDesatracEscala(Base):
     """Cópia dados sobre escala das extrações"""
@@ -75,6 +79,26 @@ class AtracDesatracEscala(Base):
     desatracacao = Column(DateTime)
     CodigoTerminal = Column(String(8))
     LocalAtracacao = Column(String(50))
+
+    @property
+    def to_dict(self):
+        return {'Escala': self.Escala,
+                'atracacao': self.atracacao,
+                'desatracacao': self.desatracacao,
+                'CodigoTerminal': self.CodigoTerminal,
+                'LocalAtracacao': self.LocalAtracacao}
+
+    @property
+    def to_list(self):
+        return [self.Escala,
+                self.atracacao,
+                self.desatracacao,
+                self.CodigoTerminal,
+                self.LocalAtracacao]
+
+    @property
+    def pai(self):
+        return self.aescala
 
 
 class Manifesto(Base):
@@ -89,6 +113,14 @@ class Manifesto(Base):
     escalas = relationship('EscalaManifesto',
                            back_populates='omanifesto')
 
+    @property
+    def to_dict(self):
+        return {'Manifesto': self.Manifesto}
+
+    @property
+    def to_list(self):
+        return [self.Manifesto]
+
 
 class EscalaManifesto(Base):
     """Cópia dados sobre manifesto das extrações"""
@@ -100,6 +132,16 @@ class EscalaManifesto(Base):
         'Escala', back_populates='manifestos')
     omanifesto = relationship(
         'Manifesto', back_populates='escalas')
+
+    @property
+    def to_dict(self):
+        return {'Manifesto': self.Manifesto,
+                'Escala': self.Escala}
+
+    @property
+    def to_list(self):
+        return [self.Manifesto,
+                self.Escala]
 
 
 class ManifestoConhecimento(Base):
@@ -116,6 +158,26 @@ class ManifestoConhecimento(Base):
     NomeTerminalCarregamento = Column(String(200))
     CodigoTerminalDescarregamento = Column(String(8))
     NomeTerminalDescarregamento = Column(String(200))
+
+    @property
+    def to_dict(self):
+        return {'Manifesto': self.Manifesto,
+                'Conhecimento': self.Conhecimento,
+                'CodigoTerminalCarregamento': self.CodigoTerminalCarregamento,
+                'NomeTerminalCarregamento': self.NomeTerminalCarregamento,
+                'CodigoTerminalDescarregamento':
+                self.CodigoTerminalDescarregamento,
+                'NomeTerminalDescarregamento':
+                self.NomeTerminalDescarregamento}
+
+    @property
+    def to_list(self):
+        return [self.Manifesto,
+                self.Conhecimento,
+                self.CodigoTerminalCarregamento,
+                self.NomeTerminalCarregamento,
+                self.CodigoTerminalDescarregamento,
+                self.NomeTerminalDescarregamento]
 
 
 class Conhecimento(Base):
@@ -155,6 +217,34 @@ class Conhecimento(Base):
     veiculo = relationship(
         'Veiculo', back_populates='oconhecimento')
 
+    @property
+    def to_dict(self):
+        return {'Conhecimento': self.Conhecimento,
+                'DataEmissao': self.DataEmissao,
+                'Tipo': self.Tipo,
+                'CodigoPortoOrigem': self.CodigoPortoOrigem,
+                'CodigoPortoDestino': self.CodigoPortoDestino,
+                'CPFCNPJConsignatario': self.CPFCNPJConsignatario,
+                'CPFCNPJNotificado': self.CPFCNPJNotificado,
+                'NomeEmbarcador': self.NomeEmbarcador,
+                'CodigoDocumentoDespacho': self.CodigoDocumentoDespacho,
+                'NumeroDocumentoDespacho': self.NumeroDocumentoDespacho
+                }
+
+    @property
+    def to_list(self):
+        return [self.Conhecimento,
+                self.DataEmissao,
+                self.Tipo,
+                self.CodigoPortoOrigem,
+                self.CodigoPortoDestino,
+                self.CPFCNPJConsignatario,
+                self.CPFCNPJNotificado,
+                self.NomeEmbarcador,
+                self.CodigoDocumentoDespacho,
+                self.NumeroDocumentoDespacho
+                ]
+
 
 class Container(Base):
     """Cópia dados sobre containeres das extrações"""
@@ -178,6 +268,34 @@ class Container(Base):
     CodigoMercadoriaPerigosa = Column(String(10))
     CodigoClasseMercadoriaPerigosa = Column(String(10))
 
+    @property
+    def to_dict(self):
+        return {'Conhecimento': self.Conhecimento,
+                'Item': self.Item,
+                'Container': self.Container,
+                'Lacre1': self.Lacre1,
+                'Lacre2': self.Lacre2,
+                'Tipo': self.Tipo,
+                'Capacidade': self.Capacidade,
+                'PesoBrutoItem': self.PesoBrutoItem,
+                'VolumeItem': self.VolumeItem,
+                'IndicadorUsoParcial': self.IndicadorUsoParcial
+                }
+
+    @property
+    def to_list(self):
+        return [self.Conhecimento,
+                self.Item,
+                self.Container,
+                self.Lacre1,
+                self.Lacre2,
+                self.Tipo,
+                self.Capacidade,
+                self.PesoBrutoItem,
+                self.VolumeItem,
+                self.IndicadorUsoParcial
+                ]
+
 
 class CargaSolta(Base):
     """Cópia dados sobre containeres das extrações"""
@@ -196,6 +314,30 @@ class CargaSolta(Base):
     CodigoMercadoriaPerigosa = Column(String(10))
     CodigoClasseMercadoriaPerigosa = Column(String(10))
 
+    @property
+    def to_dict(self):
+        return {'Conhecimento': self.Conhecimento,
+                'Item': self.Item,
+                'TipoEmbalagem': self.TipoEmbalagem,
+                'Quantidade': self.Quantidade,
+                'Marca': self.Marca,
+                'Contramarca': self.Contramarca,
+                'PesoBrutoItem': self.PesoBrutoItem,
+                'VolumeItem': self.VolumeItem
+                }
+
+    @property
+    def to_list(self):
+        return [self.Conhecimento,
+                self.Item,
+                self.TipoEmbalagem,
+                self.Quantidade,
+                self.Marca,
+                self.Contramarca,
+                self.PesoBrutoItem,
+                self.VolumeItem
+                ]
+
 
 class Granel(Base):
     """Cópia dados sobre containeres das extrações"""
@@ -212,6 +354,26 @@ class Granel(Base):
     CodigoMercadoriaPerigosa = Column(String(10))
     CodigoClasseMercadoriaPerigosa = Column(String(10))
 
+    @property
+    def to_dict(self):
+        return {'Conhecimento': self.Conhecimento,
+                'Item': self.Item,
+                'Tipo': self.Tipo,
+                'Descricao': self.Descricao,
+                'PesoBrutoItem': self.PesoBrutoItem,
+                'VolumeItem': self.VolumeItem
+                }
+
+    @property
+    def to_list(self):
+        return [self.Conhecimento,
+                self.Item,
+                self.Tipo,
+                self.Descricao,
+                self.PesoBrutoItem,
+                self.VolumeItem
+                ]
+
 
 class NCM(Base):
     """Cópia dados sobre containeres das extrações"""
@@ -220,6 +382,20 @@ class NCM(Base):
     Conhecimento = Column(String(15), ForeignKey('conhecimentos.Conhecimento'))
     Item = Column(String(4))
     NCM = Column(String(4))
+
+    @property
+    def to_dict(self):
+        return {'Conhecimento': self.Conhecimento,
+                'Item': self.Item,
+                'NCM': self.NCM
+                }
+
+    @property
+    def to_list(self):
+        return [self.Conhecimento,
+                self.Item,
+                self.NCM
+                ]
 
 
 class Veiculo(Base):
@@ -235,6 +411,26 @@ class Veiculo(Base):
     Contramarca = Column(String(200))
     PesoBrutoItem = Column(Numeric(asdecimal=False))
 
+    @property
+    def to_dict(self):
+        return {'Conhecimento': self.Conhecimento,
+                'Item': self.Item,
+                'Chassi': self.Chassi,
+                'Marca': self.Marca,
+                'Contramarca': self.Contramarca,
+                'PesoBrutoItem': self.PesoBrutoItem
+                }
+
+    @property
+    def to_list(self):
+        return [self.Conhecimento,
+                self.Item,
+                self.Chassi,
+                self.Marca,
+                self.Contramarca,
+                self.PesoBrutoItem
+                ]
+
 
 class ContainerVazio(Base):
     """Cópia dados sobre containeres das extrações"""
@@ -247,6 +443,23 @@ class ContainerVazio(Base):
     NomeTipo = Column(String(50))
     Capacidade = Column(String(2))
     Tara = Column(Numeric(asdecimal=False))
+
+    @property
+    def to_dict(self):
+        return {'Conhecimento': self.Conhecimento,
+                'Container': self.Container,
+                'NomeTipo': self.NomeTipo,
+                'Capacidade': self.Capacidade,
+                'Tara': self.Tara
+                }
+
+    @property
+    def to_list(self):
+        return [self.Conhecimento,
+                self.Container,
+                self.NomeTipo,
+                self.Capacidade,
+                self.Tara]
 
 
 def recursive_view(session, numero_escala):
