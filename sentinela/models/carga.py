@@ -100,6 +100,10 @@ class AtracDesatracEscala(Base):
     def pai(self):
         return self.aescala
 
+    @property
+    def filhos(self):
+        return None
+
 
 class Manifesto(Base):
     """Cópia dados sobre manifesto das extrações"""
@@ -120,6 +124,10 @@ class Manifesto(Base):
     @property
     def to_list(self):
         return [self.Manifesto]
+
+    @property
+    def filhos(self):
+        return [self.vazios]
 
 
 class EscalaManifesto(Base):
@@ -142,6 +150,14 @@ class EscalaManifesto(Base):
     def to_list(self):
         return [self.Manifesto,
                 self.Escala]
+
+    @property
+    def pai(self):
+        return self.aescala
+
+    @property
+    def filhos(self):
+        return [self.omanifesto]
 
 
 class ManifestoConhecimento(Base):
