@@ -11,15 +11,17 @@
                 <select name="base" id="base">
                     <option value="0">Selecionar</option>
                     {% for base in bases %}
+                    {% if base.nome == 'PLANILHA_COV' %}
                     <option value="{{ base.id }}" {% if base.id|int()==baseid|int() %} selected="selected" {% endif %}>{{ base.nome }}
                     </option>
+                    {% endif %}
                     {% endfor %}
                 </select>
             </h4>
         </div>
         <div class="row">
             <div class="col-sm-6">
-                {% if baseid|int() > 1 %}
+                {% if baseid %}
                 <h4>
                     Lista de titulos:
                 </h4>
