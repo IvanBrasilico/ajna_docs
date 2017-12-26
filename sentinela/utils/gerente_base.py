@@ -8,7 +8,6 @@ import os
 from collections import defaultdict
 
 from sentinela.conf import APP_PATH, CSV_FOLDER
-from sentinela.models.carga import Base, MySession
 
 PATH_MODULOS = os.path.join(APP_PATH, 'models')
 
@@ -83,7 +82,8 @@ class GerenteBase:
         result = []
         # ainstance = self.busca_pai(ainstance)
         print(ainstance)
-        # result.append([key + ': ' + value for key, value in ainstance.to_dict.items()])
+        # result.append(
+        # [key + ': ' + value for key, value in ainstance.to_dict.items()])
         result.append(ainstance.to_dict)
         if ainstance.filhos:
             for arvore_filho in ainstance.filhos:
