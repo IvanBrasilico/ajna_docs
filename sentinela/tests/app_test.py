@@ -134,6 +134,24 @@ class FlaskTestCase(unittest.TestCase):
                                follow_redirects=follow_redirects)
         return rv
 
+    def test_importacsv(self):
+        if self.http_server is not None:
+            rv = self.app.get('/importa_csv/1/1',
+                              params=dict(csrf_token=self.csrf_token))
+        else:
+            rv = self.app.get('/importa_csv/1/1')
+        data = self.data(rv)
+        assert b'Redirecting...' in data
+
+    def test_exportacsv(self):
+        if self.http_server is not None:
+            rv = self.app.get('/exporta_csv?padraoid=1&riscoid=1',
+                              params=dict(csrf_token=self.csrf_token))
+        else:
+            rv = self.app.get('/exporta_csv?padraoid=1&riscoid=1')
+        data = self.data(rv)
+        assert b'Redirecting...' in data
+
     """
     def test_valores(self):
         # valores = [1, 2, 3]

@@ -340,7 +340,7 @@ def importa_csv(padraoid, riscoid):
             csvf.save(os.path.join(tmpdir, risco.nome_campo + '.csv'))
             print(csvf.filename)
             gerente = GerenteRisco()
-            gerente.parametros_fromcsv(risco.nome_campo, session=session)
+            gerente.parametros_fromcsv(risco.nome_campo, session=dbsession)
     return redirect(url_for('edita_risco', padraoid=padraoid,
                             riscoid=riscoid))
 
@@ -350,23 +350,8 @@ def importa_csv(padraoid, riscoid):
 def exporta_csv():
     padraoid = request.args.get('padraoid')
     riscoid = request.args.get('riscoid')
-    if riscoid:
-        risco = dbsession.query(ParametroRisco).filter(
-            ParametroRisco.id == riscoid).first()
-        risco_all = dbsession.query(ValorParametro).filter(
-            ValorParametro.risco_id == riscoid).all()
-    if risco_all is None:
-        flash('Não foi selecionado há valores para este parâmetro:', riscoid)
-        return redirect(request.url)
-    # gerente = GerenteRisco()
-    # gerente.parametro_tocsv(risco_all, path='sentinela/files/')
-    lista = [['valor', 'tipo_filtro']]
-    for valor in risco_all:
-        lista.append((valor.valor, valor.tipo_filtro))
-    filename = os.path.join(CSV_DOWNLOAD, risco.nome_campo + '.csv')
-    with open(filename, 'w', encoding=ENCODE, newline='') as f:
-        writer = csv.writer(f)
-        writer.writerows(lista)
+    gerente = GerenteRisco()
+    gerente.parametro_tocsv(riscoid, path=CSV_DOWNLOAD, dbsession=dbsession)
     return redirect(url_for('edita_risco', padraoid=padraoid,
                             riscoid=riscoid))
 

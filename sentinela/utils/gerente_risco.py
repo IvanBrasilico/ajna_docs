@@ -186,17 +186,28 @@ class GerenteRisco():
                     result.append(linha)
         return result
 
-    def parametro_tocsv(self, campo, path=tmpdir):
+    def parametro_tocsv(self, campo, path=tmpdir, dbsession=None):
         """Salva os valores do parâmetro de risco em um arquivo csv
         no formato 'valor', 'tipo_filtro'"""
         lista = []
         lista.append(('valor', 'tipo_filtro'))
         dict_filtros = self._riscosativos.get(campo)
-        if dict_filtros is None:
-            return False
-        for tipo_filtro, lista_filtros in dict_filtros.items():
-            for valor in lista_filtros:
-                lista.append((valor, tipo_filtro.name))
+        if dbsession:
+            risco = dbsession.query(ParametroRisco).filter(
+                ParametroRisco.id == campo).first()
+            risco_all = dbsession.query(ValorParametro).filter(
+                ValorParametro.risco_id == campo).all()
+            if risco:
+                campo = risco.nome_campo
+            if risco_all is None and dict_filtros is None:
+                return False
+            for valor in risco_all:
+                filtro = str(valor.tipo_filtro)
+                lista.append((valor.valor, filtro[filtro.find('.') + 1:]))
+        elif dict_filtros:
+            for tipo_filtro, lista_filtros in dict_filtros.items():
+                for valor in lista_filtros:
+                    lista.append((valor, tipo_filtro.name))
         filename = os.path.join(path, campo + '.csv')
         with open(filename,
                   'w', encoding=ENCODE, newline='') as f:
