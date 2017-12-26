@@ -43,8 +43,7 @@ class TestModel(unittest.TestCase):
 
     def test_tree(self):
         escala = self.dbsession.query(Escala).filter(
-            Escala.Escala == '15000365317'
-            ).first()
+            Escala.Escala == '15000365317').first()
         if escala:
             print(self.gerente.recursive_tree(escala))
         # assert False
