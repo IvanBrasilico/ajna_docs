@@ -11,7 +11,7 @@
                 <select name="base" id="base">
                     <option value="0">Selecionar</option>
                     {% for base in bases %}
-                    {% if base.nome == 'PLANILHA_COV' %}
+                    {% if base.nome != 'CARGA' %}
                     <option value="{{ base.id }}" {% if base.id|int()==baseid|int() %} selected="selected" {% endif %}>{{ base.nome }}
                     </option>
                     {% endif %}

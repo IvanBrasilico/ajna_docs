@@ -44,7 +44,8 @@
         <h4>Lista de Valores do Parâmetro
             <button id="btn_incluir" type="button" class="btn btn-primary" data-toggle="modal" data-target="#importa_csv" {% if not riscoid
                 %} disabled {% endif %}>Importar CSV</button>
-            <button onclick="exporta_csv({{ riscoid }})" id="btn_incluir" type="button" class="btn btn-default" {% if not riscoid %} disabled {% endif %}>Exportar CSV</button>
+            <button onclick="exporta_csv({{ riscoid }})" id="btn_incluir" type="button" class="btn btn-default" {% if not riscoid %}
+                disabled {% endif %}>Exportar CSV</button>
         </h4>
         <div class="table-responsive col-sm-6">
             {% if riscoid %}
@@ -119,8 +120,9 @@
 <div id="bottom" class="row">
     AJNA - Receita Federal do Brasil 2017
 </div>
-{% endblock %} {% block scripts %} {{super()}}
+{% endblock %} {% block scripts %} {{super()}} 
 <script>
+    {% include "/static/js/jquery-ui.js" %}
     function valor_parametro(riscoid) {
         window.location.assign('/edita_risco?padraoid=' + $("#padrao").val() + '&riscoid=' + riscoid)
     }
@@ -178,10 +180,37 @@
         )
     }
 
+    $(function () {
+        var lista = []
+        {% for item in lista_autocomplete %}
+        lista[lista.length] ="{{item}}"
+        {% endfor %} 
+        $("#parametro_risco").autocomplete({
+            source: lista
+        });
+    });
 
 </script>
 <style>
     .row-clicked {
         background-color: rgb(38, 132, 226);
+    }
+
+    .custom-combobox {
+        position: relative;
+        display: inline-block;
+    }
+
+    .custom-combobox-toggle {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin-left: -1px;
+        padding: 0;
+    }
+
+    .custom-combobox-input {
+        margin: 0;
+        padding: 5px 10px;
     }
 </style> {% endblock %}

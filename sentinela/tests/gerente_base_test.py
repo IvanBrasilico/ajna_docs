@@ -1,6 +1,6 @@
 import unittest
 
-from sentinela.models.carga import Base, Escala, MySession
+from sentinela.models.carga import Base, MySession  # , Escala
 from sentinela.utils.gerente_base import Filtro, GerenteBase
 
 
@@ -41,9 +41,9 @@ class TestModel(unittest.TestCase):
             'Conhecimento', [afilter])  # , self.dbsession)
         assert dados is not None"""
 
-    def test_tree(self):
+    """def test_tree(self):
         escala = self.dbsession.query(Escala).filter(
             Escala.Escala == '15000365317').first()
         if escala:
             print(self.gerente.recursive_tree(escala))
-        # assert False
+        # assert False"""

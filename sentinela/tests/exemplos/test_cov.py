@@ -107,6 +107,7 @@ if __name__ == '__main__':
     # Cria no banco atualmente configurado os objetos de teste
     # Apenas para praticidade durante o período inicial de testes
     mysession = MySession(Base, test=False)
+    dbsession = mysession.session
     print('Atenção, entrando em Base REAL!!!!')
     # gerente = GerenteRisco()
     # gerente.import_named_csv(CSV_NAMEDRISCO_TEST, session=mysession.session)
