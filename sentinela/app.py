@@ -307,11 +307,18 @@ def edita_risco():
         ).first()
         if valor:
             valores = valor.valores
+    headers = dbsession.query(DePara).filter(
+            DePara.base_id == padraoid
+            ).all()
+    if not headers:
+        gerente = GerenteRisco()
+        headers = gerente.import_named_csv('sentinela/tests/BTP.csv', tolist=True)
     return render_template('edita_risco.html',
                            padraoid=padraoid,
                            padroes=padroes,
                            riscoid=riscoid,
                            parametros=parametros,
+                           lista_autocomplete=headers,
                            valores=valores)
 
 

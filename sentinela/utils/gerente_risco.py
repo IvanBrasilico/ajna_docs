@@ -285,7 +285,7 @@ class GerenteRisco():
             self._riscosativos[campo] = dict_filtros
 
     def import_named_csv(self, arquivo, session=None, padraorisco=None,
-                         filtro=Filtro.igual):
+                         filtro=Filtro.igual, tolist=False):
         """Abre um arquivo csv, cada coluna sendo um filtro.
         A primeira linha contém o campo a ser filtrado e as linhas
         seguintes os valores do filtro. Cria filtros na memória, e no
@@ -311,6 +311,8 @@ class GerenteRisco():
                     ind += 1
         for key, value in listas.items():
             self.parametros_fromcsv(key, session, padraorisco, value)
+        if tolist:
+            return cabecalho
 
     def aplica_juncao(self, visao, path=tmpdir, filtrar=False,
                       parametros_ativos=None):
