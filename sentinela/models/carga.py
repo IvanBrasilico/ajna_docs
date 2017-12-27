@@ -11,12 +11,12 @@ class MySession():
     """Para definir a sessão com o BD na aplicação. Para os
     testes, passando o parâmetro test=True, um BD na memória"""
 
-    def __init__(self, base, test=False):
+    def __init__(self, base, test=False, nomebase='carga.db'):
         if test:
             path = ':memory:'
         else:
             path = os.path.join(os.path.dirname(
-                os.path.abspath(__file__)), 'carga.db')
+                os.path.abspath(__file__)), nomebase)
             if os.name != 'nt':
                 path = '/' + path
         self._engine = create_engine('sqlite:///' + path, convert_unicode=True)
@@ -105,31 +105,6 @@ class AtracDesatracEscala(Base):
         return None
 
 
-class Manifesto(Base):
-    """Cópia dados sobre manifesto das extrações"""
-    __tablename__ = 'manifestos'
-    id = Column(Integer, primary_key=True)
-    Manifesto = Column(String(13), unique=True)
-    manifesto_conhecimentos = relationship('ManifestoConhecimento',
-                                           back_populates='omanifesto')
-    vazios = relationship('ContainerVazio',
-                          back_populates='omanifesto')
-    escalas = relationship('EscalaManifesto',
-                           back_populates='omanifesto')
-
-    @property
-    def to_dict(self):
-        return {'Manifesto': self.Manifesto}
-
-    @property
-    def to_list(self):
-        return [self.Manifesto]
-
-    @property
-    def filhos(self):
-        return [self.vazios]
-
-
 class EscalaManifesto(Base):
     """Cópia dados sobre manifesto das extrações"""
     __tablename__ = 'escalamanifesto'
@@ -158,6 +133,31 @@ class EscalaManifesto(Base):
     @property
     def filhos(self):
         return [self.omanifesto]
+
+
+class Manifesto(Base):
+    """Cópia dados sobre manifesto das extrações"""
+    __tablename__ = 'manifestos'
+    id = Column(Integer, primary_key=True)
+    Manifesto = Column(String(13), unique=True)
+    manifesto_conhecimentos = relationship('ManifestoConhecimento',
+                                           back_populates='omanifesto')
+    vazios = relationship('ContainerVazio',
+                          back_populates='omanifesto')
+    escalas = relationship('EscalaManifesto',
+                           back_populates='omanifesto')
+
+    @property
+    def to_dict(self):
+        return {'Manifesto': self.Manifesto}
+
+    @property
+    def to_list(self):
+        return [self.Manifesto]
+
+    @property
+    def filhos(self):
+        return [self.vazios]
 
 
 class ManifestoConhecimento(Base):
@@ -462,7 +462,7 @@ class ContainerVazio(Base):
 
     @property
     def to_dict(self):
-        return {'Conhecimento': self.Conhecimento,
+        return {'Manifesto': self.Manifesto,
                 'Container': self.Container,
                 'NomeTipo': self.NomeTipo,
                 'Capacidade': self.Capacidade,
@@ -471,7 +471,7 @@ class ContainerVazio(Base):
 
     @property
     def to_list(self):
-        return [self.Conhecimento,
+        return [self.Manifesto,
                 self.Container,
                 self.NomeTipo,
                 self.Capacidade,

@@ -1,6 +1,8 @@
 """GerenteBase abstrai a necessidade de conhecer a estrutura das bases
 ou utilizar comandos mais avançados. Transforma a estrutura em dicts
-mais fáceis de lidar"""
+mais fáceis de lidar
+Usa reflection para navegar nos modelos
+"""
 import csv
 import importlib
 import inspect
@@ -73,26 +75,48 @@ class GerenteBase:
                  if filename.find('.py') != -1]
         return sorted(lista)
 
-    def busca_pai(self, ainstance):
-        if ainstance.pai:
-            return self.busca_pai(ainstance.pai)
+    def busca_paiarvore(self, ainstance):
+        try:
+            if ainstance.pai:
+                return self.busca_paiarvore(ainstance.pai)
+        except AttributeError:
+            pass
         return ainstance
 
-    def recursive_tree(self, ainstance):
+    def recursive_tree(self, ainstance, recursive=True):
         result = []
-        # ainstance = self.busca_pai(ainstance)
-        print(ainstance)
-        # result.append(
-        # [key + ': ' + value for key, value in ainstance.to_dict.items()])
-        result.append(ainstance.to_dict)
-        if ainstance.filhos:
-            for arvore_filho in ainstance.filhos:
-                print('Arvore Filho', type(arvore_filho))
-                if isinstance(arvore_filho, list):
-                    for filho in arvore_filho:
-                        result.append(
-                            self.recursive_tree(filho)
+        result.append('<ul>')
+        result.append('<li>' + type(ainstance).__name__ + '</li><ul>')
+        lista = ['<li>' + str(key) + ': ' + str(value) + '</li>'
+                 for key, value in ainstance.to_dict.items()]
+        result.extend(lista)
+        filhos = getattr(ainstance, 'filhos', None)
+        if filhos:
+            for arvore_filho in filhos:
+                if recursive:
+                    if isinstance(arvore_filho, list):
+                        for filho in arvore_filho:
+                            result.extend(
+                                self.recursive_tree(filho)
+                            )
+                            result.append('</ul>')
+                    else:
+                        result.extend(
+                            self.recursive_tree(arvore_filho)
                         )
+                        result.append('</ul>')
                 else:
-                    result.append(ainstance.to_dict)
+                    result.append('<ul>')
+                    if isinstance(arvore_filho, list):
+                        for filho in arvore_filho:
+                            result.append('<li><a href="#" id="' + filho.id +
+                                          '">' + type(filho).__name__ +
+                                          '</a></li>')
+                    else:
+                        result.append('<li><a href="#" id="' + arvore_filho.id
+                                      + '">' + type(filho).__name__ +
+                                      '</a></li>')
+                    result.append('</ul>')
+
+        result.append('</ul>')
         return result
