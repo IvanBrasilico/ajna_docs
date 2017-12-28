@@ -38,7 +38,7 @@ class GerenteBase:
                 campos = [campo for campo in cabecalhos]
                 self.dict_models[file[:-4]]['campos'] = campos
 
-    def set_module(self, model):
+    def set_module(self, model, db=None):
         """Lê a estrutura de 'tabelas' de um módulo SQLAlchemy"""
         self.module_path = 'sentinela.models.' + model
         module = importlib.import_module(self.module_path)
@@ -50,18 +50,23 @@ class GerenteBase:
                 campos = [i for i in classe.__dict__.keys() if i[:1] != '_']
                 self.dict_models[classe.__name__]['campos'] = sorted(campos)
         SessionClass = getattr(module, 'MySession')
-        self.dbsession = SessionClass().session
+        if db:
+            self.dbsession = SessionClass(nomebase=db).session
+        else:
+            self.dbsession = SessionClass().session
 
     def set_session(self, adbsession):
         self.dbsession = adbsession
 
-    def filtra(self, base, filters):
+    def filtra(self, base, filters, return_query=False):
         module = importlib.import_module(self.module_path)
         aclass = getattr(module, base)
         q = self.dbsession.query(aclass)
         for afilter in filters:
             afield = getattr(aclass, afilter.field)
             q.filter(afield == afilter.valor)
+        if return_query:
+            return q
         result = [row.to_list for row in q.all()]
         return result
 
@@ -87,7 +92,7 @@ class GerenteBase:
 
     def recursive_tree(self, ainstance, recursive=True):
         result = []
-        result.append('<ul>')
+        result.append('<ul class="tree">')
         result.append('<li>' + type(ainstance).__name__ + '</li><ul>')
         lista = ['<li>' + str(key) + ': ' + str(value) + '</li>'
                  for key, value in ainstance.to_dict.items()]

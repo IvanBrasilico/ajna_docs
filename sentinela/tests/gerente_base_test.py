@@ -41,17 +41,14 @@ class TestModel(unittest.TestCase):
 
     def test_filtra(self):
         self.gerente.set_module('carga')
-        afilter = Filtro('CPFCNPJNotificado', None, '000000')
+        afilter = Filtro('Container', None, 'C-C02')
         assert afilter is not None
-        # TODO: criar base carga de testes
         self.gerente.set_session(self.dbsession)
-        """dados = self.gerente.filtra(
-            'Conhecimento', [afilter])  # , self.dbsession)
-        assert dados is not None"""
+        dados = self.gerente.filtra(
+            'ContainerVazio', [afilter])
+        assert dados is not None
 
     def test_tree(self):
-        # TODO: criar base carga de testes
-        # pass
         escala = self.dbsession.query(Escala).filter(
             Escala.Escala == 'E-1').first()
         if escala:
@@ -60,11 +57,11 @@ class TestModel(unittest.TestCase):
             with open('tree.html', 'w') as html:
                 for linha in lista:
                     html.write('{}\n'.format(linha))
-        assert '<ul>' in lista[0]
+        assert '<ul' in lista[0]
 
 
 if __name__ == '__main__':
-    mysession = MySession(Base, test=False, nomebase='cargatest.db')
+    mysession = MySession(nomebase='cargatest.db')
     dbsession = mysession.session
     engine = mysession.engine
     Base.metadata.drop_all(engine)
