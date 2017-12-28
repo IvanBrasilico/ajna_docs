@@ -519,7 +519,7 @@ def exclui_filtro():
                             filters=filters))
 
 
-@app.route('/consulta_bases_executar')
+@app.route('/')
 def consulta_bases_executar():
     selected_module = request.args.get('selected_module')
     selected_model = request.args.get('selected_model')
@@ -536,8 +536,6 @@ def consulta_bases_executar():
         list_models = gerente.list_models
         if selected_model:
             list_fields = gerente.dict_models[selected_model]['campos']
-    # TODO: See how to make redirect passing data to consulta_bases on server
-
     return render_template('navega_bases.html',
                            selected_module=selected_module,
                            selected_model=selected_model,
@@ -547,6 +545,24 @@ def consulta_bases_executar():
                            list_models=list_models,
                            list_fields=list_fields,
                            dados=dados)
+
+
+@app.route('/arvore')
+def arvore():
+    gerente = GerenteBase()
+    gerente.set_module('carga', db='cargatest.db')
+    filters = []
+    afilter = Filtro('Escala', None, 'E-01')
+    filters.append(afilter)
+    q = gerente.filtra('Escala', filters, return_query=True)
+    escala = q.first()
+    string_arvore = ''
+    if escala:
+        arvore = gerente.recursive_tree(escala)
+        for linha in arvore:
+            string_arvore += '{}\n'.format(linha)
+    return render_template('arvore.html',
+                           arvore=string_arvore)
 
 
 @nav.navigation()

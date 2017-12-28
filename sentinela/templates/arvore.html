@@ -1,0 +1,35 @@
+{% extends "layout.html" %} {% block content %}
+<!--- http://odyniec.net/articles/turning-lists-into-trees/ -->
+
+<div id="main" class="container-fluid" id="scoped-content">
+    <style type="text/css" scoped>
+        ul.tree,
+        ul.tree ul {
+            list-style-type: none;
+            background: url(/static/css/images/vline.png) repeat-y;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul.tree ul {
+            margin-left: 10px;
+        }
+
+        ul.tree li {
+            margin: 0;
+            padding: 0 12px;
+            line-height: 20px;
+            background: url(/static/css/images/node.png) no-repeat;
+            color: #369;
+            font-weight: bold;
+        }
+
+        ul.tree li.last {
+            background: #fff url(/static/css/images/lastnode.png) no-repeat;
+        }
+    </style>
+    <div id="top" class="row">
+        {{arvore|safe}}
+    </div>
+</div>
+{% endblock %}
