@@ -60,7 +60,7 @@ class TestModel(unittest.TestCase):
             with open('tree.html', 'w') as html:
                 for linha in lista:
                     html.write('{}\n'.format(linha))
-        assert False
+        assert '<ul>' in lista[0]
 
 
 if __name__ == '__main__':

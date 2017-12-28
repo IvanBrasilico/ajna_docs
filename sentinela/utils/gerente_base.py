@@ -113,8 +113,9 @@ class GerenteBase:
                                           '">' + type(filho).__name__ +
                                           '</a></li>')
                     else:
-                        result.append('<li><a href="#" id="' + arvore_filho.id
-                                      + '">' + type(filho).__name__ +
+                        result.append('<li><a href="#" id="' +
+                                      arvore_filho.id +
+                                      '">' + type(filho).__name__ +
                                       '</a></li>')
                     result.append('</ul>')
 
