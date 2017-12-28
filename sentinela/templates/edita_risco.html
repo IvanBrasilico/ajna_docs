@@ -19,9 +19,19 @@
             {% if parametros %}
             <h4>Parâmetros de risco cadastrados</h4>
             <div id="list" class="row col-sm-9">
-                <form id="frmvalores" class="form-group">
-                    <div class="form-group col-sm-9">
-                        <input id="parametro_risco" class="form-control" type="text">
+                <form id="frmparametros" class="form-group">
+                    <div class="form-group">
+                        <div class="form-group col-sm-9">
+                            <div class="input-group">
+                                <input class="form-control ui-autocomplete-input" autocomplete="off" id="parametro_risco" type="text">
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default" aria-haspopup="true" aria-expanded="false" data-toggle="modal" data-target="#itensmodal"
+                                        title="Show All Items">
+                                        <i class="glyphicon glyphicon-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group col-sm-1">
                         <button onclick="adicionar_parametro()" id="btn_ok" type="button" class="btn btn-default">OK</button>
@@ -117,6 +127,39 @@
         </div>
     </div>
 </div>
+<div id="itensmodal" class="modal fade" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title" id="ModalLabel">Selecionar Parametros</h1>
+                </div>
+                <div class="modal-body modal-body-dif">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                    <div class="table-responsive col-md-12">
+                        <table class="inlineTable table table-striped table-bordered table-hover table-responsive" cellspacing="0" cellpadding="0"
+                            id="lista_parametros" align="center">
+                            {% for item in lista_autocomplete %}
+                            <tr align="center">
+                                <td>
+                                    <input id="chkitens" type="checkbox">
+                                </td>
+                                <td align="center">{{item}}</td>
+                            </tr>
+                            {% endfor %} {% if not lista_autocomplete %}
+                            <tr>
+                                <td>Sem resultados</td>
+                            </tr>
+                            {% endif %}
+                        </table>
+                        &nbsp;
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="">Adicionar Selecionados</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
 <div id="bottom" class="row">
     AJNA - Receita Federal do Brasil 2017
 </div>
@@ -196,21 +239,8 @@
         background-color: rgb(38, 132, 226);
     }
 
-    .custom-combobox {
-        position: relative;
-        display: inline-block;
-    }
-
-    .custom-combobox-toggle {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        margin-left: -1px;
-        padding: 0;
-    }
-
-    .custom-combobox-input {
-        margin: 0;
-        padding: 5px 10px;
+    .modal-body-dif {
+        max-height: calc(50vh - 150px);
+        overflow-y: auto;
     }
 </style> {% endblock %}

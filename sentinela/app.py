@@ -293,10 +293,13 @@ def edita_risco():
     padraoid = request.args.get('padraoid')
     padroes = dbsession.query(PadraoRisco).order_by(PadraoRisco.nome).all()
     parametros = []
+    baseid = None
+    headers = []
     if padraoid:
         padrao = dbsession.query(PadraoRisco).filter(
             PadraoRisco.id == padraoid
         ).first()
+        baseid = padrao.base_id
         if padrao:
             parametros = padrao.parametros
     riscoid = request.args.get('riscoid')
@@ -307,15 +310,13 @@ def edita_risco():
         ).first()
         if valor:
             valores = valor.valores
-    # TODO: Receber baseid
-    baseid = 0
-    headers = dbsession.query(DePara).filter(
-        DePara.base_id == baseid
-    ).all()
-    if not headers:
-        baseid = 1
-        gerente = GerenteRisco()
-        headers = gerente.get_headers_base(baseid, CSV_FOLDER)
+    if baseid:
+        headers = dbsession.query(DePara).filter(
+            DePara.base_id == baseid
+        ).all()
+        if not headers:
+            gerente = GerenteRisco()
+            headers = gerente.get_headers_base(baseid, CSV_FOLDER)
     return render_template('edita_risco.html',
                            padraoid=padraoid,
                            padroes=padroes,
