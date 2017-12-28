@@ -55,8 +55,8 @@ class Escala(Base):
     @property
     def to_dict(self):
         return OrderedDict({'Escala': self.Escala,
-                           'CNPJAgenciaNavegacao': self.CNPJAgenciaNavegacao,
-                           'CodigoIMO': self.CodigoIMO})
+                            'CNPJAgenciaNavegacao': self.CNPJAgenciaNavegacao,
+                            'CodigoIMO': self.CodigoIMO})
 
     @property
     def to_list(self):
@@ -84,10 +84,10 @@ class AtracDesatracEscala(Base):
     @property
     def to_dict(self):
         return OrderedDict({'Escala': self.Escala,
-                           'atracacao': self.atracacao,
-                           'desatracacao': self.desatracacao,
-                           'CodigoTerminal': self.CodigoTerminal,
-                           'LocalAtracacao': self.LocalAtracacao})
+                            'atracacao': self.atracacao,
+                            'desatracacao': self.desatracacao,
+                            'CodigoTerminal': self.CodigoTerminal,
+                            'LocalAtracacao': self.LocalAtracacao})
 
     @property
     def to_list(self):
@@ -120,7 +120,7 @@ class EscalaManifesto(Base):
     @property
     def to_dict(self):
         return OrderedDict({'Manifesto': self.Manifesto,
-                           'Escala': self.Escala})
+                            'Escala': self.Escala})
 
     @property
     def to_list(self):
@@ -179,13 +179,15 @@ class ManifestoConhecimento(Base):
     @property
     def to_dict(self):
         return OrderedDict({'Manifesto': self.Manifesto,
-                           'Conhecimento': self.Conhecimento,
-                           'CodigoTerminalCarregamento': self.CodigoTerminalCarregamento,
-                           'NomeTerminalCarregamento': self.NomeTerminalCarregamento,
-                           'CodigoTerminalDescarregamento':
-                           self.CodigoTerminalDescarregamento,
-                           'NomeTerminalDescarregamento':
-                           self.NomeTerminalDescarregamento})
+                            'Conhecimento': self.Conhecimento,
+                            'CodigoTerminalCarregamento':
+                            self.CodigoTerminalCarregamento,
+                            'NomeTerminalCarregamento':
+                            self.NomeTerminalCarregamento,
+                            'CodigoTerminalDescarregamento':
+                            self.CodigoTerminalDescarregamento,
+                            'NomeTerminalDescarregamento':
+                            self.NomeTerminalDescarregamento})
 
     @property
     def to_list(self):
@@ -237,15 +239,18 @@ class Conhecimento(Base):
     @property
     def to_dict(self):
         return OrderedDict({'Conhecimento': self.Conhecimento,
-                           'DataEmissao': self.DataEmissao,
-                           'Tipo': self.Tipo,
-                           'CodigoPortoOrigem': self.CodigoPortoOrigem,
-                           'CodigoPortoDestino': self.CodigoPortoDestino,
-                           'CPFCNPJConsignatario': self.CPFCNPJConsignatario,
-                           'CPFCNPJNotificado': self.CPFCNPJNotificado,
-                           'NomeEmbarcador': self.NomeEmbarcador,
-                           'CodigoDocumentoDespacho': self.CodigoDocumentoDespacho,
-                           'NumeroDocumentoDespacho': self.NumeroDocumentoDespacho})
+                            'DataEmissao': self.DataEmissao,
+                            'Tipo': self.Tipo,
+                            'CodigoPortoOrigem': self.CodigoPortoOrigem,
+                            'CodigoPortoDestino': self.CodigoPortoDestino,
+                            'CPFCNPJConsignatario':
+                            self.CPFCNPJConsignatario,
+                            'CPFCNPJNotificado': self.CPFCNPJNotificado,
+                            'NomeEmbarcador': self.NomeEmbarcador,
+                            'CodigoDocumentoDespacho':
+                            self.CodigoDocumentoDespacho,
+                            'NumeroDocumentoDespacho':
+                            self.NumeroDocumentoDespacho})
 
     @property
     def to_list(self):
@@ -287,15 +292,15 @@ class Container(Base):
     @property
     def to_dict(self):
         return OrderedDict({'Conhecimento': self.Conhecimento,
-                           'Item': self.Item,
-                           'Container': self.Container,
-                           'Lacre1': self.Lacre1,
-                           'Lacre2': self.Lacre2,
-                           'Tipo': self.Tipo,
-                           'Capacidade': self.Capacidade,
-                           'PesoBrutoItem': self.PesoBrutoItem,
-                           'VolumeItem': self.VolumeItem,
-                           'IndicadorUsoParcial': self.IndicadorUsoParcial})
+                            'Item': self.Item,
+                            'Container': self.Container,
+                            'Lacre1': self.Lacre1,
+                            'Lacre2': self.Lacre2,
+                            'Tipo': self.Tipo,
+                            'Capacidade': self.Capacidade,
+                            'PesoBrutoItem': self.PesoBrutoItem,
+                            'VolumeItem': self.VolumeItem,
+                            'IndicadorUsoParcial': self.IndicadorUsoParcial})
 
     @property
     def to_list(self):
@@ -332,13 +337,13 @@ class CargaSolta(Base):
     @property
     def to_dict(self):
         return OrderedDict({'Conhecimento': self.Conhecimento,
-                           'Item': self.Item,
-                           'TipoEmbalagem': self.TipoEmbalagem,
-                           'Quantidade': self.Quantidade,
-                           'Marca': self.Marca,
-                           'Contramarca': self.Contramarca,
-                           'PesoBrutoItem': self.PesoBrutoItem,
-                           'VolumeItem': self.VolumeItem})
+                            'Item': self.Item,
+                            'TipoEmbalagem': self.TipoEmbalagem,
+                            'Quantidade': self.Quantidade,
+                            'Marca': self.Marca,
+                            'Contramarca': self.Contramarca,
+                            'PesoBrutoItem': self.PesoBrutoItem,
+                            'VolumeItem': self.VolumeItem})
 
     @property
     def to_list(self):
@@ -371,11 +376,11 @@ class Granel(Base):
     @property
     def to_dict(self):
         return OrderedDict({'Conhecimento': self.Conhecimento,
-                           'Item': self.Item,
-                           'Tipo': self.Tipo,
-                           'Descricao': self.Descricao,
-                           'PesoBrutoItem': self.PesoBrutoItem,
-                           'VolumeItem': self.VolumeItem})
+                            'Item': self.Item,
+                            'Tipo': self.Tipo,
+                            'Descricao': self.Descricao,
+                            'PesoBrutoItem': self.PesoBrutoItem,
+                            'VolumeItem': self.VolumeItem})
 
     @property
     def to_list(self):
@@ -399,8 +404,8 @@ class NCM(Base):
     @property
     def to_dict(self):
         return OrderedDict({'Conhecimento': self.Conhecimento,
-                           'Item': self.Item,
-                           'NCM': self.NCM})
+                            'Item': self.Item,
+                            'NCM': self.NCM})
 
     @property
     def to_list(self):
@@ -426,11 +431,11 @@ class Veiculo(Base):
     @property
     def to_dict(self):
         return OrderedDict({'Conhecimento': self.Conhecimento,
-                           'Item': self.Item,
-                           'Chassi': self.Chassi,
-                           'Marca': self.Marca,
-                           'Contramarca': self.Contramarca,
-                           'PesoBrutoItem': self.PesoBrutoItem})
+                            'Item': self.Item,
+                            'Chassi': self.Chassi,
+                            'Marca': self.Marca,
+                            'Contramarca': self.Contramarca,
+                            'PesoBrutoItem': self.PesoBrutoItem})
 
     @property
     def to_list(self):
@@ -458,10 +463,10 @@ class ContainerVazio(Base):
     @property
     def to_dict(self):
         return OrderedDict({'Manifesto': self.Manifesto,
-                           'Container': self.Container,
-                           'NomeTipo': self.NomeTipo,
-                           'Capacidade': self.Capacidade,
-                           'Tara': self.Tara})
+                            'Container': self.Container,
+                            'NomeTipo': self.NomeTipo,
+                            'Capacidade': self.Capacidade,
+                            'Tara': self.Tara})
 
     @property
     def to_list(self):
