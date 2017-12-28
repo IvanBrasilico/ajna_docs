@@ -307,13 +307,15 @@ def edita_risco():
         ).first()
         if valor:
             valores = valor.valores
+    # TODO: Receber baseid
+    baseid = 0
     headers = dbsession.query(DePara).filter(
-        DePara.base_id == padraoid
+        DePara.base_id == baseid
     ).all()
     if not headers:
+        baseid = 1
         gerente = GerenteRisco()
-        headers = gerente.import_named_csv(
-            'sentinela/tests/BTP.csv', tolist=True)
+        headers = gerente.get_headers_base(baseid, CSV_FOLDER)
     return render_template('edita_risco.html',
                            padraoid=padraoid,
                            padroes=padroes,
@@ -535,6 +537,7 @@ def consulta_bases_executar():
         if selected_model:
             list_fields = gerente.dict_models[selected_model]['campos']
     # TODO: See how to make redirect passing data to consulta_bases on server
+
     return render_template('navega_bases.html',
                            selected_module=selected_module,
                            selected_model=selected_model,

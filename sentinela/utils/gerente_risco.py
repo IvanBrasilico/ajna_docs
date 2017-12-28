@@ -68,33 +68,33 @@ class GerenteRisco():
 
         riscosativos: dict descreve "riscos" (compilado dos ParametrosRisco)
 
-        base: BaseOriginal ativa
+        padraorisco: PadraoRisco ativo
     """
 
     def __init__(self):
         self.pre_processers = {}
         self.pre_processers_params = {}
         self._riscosativos = {}
-        self._base = None
+        self._padraorisco = None
 
-    def set_base(self, base):
-        """Vincula o Gerente a um objeto BaseOriginal
+    def set_padraorisco(self, padraorisco):
+        """Vincula o Gerente a um objeto padraoriscoOriginal
         Atenção: TODOS os parâmetros de risco ativos no Gerente serão
         zerados!!!
-        TODOS os parâmetros de risco vinculados à BaseOriginal serão
+        TODOS os parâmetros de risco vinculados à padraoriscoOriginal serão
         adicionados aos riscos ativos!!!
         """
-        self._base = base
+        self._padraorisco = padraorisco
         self._riscosativos = {}
-        for parametro in self._base.parametros:
+        for parametro in self._padraorisco.parametros:
             self.add_risco(parametro)
 
-    def cria_base(self, nomebase, session):
-        base = session.query(PadraoRisco).filter(
-            PadraoRisco.nome == nomebase).first()
-        if not base:
-            base = PadraoRisco(nomebase)
-        self.set_base(base)
+    def cria_padraorisco(self, nomepadraorisco, session):
+        padraorisco = session.query(PadraoRisco).filter(
+            PadraoRisco.nome == nomepadraorisco).first()
+        if not padraorisco:
+            padraorisco = PadraoRisco(nomepadraorisco)
+        self.set_padraorisco(padraorisco)
 
     def add_risco(self, parametrorisco, session=None):
         """Configura os parametros de risco ativos"""
@@ -102,25 +102,25 @@ class GerenteRisco():
         for valor in parametrorisco.valores:
             dict_filtros[valor.tipo_filtro].append(valor.valor)
         self._riscosativos[parametrorisco.nome_campo] = dict_filtros
-        if session and self._base:
-            self._base.parametros.append(parametrorisco)
-            session.merge(self._base)
+        if session and self._padraorisco:
+            self._padraorisco.parametros.append(parametrorisco)
+            session.merge(self._padraorisco)
             session.commit()
 
     def remove_risco(self, parametrorisco, session=None):
         """Configura os parametros de risco ativos"""
         self._riscosativos.pop(parametrorisco.nome_campo, None)
-        if session and self._base:
-            self._base.parametros.remove(parametrorisco)
-            session.merge(self._base)
+        if session and self._padraorisco:
+            self._padraorisco.parametros.remove(parametrorisco)
+            session.merge(self._padraorisco)
             session.commit()
 
     def clear_risco(self, session=None):
         """Zera os parametros de risco ativos"""
         self._riscosativos = {}
-        if session and self._base:
-            self._base.parametros.clear()
-            session.merge(self._base)
+        if session and self._padraorisco:
+            self._padraorisco.parametros.clear()
+            session.merge(self._padraorisco)
             session.commit()
 
     def aplica_risco(self, lista=None, arquivo=None, parametros_ativos=None):
@@ -313,6 +313,25 @@ class GerenteRisco():
             self.parametros_fromcsv(key, session, padraorisco, value)
         if tolist:
             return cabecalho
+
+    def get_headers_base(self, baseorigemid, path):
+        """Busca última base disponível no diretório de CSVs e
+        traz todos os headers"""
+        cabecalhos = []
+        caminho = os.path.join(path, str(baseorigemid))
+        ultimo_ano = sorted(os.listdir(caminho))
+        print(ultimo_ano)
+        ultimo_ano = ultimo_ano[-1]
+        caminho = os.path.join(caminho, ultimo_ano)
+        ultimo_mesdia = sorted(os.listdir(caminho))[-1]
+        caminho = os.path.join(caminho, ultimo_mesdia)
+        for arquivo in os.listdir(caminho):
+            with open(os.path.join(caminho, arquivo),
+                      'r', encoding=ENCODE, newline='') as f:
+                reader = csv.reader(f)
+                cabecalho = next(reader)
+                cabecalhos.extend(cabecalho)
+        return cabecalhos
 
     def aplica_juncao(self, visao, path=tmpdir, filtrar=False,
                       parametros_ativos=None):

@@ -6,12 +6,14 @@ from sqlalchemy import (Column, DateTime, ForeignKey, Integer, Numeric,
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, scoped_session, sessionmaker
 
+Base = declarative_base()
+
 
 class MySession():
     """Para definir a sessão com o BD na aplicação. Para os
     testes, passando o parâmetro test=True, um BD na memória"""
 
-    def __init__(self, base, test=False, nomebase='carga.db'):
+    def __init__(self, base=Base, test=False, nomebase='carga.db'):
         if test:
             path = ':memory:'
         else:
@@ -19,6 +21,7 @@ class MySession():
                 os.path.abspath(__file__)), nomebase)
             if os.name != 'nt':
                 path = '/' + path
+            print(path)
         self._engine = create_engine('sqlite:///' + path, convert_unicode=True)
         Session = sessionmaker(bind=self._engine)
         if test:
@@ -34,9 +37,6 @@ class MySession():
     @property
     def engine(self):
         return self._engine
-
-
-Base = declarative_base()
 
 
 class Escala(Base):

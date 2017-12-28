@@ -49,6 +49,8 @@ class GerenteBase:
             if classe.__name__:
                 campos = [i for i in classe.__dict__.keys() if i[:1] != '_']
                 self.dict_models[classe.__name__]['campos'] = sorted(campos)
+        SessionClass = getattr(module, 'MySession')
+        self.dbsession = SessionClass().session
 
     def set_session(self, adbsession):
         self.dbsession = adbsession

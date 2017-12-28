@@ -120,9 +120,9 @@
 <div id="bottom" class="row">
     AJNA - Receita Federal do Brasil 2017
 </div>
-{% endblock %} {% block scripts %} {{super()}} 
+{% endblock %} {% block scripts %} {{super()}}
+<script src="/static/js/jquery-ui.min.js"></script>
 <script>
-    {% include "/static/js/jquery-ui.js" %}
     function valor_parametro(riscoid) {
         window.location.assign('/edita_risco?padraoid=' + $("#padrao").val() + '&riscoid=' + riscoid)
     }
@@ -183,8 +183,8 @@
     $(function () {
         var lista = []
         {% for item in lista_autocomplete %}
-        lista[lista.length] ="{{item}}"
-        {% endfor %} 
+        lista[lista.length] = "{{item}}"
+        {% endfor %}
         $("#parametro_risco").autocomplete({
             source: lista
         });
