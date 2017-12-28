@@ -77,7 +77,7 @@ class TestModel(unittest.TestCase):
         # assert(len(filenames) == 14)
         padraorisco = carrega_carga(self.session)
         gerente = GerenteRisco()
-        gerente.set_base(padraorisco)
+        gerente.set_padraorisco(padraorisco)
         print(padraorisco.parametros[0].valores)
         # Preferencialmente vai tentar processar o arquivo de conhecimentos
         # Se não houver, pega o primeiro da lista mesmo
