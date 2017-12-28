@@ -6,9 +6,9 @@ a base carga.
 """
 import unittest
 
-from sentinela.models.carga import Base, MySession
-from sentinela.models.carga import (AtracDesatracEscala, ContainerVazio,
-                                    Escala, EscalaManifesto, Manifesto)
+from sentinela.models.carga import (AtracDesatracEscala, Base, ContainerVazio,
+                                    Escala, EscalaManifesto, Manifesto,
+                                    MySession)
 from sentinela.utils.gerente_base import Filtro, GerenteBase
 
 
