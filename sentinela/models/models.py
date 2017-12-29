@@ -94,6 +94,7 @@ class BaseOrigem(Base):
     nome = Column(String(20), unique=True)
     caminho = Column(String(200), unique=True)
     deparas = relationship('DePara', back_populates='base')
+    padroes = relationship('PadraoRisco', back_populates='base')
 
     def __init__(self, nome, caminho=None):
         self.nome = nome
@@ -123,9 +124,14 @@ class PadraoRisco(Base):
     id = Column(Integer, primary_key=True)
     nome = Column(String(20), unique=True)
     parametros = relationship('ParametroRisco', back_populates='padraorisco')
+    base_id = Column(Integer, ForeignKey('basesorigem.id'))
+    base = relationship(
+        'BaseOrigem', back_populates='padroes')
 
-    def __init__(self, nome):
+    def __init__(self, nome, base=None):
         self.nome = nome
+        if base:
+            self.base_id = base.id
 
 
 class ParametroRisco(Base):
