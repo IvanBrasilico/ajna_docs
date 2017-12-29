@@ -181,7 +181,8 @@ def importa():
     if not data:
         data = datetime.date.today().strftime('%Y%m%d')
     if baseid is not None and filename is not None:
-        dest_path = os.path.join(CSV_FOLDER, baseid, data[:4], data[4:])
+        dest_path = os.path.join(CSV_FOLDER, baseid,
+                                 data[:4], data[4:].replace('-', ''))
         if not os.path.exists(dest_path):
             os.makedirs(dest_path)
         try:
@@ -317,6 +318,7 @@ def edita_risco():
         if not headers:
             gerente = GerenteRisco()
             headers = gerente.get_headers_base(baseid, CSV_FOLDER)
+            headers.sort()
     return render_template('edita_risco.html',
                            padraoid=padraoid,
                            padroes=padroes,
@@ -373,6 +375,8 @@ def exclui_parametro():
     riscoid = request.args.get('riscoid')
     dbsession.query(ParametroRisco).filter(
         ParametroRisco.id == riscoid).delete()
+    dbsession.query(ValorParametro).filter(
+        ValorParametro.risco_id == riscoid).delete()
     dbsession.commit()
     return redirect(url_for('edita_risco', padraoid=padraoid))
 
@@ -381,11 +385,23 @@ def exclui_parametro():
 def adiciona_parametro():
     padraoid = request.args.get('padraoid')
     risco_novo = request.args.get('risco_novo')
-    sanitizado = sanitizar(risco_novo, norm_function=unicode_sanitizar)
-    risco = ParametroRisco(sanitizado)
-    risco.base_id = padraoid
-    dbsession.add(risco)
-    dbsession.commit()
+    lista = request.args.get('lista')
+    if risco_novo:
+        sanitizado = sanitizar(risco_novo, norm_function=unicode_sanitizar)
+        risco = ParametroRisco(sanitizado)
+        risco.base_id = padraoid
+        dbsession.add(risco)
+        dbsession.commit()
+    if lista:
+        print(type(lista))
+        nova_lista = []
+        nova_lista.append(lista)
+        for item in nova_lista[0].split(','):
+            sanitizado = sanitizar(item, norm_function=unicode_sanitizar)
+            risco = ParametroRisco(sanitizado)
+            risco.base_id = padraoid
+            dbsession.add(risco)
+        dbsession.commit()
     return redirect(url_for('edita_risco', padraoid=padraoid))
 
 
