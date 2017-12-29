@@ -98,6 +98,9 @@
             </table>
         </div>
         {% endif %}
+        <div id="bottom" class="row">
+            AJNA - Receita Federal do Brasil 2017
+        </div>
     </div>
 </div>
 <div class="modal fade" id="importa_csv" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
@@ -128,40 +131,35 @@
     </div>
 </div>
 <div id="itensmodal" class="modal fade" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title" id="ModalLabel">Selecionar Parametros</h1>
-                </div>
-                <div class="modal-body modal-body-dif">
-                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-                    <div class="table-responsive col-md-12">
-                        <table class="inlineTable table table-striped table-bordered table-hover table-responsive" cellspacing="0" cellpadding="0"
-                            id="lista_parametros" align="center">
-                            {% for item in lista_autocomplete %}
-                            <tr align="center">
-                                <td>
-                                    <input id="chkitens" type="checkbox">
-                                </td>
-                                <td align="center">{{item}}</td>
-                            </tr>
-                            {% endfor %} {% if not lista_autocomplete %}
-                            <tr>
-                                <td>Sem resultados</td>
-                            </tr>
-                            {% endif %}
-                        </table>
-                        &nbsp;
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="">Adicionar Selecionados</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="ModalLabel">Selecionar Parâmetros</h1>
+            </div>
+            <div class="modal-body modal-body-dif">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                <div class="table-responsive col-md-12">
+                    <table class="inlineTable table table-striped table-bordered table-hover table-condensed table-responsive" id="lista_parametros"
+                        align="center">
+                        {% for item in lista_autocomplete %}
+                        <tr align="center">
+                            <td align="center">{{item}}</td>
+                        </tr>
+                        {% endfor %} {% if not lista_autocomplete %}
+                        <tr>
+                            <td>Sem resultados</td>
+                        </tr>
+                        {% endif %}
+                    </table>
+                    &nbsp;
                 </div>
             </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btn_sel">Adicionar Selecionados</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
         </div>
-<div id="bottom" class="row">
-    AJNA - Receita Federal do Brasil 2017
+    </div>
 </div>
 {% endblock %} {% block scripts %} {{super()}}
 <script src="/static/js/jquery-ui.min.js"></script>
@@ -233,6 +231,45 @@
         });
     });
 
+
+
+    function selectAll() {
+        var x = document.getElementById("chkitens");
+        x.checked = true;
+    }
+    /*
+        $(function () {
+            
+    
+            var table = $('#lista_parametros');
+    
+            table.find('tr').each(function (indice) {
+                $(this).find('td').each(function (indice) {
+                    //faz o que você quiser aqui
+                    adicionar[adicionar.length] = $(this).text()
+                });
+            });
+            alert(adicionar)
+        });
+    */
+    $(function () {
+        var adicionar = []
+        $('#lista_parametros td:first-child').click(function () {
+            adicionar[adicionar.length] = $(this).text()
+            $(this).addClass('row-clicked')
+        });
+        $('#btn_sel').click(function () {
+            if (adicionar != '') {
+                window.location.assign('/adiciona_parametro?padraoid=' + $("#padrao").val() +
+                    '&lista=' + $(adicionar).toArray()
+                )
+            }
+            /*$('#lista_parametros td:first-child').each(function () {
+                $(this).removeClass('row-clicked')
+            });*/
+        });
+    });
+
 </script>
 <style>
     .row-clicked {
@@ -240,7 +277,7 @@
     }
 
     .modal-body-dif {
-        max-height: calc(50vh - 150px);
+        max-height: calc(80vh - 150px);
         overflow-y: auto;
     }
 </style> {% endblock %}

@@ -318,6 +318,7 @@ class GerenteRisco():
         """Busca última base disponível no diretório de CSVs e
         traz todos os headers"""
         cabecalhos = []
+        cabecalhos_nao_repetidos = []
         caminho = os.path.join(path, str(baseorigemid))
         ultimo_ano = sorted(os.listdir(caminho))
         print(ultimo_ano)
@@ -331,7 +332,10 @@ class GerenteRisco():
                 reader = csv.reader(f)
                 cabecalho = next(reader)
                 cabecalhos.extend(cabecalho)
-        return cabecalhos
+        for word in cabecalhos:
+            if word not in cabecalhos_nao_repetidos:
+                cabecalhos_nao_repetidos.append(word)
+        return cabecalhos_nao_repetidos
 
     def aplica_juncao(self, visao, path=tmpdir, filtrar=False,
                       parametros_ativos=None):

@@ -1,9 +1,14 @@
 {% extends "layout.html" %} {% block content %}
 <div id="main" class="container-fluid">
     <div id="top" class="row">
-        <h3>Escolha Base, Padrão de Risco e a Visualização. Após, clique em "Aplicar" ao lado da base desejada</h3>
-        <div class="col-md-12">
-            <p>Base Original:
+        <h4>
+            <big>
+                <b>Escolha Base, Padrão de Risco e a Visualização. Após, clique em "Aplicar" ao lado da base desejada</b>
+            </big>
+        </h4>
+        <div class="col-sm-6">
+            <h4>
+                <b>Base Original:</b>
                 <select name="base" id="base">
                     <option value="0">Selecionar</option>
                     {% for base in bases %}
@@ -11,8 +16,26 @@
                     </option>
                     {% endfor %}
                 </select>
-            </p>
-            <p>Padrão de Risco:
+            </h4>
+            <h4>Bases carregadas no Servidor</h4>
+            <table class="inlineTable table table-striped table-bordered table-hover table-condensed table-responsive">
+                {% for filename in lista_arquivos %}
+                <tr>
+                    <td align="center">{{filename}}</td>
+                    <td align="center">
+                        <button class="btn btn-default" onclick="aplica_risco('{{filename}}')">Aplicar</button>
+                    </td>
+                </tr>
+                {% endfor %}{% if not lista_arquivos %}
+                <tr>
+                    <td>Sem bases importadas.</td>
+                </tr>
+                {% endif %}
+            </table>
+        </div>
+        <div class="col-sm-6">
+            <h4>
+                <b>Padrão de Risco:</b>
                 <select name="padrao" id="padrao">
                     <option value="0">Selecionar</option>
                     {% for padrao in padroes %}
@@ -20,67 +43,51 @@
                     </option>
                     {% endfor %}
                 </select>
-            </p>
+            </h4>
             <h4>Parâmetros ativos</h4>
-            <div class="col-sm-4">
-                <table class="table table-striped table-bordered table-hover table-responsive" cellspacing="0" cellpadding="0">
-                    {% for parametro in parametros %}
-                    <tr>
-                        <td>{{parametro.nome_campo}}</td>
-                        <td align="center">
-                            {% if parametros_ativos %}
-                            <input type="checkbox" name="parametro" value="{{parametro.nome_campo}}" {% if parametro.nome_campo in parametros_ativos
-                                %} checked {% endif %}> {% else %}
-                            <input type="checkbox" name="parametro" value="{{parametro.nome_campo}}" checked> {% endif %}
-                        </td>
-                        <td align="center">
-                            <input type="button" class="btn  btn-primary" value="Ver Valores" onclick="mostra_valores({{ parametro.id }})" />
-                        </td>
-                    </tr>
-                    {% endfor %}{% if not parametros %}
-                    <tr>
-                        <td>Sem parâmetros cadastrados.</td>
-                    </tr>
-                    {% endif %}
-                </table>
-                <p>Visualização:
-                    <select name="visao" id="visao">
-                        <option value="0">Selecionar</option>
-                        {% for visao in visoes %}
-                        <option value="{{ visao.id }}" {% if visao.id|int()==visaoid|int() %} selected="selected" {% endif %}>{{ visao.nome }}
-                        </option>
-                        {% endfor %}
-                    </select>
-                </p>
-                <h4>Bases carregadas no Servidor</h4>
-                <table>
-                    {% for filename in lista_arquivos %}
-                    <tr>
-                        <td>{{filename}}</td>
-                        <td>
-                            <button class="btn-default" onclick="aplica_risco('{{filename}}')">Aplicar</button>
-                        </td>
-                    </tr>
-                    {% endfor %}{% if not lista_arquivos %}
-                    <tr>
-                        <td>Sem bases importadas.</td>
-                    </tr>
-                    {% endif %}
-                </table>
-            </div>
+            <table class="table table-striped table-bordered table-hover table-condensed table-responsive" cellspacing="0" cellpadding="0">
+                {% for parametro in parametros %}
+                <tr>
+                    <td>{{parametro.nome_campo}}</td>
+                    <td align="center">
+                        {% if parametros_ativos %}
+                        <input type="checkbox" name="parametro" value="{{parametro.nome_campo}}" {% if parametro.nome_campo in parametros_ativos
+                            %} checked {% endif %}> {% else %}
+                        <input type="checkbox" name="parametro" value="{{parametro.nome_campo}}" checked> {% endif %}
+                    </td>
+                    <td align="center">
+                        <input type="button" class="btn  btn-default" value="Ver Valores" onclick="mostra_valores({{ parametro.id }})" />
+                    </td>
+                </tr>
+                {% endfor %}{% if not parametros %}
+                <tr>
+                    <td>Sem parâmetros cadastrados.</td>
+                </tr>
+                {% endif %}
+            </table>
         </div>
     </div>
+    <h4>Visualização:
+        <select name="visao" id="visao">
+            <option value="0">Selecionar</option>
+            {% for visao in visoes %}
+            <option value="{{ visao.id }}" {% if visao.id|int()==visaoid|int() %} selected="selected" {% endif %}>{{ visao.nome }}
+            </option>
+            {% endfor %}
+        </select>
+    </h4>
     <div id="list" class="row">
         <div class="table-responsive col-md-12">
             <h4>Lista de Riscos da Base {{filename}}</h4>
             {% if csv_salvo %}
             <a href="/static/{{csv_salvo}}">Baixar planilha</a>
             {% endif %}
-            <table class="inlineTable table table-striped table-bordered table-hover table-responsive" cellspacing="0" cellpadding="0">
+            <table class="inlineTable table table-striped table-bordered table-hover table-condensed table-responsive" cellspacing="0"
+                cellpadding="0">
                 {% for row in lista_risco %}
                 <tr>
                     {% for col in row %}
-                    <td>{{col}}</td>
+                    <td align="center">{{col}}</td>
                     {% endfor %}
                 </tr>
                 {% endfor %} {% if not lista_risco %}
@@ -97,21 +104,28 @@
     </div>
 </div>
 {% if valores %}
-<div id="valoresmodal" class="modal fade" role="dialog">
-    <div class="modal-content col-sm-6">
-        <div class="modal-body">
-            <div class="table-responsive col-md-12">
-                <h2>Lista de Valores do Parâmetro de Risco</h2>
-                <table class="inlineTable table table-striped table-bordered table-hover table-responsive" cellspacing="0" cellpadding="0"
-                    id="parametros" align="center">
-                    {% for valor in valores %}
-                    <tr>
-                        <td>{{valor.valor}}</td>
-                        <td>{{valor.tipo_filtro}}</td>
-                    </tr>
-                    {% endfor %}
-                </table>
-                &nbsp;
+<div class="modal fade" id="valoresmodal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="ModalLabel">Lista de Valores do Parâmetro de Risco</h1>
+            </div>
+            <div class="modal-body modal-body-dif">
+                <div class="table-responsive col-md-12">
+                    <table class="inlineTable table table-striped table-bordered table-hover table-condensed table-responsive" cellspacing="0"
+                        cellpadding="0" id="parametros" align="center">
+                        {% for valor in valores %}
+                        <tr>
+                            <td>{{valor.valor}}</td>
+                            <td>{{valor.tipo_filtro}}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    &nbsp;
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -150,4 +164,11 @@
     $(document).ready(function () {
         $('#valoresmodal').modal();
     })
-</script> {% endblock %}
+</script>
+
+<style>
+    .modal-body-dif {
+        max-height: calc(50vh - 150px);
+        overflow-y: auto;
+    }
+</style> {% endblock %}
