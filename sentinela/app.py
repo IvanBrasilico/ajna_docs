@@ -13,8 +13,8 @@ Serve para a administração, pré-tratamento e visualização dos dados importa
 assim como para acompanhamento de registros de log e detecção de problemas nas
 conexões internas.
 
-Adicionalmente, permite o merge entre bases a aplicação de filtros /
-parâmetros de risco.
+Adicionalmente, permite o merge entre bases, navegação de bases, e
+a aplicação de filtros/parâmetros de risco.
 """
 import csv
 import datetime
@@ -491,7 +491,6 @@ def adiciona_filtro():
     filters = session.get('filters', [])
     tipo_filtro = request.args.get('filtro')
     valor = request.args.get('valor')
-    valor = sanitizar(valor, norm_function=unicode_sanitizar)
     afilter = Filtro(selected_field, tipo_filtro, valor)
     filters.append(afilter)
     session['filters'] = filters
@@ -519,7 +518,7 @@ def exclui_filtro():
                             filters=filters))
 
 
-@app.route('/')
+@app.route('/consulta_bases_executar')
 def consulta_bases_executar():
     selected_module = request.args.get('selected_module')
     selected_model = request.args.get('selected_model')
@@ -550,6 +549,30 @@ def consulta_bases_executar():
 @app.route('/arvore')
 def arvore():
     gerente = GerenteBase()
+    selected_module = request.args.get('selected_module')
+    selected_model = request.args.get('selected_model')
+    selected_field = request.args.get('selected_field')
+    instance_id = request.args.get('instance_id')
+    gerente.set_module(selected_module)
+    filters = []
+    afilter = Filtro(selected_field, None, instance_id)
+    filters.append(afilter)
+    q = gerente.filtra(selected_model, filters, return_query=True)
+    instance = q.first()
+    string_arvore = ''
+    print(instance)
+    pai = gerente.busca_paiarvore(instance)
+    print(pai)
+    if pai:
+        lista = gerente.recursive_tree(pai)
+        string_arvore = '\n'.join(lista)
+    return render_template('arvore.html',
+                           arvore=string_arvore)
+
+
+@app.route('/arvore_teste')
+def arvore_teste():
+    gerente = GerenteBase()
     gerente.set_module('carga', db='cargatest.db')
     filters = []
     afilter = Filtro('Escala', None, 'E-01')
@@ -558,9 +581,8 @@ def arvore():
     escala = q.first()
     string_arvore = ''
     if escala:
-        arvore = gerente.recursive_tree(escala)
-        for linha in arvore:
-            string_arvore += '{}\n'.format(linha)
+        lista = gerente.recursive_tree(escala)
+        string_arvore = '\n'.join(lista)
     return render_template('arvore.html',
                            arvore=string_arvore)
 
