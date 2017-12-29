@@ -160,6 +160,10 @@ class Manifesto(Base):
     def filhos(self):
         return [self.vazios]
 
+    @property
+    def pai(self):
+        return self.escalas[0]
+
 
 class ManifestoConhecimento(Base):
     """Cópia dados sobre manifesto e conhecimentos das extrações"""
@@ -462,11 +466,11 @@ class ContainerVazio(Base):
 
     @property
     def to_dict(self):
-        return OrderedDict({'Manifesto': self.Manifesto,
-                            'Container': self.Container,
-                            'NomeTipo': self.NomeTipo,
-                            'Capacidade': self.Capacidade,
-                            'Tara': self.Tara})
+        return OrderedDict([('Manifesto', self.Manifesto),
+                            ('Container', self.Container),
+                            ('NomeTipo', self.NomeTipo),
+                            ('Capacidade', self.Capacidade),
+                            ('Tara', self.Tara)])
 
     @property
     def to_list(self):
@@ -475,6 +479,10 @@ class ContainerVazio(Base):
                 self.NomeTipo,
                 self.Capacidade,
                 self.Tara]
+
+    @property
+    def pai(self):
+        return self.omanifesto
 
 
 def recursive_view(session, numero_escala):

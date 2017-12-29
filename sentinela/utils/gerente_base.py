@@ -45,8 +45,7 @@ class GerenteBase:
         classes = inspect.getmembers(module, inspect.isclass)
         self.dict_models = defaultdict(dict)
         for i, classe in classes:
-            # print(classe.__name__)
-            if classe.__name__:
+            if classe.__module__.find('sentinela.models') != -1:
                 campos = [i for i in classe.__dict__.keys() if i[:1] != '_']
                 self.dict_models[classe.__name__]['campos'] = sorted(campos)
         SessionClass = getattr(module, 'MySession')
@@ -62,12 +61,20 @@ class GerenteBase:
         module = importlib.import_module(self.module_path)
         aclass = getattr(module, base)
         q = self.dbsession.query(aclass)
+        print('filters ', filters)
         for afilter in filters:
             afield = getattr(aclass, afilter.field)
-            q.filter(afield == afilter.valor)
+            print('field', afield)
+            print('valor', afilter.valor)
+            q = q.filter(afield == afilter.valor)
         if return_query:
             return q
-        result = [row.to_list for row in q.all()]
+        onerow = q.first()
+        result = []
+        if onerow:
+            result.append([key for key in onerow.to_dict.keys()])
+            result_list = [row.to_list for row in q.all()]
+            result.extend(result_list)
         return result
 
     @property

@@ -1,31 +1,4 @@
 {% extends "layout.html" %} {% block content %}
-<!--- http://odyniec.net/articles/turning-lists-into-trees/ -->
-<style>
-    ul.tree,
-    ul.tree ul {
-        list-style-type: none;
-        background: url(vline.png) repeat-y;
-        margin: 0;
-        padding: 0;
-    }
-
-    ul.tree ul {
-        margin-left: 10px;
-    }
-
-    ul.tree li {
-        margin: 0;
-        padding: 0 12px;
-        line-height: 20px;
-        background: url(node.png) no-repeat;
-        color: #369;
-        font-weight: bold;
-    }
-
-    ul.tree li.last {
-        background: #fff url(lastnode.png) no-repeat;
-    }
-</style>
 <div id="main" class="container-fluid">
     <div id="top" class="row">
         <h4>
@@ -103,7 +76,7 @@
             </table>
             <table class="inlineTable table table-striped table-bordered table-hover table-responsive" id="dados">
                 {% if dados %} {% for row in dados %}
-                <tr>
+                <tr onclick="abre_arvore({{row[0]}})">
                     {% for col in row %}
                     <td>{{col}}</td>
                     {% endfor %}
@@ -164,6 +137,12 @@
             '&selected_field=' + $("#field").val()
         )
     }
-
-
+    function abre_arvore(instance_id) {
+        window.location.assign('/arvore' +
+            '?selected_module=' + $("#module").val() +
+            '&selected_model=' + $("#model").val() +
+            '&selected_field=' + $('#dados').find('tr:first').find('td:first').text() +
+            '&instance_id=' + instance_id
+        )
+    };
 </script> {% endblock %}
