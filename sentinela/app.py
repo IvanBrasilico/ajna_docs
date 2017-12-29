@@ -258,7 +258,7 @@ def risco():
     opadrao = dbsession.query(PadraoRisco).filter(
         PadraoRisco.id == padraoid).first()
     base_csv = os.path.join(CSV_FOLDER, baseid, path)
-    gerente.set_base(opadrao)
+    gerente.set_padraorisco(opadrao)
     avisao = dbsession.query(Visao).filter(
         Visao.id == visaoid).first()
     lista_risco = gerente.aplica_juncao(avisao, path=base_csv, filtrar=True,
