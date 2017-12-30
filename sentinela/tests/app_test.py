@@ -152,6 +152,26 @@ class FlaskTestCase(unittest.TestCase):
         data = self.data(rv)
         assert b'Redirecting...' in data
 
+    def test_editarisco(self):
+        if self.http_server is not None:
+            rv = self.app.get('/edita_risco?padraoid=1&riscoid=1',
+                              params=dict(csrf_token=self.csrf_token))
+        else:
+            rv = self.app.get('/edita_risco?padraoid=1&riscoid=1')
+        data = self.data(rv)
+        print(data)
+        assert b'AJNA' in data
+
+    def test_editadepara(self):
+        if self.http_server is not None:
+            rv = self.app.get('/edita_depara?baseid=2',
+                              params=dict(csrf_token=self.csrf_token))
+        else:
+            rv = self.app.get('/edita_depara?baseid=2')
+        data = self.data(rv)
+        print(data)
+        assert b'AJNA' in data
+
     """
     def test_valores(self):
         # valores = [1, 2, 3]
