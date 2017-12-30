@@ -61,11 +61,11 @@ class GerenteBase:
         module = importlib.import_module(self.module_path)
         aclass = getattr(module, base)
         q = self.dbsession.query(aclass)
-        print('filters ', filters)
+        # print('filters ', filters)
         for afilter in filters:
             afield = getattr(aclass, afilter.field)
-            print('field', afield)
-            print('valor', afilter.valor)
+            # print('field', afield)
+            # print('valor', afilter.valor)
             q = q.filter(afield == afilter.valor)
         if return_query:
             return q
@@ -89,19 +89,38 @@ class GerenteBase:
                  if filename.find('.py') != -1]
         return sorted(lista)
 
-    def busca_paiarvore(self, ainstance):
+    def get_paiarvore(self, ainstance):
+        """Recursivamente retorna o pai da instância de objecto,
+        até chegar ao 'pai de todos/pai da árvore'
+        """
         try:
             if ainstance.pai:
-                return self.busca_paiarvore(ainstance.pai)
+                return self.get_paiarvore(ainstance.pai)
         except AttributeError:
             pass
         return ainstance
 
-    def recursive_tree(self, ainstance, recursive=True):
+    def recursive_tree(self, ainstance, recursive=True, child=None):
+        """
+        Recursivamente percorre "filhos" da instância, montando uma árvore HTML
+        Args:
+            ainstance: Object that is first Node of Tree
+            recursive: If True, just list direct children,
+            to expand if neeeded
+            child: If previously used get_paiarvore, child is the original
+            instance. Just to bold it.
+        """
         result = []
         result.append('<ul class="tree">')
-        result.append('<li>' + type(ainstance).__name__ + '</li><ul>')
-        lista = ['<li>' + str(key) + ': ' + str(value) + '</li>'
+        b = ''
+        _b = ''
+        if child:  # make bold
+            if (child.id == ainstance.id and
+                    type(child).__name__ == type(ainstance).__name__):
+                b = '<b>'
+                _b = '</b>'
+        result.append('<li>' + b + type(ainstance).__name__ + _b + '</li><ul>')
+        lista = ['<li>' + b + str(key) + ': ' + str(value) + _b + '</li>'
                  for key, value in ainstance.to_dict.items()]
         result.extend(lista)
         filhos = getattr(ainstance, 'filhos', None)
@@ -111,12 +130,12 @@ class GerenteBase:
                     if isinstance(arvore_filho, list):
                         for filho in arvore_filho:
                             result.extend(
-                                self.recursive_tree(filho)
+                                self.recursive_tree(filho, child=child)
                             )
                             result.append('</ul>')
                     else:
                         result.extend(
-                            self.recursive_tree(arvore_filho)
+                            self.recursive_tree(arvore_filho, child=child)
                         )
                         result.append('</ul>')
                 else:
@@ -129,7 +148,7 @@ class GerenteBase:
                     else:
                         result.append('<li><a href="#" id="' +
                                       arvore_filho.id +
-                                      '">' + type(filho).__name__ +
+                                      '">' + type(arvore_filho).__name__ +
                                       '</a></li>')
                     result.append('</ul>')
 
