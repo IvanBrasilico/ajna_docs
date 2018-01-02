@@ -175,10 +175,11 @@ class FlaskTestCase(unittest.TestCase):
 
     def test_adicionaparametro(self):
         if self.http_server is not None:
-            rv = self.app.get('/adiciona_parametro?padraoid=1&risco_novo=tests',
-                              params=dict(csrf_token=self.csrf_token))
+            rv = self.app.get('/adiciona_parametro?padraoid=1&risco_novo=\
+                              tests', params=dict(csrf_token=self.csrf_token))
         else:
-            rv = self.app.get('/adiciona_parametro?padraoid=1&risco_novo=tests')
+            rv = self.app.get('/adiciona_parametro?padraoid=1&\
+                              risco_novo=tests')
         data = self.data(rv)
         print(data)
         assert b'Redirecting...' in data
@@ -186,25 +187,29 @@ class FlaskTestCase(unittest.TestCase):
     def _paramid(self, nome):
         parametro = app.dbsession.query(app.ParametroRisco).filter(
             app.ParametroRisco.nome_campo == nome).first()
-        return parametro.id    
-    
+        return parametro.id
+
     def test_excluiparametro(self):
         param = self._paramid('tests')
         if self.http_server is not None:
-            rv = self.app.get('/exclui_parametro?padraoid=1&riscoid=' + str(param),
+            rv = self.app.get('/exclui_parametro?padraoid=1&riscoid=' +
+                              str(param),
                               params=dict(csrf_token=self.csrf_token))
         else:
-            rv = self.app.get('/exclui_parametro?padraoid=1&riscoid=' + str(param))
+            rv = self.app.get('/exclui_parametro?padraoid=1&riscoid=' +
+                              str(param))
         data = self.data(rv)
         print(data)
         assert b'Redirecting...' in data
 
     def test_adicionavalor(self):
         if self.http_server is not None:
-            rv = self.app.get('/adiciona_valor?padraoid=1&novo_valor=tests_valor&filtro=igual&riscoid=22',
+            rv = self.app.get('/adiciona_valor?padraoid=1&novo_valor=\
+                              tests_valor&filtro=igual&riscoid=22',
                               params=dict(csrf_token=self.csrf_token))
         else:
-            rv = self.app.get('/adiciona_valor?padraoid=1&novo_valor=tests_valor&filtro=igual&riscoid=22')
+            rv = self.app.get('/adiciona_valor?padraoid=1&novo_valor=\
+                              tests_valor&filtro=igual&riscoid=22')
         data = self.data(rv)
         print(data)
         assert b'Redirecting...' in data
@@ -217,10 +222,12 @@ class FlaskTestCase(unittest.TestCase):
     def test_excluivalor(self):
         valor = self._valorid('tests_valor')
         if self.http_server is not None:
-            rv = self.app.get('/exclui_valor?padraoid=1&riscoid=22&valorid=' + str(valor),
+            rv = self.app.get('/exclui_valor?padraoid=1&riscoid=22&valorid=' +
+                              str(valor),
                               params=dict(csrf_token=self.csrf_token))
         else:
-            rv = self.app.get('/exclui_valor?padraoid=1&riscoid=22&valorid=' + str(valor))
+            rv = self.app.get('/exclui_valor?padraoid=1&riscoid=22&valorid=' +
+                              str(valor))
         data = self.data(rv)
         assert b'Redirecting...' in data
 
@@ -236,10 +243,12 @@ class FlaskTestCase(unittest.TestCase):
 
     def test_adicionadepara(self):
         if self.http_server is not None:
-            rv = self.app.get('/adiciona_depara?baseid=3&antigo=tests_antigo&novo=tests_novo',
+            rv = self.app.get('/adiciona_depara?baseid=3&antigo=\
+                              tests_antigo&novo=tests_novo',
                               params=dict(csrf_token=self.csrf_token))
         else:
-            rv = self.app.get('/adiciona_depara?baseid=3&antigo=tests_antigo&novo=tests_novo')
+            rv = self.app.get('/adiciona_depara?baseid=3&antigo=\
+                              tests_antigo&novo=tests_novo')
         data = self.data(rv)
         print(data)
         assert b'Redirecting...' in data
@@ -252,13 +261,16 @@ class FlaskTestCase(unittest.TestCase):
     def test_excluidepara(self):
         depara = self._deparaid('tests_antigo')
         if self.http_server is not None:
-            rv = self.app.get('/exclui_depara?baseid=3&tituloid=' + str(depara),
+            rv = self.app.get('/exclui_depara?baseid=3&tituloid=' +
+                              str(depara),
                               params=dict(csrf_token=self.csrf_token))
         else:
-            rv = self.app.get('/exclui_depara?baseid=3&tituloid=' + str(depara))
+            rv = self.app.get('/exclui_depara?baseid=3&tituloid=' +
+                              str(depara))
         data = self.data(rv)
         print(data)
         assert b'Redirecting...' in data
+
 
 """
     def test_risco2(self):
