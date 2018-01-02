@@ -89,7 +89,7 @@ class FlaskTestCase(unittest.TestCase):
         data = self.data(rv)
         assert b'="file"' in data
         rv = self._post(
-            '/upload_file', data={'file': ''}, follow_redirects=False)
+            '/upload_file', data={'': ''}, follow_redirects=False)
         self.assertTrue(rv.status_code == 302)
         data2 = self.data(rv)
         assert b'Redirecting..' in data2
@@ -108,16 +108,19 @@ class FlaskTestCase(unittest.TestCase):
             rv = self.app.get('/importa',
                               params=dict(csrf_token=self.csrf_token))
         else:
-            rv = self.app.get('/importa')
+            rv = self.app.get('/importa?base=1&filename=file')
         data = self.data(rv)
         assert b'Redirecting...' in data
 
     def test_risco(self):
         if self.http_server is not None:
-            rv = self.app.get('/risco?base=1',
+            rv = self.app.get('/risco?baseid=1&padraoid=1&visaoid=2&\
+            filename=2017/1130&parametros_ativos=nov',
                               params=dict(csrf_token=self.csrf_token))
         else:
-            rv = self.app.get('/risco?base=1')
+            rv = self.app.get(
+                '/risco?baseid=1&padraoid=1&visaoid=2&\
+                filename=2017/1130&parametros_ativos=nov')
         data = self.data(rv)
         # dt = rv.get_data(as_text=True)
         assert b'Lista de Riscos' in data
@@ -172,18 +175,8 @@ class FlaskTestCase(unittest.TestCase):
         print(data)
         assert b'AJNA' in data
 
-    """
-    def test_valores(self):
-        # valores = [1, 2, 3]
-        rv = self.app.get('/valores_parametro/{valores}')
-        data = self.data(rv)
-        # dt = rv.get_data(as_text=True)
-        assert b'Lista de Valores' in data
-    """
-
 
 """
-
     def test_risco2(self):
         rv = self.app.get('/edita_risco?padraoid=1')
         data = self.data(rv)
