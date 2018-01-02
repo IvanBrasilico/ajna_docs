@@ -428,6 +428,7 @@ def exclui_valor():
     padraoid = request.args.get('padraoid')
     riscoid = request.args.get('riscoid')
     valorid = request.args.get('valorid')
+    print(valorid)
     dbsession.query(ValorParametro).filter(
         ValorParametro.id == valorid).delete()
     dbsession.commit()
