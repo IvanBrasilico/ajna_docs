@@ -155,6 +155,7 @@
                 </div>
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="btn_all">Selecionar tudo</button>
                 <button type="button" class="btn btn-primary" id="btn_sel">Adicionar Selecionados</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
@@ -230,33 +231,21 @@
             source: lista
         });
     });
-
-
-
-    function selectAll() {
-        var x = document.getElementById("chkitens");
-        x.checked = true;
-    }
-    /*
-        $(function () {
-            
     
-            var table = $('#lista_parametros');
-    
-            table.find('tr').each(function (indice) {
-                $(this).find('td').each(function (indice) {
-                    //faz o que você quiser aqui
-                    adicionar[adicionar.length] = $(this).text()
-                });
-            });
-            alert(adicionar)
-        });
-    */
     $(function () {
         var adicionar = []
         $('#lista_parametros td:first-child').click(function () {
             adicionar[adicionar.length] = $(this).text()
             $(this).addClass('row-clicked')
+        });
+        $('#lista_parametros td:first-child').dblclick(function () {
+            $(this).removeClass('row-clicked')
+            var removeItem = $(this).text();
+
+            adicionar = jQuery.grep(adicionar, function (value) {
+                return value != removeItem;
+            });
+            alert(adicionar)
         });
         $('#btn_sel').click(function () {
             if (adicionar != '') {
@@ -264,9 +253,12 @@
                     '&lista=' + $(adicionar).toArray()
                 )
             }
-            /*$('#lista_parametros td:first-child').each(function () {
-                $(this).removeClass('row-clicked')
-            });*/
+        });
+        $('#btn_all').click(function () {
+            $('#lista_parametros td:first-child').each(function () {
+                $(this).addClass('row-clicked')
+                adicionar[adicionar.length] = $(this).text()
+            });
         });
     });
 
