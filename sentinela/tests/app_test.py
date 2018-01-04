@@ -288,19 +288,6 @@ class FlaskTestCase(unittest.TestCase):
         data = self.data(rv)
         assert b'AJNA' in data
 
-    def test_arvore(self):
-        if self.http_server is not None:
-            rv = self.app.get('/arvore_teste?\
-                              selected_module=carga&selected_model=Escala&\
-                              selected_field=Escala&instance_id=E-01',
-                              params=dict(csrf_token=self.csrf_token))
-        else:
-            rv = self.app.get('/arvore_teste?\
-                              selected_module=carga&selected_model=Escala&\
-                              selected_field=Escala&instance_id=E-01')
-        data = self.data(rv)
-        assert b'AJNA' in data
-
     def test_arvoreteste(self):
         if self.http_server is not None:
             rv = self.app.get('/arvore_teste',
@@ -312,6 +299,15 @@ class FlaskTestCase(unittest.TestCase):
 
 
 """
+    def test_arvore(self):
+        if self.http_server is not None:
+            rv = self.app.get('/arvore?selected_module=carga&selected_model=Escala&selected_field=Escala&instance_id=E-01',
+                              params=dict(csrf_token=self.csrf_token))
+        else:
+            rv = self.app.get('/arvore?selected_module=carga&selected_model=Escala&selected_field=Escala&instance_id=E-01')
+        data = self.data(rv)
+        assert b'AJNA' in data
+
     def test_risco2(self):
         rv = self.app.get('/edita_risco?padraoid=1')
         data = self.data(rv)

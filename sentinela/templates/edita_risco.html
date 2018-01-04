@@ -1,4 +1,4 @@
-{% extends "layout.html" %} {% block content %}
+{% extends "layout.html" %} {% block content %}{{super()}}
 <div id="main" class="container-fluid">
     <div id="top" class="row">
         <h4>
@@ -98,9 +98,9 @@
             </table>
         </div>
         {% endif %}
-        <div id="bottom" class="row">
-            AJNA - Receita Federal do Brasil 2017
-        </div>
+    </div>
+    <div id="bottom" class="row">
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;AJNA - Receita Federal do Brasil 2017</p>
     </div>
 </div>
 <div class="modal fade" id="importa_csv" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
@@ -139,8 +139,7 @@
             <div class="modal-body modal-body-dif">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
                 <div class="table-responsive col-md-12">
-                    <table class="inlineTable table table-striped table-bordered table-hover table-condensed table-responsive" id="lista_parametros"
-                        align="center">
+                    <table class="inlineTable table table-bordered table-hover table-condensed table-responsive" id="lista_parametros" align="center">
                         {% for item in lista_autocomplete %}
                         <tr align="center">
                             <td align="center">{{item}}</td>
@@ -231,9 +230,10 @@
             source: lista
         });
     });
-    
+
     $(function () {
         var adicionar = []
+        var lista = []
         $('#lista_parametros td:first-child').click(function () {
             adicionar[adicionar.length] = $(this).text()
             $(this).addClass('row-clicked')
@@ -241,11 +241,9 @@
         $('#lista_parametros td:first-child').dblclick(function () {
             $(this).removeClass('row-clicked')
             var removeItem = $(this).text();
-
             adicionar = jQuery.grep(adicionar, function (value) {
                 return value != removeItem;
             });
-            alert(adicionar)
         });
         $('#btn_sel').click(function () {
             if (adicionar != '') {
@@ -254,7 +252,7 @@
                 )
             }
         });
-        $('#btn_all').click(function () {
+        $('#btn_all').one('click', function () {
             $('#lista_parametros td:first-child').each(function () {
                 $(this).addClass('row-clicked')
                 adicionar[adicionar.length] = $(this).text()
@@ -271,5 +269,10 @@
     .modal-body-dif {
         max-height: calc(80vh - 150px);
         overflow-y: auto;
+    }
+
+    .body {
+        color: #E7E7E7;
+        background-color: #036;
     }
 </style> {% endblock %}

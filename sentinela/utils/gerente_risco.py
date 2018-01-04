@@ -10,6 +10,7 @@ import pandas as pd
 from sentinela.conf import ENCODE, tmpdir
 from sentinela.models.models import (Filtro, PadraoRisco, ParametroRisco,
                                      ValorParametro)
+from sentinela.utils.csv_handlers import (ascii_sanitizar, sanitizar, unicode_sanitizar)
 
 
 def equality(listaoriginal, nomecampo, listavalores):
@@ -333,8 +334,9 @@ class GerenteRisco():
                 cabecalho = next(reader)
                 cabecalhos.extend(cabecalho)
         for word in cabecalhos:
-            if word not in cabecalhos_nao_repetidos:
-                cabecalhos_nao_repetidos.append(word)
+            new_word = sanitizar(word, norm_function=unicode_sanitizar)
+            if new_word not in cabecalhos_nao_repetidos:
+                cabecalhos_nao_repetidos.append(new_word)
         return cabecalhos_nao_repetidos
 
     def aplica_juncao(self, visao, path=tmpdir, filtrar=False,
