@@ -18,9 +18,11 @@ a aplicação de filtros/parâmetros de risco.
 """
 import csv
 import datetime
+import dominate
 import logging
 import os
 from urllib.parse import urljoin, urlparse
+from dominate.tags import img
 
 from flask import (Flask, abort, flash, redirect, render_template, request,
                    session, url_for)
@@ -55,6 +57,8 @@ app = Flask(__name__, static_url_path='/static')
 csrf = CSRFProtect(app)
 Bootstrap(app)
 nav = Nav()
+logo = img(src='/static/css/images/logo.png')
+
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
@@ -573,6 +577,7 @@ def arvore():
     selected_model = request.args.get('selected_model')
     selected_field = request.args.get('selected_field')
     instance_id = request.args.get('instance_id')
+    print(selected_module)
     gerente.set_module(selected_module)
     filters = []
     afilter = Filtro(selected_field, None, instance_id)
@@ -617,8 +622,7 @@ def mynavbar():
              View('Navega Bases', 'navega_bases')]
     if current_user.is_authenticated:
         items.append(View('Sair', 'logout'))
-    return Navbar(
-        'AJNA - Módulo Sentinela', *items)
+    return Navbar(logo, *items)
 
 
 nav.init_app(app)

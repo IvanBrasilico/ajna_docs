@@ -7,11 +7,15 @@ AJNA - Visão computacional e Aprendizado de máquina na vigilância aduaneira
 <link href="/static/css/jquery-ui.min.css" rel="stylesheet"> 
 {% endblock %} 
 
-{% block navbar %} 
-{{nav.mynavbar.render()}} 
+{% block navbar %}
+{{nav.mynavbar.render()}}
 <style>
-    .navbar{
-        background-color: #003366
+    .navbar-brand{
+        height: 62px;
     }
 </style>
+{% endblock %}
+
+{% block content %} {{super()}}
+<link href="/static/css/bootstrap.min.css" rel="stylesheet">
 {% endblock %}
