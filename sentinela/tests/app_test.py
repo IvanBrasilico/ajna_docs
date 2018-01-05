@@ -301,10 +301,14 @@ class FlaskTestCase(unittest.TestCase):
 """
     def test_arvore(self):
         if self.http_server is not None:
-            rv = self.app.get('/arvore?selected_module=carga&selected_model=Escala&selected_field=Escala&instance_id=E-01',
+            rv = self.app.get('/arvore?\
+                              selected_module=carga&selected_model=Escala&\
+                              selected_field=Escala&instance_id=E-01',
                               params=dict(csrf_token=self.csrf_token))
         else:
-            rv = self.app.get('/arvore?selected_module=carga&selected_model=Escala&selected_field=Escala&instance_id=E-01')
+            rv = self.app.get('/arvore?\
+                              selected_module=carga&selected_model=Escala&\
+                              selected_field=Escala&instance_id=E-01')
         data = self.data(rv)
         assert b'AJNA' in data
 
