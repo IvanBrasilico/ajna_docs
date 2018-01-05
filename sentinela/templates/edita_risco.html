@@ -1,18 +1,28 @@
 {% extends "layout.html" %} {% block content %}{{super()}}
 <div id="main" class="container-fluid">
     <div id="top" class="row">
-        <h4>
-            <big>
-                <b>Escolha o Padrão de Risco a editar:</b>
-            </big>
-            <select name="padrao" id="padrao">
-                <option value="0">Selecionar</option>
-                {% for padrao in padroes %}
-                <option value="{{ padrao.id }}" {% if padrao.id|int()==padraoid|int() %} selected="selected" {% endif %}>{{ padrao.nome }}
-                </option>
-                {% endfor %}
-            </select>
-        </h4>
+        <div class="container-fluid">
+            <div class="col-sm-4">
+                <h4>
+                    <label for="padrao">
+                        <big>
+                            <b>Escolha o Padrão de Risco a editar:</b>
+                        </big>
+                    </label>
+                </h4>
+            </div>
+            <div class="col-sm-2">
+                <h4>
+                    <select class="form-control" name="padrao" id="padrao">
+                        <option value="0">Selecione...</option>
+                        {% for padrao in padroes %}
+                        <option value="{{ padrao.id }}" {% if padrao.id|int()==padraoid|int() %} selected="selected" {% endif %}>{{ padrao.nome }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </h4>
+            </div>
+        </div>
     </div>
     <div class="row">
         <div class="col-sm-6">
@@ -23,7 +33,7 @@
                     <div class="form-group">
                         <div class="form-group col-sm-9">
                             <div class="input-group">
-                                <input class="form-control ui-autocomplete-input" autocomplete="off" id="parametro_risco" type="text">
+                                <input class="form-control ui-autocomplete-input" autocomplete="off" id="parametro_risco" type="text" placeholder="Parâmetro">
                                 <div class="input-group-btn">
                                     <button type="button" class="btn btn-default" aria-haspopup="true" aria-expanded="false" data-toggle="modal" data-target="#itensmodal"
                                         title="Show All Items">
@@ -37,17 +47,19 @@
                         <button onclick="adicionar_parametro()" id="btn_ok" type="button" class="btn btn-default">OK</button>
                     </div>
                 </form>
-                <table class="inlineTable table table-bordered table-hover table-responsive" cellspacing="0" cellpadding="0" id="parametros">
-                    {% for parametro in parametros %}
-                    <tr id="{{ parametro.id }}" {% if parametro.id|int()==riscoid|int() %} class="row-clicked" {% endif %}>
-                        <td id="{{ parametro.id }}" align="center">{{parametro.nome_campo}}</td>
-                        <td align="center">
-                            <input type="button" class="btn  btn-danger" value="x" onclick="exclui_parametro({{ parametro.id }})" />
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </table>
-                {% endif %}
+                <div class="table">
+                    <table class="inlineTable table table-bordered table-hover table-responsive" cellspacing="0" cellpadding="0" id="parametros">
+                        {% for parametro in parametros %}
+                        <tr id="{{ parametro.id }}" {% if parametro.id|int()==riscoid|int() %} class="row-clicked" {% endif %}>
+                            <td id="{{ parametro.id }}" align="center">{{parametro.nome_campo}}</td>
+                            <td align="center">
+                                <input type="button" class="btn  btn-danger" value="x" onclick="exclui_parametro({{ parametro.id }})" />
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    {% endif %}
+                </div>
             </div>
         </div>
         {% if parametros %}
@@ -66,11 +78,11 @@
                 </div>
 
                 <div class="form-group col-sm-4">
-                    <input id="valor" class="form-control" type="text">
+                    <input id="valor" class="form-control" type="text" placeholder="Valor do parâmetro">
                 </div>
                 <div class="form-group col-sm-4">
-                    <select name="filtro" id="tipofiltro">
-                        <option value="0">Selecionar</option>
+                    <select class="form-control" name="filtro" id="tipofiltro">
+                        <option value="0">Selecione...</option>
                         <option value="igual">Filtro.igual</option>
                         <option value="comeca_com">Filtro.comeca_com</option>
                         <option value="contem">Filtro.contem</option>
@@ -81,21 +93,23 @@
                 </div>
             </form>
             {% endif %}
-            <table class="inlineTable table table-striped table-bordered table-hover table-responsive" id="riscos">
-                {% for valor in valores %}
-                <tr>
-                    <td>{{valor.valor}}</td>
-                    <td>{{valor.tipo_filtro}}</td>
-                    <td align="center">
-                        <input type="button" class="btn  btn-danger" value="x" onclick="excluir_valor({{ valor.id }})" />
-                    </td>
-                </tr>
-                {% endfor %} {% if not valores %}
-                <tr>
-                    <td>Sem resultados.</td>
-                </tr>
-                {% endif %}
-            </table>
+            <div class="table">
+                <table class="inlineTable table table-bordered table-hover table-responsive" id="riscos">
+                    {% for valor in valores %}
+                    <tr>
+                        <td>{{valor.valor}}</td>
+                        <td>{{valor.tipo_filtro}}</td>
+                        <td align="center">
+                            <input type="button" class="btn  btn-danger" value="x" onclick="excluir_valor({{ valor.id }})" />
+                        </td>
+                    </tr>
+                    {% endfor %} {% if not valores %}
+                    <tr>
+                        <td>Sem resultados.</td>
+                    </tr>
+                    {% endif %}
+                </table>
+            </div>
         </div>
         {% endif %}
     </div>
@@ -263,7 +277,7 @@
 </script>
 <style>
     .row-clicked {
-        background-color: rgb(38, 132, 226);
+        background-color: rgba(207, 207, 207, 0.692);
     }
 
     .modal-body-dif {

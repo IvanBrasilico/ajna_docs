@@ -10,7 +10,7 @@ import pandas as pd
 from sentinela.conf import ENCODE, tmpdir
 from sentinela.models.models import (Filtro, PadraoRisco, ParametroRisco,
                                      ValorParametro)
-from sentinela.utils.csv_handlers import (ascii_sanitizar, sanitizar, unicode_sanitizar)
+from sentinela.utils.csv_handlers import sanitizar, unicode_sanitizar
 
 
 def equality(listaoriginal, nomecampo, listavalores):

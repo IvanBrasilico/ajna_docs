@@ -18,12 +18,11 @@ a aplicação de filtros/parâmetros de risco.
 """
 import csv
 import datetime
-import dominate
 import logging
 import os
 from urllib.parse import urljoin, urlparse
-from dominate.tags import img
 
+from dominate.tags import img
 from flask import (Flask, abort, flash, redirect, render_template, request,
                    session, url_for)
 from flask_bootstrap import Bootstrap
