@@ -48,18 +48,15 @@
             </h4>
             <h4>Parâmetros ativos</h4>
             <div class="table">
-                <table class="table table-striped table-bordered table-hover table-condensed table-responsive" cellspacing="0" cellpadding="0">
+                <table class="table table-striped table-bordered table-hover table-condensed table-responsive" cellspacing="0" cellpadding="0" id="pd_risco">
                     {% for parametro in parametros %}
-                    <tr>
-                        <td>{{parametro.nome_campo}}</td>
+                    <tr id="{{ parametro.id }}">
+                        <td id="{{ parametro.id }}">{{parametro.nome_campo}}</td>
                         <td align="center">
                             {% if parametros_ativos %}
                             <input type="checkbox" name="parametro" value="{{parametro.nome_campo}}" {% if parametro.nome_campo in parametros_ativos
                                 %} checked {% endif %}> {% else %}
                             <input type="checkbox" name="parametro" value="{{parametro.nome_campo}}" checked> {% endif %}
-                        </td>
-                        <td align="center">
-                            <input type="button" class="btn  btn-default" value="Ver Valores" onclick="mostra_valores({{ parametro.id }})" />
                         </td>
                     </tr>
                     {% endfor %}{% if not parametros %}
@@ -83,7 +80,7 @@
     </h4>
     </div>
     <div id="list" class="row">
-        <div class="table-responsive col-md-12">
+        <div class="table-responsive col-sm-12">
             <h4>Lista de Riscos da Base {{filename}}</h4>
             {% if csv_salvo %}
             <big>
@@ -174,6 +171,10 @@
             '&parametroid=' + parametroid
         )
     }
+    $('#pd_risco td:first-child').click(function () {
+        var id_risco = $(this).attr('id')
+        mostra_valores(id_risco)
+    })
     $(document).ready(function () {
         $('#valoresmodal').modal();
     })
