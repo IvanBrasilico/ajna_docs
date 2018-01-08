@@ -163,7 +163,7 @@ class FlaskTestCase(unittest.TestCase):
         data = self.data(rv)
         assert b'Redirecting...' in data
 
-    def test_editarisco(self):
+    """def test_editarisco(self):
         if self.http_server is not None:
             rv = self.app.get('/edita_risco?padraoid=1&riscoid=1',
                               params=dict(csrf_token=self.csrf_token))
@@ -171,7 +171,7 @@ class FlaskTestCase(unittest.TestCase):
             rv = self.app.get('/edita_risco?padraoid=1&riscoid=1')
         data = self.data(rv)
         print(data)
-        assert b'AJNA' in data
+        assert b'AJNA' in data"""
 
     def test_adicionaparametro(self):
         if self.http_server is not None:
