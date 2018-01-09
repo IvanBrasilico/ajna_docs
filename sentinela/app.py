@@ -614,22 +614,16 @@ def arvore_teste():
 @app.route('/juncoes')
 def juncoes():
     visaoid = request.args.get('visaoid')
-    tabelaid = request.args.get('tabelaid')
     visoes = dbsession.query(Visao).order_by(Visao.nome).all()
     tabelas = []
     colunas = []
     if visaoid:
-        visao = dbsession.query(Visao).filter(
-            Visao.id == visaoid
-        ).first()
         tabelas = dbsession.query(Tabela).filter(
-            Tabela.visao_id == visaoid 
+            Tabela.visao_id == visaoid
         ).all()
         colunas = dbsession.query(Coluna).filter(
             Coluna.visao_id == visaoid
         ).all()
-        if visao:
-            gerente = GerenteRisco()
     return render_template('gerencia_juncoes.html',
                            visaoid=visaoid,
                            visoes=visoes,
@@ -644,13 +638,11 @@ def adiciona_visao():
     visao.nome = visao_novo
     dbsession.add(visao)
     dbsession.commit()
-    visoes = dbsession.query(Visao).order_by(Visao.nome).all()
     visao = dbsession.query(Visao).filter(
-            Visao.nome == visao_novo 
-        ).first()
-    return render_template('gerencia_juncoes.html',
-                           visaoid=visao.id,
-                           visoes=visoes)
+        Visao.nome == visao_novo
+    ).first()
+    return redirect(url_for('juncoes',
+                    visaoid=visao.id))
 
 
 @app.route('/exclui_visao')
@@ -658,9 +650,34 @@ def exclui_visao():
     visaoid = request.args.get('visaoid')
     dbsession.query(Visao).filter(
         Visao.id == visaoid).delete()
+    dbsession.query(Coluna).filter(
+        Coluna.visao_id == visaoid).delete()
     dbsession.commit()
     return redirect(url_for('juncoes'))
-    
+
+
+@app.route('/adiciona_coluna')
+def adiciona_coluna():
+    visaoid = request.args.get('visaoid')
+    col_nova = request.args.get('col_nova')
+    coluna = Coluna(col_nova)
+    coluna.nome = col_nova
+    coluna.visao_id = visaoid
+    dbsession.add(coluna)
+    dbsession.commit()
+    return redirect(url_for('juncoes', visaoid=visaoid))
+
+
+@app.route('/exclui_coluna')
+def exclui_coluna():
+    visaoid = request.args.get('visaoid')
+    colunaid = request.args.get('colunaid')
+    dbsession.query(Coluna).filter(
+        Coluna.id == colunaid).delete()
+    dbsession.commit()
+    return redirect(url_for('juncoes',
+                    visaoid=visaoid))
+
 
 @nav.navigation()
 def mynavbar():
