@@ -9,7 +9,7 @@ import inspect
 import os
 from collections import defaultdict
 
-from sentinela.conf import APP_PATH, CSV_FOLDER
+from sentinela.conf import APP_PATH, CSV_FOLDER, CSV_FOLDER_TEST
 
 PATH_MODULOS = os.path.join(APP_PATH, 'models')
 
@@ -25,9 +25,11 @@ class GerenteBase:
     """Métodos para padronizar a manipulação de bases de dados
      no modelo do sistema sentinela"""
 
-    def set_path(self, path):
+    def set_path(self, path, test=False):
         """Lê a estrutura de 'tabelas' de uma pasta de csvs importados"""
         PATH_BASE = os.path.join(CSV_FOLDER, path)
+        if test:
+            PATH_BASE = os.path.join(CSV_FOLDER_TEST, path)
         files = sorted(os.listdir(PATH_BASE))
         self.dict_models = defaultdict(dict)
         for file in files:

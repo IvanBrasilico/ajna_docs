@@ -11,6 +11,8 @@ from sentinela.models.carga import (AtracDesatracEscala, Base, ContainerVazio,
                                     MySession)
 from sentinela.utils.gerente_base import Filtro, GerenteBase
 
+CSV_FOLDER_TEST = 'sentinela/tests/CSV'
+
 
 class TestModel(unittest.TestCase):
     def setUp(self):
@@ -35,9 +37,8 @@ class TestModel(unittest.TestCase):
 
     def test_lista_dir(self):
         # TODO: criar arquivo de testes
-        # self.gerente.set_path('1/2017/1221')
-        # self._escala(self.gerente.dict_models)
-        pass
+        self.gerente.set_path('1\\2017\\0329', test=True)
+        self._escala(self.gerente.dict_models)
 
     def test_filtra(self):
         self.gerente.set_module('carga')
@@ -58,6 +59,14 @@ class TestModel(unittest.TestCase):
                 for linha in lista:
                     html.write('{}\n'.format(linha))
         assert '<ul' in lista[0]
+
+    def test_buscapai(self):
+        escala = self.dbsession.query(Escala).filter(
+            Escala.Escala == 'E-1').first()
+        if escala:
+            instance = self.gerente.busca_paiarvore(escala)
+            print(instance)
+        assert instance is not None
 
 
 if __name__ == '__main__':

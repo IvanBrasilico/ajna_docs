@@ -198,20 +198,6 @@ def importa():
     return redirect(url_for('list_files', erro=erro))
 
 
-"""
-@login_required
-@app.route('/valores_parametro/<parametro_id>')
-def valores_parametro(parametro_id):
-    valores = []
-    paramrisco = dbsession.query(ParametroRisco).filter(
-        ParametroRisco.id == parametro_id
-    ).first()
-    if paramrisco:
-        valores = paramrisco.valores
-    return render_template('bases.html', valores=valores)
-"""
-
-
 @app.route('/risco', methods=['POST', 'GET'])
 @app.route('/aplica_risco')
 @login_required
