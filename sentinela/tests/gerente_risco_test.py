@@ -9,10 +9,10 @@ from sentinela.utils.gerente_risco import GerenteRisco
 
 CSV_RISCO_TEST = 'sentinela/tests/csv_risco_example.csv'
 CSV_NAMEDRISCO_TEST = 'sentinela/tests/csv_namedrisco_example.csv'
+CSV_FOLDER_TEST = 'sentinela/tests/CSV'
 
 
 class TestGerenteRisco(unittest.TestCase):
-
     def setUp(self):
         with open(CSV_RISCO_TEST, 'r', newline='') as f:
             reader = csv.reader(f)
@@ -216,3 +216,9 @@ class TestGerenteRisco(unittest.TestCase):
         assert len(result) == 9
         print(result)
         # assert False  # Uncomment to view output
+
+    def test_headers(self):
+        gerente = self.gerente
+        headers = gerente.get_headers_base(2, CSV_FOLDER_TEST)
+        print(headers)
+        assert len(headers) == 55

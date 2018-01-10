@@ -297,6 +297,15 @@ class FlaskTestCase(unittest.TestCase):
         data = self.data(rv)
         assert b'AJNA' in data
 
+    def test_juncoes(self):
+        if self.http_server is not None:
+            rv = self.app.get('/juncoes?visaoid=1',
+                              params=dict(csrf_token=self.csrf_token))
+        else:
+            rv = self.app.get('/juncoes?visaoid=1')
+        data = self.data(rv)
+        assert b'AJNA' in data
+
 
 """
     def test_arvore(self):
