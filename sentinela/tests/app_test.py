@@ -28,7 +28,6 @@ class FlaskTestCase(unittest.TestCase):
             app.app.testing = True
             app.app.config['WTF_CSRF_ENABLED'] = False
             self.app = app.app.test_client()
-            conf.CSV_FOLDER = conf.CSV_FOLDER_TEST
         rv = self.login('ajna', 'ajna')
         assert rv is not None
 
@@ -131,6 +130,7 @@ class FlaskTestCase(unittest.TestCase):
         assert b'Lista de Riscos' in data
 
     def test_aplica_risco(self):
+        conf.CSV_FOLDER = conf.CSV_FOLDER_TEST
         if self.http_server is not None:
             rv = self.app.get('/aplica_risco?baseid=1&\
                               &padraoid=1&visaoid=2&filename=2017/1130&\
@@ -180,6 +180,7 @@ class FlaskTestCase(unittest.TestCase):
         assert b'Redirecting...' in data
 
     def test_editarisco(self):
+        conf.CSV_FOLDER = conf.CSV_FOLDER_TEST
         if self.http_server is not None:
             rv = self.app.get('/edita_risco?padraoid=1&riscoid=1',
                               params=dict(csrf_token=self.csrf_token))
