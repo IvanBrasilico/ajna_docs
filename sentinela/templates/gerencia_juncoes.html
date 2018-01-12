@@ -77,20 +77,23 @@
     <div class="col-sm-12">
         <h4>Lista de tabelas</h4>
         <form id="frmvalores" onsubmit="" class="form-group">
-            <div class="form-group col-sm-3">
+            <div class="form-group col-sm-2">
                 <input id="csv" class="form-control" type="text" placeholder="CSV">
             </div>
             <div class="form-group col-sm-3">
+                <input id="descricao" class="form-control" type="text" placeholder="Descrição">
+            </div>
+            <div class="form-group col-sm-2">
                 <input id="primario" class="form-control" type="text" placeholder="Primario">
             </div>
-            <div class="form-group col-sm-3">
+            <div class="form-group col-sm-2">
                 <input id="estrangeiro" class="form-control" type="text" placeholder="Estrangeiro">
             </div>
             <div class="form-group col-sm-2">
                 <input id="pai_id" class="form-control" type="text" placeholder="Pai_id">
             </div>
             <div class="form-group">
-                <button onclick="adicionar_valor()" id="btn_incluir" type="button" class="btn btn-success">Incluir</button>
+                <button onclick="adiciona_tabela()" id="btn_incluir" type="button" class="btn btn-success">Incluir</button>
             </div>
         </form>
         <div class="table">
@@ -98,11 +101,12 @@
                 {% for tabela in tabelas %}
                 <tr>
                     <td>{{tabela.csv}}</td>
+                    <td>{{tabela.descricao}}</td>
                     <td>{{tabela.primario}}</td>
                     <td>{{tabela.estrangeiro}}</td>
                     <td>{{tabela.pai_id}}</td>
                     <td align="center">
-                        <input type="button" class="btn  btn-danger" value="x" onclick="excluir_valor({{ tabela.id }})" />
+                        <input type="button" class="btn  btn-danger" value="x" onclick="exclui_tabela({{ tabela.id }})" />
                     </td>
                 </tr>
                 {% endfor %} {% if not tabelas %}
@@ -176,6 +180,24 @@
     function exclui_coluna(colunaid) {
         window.location.assign('/exclui_coluna?visaoid={{ visaoid }}' +
             '&colunaid=' + colunaid)
+    }
+
+    function adiciona_tabela() {
+        var csv = $("#csv").val();
+        var primario = $("#primario").val();
+        var estrangeiro = $("#estrangeiro").val();
+        var pai = $("#pai_id").val();
+        var desc = $("#descricao").val();
+        if (csv != '' && primario != '') {
+            window.location.assign('/adiciona_tabela?visaoid={{ visaoid }}' +
+                '&csv=' + csv + '&primario=' + primario + '&estrangeiro=' + estrangeiro +
+                '&pai_id=' + pai + '&descricao=' + desc)
+        }
+    }
+
+    function exclui_tabela(tabelaid) {
+        window.location.assign('/exclui_tabela?visaoid={{ visaoid }}' +
+            '&tabelaid=' + tabelaid)
     }
 
 

@@ -665,6 +665,34 @@ def exclui_coluna():
                     visaoid=visaoid))
 
 
+@app.route('/adiciona_tabela')
+def adiciona_tabela():
+    visaoid = request.args.get('visaoid')
+    csv = request.args.get('csv')
+    primario = request.args.get('primario')
+    estrangeiro = request.args.get('estrangeiro')
+    pai_id = request.args.get('pai_id')
+    desc = request.args.get('descricao')
+    tabela = Tabela(csv, primario, estrangeiro, pai_id, visaoid)
+    if desc:
+        tabela.descricao = desc
+    dbsession.add(tabela)
+    dbsession.commit()
+    return redirect(url_for('juncoes',
+                    visaoid=visaoid))
+
+
+@app.route('/exclui_tabela')
+def exclui_tabela():
+    visaoid = request.args.get('visaoid')
+    tabelaid = request.args.get('tabelaid')
+    dbsession.query(Tabela).filter(
+        Tabela.id == tabelaid).delete()
+    dbsession.commit()
+    return redirect(url_for('juncoes',
+                    visaoid=visaoid))
+
+
 @nav.navigation()
 def mynavbar():
     items = [View('Home', 'index'),
@@ -673,7 +701,7 @@ def mynavbar():
              View('Editar Riscos', 'edita_risco'),
              View('Editar Titulos', 'edita_depara'),
              View('Navega Bases', 'navega_bases'),
-             View('Juntar CSVs', 'juncoes')]
+             View('Editar Visão', 'juncoes')]
     if current_user.is_authenticated:
         items.append(View('Sair', 'logout'))
     return Navbar(logo, *items)
