@@ -130,12 +130,12 @@ class FlaskTestCase(unittest.TestCase):
     """def test_aplica_risco(self):
         if self.http_server is not None:
             rv = self.app.get('/aplica_risco?baseid=1&\
-                              &padraoid=1&visaoid=2&filename=2017/0329&\
+                              &padraoid=1&visaoid=2&filename=2017/1130&\
                               &parametros_ativos=CPFCNPJConsignatario&teste=true',
                               params=dict(csrf_token=self.csrf_token))
         else:
             rv = self.app.get('/aplica_risco?baseid=1&\
-                              &padraoid=1&visaoid=2&filename=2017/0329&\
+                              &padraoid=1&visaoid=2&filename=2017/1130&\
                               &parametros_ativos=CPFCNPJConsignatario&teste=True')
         data = self.data(rv)
         assert b'Conhecimento' in data"""
@@ -317,6 +317,84 @@ class FlaskTestCase(unittest.TestCase):
             rv = self.app.get('/juncoes?visaoid=1')
         data = self.data(rv)
         assert b'AJNA' in data
+
+    def test_adicionavisao(self):
+        if self.http_server is not None:
+            rv = self.app.get('/adiciona_visao?visao_novo=visaotest',
+                              params=dict(csrf_token=self.csrf_token))
+        else:
+            rv = self.app.get('/adiciona_visao?visao_novo=visaotest')
+        data = self.data(rv)
+        assert b'Redirecting...' in data
+
+    def _visaoid(self, nome):
+        visao = app.dbsession.query(app.Visao).filter(
+            app.Visao.nome == nome).first()
+        return visao.id
+
+    def test_excluivisao(self):
+        visaoid = self._visaoid('visaotest')
+        if self.http_server is not None:
+            rv = self.app.get('/exclui_visao?visaoid=' + str(visaoid),
+                              params=dict(csrf_token=self.csrf_token))
+        else:
+            rv = self.app.get('/exclui_visao?visaoid=' + str(visaoid))
+        data = self.data(rv)
+        assert b'Redirecting...' in data
+
+    def test_adicionacoluna(self):
+        if self.http_server is not None:
+            rv = self.app.get('/adiciona_coluna?visaoid=1&col_nova=colunatest',
+                              params=dict(csrf_token=self.csrf_token))
+        else:
+            rv = self.app.get('/adiciona_coluna?visaoid=1&col_nova=colunatest')
+        data = self.data(rv)
+        assert b'Redirecting...' in data
+
+    def _colunaid(self, nome):
+        coluna = app.dbsession.query(app.Coluna).filter(
+            app.Coluna.nome == nome).first()
+        return coluna.id
+
+    def test_excluicoluna(self):
+        colunaid = self._colunaid('colunatest')
+        if self.http_server is not None:
+            rv = self.app.get('/exclui_coluna?visaoid=1&\
+                              &colunaid=' + str(colunaid),
+                              params=dict(csrf_token=self.csrf_token))
+        else:
+            rv = self.app.get('/exclui_coluna?visaoid=1&\
+                              &colunaid=' + str(colunaid))
+        data = self.data(rv)
+        assert b'Redirecting...' in data
+
+    def test_adicionatabela(self):
+        if self.http_server is not None:
+            rv = self.app.get('/adiciona_tabela?visaoid=3&csv=c&\
+                              &primario=p&estrangeiro=e&pai_id=1&descricao=d',
+                              params=dict(csrf_token=self.csrf_token))
+        else:
+            rv = self.app.get('/adiciona_tabela?visaoid=3&csv=c&\
+                              &primario=p&estrangeiro=e&pai_id=1&descricao=d')
+        data = self.data(rv)
+        assert b'Redirecting...' in data
+
+    def _tabelaid(self, nome):
+        tabela = app.dbsession.query(app.Tabela).filter(
+            app.Tabela.csv == nome).first()
+        return tabela.id
+
+    def test_excluitabela(self):
+        tabelaid = self._tabelaid('c')
+        if self.http_server is not None:
+            rv = self.app.get('/exclui_tabela?visaoid=3&tabelaid=' +
+                              str(tabelaid),
+                              params=dict(csrf_token=self.csrf_token))
+        else:
+            rv = self.app.get('/exclui_tabela?visaoid=3&tabelaid=' +
+                              str(tabelaid))
+        data = self.data(rv)
+        assert b'Redirecting...' in data
 
 
 """
