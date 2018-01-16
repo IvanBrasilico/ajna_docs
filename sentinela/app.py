@@ -372,7 +372,6 @@ def adiciona_parametro():
         dbsession.add(risco)
         dbsession.commit()
     if lista:
-        print(type(lista))
         nova_lista = []
         nova_lista.append(lista)
         for item in nova_lista[0].split(','):
@@ -417,7 +416,6 @@ def exclui_valor():
     padraoid = request.args.get('padraoid')
     riscoid = request.args.get('riscoid')
     valorid = request.args.get('valorid')
-    print(valorid)
     dbsession.query(ValorParametro).filter(
         ValorParametro.id == valorid).delete()
     dbsession.commit()

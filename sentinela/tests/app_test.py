@@ -94,9 +94,9 @@ class FlaskTestCase(unittest.TestCase):
         }
         rv = self._post(
             '/upload_file', data=file, follow_redirects=False)
-        data = rv.get_data(as_text=True)
+        data = self.data(rv)
         print(data)
-        assert rv.status_code == 302
+        assert b'Redirecting...' in data
 
     def test_listfiles(self):
         if self.http_server is not None:
