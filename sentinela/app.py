@@ -32,6 +32,7 @@ from flask_login import (LoginManager, UserMixin, current_user, login_required,
 from flask_nav import Nav
 from flask_nav.elements import Navbar, View
 from flask_session import Session
+# from flask_sslify import SSLify
 from flask_wtf.csrf import CSRFProtect
 from werkzeug.utils import secure_filename
 
@@ -54,6 +55,7 @@ logging.basicConfig(level=os.environ.get('LOGLEVEL', 'INFO'))
 app = Flask(__name__, static_url_path='/static')
 # CORS(app)
 csrf = CSRFProtect(app)
+# sslify = SSLify(app)
 Bootstrap(app)
 nav = Nav()
 logo = img(src='/static/css/images/logo.png')
@@ -466,6 +468,7 @@ def exclui_depara():
 
 
 @app.route('/navega_bases')
+@login_required
 def navega_bases():
     selected_module = request.args.get('selected_module')
     selected_model = request.args.get('selected_model')
@@ -532,7 +535,7 @@ def consulta_bases_executar():
     selected_field = request.args.get('selected_field')
     filters = session.get('filters', [])
     gerente = GerenteBase()
-    gerente.set_module(selected_module)
+    gerente.set_module(selected_module, db='cargatest.db')
     dados = gerente.filtra(selected_model, filters)
     list_modulos = gerente.list_modulos
     list_models = []
@@ -561,7 +564,7 @@ def arvore():
     selected_field = request.args.get('selected_field')
     instance_id = request.args.get('instance_id')
     print(selected_module)
-    gerente.set_module(selected_module)
+    gerente.set_module(selected_module, db='cargatest.db')
     filters = []
     afilter = Filtro(selected_field, None, instance_id)
     filters.append(afilter)
@@ -596,6 +599,7 @@ def arvore_teste():
 
 
 @app.route('/juncoes')
+@login_required
 def juncoes():
     visaoid = request.args.get('visaoid')
     visoes = dbsession.query(Visao).order_by(Visao.nome).all()
