@@ -23,7 +23,7 @@
                     <h1 class="modal-title" id="ModalLabel">Login</h1>
                 </div>
                 <div class="modal-body">
-                    <form id="frmlogin" method="post" action="/login" enctype="multipart/form-data">
+                    <form id="frmlogin" method="post" action="/login" autocomplete="off" enctype="multipart/form-data">
                         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
                         <div class="form-group">
                             <label for="username">Nome:</label>
@@ -31,7 +31,7 @@
                         </div>
                         <div class="form-group">
                             <label for="senha">Senha:</label>
-                            <input type="password" class="form-control" id="senha" name="senha">
+                            <input type="password" class="form-control" id="senha" name="senha" autocomplete="off">
                         </div>
                         <button class="btn btn-block btn-primary btn-default" id="btnlogin">
                             <i class="fa fa-save"></i>&nbsp;Entrar

@@ -161,15 +161,15 @@ class FlaskTestCase(unittest.TestCase):
         assert b'Redirecting...' in data
         rv = self._post(
             '/importa_csv/1/1', data={'file': ''}, follow_redirects=False)
-        data2 = self.data(rv)
+        data = self.data(rv)
+        assert b'Redirecting..' in data
         file = {
             'csv': (BytesIO(b'FILE CONTENT'), 'test.csv')
         }
         rv = self._post(
             '/importa_csv/1/1', data=file, follow_redirects=False)
-        data2 = self.data(rv)
-        # self.assertTrue(rv.status_code == 302)
-        assert b'Redirecting..' in data2
+        data = self.data(rv)
+        assert b'Redirecting..' in data
 
     def test_exportacsv(self):
         if self.http_server is not None:
@@ -193,11 +193,11 @@ class FlaskTestCase(unittest.TestCase):
     def test_adicionaparametro(self):
         if self.http_server is not None:
             rv = self.app.get('/adiciona_parametro?\
-                              padraoid=1&risco_novo=tests',
+                              padraoid=1&risco_novo=tests&lista=listtest',
                               params=dict(csrf_token=self.csrf_token))
         else:
             rv = self.app.get('/adiciona_parametro?\
-                              padraoid=1&risco_novo=tests')
+                              padraoid=1&risco_novo=tests&lista=listtest')
         data = self.data(rv)
         print(data)
         assert b'Redirecting...' in data
@@ -209,6 +209,7 @@ class FlaskTestCase(unittest.TestCase):
 
     def test_excluiparametro(self):
         param = self._paramid('tests')
+        lista = self._paramid('listtest')
         if self.http_server is not None:
             rv = self.app.get('/exclui_parametro?\
                               padraoid=1&riscoid=' + str(param),
@@ -216,6 +217,8 @@ class FlaskTestCase(unittest.TestCase):
         else:
             rv = self.app.get('/exclui_parametro?\
                               padraoid=1&riscoid=' + str(param))
+            rv = self.app.get('/exclui_parametro?\
+                              padraoid=1&riscoid=' + str(lista))
         data = self.data(rv)
         print(data)
         assert b'Redirecting...' in data
@@ -318,6 +321,19 @@ class FlaskTestCase(unittest.TestCase):
         data = self.data(rv)
         assert b'Redirecting...' in data
 
+    def test_excluifiltro(self):
+        if self.http_server is not None:
+            rv = self.app.get('/exclui_filtro?selected_module=carga&\
+                              &selected_model=Escala&\
+                              &selected_field=Escala',
+                              params=dict(csrf_token=self.csrf_token))
+        else:
+            rv = self.app.get('/exclui_filtro?&selected_module=carga&\
+                              &selected_model=Escala&\
+                              &selected_field=Escala&index=0')
+        data = self.data(rv)
+        assert b'Redirecting...' in data
+
     def test_arvoreteste(self):
         if self.http_server is not None:
             rv = self.app.get('/arvore_teste',
@@ -414,25 +430,6 @@ class FlaskTestCase(unittest.TestCase):
         data = self.data(rv)
         assert b'Redirecting...' in data
 
-
-"""
-    def test_arvore(self):
-        if self.http_server is not None:
-            rv = self.app.get('/arvore?\
-                              selected_module=carga&selected_model=Escala&\
-                              selected_field=Escala&instance_id=E-01',
-                              params=dict(csrf_token=self.csrf_token))
-        else:
-            rv = self.app.get('/arvore?\
-                              selected_module=carga&selected_model=Escala&\
-                              selected_field=Escala&instance_id=E-01')
-        data = self.data(rv)
-        assert b'AJNA' in data
-
-    def test_risco2(self):
-        rv = self.app.get('/edita_risco?padraoid=1')
-        data = self.data(rv)
-        assert b'AJNA' in data
     def test_arvore(self):
         if self.http_server is not None:
             rv = self.app.get('/arvore?selected_module=carga&\
@@ -440,9 +437,23 @@ class FlaskTestCase(unittest.TestCase):
                               &selected_field=Escala&instance_id=E-01',
                               params=dict(csrf_token=self.csrf_token))
         else:
-            rv = self.app.get('/arvore?&selected_module=carga&\
+            rv = self.app.get('/arvore?selected_module=carga&\
                               &selected_model=Escala&\
                               &selected_field=Escala&instance_id=E-01')
         data = self.data(rv)
         assert b'AJNA' in data
-"""
+
+    def test_conultabases(self):
+        if self.http_server is not None:
+            rv = self.app.get('/consulta_bases_executar?\
+                              &selected_module=carga&\
+                              &selected_model=Escala&\
+                              &selected_field=Escala',
+                              params=dict(csrf_token=self.csrf_token))
+        else:
+            rv = self.app.get('/consulta_bases_executar?\
+                              &selected_module=carga&\
+                              &selected_model=Escala&\
+                              &selected_field=Escala')
+        data = self.data(rv)
+        assert b'AJNA' in data
