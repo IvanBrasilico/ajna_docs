@@ -126,7 +126,6 @@ class FlaskTestCase(unittest.TestCase):
             rv = self.app.get(
                 '/risco?baseid=1&padraoid=1&visaoid=2')
         data = self.data(rv)
-        # dt = rv.get_data(as_text=True)
         assert b'Lista de Riscos' in data
 
     """def test_aplica_risco(self):
