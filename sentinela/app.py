@@ -33,8 +33,11 @@ from flask_nav import Nav
 from flask_nav.elements import Navbar, View
 from flask_session import Session
 # from flask_sslify import SSLify
+from flask_wtf import FlaskForm
 from flask_wtf.csrf import CSRFProtect
 from werkzeug.utils import secure_filename
+from wtforms import BooleanField, PasswordField, StringField, SubmitField
+from wtforms.validators import DataRequired, Length
 
 from sentinela.conf import (ALLOWED_EXTENSIONS, APP_PATH, CSV_DOWNLOAD,
                             CSV_FOLDER, SECRET, UPLOAD_FOLDER)
@@ -55,7 +58,6 @@ logging.basicConfig(level=os.environ.get('LOGLEVEL', 'INFO'))
 app = Flask(__name__, static_url_path='/static')
 # CORS(app)
 csrf = CSRFProtect(app)
-# sslify = SSLify(app)
 Bootstrap(app)
 nav = Nav()
 logo = img(src='/static/css/images/logo.png')
@@ -81,6 +83,13 @@ class User(UserMixin):
         if dbuser:
             return User(dbuser.username)
         return None
+
+
+class LoginForm(FlaskForm):
+    nome = StringField('Nome', validators=[DataRequired(), Length(1, 50)])
+    senha = PasswordField('Senha', validators=[DataRequired()])
+    remember_me = BooleanField('Lembrar-me')
+    submit = SubmitField('Entrar')
 
 
 def authenticate(username, password):
@@ -117,7 +126,23 @@ def login():
         else:
             return abort(401)
     else:
-        return render_template('index.html', form=request.form)
+        return render_template('login.html', form=request.form)
+
+
+"""@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        registered_user = authenticate(username=form.nome.data,
+                                       password=form.senha.data)
+        if registered_user is not None:
+            login_user(registered_user)
+            next = request.args.get('next')
+            if not is_safe_url(next):
+                return abort(400)
+            return redirect(next or url_for('index'))
+        flash('Invalid username or password.')
+    return render_template('login.html', form=form)"""
 
 
 @app.route('/logout')
@@ -138,7 +163,10 @@ def allowed_file(filename):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    if current_user.is_authenticated:
+        return render_template('index.html')
+    else:
+        return redirect(url_for('login'))
 
 
 @app.route('/list_files')
@@ -718,6 +746,9 @@ app.secret_key = SECRET
 app.config['SECRET_KEY'] = SECRET
 app.config['SESSION_TYPE'] = 'filesystem'
 Session(app)
+"""if app.config['SSL_REDIRECT']:
+        from flask_sslify import SSLify
+        sslify = SSLify(app)"""
 
 if __name__ == '__main__':
     app.run(debug=app.config['DEBUG'])
