@@ -6,9 +6,7 @@ a base carga.
 """
 import unittest
 
-from sentinela.models.carga import (AtracDesatracEscala, Base, ContainerVazio,
-                                    Escala, EscalaManifesto, Manifesto,
-                                    MySession)
+from sentinela.models.carga import Base, Escala, MySession
 from sentinela.utils.gerente_base import Filtro, GerenteBase
 
 CSV_FOLDER_TEST = 'sentinela/tests/CSV'

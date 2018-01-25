@@ -1,3 +1,5 @@
+# AtracDesatracEscala, Base, #ContainerVazio
+# EscalaManifesto, Manifesto
 """ mysession = MySession(nomebase='cargatest.db')
     dbsession = mysession.session
     engine = mysession.engine
