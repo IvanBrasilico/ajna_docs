@@ -99,6 +99,13 @@ class FlaskTestCase(unittest.TestCase):
             '/upload_file', data=file, follow_redirects=False)
         data = self.data(rv)
         assert b'Redirecting...' in data
+        file = {
+            'file': (BytesIO(b'FILE CONTENT'), '')
+        }
+        rv = self._post(
+            '/upload_file', data=file, follow_redirects=False)
+        data = self.data(rv)
+        assert b'Redirecting...' in data
 
     def test_listfiles(self):
         if self.http_server is not None:
@@ -164,6 +171,13 @@ class FlaskTestCase(unittest.TestCase):
         assert b'Redirecting..' in data
         file = {
             'csv': (BytesIO(b'FILE CONTENT'), 'test.csv')
+        }
+        rv = self._post(
+            '/importa_csv/1/1', data=file, follow_redirects=False)
+        data = self.data(rv)
+        assert b'Redirecting..' in data
+        file = {
+            'csv': (BytesIO(b'FILE CONTENT'), '')
         }
         rv = self._post(
             '/importa_csv/1/1', data=file, follow_redirects=False)
