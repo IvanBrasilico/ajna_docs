@@ -61,8 +61,8 @@ alimentação manual da base.
 
 Disponibiliza seus dados em Restful API.
 
-chakra
-------
+virasana
+--------
 
 Interface para visualização e busca de imagens, recebimento de alertas e execução,
 manual ou automática, dos algoritmos do módulo ml_code nas imagens.
