@@ -62,7 +62,7 @@ class TestModel(unittest.TestCase):
         escala = self.dbsession.query(Escala).filter(
             Escala.Escala == 'E-1').first()
         if escala:
-            instance = self.gerente.busca_paiarvore(escala)
+            instance = self.gerente.get_paiarvore(escala)
             print(instance)
         assert instance is not None
 
