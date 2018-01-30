@@ -1,26 +1,40 @@
-{% extends "layout.html" %} {% block content %}
+{% extends "layout.html" %} {% block content %} {{super()}}
 <div id="main" class="container-fluid">
     <div id="top" class="row">
-        <h4>
-            <big>
-                <b>Escolha a Base a navegar:</b>
-            </big>
-            <select name="module" id="module">
-                <option value="">Selecionar</option>
-                {% for modulo in list_modulos %}
-                <option value="{{ modulo }}" {% if modulo==selected_module %} selected="selected" {% endif %}>{{ modulo }}
-                </option>
-                {% endfor %}
-            </select>
-            <select name="model" id="model">
-                <option value="">Selecionar</option>
-                {% for model in list_models %}
-                <option value="{{ model }}" {% if model==selected_model %} selected="selected" {% endif %}>
-                    {{ model }}
-                </option>
-                {% endfor %}
-            </select>
-        </h4>
+        <div class="container-fluid">
+            <div class="col-sm-3">
+                <h4>
+                    <label for="module">
+                        <big>
+                            <b>Escolha a Base a navegar:</b>
+                        </big>
+                    </label>
+                </h4>
+            </div>
+            <div class="col-sm-2">
+                <h4>
+                    <select class="form-control" name="module" id="module">
+                        <option value="">Selecionar</option>
+                        {% for modulo in list_modulos %}
+                        <option value="{{ modulo }}" {% if modulo==selected_module %} selected="selected" {% endif %}>{{ modulo }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </h4>
+            </div>
+            <div class="col-sm-2">
+                <h4>
+                    <select class="form-control" name="model" id="model">
+                        <option value="">Selecionar</option>
+                        {% for model in list_models %}
+                        <option value="{{ model }}" {% if model==selected_model %} selected="selected" {% endif %}>
+                            {{ model }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </h4>
+            </div>
+        </div>
     </div>
     <div class="row">
         {% if list_fields %}
@@ -29,7 +43,7 @@
         <div class="table-responsive col-sm-12">
             <form id="frmcampos" onsubmit="" class="form-group">
                 <div class="form-group col-sm-3">
-                    <select name="field" id="field">
+                    <select class="form-control" name="field" id="field">
                         <option value="">Selecionar</option>
                         {% for field in list_fields %}
                         <option value="{{ field }}" {% if field==selected_field %} selected="selected" {% endif %}>
@@ -39,7 +53,7 @@
                     </select>
                 </div>
                 <div class="form-group col-sm-3">
-                    <select name="filtro" id="tipofiltro">
+                    <select class="form-control" name="filtro" id="tipofiltro">
                         <option value="0">Selecionar</option>
                         <option value="igual">Filtro.igual</option>
                         <option value="comeca_com">Filtro.comeca_com</option>
@@ -47,7 +61,7 @@
                     </select>
                 </div>
                 <div class="form-group col-sm-3">
-                    <input id="valor" class="form-control" type="text">
+                    <input id="valor" class="form-control" type="text" placeholder="Campo">
                 </div>
                 <div class="form-group col-sm-1">
                     <button onclick="adicionar_valor()" id="btn_incluir" type="button" class="btn btn-success">Incluir</button>
@@ -58,35 +72,40 @@
                 <div class="form-group col-sm-1">
                 </div>
             </form>
-            <table class="inlineTable table table-striped table-bordered table-hover table-responsive" id="filtros">
-                {% if filters %} {% for filter in filters %}
-                <tr>
-                    <td>{{filter.field}}</td>
-                    <td>{{filter.tipo}}</td>
-                    <td>{{filter.valor}}</td>
-                    <td align="center">
-                        <input type="button" class="btn  btn-danger" value="x" onclick="excluir_valor('{{loop.index0}}')" />
-                    </td>
-                </tr>
-                {% endfor %} {% endif %} {% if not filters %}
-                <tr>
-                    <td>Sem resultados.</td>
-                </tr>
-                {% endif %}
-            </table>
-            <table class="inlineTable table table-striped table-bordered table-hover table-responsive" id="dados">
-                {% if dados %} {% for row in dados %}
-                <tr onclick="abre_arvore({{row[0]}})">
-                    {% for col in row %}
-                    <td>{{col}}</td>
-                    {% endfor %}
-                </tr>
-                {% endfor %} {% endif %} {% if not dados %}
-                <tr>
-                    <td>Sem resultados.</td>
-                </tr>
-                {% endif %}
-            </table>
+            <div class="table">
+                <table class="inlineTable table table-striped table-bordered table-hover table-responsive" id="filtros">
+                    {% if filters %} {% for filter in filters %}
+                    <tr>
+                        <td>{{filter.field}}</td>
+                        <td>{{filter.tipo}}</td>
+                        <td>{{filter.valor}}</td>
+                        <td align="center">
+                            <input type="button" class="btn  btn-danger" value="x" onclick="excluir_valor('{{loop.index0}}')" />
+                        </td>
+                    </tr>
+                    {% endfor %} {% endif %} {% if not filters %}
+                    <tr>
+                        <td>Sem resultados.</td>
+                    </tr>
+                    {% endif %}
+                </table>
+            </div>
+            <br>
+            <div class="table">
+                <table class="inlineTable table table-striped table-bordered table-hover table-responsive" id="dados">
+                    {% if dados %} {% for row in dados %}
+                    <tr onclick="abre_arvore({{row[0]}})">
+                        {% for col in row %}
+                        <td>{{col}}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %} {% endif %} {% if not dados %}
+                    <tr>
+                        <td>Sem resultados.</td>
+                    </tr>
+                    {% endif %}
+                </table>
+            </div>
         </div>
         {% endif %}
     </div>

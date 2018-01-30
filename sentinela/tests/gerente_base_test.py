@@ -6,10 +6,10 @@ a base carga.
 """
 import unittest
 
-from sentinela.models.carga import (AtracDesatracEscala, Base, ContainerVazio,
-                                    Escala, EscalaManifesto, Manifesto,
-                                    MySession)
+from sentinela.models.carga import Base, Escala, MySession
 from sentinela.utils.gerente_base import Filtro, GerenteBase
+
+CSV_FOLDER_TEST = 'sentinela/tests/CSV'
 
 
 class TestModel(unittest.TestCase):
@@ -35,9 +35,8 @@ class TestModel(unittest.TestCase):
 
     def test_lista_dir(self):
         # TODO: criar arquivo de testes
-        # self.gerente.set_path('1/2017/1221')
-        # self._escala(self.gerente.dict_models)
-        pass
+        self.gerente.set_path('1/2017/0329', test=True)
+        self._escala(self.gerente.dict_models)
 
     def test_filtra(self):
         self.gerente.set_module('carga')
@@ -59,38 +58,14 @@ class TestModel(unittest.TestCase):
                     html.write('{}\n'.format(linha))
         assert '<ul' in lista[0]
 
+    def test_buscapai(self):
+        escala = self.dbsession.query(Escala).filter(
+            Escala.Escala == 'E-1').first()
+        if escala:
+            instance = self.gerente.busca_paiarvore(escala)
+            print(instance)
+        assert instance is not None
+
 
 if __name__ == '__main__':
-    mysession = MySession(nomebase='cargatest.db')
-    dbsession = mysession.session
-    engine = mysession.engine
-    Base.metadata.drop_all(engine)
-    Base.metadata.create_all(engine)
-    escala = Escala()
-    escala.Escala = 'E-1'
-    escala.CNPJAgenciaNavegacao = 'E-C01'
-    escala.CodigoIMO = 'E-IMO01'
-    dbsession.add(escala)
-    atracacao = AtracDesatracEscala()
-    atracacao.Escala = 'E-1'
-    atracacao.CodigoTerminal = 'A-T01'
-    dbsession.add(atracacao)
-    manifesto = Manifesto()
-    manifesto.Manifesto = 'M-2'
-    dbsession.add(manifesto)
-    escalamanifesto = EscalaManifesto()
-    escalamanifesto.Escala = 'E-1'
-    escalamanifesto.Manifesto = 'M-2'
-    dbsession.add(escalamanifesto)
-    vazio = ContainerVazio()
-    vazio.Manifesto = 'M-2'
-    vazio.Container = 'C-C01'
-    vazio.Capacidade = 'C-40'
-    dbsession.add(vazio)
-    vazio2 = ContainerVazio()
-    vazio2.Manifesto = 'M-2'
-    vazio2.Container = 'C-C02'
-    vazio2.Capacidade = 'C-40'
-    dbsession.add(vazio2)
-    dbsession.commit()
     unittest.main()

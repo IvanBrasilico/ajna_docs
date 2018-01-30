@@ -7,7 +7,7 @@ import pandas as pd
 
 from sentinela.models.carga import Base, Escala, MySession
 
-CARGA_BASE = '/home/ivan/pybr/AJNA_MOD/sentinela/CSV/1/2017/1221/'
+CARGA_BASE = 'sentinela/tests/CSV/1/2017/0329/'
 
 
 class TestModel(unittest.TestCase):
@@ -42,6 +42,7 @@ class TestModel(unittest.TestCase):
         escala.Escala = '000000'
         self.session.add(escala)
         self.session.commit()
+        self.carga_import()
 
     def carga_import(self):
         dataframes = self.open_csvs(CARGA_BASE)

@@ -1,4 +1,4 @@
-{% extends "layout.html" %} {% block content %}
+{% extends "layout.html" %} {% block content %}{{super()}}
 <div id="main" class="container-fluid">
     <div id="top" class="row">
         <h4>
@@ -13,24 +13,31 @@
                     <i>Informe um arquivo </i>
                 </h3>
                 <div class="input-group col-sm-5">
-                    <div class="input-group-btn">
-                        <input class="btn btn-default" type="file" name="file">
-                    </div>
+                    <label class="btn btn-default" for="planilhaold">
+                        <input id="planilhaold" name="file" type="file" style="display:none" onchange="$('#upload-file-info').html(this.files[0].name)"> Planilha Terminal
+                    </label>
                     <div class="input-group-btn">
                         <input class="btn btn-primary" type="submit" value="Submeter">
                     </div>
                 </div>
+                <big>
+                    <span class='label label-success' id="upload-file-info"></span>
+                </big>
             </form>
             <h4>Indicar nome da Base que está sendo importada e data (opcional)</h4>
             <div class="form-group">
-                Base:
-                <select name="base" id="base">
+                <h4>
+                    <label for="base">Base:</label>
+                </h4>
+                <select class="form-control" name="base" id="base">
                     {% for base in bases %}
                     <option value="{{ base.id }}">{{ base.nome }}</option>
                     {% endfor %}
                 </select>
-                Data:
-                <input type="date" id="data">
+                <h4>
+                    <label for="data">Data:</label>
+                </h4>
+                <input class="form-control" type="date" id="data">
                 </input>
                 &nbsp;
             </div>
@@ -38,16 +45,18 @@
         <div class="col-sm-6">
             <div class="table-responsive">
                 <h4>Arquivos já carregados no Servidor</h4>
-                <table class="inlineTable table table-striped table-bordered table-hover table-condensed table-responsive">
-                    {% for filename in lista_arquivos %}
-                    <tr>
-                        <td>{{filename}}</td>
-                        <td>
-                            <button class="btn btn-default" onclick="importar('{{filename}}')">Importar</button>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </table>
+                <div class="table">
+                    <table class="inlineTable table table-striped table-bordered table-hover table-condensed table-responsive">
+                        {% for filename in lista_arquivos %}
+                        <tr>
+                            <td>{{filename}}</td>
+                            <td>
+                                <button class="btn btn-default" onclick="importar('{{filename}}')">Importar</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
             </div>
         </div>
     </div>
