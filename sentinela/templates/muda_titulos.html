@@ -1,21 +1,27 @@
-{% extends "layout.html" %} {% block content %}
+{% extends "layout.html" %} {% block content %} {{super()}}
 <div id="main" class="container-fluid">
     <div id="top" class="row">
-        <h4>
-            <big>
-                <b>Escolha a Base Origem:</b>
-            </big>
-        </h4>
-        <div class="col-md-12">
-            <h4>Base Original:
-                <select name="base" id="base">
-                    <option value="0">Selecionar</option>
-                    {% for base in bases %} {% if base.nome != 'CARGA' %}
-                    <option value="{{ base.id }}" {% if base.id|int()==baseid|int() %} selected="selected" {% endif %}>{{ base.nome }}
-                    </option>
-                    {% endif %} {% endfor %}
-                </select>
-            </h4>
+        <div class="container-fluid">
+            <div class="col-sm-3">
+                <h4>
+                    <label for="base">
+                        <big>
+                            <b>Escolha a Base Origem:</b>
+                        </big>
+                    </label>
+                </h4>
+            </div>
+            <div class="col-sm-2">
+                <h4>
+                    <select class="form-control" name="base" id="base">
+                        <option value="0">Selecione...</option>
+                        {% for base in bases %} {% if base.nome != 'CARGA' %}
+                        <option value="{{ base.id }}" {% if base.id|int()==baseid|int() %} selected="selected" {% endif %}>{{ base.nome }}
+                        </option>
+                        {% endif %} {% endfor %}
+                    </select>
+                </h4>
+            </div>
         </div>
         <div class="row">
             <div class="col-sm-6">
@@ -36,30 +42,32 @@
                 </form>
                 {% endif %} {% if titulos %}
                 <br>
-                <div id="list" class="row col-sm-9">
-                    <table class="inlineTable table table-striped table-bordered table-hover table-responsive" cellspacing="0" cellpadding="0"
-                        id="titulos">
-                        <tr>
-                            <th align="center">Titulo Antigo</th>
-                            <th align="center">Titulo Novo</th>
-                            <th align="center">Excluir</th>
-                        </tr>
-                        {% for titulo in titulos %}
-                        <tr>
-                            <td id="{{ titulo.id }}" align="center">{{titulo.titulo_ant}}</td>
-                            <td id="{{ titulo.id }}" align="center">{{titulo.titulo_novo}}</td>
-                            <td align="center">
-                                <input type="button" class="btn  btn-danger" value="x" onclick="remover({{ titulo.id }})" />
-                            </td>
-                        </tr>
-                        {% endfor %} {% endif %}
-                    </table>
-                </div>
             </div>
         </div>
-        <div id="bottom" class="row">
-            AJNA - Receita Federal do Brasil 2017
+        <div id="list" class="row col-sm-7">
+            <div class="table">
+                <table class="inlineTable table table-striped table-bordered table-hover table-responsive" 
+                    id="titulos">
+                    <tr>
+                        <th align="center">Titulo Antigo</th>
+                        <th align="center">Titulo Novo</th>
+                        <th align="center">Excluir</th>
+                    </tr>
+                    {% for titulo in titulos %}
+                    <tr>
+                        <td id="{{ titulo.id }}" align="center">{{titulo.titulo_ant}}</td>
+                        <td id="{{ titulo.id }}" align="center">{{titulo.titulo_novo}}</td>
+                        <td align="center">
+                            <input type="button" class="btn  btn-danger" value="x" onclick="remover({{ titulo.id }})" />
+                        </td>
+                    </tr>
+                    {% endfor %} {% endif %}
+                </table>
+            </div>
         </div>
+    </div>
+    <div id="bottom" class="row">
+        AJNA - Receita Federal do Brasil 2017
     </div>
 </div>
 {% endblock %} {% block scripts %} {{super()}}

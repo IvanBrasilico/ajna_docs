@@ -1,4 +1,5 @@
-{% extends "layout.html" %} {% block content %}
+{% extends "index.html" %} {% block content %}{{super()}} 
+{% import "bootstrap/wtf.html" as wtf %}
 <html>
 
 <head>
@@ -7,22 +8,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 </head>
+
 <body>
     <div id="loginmodal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Formulário de Login</h4>
+                    <h4 class="modal-title">
+                        <b>Login</b>
+                    </h4>
                 </div>
                 <div class="modal-body">
                     <form id="frmlogin" method="post">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
                         <div class="form-group">
                             <label for="username">Nome:</label>
                             <input type="text" class="form-control" id="username" name="username" autofocus="autofocus">
                         </div>
                         <div class="form-group">
                             <label for="senha">Senha:</label>
-                            <input type="text" class="form-control" id="senha" name="senha">
+                            <input type="password" class="form-control" id="senha" name="senha" autocomplete="off">
                         </div>
                         <button class="btn btn-block btn-primary btn-default" id="btnlogin">
                             <i class="fa fa-save"></i>&nbsp;Entrar
@@ -33,5 +38,12 @@
         </div>
     </div>
 </body>
+
 </html>{% endblock %} {% block scripts %} {{super()}}
-{% endblock %}
+<script type="text/javascript">
+    $(document).ready(function () {
+        {% if not current_user.is_authenticated %}
+        $('#loginmodal').modal();
+        {% endif %}
+    })
+</script> {% endblock %}

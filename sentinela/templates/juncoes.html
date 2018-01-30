@@ -1,0 +1,71 @@
+{% extends "layout.html" %} {% block content %}{{super()}}
+<div id="main" class="container-fluid">
+    <div id="top" class="row">
+        <div class="container-fluid">
+            <div class="col-sm-2">
+                <h4>
+                    <label for="visao">
+                        <big>
+                            <b>Escolha:</b>
+                        </big>
+                    </label>
+                </h4>
+            </div>
+            <div class="col-sm-2">
+                <h4>
+                    <select class="form-control" name="visao" id="visao">
+                        <option value="0">Selecione...</option>
+                        {% for visao in visoes %}
+                        <option value="{{ visao.id }}" {% if visao.id|int()==visaoid|int() %} selected="selected" {% endif %}>{{ visao.nome }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </h4>
+            </div>
+        </div>
+        <div class="table">
+            <table class="inlineTable table table-bordered table-hover table-responsive" id="tabelas">
+                <th>
+                    <td>CSV</td>
+                    <td>Primario</td>
+                    <td>Visaoid</td>
+                </th>
+                {% for tabela in tabelas %}
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>{{tabela.csv}}</td>
+                    <td>{{tabela.primario}}</td>
+                    <td>{{tabela.visao_id}}</td>
+                    <td align="center">
+                        <input type="button" class="btn  btn-danger" value="x" onclick="excluir_valor({{ tabela.id }})" />
+                    </td>
+                </tr>
+                {% endfor %} {% if not tabelas %}
+                <tr>
+                    <td>Sem resultados.</td>
+                </tr>
+                {% endif %}
+            </table>
+        </div>
+    </div>
+    <div id="bottom" class="row">
+        AJNA - Receita Federal do Brasil 2017
+    </div>
+</div>
+{% endblock %} {% block scripts %} {{super()}}
+<script src="/static/js/jquery-ui.min.js"></script>
+<script>
+    $(function () {
+        var submit_form = function (e) {
+            window.location.assign('/juncoes?visaoid=' + $("#visao").val()
+                + '&tabelaid=' + $('#tabela').val()
+            )
+        };
+        $('#visao').bind('change', submit_form);
+        $('#tabela').bind('change', submit_form);
+    });
+</script>
+<style>
+</style> {% endblock %}

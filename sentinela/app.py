@@ -22,6 +22,7 @@ import logging
 import os
 from urllib.parse import urljoin, urlparse
 
+from dominate.tags import img
 from flask import (Flask, abort, flash, redirect, render_template, request,
                    session, url_for)
 from flask_bootstrap import Bootstrap
@@ -31,14 +32,18 @@ from flask_login import (LoginManager, UserMixin, current_user, login_required,
 from flask_nav import Nav
 from flask_nav.elements import Navbar, View
 from flask_session import Session
+# from flask_sslify import SSLify
+from flask_wtf import FlaskForm
 from flask_wtf.csrf import CSRFProtect
 from werkzeug.utils import secure_filename
+from wtforms import BooleanField, PasswordField, StringField, SubmitField
+from wtforms.validators import DataRequired, Length
 
 from sentinela.conf import (ALLOWED_EXTENSIONS, APP_PATH, CSV_DOWNLOAD,
                             CSV_FOLDER, SECRET, UPLOAD_FOLDER)
-from sentinela.models.models import (Base, BaseOrigem, DBUser, DePara,
+from sentinela.models.models import (Base, BaseOrigem, Coluna, DBUser, DePara,
                                      MySession, PadraoRisco, ParametroRisco,
-                                     ValorParametro, Visao)
+                                     Tabela, ValorParametro, Visao)
 from sentinela.utils.csv_handlers import (sanitizar, sch_processing,
                                           unicode_sanitizar)
 from sentinela.utils.gerente_base import Filtro, GerenteBase
@@ -55,6 +60,8 @@ app = Flask(__name__, static_url_path='/static')
 csrf = CSRFProtect(app)
 Bootstrap(app)
 nav = Nav()
+logo = img(src='/static/css/images/logo.png')
+
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
@@ -76,6 +83,13 @@ class User(UserMixin):
         if dbuser:
             return User(dbuser.username)
         return None
+
+
+class LoginForm(FlaskForm):
+    nome = StringField('Nome', validators=[DataRequired(), Length(1, 50)])
+    senha = PasswordField('Senha', validators=[DataRequired()])
+    remember_me = BooleanField('Lembrar-me')
+    submit = SubmitField('Entrar')
 
 
 def authenticate(username, password):
@@ -112,7 +126,23 @@ def login():
         else:
             return abort(401)
     else:
-        return render_template('index.html', form=request.form)
+        return render_template('login.html', form=request.form)
+
+
+"""@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        registered_user = authenticate(username=form.nome.data,
+                                       password=form.senha.data)
+        if registered_user is not None:
+            login_user(registered_user)
+            next = request.args.get('next')
+            if not is_safe_url(next):
+                return abort(400)
+            return redirect(next or url_for('index'))
+        flash('Invalid username or password.')
+    return render_template('login.html', form=form)"""
 
 
 @app.route('/logout')
@@ -133,7 +163,10 @@ def allowed_file(filename):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    if current_user.is_authenticated:
+        return render_template('index.html')
+    else:
+        return redirect(url_for('login'))
 
 
 @app.route('/list_files')
@@ -193,18 +226,6 @@ def importa():
         except Exception as err:
             erro = err.__cause__
     return redirect(url_for('list_files', erro=erro))
-
-
-@login_required
-@app.route('/valores_parametro/<parametro_id>')
-def valores_parametro(parametro_id):
-    valores = []
-    paramrisco = dbsession.query(ParametroRisco).filter(
-        ParametroRisco.id == parametro_id
-    ).first()
-    if paramrisco:
-        valores = paramrisco.valores
-    return render_template('bases.html', valores=valores)
 
 
 @app.route('/risco', methods=['POST', 'GET'])
@@ -369,18 +390,6 @@ def exporta_csv():
                             riscoid=riscoid))
 
 
-@app.route('/exclui_parametro')
-def exclui_parametro():
-    padraoid = request.args.get('padraoid')
-    riscoid = request.args.get('riscoid')
-    dbsession.query(ParametroRisco).filter(
-        ParametroRisco.id == riscoid).delete()
-    dbsession.query(ValorParametro).filter(
-        ValorParametro.risco_id == riscoid).delete()
-    dbsession.commit()
-    return redirect(url_for('edita_risco', padraoid=padraoid))
-
-
 @app.route('/adiciona_parametro')
 def adiciona_parametro():
     padraoid = request.args.get('padraoid')
@@ -393,7 +402,6 @@ def adiciona_parametro():
         dbsession.add(risco)
         dbsession.commit()
     if lista:
-        print(type(lista))
         nova_lista = []
         nova_lista.append(lista)
         for item in nova_lista[0].split(','):
@@ -402,6 +410,18 @@ def adiciona_parametro():
             risco.base_id = padraoid
             dbsession.add(risco)
         dbsession.commit()
+    return redirect(url_for('edita_risco', padraoid=padraoid))
+
+
+@app.route('/exclui_parametro')
+def exclui_parametro():
+    padraoid = request.args.get('padraoid')
+    riscoid = request.args.get('riscoid')
+    dbsession.query(ParametroRisco).filter(
+        ParametroRisco.id == riscoid).delete()
+    dbsession.query(ValorParametro).filter(
+        ValorParametro.risco_id == riscoid).delete()
+    dbsession.commit()
     return redirect(url_for('edita_risco', padraoid=padraoid))
 
 
@@ -476,6 +496,7 @@ def exclui_depara():
 
 
 @app.route('/navega_bases')
+@login_required
 def navega_bases():
     selected_module = request.args.get('selected_module')
     selected_model = request.args.get('selected_model')
@@ -542,7 +563,7 @@ def consulta_bases_executar():
     selected_field = request.args.get('selected_field')
     filters = session.get('filters', [])
     gerente = GerenteBase()
-    gerente.set_module(selected_module)
+    gerente.set_module(selected_module, db='cargatest.db')
     dados = gerente.filtra(selected_model, filters)
     list_modulos = gerente.list_modulos
     list_models = []
@@ -570,7 +591,8 @@ def arvore():
     selected_model = request.args.get('selected_model')
     selected_field = request.args.get('selected_field')
     instance_id = request.args.get('instance_id')
-    gerente.set_module(selected_module)
+    print(selected_module)
+    gerente.set_module(selected_module, db='cargatest.db')
     filters = []
     afilter = Filtro(selected_field, None, instance_id)
     filters.append(afilter)
@@ -605,6 +627,103 @@ def arvore_teste():
                            arvore=string_arvore)
 
 
+@app.route('/juncoes')
+@login_required
+def juncoes():
+    visaoid = request.args.get('visaoid')
+    visoes = dbsession.query(Visao).order_by(Visao.nome).all()
+    tabelas = []
+    colunas = []
+    if visaoid:
+        tabelas = dbsession.query(Tabela).filter(
+            Tabela.visao_id == visaoid
+        ).all()
+        colunas = dbsession.query(Coluna).filter(
+            Coluna.visao_id == visaoid
+        ).all()
+    return render_template('gerencia_juncoes.html',
+                           visaoid=visaoid,
+                           visoes=visoes,
+                           colunas=colunas,
+                           tabelas=tabelas)
+
+
+@app.route('/adiciona_visao')
+def adiciona_visao():
+    visao_novo = request.args.get('visao_novo')
+    visao = Visao(visao_novo)
+    visao.nome = visao_novo
+    dbsession.add(visao)
+    dbsession.commit()
+    visao = dbsession.query(Visao).filter(
+        Visao.nome == visao_novo
+    ).first()
+    return redirect(url_for('juncoes',
+                    visaoid=visao.id))
+
+
+@app.route('/exclui_visao')
+def exclui_visao():
+    visaoid = request.args.get('visaoid')
+    dbsession.query(Visao).filter(
+        Visao.id == visaoid).delete()
+    dbsession.query(Coluna).filter(
+        Coluna.visao_id == visaoid).delete()
+    dbsession.commit()
+    return redirect(url_for('juncoes'))
+
+
+@app.route('/adiciona_coluna')
+def adiciona_coluna():
+    visaoid = request.args.get('visaoid')
+    col_nova = request.args.get('col_nova')
+    coluna = Coluna(col_nova)
+    coluna.nome = col_nova
+    coluna.visao_id = visaoid
+    dbsession.add(coluna)
+    dbsession.commit()
+    return redirect(url_for('juncoes', visaoid=visaoid))
+
+
+@app.route('/exclui_coluna')
+def exclui_coluna():
+    visaoid = request.args.get('visaoid')
+    colunaid = request.args.get('colunaid')
+    dbsession.query(Coluna).filter(
+        Coluna.id == colunaid).delete()
+    dbsession.commit()
+    return redirect(url_for('juncoes',
+                    visaoid=visaoid))
+
+
+@app.route('/adiciona_tabela')
+def adiciona_tabela():
+    visaoid = request.args.get('visaoid')
+    csv = request.args.get('csv')
+    primario = request.args.get('primario')
+    estrangeiro = request.args.get('estrangeiro')
+    pai_id = request.args.get('pai_id')
+    desc = request.args.get('descricao')
+    tabela = Tabela(csv, primario, estrangeiro, pai_id, visaoid)
+    if desc:
+        tabela.descricao = desc
+    dbsession.add(tabela)
+    dbsession.commit()
+    return redirect(url_for('juncoes',
+                    visaoid=visaoid))
+
+
+@app.route('/exclui_tabela')
+def exclui_tabela():
+    visaoid = request.args.get('visaoid')
+    tabelaid = request.args.get('tabelaid')
+    dbsession.query(Tabela).filter(
+        Tabela.id == tabelaid).delete()
+    dbsession.commit()
+    return redirect(url_for('juncoes',
+                    visaoid=visaoid))
+
+
 @nav.navigation()
 def mynavbar():
     items = [View('Home', 'index'),
@@ -612,11 +731,11 @@ def mynavbar():
              View('Aplicar Risco', 'risco'),
              View('Editar Riscos', 'edita_risco'),
              View('Editar Titulos', 'edita_depara'),
-             View('Navega Bases', 'navega_bases')]
+             View('Navega Bases', 'navega_bases'),
+             View('Editar Visão', 'juncoes')]
     if current_user.is_authenticated:
         items.append(View('Sair', 'logout'))
-    return Navbar(
-        'AJNA - Módulo Sentinela', *items)
+    return Navbar(logo, *items)
 
 
 nav.init_app(app)
@@ -628,6 +747,9 @@ app.secret_key = SECRET
 app.config['SECRET_KEY'] = SECRET
 app.config['SESSION_TYPE'] = 'filesystem'
 Session(app)
+"""if app.config['SSL_REDIRECT']:
+        from flask_sslify import SSLify
+        sslify = SSLify(app)"""
 
 if __name__ == '__main__':
     app.run(debug=app.config['DEBUG'])
