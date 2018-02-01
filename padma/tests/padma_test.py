@@ -6,6 +6,7 @@ import unittest
 from io import BytesIO
 
 from PIL import Image
+from threading import Thread
 
 from app.padma import app, classify_process
 
@@ -20,6 +21,9 @@ TEST_IMAGE = os.path.join(os.path.dirname(__file__), 'test.png')
 class FlaskTestCase(unittest.TestCase):
 
     def setUp(self):
+        t = Thread(target=classify_process, args=())
+        t.daemon = True
+        t.start()        
         app.testing = True
         self.app = app.test_client()
 
