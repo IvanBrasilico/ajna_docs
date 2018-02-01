@@ -15,7 +15,7 @@ import redis
 from keras.applications import ResNet50, imagenet_utils
 from PIL import Image
 
-from app.utils import base64_encode_image, base64_decode_image, prepare_image
+from app.utils import base64_decode_image, base64_encode_image, prepare_image
 
 # initialize constants used to control image spatial dimensions and
 # data type
