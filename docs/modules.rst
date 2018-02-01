@@ -8,12 +8,13 @@ AJNA - Visão computacional e aprendizado de máquina
 
 admin_interface
 ---------------
-
+Hoje está separada no AJNA original (protótipo)
 Interface para cadastramento de fontes de imagens, usuários, configuração de parâmetros, etc
 
 image_aq
 --------
 
+Hoje rodando no AJNA original (protótipo)
 Aquisição de imagens. Serviço com Scripts que acessam as fontes de imagens cadastradas,
 validam, pré-processam, fazem reconhecimento de caracteres, validam,
 monitoram mudanças, etc e copiam para um diretório único.
@@ -69,8 +70,8 @@ manual ou automática, dos algoritmos do módulo ml_code nas imagens.
 
 Disponibiliza seus dados em Restful API.
 
-ml_code
--------
+ml_code - padma
+---------------
 
 Coleção de algoritmos de machine learning plugáveis e servidos em WebService/JSON API.
 
