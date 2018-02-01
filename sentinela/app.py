@@ -129,22 +129,6 @@ def login():
         return render_template('login.html', form=request.form)
 
 
-"""@app.route('/login', methods=['GET', 'POST'])
-def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        registered_user = authenticate(username=form.nome.data,
-                                       password=form.senha.data)
-        if registered_user is not None:
-            login_user(registered_user)
-            next = request.args.get('next')
-            if not is_safe_url(next):
-                return abort(400)
-            return redirect(next or url_for('index'))
-        flash('Invalid username or password.')
-    return render_template('login.html', form=form)"""
-
-
 @app.route('/logout')
 @login_required
 def logout():
