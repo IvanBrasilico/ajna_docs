@@ -13,7 +13,7 @@ IMAGE_PATH = "jemma.png"
 image = open(IMAGE_PATH, "rb").read()
 payload = {"image": image}
 
-# submit the request
+# submit the request 
 r = requests.post(KERAS_REST_API_URL, files=payload).json()
 
 # ensure the request was sucessful

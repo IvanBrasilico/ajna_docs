@@ -117,3 +117,4 @@ SECRET
 carga.db
 */flask_session/*
 *flask_session*
+.pytest_cache/*

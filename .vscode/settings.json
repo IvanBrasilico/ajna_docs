@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "${workspaceRoot}/venv/bin/python",
+    "python.pythonPath": "/home/ivan/anaconda3/bin/python3",
     "python.unitTest.pyTestArgs": [],
     "python.unitTest.pyTestEnabled": true,
     "python.formatting.provider": "autopep8"
