@@ -129,22 +129,6 @@ def login():
         return render_template('login.html', form=request.form)
 
 
-"""@app.route('/login', methods=['GET', 'POST'])
-def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        registered_user = authenticate(username=form.nome.data,
-                                       password=form.senha.data)
-        if registered_user is not None:
-            login_user(registered_user)
-            next = request.args.get('next')
-            if not is_safe_url(next):
-                return abort(400)
-            return redirect(next or url_for('index'))
-        flash('Invalid username or password.')
-    return render_template('login.html', form=form)"""
-
-
 @app.route('/logout')
 @login_required
 def logout():
@@ -600,7 +584,7 @@ def arvore():
     instance = q.first()
     string_arvore = ''
     print(instance)
-    pai = gerente.busca_paiarvore(instance)
+    pai = gerente.get_paiarvore(instance)
     print(pai)
     if pai:
         lista = gerente.recursive_tree(pai)
@@ -614,13 +598,14 @@ def arvore_teste():
     gerente = GerenteBase()
     gerente.set_module('carga', db='cargatest.db')
     filters = []
-    afilter = Filtro('Escala', None, 'E-01')
+    afilter = Filtro('Manifesto', None, 'M-2')
     filters.append(afilter)
-    q = gerente.filtra('Escala', filters, return_query=True)
-    escala = q.first()
+    q = gerente.filtra('Manifesto', filters, return_query=True)
+    manifesto = q.first()
+    escala = gerente.get_paiarvore(manifesto)
     string_arvore = ''
     if escala:
-        lista = gerente.recursive_tree(escala)
+        lista = gerente.recursive_tree(escala, child=manifesto)
         string_arvore = '\n'.join(lista)
     return render_template('arvore.html',
                            arvore=string_arvore)
