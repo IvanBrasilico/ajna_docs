@@ -21,7 +21,6 @@
             line-height: 20px;
             background: url(/static/css/images/node.png) no-repeat;
             color: #369;
-            font-weight: bold;
         }
 
         ul.tree li.last {
@@ -32,4 +31,9 @@
         {{arvore|safe}}
     </div>
 </div>
-{% endblock %}
+{% endblock %} {% block scripts %} {{super()}}
+<script>
+    $(document).ready(function () {
+        $('ul.tree li:last-child').addClass('last');
+    });
+</script> {% endblock %}
