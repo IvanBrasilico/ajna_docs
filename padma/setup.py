@@ -19,6 +19,7 @@ setup(
         'Pillow',
         'redis',
         'scipy',
+        'sklearn',
         'tensorflow'
     ],
     tests_require=['pytest'],

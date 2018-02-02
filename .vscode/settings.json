@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "/home/ivan/anaconda3/bin/python3",
+    "python.pythonPath": "/home/ivan/pybr/AJNA_MOD/padma/padma-venv/bin/python3.5",
     "python.unitTest.pyTestArgs": [],
     "python.unitTest.pyTestEnabled": true,
     "python.formatting.provider": "autopep8"
