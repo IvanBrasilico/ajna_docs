@@ -92,6 +92,8 @@ celerybeat-schedule
 venv*/
 ENV/
 
+
+
 # Spyder project settings
 .spyderproject
 .spyproject
@@ -119,3 +121,4 @@ carga.db
 */flask_session/*
 *flask_session*
 .pytest_cache/*
+*.h5
