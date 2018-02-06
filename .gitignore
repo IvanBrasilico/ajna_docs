@@ -89,7 +89,10 @@ celerybeat-schedule
 # virtualenv
 .venv
 *venv/
+<<<<<<< HEAD
 venv*/
+=======
+>>>>>>> ea0a430f044d49bdbe78bf8397f57ae5ebcc2774
 ENV/
 
 
