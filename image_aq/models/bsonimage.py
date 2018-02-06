@@ -16,8 +16,8 @@ class BsonImage():
         )
         return data
 
-    def tofile(self, filename):
-        with open(filename, 'wb') as f:
+    def tofile(self):
+        with open(self._filename, 'wb') as f:
             pass
 
 
