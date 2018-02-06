@@ -90,7 +90,10 @@ celerybeat-schedule
 .venv
 *venv/
 <<<<<<< HEAD
+<<<<<<< HEAD
 venv*/
+=======
+>>>>>>> ea0a430f044d49bdbe78bf8397f57ae5ebcc2774
 =======
 >>>>>>> ea0a430f044d49bdbe78bf8397f57ae5ebcc2774
 ENV/
