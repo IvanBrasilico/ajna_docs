@@ -14,7 +14,7 @@ class RetinaModel():
         config.gpu_options.allow_growth = True
         session = tf.Session(config=config)
         keras.backend.tensorflow_backend.set_session(session)
-        model_path = os.path.join('resnet50_csv.h5')
+        model_path = os.path.join(os.path.dirname(__file__), 'resnet50_csv.h5')
         self._model = keras.models.load_model(
             model_path, custom_objects=custom_objects)
         self._labels_to_names = {0: 'cc'}

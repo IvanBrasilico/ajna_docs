@@ -10,6 +10,7 @@ setup(
     author_email='brasilico.ivan@gmail.com',
     packages=find_packages(),
     install_requires=[
+        'bson',
         'Flask',
         'Flask-BootStrap',
         'Flask-Login',
