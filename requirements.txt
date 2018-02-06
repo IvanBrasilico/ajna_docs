@@ -8,10 +8,6 @@ bandit==1.4.0
 beautifulsoup4==4.6.0
 bleach==2.1.2
 blinker==1.4
-<<<<<<< HEAD
-bson
-=======
->>>>>>> ea0a430f044d49bdbe78bf8397f57ae5ebcc2774
 certifi==2017.11.5
 chardet==3.0.4
 click==6.7

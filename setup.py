@@ -10,10 +10,6 @@ setup(
     author_email='brasilico.ivan@gmail.com',
     packages=find_packages(),
     install_requires=[
-<<<<<<< HEAD
-        'bson',
-=======
->>>>>>> ea0a430f044d49bdbe78bf8397f57ae5ebcc2774
         'Flask',
         'Flask-BootStrap',
         'Flask-Login',
@@ -24,6 +20,7 @@ setup(
         'imageio',
         'lxml',
         'pandas',
+        'pymongo',
         'sqlalchemy'
     ],
     setup_requires=['pytest-runner'],

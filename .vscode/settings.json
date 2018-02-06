@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
     "python.pythonPath": "${workspaceFolder}/venv-sentinela/bin/python",
-=======
-    "python.pythonPath": "/home/ivan/pybr/AJNA_MOD/padma/padma-venv/bin/python3.5",
->>>>>>> ea0a430f044d49bdbe78bf8397f57ae5ebcc2774
     "python.unitTest.pyTestArgs": [],
     "python.unitTest.pyTestEnabled": true,
     "python.formatting.provider": "autopep8"
