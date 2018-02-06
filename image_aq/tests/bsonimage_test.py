@@ -26,7 +26,7 @@ class TestModel(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test1_bson(self):
+    def test1_bjson(self):
         self._bsonimage.tobson()
 
     def test2_savefile(self):

@@ -1,3 +1,4 @@
+import gzip
 import pymongo
 import os
 from pathlib import Path
@@ -30,6 +31,8 @@ class BsonImage():
     def tofile(self, newfilename):
         with open(newfilename, 'w') as f:
             f.write(self.tobson())
+        with open(newfilename + 'zip', 'wb') as f:
+            f.write(gzip.compress(bytes(self.tobson(), 'utf8')))
 
     def fromfile(self, filename):
         with open(filename, 'rb') as f:
