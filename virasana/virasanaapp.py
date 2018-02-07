@@ -6,11 +6,11 @@ from celery import Celery
 from flask import Flask, request, jsonify
 from werkzeug.utils import secure_filename
 
+from virasana.workers.raspadir import trata_bson
+
 # initialize constants used for server queuing
 BATCH_SIZE = 1000
-
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
-
 
 # initialize our Flask application, Redis server, and Keras model
 app = Flask(__name__)
@@ -18,20 +18,10 @@ app.config['DEBUG'] = True
 UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), 'static')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-#############
-import os
-from celery import Celery
-import gridfs
-from pymongo import MongoClient
-
-from image_aq.models.bsonimage import BsonImage, BsonImageList
-
 BACKEND = BROKER = 'redis://localhost:6379'
+
 celery = Celery(app.name, broker=BROKER,
                 backend=BACKEND)
-
-db = MongoClient().test
-fs = gridfs.GridFS(db)
 
 
 @celery.task(bind=True)
@@ -41,9 +31,7 @@ def raspadir(self):
     """
     for file in os.listdir(UPLOAD_FOLDER):
         if 'bson' in file:
-            bsonimagelist = BsonImageList.fromfile(
-                os.path.join(UPLOAD_FOLDER, file))
-        files_ids = bsonimagelist.tomongo(fs)
+            trata_bson(file)
 
     return True
 # 33

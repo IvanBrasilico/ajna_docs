@@ -128,7 +128,8 @@ carga.db
 *flask_session*
 .pytest_cache/*
 *.h5
-*.bjso*
+*.bjson
+*.bson
 image_aq/tests/test.bjson
 tree.html
 image_aq/tests/test.bjson

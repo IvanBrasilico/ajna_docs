@@ -1,33 +1,19 @@
-### Código está no arquivo principal virasana.property
-
-
-#TODO: resolver circular import para ativar este arquivo e deixar código separado
-
-
+# Código do celery task está no arquivo principal virasana.virasana.py
+# TODO: resolver circular import para ativar este arquivo e deixar
+# código que cria a task Celery separado neste arquivo
 import os
-from celery import Celery
 import gridfs
 from pymongo import MongoClient
 
 from image_aq.models.bsonimage import BsonImage, BsonImageList
-from virasana.virasana import app, UPLOAD_FOLDER
-
-
-BACKEND = BROKER = 'redis://localhost:6379'
-celery = Celery(app.name, broker=BROKER,
-                backend=BACKEND)
+UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), '..', 'static')
 
 db = MongoClient().test
 fs = gridfs.GridFS(db)
 
-@celery.task(bind=True)
-def raspadir(self):
-    """Background task that go to directory of incoming files
-    AND load then to mongodb
-    """
-    for file in os.listdir(UPLOAD_FOLDER):
-        if 'bson' in file:
-            bsonimagelist = BsonImageList.fromfile(file)
-        files_ids = bsonimagelist.tomongo(fs)
 
-    return True
+def trata_bson(bson_file):
+    bsonimagelist = BsonImageList.fromfile(
+                os.path.join(UPLOAD_FOLDER, bson_file))
+    files_ids = bsonimagelist.tomongo(fs)
+

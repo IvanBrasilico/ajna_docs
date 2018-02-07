@@ -4,10 +4,11 @@ import os
 import unittest
 from io import BytesIO
 
-from virasana.virasana import app
+from virasana.virasanaapp import app
 
 TEST_BSON = '/home/ivan/pybr/AJNA_MOD/image_aq/tests/testlist.bson'
-# os.path.join(os.path.dirname(__file__), 'test.png')
+TEST_BSON = os.path.join(os.path.dirname(
+    __file__), '..', '..', 'image_aq', 'tests', 'testlist.bson')
 
 
 class FlaskTestCase(unittest.TestCase):
