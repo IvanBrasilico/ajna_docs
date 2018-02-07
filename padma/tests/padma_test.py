@@ -3,7 +3,6 @@ import json
 import os
 import unittest
 from io import BytesIO
-
 from threading import Thread
 
 from app.padma import app, classify_process

@@ -1,5 +1,5 @@
 from keras.applications import ResNet50, imagenet_utils
-from models.vazios.vazios import VazioModel
+from models.vazios.vazios import NaiveModel, RetinaModel, VazioModel
 
 
 class ModelBase():
@@ -36,3 +36,12 @@ class Vazios(ModelBase):
 #    def predict(self, data):
 #        self._preds = {'0': 0.99, '1': 0.01}
 #        return self._preds
+
+class Retina(ModelBase):
+    def __init__(self):
+        self._model = RetinaModel()
+
+
+class Naive(ModelBase):
+    def __init__(self):
+        self._model = NaiveModel()

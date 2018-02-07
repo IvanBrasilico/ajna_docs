@@ -45,6 +45,12 @@ def classify_process():
     print('* Loading model Vazios...')
     modeldict['vazios'] = Vazios()
     print('* Model vazios loaded')
+    print('* Loading model Retina BBox...')
+    modeldict['retina'] = Retina()
+    print('* Model Retina BBox loaded')
+    print('* Loading model Naive BBox...')
+    modeldict['naive'] = Naive()
+    print('* Model naive bbox loaded')
 
     # continually poll for new images to classify
     while True:

@@ -128,3 +128,4 @@ carga.db
 *flask_session*
 .pytest_cache/*
 *.h5
+*.bjso*

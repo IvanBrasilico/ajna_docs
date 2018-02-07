@@ -4,8 +4,8 @@ import unittest
 
 from PIL import Image
 
-from models.bbox.bbox import NaiveModel, RetinaModel
 from keras.preprocessing.image import img_to_array
+from models.bbox.bbox import NaiveModel, RetinaModel
 
 IMAGE = os.path.join(os.path.dirname(__file__), 'stamp1.jpg')
 

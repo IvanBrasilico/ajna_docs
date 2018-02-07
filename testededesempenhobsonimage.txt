@@ -1,0 +1,80 @@
+##################################################
+# Testes com uso de tabela RESUMO!!!
+ Intel(R) Core(TM) i5-5200U CPU @ 2.20GHz
+ Intel(R) Core(TM) i5-5200U CPU @ 2.20GHz
+ Intel(R) Core(TM) i5-5200U CPU @ 2.20GHz
+ Intel(R) Core(TM) i5-5200U CPU @ 2.20GHz
+posix.uname_result(sysname='Linux', nodename='ivan-X751LJ', release='4.13.0-32-generic', version='#35~16.04.1-Ubuntu SMP Thu Jan 25 10:13:43 UTC 2018', machine='x86_64')
+2018-02-07 14:33
+File found
+File found
+Testando carga com  1000 imagens
+Tempo de inicio:  0.005105733871459961
+Tempo do Teste:  0.11697959899902344
+Tempo Total:  0.1220853328704834
+File found
+File found
+Testando carga com  1000 imagens
+Tempo de inicio:  0.0028870105743408203
+Tempo do Teste:  0.04573774337768555
+Tempo Total:  0.04862475395202637
+File found
+File found
+Testando carga com  1000 imagens
+Tempo de inicio:  0.00258636474609375
+Tempo do Teste:  0.8964207172393799
+Tempo Total:  0.8990070819854736
+File found
+File found
+Testando carga com  1000 imagens
+Tempo de inicio:  0.001772165298461914
+Tempo do Teste:  0.19676709175109863
+Tempo Total:  0.19853925704956055
+File found
+File found
+Testando carga com  1000 imagens
+Tempo de inicio:  0.0021598339080810547
+Tempo do Teste:  2.5659327507019043
+Tempo Total:  2.5680925846099854
+File found
+File found
+Testando carga com  1000 imagens
+Tempo de inicio:  0.0014929771423339844
+Tempo do Teste:  1.2522506713867188
+Tempo Total:  1.2537436485290527
+File found
+File found
+Testando carga com  10000 imagens
+Tempo de inicio:  0.005035400390625
+Tempo do Teste:  2.54915452003479
+Tempo Total:  2.554189920425415
+File found
+File found
+Testando carga com  10000 imagens
+Tempo de inicio:  0.007625579833984375
+Tempo do Teste:  0.3761014938354492
+Tempo Total:  0.3837270736694336
+File found
+File found
+Testando carga com  10000 imagens
+Tempo de inicio:  0.0049669742584228516
+Tempo do Teste:  9.922414779663086
+Tempo Total:  9.927381753921509
+File found
+File found
+Testando carga com  10000 imagens
+Tempo de inicio:  0.0071201324462890625
+Tempo do Teste:  1.8049378395080566
+Tempo Total:  1.8120579719543457
+File found
+File found
+Testando carga com  10000 imagens
+Tempo de inicio:  0.005155086517333984
+Tempo do Teste:  38.32517600059509
+Tempo Total:  38.33033108711243
+File found
+File found
+Testando carga com  10000 imagens
+Tempo de inicio:  0.004766702651977539
+Tempo do Teste:  14.127469301223755
+Tempo Total:  14.132236003875732

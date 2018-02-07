@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
-import pickle
 import os
+import pickle
+
 import numpy as np
-from sklearn.ensemble import RandomForestClassifier
 from scipy import misc
+
+from sklearn.ensemble import RandomForestClassifier
 
 
 class VazioModel():
@@ -43,4 +45,3 @@ class VazioModel():
             item['1'] = cheio
             result.append(item)
         return result
-
