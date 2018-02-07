@@ -55,16 +55,6 @@ class TestModel(unittest.TestCase):
         assert bsonimage._metadata.get(
             'chave') == self._bsonimage._metadata.get('chave')
 
-    def test4_savemongo(self):
-        file_id = self._bsonimage.tomongo(self._fs)
-        print('File id', file_id)
-        assert file_id is not None
-
-    def test5_loadmongo(self):
-        file_id = self._bsonimage.tomongo(self._fs)
-        bsonimage = BsonImage.frommongo(file_id, self._fs)
-        assert bsonimage._metadata.get(
-            'chave') == self._bsonimage._metadata.get('chave')
 
     def test6_savefilelist(self):
         self._bsonimagelist.tofile(os.path.join(TEST_PATH, 'testlist.bjson'))
@@ -76,6 +66,19 @@ class TestModel(unittest.TestCase):
             'chave') == self._bsonimage._metadata.get('chave')
         assert bsonimagelist.tolist[1]._metadata.get(
             'chave') == self._bsonimage2._metadata.get('chave')
+"""
+MONGO TESTS commented to not run in CI
+
+    def test4_savemongo(self):
+        file_id = self._bsonimage.tomongo(self._fs)
+        print('File id', file_id)
+        assert file_id is not None
+
+    def test5_loadmongo(self):
+        file_id = self._bsonimage.tomongo(self._fs)
+        bsonimage = BsonImage.frommongo(file_id, self._fs)
+        assert bsonimage._metadata.get(
+            'chave') == self._bsonimage._metadata.get('chave')
 
     def test8_savemongolist(self):
         files_ids = self._bsonimagelist.tomongo(self._fs)
@@ -88,6 +91,7 @@ class TestModel(unittest.TestCase):
         assert bsonimagelist.tolist[0]._metadata.get(
             'chave') == self._bsonimage._metadata.get('chave')
 
+"""
 
 if __name__ == '__main__':
     unittest.main()
