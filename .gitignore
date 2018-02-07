@@ -129,3 +129,4 @@ carga.db
 .pytest_cache/*
 *.h5
 *.bjso*
+image_aq/tests/test.bjson
