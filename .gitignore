@@ -112,3 +112,5 @@ _build
 */files/*
 
 \.vscode/settings\.json
+
+sentinelavenv/
