@@ -66,11 +66,6 @@ class TestModel(unittest.TestCase):
         assert bsonimagelist.tolist[1]._metadata.get(
             'chave') == self._bsonimage2._metadata.get('chave')
 
-
-    """
-    MONGO TESTS commented to not run in CI
-    MockupDB was tested but apparently does not provides GridFS - did not worked
-    """
     def test4_savemongo(self):
         file_id = self._bsonimage.tomongo(self._fs)
         print('File id', file_id)
@@ -92,6 +87,7 @@ class TestModel(unittest.TestCase):
         bsonimagelist = BsonImageList.frommongo(files_ids, self._fs)
         assert bsonimagelist.tolist[0]._metadata.get(
             'chave') == self._bsonimage._metadata.get('chave')
+
 
 if __name__ == '__main__':
     unittest.main()

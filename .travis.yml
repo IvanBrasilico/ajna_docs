@@ -2,7 +2,8 @@ language: python
 
 services:
   - mongodb
-  
+  - redis-server
+
 matrix:
   include:
     - python: '3.5'

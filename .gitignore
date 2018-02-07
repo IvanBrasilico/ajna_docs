@@ -130,6 +130,4 @@ carga.db
 *.h5
 *.bjson
 *.bson
-image_aq/tests/test.bjson
 tree.html
-image_aq/tests/test.bjson
