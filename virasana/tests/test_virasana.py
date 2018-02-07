@@ -21,7 +21,7 @@ class FlaskTestCase(unittest.TestCase):
         pass
 
     def test_upload(self):
-        bson = open(TEST_BSON, "rb").read()
+        bson = open(TEST_BSON, 'rb').read()
         data = {}
         data['file'] = (BytesIO(bson), 'testlist.bson')
         rv = self.app.post(

@@ -1,5 +1,8 @@
 language: python
 
+services:
+  - mongodb
+  
 matrix:
   include:
     - python: '3.5'

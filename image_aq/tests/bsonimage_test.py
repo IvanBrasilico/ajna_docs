@@ -55,7 +55,6 @@ class TestModel(unittest.TestCase):
         assert bsonimage._metadata.get(
             'chave') == self._bsonimage._metadata.get('chave')
 
-
     def test6_savefilelist(self):
         self._bsonimagelist.tofile(os.path.join(TEST_PATH, 'testlist.bson'))
 
@@ -66,6 +65,8 @@ class TestModel(unittest.TestCase):
             'chave') == self._bsonimage._metadata.get('chave')
         assert bsonimagelist.tolist[1]._metadata.get(
             'chave') == self._bsonimage2._metadata.get('chave')
+
+
 """
 MONGO TESTS commented to not run in CI
 MockupDB was tested but apparently does not provides GridFS - did not worked

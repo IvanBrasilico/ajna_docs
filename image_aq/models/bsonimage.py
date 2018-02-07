@@ -1,12 +1,9 @@
 import gzip
-import os
 from collections import OrderedDict
 from pathlib import Path
 
 import bson
-import pymongo
 from bson.codec_options import CodecOptions
-from bson.json_util import dumps
 
 
 class BsonImage():
@@ -85,7 +82,7 @@ class BsonImage():
                               data['content'],
                               **data['metadata'])
         else:
-            raise FileNotFoundError("Arquivo não encontrado pelo MongoDB")
+            raise FileNotFoundError('Arquivo não encontrado pelo MongoDB')
         return result
 
 
@@ -154,6 +151,6 @@ class BsonImageList():
                                      data['content'],
                                      **data['metadata'])
             else:
-                raise FileNotFoundError("Arquivo não encontrado pelo MongoDB")
+                raise FileNotFoundError('Arquivo não encontrado pelo MongoDB')
             result.addBsonImage(bsonimage)
         return result

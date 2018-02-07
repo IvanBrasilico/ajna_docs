@@ -1,9 +1,8 @@
-#!/usr/bin/env python
-# -*- coding: utf8 -*-
+"""
 # FROM LabelImg
 # https://github.com/IvanBrasilico/labelImg/blob/master/libs/pascal_voc_io.py
+"""
 import codecs
-import sys
 from xml.etree import ElementTree
 from xml.etree.ElementTree import Element, SubElement
 
@@ -12,9 +11,11 @@ from lxml import etree
 XML_EXT = '.xml'
 ENCODE_METHOD = 'utf-8'
 
+
 class PascalVocWriter:
 
-    def __init__(self, foldername, filename, imgSize,databaseSrc='Unknown', localImgPath=None):
+    def __init__(self, foldername, filename, imgSize,
+                 databaseSrc='Unknown', localImgPath=None):
         self.foldername = foldername
         self.filename = filename
         self.databaseSrc = databaseSrc
@@ -29,10 +30,12 @@ class PascalVocWriter:
         """
         rough_string = ElementTree.tostring(elem, 'utf8')
         root = etree.fromstring(rough_string)
-        return etree.tostring(root, pretty_print=True, encoding=ENCODE_METHOD).replace("  ".encode(), "\t".encode())
+        return etree.tostring(root, pretty_print=True,
+                              encoding=ENCODE_METHOD).replace(
+                                  '  '.encode(), '\t'.encode())
         # minidom does not support UTF-8
-        '''reparsed = minidom.parseString(rough_string)
-        return reparsed.toprettyxml(indent="\t", encoding=ENCODE_METHOD)'''
+        """reparsed = minidom.parseString(rough_string)
+        return reparsed.toprettyxml(indent='\t', encoding=ENCODE_METHOD)"""
 
     def genXML(self):
         """
@@ -93,16 +96,18 @@ class PascalVocWriter:
                 # Py3: NameError: name 'unicode' is not defined
                 name.text = each_object['name']
             pose = SubElement(object_item, 'pose')
-            pose.text = "Unspecified"
+            pose.text = 'Unspecified'
             truncated = SubElement(object_item, 'truncated')
-            if int(each_object['ymax']) == int(self.imgSize[0]) or (int(each_object['ymin'])== 1):
-                truncated.text = "1" # max == height or min
-            elif (int(each_object['xmax'])==int(self.imgSize[1])) or (int(each_object['xmin'])== 1):
-                truncated.text = "1" # max == width or min
+            if (int(each_object['ymax']) == int(self.imgSize[0]) or
+                    (int(each_object['ymin']) == 1)):
+                truncated.text = '1'  # max == height or min
+            elif ((int(each_object['xmax']) == int(self.imgSize[1])) or
+                  (int(each_object['xmin']) == 1)):
+                truncated.text = '1'  # max == width or min
             else:
-                truncated.text = "0"
+                truncated.text = '0'
             difficult = SubElement(object_item, 'difficult')
-            difficult.text = str( bool(each_object['difficult']) & 1 )
+            difficult.text = str(bool(each_object['difficult']) & 1)
             bndbox = SubElement(object_item, 'bndbox')
             xmin = SubElement(bndbox, 'xmin')
             xmin.text = str(each_object['xmin'])
@@ -132,7 +137,8 @@ class PascalVocReader:
 
     def __init__(self, filepath):
         # shapes type:
-        # [labbel, [(x1,y1), (x2,y2), (x3,y3), (x4,y4)], color, color, difficult]
+        # [labbel, [(x1,y1), (x2,y2), (x3,y3), (x4,y4)],
+        #  color, color, difficult]
         self.shapes = []
         self.filepath = filepath
         self.verified = False
@@ -153,10 +159,9 @@ class PascalVocReader:
         self.shapes.append((label, points, None, None, difficult))
 
     def parseXML(self):
-        assert self.filepath.endswith(XML_EXT), "Unsupport file format"
+        assert self.filepath.endswith(XML_EXT), 'Unsupport file format'
         parser = etree.XMLParser(encoding=ENCODE_METHOD)
         xmltree = ElementTree.parse(self.filepath, parser=parser).getroot()
-        filename = xmltree.find('filename').text
         try:
             verified = xmltree.attrib['verified']
             if verified == 'yes':
@@ -165,7 +170,7 @@ class PascalVocReader:
             self.verified = False
 
         for object_iter in xmltree.findall('object'):
-            bndbox = object_iter.find("bndbox")
+            bndbox = object_iter.find('bndbox')
             label = object_iter.find('name').text
             # Add chris
             difficult = False

@@ -1,11 +1,13 @@
 import datetime
 import os
+
 from image_aq.models.bsonimage import BsonImage, BsonImageList
 
 IMG_FOLDER = os.path.join(__file__, '..', '..', 'padma/tests/')
 DEST_PATH = ''
 
-#TODO: Ver no AJNA informações que serão lançadas no arquivo
+# TODO: Ver no AJNA informações que serão lançadas no arquivo
+
 
 def exportadir():
     bsonimagelist = BsonImageList()
