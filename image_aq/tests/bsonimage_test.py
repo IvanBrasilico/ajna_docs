@@ -68,6 +68,7 @@ class TestModel(unittest.TestCase):
             'chave') == self._bsonimage2._metadata.get('chave')
 """
 MONGO TESTS commented to not run in CI
+MockupDB was tested but apparently does not provides GridFS - did not worked
 
     def test4_savemongo(self):
         file_id = self._bsonimage.tomongo(self._fs)

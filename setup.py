@@ -10,6 +10,7 @@ setup(
     author_email='brasilico.ivan@gmail.com',
     packages=find_packages(),
     install_requires=[
+        'Celery',
         'Flask',
         'Flask-BootStrap',
         'Flask-Login',
@@ -21,6 +22,7 @@ setup(
         'lxml',
         'pandas',
         'pymongo',
+        'redis',
         'sqlalchemy'
     ],
     setup_requires=['pytest-runner'],
