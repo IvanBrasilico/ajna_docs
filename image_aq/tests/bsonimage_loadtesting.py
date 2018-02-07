@@ -69,19 +69,19 @@ class TestModel(ParametrizedTestCase):
         print('Tempo Total: ', send - self.s0)
 
     def test_1savefilelist(self):
-        self._bsonimagelist.tofile(os.path.join(TEST_PATH, 'testlist.bjson'))
+        self._bsonimagelist.tofile(os.path.join(TEST_PATH, 'testlist.bson'))
 
     def test_2loadfilelist(self):
         bsonimagelist = BsonImageList.fromfile(
-            os.path.join(TEST_PATH, 'testlist.bjson'))
+            os.path.join(TEST_PATH, 'testlist.bson'))
 
     def test_3savefilelistzip(self):
         self._bsonimagelist.tofile(os.path.join(
-            TEST_PATH, 'testlist.bjson.zip'), zipped=True)
+            TEST_PATH, 'testlist.bson.zip'), zipped=True)
 
     def test_4loadfilelistzip(self):
         bsonimagelist = BsonImageList.fromfile(
-            os.path.join(TEST_PATH, 'testlist.bjson.zip'), zipped=True)
+            os.path.join(TEST_PATH, 'testlist.bson.zip'), zipped=True)
 
     def test_5savemongolist(self):
         global files_ids

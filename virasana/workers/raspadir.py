@@ -1,3 +1,9 @@
+### Código está no arquivo principal virasana.property
+
+
+#TODO: resolver circular import para ativar este arquivo e deixar código separado
+
+
 import os
 from celery import Celery
 import gridfs
@@ -5,6 +11,7 @@ from pymongo import MongoClient
 
 from image_aq.models.bsonimage import BsonImage, BsonImageList
 from virasana.virasana import app, UPLOAD_FOLDER
+
 
 BACKEND = BROKER = 'redis://localhost:6379'
 celery = Celery(app.name, broker=BROKER,
@@ -14,7 +21,7 @@ db = MongoClient().test
 fs = gridfs.GridFS(db)
 
 @celery.task(bind=True)
-def raspadir(self, dossie_id, refazer=False):
+def raspadir(self):
     """Background task that go to directory of incoming files
     AND load then to mongodb
     """

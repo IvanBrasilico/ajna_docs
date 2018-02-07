@@ -42,26 +42,26 @@ class TestModel(unittest.TestCase):
             'chave') == self._bsonimage._metadata.get('chave')
 
     def test1_savefile(self):
-        self._bsonimage.tofile(os.path.join(TEST_PATH, 'test.bjson'))
+        self._bsonimage.tofile(os.path.join(TEST_PATH, 'test.bson'))
         self._bsonimage.tofile(os.path.join(
-            TEST_PATH, 'test.bjson.zip'), zipped=True)
+            TEST_PATH, 'test.bson.zip'), zipped=True)
 
     def test2_loadfile(self):
-        bsonimage = BsonImage.fromfile(os.path.join(TEST_PATH, 'test.bjson'))
+        bsonimage = BsonImage.fromfile(os.path.join(TEST_PATH, 'test.bson'))
         assert bsonimage._metadata.get(
             'chave') == self._bsonimage._metadata.get('chave')
         bsonimage = BsonImage.fromfile(os.path.join(
-            TEST_PATH, 'test.bjson.zip'), zipped=True)
+            TEST_PATH, 'test.bson.zip'), zipped=True)
         assert bsonimage._metadata.get(
             'chave') == self._bsonimage._metadata.get('chave')
 
 
     def test6_savefilelist(self):
-        self._bsonimagelist.tofile(os.path.join(TEST_PATH, 'testlist.bjson'))
+        self._bsonimagelist.tofile(os.path.join(TEST_PATH, 'testlist.bson'))
 
     def test7_loadfilelist(self):
         bsonimagelist = BsonImageList.fromfile(
-            os.path.join(TEST_PATH, 'testlist.bjson'))
+            os.path.join(TEST_PATH, 'testlist.bson'))
         assert bsonimagelist.tolist[0]._metadata.get(
             'chave') == self._bsonimage._metadata.get('chave')
         assert bsonimagelist.tolist[1]._metadata.get(
