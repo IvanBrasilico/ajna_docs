@@ -37,7 +37,9 @@ class ParametrizedTestCase(unittest.TestCase):
             suite.addTest(testcase_klass(name, param=param))
         return suite
 
+
 files_ids = None
+
 
 class TestModel(ParametrizedTestCase):
     def setUp(self):
@@ -100,7 +102,6 @@ class TestModel(ParametrizedTestCase):
         print('Agora, excluindo arquivos... (limpando dados de teste)')
         for file_id in files_ids:
             self._fs.delete(file_id)
-
 
 
 if __name__ == '__main__':

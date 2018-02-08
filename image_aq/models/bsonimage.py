@@ -1,5 +1,5 @@
-import os
 import gzip
+import os
 from collections import OrderedDict
 from pathlib import Path
 
