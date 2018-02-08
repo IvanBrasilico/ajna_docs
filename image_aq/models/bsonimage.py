@@ -62,10 +62,8 @@ class BsonImage():
         return result
 
     def tomongo(self, fs):
-        with fs.new_file(**self.todict) as fp:
-            with open(self._filename, 'rb') as fo:
-                fp.write(fo)
-                file_id = fp._id
+        with open(self._filename, 'rb') as myfile:
+            file_id = fs.put(myfile, **self.todict)
         return file_id
 
     @classmethod
@@ -130,10 +128,9 @@ class BsonImageList():
     def tomongo(self, fs):
         files_ids = []
         for index, bsonimage in enumerate(self._bsonimagelist):
-            with fs.new_file(**bsonimage.todict) as fp:
-                with open(bsonimage._filename, 'rb') as fo:
-                    fp.write(fo)
-                    files_ids.append(fp._id)
+            with open(bsonimage._filename, 'rb') as myfile:
+                file_id = fs.put(myfile, **bsonimage.todict)
+                files_ids.append(file_id)
         return files_ids
 
     @classmethod

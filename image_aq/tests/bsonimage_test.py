@@ -70,23 +70,29 @@ class TestModel(unittest.TestCase):
         file_id = self._bsonimage.tomongo(self._fs)
         print('File id', file_id)
         assert file_id is not None
+        self._fs.delete(file_id)
 
     def test5_loadmongo(self):
         file_id = self._bsonimage.tomongo(self._fs)
         bsonimage = BsonImage.frommongo(file_id, self._fs)
         assert bsonimage._metadata.get(
             'chave') == self._bsonimage._metadata.get('chave')
+        self._fs.delete(file_id)
 
     def test8_savemongolist(self):
         files_ids = self._bsonimagelist.tomongo(self._fs)
         print('File ids', files_ids)
         assert files_ids is not None
+        for file_id in files_ids:
+            self._fs.delete(file_id)
 
     def test5_loadmongolist(self):
         files_ids = self._bsonimagelist.tomongo(self._fs)
         bsonimagelist = BsonImageList.frommongo(files_ids, self._fs)
         assert bsonimagelist.tolist[0]._metadata.get(
             'chave') == self._bsonimage._metadata.get('chave')
+        for file_id in files_ids:
+            self._fs.delete(file_id)
 
 
 if __name__ == '__main__':

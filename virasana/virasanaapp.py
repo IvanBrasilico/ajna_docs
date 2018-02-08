@@ -17,6 +17,7 @@ app.config['DEBUG'] = True
 UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), 'static')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+##########
 BACKEND = BROKER = 'redis://localhost:6379'
 
 celery = Celery(app.name, broker=BROKER,
@@ -33,7 +34,7 @@ def raspadir(self):
             trata_bson(file)
 
     return True
-# 33
+######################
 
 
 def allowed_file(filename):

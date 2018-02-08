@@ -6,9 +6,8 @@ from io import BytesIO
 
 from virasana.virasanaapp import app
 
-TEST_BSON = '/home/ivan/pybr/AJNA_MOD/image_aq/tests/testlist.bson'
 TEST_BSON = os.path.join(os.path.dirname(
-    __file__), '..', '..', 'image_aq', 'tests', 'testlist.bson')
+    __file__), '..', '..', 'image_aq', 'tests', 'testlistvirasana.bson')
 
 
 class FlaskTestCase(unittest.TestCase):
