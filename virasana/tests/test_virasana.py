@@ -7,7 +7,7 @@ from io import BytesIO
 from virasana.virasanaapp import app
 
 TEST_BSON = os.path.join(os.path.dirname(
-    __file__), '..', '..', 'image_aq', 'tests', 'testlistvirasana.bson')
+    __file__), '..', '..', 'image_aq', 'tests', 'bsontest')
 
 
 class FlaskTestCase(unittest.TestCase):
