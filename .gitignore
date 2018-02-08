@@ -134,3 +134,6 @@ carga.db
 tree.html
 */covimgaq/ajna/*
 */covimgaq/busca/*
+*/db.sqlite*
+image_aq/covimgaq/db.sqlite3.old
+image_aq/covimgaq/db.sqlite3
