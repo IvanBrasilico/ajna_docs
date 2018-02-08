@@ -10,11 +10,9 @@ from image_aq.models.bsonimage import BsonImageList
 
 UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), '..', 'static')
 
-db = MongoClient().test
-fs = gridfs.GridFS(db)
-
-
 def trata_bson(bson_file):
+    db = MongoClient().test
+    fs = gridfs.GridFS(db)
     bsonimagelist = BsonImageList.fromfile(
         os.path.join(UPLOAD_FOLDER, bson_file))
     files_ids = bsonimagelist.tomongo(fs)
