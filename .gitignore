@@ -129,6 +129,8 @@ carga.db
 .pytest_cache/*
 *.h5
 *bjson
-*bson*
+*.bson
+*.bson.zip
 tree.html
-*/covimgaq/*
+*/covimgaq/ajna/*
+*/covimgaq/busca/*
