@@ -6,7 +6,7 @@ import os
 import gridfs
 from pymongo import MongoClient
 
-from image_aq.models.bsonimage import BsonImageList
+from ajna_img_functions.models.bsonimage import BsonImageList
 
 UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), '..', 'static')
 

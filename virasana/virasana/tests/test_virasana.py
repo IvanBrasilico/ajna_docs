@@ -10,14 +10,14 @@ from celery import states
 import gridfs
 from pymongo import MongoClient
 
-from image_aq.models.bsonimage import BsonImage, BsonImageList
-from virasana.virasanaapp import app, BROKER, BACKEND, celery
+from ajna_img_functions.models.bsonimage import BsonImage, BsonImageList
+from virasana.app import app, BROKER, BACKEND, celery
 
 
 TEST_BSON = os.path.join(os.path.dirname(
-    __file__), '..', '..', 'image_aq', 'tests', 'test.bson')
+    __file__), 'test.bson')
 TEST_PATH = os.path.abspath(os.path.dirname(__file__))
-IMG_FOLDER = os.path.join(TEST_PATH, '..', '..', 'padma', 'tests')
+IMG_FOLDER = os.path.join(TEST_PATH)
 
 files_ids = None
 

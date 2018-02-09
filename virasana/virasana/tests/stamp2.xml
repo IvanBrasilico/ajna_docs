@@ -1,0 +1,26 @@
+<annotation>
+	<folder>CAXU7341300</folder>
+	<filename>20170701002613000RS_stamp.jpg</filename>
+	<path>/home/ivan/Área de trabalho/2017/07/01/CAXU7341300/20170701002613000RS_stamp.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>600</width>
+		<height>321</height>
+		<depth>1</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>cc</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>9</xmin>
+			<ymin>27</ymin>
+			<xmax>439</xmax>
+			<ymax>263</ymax>
+		</bndbox>
+	</object>
+</annotation>
