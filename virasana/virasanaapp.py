@@ -77,11 +77,12 @@ def predict():
                     data['progress'] = 'Task ended'
                     break
             if task.state not in states.READY_STATES:
-                data['progress'] = ('Timeout! Checar se serviço Celery está '
-                                    'rodando e se não está travado. A tarefa pode estar também '
-                                    'demorando muito tempo para executar. \n '
-                                    'task celery raspa_dir \n '
-                                    'Timeout configurado para ' + str(TIMEOUT) + 's')
+                data['progress'] = (
+                    'Timeout! Checar se serviço Celery está '
+                    'rodando e se não está travado. A tarefa pode '
+                    ' estar também demorando muito tempo para executar. \n '
+                    'task celery raspa_dir \n '
+                    'Timeout configurado para ' + str(TIMEOUT) + 's')
 
     # return the data dictionary as a JSON response
     if s0 is not None:
