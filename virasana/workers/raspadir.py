@@ -14,7 +14,7 @@ UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), '..', 'static')
 def trata_bson(bson_file):
     db = MongoClient().test
     fs = gridfs.GridFS(db)
-    bsonimagelist = BsonImageList.fromfile(
-        os.path.join(UPLOAD_FOLDER, bson_file))
+    filename = os.path.join(UPLOAD_FOLDER, bson_file)
+    bsonimagelist = BsonImageList.fromfile(filename)
     files_ids = bsonimagelist.tomongo(fs)
     return files_ids
