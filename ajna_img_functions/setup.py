@@ -1,7 +1,7 @@
 from setuptools import find_packages, setup
 
 setup(
-    name='virasana',
+    name='ajna_img_functions',
     description='AJNA_MOD Visao computacional e Aprendizado de Maquina na Vigilancia Aduaneira',
     version='0.0.1',
     url='https://github.com/IvanBrasilico/virasana',
@@ -10,23 +10,8 @@ setup(
     author_email='brasilico.ivan@gmail.com',
     packages=find_packages(),
     install_requires=[
-        'Celery',
-        'Flask',
-        'Flask-BootStrap',
-        'Flask-Login',
-        'Flask-cors',
-        'Flask-nav',
-        'Flask-session',
-        'Flask-wtf',
         'imageio',
-        'lxml',
         'pymongo',
-        'redis',
-        'sqlalchemy',
-        
-    ],
-    dependency_links=[
-        "git+https://github.com/IvanBrasilico/ajna_img_functions.git"
     ],
     setup_requires=['pytest-runner'],
     tests_require=['pytest'],
@@ -35,7 +20,6 @@ setup(
     },
     extras_require={
         'dev': [
-            'alembic',
             'bandit',
             'coverage',
             'flake8',
@@ -45,7 +29,6 @@ setup(
             'pytest',
             'pytest-cov',
             'pytest-mock',
-            'sphinx',
             'testfixtures',
             'tox'
         ],

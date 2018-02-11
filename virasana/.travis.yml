@@ -1,0 +1,21 @@
+language: python
+
+services:
+  - mongodb
+  - redis-server
+
+matrix:
+  include:
+    - python: '3.6'
+      env: TOXENV=py36
+    - python: '3.6'
+      env: TOXENV=check
+
+install:
+  - pip install tox codecov
+
+script:
+  - tox
+
+after_script:
+  - codecov

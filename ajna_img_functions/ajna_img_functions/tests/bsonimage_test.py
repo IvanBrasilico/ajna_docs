@@ -6,10 +6,10 @@ import bson
 import gridfs
 from pymongo import MongoClient
 
-from image_aq.models.bsonimage import BsonImage, BsonImageList
+from ajna_img_functions.models.bsonimage import BsonImage, BsonImageList
 
 TEST_PATH = os.path.abspath(os.path.dirname(__file__))
-IMG_FOLDER = os.path.join(TEST_PATH, '..', '..', 'padma/tests/')
+IMG_FOLDER = os.path.join(TEST_PATH)
 
 
 class TestModel(unittest.TestCase):
@@ -54,6 +54,8 @@ class TestModel(unittest.TestCase):
             TEST_PATH, 'test.bson.zip'), zipped=True)
         assert bsonimage._metadata.get(
             'chave') == self._bsonimage._metadata.get('chave')
+        os.remove(os.path.join(IMG_FOLDER, 'test.bson'))
+        os.remove(os.path.join(IMG_FOLDER, 'test.bson.zip'))
 
     def test6_savefilelist(self):
         self._bsonimagelist.tofile(os.path.join(TEST_PATH, 'testlist.bson'))
@@ -65,6 +67,7 @@ class TestModel(unittest.TestCase):
             'chave') == self._bsonimage._metadata.get('chave')
         assert bsonimagelist.tolist[1]._metadata.get(
             'chave') == self._bsonimage2._metadata.get('chave')
+        os.remove(os.path.join(IMG_FOLDER, 'testlist.bson'))
 
     def test4_savemongo(self):
         file_id = self._bsonimage.tomongo(self._fs)

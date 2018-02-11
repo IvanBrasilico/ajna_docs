@@ -1,0 +1,60 @@
+{% extends "layout.html" %} {% block content %}{{super()}}
+<div id="main" class="container-fluid">
+    <div id="top" class="row">
+        <h4>
+            <big>
+                <b>Este formulário permite o UPLOAD de arquivo csv ou sch-txt, ou zip contendo estes</b>
+            </big>
+        </h4>
+        <div class="col-sm-6">
+            <form action="/uploadbson" method="post" enctype="multipart/form-data" id="frmrisco">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                <h3>
+                    <i>Informe um arquivo </i>
+                </h3>
+                <div class="input-group col-sm-5">
+                    <label class="btn btn-default" for="planilhaold">
+                        <input id="planilhaold" name="file" type="file" style="display:none" onchange="$('#upload-file-info').html(this.files[0].name)"> Planilha Terminal
+                    </label>
+                    <div class="input-group-btn">
+                        <input class="btn btn-primary" type="submit" value="Submeter">
+                    </div>
+                </div>
+                <big>
+                    <span class='label label-success' id="upload-file-info"></span>
+                </big>
+            </form>
+ 
+        </div>
+        <div class="col-sm-6">
+            <div class="table-responsive">
+                <h4>Arquivos já carregados no Servidor</h4>
+                <div class="table">
+                    <table class="inlineTable table table-striped table-bordered table-hover table-condensed table-responsive">
+                        {% for filename in lista_arquivos %}
+                        <tr>
+                            <td>{{filename}}</td>
+                            <td>
+                                <button class="btn btn-default" onclick="importar('{{filename}}')">Importar</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="bottom" class="row">
+        AJNA - Receita Federal do Brasil 2017
+    </div>
+</div>
+<!-- /#main -->
+{% endblock %} {% block scripts %} {{super()}}
+<script>
+    function importar(filename) {
+        window.location.assign('/importa?filename=' + filename +
+            '&base=' + $("#base").val() +
+            "&data=" + $("#data").val())
+    }
+
+</script> {% endblock %}

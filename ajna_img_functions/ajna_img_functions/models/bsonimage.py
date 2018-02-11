@@ -109,13 +109,14 @@ class BsonImageList():
             f.write(abson)
 
     @classmethod
-    def fromfile(cls, filename, zipped=False):
+    def fromfile(cls, filename=None, abson=None, zipped=False):
         options = CodecOptions(document_class=OrderedDict)
-        with open(filename, 'rb') as f:
-            abson = f.read()
-            if zipped:
-                abson = gzip.decompress(abson)
-            dict_bson = bson.BSON.decode(abson, codec_options=options)
+        if abson is None:
+            with open(filename, 'rb') as f:
+                abson = f.read()
+        if zipped:
+            abson = gzip.decompress(abson)
+        dict_bson = bson.BSON.decode(abson, codec_options=options)
         bsonimagelist = BsonImageList()
         for _, data in dict_bson.items():  # key ignored
             bsonimage = BsonImage()
