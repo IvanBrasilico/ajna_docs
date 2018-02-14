@@ -11,6 +11,15 @@ Módulos:
 ## ajna_commons
 Biblioteca com funções e classes utilizadas em várias aplicações do AJNA
 
+### Instalação 
+Este módulo está marcado como requerido em TODAS as aplicações, portanto, no deploy, será automaticamente instalado pelo pip (requirements.txt) e/ou pelo setuptools(setup.py). 
+
+### Instalação desenvolvedor
+Recomenda-se, caso queira-se um ambiente para desenvolvimento e edição, e geração de documentação clonar todos os repositórios conforme instruções dentro da pasta ajna_doc. Depois, dentro dos demais módulos, digitar as seguintes linhas:
+`
+$ pip uninstall ajna_commons
+$ ln -s ../ajna_commons/ajna_commons .
+`
 ## ajna_cov
 
 Interface(s) para cadastramento de fontes de imagens, configuração de parâmetros, primeiros tratamentos, etc. Faz também a aquisição de imagens, vídeos e outros dados. Para ser instalado na(s) rede(s) em que ficam as imagens a serem adquiridas.
@@ -40,3 +49,43 @@ Constituído de uma aplicação web e wevbservice, e diversos workers controlado
 ## notebooks
 
 Rascunhos. Aproveitar a interatividade e praticidade do Jupyter Notebook para fazer e documentar as análises exploratórias de dados, treinamento e teste de algoritmos de aprendizado e projetar/validar scripts de data_aq
+
+
+### Instalação 
+Para instalar os módulos bhadrasana, padma, virasana:
+
+`
+$git clone <nome do repositório>
+$cd <nome do módulo>
+$python3 -m venv <modulo>-venv
+$. <modulo>-venv/bin/activate
+$python setup.py install
+`
+Ex:
+`
+$git clone https://github.com/IvanBrasilico/virasana.git
+$cd virasana
+$python3 -m venv virasana-venv
+$. virasana-venv/bin/activate
+(virasana-venv)$python setup.py install
+(virasana-venv)$python -m pytest (roda os testes automatizados)
+(virasana-venv)$./virasana/celery.sh (inicia os workers do serviço celery)
+(virasana-venv)$ python virasana/app.py (inicia o servidor web/api)
+`
+
+### Instalação desenvolvedor
+Clonar o módulo raiz ajna_doc
+`
+$git clone https://github.com/IvanBrasilico/ajna_docs.git
+$cd ajna_docs
+$python3 -m venv ajna-venv
+$. ajna-venv/bin/activate
+(ajna-venv)$python setup.py develop
+$deactivate
+`
+Repetir os passos acima para os demais módulos, DENTRO do diretório ajna_docs
+
+`
+$ pip uninstall ajna_commons
+$ ln -s ../ajna_commons/ajna_commons .
+`
