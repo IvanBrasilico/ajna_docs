@@ -16,10 +16,10 @@ Este módulo está marcado como requerido em TODAS as aplicações, portanto, no
 
 ### Instalação desenvolvedor
 Recomenda-se, caso queira-se um ambiente para desenvolvimento e edição, e geração de documentação clonar todos os repositórios conforme instruções dentro da pasta ajna_doc. Depois, dentro dos demais módulos, digitar as seguintes linhas:
-`
+```
 $ pip uninstall ajna_commons
 $ ln -s ../ajna_commons/ajna_commons .
-`
+```
 ## ajna_cov
 
 Interface(s) para cadastramento de fontes de imagens, configuração de parâmetros, primeiros tratamentos, etc. Faz também a aquisição de imagens, vídeos e outros dados. Para ser instalado na(s) rede(s) em que ficam as imagens a serem adquiridas.
@@ -54,54 +54,38 @@ Rascunhos. Aproveitar a interatividade e praticidade do Jupyter Notebook para fa
 ### Instalação 
 Para instalar os módulos bhadrasana, padma, virasana:
 
-`
+```
 $git clone <nome do repositório>
-
 $cd <nome do módulo>
-
 $python3 -m venv <modulo>-venv
-
 $. <modulo>-venv/bin/activate
-
 $python setup.py install
-`
+```
 Ex:
 
-`
+```
 $git clone https://github.com/IvanBrasilico/virasana.git
-
 $cd virasana
-
 $python3 -m venv virasana-venv
-
 $. virasana-venv/bin/activate
-
 (virasana-venv)$python setup.py install
-
 (virasana-venv)$python -m pytest (roda os testes automatizados)
-
 (virasana-venv)$./virasana/celery.sh (inicia os workers do serviço celery)
-
 (virasana-venv)$ python virasana/app.py (inicia o servidor web/api)
-`
+```
 
 ### Instalação desenvolvedor
 
 Clonar o módulo raiz ajna_doc
 
-`
+```
 $git clone https://github.com/IvanBrasilico/ajna_docs.git
-
 $cd ajna_docs
-
 $python3 -m venv ajna-venv
-
 $. ajna-venv/bin/activate
-
 (ajna-venv)$python setup.py develop
-
 $deactivate
-`
+```
 
 Repetir os passos acima para os demais módulos, DENTRO do diretório ajna_docs
 
@@ -117,8 +101,8 @@ A estrutura de diretórios ficará assim:
 
 Para poder editar o ajna_commons num local único (pois será instalada uma cópia em cada venv criado), dentro de cada diretório/módulo, com o venv ativo, digite:
 
-`
+```
 $ pip uninstall ajna_commons
-
 $ ln -s ../ajna_commons/ajna_commons .
-`
+```
+
