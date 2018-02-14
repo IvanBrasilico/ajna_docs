@@ -130,6 +130,8 @@ O venv é considerado boa prática na comunidade python e permite isolamento tot
 ### TOX
 #### Continuous integration, continuous deploy
 
-TODOS os módulos possuem configuração para o TOX. Esta configuração cria um ambiente virtual e roda todos os testes em python3.5 e python3.6. Além disso, roda linters para checar adequação do código a padrões, procurar por erros e má qualidade, roda também linters de vulnerabilidades, dentre outros (ver arquivo tox.ini). Além disso, o módulo ajna_docs tem documentação automatizada via Sphynx, também testada pelo tox (para gerar a documentação, rodar make html).
+TODOS os módulos possuem configuração para o TOX. Esta configuração cria um ambiente virtual e roda todos os testes em python3.5 e python3.6. Adicionalmente, roda linters para checar adequação do código a padrões, procurar por erros e má qualidade, roda também linters de vulnerabilidades, dentre outros (ver arquivo tox.ini).
 
-Além disso, está configurado nos repositórios um fluxo de CI/CD - os testes são rodados pelo Travis (linux) e Appveyor (windows) a cada push(conf nos arquivos .yaml). Se houver sucesso, são publicados automaticamente no heroku (conf nos arquivos Procfile).
+O módulo ajna_docs tem documentação automatizada via Sphynx, também testada pelo tox (para gerar a documentação, rodar make html). A documentação de todos os módulos será centralizada no ajna_docs.
+
+Além disso, está configurado nos repositórios um fluxo de CI/CD - os testes são rodados pelo Travis (linux) e Appveyor (windows) a cada push(conf nos arquivos .yaml). Se houver sucesso, o novo código é publicado automaticamente no heroku (conf nos arquivos Procfile).
