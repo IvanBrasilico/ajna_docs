@@ -1,1 +1,0 @@
-celery -A virasana.app.celery worker --loglevel=info
