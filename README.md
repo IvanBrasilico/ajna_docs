@@ -3,34 +3,39 @@
 
 # AJNA
 
-Visão computacional e aprendizado de máquina
+Visão computacional e aprendizado de máquina aplicados à vigilância e repressão aduaneira
 
 
 Módulos:
 
-## admin_interface
+## ajna_commons
+Biblioteca com funções e classes utilizadas em várias aplicações do AJNA
 
-Interface para cadastramento de fontes de imagens, usuários, configuração de parâmetros, etc
+## ajna_cov
 
-## image_aq
+Interface(s) para cadastramento de fontes de imagens, configuração de parâmetros, primeiros tratamentos, etc. Faz também a aquisição de imagens, vídeos e outros dados. Para ser instalado na(s) rede(s) em que ficam as imagens a serem adquiridas.
 
-Aquisição de imagens. Serviço com Scripts que acessam as fontes de imagens cadastradas, validam, pré-processam, fazem reconhecimento de caracteres, validam, monitoram mudanças, etc e copiam para um diretório único. Disponibiliza seus dados em Restful API.
-
-## data_aq
-
-Aquisição de dados. Serviço com scripts que acessam sistemas fechados e dados públicos, estruturados e não estruturados, guardando em coleções/Bancos de Dados. Disponibiliza seus dados em Restful API.
-
-## sentinela
+## bhadrasana - sentinela
 
 Controla o data_aq, permite cruzamento de dados e gerenciamento, manual ou automático, de parâmetros de risco. Disponibiliza seus dados em Restful API.
 
-## virasana
+Aquisição de dados. Serviço com scripts que acessam sistemas fechados e dados públicos, estruturados e não estruturados, guardando em coleções/Bancos de Dados. Disponibiliza seus dados em Restful API.
+
+Constituído de uma aplicação web e wevbservice, e diversos workers controlados pelo Celery
+
+## virasana - heroi
 
 Interface para visualização e busca de imagens, recebimento de alertas e execução, manual ou automática, dos algoritmos do módulo ml_code nas imagens. Disponibiliza seus dados em Restful API.
 
-## ml_code
+Aquisição de imagens. Serviço com Scripts que acessam as fontes de imagens cadastradas, validam, pré-processam, fazem reconhecimento de caracteres, validam, monitoram mudanças, etc e copiam para um diretório único. Disponibiliza seus dados em Restful API.
 
-Coleção de algoritmos de machine learning plugáveis e servidos em WebService
+Constituído de uma aplicação web e wevbservice, e diversos workers controlados pelo Celery
+
+## padma - busca da verdade
+
+Coleção de algoritmos de machine learning plugáveis e servidos em WebService. Basicamente é uma API que recebe dados e devolve predições.
+
+Constituído de uma aplicação web e wevbservice, e diversos workers controlados pelo Celery
 
 ## notebooks
 
