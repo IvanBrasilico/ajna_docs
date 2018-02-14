@@ -83,7 +83,7 @@ $git clone https://github.com/IvanBrasilico/ajna_docs.git
 $cd ajna_docs
 $python3 -m venv ajna-venv
 $. ajna-venv/bin/activate
-(ajna-venv)$pip install -e.[dev]
+(ajna-venv)$pip install -e .[dev]
 $deactivate
 ```
 
