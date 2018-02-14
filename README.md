@@ -59,7 +59,7 @@ $git clone <nome do repositório>
 $cd <nome do módulo>
 $python3 -m venv <modulo>-venv
 $. <modulo>-venv/bin/activate
-$python setup.py install
+$pip install .
 ```
 Ex:
 
@@ -68,7 +68,7 @@ $git clone https://github.com/IvanBrasilico/virasana.git
 $cd virasana
 $python3 -m venv virasana-venv
 $. virasana-venv/bin/activate
-(virasana-venv)$python setup.py install
+(virasana-venv)$pip install .
 (virasana-venv)$python -m pytest (roda os testes automatizados)
 (virasana-venv)$./virasana/celery.sh (inicia os workers do serviço celery)
 (virasana-venv)$ python virasana/app.py (inicia o servidor web/api)
@@ -83,9 +83,11 @@ $git clone https://github.com/IvanBrasilico/ajna_docs.git
 $cd ajna_docs
 $python3 -m venv ajna-venv
 $. ajna-venv/bin/activate
-(ajna-venv)$python setup.py develop
+(ajna-venv)$pip install -e .[dev]
 $deactivate
 ```
+
+A inclusão do parâmetro [dev] no comando pip terá o condão de instalar o que foi definido no [extras_require] no arquivo setup.py.
 
 Repetir os passos acima para os demais módulos, DENTRO do diretório ajna_docs
 
@@ -100,10 +102,21 @@ A estrutura de diretórios ficará assim:
  └  virasana
 </pre>
 
-Para poder editar o ajna_commons num local único (pois será instalada uma cópia em cada venv criado), dentro de cada diretório/módulo, com o venv ativo, digite:
+Para poder editar o ajna_commons num local único (pois será instalada uma cópia em cada venv criado), dentro de cada diretório/módulo, com o venv respectivo ativo, digite:
 
 ```
 $ pip uninstall ajna_commons
 $ ln -s ../ajna_commons/ajna_commons .
 ```
 
+Porque um venv para cada projeto???
+
+Embora pareça uma complicação a mais um venv para cada projeto, é necessário pensar que cada um é uma aplicação independente, podendo inclusive rodar em máquinas separadas. Isolar cada uma, apenas com os pacotes requeridos, aumenta a segurança, diminui o tamanho total das aplicações e tempo de instalação e upgrades, e previne conflitos entre pacotes.
+
+O venv é considerado boa prática na comunidade python e permite isolamento total entre a aplicação e o host que a estiver rodando. 
+
+### TOX - Continuos integration, continuos deploy
+
+TODOS os módulos possuem configuração para o TOX. Esta configuração cria um ambiente virtual e roda todos os testes em python3.5 e python3.6. Além disso, roda linters para checar adequação do código a padrões, procurar por erros e má qualidade, roda também linters de vulnerabilidades, dentre outros (ver arquivo tox.ini). Além disso, o módulo ajna_docs tem documentação automatizada via Sphynx, também testada pelo tox (para gerar a documentação, rodar make html).
+
+Além disso, está configurado nos repositórios um fluxo de CI/CD - os testes são rodados pelo Travis (linux) e Appveyor (windows) a cada push(conf nos arquivos .yaml). Se houver sucesso, são publicados automaticamente no heroku (conf nos arquivos Procfile).
