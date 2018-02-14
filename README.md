@@ -127,7 +127,7 @@ Embora pareça uma complicação a mais um venv para cada projeto, é necessári
 
 O venv é considerado boa prática na comunidade python e permite isolamento total entre a aplicação e o host que a estiver rodando. 
 
-### TOX - Continuos integration, continuos deploy
+### TOX - Continuous integration, continuous deploy
 
 TODOS os módulos possuem configuração para o TOX. Esta configuração cria um ambiente virtual e roda todos os testes em python3.5 e python3.6. Além disso, roda linters para checar adequação do código a padrões, procurar por erros e má qualidade, roda também linters de vulnerabilidades, dentre outros (ver arquivo tox.ini). Além disso, o módulo ajna_docs tem documentação automatizada via Sphynx, também testada pelo tox (para gerar a documentação, rodar make html).
 
