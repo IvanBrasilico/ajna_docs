@@ -59,7 +59,7 @@ $git clone <nome do repositório>
 $cd <nome do módulo>
 $python3 -m venv <modulo>-venv
 $. <modulo>-venv/bin/activate
-$python setup.py install
+$pip install .
 ```
 Ex:
 
@@ -68,7 +68,7 @@ $git clone https://github.com/IvanBrasilico/virasana.git
 $cd virasana
 $python3 -m venv virasana-venv
 $. virasana-venv/bin/activate
-(virasana-venv)$python setup.py install
+(virasana-venv)$pip install .
 (virasana-venv)$python -m pytest (roda os testes automatizados)
 (virasana-venv)$./virasana/celery.sh (inicia os workers do serviço celery)
 (virasana-venv)$ python virasana/app.py (inicia o servidor web/api)
@@ -106,4 +106,8 @@ Para poder editar o ajna_commons num local único (pois será instalada uma cóp
 $ pip uninstall ajna_commons
 $ ln -s ../ajna_commons/ajna_commons .
 ```
+### TOX - Continuos integration, continuos deploy
 
+TODOS os módulos possuem configuração para o TOX. Esta configuração cria um ambiente virtual e roda todos os testes em python3.5 e python3.6. Além disso, roda linters para checar adequação do código a padrões, procurar por erros e má qualidade, roda também linters de vulnerabilidades, dentre outros (ver arquivo tox.ini). Além disso, o módulo ajna_docs tem documentação automatizada via Sphynx, também testada pelo tox (para gerar a documentação, rodar make html).
+
+Além disso, está configurado nos repositórios um fluxo de CI/CD - os testes são rodados pelo Travis (linux) e Appveyor (windows) a cada push(conf nos arquivos .yaml). Se houver sucesso, são publicados automaticamente no heroku (conf nos arquivos Procfile).
