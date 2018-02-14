@@ -137,3 +137,7 @@ tree.html
 */db.sqlite*
 image_aq/covimgaq/db.sqlite3.old
 image_aq/covimgaq/db.sqlite3
+ajna_commons/*
+bhadrasana/*
+padma/*
+virasana/*
