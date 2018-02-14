@@ -92,11 +92,11 @@ Repetir os passos acima para os demais módulos, DENTRO do diretório ajna_docs
 A estrutura de diretórios ficará assim:
 
 * ajna_docs
- * ajna_commons
- * bhadrasana
- * notebooks
- * padma
- * virasana
+ ** ajna_commons
+ ** bhadrasana
+ ** notebooks
+ ** padma
+ ** virasana
 
 
 Para poder editar o ajna_commons num local único (pois será instalada uma cópia em cada venv criado), dentro de cada diretório/módulo, com o venv ativo, digite:
