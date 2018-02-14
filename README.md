@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/IvanBrasilico/AJNA_MOD.svg?branch=master)](https://travis-ci.org/IvanBrasilico/AJNA_MOD) [![codecov](https://codecov.io/gh/IvanBrasilico/AJNA_MOD/branch/master/graph/badge.svg)](https://codecov.io/gh/IvanBrasilico/AJNA_MOD) [![Build status](https://ci.appveyor.com/api/projects/status/0avweqwyqgx4hdrn?svg=true)](https://ci.appveyor.com/project/IvanBrasilico/ajna-mod)
+[![Build Status](https://travis-ci.org/IvanBrasilico/ajna_docs.svg?branch=master)](https://travis-ci.org/IvanBrasilico/ajna_docs) 
 
 
 # AJNA
