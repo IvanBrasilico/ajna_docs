@@ -23,7 +23,7 @@ Visão computacional e aprendizado de máquina aplicados à vigilância e repres
 ## ajna_commons
 Biblioteca com funções e classes utilizadas em várias aplicações do AJNA
 
-### Instalação 
+### Instalação automática
 Este módulo está marcado como requerido em TODAS as aplicações, portanto, no deploy, será automaticamente instalado pelo pip (requirements.txt) e/ou pelo setuptools(setup.py). 
 
 ### Instalação desenvolvedor
