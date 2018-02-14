@@ -7,7 +7,7 @@ Visão computacional e aprendizado de máquina aplicados à vigilância e repres
 
 
 
-
+* [Documentação](http://ajna-mod.readthedocs.io/pt_BR/latest/)
 * [Módulos](#Módulos)
   * [ajna_commons](#ajna_commons)
   * [ajna_cov](#ajna_cov)
@@ -17,7 +17,7 @@ Visão computacional e aprendizado de máquina aplicados à vigilância e repres
   * [notebooks](#notebooks)
 * [Instalação](#instalação)
 * [Desenvolvimento](#desenvolvimento)
-* [DOCS](http://ajna-mod.readthedocs.io/pt_BR/latest/)
+* [Nota sobre TOX (Testes automatizados e Integração Contínua](#tox)
 
 ## Módulos:
 ## ajna_commons
@@ -127,7 +127,8 @@ Embora pareça uma complicação a mais um venv para cada projeto, é necessári
 
 O venv é considerado boa prática na comunidade python e permite isolamento total entre a aplicação e o host que a estiver rodando. 
 
-### TOX - Continuous integration, continuous deploy
+### TOX
+#### Continuous integration, continuous deploy
 
 TODOS os módulos possuem configuração para o TOX. Esta configuração cria um ambiente virtual e roda todos os testes em python3.5 e python3.6. Além disso, roda linters para checar adequação do código a padrões, procurar por erros e má qualidade, roda também linters de vulnerabilidades, dentre outros (ver arquivo tox.ini). Além disso, o módulo ajna_docs tem documentação automatizada via Sphynx, também testada pelo tox (para gerar a documentação, rodar make html).
 
