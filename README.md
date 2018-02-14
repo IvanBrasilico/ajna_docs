@@ -15,9 +15,9 @@ Visão computacional e aprendizado de máquina aplicados à vigilância e repres
   * [padma](#padma)
   * [virasana](#virasana)
   * [notebooks](#notebooks)
-* [Instalação](#Instalação)
-* [Desenvolvimento](#Desenvolvimento)
-* [DOCS] (http://ajna-mod.readthedocs.io/pt_BR/latest/)
+* [Instalação](#instalação)
+* [Desenvolvimento](#desenvolvimento)
+* [DOCS](http://ajna-mod.readthedocs.io/pt_BR/latest/)
 
 ## Módulos:
 ## ajna_commons
