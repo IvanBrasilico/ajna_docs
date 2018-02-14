@@ -98,7 +98,7 @@ A estrutura de diretórios ficará assim:
  ├  notebooks
  ├  padma
  └  virasana
-
+</pre>
 
 Para poder editar o ajna_commons num local único (pois será instalada uma cópia em cada venv criado), dentro de cada diretório/módulo, com o venv ativo, digite:
 
