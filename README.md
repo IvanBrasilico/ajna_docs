@@ -6,12 +6,24 @@
 Visão computacional e aprendizado de máquina aplicados à vigilância e repressão aduaneira
 
 
-Módulos:
 
+* [Documentação](http://ajna-mod.readthedocs.io/pt_BR/latest/)
+* [Módulos](#Módulos)
+  * [ajna_commons](#ajna_commons)
+  * [ajna_cov](#ajna_cov)
+  * [bhadrasana](#bhadrasana)
+  * [padma](#padma)
+  * [virasana](#virasana)
+  * [notebooks](#notebooks)
+* [Instalação](#instalação)
+* [Desenvolvimento](#desenvolvimento)
+* [Nota sobre TOX (Testes automatizados e Integração Contínua)](#tox)
+
+## Módulos:
 ## ajna_commons
 Biblioteca com funções e classes utilizadas em várias aplicações do AJNA
 
-### Instalação 
+### Instalação automática
 Este módulo está marcado como requerido em TODAS as aplicações, portanto, no deploy, será automaticamente instalado pelo pip (requirements.txt) e/ou pelo setuptools(setup.py). 
 
 ### Instalação desenvolvedor
@@ -32,17 +44,17 @@ Aquisição de dados. Serviço com scripts que acessam sistemas fechados e dados
 
 Constituído de uma aplicação web e wevbservice, e diversos workers controlados pelo Celery
 
+## padma - busca da verdade
+
+Coleção de algoritmos de machine learning plugáveis e servidos em WebService. Basicamente é uma API que recebe dados e devolve predições.
+
+Constituído de uma aplicação web e wevbservice, e diversos workers controlados pelo Celery
+
 ## virasana - heroi
 
 Interface para visualização e busca de imagens, recebimento de alertas e execução, manual ou automática, dos algoritmos do módulo ml_code nas imagens. Disponibiliza seus dados em Restful API.
 
 Aquisição de imagens. Serviço com Scripts que acessam as fontes de imagens cadastradas, validam, pré-processam, fazem reconhecimento de caracteres, validam, monitoram mudanças, etc e copiam para um diretório único. Disponibiliza seus dados em Restful API.
-
-Constituído de uma aplicação web e wevbservice, e diversos workers controlados pelo Celery
-
-## padma - busca da verdade
-
-Coleção de algoritmos de machine learning plugáveis e servidos em WebService. Basicamente é uma API que recebe dados e devolve predições.
 
 Constituído de uma aplicação web e wevbservice, e diversos workers controlados pelo Celery
 
@@ -74,7 +86,7 @@ $. virasana-venv/bin/activate
 (virasana-venv)$ python virasana/app.py (inicia o servidor web/api)
 ```
 
-### Instalação desenvolvedor
+### Desenvolvimento
 
 Clonar o módulo raiz ajna_doc
 
@@ -115,8 +127,11 @@ Embora pareça uma complicação a mais um venv para cada projeto, é necessári
 
 O venv é considerado boa prática na comunidade python e permite isolamento total entre a aplicação e o host que a estiver rodando. 
 
-### TOX - Continuos integration, continuos deploy
+### TOX
+#### Continuous integration, continuous deploy
 
-TODOS os módulos possuem configuração para o TOX. Esta configuração cria um ambiente virtual e roda todos os testes em python3.5 e python3.6. Além disso, roda linters para checar adequação do código a padrões, procurar por erros e má qualidade, roda também linters de vulnerabilidades, dentre outros (ver arquivo tox.ini). Além disso, o módulo ajna_docs tem documentação automatizada via Sphynx, também testada pelo tox (para gerar a documentação, rodar make html).
+TODOS os módulos possuem configuração para o TOX. Esta configuração cria um ambiente virtual e roda todos os testes em python3.5 e python3.6. Adicionalmente, roda linters para checar adequação do código a padrões, procurar por erros e má qualidade, roda também linters de vulnerabilidades, dentre outros (ver arquivo tox.ini).
 
-Além disso, está configurado nos repositórios um fluxo de CI/CD - os testes são rodados pelo Travis (linux) e Appveyor (windows) a cada push(conf nos arquivos .yaml). Se houver sucesso, são publicados automaticamente no heroku (conf nos arquivos Procfile).
+O módulo ajna_docs tem documentação automatizada via Sphynx, também testada pelo tox (para gerar a documentação, rodar make html). A documentação de todos os módulos será centralizada no ajna_docs.
+
+Além disso, está configurado nos repositórios um fluxo de CI/CD - os testes são rodados pelo Travis (linux) e Appveyor (windows) a cada push(conf nos arquivos .yaml). Se houver sucesso, o novo código é publicado automaticamente no heroku (conf nos arquivos Procfile).
