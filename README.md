@@ -17,7 +17,7 @@ Visão computacional e aprendizado de máquina aplicados à vigilância e repres
   * [notebooks](#notebooks)
 * [Instalação](#instalação)
 * [Desenvolvimento](#desenvolvimento)
-* [Nota sobre TOX (Testes automatizados e Integração Contínua](#tox)
+* [Nota sobre TOX (Testes automatizados e Integração Contínua)](#tox)
 
 ## Módulos:
 ## ajna_commons
