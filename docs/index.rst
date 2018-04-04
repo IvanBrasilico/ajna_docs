@@ -11,7 +11,6 @@ Bem-vindo à documentação do sistema AJNA
 ----------------------------------------
 
 AJNA - Visão computacional e Aprendizagem de máquina aplicados à vigilância aduaneira
--------------------------------------------------------------------------------------
 
 AJNA é, na tradição do Ioga, o chakra da intuição, ou terceiro olho.
 
@@ -37,7 +36,7 @@ BHADRASANA - Sistema que roda no ambiente da RFB, importando dados de outros sis
 fazer pequenas navegações de dados e análise de risco.
 Bhadrasana representa a prática da postura de meditação, observar, analisar.
 
-PADMA - módulo responsável por servir e treinar os modelos de aprendizado de máquina
+PADMA - módulo responsável por servir e treinar os modelos de aprendizado de máquina.
 Padma representa a busca da verdade
 
 Tópicos
@@ -51,7 +50,6 @@ Tópicos
    codigofonte.rst
    UserStories.rst
    Arquitetura.rst
-   modules.rst
 
 
 Índices e tabelas

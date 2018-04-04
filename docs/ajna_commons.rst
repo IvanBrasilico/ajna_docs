@@ -17,3 +17,29 @@ bsonimage
 ---------
 .. automodule:: ajna_commons.models.bsonimage
     :members:
+
+sanitiza
+--------
+.. automodule:: ajna_commons.utils.sanitiza
+    :members:
+
+Configurações
+-------------
+
+Confs
+-----
+.. automodule:: ajna_commons.flask.conf
+    :members:
+
+Log
+---
+.. automodule:: ajna_commons.flask.log
+    :members:
+
+Login
+-----
+.. automodule:: ajna_commons.flask.login
+    :members:
+
+
+
