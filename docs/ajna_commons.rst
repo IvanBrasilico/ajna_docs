@@ -9,11 +9,11 @@ COMMONS
 =======
 Ajna_commons é um módulo de bibliotecas utilizadas em outros módulos
 
-Funções
-=======
 
 Utilitários
 -----------
 
+bsonimage
+---------
 .. automodule:: ajna_commons.models.bsonimage
     :members:
