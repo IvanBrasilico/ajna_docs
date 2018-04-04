@@ -31,6 +31,13 @@
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
+import sys
+sys.path.insert(0, './ajna_commons')
+sys.path.insert(0, './bhadrasana')
+sys.path.insert(0, './virasana')
+sys.path.insert(0, './padma')
+sys.path.insert(0, './padma/models/research')
+
 extensions = ['sphinx.ext.autodoc',
     'sphinx.ext.doctest',
     'sphinx.ext.todo',

@@ -8,4 +8,7 @@ Documentação do código-fonte
    :caption: Conteúdo:
    :glob:
 
-   sentinela.rst
+   ajna_commons.rst
+   bhadrasana.rst
+   virasana.rst
+   padma.rst
