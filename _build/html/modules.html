@@ -1,0 +1,159 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+  <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Módulos do Sistema &#8212; AJNA 0.1a documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Manuais de Usuário" href="manuais.html" />
+    <link rel="prev" title="Bem-vindo à documentação do sistema AJNA" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p><a class="reference external" href="index.html">Voltar ao Indice</a></p>
+<div class="section" id="modulos-do-sistema">
+<h1>Módulos do Sistema<a class="headerlink" href="#modulos-do-sistema" title="Permalink to this headline">¶</a></h1>
+<p>AJNA - Visão computacional e aprendizado de máquina</p>
+<div class="section" id="admin-interface">
+<h2>admin_interface<a class="headerlink" href="#admin-interface" title="Permalink to this headline">¶</a></h2>
+<p>Hoje está separada no AJNA original (protótipo)
+Interface para cadastramento de fontes de imagens, usuários, configuração de parâmetros, etc</p>
+</div>
+<div class="section" id="image-aq">
+<h2>image_aq<a class="headerlink" href="#image-aq" title="Permalink to this headline">¶</a></h2>
+<p>Hoje rodando no AJNA original (protótipo)
+Aquisição de imagens. Serviço com Scripts que acessam as fontes de imagens cadastradas,
+validam, pré-processam, fazem reconhecimento de caracteres, validam,
+monitoram mudanças, etc e copiam para um diretório único.</p>
+<p>As imagens são arquivadas em diretório no formato &lt;Nome_da_Fonte_de_Dados&gt;/&lt;Ano&gt;/&lt;Mes&gt;/&lt;dia&gt;.
+Se possível, será armazenada a imagem original. No mínimo será armazenada uma cópia em menor resolução
+(e sem outras transformações) da imagem original, além dos metadados (xml original ou outro), e as
+transformações, como imagem tratada para algoritmo de aprendizado, histograma extraído, etc.
+Deve ser provida uma forma de proteger contra modificações (read-only).</p>
+<p>Disponibiliza seus dados em Restful API.</p>
+</div>
+<div class="section" id="data-aq">
+<h2>data_aq<a class="headerlink" href="#data-aq" title="Permalink to this headline">¶</a></h2>
+<p>Aquisição de dados. Serviço com scripts que acessam sistemas fechados e dados públicos,
+estruturados e não estruturados, guardando em coleções/Bancos de Dados.</p>
+<p>Os dados são arquivadas em diretório no formato &lt;Nome_da_Base_Original&gt;/&lt;Ano&gt;/&lt;Mes&gt;/&lt;dia&gt;/&lt;Codigo_Extracao&gt;
+A BaseOriginal será armazenada em csv no padrão cabeçalho na primeira linha com nomes dos campos,
+separador vírgula, e somente isso(rfc4180 - forma mais simples). As “Strings” originais dos dados terão sempre
+os espaços à direita e esquerda removidas e serão normalizados para Unicode NFC sem acentos e caracteres especiais,
+com espaços únicos entre as palavras e letras minúsculas. Todos os dados originais serão tratados como Strings. Estas
+precauções servirão para facilitar buscas, comparações e evitar problemas de codificação e compatibilidade
+futuras e em interações com outros sistemas.</p>
+<p>Deve ser provida uma forma de proteger contra modificações (read-only).</p>
+<p>Disponibiliza seus dados em Restful API.</p>
+</div>
+<div class="section" id="sentinela">
+<h2>sentinela<a class="headerlink" href="#sentinela" title="Permalink to this headline">¶</a></h2>
+<p>Controla o data_aq, permite cruzamento de dados e gerenciamento, manual ou automático, de parâmetros de risco.</p>
+<p>Interface para cadastramento e configuração das Fontes de Dados(Configura modo de merge entre as tabelas originais,
+filtragens, etc)</p>
+<p>Estas configurações permitirão a migração automática, se necessário, dos dados dos CSV originais para BDs SQL ou
+NoSQL (a definir / enquanto dados não tiverem DataLake).</p>
+<p>Quando o sistema original não permitir sincronização/extração automática, sentinela proverá interface para
+alimentação manual da base.</p>
+<p>Disponibiliza seus dados em Restful API.</p>
+</div>
+<div class="section" id="virasana">
+<h2>virasana<a class="headerlink" href="#virasana" title="Permalink to this headline">¶</a></h2>
+<p>Interface para visualização e busca de imagens, recebimento de alertas e execução,
+manual ou automática, dos algoritmos do módulo ml_code nas imagens.</p>
+<p>Disponibiliza seus dados em Restful API.</p>
+</div>
+<div class="section" id="ml-code-padma">
+<h2>ml_code - padma<a class="headerlink" href="#ml-code-padma" title="Permalink to this headline">¶</a></h2>
+<p>Coleção de algoritmos de machine learning plugáveis e servidos em WebService/JSON API.</p>
+</div>
+<div class="section" id="notebooks">
+<h2>notebooks<a class="headerlink" href="#notebooks" title="Permalink to this headline">¶</a></h2>
+<p>Rascunhos. Aproveitar a interatividade e praticidade do Jupyter Notebook/JupyterLab
+para fazer e documentar as análises exploratórias de dados,
+treinamento e teste de algoritmos de aprendizado e projetar/validar scripts de data_aq.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Módulos do Sistema</a><ul>
+<li><a class="reference internal" href="#admin-interface">admin_interface</a></li>
+<li><a class="reference internal" href="#image-aq">image_aq</a></li>
+<li><a class="reference internal" href="#data-aq">data_aq</a></li>
+<li><a class="reference internal" href="#sentinela">sentinela</a></li>
+<li><a class="reference internal" href="#virasana">virasana</a></li>
+<li><a class="reference internal" href="#ml-code-padma">ml_code - padma</a></li>
+<li><a class="reference internal" href="#notebooks">notebooks</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Bem-vindo à documentação do sistema AJNA</a></li>
+      <li>Next: <a href="manuais.html" title="next chapter">Manuais de Usuário</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, RFB.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/modules.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

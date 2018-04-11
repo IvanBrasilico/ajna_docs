@@ -65,9 +65,6 @@ instance/
 # Scrapy stuff:
 .scrapy
 
-# Sphinx documentation
-docs/_build/
-
 # PyBuilder
 target/
 
@@ -115,7 +112,6 @@ ENV/
 bottery_core
 settings.py
 codacy.sh
-_build
 */alembic/*
 */CSV*
 
@@ -144,4 +140,3 @@ ajna_commons
 bhadrasana
 virasana
 padma
-_html
