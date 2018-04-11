@@ -28,6 +28,13 @@ Gerente de Risco
 
 . topic:: Banco de Dados
 
+
+Interface
+=========
+
+.. automodule:: bhadrasana.sentinela.app
+    :members:
+
 Banco de Dados
 ==============
 
