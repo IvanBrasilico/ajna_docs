@@ -76,6 +76,10 @@ Aí é só colocar o nome dos módulos assim no arquivo .rst:
     :members:
 # Bom guia/exemplo de Sphinx:
 # http://sphinxcontrib-napoleon.readthedocs.io/en/latest/index.html
+# Para gerar documentação no Linux:
+make html
+# Para gerar documentação no Windows:
+sphinx-build -b html docs _html
 
 # Configuração do Celery
 sudo apt install rabbitmq-server
