@@ -28,6 +28,11 @@ Gerente de Risco
 
 . topic:: Banco de Dados
 
+Gerente de Bases
+----------------
+
+.. automodule:: bhadrasana.sentinela.utils.gerente_base
+    :members:
 
 Interface
 =========
