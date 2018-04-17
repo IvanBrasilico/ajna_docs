@@ -41,6 +41,7 @@ setup(
             'pytest-cov',
             'pytest-mock',
             'sphinx',
+            'sphinx_rtd_theme',
             'testfixtures',
             'tox'
         ],
