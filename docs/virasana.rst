@@ -29,13 +29,7 @@ __init__
 
 XML
 -----
-.. automodule:: viras    flake8-docstrings
-    flake8-quotes
-    flake8-todo
-    isort
-    pytest
-    radon
-lana.virasana.integracao.xml
+.. automodule:: virasana.virasana.integracao.xml
     :members:
 
 Carga
