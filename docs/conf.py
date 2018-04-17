@@ -43,11 +43,11 @@ sys.path.insert(0, os.path.join(base_path, '..', 'padma'))
 sys.path.insert(0, os.path.join(base_path, '..', 'padma/models/research'))
 print(sys.path)
 extensions = ['sphinx.ext.autodoc',
-    'sphinx.ext.doctest',
-    'sphinx.ext.todo',
-    'sphinx.ext.coverage',
-    'sphinx.ext.imgmath',
-    'sphinx.ext.viewcode']
+              'sphinx.ext.doctest',
+              'sphinx.ext.todo',
+              'sphinx.ext.coverage',
+              'sphinx.ext.imgmath',
+              'sphinx.ext.viewcode']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -120,14 +120,11 @@ html_static_path = ['_static']
 # refs: http://alabaster.readthedocs.io/en/latest/installation.html#sidebars
 html_sidebars = {
     '**': [
-        'localtoc.html', 
+        'localtoc.html',
         'relations.html',  # needs 'show_related': True theme option to display
         'searchbox.html',
     ]
 }
-
-
-
 
 # -- Options for HTMLHelp output ------------------------------------------
 
@@ -181,9 +178,8 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc, 'AJNA', 'AJNA Documentation',
-     author, 'RFB', 'Visão computacional e aprendizagem de máquina aplicados à Vigilância Aduaneira.',
+     author, 'RFB',
+     'Visão computacional e aprendizagem de\
+     máquina aplicados à Vigilância Aduaneira.',
      'Python'),
 ]
-
-
-
