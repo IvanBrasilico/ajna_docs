@@ -1,0 +1,429 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="pt-BR" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="pt-BR" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Manual de Usuário do Sentinela &mdash; AJNA 0.1a documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Documentação do código-fonte" href="codigofonte.html" />
+    <link rel="prev" title="Manuais de Usuário" href="manuais.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> AJNA
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1a
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="manuais.html">Manuais de Usuário</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Manual de Usuário do Sentinela</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fluxo-de-trabalho-workflow">Fluxo de trabalho (Workflow)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#telas">Telas</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#login">Login</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#importar-base">Importar Base</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aplicar-risco">Aplicar Risco</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#editar-riscos">Editar Riscos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#editar-titulos">Editar Titulos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#editar-visao">Editar Visão</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="codigofonte.html">Documentação do código-fonte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UserStories.html">Histórias de Usuário</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Arquitetura.html">Módulos do Sistema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Arquitetura.html#arquitetura-do-sistema">Arquitetura do Sistema</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AJNA</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="manuais.html">Manuais de Usuário</a> &raquo;</li>
+        
+      <li>Manual de Usuário do Sentinela</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/manualsentinela.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p><a class="reference external" href="index.html">Voltar ao Indice</a></p>
+<div class="section" id="manual-de-usuario-do-sentinela">
+<h1>Manual de Usuário do Sentinela<a class="headerlink" href="#manual-de-usuario-do-sentinela" title="Permalink to this headline">¶</a></h1>
+<p>Descrevemos a interface através de exemplos e imagens de telas.</p>
+<div class="section" id="fluxo-de-trabalho-workflow">
+<h2>Fluxo de trabalho (Workflow)<a class="headerlink" href="#fluxo-de-trabalho-workflow" title="Permalink to this headline">¶</a></h2>
+<p>Para começar a utilizar o sistema, o usuário, após efetuar o <a class="reference internal" href="#login"><span class="std std-ref">Login</span></a>,
+deverá ir à página <a class="reference internal" href="#importa-base"><span class="std std-ref">Importar Base</span></a> para cadastrar/selecionar uma Base e
+importar o arquivo ao qual ele deseja realizar a busca por elementos de risco.
+Após a importação será automaticamente redirecionado para a tela <a class="reference internal" href="#aplica-risco"><span class="std std-ref">Aplicar Risco</span></a>.</p>
+<p>Na primeira vez em que uma Base for cadastrada será necessário criar os itens
+de riscos que serão buscados. A tela <a class="reference internal" href="#edita-risco"><span class="std std-ref">Editar Riscos</span></a> apresenta a função de
+criação e edição destes Padrões de Risco.</p>
+<p>Após a criação dos padrões o usuário poderá realizar a filtragem da Base desejada
+indo na tela <a class="reference internal" href="#aplica-risco"><span class="std std-ref">Aplicar Risco</span></a> e selecionando os itens necessários.</p>
+<p>O Sentinela (ver <a class="reference internal" href="bhadrasana.html"><span class="doc">BHADRASANA</span></a>) já na importação aplica alguns filtros e
+normalizações na Base importada.</p>
+<p>Caso existam várias bases com parâmetros parecidos, diferindo apenas no nome, o
+sistema apresenta na tela <a class="reference internal" href="#edita-titulo"><span class="std std-ref">Editar Titulos</span></a> um mecanismo para igualar o nome
+dos parâmetros destas planilhas.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">A troca de títulos será feita apenas ao importar a Base.
+Ver <a class="reference internal" href="#edita-titulo"><span class="std std-ref">Editar Titulos</span></a> para mais informações.</p>
+</div>
+</div>
+<div class="section" id="telas">
+<h2>Telas<a class="headerlink" href="#telas" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="login">
+<span id="id1"></span><h3>Login<a class="headerlink" href="#login" title="Permalink to this headline">¶</a></h3>
+<p>Esta é a tela inicial padrão do sistema AJNA.
+Nela está contido o formulário de login.</p>
+<div class="figure align-center" id="id2">
+<img alt="_images/login.png" src="_images/login.png" />
+<p class="caption"><span class="caption-text">Tela Login</span></p>
+</div>
+</div>
+<div class="section" id="importar-base">
+<span id="importa-base"></span><h3>Importar Base<a class="headerlink" href="#importar-base" title="Permalink to this headline">¶</a></h3>
+<p>A tela Importar Base é onde se envia ao sistema os arquivos para que sejam
+aplicados os filtros.</p>
+<div class="figure align-center" id="id3">
+<img alt="_images/importarbase.png" src="_images/importarbase.png" />
+<p class="caption"><span class="caption-text">Tela Importar Base</span></p>
+</div>
+<dl class="docutils">
+<dt>Para realizar o UPLOAD e submetê-lo ao sistema o usuário deverá:</dt>
+<dd><div class="first last line-block">
+<div class="line">Buscar o arquivo clicando em <em>Clique para selecionar planilha</em> e
+navegando até o local do arquivo.</div>
+<div class="line">Escolher a Base Original. Caso ela ainda não tenha sido criada,
+digitar o nome no campo <em>Nome</em> e clicar em <em>Criar nova Base de Origem</em>.</div>
+<div class="line">Escolher a data do arquivo. Caso nada seja digitado será atribuído a
+data atual a este campo</div>
+</div>
+</dd>
+</dl>
+<p>Após clicar em <em>Submeter</em> o sistema redirecionará para a tela <a class="reference internal" href="#aplica-risco"><span class="std std-ref">Aplicar Risco</span></a>.
+Porém se não houver Padrão de Risco cadastrado o usuário deverá ir para a página
+<a class="reference internal" href="#edita-risco"><span class="std std-ref">Editar Riscos</span></a>.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Os arquivos importados deverão ter os formatos: CSV (Arquivo
+de texto delimitado por vírgulas), SCH - TXT, ZIP (Contendo arquivos CSV
+ou SCH-TXT)</p>
+</div>
+</div>
+<div class="section" id="aplicar-risco">
+<span id="aplica-risco"></span><h3>Aplicar Risco<a class="headerlink" href="#aplicar-risco" title="Permalink to this headline">¶</a></h3>
+<p>Nesta tela está a principal função do sistema, que consiste em verificar se há
+parâmetros de risco nas Bases.</p>
+<div class="figure align-center" id="id4">
+<img alt="_images/aplicarrisco.png" src="_images/aplicarrisco.png" />
+<p class="caption"><span class="caption-text">Tela Aplicar Risco</span></p>
+</div>
+<dl class="docutils">
+<dt>Para aplicar o risco no arquivo importado:</dt>
+<dd><div class="first last line-block">
+<div class="line">Escolher o Padrão de Risco, já configurado na tela <a class="reference internal" href="#edita-risco"><span class="std std-ref">Editar Riscos</span></a></div>
+<div class="line">Selecionar os parâmetros que serão aplicados à Base desejada</div>
+<div class="line">Selecionar o modo de visualização (ver <a class="reference internal" href="#edita-visao"><span class="std std-ref">Editar Visão</span></a>)</div>
+</div>
+</dd>
+</dl>
+<p>Após clicar em selecionar <em>Filtrar</em>. O sistema apresentará uma tabela contendo
+os campos e as linhas as quais foram encontrados os valores definidos.</p>
+<dl class="docutils">
+<dt>Apresenta os seguintes campos:</dt>
+<dd><ul class="first last simple">
+<li>Seleção da Base</li>
+<li>Modo de visualização</li>
+<li>Seleção do padrão de risco</li>
+<li>Parâmetros ativos cadastrados na tela <a class="reference internal" href="#edita-risco"><span class="std std-ref">Editar Riscos</span></a></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="editar-riscos">
+<span id="edita-risco"></span><h3>Editar Riscos<a class="headerlink" href="#editar-riscos" title="Permalink to this headline">¶</a></h3>
+<p>Esta tela permite a edição e/ou cadastro dos Padrões de Risco.</p>
+<div class="figure align-center" id="id5">
+<img alt="_images/editarrisco.png" src="_images/editarrisco.png" />
+<p class="caption"><span class="caption-text">Tela Editar Riscos</span></p>
+</div>
+<p>Estes padrões consistem nas colunas dos arquivos importados, a qual chamaremos
+de parâmetros, e seus respectivos valores. Como mostra a figura abaixo.</p>
+<div class="figure align-center" id="id6">
+<img alt="_images/padrao.png" src="_images/padrao.png" />
+<p class="caption"><span class="caption-text">Exemplificando os parâmetros e seus valores</span></p>
+</div>
+<dl class="docutils">
+<dt>Apresenta os seguintes campos:</dt>
+<dd><ul class="first last simple">
+<li>Seleção/criação do padrão de risco</li>
+<li>Seleção das bases a serem vinculadas</li>
+<li>Cadastramento dos parâmetros</li>
+<li>Cadastramento dos valores dos parâmetros</li>
+</ul>
+</dd>
+</dl>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Ao clicar na lupa ao lado do campo de cadastro de parâmetros o
+sistema buscará os titulos das colunas de arquivos já importados.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A criação dos padrões de riscos, serão realizadas somente na
+primeira vez em que for cadastrado uma nova Base.</p>
+</div>
+</div>
+<div class="section" id="editar-titulos">
+<span id="edita-titulo"></span><h3>Editar Titulos<a class="headerlink" href="#editar-titulos" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-center">
+<img alt="_images/editatitulo.png" src="_images/editatitulo.png" />
+</div>
+<p>Para casos onde há mais de uma Base, alguns parâmetros poderão estar com nomes
+diferentes, porém, trazerem os mesmos valores como, por exemplo:</p>
+<div class="figure align-center" id="id7">
+<img alt="_images/plan1.png" src="_images/plan1.png" />
+<p class="caption"><span class="caption-text">Planilha 1</span></p>
+</div>
+<div class="figure align-center" id="id8">
+<img alt="_images/plan2.png" src="_images/plan2.png" />
+<p class="caption"><span class="caption-text">Planilha 2</span></p>
+</div>
+<p>Se, no exemplo dado, as colunas das planilhas tivessem um único nome (já que
+ambas trazem o código NCM) poderia ser cadastrado um único parâmetro onde nele
+seriam cadastrados todos os códigos de NCMs desejados.</p>
+<p>Ao invés de criar um Parâmetro de Risco diferente para cada Base (ver
+<a class="reference internal" href="#edita-risco"><span class="std std-ref">Editar Riscos</span></a>), nesta tela o Sentinela permite que uma coluna seja
+importada com um outro nome.</p>
+<dl class="docutils">
+<dt>Por exemplo:</dt>
+<dd><p class="first">Supondo que quisessemos padronizar os nomes dos campos para <strong>NCM</strong> somente,
+deveríamos mudar o nome <em>Código NCM</em> da Planilha 1 para <em>NCM</em>
+da Planilha 2.</p>
+<p>Para isso basta colocar o título que queremos que seja trocado no campo
+<em>Título antigo</em>, e o título novo no campo <em>Título novo</em>.</p>
+<div class="figure align-center" id="id9">
+<img alt="_images/editatituloex.png" src="_images/editatituloex.png" />
+<p class="caption"><span class="caption-text">Exemplo da mudança de título</span></p>
+</div>
+<p>E na tela <a class="reference internal" href="#edita-risco"><span class="std std-ref">Editar Riscos</span></a> criamos um único parâmetro como na figura
+abaixo.</p>
+<div class="last figure align-center" id="id10">
+<img alt="_images/editariscoex.png" src="_images/editariscoex.png" />
+<p class="caption"><span class="caption-text">Exemplo de parâmetro de risco</span></p>
+</div>
+</dd>
+</dl>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last">O sistema só realizará as trocas de títulos no momento em que o
+arquivo estiver sendo importado. Ou seja, o procedimento para padronização
+dos títulos deverão ser configurados antes do UPLOAD da Base na tela
+<a class="reference internal" href="#importa-base"><span class="std std-ref">Importar Base</span></a></p>
+</div>
+</div>
+<div class="section" id="editar-visao">
+<span id="edita-visao"></span><h3>Editar Visão<a class="headerlink" href="#editar-visao" title="Permalink to this headline">¶</a></h3>
+<p>Esta tela permite ao usuário definir quais colunas exibir na tela <a class="reference internal" href="#aplica-risco"><span class="std std-ref">Aplicar Risco</span></a>.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="codigofonte.html" class="btn btn-neutral float-right" title="Documentação do código-fonte" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="manuais.html" class="btn btn-neutral" title="Manuais de Usuário" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, RFB.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1a',
+            LANGUAGE:'pt-BR',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>

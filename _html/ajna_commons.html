@@ -1,0 +1,359 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="pt-BR" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="pt-BR" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>COMMONS &mdash; AJNA 0.1a documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="BHADRASANA" href="bhadrasana.html" />
+    <link rel="prev" title="Documentação do código-fonte" href="codigofonte.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> AJNA
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1a
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Tópicos:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="manuais.html">Manuais de Usuário</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="codigofonte.html">Documentação do código-fonte</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">COMMONS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#utilitarios">Utilitários</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ajna_commons.models.bsonimage">bsonimage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ajna_commons.utils.sanitiza">sanitiza</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuracoes">Configurações</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ajna_commons.flask.conf">Confs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ajna_commons.flask.log">Log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ajna_commons.flask.login">Login</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bhadrasana.html">BHADRASANA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virasana.html">VIRASANA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="padma.html">PADMA</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="UserStories.html">Histórias de Usuário</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Arquitetura.html">Módulos do Sistema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Arquitetura.html#arquitetura-do-sistema">Arquitetura do Sistema</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AJNA</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="codigofonte.html">Documentação do código-fonte</a> &raquo;</li>
+        
+      <li>COMMONS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/ajna_commons.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="topicos">
+<p class="topic-title first">Tópicos</p>
+<ul class="simple">
+<li><a class="reference internal" href="#commons" id="id1">COMMONS</a><ul>
+<li><a class="reference internal" href="#utilitarios" id="id2">Utilitários</a></li>
+<li><a class="reference internal" href="#module-ajna_commons.models.bsonimage" id="id3">bsonimage</a></li>
+<li><a class="reference internal" href="#module-ajna_commons.utils.sanitiza" id="id4">sanitiza</a></li>
+<li><a class="reference internal" href="#configuracoes" id="id5">Configurações</a></li>
+<li><a class="reference internal" href="#module-ajna_commons.flask.conf" id="id6">Confs</a></li>
+<li><a class="reference internal" href="#module-ajna_commons.flask.log" id="id7">Log</a></li>
+<li><a class="reference internal" href="#module-ajna_commons.flask.login" id="id8">Login</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p><a class="reference external" href="index.html">Voltar ao Indice</a></p>
+<div class="section" id="commons">
+<h1><a class="toc-backref" href="#id1">COMMONS</a><a class="headerlink" href="#commons" title="Permalink to this headline">¶</a></h1>
+<p>Ajna_commons é um módulo de bibliotecas utilizadas em outros módulos</p>
+<div class="section" id="utilitarios">
+<h2><a class="toc-backref" href="#id2">Utilitários</a><a class="headerlink" href="#utilitarios" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-ajna_commons.models.bsonimage">
+<span id="bsonimage"></span><h2><a class="toc-backref" href="#id3">bsonimage</a><a class="headerlink" href="#module-ajna_commons.models.bsonimage" title="Permalink to this headline">¶</a></h2>
+<p>Trasforma imagem(ns) e xml(s) em registro(s) BSON.</p>
+</div>
+<div class="section" id="module-ajna_commons.utils.sanitiza">
+<span id="sanitiza"></span><h2><a class="toc-backref" href="#id4">sanitiza</a><a class="headerlink" href="#module-ajna_commons.utils.sanitiza" title="Permalink to this headline">¶</a></h2>
+<p>Funções para normalização e limpeza de texto e listas de textos.</p>
+<dl class="function">
+<dt id="ajna_commons.utils.sanitiza.ascii_sanitizar">
+<code class="descclassname">ajna_commons.utils.sanitiza.</code><code class="descname">ascii_sanitizar</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/utils/sanitiza.html#ascii_sanitizar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.utils.sanitiza.ascii_sanitizar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove marcas de diacríticos (acentos e caracteres especiais)
+Retorna NFC normalizado ASCII</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ajna_commons.utils.sanitiza.sanitizar">
+<code class="descclassname">ajna_commons.utils.sanitiza.</code><code class="descname">sanitizar</code><span class="sig-paren">(</span><em>text</em>, <em>norm_function=&lt;function unicode_sanitizar&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/utils/sanitiza.html#sanitizar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.utils.sanitiza.sanitizar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove espaços à direita e esquerda, passa para “casefold”(caixa baixa),
+usa função normalização para retirar marcas de diacríticos (acentos e</p>
+<blockquote>
+<div>caracteres especiais), remove espaços adicionais entre palavras.</div></blockquote>
+<p>Retorna texto sanitizado e normalizado
+Depois desse produto, suas buscas nunca mais serão as mesmas!!! :-p</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ajna_commons.utils.sanitiza.sanitizar_lista">
+<code class="descclassname">ajna_commons.utils.sanitiza.</code><code class="descname">sanitizar_lista</code><span class="sig-paren">(</span><em>lista</em>, <em>norm_function=&lt;function unicode_sanitizar&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/utils/sanitiza.html#sanitizar_lista"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.utils.sanitiza.sanitizar_lista" title="Permalink to this definition">¶</a></dt>
+<dd><p>Percorre lista de listas sanitizando inline
+Por ora só suporta lista ‘bidimensional’, como um csv</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ajna_commons.utils.sanitiza.unicode_sanitizar">
+<code class="descclassname">ajna_commons.utils.sanitiza.</code><code class="descname">unicode_sanitizar</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/utils/sanitiza.html#unicode_sanitizar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.utils.sanitiza.unicode_sanitizar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove marcas de diacríticos (acentos e caracteres especiais)
+Retorna NFC normalizado</p>
+</dd></dl>
+
+</div>
+<div class="section" id="configuracoes">
+<h2><a class="toc-backref" href="#id5">Configurações</a><a class="headerlink" href="#configuracoes" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-ajna_commons.flask.conf">
+<span id="confs"></span><h2><a class="toc-backref" href="#id6">Confs</a><a class="headerlink" href="#module-ajna_commons.flask.conf" title="Permalink to this headline">¶</a></h2>
+<p>Define configurações comuns aos módulos do AJNA</p>
+<p>Ex.:
+SECRET - chave para criptografia da sessão
+REDIS SERVER
+MONGODB SERVER
+Custom messages- mensagens customizadas para módulos de login, segurança,</p>
+<blockquote>
+<div>erro, etc</div></blockquote>
+<p>Configurações de logging, etc</p>
+</div>
+<div class="section" id="module-ajna_commons.flask.log">
+<span id="log"></span><h2><a class="toc-backref" href="#id7">Log</a><a class="headerlink" href="#module-ajna_commons.flask.log" title="Permalink to this headline">¶</a></h2>
+<p>Configuration of AJNA modules LOGs</p>
+<dl class="class">
+<dt id="ajna_commons.flask.log.CustomAdapter">
+<em class="property">class </em><code class="descclassname">ajna_commons.flask.log.</code><code class="descname">CustomAdapter</code><span class="sig-paren">(</span><em>logger</em>, <em>extra</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/flask/log.html#CustomAdapter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.flask.log.CustomAdapter" title="Permalink to this definition">¶</a></dt>
+<dd><p>This example adapter expects the passed in dict-like object to have a
+‘connid’ key, whose value in brackets is prepended to the log message.</p>
+<dl class="method">
+<dt id="ajna_commons.flask.log.CustomAdapter.process">
+<code class="descname">process</code><span class="sig-paren">(</span><em>msg</em>, <em>kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/flask/log.html#CustomAdapter.process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.flask.log.CustomAdapter.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process the logging message and keyword arguments passed in to
+a logging call to insert contextual information. You can either
+manipulate the message itself, the keyword args or both. Return
+the message and kwargs modified (or not) to suit your needs.</p>
+<p>Normally, you’ll only need to override this one method in a
+LoggerAdapter subclass for your specific needs.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ajna_commons.flask.log.MyFilter">
+<em class="property">class </em><code class="descclassname">ajna_commons.flask.log.</code><code class="descname">MyFilter</code><span class="sig-paren">(</span><em>level</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/flask/log.html#MyFilter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.flask.log.MyFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log only especified level (not upper levels)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ajna_commons.flask.login">
+<span id="login"></span><h2><a class="toc-backref" href="#id8">Login</a><a class="headerlink" href="#module-ajna_commons.flask.login" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="ajna_commons.flask.login.User">
+<em class="property">class </em><code class="descclassname">ajna_commons.flask.login.</code><code class="descname">User</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/flask/login.html#User"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.flask.login.User" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="bhadrasana.html" class="btn btn-neutral float-right" title="BHADRASANA" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="codigofonte.html" class="btn btn-neutral" title="Documentação do código-fonte" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, RFB.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1a',
+            LANGUAGE:'pt-BR',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,391 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="pt-BR" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="pt-BR" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Módulos do Sistema &mdash; AJNA 0.1a documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Histórias de Usuário" href="UserStories.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> AJNA
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1a
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Tópicos:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="manuais.html">Manuais de Usuário</a></li>
+<li class="toctree-l1"><a class="reference internal" href="codigofonte.html">Documentação do código-fonte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UserStories.html">Histórias de Usuário</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Módulos do Sistema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#avatar">AVATAR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#image-aq">image_aq</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#bhadrasana">BHADRASANA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sentinela">Sentinela</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#virasana">VIRASANA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#padma">PADMA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#notebooks-scripts">notebooks/scripts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#arquitetura-do-sistema">Arquitetura do Sistema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#descricao-do-pipeline-basico">Descrição do ‘Pipeline’ básico</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#importacao">Importação</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pre-processamento">Pré-processamento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#checagens-de-seguranca">Checagens de segurança</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#analises-de-risco">Análises de Risco</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AJNA</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Módulos do Sistema</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Arquitetura.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p><a class="reference external" href="../index.html">Voltar ao Indice</a></p>
+<div class="contents topic" id="topicos">
+<p class="topic-title first">Tópicos</p>
+<ul class="simple">
+<li><a class="reference internal" href="#modulos-do-sistema" id="id1">Módulos do Sistema</a><ul>
+<li><a class="reference internal" href="#avatar" id="id2">AVATAR</a></li>
+<li><a class="reference internal" href="#bhadrasana" id="id3">BHADRASANA</a></li>
+<li><a class="reference internal" href="#virasana" id="id4">VIRASANA</a></li>
+<li><a class="reference internal" href="#padma" id="id5">PADMA</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#arquitetura-do-sistema" id="id6">Arquitetura do Sistema</a><ul>
+<li><a class="reference internal" href="#descricao-do-pipeline-basico" id="id7">Descrição do ‘Pipeline’ básico</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="modulos-do-sistema">
+<h1><a class="toc-backref" href="#id1">Módulos do Sistema</a><a class="headerlink" href="#modulos-do-sistema" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="avatar">
+<h2><a class="toc-backref" href="#id2">AVATAR</a><a class="headerlink" href="#avatar" title="Permalink to this headline">¶</a></h2>
+<p>Interface para cadastramento de fontes de imagens, usuários, configuração de parâmetros, etc
+Podem existir várias versões do AVATAR, de acordo com a necessidade (para diferentes portos,
+aeroportos, remessa expressa, etc)</p>
+<div class="section" id="image-aq">
+<h3>image_aq<a class="headerlink" href="#image-aq" title="Permalink to this headline">¶</a></h3>
+<p>Serviço interno do AVATAR.
+Aquisição de imagens. Serviço com Scripts que acessam as fontes de imagens cadastradas,
+validam, pré-processam, fazem reconhecimento de caracteres, validam,
+monitoram mudanças, etc e copiam para um diretório único.</p>
+<p>As imagens são arquivadas em diretório no formato &lt;Nome_da_Fonte_de_Imagens&gt;/&lt;Ano&gt;/&lt;Mes&gt;/&lt;dia&gt;.
+Se possível, será armazenada a imagem original. No mínimo será armazenada uma cópia em menor resolução
+(e sem outras transformações) da imagem original, além dos metadados (xml original ou outro).
+Deve ser provida uma forma de proteger contra modificações (read-only).</p>
+<p>Exporta seus dados em lotes para arquivo BSON.</p>
+</div>
+</div>
+<div class="section" id="bhadrasana">
+<h2><a class="toc-backref" href="#id3">BHADRASANA</a><a class="headerlink" href="#bhadrasana" title="Permalink to this headline">¶</a></h2>
+<p>Aquisição de dados. Serviço com scripts que acessam sistemas fechados e dados públicos,
+estruturados e não estruturados, guardando em coleções/Bancos de Dados.</p>
+<p>Os dados são arquivadas em diretório no formato &lt;Nome_da_Base_Original&gt;/&lt;Ano&gt;/&lt;Mes&gt;/&lt;dia&gt;/&lt;Codigo_Extracao&gt;
+A BaseOriginal será armazenada em csv no padrão cabeçalho na primeira linha com nomes dos campos,
+separador vírgula, e somente isso(rfc4180 - forma mais simples). As “Strings” originais dos dados terão sempre
+os espaços à direita e esquerda removidas e serão normalizados para Unicode NFC sem acentos e caracteres especiais,
+com espaços únicos entre as palavras e letras minúsculas. Todos os dados originais serão tratados como Strings. Estas
+precauções servirão para facilitar buscas, comparações e evitar problemas de codificação e compatibilidade
+futuras e em interações com outros sistemas.</p>
+<p>Os Dados importados são arquivados em um banco MongoDB, no formato original do CSV</p>
+<div class="section" id="sentinela">
+<h3>Sentinela<a class="headerlink" href="#sentinela" title="Permalink to this headline">¶</a></h3>
+<p>Interface gráfica do BHADRASANA.</p>
+<p>Controla o BHADRASANA, permite cruzamento de dados e gerenciamento, manual ou automático, de parâmetros de risco.</p>
+<p>Interface para cadastramento e configuração das Fontes de Dados(Configura modo de merge entre as tabelas originais,
+filtragens, etc)</p>
+<p>Estas configurações permitirão a migração automática, se necessário, dos dados dos CSV originais para MongoDB</p>
+<p>Quando o sistema original não permitir sincronização/extração automática, sentinela proverá interface para
+alimentação manual da base.</p>
+<p>Disponibiliza seus dados em Restful API.</p>
+</div>
+</div>
+<div class="section" id="virasana">
+<h2><a class="toc-backref" href="#id4">VIRASANA</a><a class="headerlink" href="#virasana" title="Permalink to this headline">¶</a></h2>
+<p>Banco de Dados de imagens.</p>
+<p>Importa arquivos BSON dos AVATARES.</p>
+<p>Submódulo integração provê, para cada Fonte de Dados, scripts para ETL (Extração, Transformação e ‘LOAD’), adicionando
+aos metadados das imagens os dados das Fontes de Dados e análises do PADMA.</p>
+<p>Serviço Celery rodará periodicamente a importação de imagens de BSON e a anexação de metadados.</p>
+<p>Provê também interface para visualização e busca de imagens e execução,
+manual ou automática, dos algoritmos do módulo PADMA nas imagens.</p>
+<p>Disponibiliza seus dados em Restful API.</p>
+</div>
+<div class="section" id="padma">
+<h2><a class="toc-backref" href="#id5">PADMA</a><a class="headerlink" href="#padma" title="Permalink to this headline">¶</a></h2>
+<p>Coleção de algoritmos de machine learning plugáveis e servidos em WebService/JSON API.</p>
+<div class="section" id="notebooks-scripts">
+<h3>notebooks/scripts<a class="headerlink" href="#notebooks-scripts" title="Permalink to this headline">¶</a></h3>
+<p>Rascunhos. Aproveitar a interatividade e praticidade do Jupyter Notebook/JupyterLab
+para fazer e documentar as análises exploratórias de dados,
+treinamento e teste de algoritmos de aprendizado de máquina.</p>
+</div>
+</div>
+</div>
+<div class="section" id="arquitetura-do-sistema">
+<h1><a class="toc-backref" href="#id6">Arquitetura do Sistema</a><a class="headerlink" href="#arquitetura-do-sistema" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="descricao-do-pipeline-basico">
+<h2><a class="toc-backref" href="#id7">Descrição do ‘Pipeline’ básico</a><a class="headerlink" href="#descricao-do-pipeline-basico" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="importacao">
+<h3>Importação<a class="headerlink" href="#importacao" title="Permalink to this headline">¶</a></h3>
+<p>Serviços(A) - caso possível por senha, token ou certificado digital de Servidor - extraem
+informações periodicamente de diversos sistemas.
+Estes ficam guardados no formato original do Sistema.
+Caso o Sistema fonte necessite de digitação manual de senha, Usuário(B) iniciará a extração manual.</p>
+<p>Obs: Estes sistemas fonte de dados precisarão estar documentados/listados
+e em rotinas de trabalho (caso B).
+Um serviço mestre utilizará esta lista de serviços para detectar serviços
+não funcionando e alertar. Um serviço de log mestre deve permitir
+acompanhar o histórico de importações, e se há sucesso ou falha.</p>
+<p>Esta camada será executada por um serviço Celery</p>
+<p>Ex.:</p>
+<ul class="simple">
+<li>bhadrasana conectando aos sistemas dos terminais</li>
+<li>virasana capturando imagens conforme disponibilizadas</li>
+<li>Usuário fazendo extração do Siscomex Carga em interface do bhadrasana</li>
+<li>Usuário informando nova imagem em interface do virasana</li>
+<li>Integração automática com Aniita ou Contágil</li>
+</ul>
+</div>
+<div class="section" id="pre-processamento">
+<h3>Pré-processamento<a class="headerlink" href="#pre-processamento" title="Permalink to this headline">¶</a></h3>
+<p>Uma segunda camada irá  processar previamente os dados e colocá-los em formato mais
+amigável para integração com as etapas seguintes.
+Serão “normalizados” campos, pré-indexadas imagens, descompactados arquivos,
+checar integridade, etc.</p>
+<p>Esta camada será executada por um segundo serviço Celery rodando no Servidor virasana.
+Serão utilizadas bases/funcões de outros módulos, mas serão executados por este módulo.</p>
+<p>Este módulo não tem interface de usuário.
+Todas as ações configuráveis são pré-programadas no bhadrasana ou no virasana.
+Algumas ações serão “hard-coded”.</p>
+<p>Ex.:</p>
+<ul class="simple">
+<li>virasana fazendo miniatura das imagens e gerando índice destas</li>
+<li>bhadrasana mudando títulos de csvs de diferentes terminais mas que possuem as mesmas informações.</li>
+</ul>
+</div>
+<div class="section" id="checagens-de-seguranca">
+<h3>Checagens de segurança<a class="headerlink" href="#checagens-de-seguranca" title="Permalink to this headline">¶</a></h3>
+<p>Esta camada estará integrada no módulo virasana ou no próprio módulo Avatar.
+Serão feitas análises básicas e emitidos alertas.</p>
+<p>Exemplo:</p>
+<ul class="simple">
+<li>Foi gerada nova imagem para contêiner já escaneado? É igual? Data do sistema de controle de escaneamentos bate com a da imagem?</li>
+<li>OCR da imagem bate com número do contêiner informado no XML?</li>
+<li>Foi retificada informação de Sistema já importada?</li>
+</ul>
+</div>
+<div class="section" id="analises-de-risco">
+<h3>Análises de Risco<a class="headerlink" href="#analises-de-risco" title="Permalink to this headline">¶</a></h3>
+<p>Poderão ser automáticas ou manuais. Realizadas no sistema bhadrasana.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="UserStories.html" class="btn btn-neutral" title="Histórias de Usuário" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, RFB.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1a',
+            LANGUAGE:'pt-BR',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>
