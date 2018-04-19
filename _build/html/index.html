@@ -155,8 +155,8 @@
   <div class="section" id="bem-vindo-a-documentacao-do-sistema-ajna">
 <h1>Bem-vindo à documentação do sistema AJNA<a class="headerlink" href="#bem-vindo-a-documentacao-do-sistema-ajna" title="Permalink to this headline">¶</a></h1>
 <p>AJNA - Visão computacional e Aprendizagem de máquina aplicados à vigilância aduaneira</p>
-<p>AJNA é, na tradição do Ioga, o chakra da intuição, ou terceiro olho.</p>
-<p>Ioga é a melhoria pessoal através da prática, pode ser traduzido simplesmente por prática.</p>
+<p>AJNA é, na tradição do Ioga, o chakra da intuição, ou terceiro olho.
+Ioga é a melhoria pessoal através da prática, pode ser traduzido simplesmente por prática.</p>
 <p>O nome AJNA dado ao sistema de vigilância aduaneira com auxílio de inteligência
 artificial simboliza isso: prática visando obter uma visão mais plena.</p>
 <p>O AJNA, para diminuir sua complexidade e facilitar o desenvolvimento e manutenção, foi
@@ -164,7 +164,7 @@ repartido em módulos:</p>
 <p>AVATAR - Sistema que roda no ambiente dos recintos aduaneiros, gerenciando a aquisição das imagens
 no ambiente original - podem existir vários AVATARES, desenvolvidos pela RFB ou pelos intervenientes
 de acordo com as especificações da RFB. Os AVATARES atuam no mundo “físico” dos recintos, capturando
-imagens, vídeos, e fazendo pequenas auditorias/verificações, para posterior envio ao sistema centralizado</p>
+imagens, vídeos, e fazendo pequenas auditorias/verificações, para posterior envio ao sistema centralizado.</p>
 <p>VIRASANA - Sistema que roda no ambiente da RFB, recebendo pacotes de dados do sistema AVATAR.
 Após receber as imagens, roda diversos scripts de integração, utilizando dados recebidos pelos módulos
 AVATAR, BHADRASANA e PADMA.
@@ -180,30 +180,85 @@ Padma representa a busca da verdade</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="manuais.html">Manuais de Usuário</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="manualsentinela.html">Manual de Usuário do Sentinela</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manualsentinela.html">Manual de Usuário do Bhadrasana</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manualsentinela.html#fluxo-de-trabalho-workflow">Fluxo de trabalho (Workflow)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manualsentinela.html#telas">Telas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manualvirasana.html">Manual de Usuário do Virasana</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manualvirasana.html#telas">Telas</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="codigofonte.html">Documentação do código-fonte</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ajna_commons.html">COMMONS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bhadrasana.html">BHADRASANA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="virasana.html">VIRASANA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="padma.html">PADMA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ajna_commons.html">COMMONS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ajna_commons.html#utilitarios">Utilitários</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ajna_commons.html#module-ajna_commons.models.bsonimage">bsonimage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ajna_commons.html#module-ajna_commons.utils.sanitiza">sanitiza</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ajna_commons.html#configuracoes">Configurações</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ajna_commons.html#module-ajna_commons.flask.conf">Confs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ajna_commons.html#module-ajna_commons.flask.log">Log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ajna_commons.html#module-ajna_commons.flask.login">Login</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bhadrasana.html">BHADRASANA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bhadrasana.html#funcoes">Funções</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bhadrasana.html#module-bhadrasana.sentinela.app">Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bhadrasana.html#module-bhadrasana.sentinela.models.models">Banco de Dados</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="virasana.html">VIRASANA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="virasana.html#module-virasana.virasana.views">Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="virasana.html#integracao">Integracao</a></li>
+<li class="toctree-l3"><a class="reference internal" href="virasana.html#workers">Workers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="padma.html">PADMA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="padma.html#gym">GYM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="padma.html#module-padma.padma.app">Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="padma.html#module-padma.padma.models.models">Modelos</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="UserStories.html">Histórias de Usuário</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="UserStories.html#sentinela">SENTINELA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="UserStories.html#modulo-parametros-de-risco">Módulo Parâmetros de Risco</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UserStories.html#modulo-parametros-de-risco">Módulo Parâmetros de Risco</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="UserStories.html#pre-processamento-normalizacao">Pré-processamento - Normalização</a></li>
+<li class="toctree-l3"><a class="reference internal" href="UserStories.html#interface-sentinela">Interface - SENTINELA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="UserStories.html#bases-de-risco-inteligencia">Bases de Risco - Inteligência</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Arquitetura.html">Módulos do Sistema</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Arquitetura.html#avatar">AVATAR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Arquitetura.html#bhadrasana">BHADRASANA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arquitetura.html#avatar">AVATAR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Arquitetura.html#image-aq">image_aq</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Arquitetura.html#bhadrasana">BHADRASANA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Arquitetura.html#sentinela">Sentinela</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="Arquitetura.html#virasana">VIRASANA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Arquitetura.html#padma">PADMA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arquitetura.html#padma">PADMA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Arquitetura.html#notebooks-scripts">notebooks/scripts</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Arquitetura.html#arquitetura-do-sistema">Arquitetura do Sistema</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Arquitetura.html#descricao-do-pipeline-basico">Descrição do ‘Pipeline’ básico</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arquitetura.html#descricao-do-pipeline-basico">Descrição do ‘Pipeline’ básico</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Arquitetura.html#importacao">Importação</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Arquitetura.html#pre-processamento">Pré-processamento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Arquitetura.html#integracao">Integração</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Arquitetura.html#checagens-de-seguranca">Checagens de segurança</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Arquitetura.html#analises-de-risco">Análises de Risco</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Arquitetura.html#analises-de-risco-inteligentes">Análises de Risco “Inteligentes”</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Arquitetura.html#notas-gerais-sobre-implementacao">Notas gerais sobre implementação</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

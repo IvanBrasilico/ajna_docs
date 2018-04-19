@@ -4,8 +4,9 @@ Manuais de Usuário
 ============================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Conteúdo:
    :glob:
 
    manualsentinela.rst
+   manualvirasana.rst

@@ -9,7 +9,6 @@ Bem-vindo à documentação do sistema AJNA
 AJNA - Visão computacional e Aprendizagem de máquina aplicados à vigilância aduaneira
 
 AJNA é, na tradição do Ioga, o chakra da intuição, ou terceiro olho.
-
 Ioga é a melhoria pessoal através da prática, pode ser traduzido simplesmente por prática.
 
 O nome AJNA dado ao sistema de vigilância aduaneira com auxílio de inteligência
@@ -21,7 +20,7 @@ repartido em módulos:
 AVATAR - Sistema que roda no ambiente dos recintos aduaneiros, gerenciando a aquisição das imagens
 no ambiente original - podem existir vários AVATARES, desenvolvidos pela RFB ou pelos intervenientes
 de acordo com as especificações da RFB. Os AVATARES atuam no mundo "físico" dos recintos, capturando
-imagens, vídeos, e fazendo pequenas auditorias/verificações, para posterior envio ao sistema centralizado
+imagens, vídeos, e fazendo pequenas auditorias/verificações, para posterior envio ao sistema centralizado.
 
 VIRASANA - Sistema que roda no ambiente da RFB, recebendo pacotes de dados do sistema AVATAR.
 Após receber as imagens, roda diversos scripts de integração, utilizando dados recebidos pelos módulos
@@ -38,7 +37,7 @@ Padma representa a busca da verdade
 Tópicos
 =======
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :glob:
 
    manuais.rst

@@ -92,7 +92,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#module-virasana.virasana.views">Interface</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#integracao">Integracao</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#module-virasana.virasana.integracao">__init__</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-virasana.virasana.integracao.xml">XML</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-virasana.virasana.integracao.xmli">XML</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-virasana.virasana.integracao.carga">Carga</a></li>
 </ul>
 </li>
@@ -182,7 +182,7 @@
 <li><a class="reference internal" href="#module-virasana.virasana.views" id="id2">Interface</a></li>
 <li><a class="reference internal" href="#integracao" id="id3">Integracao</a><ul>
 <li><a class="reference internal" href="#module-virasana.virasana.integracao" id="id4">__init__</a></li>
-<li><a class="reference internal" href="#module-virasana.virasana.integracao.xml" id="id5">XML</a></li>
+<li><a class="reference internal" href="#module-virasana.virasana.integracao.xmli" id="id5">XML</a></li>
 <li><a class="reference internal" href="#module-virasana.virasana.integracao.carga" id="id6">Carga</a></li>
 </ul>
 </li>
@@ -241,6 +241,12 @@ json[‘taskid’]: ID da task do celery a ser monitorada</dd>
 </dd></dl>
 
 <dl class="function">
+<dt id="virasana.virasana.views.bars">
+<code class="descclassname">virasana.virasana.views.</code><code class="descname">bars</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#bars"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.bars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renderiza gráfico no matplot e serializa via HTTP/HTML.</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="virasana.virasana.views.file">
 <code class="descclassname">virasana.virasana.views.</code><code class="descname">file</code><span class="sig-paren">(</span><em>_id=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tela para exibição de um ‘arquivo’ do GridFS.</p>
@@ -287,8 +293,8 @@ Se houver upload em andamento, informa.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="virasana.virasana.views.plot">
-<code class="descclassname">virasana.virasana.views.</code><code class="descname">plot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.plot" title="Permalink to this definition">¶</a></dt>
+<dt id="virasana.virasana.views.pie">
+<code class="descclassname">virasana.virasana.views.</code><code class="descname">pie</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#pie"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.pie" title="Permalink to this definition">¶</a></dt>
 <dd><p>Renderiza gráfico no matplot e serializa via HTTP/HTML.</p>
 </dd></dl>
 
@@ -378,6 +384,12 @@ numero: lista com os números de contêiner</dd>
 </dd></dl>
 
 <dl class="function">
+<dt id="virasana.virasana.integracao.plot_bar">
+<code class="descclassname">virasana.virasana.integracao.</code><code class="descname">plot_bar</code><span class="sig-paren">(</span><em>values</em>, <em>labels</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/integracao.html#plot_bar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.plot_bar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gera gráfico de barras.</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="virasana.virasana.integracao.plot_pie">
 <code class="descclassname">virasana.virasana.integracao.</code><code class="descname">plot_pie</code><span class="sig-paren">(</span><em>values</em>, <em>labels</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/integracao.html#plot_pie"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.plot_pie" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gera gráfico de pizza.</p>
@@ -412,18 +424,18 @@ numero: lista com os números de contêiner</dd>
 </dd></dl>
 
 </div>
-<div class="section" id="module-virasana.virasana.integracao.xml">
-<span id="xml"></span><h3><a class="toc-backref" href="#id5">XML</a><a class="headerlink" href="#module-virasana.virasana.integracao.xml" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="module-virasana.virasana.integracao.xmli">
+<span id="xml"></span><h3><a class="toc-backref" href="#id5">XML</a><a class="headerlink" href="#module-virasana.virasana.integracao.xmli" title="Permalink to this headline">¶</a></h3>
 <p>Funções para leitura e tratamento arquivos XML criados pelos escâneres.</p>
 <dl class="function">
-<dt id="virasana.virasana.integracao.xml.create_indexes">
-<code class="descclassname">virasana.virasana.integracao.xml.</code><code class="descname">create_indexes</code><span class="sig-paren">(</span><em>db</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/integracao/xml.html#create_indexes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.xml.create_indexes" title="Permalink to this definition">¶</a></dt>
+<dt id="virasana.virasana.integracao.xmli.create_indexes">
+<code class="descclassname">virasana.virasana.integracao.xmli.</code><code class="descname">create_indexes</code><span class="sig-paren">(</span><em>db</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/integracao/xmli.html#create_indexes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.xmli.create_indexes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Utilitário. Cria índices relacionados à integração.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="virasana.virasana.integracao.xml.dados_xml_grava_fsfiles">
-<code class="descclassname">virasana.virasana.integracao.xml.</code><code class="descname">dados_xml_grava_fsfiles</code><span class="sig-paren">(</span><em>db</em>, <em>batch_size=5000</em>, <em>data_inicio=datetime.datetime(1900</em>, <em>1</em>, <em>1</em>, <em>0</em>, <em>0)</em>, <em>update=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/integracao/xml.html#dados_xml_grava_fsfiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.xml.dados_xml_grava_fsfiles" title="Permalink to this definition">¶</a></dt>
+<dt id="virasana.virasana.integracao.xmli.dados_xml_grava_fsfiles">
+<code class="descclassname">virasana.virasana.integracao.xmli.</code><code class="descname">dados_xml_grava_fsfiles</code><span class="sig-paren">(</span><em>db</em>, <em>batch_size=5000</em>, <em>data_inicio=datetime.datetime(1900</em>, <em>1</em>, <em>1</em>, <em>0</em>, <em>0)</em>, <em>update=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/integracao/xmli.html#dados_xml_grava_fsfiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.xmli.dados_xml_grava_fsfiles" title="Permalink to this definition">¶</a></dt>
 <dd><p>Busca por registros no GridFS sem info do XML.</p>
 <p>Busca por registros no fs.files (GridFS - imagens) que não tenham metadata
 importada do arquivo XML. Itera estes registros, consultando a
@@ -445,8 +457,8 @@ estas informações, grava no campo metadata.xml do fs.files</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="virasana.virasana.integracao.xml.xml_todict">
-<code class="descclassname">virasana.virasana.integracao.xml.</code><code class="descname">xml_todict</code><span class="sig-paren">(</span><em>xml</em><span class="sig-paren">)</span> &#x2192; dict<a class="reference internal" href="_modules/virasana/virasana/integracao/xml.html#xml_todict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.xml.xml_todict" title="Permalink to this definition">¶</a></dt>
+<dt id="virasana.virasana.integracao.xmli.xml_todict">
+<code class="descclassname">virasana.virasana.integracao.xmli.</code><code class="descname">xml_todict</code><span class="sig-paren">(</span><em>xml</em><span class="sig-paren">)</span> &#x2192; dict<a class="reference internal" href="_modules/virasana/virasana/integracao/xmli.html#xml_todict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.xmli.xml_todict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Recebe um XML string stream, retorna um dict com campos do XML.</p>
 <p>Lê o XML que acompanha as imagens no formato do Escâner da ALFSTS,
 retorna dict(s) com os dados considerados mais importantes e resumos

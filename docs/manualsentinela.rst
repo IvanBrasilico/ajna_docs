@@ -1,8 +1,8 @@
 `Voltar ao Indice <index.html>`_
 
-==============================
-Manual de Usuário do Sentinela
-==============================
+===============================
+Manual de Usuário do Bhadrasana
+===============================
 
 Descrevemos a interface através de exemplos e imagens de telas.
 

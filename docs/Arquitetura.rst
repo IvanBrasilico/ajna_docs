@@ -100,18 +100,27 @@ Descrição do 'Pipeline' básico
 
 Importação
 ----------
-Serviços(A) - caso possível por senha, token ou certificado digital de Servidor - extraem 
-informações periodicamente de diversos sistemas. 
-Estes ficam guardados no formato original do Sistema.
-Caso o Sistema fonte necessite de digitação manual de senha, Usuário(B) iniciará a extração manual.
+A importação de dados imagens poderá ser realizada por serviços(caso A), caso possível por senha, token
+ou certificado digital de Servidor extrair informações periodicamente dos sistemas externos necessários.
 
-Obs: Estes sistemas fonte de dados precisarão estar documentados/listados
-e em rotinas de trabalho (caso B).
-Um serviço mestre utilizará esta lista de serviços para detectar serviços
-não funcionando e alertar. Um serviço de log mestre deve permitir
-acompanhar o histórico de importações, e se há sucesso ou falha.
+Caso o acesso ao Sistema Fonnte de dados necessite de digitação manual de senha,
+Usuário(caso B) realizará uma extração manual periódica.
 
-Esta camada será executada por um serviço Celery
+No caso de importação das imagens, pode haver redes de dados incomunicáveis. Assim, o Avatar terá que
+exportar para um arquivo e após, algum Usuário do sistema precisará colocar estes arquivos em uma pasta
+à qual o Virasana tenha acesso. Havendo comunicação de rede, o Avatar deve ser configurado para fazer
+UPLOAD diretamente via API do Virasana sempre que fechar um lote.
+
+Idealmente os dados e imagens recebidos ficarão guardados no formato original do Sistema.
+
+
+Obs: Estes sistemas fonte de dados precisarão estar documentados/listados em rotinas de trabalho (caso B) ou em
+configuração do sistema (caso A).
+
+No caso A, um serviço mestre utilizará esta lista de serviços para detectar serviços não funcionando e alertar.
+Um serviço de log mestre deve permitir acompanhar o histórico de importações, e se há sucesso ou falha.
+
+Esta camada será executada por serviços Celery
 
 Ex.:
 
@@ -119,9 +128,9 @@ Ex.:
 
 * virasana capturando imagens conforme disponibilizadas
 
-* Usuário fazendo extração do Siscomex Carga em interface do bhadrasana
+* Usuário fazendo extração do Siscomex Carga e carregando em interface do bhadrasana
 
-* Usuário informando nova imagem em interface do virasana
+* Usuário fazendo upload de novas imagem em interface do virasana
 
 * Integração automática com Aniita ou Contágil
 
@@ -134,7 +143,7 @@ amigável para integração com as etapas seguintes.
 Serão "normalizados" campos, pré-indexadas imagens, descompactados arquivos,
 checar integridade, etc.
 
-Esta camada será executada por um segundo serviço Celery rodando no Servidor virasana.
+Esta camada será executada por um segundo serviço Celery rodando no Servidor Bhadrasana
 Serão utilizadas bases/funcões de outros módulos, mas serão executados por este módulo.
 
 Este módulo não tem interface de usuário.
@@ -143,11 +152,17 @@ Algumas ações serão "hard-coded".
 
 Ex.:
 
-* virasana fazendo miniatura das imagens e gerando índice destas
-
 * bhadrasana mudando títulos de csvs de diferentes terminais mas que possuem as mesmas informações.
 
+* bhadrasana usando o módulo ajna_commons.utils.sanitizar para corrigir textos e facilitar pesquisas,
+colocando tudo em caixa única, retirando sinais gráficos e espaços duplicados, etc.
 
+
+Integração
+----------
+
+Módulo integração será desenvolvido no Virasana. Para cada base de dados disponível, scripts adicionarão
+as informações mais importantes desta diretamente à base de imagens, para consultas e cruzamento.
 
 Checagens de segurança
 ----------------------
@@ -168,7 +183,41 @@ Exemplo:
 Análises de Risco
 -----------------
 
-Poderão ser automáticas ou manuais. Realizadas no sistema bhadrasana.
+Poderão ser automáticas ou manuais. Realizadas e configuradas no sistema bhadrasana, conforme manual.
+
+As automáticas serão executadas pelo Celery do Servidor Bhadrasana.
 
 
+Análises de Risco "Inteligentes"
+--------------------------------
 
+O Virasana, após receber as imagens e fazer a integração dos dados, realizará automaticamente consulas ao PADMA,
+bem como cruzamento de dados, gerando alertas para as inconsistências.
+
+* virasana fazendo miniatura das imagens e gerando índice destas
+
+* virasana fazendo checagem de vazios
+
+* virasana validando peso e volume da imagem e comparando com dados documentais e de balança
+
+* virasana passa módulo de procura de drogas e armas em novas imagens
+
+
+Notas gerais sobre implementação
+--------------------------------
+
+Esta seção se dedica a anotações sobre a real implementação da Arquitetura conforme os desenvolvimentos avançam.
+
+
+O Avatar da ALFSTS foi desenvolvido em Python/Django com banco SQlite.
+
+O Virasana está em Python/Flask e o seu BackEnd (banco de imagens) em MongoDB. Processos demorados rodam via Celery e se
+comunicam com o processo principal, se necessário, via REDIS.
+
+O Bhadrasana está em Python/Flask e guarda as importações originais diretamente no filesystem em formato texto/csv RFC padrão
+e utiliza o BackEnd do Virasana para "arquivamento"/exportação destas extrações.
+Possui também BD de configuração interno em SQlite.  Processos demorados rodam via Celery e se
+comunicam com o processo principal, se necessário, via REDIS.
+
+O Padma utiliza Sklearn e TensorFlow para os modelos. Para o Front-end, Python e Flask. Há um processo separado para servir os
+modelos que se comunica com o Servidor WEB/API via REDIS.

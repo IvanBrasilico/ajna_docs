@@ -106,8 +106,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#descricao-do-pipeline-basico">Descrição do ‘Pipeline’ básico</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#importacao">Importação</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pre-processamento">Pré-processamento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#integracao">Integração</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#checagens-de-seguranca">Checagens de segurança</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#analises-de-risco">Análises de Risco</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#analises-de-risco-inteligentes">Análises de Risco “Inteligentes”</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notas-gerais-sobre-implementacao">Notas gerais sobre implementação</a></li>
 </ul>
 </li>
 </ul>
@@ -265,22 +268,26 @@ treinamento e teste de algoritmos de aprendizado de máquina.</p>
 <h2><a class="toc-backref" href="#id7">Descrição do ‘Pipeline’ básico</a><a class="headerlink" href="#descricao-do-pipeline-basico" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="importacao">
 <h3>Importação<a class="headerlink" href="#importacao" title="Permalink to this headline">¶</a></h3>
-<p>Serviços(A) - caso possível por senha, token ou certificado digital de Servidor - extraem
-informações periodicamente de diversos sistemas.
-Estes ficam guardados no formato original do Sistema.
-Caso o Sistema fonte necessite de digitação manual de senha, Usuário(B) iniciará a extração manual.</p>
-<p>Obs: Estes sistemas fonte de dados precisarão estar documentados/listados
-e em rotinas de trabalho (caso B).
-Um serviço mestre utilizará esta lista de serviços para detectar serviços
-não funcionando e alertar. Um serviço de log mestre deve permitir
-acompanhar o histórico de importações, e se há sucesso ou falha.</p>
-<p>Esta camada será executada por um serviço Celery</p>
+<p>A importação de dados imagens poderá ser realizada por serviços(caso A), caso possível por senha, token
+ou certificado digital de Servidor extrair informações periodicamente dos sistemas externos necessários.</p>
+<p>Caso o acesso ao Sistema Fonnte de dados necessite de digitação manual de senha,
+Usuário(caso B) realizará uma extração manual periódica.</p>
+<p>No caso de importação das imagens, pode haver redes de dados incomunicáveis. Assim, o Avatar terá que
+exportar para um arquivo e após, algum Usuário do sistema precisará colocar estes arquivos em uma pasta
+à qual o Virasana tenha acesso. Havendo comunicação de rede, o Avatar deve ser configurado para fazer
+UPLOAD diretamente via API do Virasana sempre que fechar um lote.</p>
+<p>Idealmente os dados e imagens recebidos ficarão guardados no formato original do Sistema.</p>
+<p>Obs: Estes sistemas fonte de dados precisarão estar documentados/listados em rotinas de trabalho (caso B) ou em
+configuração do sistema (caso A).</p>
+<p>No caso A, um serviço mestre utilizará esta lista de serviços para detectar serviços não funcionando e alertar.
+Um serviço de log mestre deve permitir acompanhar o histórico de importações, e se há sucesso ou falha.</p>
+<p>Esta camada será executada por serviços Celery</p>
 <p>Ex.:</p>
 <ul class="simple">
 <li>bhadrasana conectando aos sistemas dos terminais</li>
 <li>virasana capturando imagens conforme disponibilizadas</li>
-<li>Usuário fazendo extração do Siscomex Carga em interface do bhadrasana</li>
-<li>Usuário informando nova imagem em interface do virasana</li>
+<li>Usuário fazendo extração do Siscomex Carga e carregando em interface do bhadrasana</li>
+<li>Usuário fazendo upload de novas imagem em interface do virasana</li>
 <li>Integração automática com Aniita ou Contágil</li>
 </ul>
 </div>
@@ -290,16 +297,22 @@ acompanhar o histórico de importações, e se há sucesso ou falha.</p>
 amigável para integração com as etapas seguintes.
 Serão “normalizados” campos, pré-indexadas imagens, descompactados arquivos,
 checar integridade, etc.</p>
-<p>Esta camada será executada por um segundo serviço Celery rodando no Servidor virasana.
+<p>Esta camada será executada por um segundo serviço Celery rodando no Servidor Bhadrasana
 Serão utilizadas bases/funcões de outros módulos, mas serão executados por este módulo.</p>
 <p>Este módulo não tem interface de usuário.
 Todas as ações configuráveis são pré-programadas no bhadrasana ou no virasana.
 Algumas ações serão “hard-coded”.</p>
 <p>Ex.:</p>
 <ul class="simple">
-<li>virasana fazendo miniatura das imagens e gerando índice destas</li>
 <li>bhadrasana mudando títulos de csvs de diferentes terminais mas que possuem as mesmas informações.</li>
+<li>bhadrasana usando o módulo ajna_commons.utils.sanitizar para corrigir textos e facilitar pesquisas,</li>
 </ul>
+<p>colocando tudo em caixa única, retirando sinais gráficos e espaços duplicados, etc.</p>
+</div>
+<div class="section" id="integracao">
+<h3>Integração<a class="headerlink" href="#integracao" title="Permalink to this headline">¶</a></h3>
+<p>Módulo integração será desenvolvido no Virasana. Para cada base de dados disponível, scripts adicionarão
+as informações mais importantes desta diretamente à base de imagens, para consultas e cruzamento.</p>
 </div>
 <div class="section" id="checagens-de-seguranca">
 <h3>Checagens de segurança<a class="headerlink" href="#checagens-de-seguranca" title="Permalink to this headline">¶</a></h3>
@@ -314,7 +327,32 @@ Serão feitas análises básicas e emitidos alertas.</p>
 </div>
 <div class="section" id="analises-de-risco">
 <h3>Análises de Risco<a class="headerlink" href="#analises-de-risco" title="Permalink to this headline">¶</a></h3>
-<p>Poderão ser automáticas ou manuais. Realizadas no sistema bhadrasana.</p>
+<p>Poderão ser automáticas ou manuais. Realizadas e configuradas no sistema bhadrasana, conforme manual.</p>
+<p>As automáticas serão executadas pelo Celery do Servidor Bhadrasana.</p>
+</div>
+<div class="section" id="analises-de-risco-inteligentes">
+<h3>Análises de Risco “Inteligentes”<a class="headerlink" href="#analises-de-risco-inteligentes" title="Permalink to this headline">¶</a></h3>
+<p>O Virasana, após receber as imagens e fazer a integração dos dados, realizará automaticamente consulas ao PADMA,
+bem como cruzamento de dados, gerando alertas para as inconsistências.</p>
+<ul class="simple">
+<li>virasana fazendo miniatura das imagens e gerando índice destas</li>
+<li>virasana fazendo checagem de vazios</li>
+<li>virasana validando peso e volume da imagem e comparando com dados documentais e de balança</li>
+<li>virasana passa módulo de procura de drogas e armas em novas imagens</li>
+</ul>
+</div>
+<div class="section" id="notas-gerais-sobre-implementacao">
+<h3>Notas gerais sobre implementação<a class="headerlink" href="#notas-gerais-sobre-implementacao" title="Permalink to this headline">¶</a></h3>
+<p>Esta seção se dedica a anotações sobre a real implementação da Arquitetura conforme os desenvolvimentos avançam.</p>
+<p>O Avatar da ALFSTS foi desenvolvido em Python/Django com banco SQlite.</p>
+<p>O Virasana está em Python/Flask e o seu BackEnd (banco de imagens) em MongoDB. Processos demorados rodam via Celery e se
+comunicam com o processo principal, se necessário, via REDIS.</p>
+<p>O Bhadrasana está em Python/Flask e guarda as importações originais diretamente no filesystem em formato texto/csv RFC padrão
+e utiliza o BackEnd do Virasana para “arquivamento”/exportação destas extrações.
+Possui também BD de configuração interno em SQlite.  Processos demorados rodam via Celery e se
+comunicam com o processo principal, se necessário, via REDIS.</p>
+<p>O Padma utiliza Sklearn e TensorFlow para os modelos. Para o Front-end, Python e Flask. Há um processo separado para servir os
+modelos que se comunica com o Servidor WEB/API via REDIS.</p>
 </div>
 </div>
 </div>

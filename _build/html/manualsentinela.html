@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Manual de Usuário do Sentinela &mdash; AJNA 0.1a documentation</title>
+  <title>Manual de Usuário do Bhadrasana &mdash; AJNA 0.1a documentation</title>
   
 
   
@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Documentação do código-fonte" href="codigofonte.html" />
+    <link rel="next" title="Manual de Usuário do Virasana" href="manualvirasana.html" />
     <link rel="prev" title="Manuais de Usuário" href="manuais.html" /> 
 
   
@@ -85,7 +85,7 @@
             
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="manuais.html">Manuais de Usuário</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Manual de Usuário do Sentinela</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Manual de Usuário do Bhadrasana</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#fluxo-de-trabalho-workflow">Fluxo de trabalho (Workflow)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#telas">Telas</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#login">Login</a></li>
@@ -98,6 +98,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="manualvirasana.html">Manual de Usuário do Virasana</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="codigofonte.html">Documentação do código-fonte</a></li>
@@ -151,7 +152,7 @@
         
           <li><a href="manuais.html">Manuais de Usuário</a> &raquo;</li>
         
-      <li>Manual de Usuário do Sentinela</li>
+      <li>Manual de Usuário do Bhadrasana</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -171,12 +172,12 @@
            <div itemprop="articleBody">
             
   <p><a class="reference external" href="index.html">Voltar ao Indice</a></p>
-<div class="section" id="manual-de-usuario-do-sentinela">
-<h1>Manual de Usuário do Sentinela<a class="headerlink" href="#manual-de-usuario-do-sentinela" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="manual-de-usuario-do-bhadrasana">
+<h1>Manual de Usuário do Bhadrasana<a class="headerlink" href="#manual-de-usuario-do-bhadrasana" title="Permalink to this headline">¶</a></h1>
 <p>Descrevemos a interface através de exemplos e imagens de telas.</p>
 <div class="section" id="fluxo-de-trabalho-workflow">
 <h2>Fluxo de trabalho (Workflow)<a class="headerlink" href="#fluxo-de-trabalho-workflow" title="Permalink to this headline">¶</a></h2>
-<p>Para começar a utilizar o sistema, o usuário, após efetuar o <a class="reference internal" href="#login"><span class="std std-ref">Login</span></a>,
+<p>Para começar a utilizar o sistema, o usuário, após efetuar o <a class="reference internal" href="manualvirasana.html#login"><span class="std std-ref">Login</span></a>,
 deverá ir à página <a class="reference internal" href="#importa-base"><span class="std std-ref">Importar Base</span></a> para cadastrar/selecionar uma Base e
 importar o arquivo ao qual ele deseja realizar a busca por elementos de risco.
 Após a importação será automaticamente redirecionado para a tela <a class="reference internal" href="#aplica-risco"><span class="std std-ref">Aplicar Risco</span></a>.</p>
@@ -190,8 +191,8 @@ normalizações na Base importada.</p>
 <p>Caso existam várias bases com parâmetros parecidos, diferindo apenas no nome, o
 sistema apresenta na tela <a class="reference internal" href="#edita-titulo"><span class="std std-ref">Editar Titulos</span></a> um mecanismo para igualar o nome
 dos parâmetros destas planilhas.</p>
-<div class="admonition caution">
-<p class="first admonition-title">Caution</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
 <p class="last">A troca de títulos será feita apenas ao importar a Base.
 Ver <a class="reference internal" href="#edita-titulo"><span class="std std-ref">Editar Titulos</span></a> para mais informações.</p>
 </div>
@@ -250,7 +251,7 @@ parâmetros de risco nas Bases.</p>
 <dd><div class="first last line-block">
 <div class="line">Escolher o Padrão de Risco, já configurado na tela <a class="reference internal" href="#edita-risco"><span class="std std-ref">Editar Riscos</span></a></div>
 <div class="line">Selecionar os parâmetros que serão aplicados à Base desejada</div>
-<div class="line">Selecionar o modo de visualização(ver <a class="reference internal" href="#edita-visao"><span class="std std-ref">Editar Visão</span></a>)</div>
+<div class="line">Selecionar o modo de visualização (ver <a class="reference internal" href="#edita-visao"><span class="std std-ref">Editar Visão</span></a>)</div>
 </div>
 </dd>
 </dl>
@@ -303,7 +304,51 @@ primeira vez em que for cadastrado uma nova Base.</p>
 </div>
 <div class="section" id="editar-titulos">
 <span id="edita-titulo"></span><h3>Editar Titulos<a class="headerlink" href="#editar-titulos" title="Permalink to this headline">¶</a></h3>
-<p>Esta tela permite unificar dois parâmetros distintos em um parâmetro no sistema.</p>
+<div class="figure align-center">
+<img alt="_static\images\editatitulo.png" src="_static\images\editatitulo.png" />
+</div>
+<p>Para casos onde há mais de uma Base, alguns parâmetros poderão estar com nomes
+diferentes, porém, trazerem os mesmos valores como, por exemplo:</p>
+<div class="figure align-center" id="id7">
+<img alt="_static\images\plan1.png" src="_static\images\plan1.png" />
+<p class="caption"><span class="caption-text">Planilha 1</span></p>
+</div>
+<div class="figure align-center" id="id8">
+<img alt="_static\images\plan2.png" src="_static\images\plan2.png" />
+<p class="caption"><span class="caption-text">Planilha 2</span></p>
+</div>
+<p>Se, no exemplo dado, as colunas das planilhas tivessem um único nome (já que
+ambas trazem o código NCM) poderia ser cadastrado um único parâmetro onde nele
+seriam cadastrados todos os códigos de NCMs desejados.</p>
+<p>Ao invés de criar um Parâmetro de Risco diferente para cada Base (ver
+<a class="reference internal" href="#edita-risco"><span class="std std-ref">Editar Riscos</span></a>), nesta tela o Sentinela permite que uma coluna seja
+importada com um outro nome.</p>
+<dl class="docutils">
+<dt>Por exemplo:</dt>
+<dd><p class="first">Supondo que quisessemos padronizar os nomes dos campos para <strong>NCM</strong> somente,
+deveríamos mudar o nome <em>Código NCM</em> da Planilha 1 para <em>NCM</em>
+da Planilha 2.</p>
+<p>Para isso basta colocar o título que queremos que seja trocado no campo
+<em>Título antigo</em>, e o título novo no campo <em>Título novo</em>.</p>
+<div class="figure align-center" id="id9">
+<img alt="_static\images\editatituloex.png" src="_static\images\editatituloex.png" />
+<p class="caption"><span class="caption-text">Exemplo da mudança de título</span></p>
+</div>
+<p>E na tela <a class="reference internal" href="#edita-risco"><span class="std std-ref">Editar Riscos</span></a> criamos um único parâmetro como na figura
+abaixo.</p>
+<div class="last figure align-center" id="id10">
+<img alt="_static\images\editariscoex.png" src="_static\images\editariscoex.png" />
+<p class="caption"><span class="caption-text">Exemplo de parâmetro de risco</span></p>
+</div>
+</dd>
+</dl>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last">O sistema só realizará as trocas de títulos no momento em que o
+arquivo estiver sendo importado. Ou seja, o procedimento para padronização
+dos títulos deverão ser configurados antes do UPLOAD da Base na tela
+<a class="reference internal" href="#importa-base"><span class="std std-ref">Importar Base</span></a></p>
+</div>
 </div>
 <div class="section" id="editar-visao">
 <span id="edita-visao"></span><h3>Editar Visão<a class="headerlink" href="#editar-visao" title="Permalink to this headline">¶</a></h3>
@@ -320,7 +365,7 @@ primeira vez em que for cadastrado uma nova Base.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="codigofonte.html" class="btn btn-neutral float-right" title="Documentação do código-fonte" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="manualvirasana.html" class="btn btn-neutral float-right" title="Manual de Usuário do Virasana" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="manuais.html" class="btn btn-neutral" title="Manuais de Usuário" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -26,7 +26,6 @@ Gerente de Risco
 .. automodule:: bhadrasana.sentinela.utils.gerente_risco
     :members:
 
-. topic:: Banco de Dados
 
 Gerente de Bases
 ----------------

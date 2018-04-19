@@ -29,7 +29,7 @@ __init__
 
 XML
 -----
-.. automodule:: virasana.virasana.integracao.xml
+.. automodule:: virasana.virasana.integracao.xmli
     :members:
 
 Carga
