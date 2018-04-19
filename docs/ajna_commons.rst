@@ -40,6 +40,3 @@ Login
 -----
 .. automodule:: ajna_commons.flask.login
     :members:
-
-
-

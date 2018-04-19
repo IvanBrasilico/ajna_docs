@@ -35,5 +35,3 @@ Modelos
     :members:
 .. automodule:: padma.padma.models.vazios.vazios
     :members:
-
-
