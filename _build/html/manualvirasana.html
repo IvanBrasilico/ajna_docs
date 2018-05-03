@@ -190,8 +190,10 @@ Nela está contido o formulário de login.</p>
 lista dos últimos arquivos carregados no Servidor.</p>
 <p>Esta tela só será utilizada em casos excepcionais. Os Avatares devem ser configurados
 para enviar diretamente os arquivos bson via API. Se não houver comunicação entre a rede dos
-terminais e o Servidor Virasana, o ideal é configurar uma task dir_monitor para varrer periodicamente
-um diretório de rede onde os arquivos bson serão gravados para importação pelo Virasana.</p>
+da fontes de imagens (recinto) e o Servidor Virasana, o ideal é configurar uma task
+(ver :func: <cite>virasana.virasana.workers.tasks.processa_bson</cite>)
+para varrer periodicamente um diretório de rede onde os arquivos bson sejam gravados
+para importação automática pelo Virasana.</p>
 <div class="figure align-center" id="id6">
 <img alt="_static\images\importarbson.png" src="_static\images\importarbson.png" />
 <p class="caption"><span class="caption-text">Tela Importar Base</span></p>
@@ -221,7 +223,13 @@ Carga, na caixa “Selecione” abaixo da legenda “Definir filtro personalizad
 </div>
 <div class="section" id="ver-arquivo">
 <span id="id3"></span><h3>Ver Arquivo<a class="headerlink" href="#ver-arquivo" title="Permalink to this headline">¶</a></h3>
-<p>Esta tela permite a visualização da imagem e de todas as informações vinculadas a ela.</p>
+<p>Esta tela permite a visualização da imagem e de todas as informações vinculadas, divididas em abas.</p>
+<p>A primeira aba mostra a imagem, o recorte do contâiner e um resumo das informações selecionadas. A seguir,
+cada aba exibe informações detalhadas de cada base que tenha sido importada e vinculada com a imagem. Por
+exemplo, normalmente as imagens de escaneamento possuem um XML vinculado, cujas informações serão exibidas
+na segunda aba. Caso a imagem seja de um Contêiner controlado pelo sistema CARGA (modal marítimo), caso a
+importação dos dados do sistema CARGA tenham sido importados e localizados com sucesso, esta informação
+(Conhecimentos de transporte marítimo, Manifestos, NCMs, etc) estarão em uma aba.</p>
 <div class="figure align-center" id="id8">
 <img alt="_static\images\ver-arquivo.png" src="_static\images\ver-arquivo.png" />
 <p class="caption"><span class="caption-text">Tela Ver Arquivo</span></p>

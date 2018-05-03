@@ -36,8 +36,8 @@ Esta tela só será utilizada em casos excepcionais. Os Avatares devem ser confi
 para enviar diretamente os arquivos bson via API. Se não houver comunicação entre a rede dos
 da fontes de imagens (recinto) e o Servidor Virasana, o ideal é configurar uma task 
 (ver :func: `virasana.virasana.workers.tasks.processa_bson`)
- para varrer periodicamente um diretório de rede onde os arquivos bson sejam gravados
- para importação automática pelo Virasana.
+para varrer periodicamente um diretório de rede onde os arquivos bson sejam gravados
+para importação automática pelo Virasana.
 
 .. figure :: _static\\images\\importarbson.png
     :align: center
