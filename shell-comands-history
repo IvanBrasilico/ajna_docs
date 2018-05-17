@@ -84,6 +84,13 @@ Aí é só colocar o nome dos módulos assim no arquivo .rst:
 make html
 # Para gerar documentação no Windows:
 sphinx-build -b html docs _html
+# Para adicionar um tema a documentação
+pip install sphinx-rtd-theme
+No arquivo conf adicionar 
+import sphinx_rtd_theme
+...
+html_theme = 'sphinx_rtd_theme'
+html_theme_path = sphinx_rtd_theme.get_html_theme_path()
 
 # Configuração do Celery
 sudo apt install rabbitmq-server
@@ -106,3 +113,7 @@ target_metadata = Base.metadata
 # A cada mudança, rodar os comandos:
 alembic revision --autogenerate -m "Descrever a mudança"
 alembic upgrade head
+
+# Testes
+escrever o coverage em html
+python -m pytest --cov --cov-report=html sentinela
