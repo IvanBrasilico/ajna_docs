@@ -35,7 +35,11 @@ git push
 
 python -m virtualenv venv
 . venv/bin/activate
-pip install pytest tox codecov flake8 flake8-quotes sphinx
+
+Colocar as dependências em setup.py e rodar:
+python setup.py develop
+pip install -e .[dev]
+# OU manual: pip install pytest tox codecov flake8 flake8-quotes sphinx
 
 # Para guardar e atualizar as dependências com número de versão
 
