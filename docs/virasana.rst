@@ -22,10 +22,24 @@ Scripts
 Este módulo possui scripts utilizados para rodar tarefas de integração e manutenção da base
 de dados. Normalmente os scripts utilizam funções do módulo integração.
 A integração é parte do pipeline (Ver :ref:`Arquitetura`), e normalmente será chamada
-periodicamente pelos ref:workers: e ref:tasks:.
+periodicamente pelos :ref:workers. e :ref:tasks. Muitos scripts são para ajustes quando os
+workers falharem e/ou para testes e integrações off-line.
 
-.. automodule:: virasana.virasana.scripts
+Carga
+-----
+.. automodule:: virasana.virasana.scripts.cargaupdate
     :members:
+
+XML
+-----
+.. automodule:: virasana.virasana.scripts.xmlupdate
+    :members:
+
+Predições (PADMA)
+-----------------
+.. automodule:: virasana.virasana.scripts.predictionsupdate
+    :members:
+
 
 Integracao
 ==========
@@ -37,17 +51,17 @@ __init__
 .. automodule:: virasana.virasana.integracao
     :members:
 
-XML
------
-.. automodule:: virasana.virasana.integracao.xmli
-    :members:
-
 Carga
 -----
 .. automodule:: virasana.virasana.integracao.carga
     :members:
 
 .. _workers:
+
+XML
+-----
+.. automodule:: virasana.virasana.integracao.xmli
+    :members:
 
 Workers
 ========

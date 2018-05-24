@@ -4,12 +4,8 @@
 .. contents:: Tópicos
  :depth: 2
 
-.. _Arquitetura:
 
-===========
-Arquitetura
-===========
- 
+==================
 Módulos do Sistema
 ==================
 
@@ -96,6 +92,8 @@ notebooks/scripts
 Rascunhos. Aproveitar a interatividade e praticidade do Jupyter Notebook/JupyterLab
 para fazer e documentar as análises exploratórias de dados,
 treinamento e teste de algoritmos de aprendizado de máquina.
+
+.. _Arquitetura:
 
 ======================
 Arquitetura do Sistema
