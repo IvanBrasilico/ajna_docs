@@ -255,13 +255,19 @@ json[‘taskid’]: ID da task do celery a ser monitorada</dd>
 
 <dl class="function">
 <dt id="virasana.virasana.views.files">
-<code class="descclassname">virasana.virasana.views.</code><code class="descname">files</code><span class="sig-paren">(</span><em>page=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.files" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">virasana.virasana.views.</code><code class="descname">files</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Recebe um filtro, aplica no GridFS, retorna a lista de arquivos.</p>
 </dd></dl>
 
 <dl class="function">
+<dt id="virasana.virasana.views.filtro">
+<code class="descclassname">virasana.virasana.views.</code><code class="descname">filtro</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#filtro"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.filtro" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configura filtro personalizado.</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="virasana.virasana.views.image">
-<code class="descclassname">virasana.virasana.views.</code><code class="descname">image</code><span class="sig-paren">(</span><em>_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.image" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">virasana.virasana.views.</code><code class="descname">image</code><span class="sig-paren">(</span><em>_id</em>, <em>n=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Serializa a imagem do banco para stream HTTP.</p>
 </dd></dl>
 
@@ -558,7 +564,7 @@ CARGA. Usar com consciência/cuidado.</p>
 
 <dl class="function">
 <dt id="virasana.virasana.integracao.carga.mongo_find_in">
-<code class="descclassname">virasana.virasana.integracao.carga.</code><code class="descname">mongo_find_in</code><span class="sig-paren">(</span><em>db</em>, <em>collection: str</em>, <em>field: str</em>, <em>in_set</em>, <em>set_field: str = None</em><span class="sig-paren">)</span> &#x2192; Tuple[list, set]<a class="reference internal" href="_modules/virasana/virasana/integracao/carga.html#mongo_find_in"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.carga.mongo_find_in" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">virasana.virasana.integracao.carga.</code><code class="descname">mongo_find_in</code><span class="sig-paren">(</span><em>db</em>, <em>collection: str</em>, <em>field: str</em>, <em>in_set</em>, <em>set_field: str = None</em><span class="sig-paren">)</span> &#x2192; typing.Tuple[list, set]<a class="reference internal" href="_modules/virasana/virasana/integracao/carga.html#mongo_find_in"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.carga.mongo_find_in" title="Permalink to this definition">¶</a></dt>
 <dd><p>Realiza um find $in in_set no db.collection.</p>
 <dl class="docutils">
 <dt>Args:</dt>
@@ -626,7 +632,7 @@ Se houverem arquivos, envia via POST para o endereco VIRASANA_URL</p>
 
 <dl class="function">
 <dt id="virasana.virasana.workers.dir_monitor.despacha_dir">
-<code class="descclassname">virasana.virasana.workers.dir_monitor.</code><code class="descname">despacha_dir</code><span class="sig-paren">(</span><em>dir='/home/ivan/pybr/AJNA_MOD/docs/../virasana/virasana/workers/../../../../files/BSON'</em>, <em>target='http://localhost:5001/api/uploadbson'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/workers/dir_monitor.html#despacha_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.workers.dir_monitor.despacha_dir" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">virasana.virasana.workers.dir_monitor.</code><code class="descname">despacha_dir</code><span class="sig-paren">(</span><em>dir='/home/ivan/pybr/ajna_docs/docs/../virasana/virasana/workers/../../../../files/BSON'</em>, <em>target='http://localhost:5001/api/uploadbson'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/workers/dir_monitor.html#despacha_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.workers.dir_monitor.despacha_dir" title="Permalink to this definition">¶</a></dt>
 <dd><p>Envia por HTTP POST todos os arquivos do diretório.</p>
 <dl class="docutils">
 <dt>Args:</dt>
@@ -743,9 +749,7 @@ aquelas que rodam tarefas custosas/demoradas em background.</p>
 
   <script type="text/javascript">
       jQuery(function () {
-          
-          SphinxRtdTheme.Navigation.enableSticky();
-          
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script> 
 
