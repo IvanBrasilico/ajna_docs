@@ -17,9 +17,19 @@ Interface
     :members:
 
 
+Scripts
+=======
+Este módulo possui scripts utilizados para rodar tarefas de integração e manutenção da base
+de dados. Normalmente os scripts utilizam funções do módulo integração.
+A integração é parte do pipeline (Ver :ref:`Arquitetura`), e normalmente será chamada
+periodicamente pelos ref:workers: e ref:tasks:.
+
+.. automodule:: virasana.virasana.scripts
+    :members:
+
 Integracao
 ==========
-Neste diretório ficam os diversos scripts para integração entre as imagens e 
+Neste módulo ficam os diversos scripts para integração entre as imagens e 
 as fontes de dados. Cada fonte de dados deve ter um módulo definido.
 
 __init__
@@ -37,6 +47,8 @@ Carga
 .. automodule:: virasana.virasana.integracao.carga
     :members:
 
+.. _workers:
+
 Workers
 ========
 
@@ -45,7 +57,9 @@ dir_monitor
 .. automodule:: virasana.virasana.workers.dir_monitor
     :members:
 
-tasks
+.. _tasks:
+
+Tasks
 -----
 .. automodule:: virasana.virasana.workers.tasks
     :members:

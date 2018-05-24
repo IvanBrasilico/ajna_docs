@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Módulos do Sistema &mdash; AJNA 0.1a documentation</title>
+  <title>Arquitetura &mdash; AJNA 0.1a documentation</title>
   
 
   
@@ -86,7 +86,8 @@
 <li class="toctree-l1"><a class="reference internal" href="manuais.html">Manuais de Usuário</a></li>
 <li class="toctree-l1"><a class="reference internal" href="codigofonte.html">Documentação do código-fonte</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UserStories.html">Histórias de Usuário</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Módulos do Sistema</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Arquitetura</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#modulos-do-sistema">Módulos do Sistema</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#avatar">AVATAR</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#image-aq">image_aq</a></li>
 </ul>
@@ -160,7 +161,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Módulos do Sistema</li>
+      <li>Arquitetura</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -183,23 +184,27 @@
 <div class="contents topic" id="topicos">
 <p class="topic-title first">Tópicos</p>
 <ul class="simple">
-<li><a class="reference internal" href="#modulos-do-sistema" id="id1">Módulos do Sistema</a><ul>
-<li><a class="reference internal" href="#avatar" id="id2">AVATAR</a></li>
-<li><a class="reference internal" href="#bhadrasana" id="id3">BHADRASANA</a></li>
-<li><a class="reference internal" href="#virasana" id="id4">VIRASANA</a></li>
-<li><a class="reference internal" href="#padma" id="id5">PADMA</a></li>
+<li><a class="reference internal" href="#arquitetura" id="id2">Arquitetura</a><ul>
+<li><a class="reference internal" href="#modulos-do-sistema" id="id3">Módulos do Sistema</a></li>
+<li><a class="reference internal" href="#avatar" id="id4">AVATAR</a></li>
+<li><a class="reference internal" href="#bhadrasana" id="id5">BHADRASANA</a></li>
+<li><a class="reference internal" href="#virasana" id="id6">VIRASANA</a></li>
+<li><a class="reference internal" href="#padma" id="id7">PADMA</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#arquitetura-do-sistema" id="id6">Arquitetura do Sistema</a><ul>
-<li><a class="reference internal" href="#descricao-do-pipeline-basico" id="id7">Descrição do ‘Pipeline’ básico</a></li>
+<li><a class="reference internal" href="#arquitetura-do-sistema" id="id8">Arquitetura do Sistema</a><ul>
+<li><a class="reference internal" href="#descricao-do-pipeline-basico" id="id9">Descrição do ‘Pipeline’ básico</a></li>
 </ul>
 </li>
 </ul>
 </div>
+<div class="section" id="arquitetura">
+<span id="id1"></span><h1><a class="toc-backref" href="#id2">Arquitetura</a><a class="headerlink" href="#arquitetura" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="modulos-do-sistema">
-<h1><a class="toc-backref" href="#id1">Módulos do Sistema</a><a class="headerlink" href="#modulos-do-sistema" title="Permalink to this headline">¶</a></h1>
+<h2><a class="toc-backref" href="#id3">Módulos do Sistema</a><a class="headerlink" href="#modulos-do-sistema" title="Permalink to this headline">¶</a></h2>
+</div>
 <div class="section" id="avatar">
-<h2><a class="toc-backref" href="#id2">AVATAR</a><a class="headerlink" href="#avatar" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id4">AVATAR</a><a class="headerlink" href="#avatar" title="Permalink to this headline">¶</a></h2>
 <p>Interface para cadastramento de fontes de imagens, usuários, configuração de parâmetros, etc
 Podem existir várias versões do AVATAR, de acordo com a necessidade (para diferentes portos,
 aeroportos, remessa expressa, etc)</p>
@@ -217,7 +222,7 @@ Deve ser provida uma forma de proteger contra modificações (read-only).</p>
 </div>
 </div>
 <div class="section" id="bhadrasana">
-<h2><a class="toc-backref" href="#id3">BHADRASANA</a><a class="headerlink" href="#bhadrasana" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">BHADRASANA</a><a class="headerlink" href="#bhadrasana" title="Permalink to this headline">¶</a></h2>
 <p>Aquisição de dados. Serviço com scripts que acessam sistemas fechados e dados públicos,
 estruturados e não estruturados, guardando em coleções/Bancos de Dados.</p>
 <p>Os dados são arquivadas em diretório no formato &lt;Nome_da_Base_Original&gt;/&lt;Ano&gt;/&lt;Mes&gt;/&lt;dia&gt;/&lt;Codigo_Extracao&gt;
@@ -241,7 +246,7 @@ alimentação manual da base.</p>
 </div>
 </div>
 <div class="section" id="virasana">
-<h2><a class="toc-backref" href="#id4">VIRASANA</a><a class="headerlink" href="#virasana" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id6">VIRASANA</a><a class="headerlink" href="#virasana" title="Permalink to this headline">¶</a></h2>
 <p>Banco de Dados de imagens.</p>
 <p>Importa arquivos BSON dos AVATARES.</p>
 <p>Submódulo integração provê, para cada Fonte de Dados, scripts para ETL (Extração, Transformação e ‘LOAD’), adicionando
@@ -252,7 +257,7 @@ manual ou automática, dos algoritmos do módulo PADMA nas imagens.</p>
 <p>Disponibiliza seus dados em Restful API.</p>
 </div>
 <div class="section" id="padma">
-<h2><a class="toc-backref" href="#id5">PADMA</a><a class="headerlink" href="#padma" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">PADMA</a><a class="headerlink" href="#padma" title="Permalink to this headline">¶</a></h2>
 <p>Coleção de algoritmos de machine learning plugáveis e servidos em WebService/JSON API.</p>
 <div class="section" id="notebooks-scripts">
 <h3>notebooks/scripts<a class="headerlink" href="#notebooks-scripts" title="Permalink to this headline">¶</a></h3>
@@ -263,9 +268,9 @@ treinamento e teste de algoritmos de aprendizado de máquina.</p>
 </div>
 </div>
 <div class="section" id="arquitetura-do-sistema">
-<h1><a class="toc-backref" href="#id6">Arquitetura do Sistema</a><a class="headerlink" href="#arquitetura-do-sistema" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id8">Arquitetura do Sistema</a><a class="headerlink" href="#arquitetura-do-sistema" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="descricao-do-pipeline-basico">
-<h2><a class="toc-backref" href="#id7">Descrição do ‘Pipeline’ básico</a><a class="headerlink" href="#descricao-do-pipeline-basico" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id9">Descrição do ‘Pipeline’ básico</a><a class="headerlink" href="#descricao-do-pipeline-basico" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="importacao">
 <h3>Importação<a class="headerlink" href="#importacao" title="Permalink to this headline">¶</a></h3>
 <p>A importação de dados imagens poderá ser realizada por serviços(caso A), caso possível por senha, token
@@ -305,9 +310,12 @@ Algumas ações serão “hard-coded”.</p>
 <p>Ex.:</p>
 <ul class="simple">
 <li>bhadrasana mudando títulos de csvs de diferentes terminais mas que possuem as mesmas informações.</li>
-<li>bhadrasana usando o módulo ajna_commons.utils.sanitizar para corrigir textos e facilitar pesquisas,</li>
+<li><dl class="first docutils">
+<dt>bhadrasana usando o módulo ajna_commons.utils.sanitizar para corrigir textos e facilitar pesquisas,</dt>
+<dd>colocando tudo em caixa única, retirando sinais gráficos e espaços duplicados, etc.</dd>
+</dl>
+</li>
 </ul>
-<p>colocando tudo em caixa única, retirando sinais gráficos e espaços duplicados, etc.</p>
 </div>
 <div class="section" id="integracao">
 <h3>Integração<a class="headerlink" href="#integracao" title="Permalink to this headline">¶</a></h3>

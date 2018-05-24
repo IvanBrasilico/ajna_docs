@@ -91,6 +91,7 @@
 <li class="toctree-l2"><a class="reference internal" href="virasana.html">VIRASANA</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">PADMA</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#gym">GYM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usar-python3-5-e-tensorflow1-5">Usar Python3.5 e TensorFlow1.5</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-padma.padma.app">Interface</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-padma.padma.models.models">Modelos</a></li>
 </ul>
@@ -171,8 +172,9 @@
 <ul class="simple">
 <li><a class="reference internal" href="#padma" id="id1">PADMA</a><ul>
 <li><a class="reference internal" href="#gym" id="id2">GYM</a></li>
-<li><a class="reference internal" href="#module-padma.padma.app" id="id3">Interface</a></li>
-<li><a class="reference internal" href="#module-padma.padma.models.models" id="id4">Modelos</a></li>
+<li><a class="reference internal" href="#usar-python3-5-e-tensorflow1-5" id="id3">Usar Python3.5 e TensorFlow1.5</a></li>
+<li><a class="reference internal" href="#module-padma.padma.app" id="id4">Interface</a></li>
+<li><a class="reference internal" href="#module-padma.padma.models.models" id="id5">Modelos</a></li>
 </ul>
 </li>
 </ul>
@@ -188,8 +190,17 @@
 É necessário clonar o repositório do TensorFlow Object Detection no raiz do Padma:
 <a class="reference external" href="https://github.com/IvanBrasilico/models">https://github.com/IvanBrasilico/models</a></p>
 </div>
+<div class="section" id="usar-python3-5-e-tensorflow1-5">
+<h2><a class="toc-backref" href="#id3">Usar Python3.5 e TensorFlow1.5</a><a class="headerlink" href="#usar-python3-5-e-tensorflow1-5" title="Permalink to this headline">¶</a></h2>
+<p>Atualmente o projeto TensorFlow models foi testado com o PADMA com:</p>
+<ul class="simple">
+<li>Python3.5 e TensorFlow1.5</li>
+<li>Python3.6 e TensorFlow1.4</li>
+</ul>
+<p>O uso de Python3.6 e TensorFlow &gt;=1.5 dá o erro no Atribute t.float32 in module TensorFlow</p>
+</div>
 <div class="section" id="module-padma.padma.app">
-<span id="interface"></span><h2><a class="toc-backref" href="#id3">Interface</a><a class="headerlink" href="#module-padma.padma.app" title="Permalink to this headline">¶</a></h2>
+<span id="interface"></span><h2><a class="toc-backref" href="#id4">Interface</a><a class="headerlink" href="#module-padma.padma.app" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="padma.padma.app.allowed_file">
 <code class="descclassname">padma.padma.app.</code><code class="descname">allowed_file</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/padma/padma/app.html#allowed_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#padma.padma.app.allowed_file" title="Permalink to this definition">¶</a></dt>
@@ -216,7 +227,7 @@
 
 </div>
 <div class="section" id="module-padma.padma.models.models">
-<span id="modelos"></span><h2><a class="toc-backref" href="#id4">Modelos</a><a class="headerlink" href="#module-padma.padma.models.models" title="Permalink to this headline">¶</a></h2>
+<span id="modelos"></span><h2><a class="toc-backref" href="#id5">Modelos</a><a class="headerlink" href="#module-padma.padma.models.models" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="module-padma.padma.models.bbox.bbox"></span><p>Algoritmos para encontrar a borda dos contêineres
 Recebem uma imagem, retornam as coordenadas de um retângulo
 onde o contêiner está

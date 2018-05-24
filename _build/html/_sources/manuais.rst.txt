@@ -8,5 +8,5 @@ Manuais de Usuário
    :caption: Conteúdo:
    :glob:
 
-   manualsentinela.rst
+   manualbhadrasana.rst
    manualvirasana.rst

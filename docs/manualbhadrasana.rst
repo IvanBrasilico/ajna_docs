@@ -21,7 +21,7 @@ criação e edição destes Padrões de Risco.
 Após a criação dos padrões o usuário poderá realizar a filtragem da Base desejada
 indo na tela :ref:`aplica-risco` e selecionando os itens necessários.
 
-O Sentinela (ver :doc:`bhadrasana`) já na importação aplica alguns filtros e
+O Bhadrasana (ver :doc:`bhadrasana`) já na importação aplica alguns filtros e
 normalizações na Base importada.
 
 Caso existam várias bases com parâmetros parecidos, diferindo apenas no nome, o
@@ -34,7 +34,7 @@ dos parâmetros destas planilhas.
 Telas
 =====
 
-.. _login:
+.. _loginb:
 
 -----
 Login
@@ -165,7 +165,7 @@ ambas trazem o código NCM) poderia ser cadastrado um único parâmetro onde nel
 seriam cadastrados todos os códigos de NCMs desejados.
 
 Ao invés de criar um Parâmetro de Risco diferente para cada Base (ver
-:ref:`edita-risco`), nesta tela o Sentinela permite que uma coluna seja
+:ref:`edita-risco`), nesta tela o Bhadrasana permite que uma coluna seja
 importada com um outro nome.
 
 Por exemplo:
