@@ -31,7 +31,7 @@ Carga
     :members:
 
 XML
------
+---
 .. automodule:: virasana.virasana.scripts.xmlupdate
     :members:
 

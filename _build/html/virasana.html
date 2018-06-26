@@ -214,7 +214,9 @@
 imagens, e busca completar as imagens com metadados vindos dos módulos BHADRASANA e PADMA</p>
 <div class="section" id="module-virasana.virasana.views">
 <span id="interface"></span><h2><a class="toc-backref" href="#id6">Interface</a><a class="headerlink" href="#module-virasana.virasana.views" title="Permalink to this headline">¶</a></h2>
-<p>Coleção de views da interface web do módulo virasana.</p>
+<p>Coleção de views da interface web do módulo Virasana.</p>
+<p>Módulo Virasana é o Servidor de imagens e a interface para carga,
+consulta e integração das imagens com outras bases.</p>
 <dl class="class">
 <dt id="virasana.virasana.views.FilesForm">
 <em class="property">class </em><code class="descclassname">virasana.virasana.views.</code><code class="descname">FilesForm</code><span class="sig-paren">(</span><em>formdata=&lt;object object&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#FilesForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.FilesForm" title="Permalink to this definition">¶</a></dt>
@@ -253,9 +255,15 @@ json[‘taskid’]: ID da task do celery a ser monitorada</dd>
 </dd></dl>
 
 <dl class="function">
-<dt id="virasana.virasana.views.bars">
-<code class="descclassname">virasana.virasana.views.</code><code class="descname">bars</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#bars"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.bars" title="Permalink to this definition">¶</a></dt>
-<dd><p>Renderiza gráfico no matplot e serializa via HTTP/HTML.</p>
+<dt id="virasana.virasana.views.bar_plotly">
+<code class="descclassname">virasana.virasana.views.</code><code class="descname">bar_plotly</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#bar_plotly"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.bar_plotly" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renderiza gráfico no plotly e serializa via HTTP/HTML.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="virasana.virasana.views.campos_chave">
+<code class="descclassname">virasana.virasana.views.</code><code class="descname">campos_chave</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#campos_chave"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.campos_chave" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorna campos chave para montagem de filtro.</p>
 </dd></dl>
 
 <dl class="function">
@@ -268,7 +276,7 @@ json[‘taskid’]: ID da task do celery a ser monitorada</dd>
 <dl class="function">
 <dt id="virasana.virasana.views.files">
 <code class="descclassname">virasana.virasana.views.</code><code class="descname">files</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.files" title="Permalink to this definition">¶</a></dt>
-<dd><p>Recebe um filtro, aplica no GridFS, retorna a lista de arquivos.</p>
+<dd><p>Recebe parâmetros, aplica no GridFS, retorna a lista de arquivos.</p>
 </dd></dl>
 
 <dl class="function">
@@ -278,9 +286,21 @@ json[‘taskid’]: ID da task do celery a ser monitorada</dd>
 </dd></dl>
 
 <dl class="function">
+<dt id="virasana.virasana.views.grid_data">
+<code class="descclassname">virasana.virasana.views.</code><code class="descname">grid_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#grid_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.grid_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serializa os dados do banco para stream JSON HTTP.</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="virasana.virasana.views.image">
-<code class="descclassname">virasana.virasana.views.</code><code class="descname">image</code><span class="sig-paren">(</span><em>_id</em>, <em>n=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.image" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">virasana.virasana.views.</code><code class="descname">image</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Serializa a imagem do banco para stream HTTP.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="virasana.virasana.views.image_id">
+<code class="descclassname">virasana.virasana.views.</code><code class="descname">image_id</code><span class="sig-paren">(</span><em>_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#image_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.image_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recorta a imagem do banco e serializa para stream HTTP.</p>
 </dd></dl>
 
 <dl class="function">
@@ -299,6 +319,18 @@ Se houver upload em andamento, informa.</p>
 </dd></dl>
 
 <dl class="function">
+<dt id="virasana.virasana.views.mini">
+<code class="descclassname">virasana.virasana.views.</code><code class="descname">mini</code><span class="sig-paren">(</span><em>_id</em>, <em>n=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#mini"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.mini" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recorta a imagem do banco e serializa para stream HTTP.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="virasana.virasana.views.mini2">
+<code class="descclassname">virasana.virasana.views.</code><code class="descname">mini2</code><span class="sig-paren">(</span><em>_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#mini2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.mini2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Link para imagem do segundo contêiner, se houver.</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="virasana.virasana.views.mynavbar">
 <code class="descclassname">virasana.virasana.views.</code><code class="descname">mynavbar</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#mynavbar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.mynavbar" title="Permalink to this definition">¶</a></dt>
 <dd><p>Menu da aplicação.</p>
@@ -311,15 +343,49 @@ Se houver upload em andamento, informa.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="virasana.virasana.views.pie">
-<code class="descclassname">virasana.virasana.views.</code><code class="descname">pie</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#pie"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.pie" title="Permalink to this definition">¶</a></dt>
-<dd><p>Renderiza gráfico no matplot e serializa via HTTP/HTML.</p>
+<dt id="virasana.virasana.views.pie_plotly">
+<code class="descclassname">virasana.virasana.views.</code><code class="descname">pie_plotly</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#pie_plotly"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.pie_plotly" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renderiza HTML no pyplot e serializa via HTTP/HTML.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="virasana.virasana.views.recupera_user_filtros">
+<code class="descclassname">virasana.virasana.views.</code><code class="descname">recupera_user_filtros</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#recupera_user_filtros"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.recupera_user_filtros" title="Permalink to this definition">¶</a></dt>
+<dd><p>Usa variável global para guardar filtros personalizados entre posts.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="virasana.virasana.views.similar">
+<code class="descclassname">virasana.virasana.views.</code><code class="descname">similar</code><span class="sig-paren">(</span><em>_id</em>, <em>offset=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#similar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.similar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorna índice de imagens similares.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="virasana.virasana.views.similar_">
+<code class="descclassname">virasana.virasana.views.</code><code class="descname">similar_</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#similar_"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.similar_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Chama view de índice de imagens similares por GET.</p>
+<p>Recebe _id e offset(página atual).
+Para possibilitar rolagem de página.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="virasana.virasana.views.stats">
 <code class="descclassname">virasana.virasana.views.</code><code class="descname">stats</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#stats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.stats" title="Permalink to this definition">¶</a></dt>
 <dd><p>Permite consulta as estatísticas do GridFS e integrações.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="virasana.virasana.views.summaryhtml">
+<code class="descclassname">virasana.virasana.views.</code><code class="descname">summaryhtml</code><span class="sig-paren">(</span><em>_id=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#summaryhtml"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.summaryhtml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tela para exibição de um ‘arquivo’ do GridFS.</p>
+<p>Exibe os metadados associados a ele.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="virasana.virasana.views.summarytext">
+<code class="descclassname">virasana.virasana.views.</code><code class="descname">summarytext</code><span class="sig-paren">(</span><em>_id=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#summarytext"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.summarytext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tela para exibição de um ‘arquivo’ do GridFS.</p>
+<p>Exibe os metadados associados a ele.</p>
 </dd></dl>
 
 <dl class="function">
@@ -333,6 +399,12 @@ Se houver upload em andamento, informa.</p>
 <code class="descclassname">virasana.virasana.views.</code><code class="descname">upload_bson</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#upload_bson"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.upload_bson" title="Permalink to this definition">¶</a></dt>
 <dd><p>Função simplificada para upload do arquivo de uma extração.</p>
 <p>Ver API/Upload BSON</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="virasana.virasana.views.valida_form_files">
+<code class="descclassname">virasana.virasana.views.</code><code class="descname">valida_form_files</code><span class="sig-paren">(</span><em>form</em>, <em>filtro</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#valida_form_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.valida_form_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lê formulário e adiciona campos ao filtro se necessário.</p>
 </dd></dl>
 
 </div>
@@ -376,16 +448,101 @@ dos metadados do arquivo XML nas imagens.</p>
 <p>Script de linha de comando para fazer atualização ‘manual’
 dos metadados do módulo AJNA-PADMA nas imagens.</p>
 <p>Importante: todos os modelos precisam atuar sobre um recorte da imagem
-orginal, EXCETO os modelos treinados justamente para detectar este recorte
+orginal, EXCETO os modelos treinados justamente para detectar este recorte.
 Assim, serão filtrados apenas os registros que possuam a chave bbox para
 recorte, a menos que o modelo selecionado seja um dos modelos próprios para
-detecção do objeto contêiner.</p>
+detecção do objeto contêiner (lista BBOX_MODELS do integracao.padma).</p>
 <p>Args:</p>
 <blockquote>
-<div><p>model: modelos a consultar</p>
-<p>batch_size: tamanho do lote de atualização/limite de registros da consulta</p>
+<div><p>modelo: modelos a consultar</p>
+<p>t: tamanho do lote de atualização/limite de registros da consulta</p>
+<p>q: quantidade de consultas simultâneas (mais rápido até limite do Servidor)</p>
 <p>sovazios: selecionar contêineres declarados como vazio somente</p>
+<p>force: Tentar mesmo se consulta anterior a este registro falhou.
+Obs: em caso de consulta retornar vazia (não detectou resultado),
+o script irá gravar um valor em branco [] no campo destino e irá
+pular este registro nas próximas atualizações. Habilitar force
+processa estes registros novamente.</p>
 </div></blockquote>
+<dl class="class">
+<dt id="virasana.virasana.scripts.predictionsupdate.ImageID">
+<em class="property">class </em><code class="descclassname">virasana.virasana.scripts.predictionsupdate.</code><code class="descname">ImageID</code><span class="sig-paren">(</span><em>id</em>, <em>content</em>, <em>predictions</em><span class="sig-paren">)</span><a class="headerlink" href="#virasana.virasana.scripts.predictionsupdate.ImageID" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="virasana.virasana.scripts.predictionsupdate.ImageID.content">
+<code class="descname">content</code><a class="headerlink" href="#virasana.virasana.scripts.predictionsupdate.ImageID.content" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="virasana.virasana.scripts.predictionsupdate.ImageID.id">
+<code class="descname">id</code><a class="headerlink" href="#virasana.virasana.scripts.predictionsupdate.ImageID.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="virasana.virasana.scripts.predictionsupdate.ImageID.predictions">
+<code class="descname">predictions</code><a class="headerlink" href="#virasana.virasana.scripts.predictionsupdate.ImageID.predictions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="virasana.virasana.scripts.predictionsupdate.consulta_padma_retorna_image">
+<code class="descclassname">virasana.virasana.scripts.predictionsupdate.</code><code class="descname">consulta_padma_retorna_image</code><span class="sig-paren">(</span><em>image: virasana.virasana.scripts.predictionsupdate.ImageID</em>, <em>model: str</em>, <em>campo: str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/scripts/predictionsupdate.html#consulta_padma_retorna_image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.scripts.predictionsupdate.consulta_padma_retorna_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Realiza request no padma. Retorna response e ImageID da consulta.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="virasana.virasana.scripts.predictionsupdate.cropped_images">
+<code class="descclassname">virasana.virasana.scripts.predictionsupdate.</code><code class="descname">cropped_images</code><span class="sig-paren">(</span><em>predictions: dict</em>, <em>image: bytes</em>, <em>_id: int</em><span class="sig-paren">)</span> &#x2192; list<a class="reference internal" href="_modules/virasana/virasana/scripts/predictionsupdate.html#cropped_images"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.scripts.predictionsupdate.cropped_images" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recorta imagens de acordo com bbox passada.</p>
+<p>Para acessar algumas predições, é necessário recortar as imagens antes.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>predictions: dicionário com as predições
+image: imagem do contêiner original, em bytes
+_id: id do MongoDB se existir. Apenas para reportar erro</dd>
+<dt>Returns:</dt>
+<dd>lista de imagem(ns) recortada[s]</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="virasana.virasana.scripts.predictionsupdate.fazconsulta">
+<code class="descclassname">virasana.virasana.scripts.predictionsupdate.</code><code class="descname">fazconsulta</code><span class="sig-paren">(</span><em>images: list</em>, <em>model: str</em>, <em>campo: str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/scripts/predictionsupdate.html#fazconsulta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.scripts.predictionsupdate.fazconsulta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recebe lista de ImageID, monta uma ThreadPool.</p>
+<p>Monta ThreadPool do tamanho da lista recebida, chama consulta ao padma.
+Recebe retorno de cada Thread e grava no BD.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>images: lista de NamedTuple tipo ImageID
+model: nome do modelo
+campo: nome do campo a gravar no BD</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="virasana.virasana.scripts.predictionsupdate.get_images">
+<code class="descclassname">virasana.virasana.scripts.predictionsupdate.</code><code class="descname">get_images</code><span class="sig-paren">(</span><em>model: str</em>, <em>_id: bson.objectid.ObjectId</em>, <em>image: bytes</em>, <em>predictions: dict</em><span class="sig-paren">)</span> &#x2192; list<a class="reference internal" href="_modules/virasana/virasana/scripts/predictionsupdate.html#get_images"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.scripts.predictionsupdate.get_images" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorna ImagemID.</p>
+<p>Se model for BBOX, simplesmente anexa imagem original.
+Se model for outro tipo, recorta BBOX antes utilizando predictions BBOX
+já vinculadas à imagem _id e anexa uma ou duas imagens resultantes.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="virasana.virasana.scripts.predictionsupdate.monta_filtro">
+<code class="descclassname">virasana.virasana.scripts.predictionsupdate.</code><code class="descname">monta_filtro</code><span class="sig-paren">(</span><em>model: str</em>, <em>sovazios: bool</em>, <em>update: str</em>, <em>tamanho: int</em><span class="sig-paren">)</span> &#x2192; dict<a class="reference internal" href="_modules/virasana/virasana/scripts/predictionsupdate.html#monta_filtro"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.scripts.predictionsupdate.monta_filtro" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorna filtro para MongoDB.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="virasana.virasana.scripts.predictionsupdate.mostra_tempo_final">
+<code class="descclassname">virasana.virasana.scripts.predictionsupdate.</code><code class="descname">mostra_tempo_final</code><span class="sig-paren">(</span><em>s_inicial</em>, <em>registros_vazios</em>, <em>registros_processados</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/scripts/predictionsupdate.html#mostra_tempo_final"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.scripts.predictionsupdate.mostra_tempo_final" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exibe mensagem de tempo decorrido.</p>
+</dd></dl>
+
 </div>
 </div>
 <div class="section" id="integracao">
@@ -415,6 +572,18 @@ sobre a base para informar os usuários.</p>
 <code class="descclassname">virasana.virasana.integracao.</code><code class="descname">datas_bases</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/integracao.html#datas_bases"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.datas_bases" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retorna nomes dos campos que possuem as datas de referência.</p>
 <p>Para cada integração, consulta se há data de referência e retorna</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="virasana.virasana.integracao.dict_to_html">
+<code class="descclassname">virasana.virasana.integracao.</code><code class="descname">dict_to_html</code><span class="sig-paren">(</span><em>adict: dict</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/integracao.html#dict_to_html"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.dict_to_html" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorna HTML.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="virasana.virasana.integracao.dict_to_text">
+<code class="descclassname">virasana.virasana.integracao.</code><code class="descname">dict_to_text</code><span class="sig-paren">(</span><em>adict: dict</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/integracao.html#dict_to_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.dict_to_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorna keyn [valuen].</p>
 </dd></dl>
 
 <dl class="function">
@@ -454,15 +623,15 @@ numero: lista com os números de contêiner</dd>
 </dd></dl>
 
 <dl class="function">
-<dt id="virasana.virasana.integracao.plot_bar">
-<code class="descclassname">virasana.virasana.integracao.</code><code class="descname">plot_bar</code><span class="sig-paren">(</span><em>values</em>, <em>labels</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/integracao.html#plot_bar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.plot_bar" title="Permalink to this definition">¶</a></dt>
+<dt id="virasana.virasana.integracao.plot_bar_plotly">
+<code class="descclassname">virasana.virasana.integracao.</code><code class="descname">plot_bar_plotly</code><span class="sig-paren">(</span><em>values</em>, <em>labels</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/integracao.html#plot_bar_plotly"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.plot_bar_plotly" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gera gráfico de barras.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="virasana.virasana.integracao.plot_pie">
-<code class="descclassname">virasana.virasana.integracao.</code><code class="descname">plot_pie</code><span class="sig-paren">(</span><em>values</em>, <em>labels</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/integracao.html#plot_pie"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.plot_pie" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gera gráfico de pizza.</p>
+<dt id="virasana.virasana.integracao.plot_pie_plotly">
+<code class="descclassname">virasana.virasana.integracao.</code><code class="descname">plot_pie_plotly</code><span class="sig-paren">(</span><em>values</em>, <em>labels</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/integracao.html#plot_pie_plotly"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.plot_pie_plotly" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gera gráfico de terminais.</p>
 </dd></dl>
 
 <dl class="function">
@@ -476,6 +645,25 @@ numero: lista com os números de contêiner</dd>
 <code class="descclassname">virasana.virasana.integracao.</code><code class="descname">stats_resumo_imagens</code><span class="sig-paren">(</span><em>db</em>, <em>datainicio=None</em>, <em>datafim=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/integracao.html#stats_resumo_imagens"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.stats_resumo_imagens" title="Permalink to this definition">¶</a></dt>
 <dd><p>Números gerais do Banco de Dados e suas integrações.</p>
 <p>Estatísticas gerais sobre as imagens</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="virasana.virasana.integracao.summary">
+<code class="descclassname">virasana.virasana.integracao.</code><code class="descname">summary</code><span class="sig-paren">(</span><em>grid_data=None</em>, <em>registro=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/integracao.html#summary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selecionar campos mais importantes para exibição.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>grid_data: Registro GridData do Gridfs.get
+registro: registro (dict) lido de cursor do MongoDB</dd>
+<dt>Returns:</dt>
+<dd>dict com descrição e valor de campos. (str: str)</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="virasana.virasana.integracao.tag">
+<code class="descclassname">virasana.virasana.integracao.</code><code class="descname">tag</code><span class="sig-paren">(</span><em>word: str</em>, <em>tags: list</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/integracao.html#tag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.tag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Coloca tags em torno de word.</p>
 </dd></dl>
 
 <dl class="function">
@@ -496,17 +684,17 @@ numero: lista com os números de contêiner</dd>
 </div>
 <div class="section" id="id1">
 <h3><a class="toc-backref" href="#id13">Carga</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="module-virasana.virasana.integracao.carga"></span><p>Funçãoes para importar os dados do formulário CARGA do Bhadrasana.</p>
+<span class="target" id="module-virasana.virasana.integracao.carga"></span><p>Funçãoes para importar os dados da base CARGA do Bhadrasana.</p>
 <dl class="function">
 <dt id="virasana.virasana.integracao.carga.busca_atracacao_data">
-<code class="descclassname">virasana.virasana.integracao.carga.</code><code class="descname">busca_atracacao_data</code><span class="sig-paren">(</span><em>atracacoes: list</em>, <em>scan_datetime: datetime.datetime</em>, <em>days=4</em><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/virasana/virasana/integracao/carga.html#busca_atracacao_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.carga.busca_atracacao_data" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">virasana.virasana.integracao.carga.</code><code class="descname">busca_atracacao_data</code><span class="sig-paren">(</span><em>atracacoes: list</em>, <em>scan_datetime: datetime.datetime</em>, <em>days</em><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/virasana/virasana/integracao/carga.html#busca_atracacao_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.carga.busca_atracacao_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pega da lista de atracações a atracação com a data mais próxima.</p>
 <dl class="docutils">
 <dt>Args:</dt>
 <dd><p class="first">atracacoes: lista de dict contendo os registros das atracacoes</p>
+<p>scan_datetime: data de partida</p>
 <p>data: data buscada</p>
-<p class="last">days: “threshold”  máxima diferença entre as datas - default definido
-no começo da função</p>
+<p class="last">days: “threshold”  máxima diferença entre as datas</p>
 </dd>
 <dt>Returns:</dt>
 <dd>Índice da atracação, None se atracação não existe ou não está no
@@ -516,19 +704,19 @@ intervalo threshold</dd>
 
 <dl class="function">
 <dt id="virasana.virasana.integracao.carga.busca_info_container">
-<code class="descclassname">virasana.virasana.integracao.carga.</code><code class="descname">busca_info_container</code><span class="sig-paren">(</span><em>db</em>, <em>numero: str</em>, <em>data_escaneamento: datetime.datetime</em>, <em>days=4</em><span class="sig-paren">)</span> &#x2192; dict<a class="reference internal" href="_modules/virasana/virasana/integracao/carga.html#busca_info_container"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.carga.busca_info_container" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">virasana.virasana.integracao.carga.</code><code class="descname">busca_info_container</code><span class="sig-paren">(</span><em>db</em>, <em>numero: str</em>, <em>data_escaneamento: datetime.datetime</em>, <em>days=5</em><span class="sig-paren">)</span> &#x2192; dict<a class="reference internal" href="_modules/virasana/virasana/integracao/carga.html#busca_info_container"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.carga.busca_info_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Busca heurística na base CARGA MongoDB de dados sobre o Contêiner.</p>
 <p>A busca é baseada na data de escaneamento. O parâmetro dias é um
 “threshold” (diferença aceita entre a data de atracação e escaneamento),
-por padrão, é de 4 dias.</p>
-<p>Dentro destes 4 dias, será considerado o CE/Manifesto/Escala com menor
+por padrão, é de -5 dias na importação e +10 dias na importação.</p>
+<p>Dentro destes 5 dias, será considerado o CE/Manifesto/Escala com menor
 diferença de data como o pertencente a este contêiner.
 Note-se que o resultado não é garantido, podendo trazer um CE incorreto.</p>
 <p>As informações são imperfeitas e não há como garantir trazer o CE correto,
 mas espera-se um acerto próximo de 100%, já que a frequência de cada
 contêiner em cada porto tem um intervalo típico de semanas e até meses,
 sendo extremamente incomum um contêiner ter duas “viagens” no mesmo
-porto em menos de 4 dias +/-.</p>
+porto em menos de 5 dias +/-.</p>
 <dl class="docutils">
 <dt>Args:</dt>
 <dd><p class="first">numero: número completo do contêiner</p>
@@ -545,6 +733,30 @@ não existe ou não foi importado ou há um erro)!</dd>
 </dd></dl>
 
 <dl class="function">
+<dt id="virasana.virasana.integracao.carga.busca_vazios">
+<code class="descclassname">virasana.virasana.integracao.carga.</code><code class="descname">busca_vazios</code><span class="sig-paren">(</span><em>db</em>, <em>numero: str</em>, <em>data_escaneamento</em>, <em>days</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/integracao/carga.html#busca_vazios"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.carga.busca_vazios" title="Permalink to this definition">¶</a></dt>
+<dd><p>Heurística para buscar manifesto de vazio.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>db: conexão com MongoDB
+numero: número do contâiner
+dataescaneamento: data de busca</dd>
+<dt>Returns:</dt>
+<dd>dict com informações do CARGA, se manifesto de vazio encontrado</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="virasana.virasana.integracao.carga.converte_datahora_atracacao">
+<code class="descclassname">virasana.virasana.integracao.carga.</code><code class="descname">converte_datahora_atracacao</code><span class="sig-paren">(</span><em>atracacao: dict</em><span class="sig-paren">)</span> &#x2192; datetime.datetime<a class="reference internal" href="_modules/virasana/virasana/integracao/carga.html#converte_datahora_atracacao"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.carga.converte_datahora_atracacao" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tansforma data e hora de atracação em objeto datetime.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>atracacao: dict contendo chaves dataatracacao e horaaatracacao</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
 <dt id="virasana.virasana.integracao.carga.create_indexes">
 <code class="descclassname">virasana.virasana.integracao.carga.</code><code class="descname">create_indexes</code><span class="sig-paren">(</span><em>db</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/integracao/carga.html#create_indexes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.carga.create_indexes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Utilitário. Cria índices relacionados à integração.</p>
@@ -555,7 +767,7 @@ duplicada do mesmo registro.</p>
 
 <dl class="function">
 <dt id="virasana.virasana.integracao.carga.dados_carga_grava_fsfiles">
-<code class="descclassname">virasana.virasana.integracao.carga.</code><code class="descname">dados_carga_grava_fsfiles</code><span class="sig-paren">(</span><em>db</em>, <em>batch_size=1000</em>, <em>data_inicio=datetime.datetime(1900</em>, <em>1</em>, <em>1</em>, <em>0</em>, <em>0)</em>, <em>days=4</em>, <em>update=True</em>, <em>force_update=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/integracao/carga.html#dados_carga_grava_fsfiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.carga.dados_carga_grava_fsfiles" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">virasana.virasana.integracao.carga.</code><code class="descname">dados_carga_grava_fsfiles</code><span class="sig-paren">(</span><em>db</em>, <em>batch_size=1000</em>, <em>data_inicio=datetime.datetime(1900</em>, <em>1</em>, <em>1</em>, <em>0</em>, <em>0)</em>, <em>days=5</em>, <em>update=True</em>, <em>force_update=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/integracao/carga.html#dados_carga_grava_fsfiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.carga.dados_carga_grava_fsfiles" title="Permalink to this definition">¶</a></dt>
 <dd><p>Busca por registros no GridFS sem info do CARGA.</p>
 <p>Busca por registros no fs.files (GridFS - imagens) que não tenham metadata
 importada do sistema CARGA. Itera estes registros, consultando a
@@ -578,8 +790,25 @@ CARGA. Usar com consciência/cuidado.</p>
 </dd></dl>
 
 <dl class="function">
+<dt id="virasana.virasana.integracao.carga.get_escalas">
+<code class="descclassname">virasana.virasana.integracao.carga.</code><code class="descname">get_escalas</code><span class="sig-paren">(</span><em>db</em>, <em>conhecimentos_set: set</em>, <em>scan_datetime: datetime.datetime</em>, <em>days: int</em>, <em>exportacao=False</em><span class="sig-paren">)</span> &#x2192; typing.Tuple[[list, list], int]<a class="reference internal" href="_modules/virasana/virasana/integracao/carga.html#get_escalas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.carga.get_escalas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dada uma lista de conhecimentos, retorna a lista de escalas.</p>
+<p>Retorna a lista de escalas vinculadas, com datadeatracao entre
+scan_datetime e scan_datetime + days</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">conhecimentos: lista de dict contendo os registros das atracacoes</p>
+<p>scan_datetime: data de partida</p>
+<p class="last">days: “threshold”  máxima diferença entre as datas</p>
+</dd>
+<dt>Returns:</dt>
+<dd>(manifestos, escalas)</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
 <dt id="virasana.virasana.integracao.carga.mongo_find_in">
-<code class="descclassname">virasana.virasana.integracao.carga.</code><code class="descname">mongo_find_in</code><span class="sig-paren">(</span><em>db</em>, <em>collection: str</em>, <em>field: str</em>, <em>in_set</em>, <em>set_field: str = None</em><span class="sig-paren">)</span> &#x2192; typing.Tuple[list, set]<a class="reference internal" href="_modules/virasana/virasana/integracao/carga.html#mongo_find_in"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.carga.mongo_find_in" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">virasana.virasana.integracao.carga.</code><code class="descname">mongo_find_in</code><span class="sig-paren">(</span><em>db</em>, <em>collection: str</em>, <em>field: str</em>, <em>in_set</em>, <em>set_field: str = None</em>, <em>filtros: dict = None</em><span class="sig-paren">)</span> &#x2192; typing.Tuple[list, set]<a class="reference internal" href="_modules/virasana/virasana/integracao/carga.html#mongo_find_in"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.carga.mongo_find_in" title="Permalink to this definition">¶</a></dt>
 <dd><p>Realiza um find $in in_set no db.collection.</p>
 <dl class="docutils">
 <dt>Args:</dt>
@@ -587,12 +816,19 @@ CARGA. Usar com consciência/cuidado.</p>
 <p>collection: nome da coleção mongo para aplicar a “query”</p>
 <p>field: campo para aplicar a “filter by”</p>
 <p>in_set: lista ou conjunto de valores a passar para o operador “$in”</p>
-<p class="last">result_field: campo para obter valores únicos (opcional)</p>
+<p>set_field: campo para obter valores únicos (opcional)</p>
+<p class="last">filtros: filtros adicionais a aplicar</p>
 </dd>
 <dt>Returns:</dt>
 <dd>Dicionário de resultados formatado key:value(Somente campos não nulos)
 Conjuntos de set_field</dd>
 </dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="virasana.virasana.integracao.carga.monta_info_cheio">
+<code class="descclassname">virasana.virasana.integracao.carga.</code><code class="descname">monta_info_cheio</code><span class="sig-paren">(</span><em>db</em>, <em>index_atracacao</em>, <em>atracacoes</em>, <em>escalas</em>, <em>manifestosc</em>, <em>conteineres</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/integracao/carga.html#monta_info_cheio"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.carga.monta_info_cheio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apenas faz montagem do dicionário se encontrado CE.</p>
 </dd></dl>
 
 <dl class="function">
@@ -614,6 +850,19 @@ registros no arquivo (MongoDB) é igual a número original de linhas.</p>
 <dd>{$gt: date, $lt: date}}).count()</dd>
 </dl>
 </dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="virasana.virasana.integracao.carga.summary">
+<code class="descclassname">virasana.virasana.integracao.carga.</code><code class="descname">summary</code><span class="sig-paren">(</span><em>grid_data=None</em>, <em>registro=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/integracao/carga.html#summary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.integracao.carga.summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selecionar campos mais importantes para exibição.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>grid_data: Registro GridData do Gridfs.get
+registro: registro (dict) lido de cursor do MongoDB</dd>
+<dt>Returns:</dt>
+<dd>dict com descrição e valor de campos. (str: str)</dd>
 </dl>
 </dd></dl>
 
@@ -732,14 +981,7 @@ Recebendo uma resposta negativa, grava no logger.</p>
 <span class="target" id="module-virasana.virasana.workers.tasks"></span><p>Definição dos códigos que serão rodados pelo Celery.</p>
 <p>Background tasks do sistema AJNA-virasana
 Gerenciados por celery.sh
-Aqui ficam as rotinas que serão chamadas periodicamente e
-aquelas que rodam tarefas custosas/demoradas em background.</p>
-<dl class="function">
-<dt id="virasana.virasana.workers.tasks.setup_periodic_tasks">
-<code class="descclassname">virasana.virasana.workers.tasks.</code><code class="descname">setup_periodic_tasks</code><span class="sig-paren">(</span><em>sender</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/workers/tasks.html#setup_periodic_tasks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.workers.tasks.setup_periodic_tasks" title="Permalink to this definition">¶</a></dt>
-<dd><p>Agenda tarefas que serão executadas com frequência fixa.</p>
-</dd></dl>
-
+Aqui ficam as que rodam tarefas custosas/demoradas em background.</p>
 <dl class="function">
 <dt id="virasana.virasana.workers.tasks.trata_bson">
 <code class="descclassname">virasana.virasana.workers.tasks.</code><code class="descname">trata_bson</code><span class="sig-paren">(</span><em>bson_file: str</em>, <em>db: pymongo.mongo_client.MongoClient</em><span class="sig-paren">)</span> &#x2192; list<a class="reference internal" href="_modules/virasana/virasana/workers/tasks.html#trata_bson"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.workers.tasks.trata_bson" title="Permalink to this definition">¶</a></dt>
