@@ -11,6 +11,7 @@ setup(
     packages=find_packages(),
     install_requires=[
         'Celery',
+        'defusedxml',
         'Flask',
         'Flask-BootStrap',
         'Flask-Login',
@@ -20,6 +21,7 @@ setup(
         'Flask-wtf',
         'keras',
         'pandas',
+        'plotly',
         'pymongo',
         'redis',
         'sklearn',

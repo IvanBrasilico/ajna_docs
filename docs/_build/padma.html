@@ -1,0 +1,358 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="pt-BR" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="pt-BR" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>PADMA &mdash; AJNA 0.1a documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Histórias de Usuário" href="UserStories.html" />
+    <link rel="prev" title="VIRASANA" href="virasana.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> AJNA
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1a
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="manuais.html">Manuais de Usuário</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="codigofonte.html">Documentação do código-fonte</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ajna_commons.html">COMMONS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bhadrasana.html">BHADRASANA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virasana.html">VIRASANA</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PADMA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gym">GYM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usar-python3-5-e-tensorflow1-5">Usar Python3.5 e TensorFlow1.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-padma.padma.app">Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-padma.padma.models.models">Modelos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="UserStories.html">Histórias de Usuário</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Arquitetura.html">Módulos do Sistema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Arquitetura.html#arquitetura-do-sistema">Arquitetura do Sistema</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AJNA</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="codigofonte.html">Documentação do código-fonte</a> &raquo;</li>
+        
+      <li>PADMA</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/padma.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="topicos">
+<p class="topic-title first">Tópicos</p>
+<ul class="simple">
+<li><a class="reference internal" href="#padma" id="id1">PADMA</a><ul>
+<li><a class="reference internal" href="#gym" id="id2">GYM</a></li>
+<li><a class="reference internal" href="#usar-python3-5-e-tensorflow1-5" id="id3">Usar Python3.5 e TensorFlow1.5</a></li>
+<li><a class="reference internal" href="#module-padma.padma.app" id="id4">Interface</a></li>
+<li><a class="reference internal" href="#module-padma.padma.models.models" id="id5">Modelos</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p><a class="reference external" href="index.html">Voltar ao Indice</a></p>
+<div class="section" id="padma">
+<h1><a class="toc-backref" href="#id1">PADMA</a><a class="headerlink" href="#padma" title="Permalink to this headline">¶</a></h1>
+<p>PADMA é o módulo responsável por servir e treinar os modelos de aprendizado de máquina</p>
+<div class="section" id="gym">
+<h2><a class="toc-backref" href="#id2">GYM</a><a class="headerlink" href="#gym" title="Permalink to this headline">¶</a></h2>
+<p>No diretório GYM estão os scripts de treinamento de modelos.</p>
+<p>O treinamento da API TensorFlow é realizado em repositório próprio, separado(models.git).
+É necessário clonar o repositório do TensorFlow Object Detection no raiz do Padma:
+<a class="reference external" href="https://github.com/IvanBrasilico/models">https://github.com/IvanBrasilico/models</a></p>
+</div>
+<div class="section" id="usar-python3-5-e-tensorflow1-5">
+<h2><a class="toc-backref" href="#id3">Usar Python3.5 e TensorFlow1.5</a><a class="headerlink" href="#usar-python3-5-e-tensorflow1-5" title="Permalink to this headline">¶</a></h2>
+<p>Atualmente o projeto TensorFlow models foi testado com o PADMA com:</p>
+<ul class="simple">
+<li>Python3.5 e TensorFlow1.5</li>
+<li>Python3.6 e TensorFlow1.4</li>
+</ul>
+<p>O uso de Python3.6 e TensorFlow &gt;=1.5 dá o erro no Atribute t.float32 in module TensorFlow</p>
+</div>
+<div class="section" id="module-padma.padma.app">
+<span id="interface"></span><h2><a class="toc-backref" href="#id4">Interface</a><a class="headerlink" href="#module-padma.padma.app" title="Permalink to this headline">¶</a></h2>
+<p>Interface web que faz proxy para a chamada de modelos.</p>
+<p>Esta aplicação faz a autenticação dos clientes e um “proxy” para a chamada
+dos modelos de aprendizado de máquina. Os modelos são servidos efetivamente
+por outro processo “modelserver.py”. A comunicação entre os dois processos
+se dá via REDIS.</p>
+<p>São responsabilidades desta aplicação:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Autenticação</li>
+<li>Segurança</li>
+<li>Tratamento de erros</li>
+<li>Receber uma imagem, repassar para modelserver, aguardar resposta,formatar resposta e enviar para cliente. Controlar e avisar de timeout.</li>
+</ul>
+</div></blockquote>
+<dl class="function">
+<dt id="padma.padma.app.allowed_file">
+<code class="descclassname">padma.padma.app.</code><code class="descname">allowed_file</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/padma/padma/app.html#allowed_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#padma.padma.app.allowed_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check allowed extensions</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="padma.padma.app.call_model">
+<code class="descclassname">padma.padma.app.</code><code class="descname">call_model</code><span class="sig-paren">(</span><em>model: str</em>, <em>image: &lt;module 'PIL.Image' from '/home/ivan/pybr/ajna_docs/.tox/docs/lib/python3.6/site-packages/PIL/Image.py'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/padma/padma/app.html#call_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#padma.padma.app.call_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Grava requisição no redisdb e aguarda retorno até timeout.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>model: string com uma chave do dicionário de modelos ativos
+image: PIL Image</dd>
+<dt>Returns:</dt>
+<dd>True, dict com predições em caso de sucesso
+False, dict vazio em caso de timeout</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="padma.padma.app.image">
+<code class="descclassname">padma.padma.app.</code><code class="descname">image</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/padma/padma/app.html#image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#padma.padma.app.image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serializa a imagem do arquivo para stream HTTP.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="padma.padma.app.image_zoom">
+<code class="descclassname">padma.padma.app.</code><code class="descname">image_zoom</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/padma/padma/app.html#image_zoom"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#padma.padma.app.image_zoom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recorta e serializa a imagem do arquivo para stream HTTP.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="padma.padma.app.teste">
+<code class="descclassname">padma.padma.app.</code><code class="descname">teste</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/padma/padma/app.html#teste"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#padma.padma.app.teste" title="Permalink to this definition">¶</a></dt>
+<dd><p>Função simplificada para teste interativo de upload de imagem</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="padma.padma.app.win32_call_model">
+<code class="descclassname">padma.padma.app.</code><code class="descname">win32_call_model</code><span class="sig-paren">(</span><em>model</em>, <em>image</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/padma/padma/app.html#win32_call_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#padma.padma.app.win32_call_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Síncrono, sem threads, para uso no desktop Windows.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-padma.padma.models.models">
+<span id="modelos"></span><h2><a class="toc-backref" href="#id5">Modelos</a><a class="headerlink" href="#module-padma.padma.models.models" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-padma.padma.models.bbox.bbox"></span><p>Algoritmos para encontrar a borda dos contêineres
+Recebem uma imagem, retornam as coordenadas de um retângulo
+onde o contêiner está
+bbox (y1, x1, y2, x2)</p>
+<dl class="function">
+<dt id="padma.padma.models.bbox.bbox.find_conteiner">
+<code class="descclassname">padma.padma.models.bbox.bbox.</code><code class="descname">find_conteiner</code><span class="sig-paren">(</span><em>afile</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/padma/padma/models/bbox/bbox.html#find_conteiner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#padma.padma.models.bbox.bbox.find_conteiner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Heuristic dumb walk algorithm
+Beginning on middle of top, left, right and bottom sizes,
+do a ‘walk till find wall(gray&gt;230)’.
+Besides simplicity, works well to find conteiner boundaries
+on majority of cases,
+so is a beggining and can acelerate anottations for training
+better algorithm</p>
+<p>Args:</p>
+<p>afile: caminho da imagem no disco</p>
+<p>Returns:</p>
+<p>xleft, ytop, xright, ybottom</p>
+</dd></dl>
+
+<span class="target" id="module-padma.padma.models.conteiner20e40.bbox"></span><dl class="class">
+<dt id="padma.padma.models.conteiner20e40.bbox.SSDMobileModel">
+<em class="property">class </em><code class="descclassname">padma.padma.models.conteiner20e40.bbox.</code><code class="descname">SSDMobileModel</code><span class="sig-paren">(</span><em>threshold=0.8</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/padma/padma/models/conteiner20e40/bbox.html#SSDMobileModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#padma.padma.models.conteiner20e40.bbox.SSDMobileModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Object Detection Model trained to detect containers.</p>
+</dd></dl>
+
+<span class="target" id="module-padma.padma.models.peso.peso"></span><span class="target" id="module-padma.padma.models.vazios.vazios"></span></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="UserStories.html" class="btn btn-neutral float-right" title="Histórias de Usuário" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="virasana.html" class="btn btn-neutral" title="VIRASANA" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, RFB.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1a',
+            LANGUAGE:'pt-BR',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

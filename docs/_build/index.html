@@ -1,0 +1,340 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="pt-BR" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="pt-BR" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Bem-vindo à documentação do sistema AJNA &mdash; AJNA 0.1a documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Manuais de Usuário" href="manuais.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> AJNA
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1a
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="manuais.html">Manuais de Usuário</a></li>
+<li class="toctree-l1"><a class="reference internal" href="codigofonte.html">Documentação do código-fonte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UserStories.html">Histórias de Usuário</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Arquitetura.html">Módulos do Sistema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Arquitetura.html#arquitetura-do-sistema">Arquitetura do Sistema</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">AJNA</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>Bem-vindo à documentação do sistema AJNA</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="bem-vindo-a-documentacao-do-sistema-ajna">
+<h1>Bem-vindo à documentação do sistema AJNA<a class="headerlink" href="#bem-vindo-a-documentacao-do-sistema-ajna" title="Permalink to this headline">¶</a></h1>
+<p>AJNA - Visão computacional e Aprendizagem de máquina aplicados à vigilância aduaneira</p>
+<p>AJNA é, na tradição do Ioga, o chakra da intuição, ou terceiro olho.
+Ioga é a melhoria pessoal através da prática, pode ser traduzido simplesmente por prática.</p>
+<p>O nome AJNA dado ao sistema de vigilância aduaneira com auxílio de inteligência
+artificial simboliza isso: prática visando obter uma visão mais plena.</p>
+<p>O AJNA, para diminuir sua complexidade e facilitar o desenvolvimento e manutenção, foi
+repartido em módulos:</p>
+<p>AVATAR - Sistema que roda no ambiente dos recintos aduaneiros, gerenciando a aquisição das imagens
+no ambiente original - podem existir vários AVATARES, desenvolvidos pela RFB ou pelos intervenientes
+de acordo com as especificações da RFB. Os AVATARES atuam no mundo “físico” dos recintos, capturando
+imagens, vídeos, e fazendo pequenas auditorias/verificações, para posterior envio ao sistema centralizado.</p>
+<p>VIRASANA - Sistema que roda no ambiente da RFB, recebendo pacotes de dados do sistema AVATAR.
+Após receber as imagens, roda diversos scripts de integração, utilizando dados recebidos pelos módulos
+AVATAR, BHADRASANA e PADMA.
+Virasana representa a prática da postura do Herói, estar atento às informações para agir.</p>
+<p>BHADRASANA - Sistema que roda no ambiente da RFB, importando dados de outros sistemas. Permite também
+fazer pequenas navegações de dados e análise de risco.
+Bhadrasana representa a prática da postura de meditação, observar, analisar.</p>
+<p>PADMA - módulo responsável por servir e treinar os modelos de aprendizado de máquina.
+Padma representa a busca da verdade</p>
+</div>
+<div class="section" id="topicos">
+<h1>Tópicos<a class="headerlink" href="#topicos" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="manuais.html">Manuais de Usuário</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manualbhadrasana.html">Manual de Usuário do Bhadrasana</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manualbhadrasana.html#fluxo-de-trabalho-workflow">Fluxo de trabalho (Workflow)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manualbhadrasana.html#telas">Telas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manualvirasana.html">Manual de Usuário do Virasana</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manualvirasana.html#telas">Telas</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="codigofonte.html">Documentação do código-fonte</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ajna_commons.html">COMMONS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ajna_commons.html#utilitarios">Utilitários</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ajna_commons.html#module-ajna_commons.models.bsonimage">bsonimage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ajna_commons.html#module-ajna_commons.utils.sanitiza">sanitiza</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ajna_commons.html#configuracoes">Configurações</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ajna_commons.html#module-ajna_commons.flask.conf">Confs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ajna_commons.html#module-ajna_commons.flask.log">Log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ajna_commons.html#module-ajna_commons.flask.login">Login</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bhadrasana.html">BHADRASANA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bhadrasana.html#funcoes">Funções</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bhadrasana.html#module-bhadrasana.bhadrasana.views">Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bhadrasana.html#module-bhadrasana.bhadrasana.models.models">Banco de Dados</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="virasana.html">VIRASANA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="virasana.html#module-virasana.virasana.views">Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="virasana.html#scripts">Scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="virasana.html#integracao">Integracao</a></li>
+<li class="toctree-l3"><a class="reference internal" href="virasana.html#id3">Workers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="padma.html">PADMA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="padma.html#gym">GYM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="padma.html#usar-python3-5-e-tensorflow1-5">Usar Python3.5 e TensorFlow1.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="padma.html#module-padma.padma.app">Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="padma.html#module-padma.padma.models.models">Modelos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="UserStories.html">Histórias de Usuário</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="UserStories.html#sentinela">SENTINELA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UserStories.html#modulo-parametros-de-risco">Módulo Parâmetros de Risco</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="UserStories.html#pre-processamento-normalizacao">Pré-processamento - Normalização</a></li>
+<li class="toctree-l3"><a class="reference internal" href="UserStories.html#interface-sentinela">Interface - SENTINELA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="UserStories.html#bases-de-risco-inteligencia">Bases de Risco - Inteligência</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Arquitetura.html">Módulos do Sistema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Arquitetura.html#avatar">AVATAR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Arquitetura.html#image-aq">image_aq</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Arquitetura.html#bhadrasana">BHADRASANA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Arquitetura.html#sentinela">Sentinela</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Arquitetura.html#virasana">VIRASANA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Arquitetura.html#padma">PADMA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Arquitetura.html#notebooks-scripts">notebooks/scripts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Arquitetura.html#arquitetura-do-sistema">Arquitetura do Sistema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Arquitetura.html#descricao-do-pipeline-basico">Descrição do ‘Pipeline’ básico</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Arquitetura.html#importacao">Importação</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Arquitetura.html#pre-processamento">Pré-processamento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Arquitetura.html#integracao">Integração</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Arquitetura.html#checagens-de-seguranca">Checagens de segurança</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Arquitetura.html#analises-de-risco">Análises de Risco</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Arquitetura.html#analises-de-risco-inteligentes">Análises de Risco “Inteligentes”</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Arquitetura.html#notas-gerais-sobre-implementacao">Notas gerais sobre implementação</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-e-tabelas">
+<h1>Índices e tabelas<a class="headerlink" href="#indices-e-tabelas" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="manuais.html" class="btn btn-neutral float-right" title="Manuais de Usuário" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, RFB.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1a',
+            LANGUAGE:'pt-BR',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

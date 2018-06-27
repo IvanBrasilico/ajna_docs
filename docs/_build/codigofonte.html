@@ -1,0 +1,288 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="pt-BR" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="pt-BR" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Documentação do código-fonte &mdash; AJNA 0.1a documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="COMMONS" href="ajna_commons.html" />
+    <link rel="prev" title="Manual de Usuário do Virasana" href="manualvirasana.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> AJNA
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1a
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="manuais.html">Manuais de Usuário</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Documentação do código-fonte</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ajna_commons.html">COMMONS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bhadrasana.html">BHADRASANA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virasana.html">VIRASANA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="padma.html">PADMA</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="UserStories.html">Histórias de Usuário</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Arquitetura.html">Módulos do Sistema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Arquitetura.html#arquitetura-do-sistema">Arquitetura do Sistema</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AJNA</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Documentação do código-fonte</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/codigofonte.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p><a class="reference external" href="../index.html">Voltar ao Indice</a></p>
+<div class="section" id="documentacao-do-codigo-fonte">
+<h1>Documentação do código-fonte<a class="headerlink" href="#documentacao-do-codigo-fonte" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Conteúdo:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ajna_commons.html">COMMONS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ajna_commons.html#utilitarios">Utilitários</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ajna_commons.html#module-ajna_commons.models.bsonimage">bsonimage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ajna_commons.html#module-ajna_commons.utils.sanitiza">sanitiza</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ajna_commons.html#configuracoes">Configurações</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ajna_commons.html#module-ajna_commons.flask.conf">Confs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ajna_commons.html#module-ajna_commons.flask.log">Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ajna_commons.html#module-ajna_commons.flask.login">Login</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bhadrasana.html">BHADRASANA</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bhadrasana.html#funcoes">Funções</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bhadrasana.html#module-bhadrasana.bhadrasana.utils.csv_handlers">Utilitátios CSV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bhadrasana.html#module-bhadrasana.bhadrasana.utils.gerente_risco">Gerente de Risco</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bhadrasana.html#module-bhadrasana.bhadrasana.utils.gerente_base">Gerente de Bases</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bhadrasana.html#module-bhadrasana.bhadrasana.views">Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bhadrasana.html#modulo-bhadrasana-ajna">Módulo Bhadrasana - AJNA</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bhadrasana.html#module-bhadrasana.bhadrasana.models.models">Banco de Dados</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="virasana.html">VIRASANA</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="virasana.html#module-virasana.virasana.views">Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virasana.html#scripts">Scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="virasana.html#module-virasana.virasana.scripts.cargaupdate">Carga</a></li>
+<li class="toctree-l3"><a class="reference internal" href="virasana.html#module-virasana.virasana.scripts.xmlupdate">XML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="virasana.html#module-virasana.virasana.scripts.predictionsupdate">Predições (PADMA)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="virasana.html#integracao">Integracao</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="virasana.html#module-virasana.virasana.integracao">__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="virasana.html#id1">Carga</a></li>
+<li class="toctree-l3"><a class="reference internal" href="virasana.html#workers">XML</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="virasana.html#id3">Workers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="virasana.html#module-virasana.virasana.workers.dir_monitor">dir_monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="virasana.html#tasks">Tasks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="padma.html">PADMA</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="padma.html#gym">GYM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="padma.html#usar-python3-5-e-tensorflow1-5">Usar Python3.5 e TensorFlow1.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="padma.html#module-padma.padma.app">Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="padma.html#module-padma.padma.models.models">Modelos</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ajna_commons.html" class="btn btn-neutral float-right" title="COMMONS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="manualvirasana.html" class="btn btn-neutral" title="Manual de Usuário do Virasana" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, RFB.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1a',
+            LANGUAGE:'pt-BR',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

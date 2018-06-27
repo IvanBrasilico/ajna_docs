@@ -1,0 +1,581 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="pt-BR" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="pt-BR" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>COMMONS &mdash; AJNA 0.1a documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="BHADRASANA" href="bhadrasana.html" />
+    <link rel="prev" title="Documentação do código-fonte" href="codigofonte.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> AJNA
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1a
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="manuais.html">Manuais de Usuário</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="codigofonte.html">Documentação do código-fonte</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">COMMONS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#utilitarios">Utilitários</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ajna_commons.models.bsonimage">bsonimage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ajna_commons.utils.sanitiza">sanitiza</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuracoes">Configurações</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ajna_commons.flask.conf">Confs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ajna_commons.flask.log">Log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ajna_commons.flask.login">Login</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bhadrasana.html">BHADRASANA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virasana.html">VIRASANA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="padma.html">PADMA</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="UserStories.html">Histórias de Usuário</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Arquitetura.html">Módulos do Sistema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Arquitetura.html#arquitetura-do-sistema">Arquitetura do Sistema</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AJNA</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="codigofonte.html">Documentação do código-fonte</a> &raquo;</li>
+        
+      <li>COMMONS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/ajna_commons.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="topicos">
+<p class="topic-title first">Tópicos</p>
+<ul class="simple">
+<li><a class="reference internal" href="#commons" id="id1">COMMONS</a><ul>
+<li><a class="reference internal" href="#utilitarios" id="id2">Utilitários</a></li>
+<li><a class="reference internal" href="#module-ajna_commons.models.bsonimage" id="id3">bsonimage</a></li>
+<li><a class="reference internal" href="#module-ajna_commons.utils.sanitiza" id="id4">sanitiza</a></li>
+<li><a class="reference internal" href="#configuracoes" id="id5">Configurações</a></li>
+<li><a class="reference internal" href="#module-ajna_commons.flask.conf" id="id6">Confs</a></li>
+<li><a class="reference internal" href="#module-ajna_commons.flask.log" id="id7">Log</a></li>
+<li><a class="reference internal" href="#module-ajna_commons.flask.login" id="id8">Login</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p><a class="reference external" href="index.html">Voltar ao Indice</a></p>
+<div class="section" id="commons">
+<h1><a class="toc-backref" href="#id1">COMMONS</a><a class="headerlink" href="#commons" title="Permalink to this headline">¶</a></h1>
+<p>Ajna_commons é um módulo de bibliotecas utilizadas em outros módulos</p>
+<div class="section" id="utilitarios">
+<h2><a class="toc-backref" href="#id2">Utilitários</a><a class="headerlink" href="#utilitarios" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-ajna_commons.models.bsonimage">
+<span id="bsonimage"></span><h2><a class="toc-backref" href="#id3">bsonimage</a><a class="headerlink" href="#module-ajna_commons.models.bsonimage" title="Permalink to this headline">¶</a></h2>
+<p>Transforma imagem(ns) e xml(s) em registro(s) BSON.</p>
+<dl class="class">
+<dt id="ajna_commons.models.bsonimage.BsonImage">
+<em class="property">class </em><code class="descclassname">ajna_commons.models.bsonimage.</code><code class="descname">BsonImage</code><span class="sig-paren">(</span><em>filename=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/models/bsonimage.html#BsonImage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.models.bsonimage.BsonImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Classe para transporte de informações do AVATAR para VIRASANA.</p>
+<p>Esta classe usa o padrão BSON, largamente utilizado no MongoDB,
+uma derivação do JSON. Assim, será possível transportar arquivos
+e metadados (informações relativas ao arquivo) em pacotes únicos
+entre a origem (sistemas dos terminais) e destino (servidor central AJNA).</p>
+<p>Toda a informação é passada em forma de dicionários chave:valor,
+inclusive o conteúdo do arquivo original que vai numa chave especial
+de nome ‘content’.</p>
+<dl class="classmethod">
+<dt id="ajna_commons.models.bsonimage.BsonImage.fromfile">
+<em class="property">classmethod </em><code class="descname">fromfile</code><span class="sig-paren">(</span><em>fromfilename</em>, <em>zipped=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/models/bsonimage.html#BsonImage.fromfile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.models.bsonimage.BsonImage.fromfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recupera instância de arquivo (padrão BSON).</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="ajna_commons.models.bsonimage.BsonImage.frommongo">
+<em class="property">classmethod </em><code class="descname">frommongo</code><span class="sig-paren">(</span><em>file_id</em>, <em>fs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/models/bsonimage.html#BsonImage.frommongo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.models.bsonimage.BsonImage.frommongo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recupera instância do MongoDB pelo id.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ajna_commons.models.bsonimage.BsonImage.set_campos">
+<code class="descname">set_campos</code><span class="sig-paren">(</span><em>filename</em>, <em>content</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/models/bsonimage.html#BsonImage.set_campos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.models.bsonimage.BsonImage.set_campos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opcional lazy init.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ajna_commons.models.bsonimage.BsonImage.tobson">
+<code class="descname">tobson</code><a class="headerlink" href="#ajna_commons.models.bsonimage.BsonImage.tobson" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorna dicionário da instância com codificação BSON.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ajna_commons.models.bsonimage.BsonImage.todict">
+<code class="descname">todict</code><a class="headerlink" href="#ajna_commons.models.bsonimage.BsonImage.todict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorna representação da instância em dicionário.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ajna_commons.models.bsonimage.BsonImage.tofile">
+<code class="descname">tofile</code><span class="sig-paren">(</span><em>newfilename</em>, <em>zipped=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/models/bsonimage.html#BsonImage.tofile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.models.bsonimage.BsonImage.tofile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Salva instância em arquivo (padrão BSON).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ajna_commons.models.bsonimage.BsonImage.tomongo">
+<code class="descname">tomongo</code><span class="sig-paren">(</span><em>fs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/models/bsonimage.html#BsonImage.tomongo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.models.bsonimage.BsonImage.tomongo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Salva instância em GridFS MongoDB.</p>
+<p>Checa se arquivo existe antes de gravar.
+Se existir, retorna _id correspondente ao MD5 do conteúdo
+E nome do arquivo.</p>
+<p><strong>IMPORTANTE</strong>
+A checagem é realizada
+pelo nome do arquivo E pelo conteúdo, através de um digest MD5.
+Ou seja, serão aceitos dois arquivos no GridFS com mesmo nome e
+conteúdo diferente (o que pode indicar erro ou fraude na fonte das
+imagens e precisará ser tratado), só rejeitando no caso de o conteúdo
+ser o mesmo, que será interpretado como tentativa de carregar novamente
+o mesmo arquivo. O hash MD5 não é perfeito, podendo haver colisões, mas
+como é o padrão do MongoDB por ora será utilizado, mesmo porque a
+possibilidade de colisão no nome do arquivo E no hash é
+extremamente baixa.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ajna_commons.models.bsonimage.BsonImageList">
+<em class="property">class </em><code class="descclassname">ajna_commons.models.bsonimage.</code><code class="descname">BsonImageList</code><a class="reference internal" href="_modules/ajna_commons/models/bsonimage.html#BsonImageList"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.models.bsonimage.BsonImageList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Classe para transporte de informações do AVATAR para VIRASANA.</p>
+<p>Esta classe usa o padrão BSON, largamente utilizado no MongoDB,
+uma derivação do JSON.</p>
+<p>Ver classe <a class="reference internal" href="#ajna_commons.models.bsonimage.BsonImage" title="ajna_commons.models.bsonimage.BsonImage"><code class="xref py py-class docutils literal notranslate"><span class="pre">BsonImage</span></code></a></p>
+<p>Esta classe implementa uma lista da classe BsonImage.</p>
+<dl class="method">
+<dt id="ajna_commons.models.bsonimage.BsonImageList.addBsonImage">
+<code class="descname">addBsonImage</code><span class="sig-paren">(</span><em>bsonimage</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/models/bsonimage.html#BsonImageList.addBsonImage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.models.bsonimage.BsonImageList.addBsonImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adiciona BsonImage à lista.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ajna_commons.models.bsonimage.BsonImageList.addImage">
+<code class="descname">addImage</code><span class="sig-paren">(</span><em>filename</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/models/bsonimage.html#BsonImageList.addImage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.models.bsonimage.BsonImageList.addImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cria BsonImage e adiciona à lista.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>filename: arquivo a ser transformado em BSON
+kwargs: dicionário de metadados do arquivo</dd>
+</dl>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="ajna_commons.models.bsonimage.BsonImageList.fromfile">
+<em class="property">classmethod </em><code class="descname">fromfile</code><span class="sig-paren">(</span><em>filename=None</em>, <em>abson=None</em>, <em>zipped=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/models/bsonimage.html#BsonImageList.fromfile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.models.bsonimage.BsonImageList.fromfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lê lista de BSON de um único arquivo padrão BSON.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="ajna_commons.models.bsonimage.BsonImageList.frommongo">
+<em class="property">classmethod </em><code class="descname">frommongo</code><span class="sig-paren">(</span><em>files_ids</em>, <em>fs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/models/bsonimage.html#BsonImageList.frommongo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.models.bsonimage.BsonImageList.frommongo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gera BsonImageList de uma lista de _ids, a partir do BD.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ajna_commons.models.bsonimage.BsonImageList.tofile">
+<code class="descname">tofile</code><span class="sig-paren">(</span><em>newfilename</em>, <em>zipped=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/models/bsonimage.html#BsonImageList.tofile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.models.bsonimage.BsonImageList.tofile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Grava lista de BSON em um único arquivo padrão BSON.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ajna_commons.models.bsonimage.BsonImageList.tolist">
+<code class="descname">tolist</code><a class="headerlink" href="#ajna_commons.models.bsonimage.BsonImageList.tolist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorna lista.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ajna_commons.models.bsonimage.BsonImageList.tomongo">
+<code class="descname">tomongo</code><span class="sig-paren">(</span><em>fs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/models/bsonimage.html#BsonImageList.tomongo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.models.bsonimage.BsonImageList.tomongo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Grava lista de BSON no BD.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ajna_commons.utils.sanitiza">
+<span id="sanitiza"></span><h2><a class="toc-backref" href="#id4">sanitiza</a><a class="headerlink" href="#module-ajna_commons.utils.sanitiza" title="Permalink to this headline">¶</a></h2>
+<p>Funções para normalização e limpeza de texto e listas de textos.</p>
+<dl class="function">
+<dt id="ajna_commons.utils.sanitiza.ascii_sanitizar">
+<code class="descclassname">ajna_commons.utils.sanitiza.</code><code class="descname">ascii_sanitizar</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/utils/sanitiza.html#ascii_sanitizar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.utils.sanitiza.ascii_sanitizar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove marcas de diacríticos (acentos e caracteres especiais).</p>
+<p>Retorna NFC normalizado ASCII</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ajna_commons.utils.sanitiza.sanitizar">
+<code class="descclassname">ajna_commons.utils.sanitiza.</code><code class="descname">sanitizar</code><span class="sig-paren">(</span><em>text</em>, <em>norm_function=&lt;function unicode_sanitizar&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/utils/sanitiza.html#sanitizar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.utils.sanitiza.sanitizar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Faz uma sequência de acões de normalização/sanitização de texto.</p>
+<p>Remove espaços à direita e esquerda, passa para “casefold”(caixa baixa),
+usa função normalização norm_function para retirar marcas de diacríticos
+(acentos e caracteres especiais), remove espaços adicionais entre palavras.
+Retorna texto sanitizado e normalizado
+Depois desse produto, suas buscas nunca mais serão as mesmas!!! :-p</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ajna_commons.utils.sanitiza.sanitizar_lista">
+<code class="descclassname">ajna_commons.utils.sanitiza.</code><code class="descname">sanitizar_lista</code><span class="sig-paren">(</span><em>lista</em>, <em>norm_function=&lt;function unicode_sanitizar&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/utils/sanitiza.html#sanitizar_lista"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.utils.sanitiza.sanitizar_lista" title="Permalink to this definition">¶</a></dt>
+<dd><p>Percorre lista de listas sanitizando inline.</p>
+<p>Por ora só suporta lista ‘bidimensional’, como um csv,
+uma lista de strings, ou uma lista contendo listas de strings.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ajna_commons.utils.sanitiza.unicode_sanitizar">
+<code class="descclassname">ajna_commons.utils.sanitiza.</code><code class="descname">unicode_sanitizar</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/utils/sanitiza.html#unicode_sanitizar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.utils.sanitiza.unicode_sanitizar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove marcas de diacríticos (acentos e caracteres especiais).</p>
+<p>Retorna NFC normalizado unicode</p>
+</dd></dl>
+
+</div>
+<div class="section" id="configuracoes">
+<h2><a class="toc-backref" href="#id5">Configurações</a><a class="headerlink" href="#configuracoes" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-ajna_commons.flask.conf">
+<span id="confs"></span><h2><a class="toc-backref" href="#id6">Confs</a><a class="headerlink" href="#module-ajna_commons.flask.conf" title="Permalink to this headline">¶</a></h2>
+<p>Define configurações comuns aos módulos do AJNA.</p>
+<p>Exemplos:</p>
+<blockquote>
+<div>SECRET - chave para criptografia da sessão
+REDIS SERVER
+MONGODB SERVER
+Custom messages- mensagens customizadas para módulos de login, segurança,
+erro, etc
+Configurações de logging, etc</div></blockquote>
+</div>
+<div class="section" id="module-ajna_commons.flask.log">
+<span id="log"></span><h2><a class="toc-backref" href="#id7">Log</a><a class="headerlink" href="#module-ajna_commons.flask.log" title="Permalink to this headline">¶</a></h2>
+<p>Configuration of AJNA modules LOGs.</p>
+<p>Aqui são configurados os diversos arquivos e métodos de logs que serão
+comuns aos módulos do sistema AJNA.</p>
+<p>Todo módulo deve importar este arquivo e usar o objeto logger criado
+para gravar eventos importantes.</p>
+<dl class="class">
+<dt id="ajna_commons.flask.log.CustomAdapter">
+<em class="property">class </em><code class="descclassname">ajna_commons.flask.log.</code><code class="descname">CustomAdapter</code><span class="sig-paren">(</span><em>logger</em>, <em>extra</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/flask/log.html#CustomAdapter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.flask.log.CustomAdapter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Formata string de log.</p>
+<p>This example adapter expects the passed in dict-like object to have a
+‘connid’ key, whose value in brackets is prepended to the log message.</p>
+<dl class="method">
+<dt id="ajna_commons.flask.log.CustomAdapter.process">
+<code class="descname">process</code><span class="sig-paren">(</span><em>msg</em>, <em>kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/flask/log.html#CustomAdapter.process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.flask.log.CustomAdapter.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returna string formatada.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ajna_commons.flask.log.MyFilter">
+<em class="property">class </em><code class="descclassname">ajna_commons.flask.log.</code><code class="descname">MyFilter</code><span class="sig-paren">(</span><em>level</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/flask/log.html#MyFilter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.flask.log.MyFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log only especified level (not upper levels).</p>
+<dl class="method">
+<dt id="ajna_commons.flask.log.MyFilter.filter">
+<code class="descname">filter</code><span class="sig-paren">(</span><em>logRecord</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/flask/log.html#MyFilter.filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.flask.log.MyFilter.filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorna true se filtro no nível configurado.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="ajna_commons.flask.log.user_name">
+<code class="descclassname">ajna_commons.flask.log.</code><code class="descname">user_name</code><span class="sig-paren">(</span><em>user</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/flask/log.html#user_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.flask.log.user_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recupera nome do usuário ativo. Se não houver retorna ‘no user’.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ajna_commons.flask.login">
+<span id="login"></span><h2><a class="toc-backref" href="#id8">Login</a><a class="headerlink" href="#module-ajna_commons.flask.login" title="Permalink to this headline">¶</a></h2>
+<p>Funções e views que dão suporte ao LOGIN das aplicações centralizadas.</p>
+<p>Classes para acessar os usuários do Banco de Dados
+Views padrão login e logout (Flask)
+Funções e classes para gerenciar login e usuários (Flask Login)</p>
+<p>DBUser.dbsession deve receber a conexão com o BD.</p>
+<dl class="class">
+<dt id="ajna_commons.flask.login.DBUser">
+<em class="property">class </em><code class="descclassname">ajna_commons.flask.login.</code><code class="descname">DBUser</code><span class="sig-paren">(</span><em>id</em>, <em>password=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/flask/login.html#DBUser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.flask.login.DBUser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Classe que valida o usuário em uma base MongoDB.</p>
+<p>A conexão à base MongoDB deve ser informada antes do uso da classe.
+Se dbsession for None, get retorna usuario caso username==senha
+(Comportamento utilizado para testes unitários)
+Podem ser passadas outras conexões a outros BD caso implementem os métodos
+users.update e users.find_one, ou criada uma classe descendente de
+DBUser que modifique os métodos get e add.</p>
+<p>A maioria dos métodos são estáticos, sendo usados diretamente:</p>
+<p>DBUser.dbsession = meu_PyMongoClient
+DBUser.get(usuario, senha) retorna DBUSer se existir e se senha correta
+DBUser.add(usuario, senha) adiciona DBUser</p>
+<p>A classe DBUser é utilizada pela classe User, padrão do flask-login</p>
+<dl class="classmethod">
+<dt id="ajna_commons.flask.login.DBUser.add">
+<em class="property">classmethod </em><code class="descname">add</code><span class="sig-paren">(</span><em>username</em>, <em>password</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/flask/login.html#DBUser.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.flask.login.DBUser.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cria usuário ou muda senha se ele existe.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ajna_commons.flask.login.DBUser.check">
+<code class="descname">check</code><span class="sig-paren">(</span><em>encripted</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/flask/login.html#DBUser.check"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.flask.login.DBUser.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verifica senha informada contra a versão criptograda do BD.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="ajna_commons.flask.login.DBUser.encript">
+<em class="property">classmethod </em><code class="descname">encript</code><span class="sig-paren">(</span><em>password</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/flask/login.html#DBUser.encript"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.flask.login.DBUser.encript" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recebe senha plana, retorna versão criptografada.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="ajna_commons.flask.login.DBUser.get">
+<em class="property">classmethod </em><code class="descname">get</code><span class="sig-paren">(</span><em>username</em>, <em>password=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/flask/login.html#DBUser.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.flask.login.DBUser.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testa se Usuario existe. Se senha for passada, testa se é válida.</p>
+<p>Retorna instância DBUser se usuário existe e senha válida, None se
+Usuario não encontrado OU senha inválida.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ajna_commons.flask.login.User">
+<em class="property">class </em><code class="descclassname">ajna_commons.flask.login.</code><code class="descname">User</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/flask/login.html#User"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.flask.login.User" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mixin padrão do flask-login.</p>
+<p>Está utilizando DBUser como base de autenticação.
+Para utilizar outra base de dados, criar outra classe com
+comportamento similar a DBUSer.</p>
+<dl class="classmethod">
+<dt id="ajna_commons.flask.login.User.get">
+<em class="property">classmethod </em><code class="descname">get</code><span class="sig-paren">(</span><em>username</em>, <em>password=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/flask/login.html#User.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.flask.login.User.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Consulta DBUser.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ajna_commons.flask.login.User.user_database">
+<code class="descname">user_database</code><a class="headerlink" href="#ajna_commons.flask.login.User.user_database" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#ajna_commons.flask.login.DBUser" title="ajna_commons.flask.login.DBUser"><code class="xref py py-class docutils literal notranslate"><span class="pre">DBUser</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="ajna_commons.flask.login.authenticate">
+<code class="descclassname">ajna_commons.flask.login.</code><code class="descname">authenticate</code><span class="sig-paren">(</span><em>username</em>, <em>password</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/flask/login.html#authenticate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.flask.login.authenticate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Método padrão do flask-login. Repassa responsabilidade a User.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ajna_commons.flask.login.configure">
+<code class="descclassname">ajna_commons.flask.login.</code><code class="descname">configure</code><span class="sig-paren">(</span><em>app</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/flask/login.html#configure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.flask.login.configure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insere as views de login e logout na app.</p>
+<p>Para utilizar, importar modulo login e chamar configure(app)
+em uma aplicação Flask.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ajna_commons.flask.login.is_safe_url">
+<code class="descclassname">ajna_commons.flask.login.</code><code class="descname">is_safe_url</code><span class="sig-paren">(</span><em>target</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/flask/login.html#is_safe_url"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.flask.login.is_safe_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testa ocorrência de ataque de redirecionamento(URL Redirect/Pishing).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ajna_commons.flask.login.load_user">
+<code class="descclassname">ajna_commons.flask.login.</code><code class="descname">load_user</code><span class="sig-paren">(</span><em>userid</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/flask/login.html#load_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.flask.login.load_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Método padrão do flask-login. Repassa responsabilidade a User.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="bhadrasana.html" class="btn btn-neutral float-right" title="BHADRASANA" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="codigofonte.html" class="btn btn-neutral" title="Documentação do código-fonte" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, RFB.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1a',
+            LANGUAGE:'pt-BR',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
