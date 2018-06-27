@@ -42,7 +42,7 @@ Login
 Esta é a tela inicial padrão do sistema AJNA.
 Nela está contido o formulário de login.
 
-.. figure :: _static\\images\\login.png
+.. figure :: _static/images/login.png
     :align: center
 
     Tela Login
@@ -56,7 +56,7 @@ Importar Base
 A tela Importar Base é onde se envia ao sistema os arquivos para que sejam
 aplicados os filtros.
 
-.. figure :: _static\\images\\importarbase.png
+.. figure :: _static/images/importarbase.png
     :align: center
 
     Tela Importar Base
@@ -85,7 +85,7 @@ Aplicar Risco
 Nesta tela está a principal função do sistema, que consiste em verificar se há
 parâmetros de risco nas Bases.
 
-.. figure :: _static\\images\\aplicarrisco.png
+.. figure :: _static/images/aplicarrisco.png
     :align: center
 
     Tela Aplicar Risco
@@ -112,7 +112,7 @@ Editar Riscos
 -------------
 Esta tela permite a edição e/ou cadastro dos Padrões de Risco.
 
-.. figure :: _static\\images\\editarrisco.png
+.. figure :: _static/images/editarrisco.png
     :align: center
 
     Tela Editar Riscos
@@ -120,7 +120,7 @@ Esta tela permite a edição e/ou cadastro dos Padrões de Risco.
 Estes padrões consistem nas colunas dos arquivos importados, a qual chamaremos 
 de parâmetros, e seus respectivos valores. Como mostra a figura abaixo.
 
-.. figure :: _static\\images\\padrao.png
+.. figure :: _static/images/padrao.png
     :align: center
 
     Exemplificando os parâmetros e seus valores
@@ -144,18 +144,18 @@ Apresenta os seguintes campos:
 Editar Titulos
 --------------
 
-.. figure :: _static\\images\\editatitulo.png
+.. figure :: _static/images/editatitulo.png
     :align: center
 
 Para casos onde há mais de uma Base, alguns parâmetros poderão estar com nomes
 diferentes, porém, trazerem os mesmos valores como, por exemplo:
 
-.. figure :: _static\\images\\plan1.png
+.. figure :: _static/images/plan1.png
     :align: center
 
     Planilha 1
 
-.. figure :: _static\\images\\plan2.png
+.. figure :: _static/images/plan2.png
     :align: center
 
     Planilha 2
@@ -176,7 +176,7 @@ Por exemplo:
     Para isso basta colocar o título que queremos que seja trocado no campo
     *Título antigo*, e o título novo no campo *Título novo*.
 
-    .. figure :: _static\\images\\editatituloex.png
+    .. figure :: _static/images/editatituloex.png
         :align: center
 
         Exemplo da mudança de título
@@ -184,7 +184,7 @@ Por exemplo:
     E na tela :ref:`edita-risco` criamos um único parâmetro como na figura
     abaixo.
 
-    .. figure :: _static\\images\\editariscoex.png
+    .. figure :: _static/images/editariscoex.png
         :align: center
 
         Exemplo de parâmetro de risco

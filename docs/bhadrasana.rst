@@ -36,7 +36,7 @@ Gerente de Bases
 Interface
 =========
 
-.. automodule:: bhadrasana.bhadrasana.app
+.. automodule:: bhadrasana.bhadrasana.views
     :members:
 
 Banco de Dados

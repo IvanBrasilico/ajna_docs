@@ -18,10 +18,13 @@ setup(
         'Flask-nav',
         'Flask-session',
         'Flask-wtf',
+        'keras',
         'pandas',
         'pymongo',
         'redis',
-        'sqlalchemy'
+        'sklearn',
+        'sqlalchemy',
+        'tensorflow'
     ],
     setup_requires=['pytest-runner'],
     tests_require=['pytest'],
