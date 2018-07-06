@@ -30,9 +30,7 @@ def recorta_imagem(grid_out, mini):
     if len(bboxes) >= n + 1 and bboxes[n]:
         coords = bboxes[n]
         pil_image = Image.open(io.BytesIO(grid_out.read()))
-        imarray = np.asarray(pil_image)
-        imarray = imarray[coords[0]:coords[2], coords[1]:coords[3]]
-        pil_image = Image.fromarray(imarray)
+        pil_image = pil_image.crop((coords[1], coords[0], coords[3], coords[2]))
         image_bytes = io.BytesIO()
         pil_image.save(image_bytes, 'JPEG')
         image_bytes.seek(0)
@@ -69,8 +67,8 @@ class ImageResource(object):
         mini = req.get_param('mini')
         if _id is None:
             _id = lista_ids[random.randint(0, 100)]
-        print('_id', _id)
-        print('mini', mini)
+        # print('_id', _id)
+        # print('mini', mini)
         resp.data = self.image_loader(_id, mini)
         if resp.data is None:
             print("Retornando None...")
