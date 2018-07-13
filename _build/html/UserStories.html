@@ -206,6 +206,61 @@ exemplos/test_carga.py</p>
 </div>
 <div class="section" id="interface-sentinela">
 <h3>Interface - SENTINELA<a class="headerlink" href="#interface-sentinela" title="Permalink to this headline">¶</a></h3>
+<p>Importar Base</p>
+<span class="target" id="module-bhadrasana.bhadrasana.functional_tests.importa_base_test"></span><p>História Importar Base.</p>
+<p>COMO Usuário comum do sistema,
+PRECISO iniciar meu trabalho importando dados
+QUE são um ou mais arquivos csv (relacionados se vários)</p>
+<blockquote>
+<div>ou zips com arquivos sch (no caso da base CARGA)</div></blockquote>
+<dl class="class">
+<dt id="bhadrasana.bhadrasana.functional_tests.importa_base_test.ImportarBase">
+<em class="property">class </em><code class="descclassname">bhadrasana.bhadrasana.functional_tests.importa_base_test.</code><code class="descname">ImportarBase</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/functional_tests/importa_base_test.html#ImportarBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.functional_tests.importa_base_test.ImportarBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Teste funcional/aceitação da tela Importa Base.</p>
+<dl class="method">
+<dt id="bhadrasana.bhadrasana.functional_tests.importa_base_test.ImportarBase.carrega_tela">
+<code class="descname">carrega_tela</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/functional_tests/importa_base_test.html#ImportarBase.carrega_tela"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.functional_tests.importa_base_test.ImportarBase.carrega_tela" title="Permalink to this definition">¶</a></dt>
+<dd><p>Usuário clica em importa_base e a tela esperada é carregada.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bhadrasana.bhadrasana.functional_tests.importa_base_test.ImportarBase.set_planilha">
+<code class="descname">set_planilha</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/functional_tests/importa_base_test.html#ImportarBase.set_planilha"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.functional_tests.importa_base_test.ImportarBase.set_planilha" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cria planilha para testes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bhadrasana.bhadrasana.functional_tests.importa_base_test.ImportarBase.test_inclui_base">
+<code class="descname">test_inclui_base</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/functional_tests/importa_base_test.html#ImportarBase.test_inclui_base"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.functional_tests.importa_base_test.ImportarBase.test_inclui_base" title="Permalink to this definition">¶</a></dt>
+<dd><p>Usuário vê que não tem opção para base que deseja importar.</p>
+<p>Então, este digita o nome da base e clica em “Inclui Base” para
+inserir esta base nas opções.</p>
+<p>O sistema valida se o campo estiver em branco.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bhadrasana.bhadrasana.functional_tests.importa_base_test.ImportarBase.test_upload">
+<code class="descname">test_upload</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/functional_tests/importa_base_test.html#ImportarBase.test_upload"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.functional_tests.importa_base_test.ImportarBase.test_upload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Usuário informa arquivo e base e clica em importar.</p>
+<p>Sistema carrega a tela ‘risco’ em seguida se tudo OK.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bhadrasana.bhadrasana.functional_tests.importa_base_test.ImportarBase.test_upload_sem_base">
+<code class="descname">test_upload_sem_base</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/functional_tests/importa_base_test.html#ImportarBase.test_upload_sem_base"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.functional_tests.importa_base_test.ImportarBase.test_upload_sem_base" title="Permalink to this definition">¶</a></dt>
+<dd><p>Usuário informa arquivo e clica em importar.</p>
+<p>Sistema informa que falta informar a base.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bhadrasana.bhadrasana.functional_tests.importa_base_test.ImportarBase.test_upload_sem_planilha">
+<code class="descname">test_upload_sem_planilha</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/functional_tests/importa_base_test.html#ImportarBase.test_upload_sem_planilha"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.functional_tests.importa_base_test.ImportarBase.test_upload_sem_planilha" title="Permalink to this definition">¶</a></dt>
+<dd><p>Usuário informa arquivo e clica em importar.</p>
+<p>Sistema informa que falta informar a planilha.</p>
+</dd></dl>
+
+</dd></dl>
+
 <p>Administrar parâmetros de Risco</p>
 <p>TODO - INICIAR</p>
 <p>Aplicar parâmetros de Risco - OK</p>

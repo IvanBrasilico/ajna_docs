@@ -55,6 +55,12 @@ Os dados de configuração poderão ser importados e exportados de/para arquivos
 Interface - SENTINELA
 ---------------------
 
+Importar Base
+
+.. automodule:: bhadrasana.bhadrasana.functional_tests.importa_base_test
+    :members:
+
+
 Administrar parâmetros de Risco
 
 TODO - INICIAR

@@ -94,7 +94,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#module-bhadrasana.bhadrasana.utils.gerente_base">Gerente de Bases</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#interface">Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-bhadrasana.bhadrasana.views">Interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#modulo-bhadrasana-ajna">Módulo Bhadrasana - AJNA</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-bhadrasana.bhadrasana.models.models">Banco de Dados</a></li>
 </ul>
 </li>
@@ -181,8 +184,11 @@
 <li><a class="reference internal" href="#module-bhadrasana.bhadrasana.utils.gerente_base" id="id5">Gerente de Bases</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#interface" id="id6">Interface</a></li>
-<li><a class="reference internal" href="#module-bhadrasana.bhadrasana.models.models" id="id7">Banco de Dados</a></li>
+<li><a class="reference internal" href="#module-bhadrasana.bhadrasana.views" id="id6">Interface</a><ul>
+<li><a class="reference internal" href="#modulo-bhadrasana-ajna" id="id7">Módulo Bhadrasana - AJNA</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-bhadrasana.bhadrasana.models.models" id="id8">Banco de Dados</a></li>
 </ul>
 </li>
 </ul>
@@ -237,7 +243,7 @@ títulos modificados</p>
 
 <dl class="function">
 <dt id="bhadrasana.bhadrasana.utils.csv_handlers.sch_processing">
-<code class="descclassname">bhadrasana.bhadrasana.utils.csv_handlers.</code><code class="descname">sch_processing</code><span class="sig-paren">(</span><em>path</em>, <em>mask_txt='0.txt'</em>, <em>dest_path='/tmp/tmpgn42eb4l'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/utils/csv_handlers.html#sch_processing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.utils.csv_handlers.sch_processing" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">bhadrasana.bhadrasana.utils.csv_handlers.</code><code class="descname">sch_processing</code><span class="sig-paren">(</span><em>path</em>, <em>mask_txt='0.txt'</em>, <em>dest_path='/tmp/tmpiwxd1qhu'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/utils/csv_handlers.html#sch_processing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.utils.csv_handlers.sch_processing" title="Permalink to this definition">¶</a></dt>
 <dd><p>Processa arquivos sch (CARGA).</p>
 <p>Processa lotes de extração que gerem arquivos txt csv e arquivos sch
 (txt contém os dados e sch descreve o schema), transformando-os em arquivos
@@ -252,7 +258,7 @@ csv estilo “planilha”, isto é, primeira linha de cabecalhos.</p>
 
 <dl class="function">
 <dt id="bhadrasana.bhadrasana.utils.csv_handlers.sch_tocsv">
-<code class="descclassname">bhadrasana.bhadrasana.utils.csv_handlers.</code><code class="descname">sch_tocsv</code><span class="sig-paren">(</span><em>sch</em>, <em>txt</em>, <em>dest_path='/tmp/tmpgn42eb4l'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/utils/csv_handlers.html#sch_tocsv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.utils.csv_handlers.sch_tocsv" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">bhadrasana.bhadrasana.utils.csv_handlers.</code><code class="descname">sch_tocsv</code><span class="sig-paren">(</span><em>sch</em>, <em>txt</em>, <em>dest_path='/tmp/tmpiwxd1qhu'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/utils/csv_handlers.html#sch_tocsv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.utils.csv_handlers.sch_tocsv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Processa padrão sch (CARGA).</p>
 <p>Pega um arquivo txt, aplica os cabecalhos e a informação de um sch,
 e o transforma em um csv padrão.</p>
@@ -267,6 +273,12 @@ de risco cadastrados nos dados.</p>
 <p>Utiliza pandas para realizar filtragem de arquivos csv.
 Utiliza MongoDB para arquivar diversos arquivos em base única
 e Mongo agreggation framework para consultas.</p>
+<dl class="exception">
+<dt id="bhadrasana.bhadrasana.utils.gerente_risco.ESemValorParametro">
+<em class="property">exception </em><code class="descclassname">bhadrasana.bhadrasana.utils.gerente_risco.</code><code class="descname">ESemValorParametro</code><a class="reference internal" href="_modules/bhadrasana/bhadrasana/utils/gerente_risco.html#ESemValorParametro"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.utils.gerente_risco.ESemValorParametro" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exceção personalizada.</p>
+</dd></dl>
+
 <dl class="class">
 <dt id="bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco">
 <em class="property">class </em><code class="descclassname">bhadrasana.bhadrasana.utils.gerente_risco.</code><code class="descname">GerenteRisco</code><a class="reference internal" href="_modules/bhadrasana/bhadrasana/utils/gerente_risco.html#GerenteRisco"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco" title="Permalink to this definition">¶</a></dt>
@@ -303,7 +315,7 @@ os gerencia internamente.</p>
 
 <dl class="method">
 <dt id="bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco.aplica_juncao">
-<code class="descname">aplica_juncao</code><span class="sig-paren">(</span><em>visao</em>, <em>path='/tmp/tmpgn42eb4l'</em>, <em>filtrar=False</em>, <em>parametros_ativos=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/utils/gerente_risco.html#GerenteRisco.aplica_juncao"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco.aplica_juncao" title="Permalink to this definition">¶</a></dt>
+<code class="descname">aplica_juncao</code><span class="sig-paren">(</span><em>visao</em>, <em>path='/tmp/tmpiwxd1qhu'</em>, <em>filtrar=False</em>, <em>parametros_ativos=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/utils/gerente_risco.html#GerenteRisco.aplica_juncao"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco.aplica_juncao" title="Permalink to this definition">¶</a></dt>
 <dd><p>Faz junção de arquivos diversos.</p>
 <p>Lê, um a um, os csvs configurados em visao.tabelas. Carrega em
 DataFrames e faz merge destes.</p>
@@ -326,16 +338,7 @@ aplicados</p>
 
 <dl class="method">
 <dt id="bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco.aplica_juncao_mongo">
-<code class="descname">aplica_juncao_mongo</code><span class="sig-paren">(</span><em>db</em>, <em>visao</em>, <em>parametros_ativos=None</em>, <em>filtrar=False</em>, <em>pandas=False</em>, <em>limit=100</em>, <em>skip=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/utils/gerente_risco.html#GerenteRisco.aplica_juncao_mongo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco.aplica_juncao_mongo" title="Permalink to this definition">¶</a></dt>
-<dd><p>Apenas um proxy para compatibilidade reversa.</p>
-<p>Proxy para compatibilidade e escolha.
-Repassa todos os parâmetros para o método utilizando
-pandas se param pandas=True ou aggregate se False.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco.aplica_juncao_mongo_aggregate">
-<code class="descname">aplica_juncao_mongo_aggregate</code><span class="sig-paren">(</span><em>db</em>, <em>visao</em>, <em>parametros_ativos=None</em>, <em>filtrar=False</em>, <em>limit=100</em>, <em>skip=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/utils/gerente_risco.html#GerenteRisco.aplica_juncao_mongo_aggregate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco.aplica_juncao_mongo_aggregate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">aplica_juncao_mongo</code><span class="sig-paren">(</span><em>db</em>, <em>visao</em>, <em>parametros_ativos=None</em>, <em>filtrar=False</em>, <em>limit=0</em>, <em>skip=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/utils/gerente_risco.html#GerenteRisco.aplica_juncao_mongo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco.aplica_juncao_mongo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Lê as coleções configuradas no mongo através de aggregates.</p>
 <p>Monta um pipeline MongoDB.
 Utiliza configurações da visao para montar um aggregate entre coleções
@@ -352,24 +355,6 @@ aplicados
 filtrar: aplica_risco na consulta</dd>
 <dt>Returns:</dt>
 <dd>Lista contendo os campos filtrados. 1ª linha com nomes de campo.</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco.aplica_juncao_mongo_pandas">
-<code class="descname">aplica_juncao_mongo_pandas</code><span class="sig-paren">(</span><em>db</em>, <em>visao</em>, <em>parametros_ativos=None</em>, <em>filtrar=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/utils/gerente_risco.html#GerenteRisco.aplica_juncao_mongo_pandas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco.aplica_juncao_mongo_pandas" title="Permalink to this definition">¶</a></dt>
-<dd><p>Lê as coleções configuradas no mongo.</p>
-<p>Lê as coleções, carrega em DataFrames e faz merge destes.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>db: MongoDB
-visao: objeto de Banco de Dados que espeficica as configurações
-(metadados) da base
-parametros_ativos: subconjunto do parâmetros de risco a serem
-aplicados
-filtrar: aplica_risco após merge dos DataFrames</dd>
-<dt>Returns:</dt>
-<dd>Lista contendo os campos filtrados. 1ª linha com nomes de campo</dd>
 </dl>
 </dd></dl>
 
@@ -402,7 +387,7 @@ utilizar <a class="reference internal" href="#bhadrasana.bhadrasana.utils.gerent
 
 <dl class="method">
 <dt id="bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco.aplica_risco_por_parametros">
-<code class="descname">aplica_risco_por_parametros</code><span class="sig-paren">(</span><em>dbsession</em>, <em>base_csv: str</em>, <em>padraoid=0</em>, <em>visaoid=0</em>, <em>parametros_ativos: list = None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/utils/gerente_risco.html#GerenteRisco.aplica_risco_por_parametros"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco.aplica_risco_por_parametros" title="Permalink to this definition">¶</a></dt>
+<code class="descname">aplica_risco_por_parametros</code><span class="sig-paren">(</span><em>dbsession</em>, <em>padraoid: int = 0</em>, <em>visaoid: int = 0</em>, <em>parametros_ativos: list = None</em>, <em>base_csv: str = None</em>, <em>db=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/utils/gerente_risco.html#GerenteRisco.aplica_risco_por_parametros"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco.aplica_risco_por_parametros" title="Permalink to this definition">¶</a></dt>
 <dd><p>Escolhe o método correto de acordo com parâmetros.</p>
 <p>Chama arquivo(s) com ou sem junção e filtro,
 de acordo com parâmetros passados.</p>
@@ -410,7 +395,9 @@ de acordo com parâmetros passados.</p>
 <p>Args:</p>
 <blockquote>
 <div><p>dbsession: conexão com o Banco de Dados</p>
-<p>base_csv: Arquivo csv de onde carregar a lista a ser filtrada</p>
+<p>base_csv: Arquivo csv de onde carregar dados a serem filtrados
+OU
+db: conexão MongoDB de onde carregar dados</p>
 <p>padraoid: ID do PadraoRisco a utilizar como filtro</p>
 <dl class="docutils">
 <dt>visaoid: objeto Visao do Banco de Dados que espeficica as</dt>
@@ -509,7 +496,7 @@ Banco de Dados caso session seja informada.</p>
 
 <dl class="method">
 <dt id="bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco.importa_base">
-<code class="descname">importa_base</code><span class="sig-paren">(</span><em>csv_folder: str</em>, <em>baseid: int</em>, <em>data</em>, <em>filename: str</em>, <em>remove=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/utils/gerente_risco.html#GerenteRisco.importa_base"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco.importa_base" title="Permalink to this definition">¶</a></dt>
+<code class="descname">importa_base</code><span class="sig-paren">(</span><em>csv_folder: str</em>, <em>baseid: int</em>, <em>data: str</em>, <em>filename: str</em>, <em>remove=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/utils/gerente_risco.html#GerenteRisco.importa_base"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco.importa_base" title="Permalink to this definition">¶</a></dt>
 <dd><p>Copia base para dest_path, processando se necessário.</p>
 <p>Aceita arquivos .zip contendo arquivos sch e arquivos csv únicos.
 No caso de CSV, retorna erro caso títulos não batam com importação
@@ -518,8 +505,8 @@ anterior para a mesma “BASE” (dest_path) para evitar erros do usuário</p>
 <dt>Args:</dt>
 <dd><p class="first">csv_folder: destino do(s) arquivo(s) gerados</p>
 <p>base_id: id da base, será usada para identificar uma subpasta</p>
-<p>data: data do período inicial da base/extração. Será usada
-para gerar subpasta no formato YYYY/MM/DD</p>
+<p>data: data formato YYYY-MM-DD do período inicial da base/extração.
+Será usada para gerar subpasta no formato YYYY/MM/DD</p>
 <p>filename: caminho completo do arquivo da base de origem
 (fonte externa/extração)</p>
 <p class="last">remove: excluir o arquivo temporário após processamento</p>
@@ -555,7 +542,7 @@ aplicados</p>
 
 <dl class="method">
 <dt id="bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco.parametro_tocsv">
-<code class="descname">parametro_tocsv</code><span class="sig-paren">(</span><em>campo</em>, <em>path='/tmp/tmpgn42eb4l'</em>, <em>dbsession=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/utils/gerente_risco.html#GerenteRisco.parametro_tocsv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco.parametro_tocsv" title="Permalink to this definition">¶</a></dt>
+<code class="descname">parametro_tocsv</code><span class="sig-paren">(</span><em>campo</em>, <em>path='/tmp/tmpiwxd1qhu'</em>, <em>dbsession=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/utils/gerente_risco.html#GerenteRisco.parametro_tocsv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco.parametro_tocsv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Salva parametro em arquivo.</p>
 <p>Salva os valores do parâmetro de risco em um arquivo csv
 no formato ‘valor’, ‘tipo_filtro’.</p>
@@ -563,7 +550,7 @@ no formato ‘valor’, ‘tipo_filtro’.</p>
 
 <dl class="method">
 <dt id="bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco.parametros_fromcsv">
-<code class="descname">parametros_fromcsv</code><span class="sig-paren">(</span><em>campo</em>, <em>session=None</em>, <em>padraorisco=None</em>, <em>lista=None</em>, <em>path='/tmp/tmpgn42eb4l'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/utils/gerente_risco.html#GerenteRisco.parametros_fromcsv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco.parametros_fromcsv" title="Permalink to this definition">¶</a></dt>
+<code class="descname">parametros_fromcsv</code><span class="sig-paren">(</span><em>campo</em>, <em>session=None</em>, <em>padraorisco=None</em>, <em>lista=None</em>, <em>path='/tmp/tmpiwxd1qhu'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/utils/gerente_risco.html#GerenteRisco.parametros_fromcsv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco.parametros_fromcsv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Carrega parâmetros de risco de um aquivo ou de uma lista.</p>
 <p>Abre um arquivo csv, recupera parâmetros configurados nele,
 adiciona à configuração do gerente e <strong>também adiciona ao Banco de
@@ -592,7 +579,7 @@ abrirá arquivo .csv, usará os valores da função</p>
 
 <dl class="method">
 <dt id="bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco.parametros_tocsv">
-<code class="descname">parametros_tocsv</code><span class="sig-paren">(</span><em>path='/tmp/tmpgn42eb4l'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/utils/gerente_risco.html#GerenteRisco.parametros_tocsv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco.parametros_tocsv" title="Permalink to this definition">¶</a></dt>
+<code class="descname">parametros_tocsv</code><span class="sig-paren">(</span><em>path='/tmp/tmpiwxd1qhu'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/utils/gerente_risco.html#GerenteRisco.parametros_tocsv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco.parametros_tocsv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Salva os parâmetros adicionados a um gerente em um arquivo csv.</p>
 <p>Ver também: <a class="reference internal" href="#bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco.parametros_fromcsv" title="bhadrasana.bhadrasana.utils.gerente_risco.GerenteRisco.parametros_fromcsv"><code class="xref py py-func docutils literal"><span class="pre">parametros_fromcsv()</span></code></a></p>
 </dd></dl>
@@ -796,11 +783,386 @@ instância original. Apenas para destacá-lo.</p>
 
 </div>
 </div>
-<div class="section" id="interface">
-<h2><a class="toc-backref" href="#id6">Interface</a><a class="headerlink" href="#interface" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-bhadrasana.bhadrasana.views">
+<span id="interface"></span><h2><a class="toc-backref" href="#id6">Interface</a><a class="headerlink" href="#module-bhadrasana.bhadrasana.views" title="Permalink to this headline">¶</a></h2>
+<p>Bhadrasana.</p>
+<div class="section" id="modulo-bhadrasana-ajna">
+<h3><a class="toc-backref" href="#id7">Módulo Bhadrasana - AJNA</a><a class="headerlink" href="#modulo-bhadrasana-ajna" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="interface-do-usuario-web">
+<h4>Interface do Usuário - WEB<a class="headerlink" href="#interface-do-usuario-web" title="Permalink to this headline">¶</a></h4>
+<p>Módulo responsável por gerenciar bases de dados importadas/acessadas pelo AJNA,
+administrando estas e as cruzando com parâmetros de risco.</p>
+<p>Serve para a administração, pré-tratamento e visualização dos dados importados,
+assim como para acompanhamento de registros de log e detecção de problemas nas
+conexões internas.</p>
+<p>Adicionalmente, permite o merge entre bases, navegação de bases, e
+a aplicação de filtros/parâmetros de risco.</p>
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.adiciona_base">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">adiciona_base</code><span class="sig-paren">(</span><em>nome</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#adiciona_base"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.adiciona_base" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cria nova instância de Base Origem com o nome passado.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.adiciona_coluna">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">adiciona_coluna</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#adiciona_coluna"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.adiciona_coluna" title="Permalink to this definition">¶</a></dt>
+<dd><p>Função inserir uma coluna ao objeto Visão.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">visaoid: ID do objeto de Banco de Dados que espeficica as
+configurações (metadados) da base</p>
+<p class="last">col_nova: Nome da coluna que será inserida no objeto Visão</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.adiciona_depara">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">adiciona_depara</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#adiciona_depara"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.adiciona_depara" title="Permalink to this definition">¶</a></dt>
+<dd><p>De_para - troca títulos.</p>
+<p>Função que permite unificar o nome de colunas que possuem o mesmo
+conteúdo.</p>
+<p>Esta função realiza a troca do titulo de uma coluna por outro, permitindo
+que duas colunas que tragam a mesma informação em bases diferentes sejam
+filtradas por um único parâmetro de risco.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">baseid: ID da Base de Origem do arquivo</p>
+<p>titulo_antigo: Titulo original da base a ser importada</p>
+<p class="last">titulo_novo: Titulo unificado</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.adiciona_padrao">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">adiciona_padrao</code><span class="sig-paren">(</span><em>nome</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#adiciona_padrao"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.adiciona_padrao" title="Permalink to this definition">¶</a></dt>
+<dd><p>Função que adiciona um novo padrão de riscos.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>nome: Nome do padrão a ser inserido no Banco de Dados</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.adiciona_parametro">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">adiciona_parametro</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#adiciona_parametro"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.adiciona_parametro" title="Permalink to this definition">¶</a></dt>
+<dd><p>Função que adiciona um novo parâmetro de risco.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">padraoid: ID do padrão de risco</p>
+<p>risco_novo: Nome do novo parâmetro</p>
+<p class="last">lista: Lista com os nomes dos novos parâmetros</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.adiciona_tabela">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">adiciona_tabela</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#adiciona_tabela"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.adiciona_tabela" title="Permalink to this definition">¶</a></dt>
+<dd><p>Função para inserir uma tabela ao objeto Visão.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">visaoid: ID do objeto de Banco de Dados que espeficica as
+configurações (metadados) da base</p>
+<p>csv: Nome do CSV a ser inserido</p>
+<p>primario:</p>
+<p class="last">estrangeiro:</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.adiciona_valor">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">adiciona_valor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#adiciona_valor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.adiciona_valor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Função que adiciona um novo valor ao parâmetro de risco selecionado.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">padraoid: ID do padrão de risco</p>
+<p>novo_valor: Nome do valor a ser inserido no parâmetro</p>
+<p class="last">tipo_filtro: Filtro que este valor deverá ser buscado nas bases</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.adiciona_visao">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">adiciona_visao</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#adiciona_visao"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.adiciona_visao" title="Permalink to this definition">¶</a></dt>
+<dd><p>Função que permite a criação de um novo objeto Visão.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">baseid: ID da Base de Origem do arquivo</p>
+<p class="last">visao_novo: Nome do objeto de Banco de Dados que espeficica as
+configurações (metadados) da base</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.allowed_file">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">allowed_file</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#allowed_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.allowed_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checa extensões permitidas.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.configure_app">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">configure_app</code><span class="sig-paren">(</span><em>sqllitedb</em>, <em>mongodb</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#configure_app"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.configure_app" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configurações gerais e de Banco de Dados da Aplicação.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.edita_depara">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">edita_depara</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#edita_depara"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.edita_depara" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tela para configurar os titulos das bases a serem importadas.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>baseid: ID da Base de Origem do arquivo</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.edita_risco">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">edita_risco</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#edita_risco"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.edita_risco" title="Permalink to this definition">¶</a></dt>
+<dd><p>Editar Padrões e Valores de Risco.</p>
+<p>Tela para configurar os parâmetros de risco das bases importadas,
+permite a alteração e criação de novos parâmetros e seus dados.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">padraoid: ID do padrão de risco criado e/ou escolhido para
+realizar a alteração</p>
+<p class="last">riscoid: ID do objeto de risco para aplicar a edição</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.exclui_coluna">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">exclui_coluna</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#exclui_coluna"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.exclui_coluna" title="Permalink to this definition">¶</a></dt>
+<dd><p>Função que permite a remoção de uma coluna do objeto Visão.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">visaoid: ID do objeto de Banco de Dados que espeficica as
+configurações (metadados) da base</p>
+<p class="last">colunaid: ID da coluna a ser excluída</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.exclui_depara">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">exclui_depara</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#exclui_depara"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.exclui_depara" title="Permalink to this definition">¶</a></dt>
+<dd><p>Função que remove a troca de titulo selecionada.</p>
+<p>Esta função permite unificar o nome de colunas que possuem o mesmo
+conteúdo.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">baseid: ID da Base de Origem do arquivo</p>
+<p class="last">tituloid: ID do titulo a ser excluído</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.exclui_parametro">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">exclui_parametro</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#exclui_parametro"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.exclui_parametro" title="Permalink to this definition">¶</a></dt>
+<dd><p>Função que exclui um parâmetro de risco e seus respectivos valores.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">padraoid: ID do padrão de risco</p>
+<p class="last">riscoid: Nome do parâmetro a ser excluído</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.exclui_planilha">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">exclui_planilha</code><span class="sig-paren">(</span><em>planilha</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#exclui_planilha"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.exclui_planilha" title="Permalink to this definition">¶</a></dt>
+<dd><p>Função que exclui uma planilha csv e retorna restantes.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>planilha: Nome da planilha</dd>
+<dt>Returns:</dt>
+<dd>Lista com as planilhas restantes</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.exclui_tabela">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">exclui_tabela</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#exclui_tabela"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.exclui_tabela" title="Permalink to this definition">¶</a></dt>
+<dd><p>Função para remover uma tabela do objeto Visão.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">visaoid: ID do objeto de Banco de Dados que espeficica as
+configurações (metadados) da base</p>
+<p class="last">tabelaid: ID da tabela a ser excluída</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.exclui_valor">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">exclui_valor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#exclui_valor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.exclui_valor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ecluir uma instância de ValorParametro.</p>
+<p>Função que exclui apenas o valor e o tipo_filtro de um parâmetro de
+risco.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">padraoid: ID do padrão de risco</p>
+<p>riscoid: ID do parâmetro de risco</p>
+<p class="last">valorid: ID do valor a ser excluído</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.exclui_visao">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">exclui_visao</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#exclui_visao"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.exclui_visao" title="Permalink to this definition">¶</a></dt>
+<dd><p>Função que permite a remoção de um objeto Visão.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>visaoid: ID do objeto de Banco de Dados que espeficica as
+configurações (metadados) da base</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.exporta_csv">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">exporta_csv</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#exporta_csv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.exporta_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Grava em arquivo parâmetros ativos.</p>
+<p>Função que cria um arquivo CSV contendo duas colunas(valor e tipo_filtro)
+e realiza a exportação dos dados do parâmetro de risco selecionado.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">padraoid: ID do padrão de risco</p>
+<p class="last">riscoid: ID do parâmetro de risco</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.get_planilhas_criadas_agendamento">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">get_planilhas_criadas_agendamento</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#get_planilhas_criadas_agendamento"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.get_planilhas_criadas_agendamento" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lê o diretório e retorna nomes de arquivos .csv.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.importa_base">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">importa_base</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#importa_base"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.importa_base" title="Permalink to this definition">¶</a></dt>
+<dd><p>Função para upload do arquivo de uma extração ou outra fonte externa.</p>
+<p>Utiliza o :class: <cite>bhadrasana.utils.gerenterisco.GerenteRisco</cite>.
+Suporte por ora para csv com títulos e zip com sch (padrão Carga)
+Necessita um Servidor Celery para repassar responsabilidade.
+Ver também :func: <cite>bhadrasana.workers.tasks.importar_base</cite></p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">baseid: ID da Base de Origem do arquivo</p>
+<p>data: data inicial do período extraído (se não for passada,
+assume hoje)</p>
+<p class="last">file: arquivo csv, sch+txt, ou conjunto deles em formato zip</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.importa_csv">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">importa_csv</code><span class="sig-paren">(</span><em>padraoid</em>, <em>riscoid</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#importa_csv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.importa_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Importar arquivo.</p>
+<p>Função que lê um arquivo csv contendo duas colunas(valor e tipo_filtro)
+e realiza a importação dos dados para um parâmetro de risco selecionado.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">padraoid: ID do padrão de risco</p>
+<p class="last">riscoid: ID do parâmetro de risco</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.index">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>View retorna index.html ou login se não autenticado.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.juncoes">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">juncoes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#juncoes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.juncoes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tela para cadastramento de junções.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">baseid: ID da Base de Origem do arquivo</p>
+<p class="last">visaoid: ID objeto de Banco de Dados que espeficica as configurações
+(metadados) da base</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.log_every_request">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">log_every_request</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#log_every_request"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.log_every_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Envia cada requisição ao log.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.mynavbar">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">mynavbar</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#mynavbar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.mynavbar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Menu da aplicação.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.risco">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">risco</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#risco"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.risco" title="Permalink to this definition">¶</a></dt>
+<dd><p>Função para aplicar parâmetros de risco em arquivo(s) importados.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">baseid: ID da Base de Origem do arquivo</p>
+<p>padraoid: ID do padrão de risco aplicável</p>
+<p>visaoid: ID do objeto Visao (junção de CSVs e seleção de campos)</p>
+<p>file: caminho do(s) csv(s) já processados e no diretório</p>
+<dl class="last docutils">
+<dt>acao:</dt>
+<dd>‘aplicar’ - aplica_risco no diretório file
+‘arquivar’ - adiciona diretório ao BD e apaga dir
+‘excluir’ - apaga dir
+‘mongo’ - busca no banco de dados arquivado</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.task_progress">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">task_progress</code><span class="sig-paren">(</span><em>taskid</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#task_progress"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.task_progress" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorna um json do progresso da celery task.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.valores">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">valores</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#valores"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.valores" title="Permalink to this definition">¶</a></dt>
+<dd><p>Função que busca os valores dos parâmetros cadastrados.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>parametroid: ID do parâmetro de risco a ser buscado</dd>
+<dt>Returns:</dt>
+<dd>Lista com os valores e seus respectivos filtros de busca</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="bhadrasana.bhadrasana.views.vincula_base">
+<code class="descclassname">bhadrasana.bhadrasana.views.</code><code class="descname">vincula_base</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/views.html#vincula_base"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.views.vincula_base" title="Permalink to this definition">¶</a></dt>
+<dd><p>Função que vincula padrão de riscos e base origem.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>padraoid: ID do padrão a ser atualizado
+baseid: ID da base a vincular</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
 </div>
 <div class="section" id="module-bhadrasana.bhadrasana.models.models">
-<span id="banco-de-dados"></span><h2><a class="toc-backref" href="#id7">Banco de Dados</a><a class="headerlink" href="#module-bhadrasana.bhadrasana.models.models" title="Permalink to this headline">¶</a></h2>
+<span id="banco-de-dados"></span><h2><a class="toc-backref" href="#id8">Banco de Dados</a><a class="headerlink" href="#module-bhadrasana.bhadrasana.models.models" title="Permalink to this headline">¶</a></h2>
 <p>Modelo de dados necessário para app bhadrasana.</p>
 <dl class="class">
 <dt id="bhadrasana.bhadrasana.models.models.BaseOrigem">
@@ -905,6 +1267,12 @@ Ver <code class="xref py py-func docutils literal"><span class="pre">gerente_ris
 <dd><p>Acesso ao campo csv. Inclui extensão.</p>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="bhadrasana.bhadrasana.models.models.Tabela.csv_table">
+<code class="descname">csv_table</code><a class="headerlink" href="#bhadrasana.bhadrasana.models.models.Tabela.csv_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Acesso ao nome de tabela. Não inclui extensão.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="class">
@@ -920,7 +1288,7 @@ Ver <code class="xref py py-func docutils literal"><span class="pre">gerente_ris
 
 <dl class="class">
 <dt id="bhadrasana.bhadrasana.models.models.Visao">
-<em class="property">class </em><code class="descclassname">bhadrasana.bhadrasana.models.models.</code><code class="descname">Visao</code><span class="sig-paren">(</span><em>csv</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/models/models.html#Visao"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.models.models.Visao" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bhadrasana.bhadrasana.models.models.</code><code class="descname">Visao</code><span class="sig-paren">(</span><em>nome</em>, <em>base_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bhadrasana/bhadrasana/models/models.html#Visao"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bhadrasana.bhadrasana.models.models.Visao" title="Permalink to this definition">¶</a></dt>
 <dd><p>Metadado sobre os csvs capturados.</p>
 <p>Para mapear relações entre os
 csvs capturados e permitir junção automática se necessário.

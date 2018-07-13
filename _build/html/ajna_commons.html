@@ -431,15 +431,10 @@ Se dbsession for None, get retorna usuario caso username==senha
 Podem ser passadas outras conexões a outros BD caso implementem os métodos
 users.update e users.find_one, ou criada uma classe descendente de
 DBUser que modifique os métodos get e add.</p>
-<dl class="docutils">
-<dt>A maioria dos métodos são estáticos, sendo usados diretamente:</dt>
-<dd><p class="first">DBUser.dbsession = meu_PyMongoClient
-DBUser.get(usuario, senha) retorna DBUSer se existir e</p>
-<blockquote>
-<div>se senha correta</div></blockquote>
-<p class="last">DBUser.add(usuario, senha) adiciona DBUser</p>
-</dd>
-</dl>
+<p>A maioria dos métodos são estáticos, sendo usados diretamente:</p>
+<p>DBUser.dbsession = meu_PyMongoClient
+DBUser.get(usuario, senha) retorna DBUSer se existir e se senha correta
+DBUser.add(usuario, senha) adiciona DBUser</p>
 <p>A classe DBUser é utilizada pela classe User, padrão do flask-login</p>
 <dl class="classmethod">
 <dt id="ajna_commons.flask.login.DBUser.add">
@@ -498,7 +493,7 @@ comportamento similar a DBUSer.</p>
 
 <dl class="function">
 <dt id="ajna_commons.flask.login.configure">
-<code class="descclassname">ajna_commons.flask.login.</code><code class="descname">configure</code><span class="sig-paren">(</span><em>app</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/flask/login.html#configure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.flask.login.configure" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">ajna_commons.flask.login.</code><code class="descname">configure</code><span class="sig-paren">(</span><em>app: flask.app.Flask</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/flask/login.html#configure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.flask.login.configure" title="Permalink to this definition">¶</a></dt>
 <dd><p>Insere as views de login e logout na app.</p>
 <p>Para utilizar, importar modulo login e chamar configure(app)
 em uma aplicação Flask.</p>
@@ -508,12 +503,6 @@ em uma aplicação Flask.</p>
 <dt id="ajna_commons.flask.login.is_safe_url">
 <code class="descclassname">ajna_commons.flask.login.</code><code class="descname">is_safe_url</code><span class="sig-paren">(</span><em>target</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/flask/login.html#is_safe_url"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.flask.login.is_safe_url" title="Permalink to this definition">¶</a></dt>
 <dd><p>Testa ocorrência de ataque de redirecionamento(URL Redirect/Pishing).</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="ajna_commons.flask.login.load_user">
-<code class="descclassname">ajna_commons.flask.login.</code><code class="descname">load_user</code><span class="sig-paren">(</span><em>userid</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ajna_commons/flask/login.html#load_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ajna_commons.flask.login.load_user" title="Permalink to this definition">¶</a></dt>
-<dd><p>Método padrão do flask-login. Repassa responsabilidade a User.</p>
 </dd></dl>
 
 </div>

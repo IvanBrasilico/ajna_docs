@@ -16,7 +16,7 @@ Login
 Esta é a tela inicial padrão do sistema AJNA.
 Nela está contido o formulário de login.
 
-.. figure :: _static\\images\\login.png
+.. figure :: _static/images/login.png
     :align: center
 
     Tela Login
@@ -39,7 +39,7 @@ da fontes de imagens (recinto) e o Servidor Virasana, o ideal é configurar uma 
 para varrer periodicamente um diretório de rede onde os arquivos bson sejam gravados
 para importação automática pelo Virasana.
 
-.. figure :: _static\\images\\importarbson.png
+.. figure :: _static/images/login.png
     :align: center
 
     Tela Importar Base
@@ -65,7 +65,7 @@ para as quais foi gerado alerta pelo Operador de Escâner.
 Além destes, é possível criar filtros personalizados, por exemplo escolhendo campos do Sistema
 Carga, na caixa "Selecione" abaixo da legenda "Definir filtro personalizado".
 
-.. figure :: _static\\images\\pesquisar-arquivos.png
+.. figure :: _static/images/login.png
     :align: center
 
     Tela Pesquisar Arquivo
@@ -85,7 +85,7 @@ na segunda aba. Caso a imagem seja de um Contêiner controlado pelo sistema CARG
 importação dos dados do sistema CARGA tenham sido importados e localizados com sucesso, esta informação
 (Conhecimentos de transporte marítimo, Manifestos, NCMs, etc) estarão em uma aba.
 
-.. figure :: _static\\images\\ver-arquivo.png
+.. figure :: _static/images/login.png
     :align: center
 
     Tela Ver Arquivo
@@ -97,7 +97,7 @@ importação dos dados do sistema CARGA tenham sido importados e localizados com
 Estatísticas
 ------------
 
-.. figure :: _static\\images\\estatisticas.png
+.. figure :: _static/images/login.png
     :align: center
 
 Exibe números globais do Servidor em um período especificado: quantidade de imagens,

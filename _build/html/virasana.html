@@ -267,6 +267,18 @@ json[‘taskid’]: ID da task do celery a ser monitorada</dd>
 </dd></dl>
 
 <dl class="function">
+<dt id="virasana.virasana.views.configure_app">
+<code class="descclassname">virasana.virasana.views.</code><code class="descname">configure_app</code><span class="sig-paren">(</span><em>mongodb</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#configure_app"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.configure_app" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configurações gerais e de Banco de Dados da Aplicação.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="virasana.virasana.views.do_mini">
+<code class="descclassname">virasana.virasana.views.</code><code class="descname">do_mini</code><span class="sig-paren">(</span><em>_id</em>, <em>n</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#do_mini"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.do_mini" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recorta a imagem do banco e serializa para stream HTTP.</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="virasana.virasana.views.file">
 <code class="descclassname">virasana.virasana.views.</code><code class="descname">file</code><span class="sig-paren">(</span><em>_id=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tela para exibição de um ‘arquivo’ do GridFS.</p>
@@ -288,19 +300,26 @@ json[‘taskid’]: ID da task do celery a ser monitorada</dd>
 <dl class="function">
 <dt id="virasana.virasana.views.grid_data">
 <code class="descclassname">virasana.virasana.views.</code><code class="descname">grid_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#grid_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.grid_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Serializa os dados do banco para stream JSON HTTP.</p>
+<dd><p>Executa uma consulta no banco.</p>
+<p>Monta um dicionário de consulta a partir dos argumentos do get.
+Se encontrar registro, retorna registro inteiro via JSON (metadados),
+o arquivo (campo content) fica em fs.chunks e é recuperado pela view
+image_id.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="virasana.virasana.views.image">
 <code class="descclassname">virasana.virasana.views.</code><code class="descname">image</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.image" title="Permalink to this definition">¶</a></dt>
-<dd><p>Serializa a imagem do banco para stream HTTP.</p>
+<dd><p>Executa uma consulta no banco.</p>
+<p>Monta um dicionário de consulta a partir dos argumentos do get.
+Se encontrar registro, chama image_id.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="virasana.virasana.views.image_id">
 <code class="descclassname">virasana.virasana.views.</code><code class="descname">image_id</code><span class="sig-paren">(</span><em>_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#image_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.image_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Recorta a imagem do banco e serializa para stream HTTP.</p>
+<p>Estes métodos dispensam autenticação, pois é necessário ter um _id válido.</p>
 </dd></dl>
 
 <dl class="function">
@@ -318,6 +337,23 @@ por uploadDate mais recente.
 Se houver upload em andamento, informa.</p>
 </dd></dl>
 
+<dl class="data">
+<dt id="virasana.virasana.views.lista_ids">
+<code class="descclassname">virasana.virasana.views.</code><code class="descname">lista_ids</code><em class="property"> = []</em><a class="headerlink" href="#virasana.virasana.views.lista_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>Para testes de desempenho: o endpoint minitest retorna uma imagem aleatória
+Se for passado o parâmetro ‘mini’, faz também recorte
+Para habilitar, criar lista_ids descomentando linhas abaixo
+lista_ids = [</p>
+<blockquote>
+<div><p>linha[‘_id’] for linha in
+db[‘fs.files’].find(</p>
+<blockquote>
+<div>{‘metadata.contentType’: ‘image/jpeg’}, {‘_id’: 1}</div></blockquote>
+<p>).limit(1000)</p>
+</div></blockquote>
+<p>]</p>
+</dd></dl>
+
 <dl class="function">
 <dt id="virasana.virasana.views.mini">
 <code class="descclassname">virasana.virasana.views.</code><code class="descname">mini</code><span class="sig-paren">(</span><em>_id</em>, <em>n=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#mini"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.mini" title="Permalink to this definition">¶</a></dt>
@@ -328,6 +364,14 @@ Se houver upload em andamento, informa.</p>
 <dt id="virasana.virasana.views.mini2">
 <code class="descclassname">virasana.virasana.views.</code><code class="descname">mini2</code><span class="sig-paren">(</span><em>_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#mini2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.mini2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Link para imagem do segundo contêiner, se houver.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="virasana.virasana.views.minitest">
+<code class="descclassname">virasana.virasana.views.</code><code class="descname">minitest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/virasana/virasana/views.html#minitest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#virasana.virasana.views.minitest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retorna uma imagem aleatória.</p>
+<p>Se for passado o parâmetro ‘mini’, faz também recorte
+Deixar desabilitado em produção.</p>
 </dd></dl>
 
 <dl class="function">
