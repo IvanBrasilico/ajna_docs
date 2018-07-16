@@ -70,13 +70,15 @@ Banco de Dados de imagens.
 
 Importa arquivos BSON dos AVATARES.
 
-Submódulo integração provê, para cada Fonte de Dados, scripts para ETL (Extração, Transformação e 'LOAD'), adicionando
-aos metadados das imagens os dados das Fontes de Dados e análises do PADMA.
+Submódulo integração provê, para cada Fonte de Dados, scripts para ETL (Extração, Transformação e 'LOAD'),
+com heurísticas para adicionar aos metadados das imagens os dados das Fontes de Dados e análises do PADMA.
 
 Serviço Celery rodará periodicamente a importação de imagens de BSON e a anexação de metadados.
 
 Provê também interface para visualização e busca de imagens e execução,
 manual ou automática, dos algoritmos do módulo PADMA nas imagens.
+
+Serviço também de auditoria, cruzando dados das diversas fontes.
 
 Disponibiliza seus dados em Restful API.
 
