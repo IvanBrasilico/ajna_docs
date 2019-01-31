@@ -7,4 +7,5 @@ python3 -m venv virasana-venv
 pip install .
 
 # python wsgi.py -- para testar
+# ./celery.sh  -- para testar
 # ./configure_virasana.sh -- para configurar Supervisor e Nginx/Apache

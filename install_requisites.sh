@@ -1,4 +1,7 @@
-# No CentOS mudar para yum install
+#!/bin/bash
+set -x
+
+# No CentOS mudar apt para yum
 
 # Instalar Servidor REDIS
 sudo apt install redis-server
@@ -20,6 +23,8 @@ sudo ufw enable
 
 #Supervisor - para iniciar servicos
 sudo apt install supervisor
+sudo systemctl start supervisor
+sudo systemctl enable supervisor
 
 
 # Python 3 configuracao
