@@ -2,8 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9957e15b-5c7a-468c-a322-fe7ee3c0d71c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/.coveragerc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/conf.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/flask/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/flask/conf.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/flask/custom_messages.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/flask/flask_log.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/flask/log.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/flask/login.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/flask/templates/404.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/flask/templates/CSRF.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/flask/templates/layout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/flask/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/models/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/models/bsonimage.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/scripts/adduser.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/tests/.directory" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/tests/bsonimage_loadtesting.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/tests/bsonimage_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/tests/images_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/tests/login_test" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/tests/login_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/tests/sanitizar_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/tests/stamp1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/tests/stamp2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/tests/templates/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/utils/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/utils/images.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/utils/pascal_voc_io.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/utils/sanitiza.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/setup.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commons/tox.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ajna_commons" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,26 +46,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.travis.yml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>commo</find>
+      <find>ajna</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -72,7 +92,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/padma" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -97,10 +117,18 @@
       <option name="presentableId" value="Default" />
       <updated>1548940914363</updated>
     </task>
+    <task id="LOCAL-00001" summary="reestruturacao">
+      <created>1548941709295</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1548941709295</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
+    <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -125,18 +153,32 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/ajna_commons/ajna_commons" />
     </ignored-roots>
+    <MESSAGE value="reestruturacao" />
+    <option name="LAST_COMMIT_MESSAGE" value="reestruturacao" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/ajna_commons/ajna_commons/.gitignore" />
-    <entry file="file://$PROJECT_DIR$/.travis.yml">
+    <entry file="file://$PROJECT_DIR$/ajna_commons/ajna_commons/.travis.yml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+        <state relative-caret-position="1920">
+          <caret line="128" column="12" lean-forward="true" selection-start-line="128" selection-start-column="12" selection-end-line="128" selection-end-column="12" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajna_commons/ajna_commons/scripts/access.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajna_commons/ajna_commons/conf.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajna_commons/ajna_commons/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>

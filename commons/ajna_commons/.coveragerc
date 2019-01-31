@@ -1,0 +1,3 @@
+[run]
+omit =
+    ajna_commons/utils/pascal_voc_io.py

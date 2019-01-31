@@ -1,0 +1,12 @@
+{% extends "layout.html" %} {% block content %}{{super()}}
+<html>
+    Dummy index (diretório tests/templates)
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+
+</html>
+{% endblock %}
