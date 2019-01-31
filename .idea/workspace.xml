@@ -2,42 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9957e15b-5c7a-468c-a322-fe7ee3c0d71c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/commons/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/.coveragerc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/.travis.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/conf.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/flask/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/flask/conf.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/flask/custom_messages.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/flask/flask_log.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/flask/log.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/flask/login.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/flask/templates/404.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/flask/templates/CSRF.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/flask/templates/layout.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/flask/templates/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/models/bsonimage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/scripts/adduser.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/tests/.directory" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/tests/bsonimage_loadtesting.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/tests/bsonimage_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/tests/images_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/tests/login_test" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/tests/login_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/tests/sanitizar_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/tests/stamp1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/tests/stamp2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/tests/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/utils/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/utils/images.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/utils/pascal_voc_io.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/ajna_commons/utils/sanitiza.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/setup.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commons/tox.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/install_core.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/install_requisites.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/install_virasana.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajna_commons" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +15,45 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/shell-comands-history">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.txt">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/install_requisites.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/install_core.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/install_virasana.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="70" selection-start-line="9" selection-start-column="70" selection-end-line="9" selection-end-column="70" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -61,6 +68,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/install_requisites.sh" />
+        <option value="$PROJECT_DIR$/setup.py" />
+        <option value="$PROJECT_DIR$/install_core.sh" />
+        <option value="$PROJECT_DIR$/install_virasana.sh" />
       </list>
     </option>
   </component>
@@ -83,6 +94,11 @@
               <item name="ajna" type="b2602c69:ProjectViewProjectNode" />
               <item name="ajna" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ajna" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ajna" type="462c0819:PsiDirectoryNode" />
+              <item name="commons" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -91,8 +107,14 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/padma" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="TEXT" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -124,13 +146,21 @@
       <option name="project" value="LOCAL" />
       <updated>1548941709295</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="inclusao commons no ajna_docs (virou ajna_core)">
+      <created>1548942061259</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1548942061259</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -140,7 +170,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" visible="true" weight="0.3291536" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.3291536" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
@@ -154,7 +184,8 @@
       <path value="$PROJECT_DIR$/ajna_commons/ajna_commons" />
     </ignored-roots>
     <MESSAGE value="reestruturacao" />
-    <option name="LAST_COMMIT_MESSAGE" value="reestruturacao" />
+    <MESSAGE value="inclusao commons no ajna_docs (virou ajna_core)" />
+    <option name="LAST_COMMIT_MESSAGE" value="inclusao commons no ajna_docs (virou ajna_core)" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/ajna_commons/ajna_commons/.gitignore" />
@@ -179,6 +210,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ajna_commons/ajna_commons/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shell-comands-history">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install_requisites.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/commons/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="482">
+          <caret line="45" selection-start-line="30" selection-end-line="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="57" selection-start-line="57" selection-end-line="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install_core.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install_virasana.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="70" selection-start-line="9" selection-start-column="70" selection-end-line="9" selection-end-column="70" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
