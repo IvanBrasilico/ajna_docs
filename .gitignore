@@ -86,13 +86,7 @@ celerybeat-schedule
 # virtualenv
 .venv
 *venv/
-<<<<<<< HEAD
-<<<<<<< HEAD
 venv*/
-=======
->>>>>>> ea0a430f044d49bdbe78bf8397f57ae5ebcc2774
-=======
->>>>>>> ea0a430f044d49bdbe78bf8397f57ae5ebcc2774
 ENV/
 
 
@@ -132,7 +126,6 @@ tree.html
 */db.sqlite*
 image_aq/covimgaq/db.sqlite3.old
 image_aq/covimgaq/db.sqlite3
-ajna_commons/*
 bhadrasana/*
 padma/*
 virasana/*
@@ -140,4 +133,3 @@ ajna_commons
 bhadrasana
 virasana
 padma
-.idea/*
