@@ -1,4 +1,7 @@
-# Virasana - Servidor de imagens
+#!/bin/bash
+set -x
+
+# Bhadraasana - Servidor de imagens
 git clone https://github.com/IvanBrasilico/bhadrasana.git
 cd bhadrasana/
 ln -s ../commons/ajna_commons .

@@ -23,14 +23,17 @@ sudo ufw enable
 
 #Supervisor - para iniciar servicos
 sudo apt install supervisor
-sudo systemctl start supervisor
 sudo systemctl enable supervisor
+
+# Configurar AJNA_DIR e AJNA_LOG_DIR no supervisor
+# Pode ser necessário adaptar para o ambiente de instalação
+sudo echo "AJNA_HOME=$HOME/ajna" >> /etc/supervisor/supervisord.conf
+sudo echo "AJNA_LOG_DIR=/var/log/ajna" >> /etc/supervisor/supervisord.conf
+sudo systemctl start supervisor
+sudo mkdir /var/log/ajna
 
 
 # Python 3 configuracao
-
-
-# Python
 sudo apt install python3-pip
 sudo apt install python3-venv
-
+sudo pip3 install --upgrade wheel setuptools venv pip

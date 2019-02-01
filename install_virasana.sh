@@ -9,3 +9,4 @@ pip install .
 # python wsgi.py -- para testar
 # ./celery.sh  -- para testar
 # ./configure_virasana.sh -- para configurar Supervisor e Nginx/Apache
+# Necessário criar e gravar indexes.npy para busca de similaridade!!!
