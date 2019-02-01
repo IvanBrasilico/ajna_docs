@@ -17,3 +17,5 @@ git clone https://github.com/IvanBrasilico/models.git
 # ./configure_padma.sh -- para configurar Supervisor e Nginx/Apache
 # Pode ser necessário baixar à parte os modelos salvos e colocá-los nos diretórios corretos
 # Diretórios de modelos em padma/padma/models (Não confundir com models do TensorFlow, um diretorio acima)
+# Por padrão, é instalado o tensorflow para CPU. Para usar GPU, certifique-se que está instalado o
+# CUDA 9.0 e cudnn 7.0 e instale "pip install tensorflow-gpu"
