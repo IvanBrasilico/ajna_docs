@@ -2,125 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9957e15b-5c7a-468c-a322-fe7ee3c0d71c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/install_padma.sh" beforeDir="false" afterPath="$PROJECT_DIR$/install_padma.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/padma" beforeDir="false" afterPath="$PROJECT_DIR$/padma" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/ajna_commons" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/corrigexml.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/jemma.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/app.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/classes.pbtxt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/.directory" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/Buscador-AutoEncoder1.0/.directory" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/Buscador-AutoEncoder1.0/EncoderBuscador-Copy1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/Buscador-AutoEncoder1.0/EncoderBuscador-Copy1.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/Buscador-AutoEncoder1.0/EncoderBuscadorImgGrande.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/Buscador-AutoEncoder1.0/TestArrayDBStorage.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/Buscador-AutoEncoder1.0/buscadorweb.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/Buscador-AutoEncoder1.0/filefunctions.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/Buscador-AutoEncoder1.0/home.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/Buscador-AutoEncoder1.0/indexfunctions.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/Buscador-AutoEncoder1.0/modelconv.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/Buscador-AutoEncoder1.0/modelfully.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/Buscador-AutoEncoder2.0/AutoEncoderMontagemIndice.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/Buscador-AutoEncoder2.0/AutoencoderPredicaoTeste.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/Buscador-AutoEncoder2.0/AutoencoderSimples.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/Buscador-AutoEncoder2.0/AutoencoderSimples2.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/ExportaConteinerNCM.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/ExportaConteinerTipo.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/ForestPeso.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/Peso2.0/Explora_peso_hist_img.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/Peso2.0/TreinadorPesoRandomForest.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/TreinadorPesoRandomForest.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/Vazio2.0/TreinadorDificeis.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/Vazio2.0/TreinadorVazioNaoVazio.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/Vazio2.0/Vazio2.0.tar.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/Vazio2.0/utils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/autoencoder_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/histo.npy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/histograms.npy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/histograms.npyrefined" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/label.npy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/labels.npy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/labels.npyrefined" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/segmentation/ManualSegmentation.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/sklearn_tutorial.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/treinador_pesagem.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/treinador_pesagem_tuning.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/gym/utils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/models/bbox/bbox.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/models/conteiner20e40/bbox.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/models/conteiner20e40/checkpoint" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/models/conteiner20e40/classes.pbtxt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/models/conteiner20e40/frozen_inference_graph.pb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/models/conteiner20e40/model.ckpt.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/models/conteiner20e40/model.ckpt.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/models/conteiner20e40/model.ckpt.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/models/conteiner20e40/pipeline.config" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/models/conteiner20e40/saved_model/saved_model.pb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/models/encoder/encoder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/models/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/models/peso/ForestPeso.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/models/peso/histo.npy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/models/peso/histograms.npy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/models/peso/label.npy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/models/peso/labels.npy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/models/peso/peso.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/models/peso/peso2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/models/vazios/histograms.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/models/vazios/labels.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/models/vazios/vazio2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/models/vazios/vazios.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/modelserver.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/static/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/static/css/bootstrap.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/static/css/font-awesome.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/static/css/jquery-ui.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/static/fonts/glyphicons-halflings-regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/static/fonts/glyphicons-halflings-regular.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/static/fonts/glyphicons-halflings-regular.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/static/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/static/js/jquery-ui.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/static/js/jquery-ui.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/static/js/jquery.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/static/js/jquery.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/static/temp.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/templates/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/templates/layout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/templates/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/templates/search_files.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/templates/teste.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/templates/view_file.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/tests/.directory" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/tests/cheio.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/tests/stamp1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/tests/stamp1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/tests/stamp2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/tests/stamp2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/tests/test.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/tests/test_bbox.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/tests/test_encoder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/tests/test_padma.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/tests/test_util.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/tests/test_vazios.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/tests/vazio.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/padma/utils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/pytest.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/requirements.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/server.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/setup.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/simple_request.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/space_shuttle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/supervisor_padma.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/supervisor_padma_models.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/tensorflow_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/tox.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/wsgi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/wsgi_debug.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma_erro/padma/wsgi_production.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -130,7 +12,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="567">
@@ -169,20 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/configure_virasana.sh">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
               <caret line="15" column="52" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/install_padma.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="60" selection-start-line="20" selection-start-column="60" selection-end-line="20" selection-end-column="60" />
             </state>
           </provider>
         </entry>
@@ -246,7 +119,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="TEXT" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/padma" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
@@ -331,7 +204,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -433,6 +305,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="133" column="8" selection-start-line="133" selection-start-column="8" selection-end-line="133" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/install_virasana.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -440,24 +319,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/install_padma.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="13" lean-forward="true" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/configure_virasana.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="52" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/install_padma.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="60" selection-start-line="20" selection-start-column="60" selection-end-line="20" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="133" column="8" selection-start-line="133" selection-start-column="8" selection-end-line="133" selection-end-column="8" />
         </state>
       </provider>
     </entry>
