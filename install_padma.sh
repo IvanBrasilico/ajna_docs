@@ -12,6 +12,10 @@ pip install .
 # Abaixo é feita a clonagem do TensorFlow Object Detection
 git clone https://github.com/IvanBrasilico/models.git
 
+# Para permitir o uso do Virtualenv no jupyter, rodar a linha abaixo:
+ipython kernel install --user --name=padma-venv
+
+
 # python wsgi_debug.py -- para testar Servidor API
 # python server.py -- para testar Servidor de modelos
 # ./configure_padma.sh -- para configurar Supervisor e Nginx/Apache
