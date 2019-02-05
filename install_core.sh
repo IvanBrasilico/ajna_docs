@@ -5,6 +5,7 @@ set -x
 cd $HOME
 # git clone https://github.com/IvanBrasilico/ajna.git
 cd ajna
+git clone https://github.com/IvanBrasilico/models
 pip install --upgrade --user pip wheel setuptools
 ln -s commons/ajna_commons .
 python3 -m venv ajna-venv
