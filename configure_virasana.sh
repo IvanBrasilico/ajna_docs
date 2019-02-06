@@ -1,6 +1,9 @@
+#!/bin/sh
+set -x 
+
 # Copiar diretorio static para Servidor WEB
 sudo mkdir /var/www/html/static
-sudo cp -r virasana/static/* /var/www/html/static
+sudo cp -r virasana/virasana/static/* /var/www/html/static
 
 # Configurar Nginx
 # Colocar linhas abaixo em /etc/nginx/sites-available/default
@@ -14,3 +17,5 @@ sudo cp -r virasana/static/* /var/www/html/static
 
 
 cp virasana/supervisor*.conf /etc/supervisor/conf.d/
+sudo mkdir /var/log/virasana
+sudo supervisorctl reread

@@ -27,8 +27,7 @@ sudo systemctl enable supervisor
 
 # Configurar AJNA_DIR e AJNA_LOG_DIR no supervisor
 # Pode ser necessário adaptar para o ambiente de instalação
-sudo echo "AJNA_HOME=$HOME/ajna" >> /etc/supervisor/supervisord.conf
-sudo echo "AJNA_LOG_DIR=/var/log/ajna" >> /etc/supervisor/supervisord.conf
+sudo echo "environment=AJNA_HOME=/home/ivan/ajna,AJNA_LOG_DIR=/var/log/ajna" >> /etc/supervisor/supervisord.conf
 sudo systemctl start supervisor
 sudo mkdir /var/log/ajna
 
