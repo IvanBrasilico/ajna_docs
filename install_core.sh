@@ -16,6 +16,6 @@ python ajna_commons/scripts/adduser.py
 
 # Copiar docs para diretorio do nginx para acessando localhost/help abrir a documentacao do AJNA
 # Pode ser necessario configurar o Servidor web especifico (Nginx ou Apache)
-sudo cp -r _build/html/ /var/www/html/help/
+sudo cp -r _build/html /var/www/html/ajna
 
 

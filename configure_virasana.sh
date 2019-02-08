@@ -1,4 +1,5 @@
 #!/bin/sh
+# Precisa ser executado com sudo
 set -x 
 
 # Copiar diretorio static para Servidor WEB
@@ -16,6 +17,8 @@ sudo cp -r virasana/virasana/static/* /var/www/html/static
 #	}
 
 
+sed -i 's,/home/ivan,'"$HOME"',g' virasana/supervisor_*
 cp virasana/supervisor*.conf /etc/supervisor/conf.d/
-sudo mkdir /var/log/virasana
-sudo supervisorctl reread
+mkdir /var/log/virasana
+supervisorctl reread
+supervisorctl reload
