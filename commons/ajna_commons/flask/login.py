@@ -127,10 +127,10 @@ class DBUser():
             raise Exception('Sem conexão com o Banco de Dados!')
         username, password = cls.sanitize(username, password)
         encripted = cls.encript(password)
-        cursor = cls.dbsession.users.update(
+        cursor = cls.dbsession.users.update_one(
             {'username': username},
-            {'username': username,
-             'password': encripted},
+            {"$set": {'username': username,
+             'password': encripted}},
             upsert=True)
         logger.debug('cursor', cursor)
         return DBUser.get(username, password)
@@ -165,7 +165,7 @@ class DBUser():
                 {'username': username})
             if user is None:
                 return None
-            if password:
+            if password is not None:
                 encripted = user['password']
                 # logger.debug('username %s, passed password %s ' % \
                 # (username, password))
