@@ -39,11 +39,11 @@ def configure(app: Flask):
     @commons.route('/login', methods=['GET', 'POST'])
     def login():
         """View para efetuar login."""
+        message = request.args.get('message')
         if request.method == 'POST':
             username = mongo_sanitizar(request.form.get('username'))
-            password = mongo_sanitizar(request.form.get('senha'))
-            message = request.args.get('message')
-
+            # Não aceitar senha vazia!!
+            password = mongo_sanitizar(request.form.get('senha', '*'))
             registered_user = authenticate(username, password)
             if registered_user is not None:
                 flash('Usuário autenticado.')
@@ -52,10 +52,10 @@ def configure(app: Flask):
                 # g['username'] = current_user.name
                 return redirect(url_for('index'))
             else:
-                if message:
-                    flash(message)
                 return abort(401)
         else:
+            if message:
+                flash(message)
             return render_template('login.html', form=request.form)
 
     @commons.route('/logout')
@@ -165,11 +165,11 @@ class DBUser():
                 {'username': username})
             if user is None:
                 return None
+            # logger.debug('***username %s, passed password %s ' % \
+            #             (username, password))
             if password is not None:
                 encripted = user['password']
-                # logger.debug('username %s, passed password %s ' % \
-                # (username, password))
-                # logger.debug('encripted %s' % encripted)
+                logger.debug('encripted %s' % encripted)
                 if not dbuser.check(encripted):
                     return None
             return DBUser(username, password)
@@ -207,6 +207,8 @@ class User(UserMixin):
 
 def authenticate(username, password):
     """Método padrão do flask-login. Repassa responsabilidade a User."""
+    if password is None:
+        return None
     user_entry = User.get(username, password)
     # logger.debug('authenticate user entry %s' % user_entry)
     return user_entry
