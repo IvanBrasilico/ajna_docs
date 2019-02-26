@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9957e15b-5c7a-468c-a322-fe7ee3c0d71c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bhadrasana" beforeDir="false" afterPath="$PROJECT_DIR$/bhadrasana" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="105" selection-start-line="105" selection-end-line="105" />
+            <state relative-caret-position="177">
+              <caret line="106" selection-start-line="106" selection-end-line="106" />
             </state>
           </provider>
         </entry>
@@ -80,7 +79,7 @@
   <component name="PropertiesComponent">
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="TEXT" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/padma" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -222,12 +221,18 @@
       <option name="project" value="LOCAL" />
       <updated>1551107379279</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="--">
+      <created>1551144044661</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1551144044661</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -256,6 +261,7 @@
       <path value="$PROJECT_DIR$/padma/padma/models" />
       <path value="$PROJECT_DIR$/padma_erro/models" />
       <path value="$PROJECT_DIR$/padma_erro/padma" />
+      <path value="$PROJECT_DIR$/avatar" />
     </ignored-roots>
     <MESSAGE value="reestruturacao" />
     <MESSAGE value="inclusao commons no ajna_docs (virou ajna_core)" />
@@ -267,7 +273,8 @@
     <MESSAGE value="merge" />
     <MESSAGE value="sed home no conf" />
     <MESSAGE value="ajustes DBUser (bugs)" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajustes DBUser (bugs)" />
+    <MESSAGE value="--" />
+    <option name="LAST_COMMIT_MESSAGE" value="--" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/ajna_commons/ajna_commons/.gitignore" />
@@ -374,8 +381,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="105" selection-start-line="105" selection-end-line="105" />
+        <state relative-caret-position="177">
+          <caret line="106" selection-start-line="106" selection-end-line="106" />
         </state>
       </provider>
     </entry>
