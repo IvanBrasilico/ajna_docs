@@ -1,11 +1,17 @@
 """Funções para tratamento de imagens."""
 import io
 
+from PIL import Image
+from ajna_commons.flask.log import logger
 from bson.objectid import ObjectId
 from gridfs import GridFS
-from PIL import Image
 
-from ajna_commons.flask.log import logger
+
+def PIL_tobytes(pil_image: Image) -> io.BytesIO:
+    image_bytes = io.BytesIO()
+    pil_image.save(image_bytes, 'JPEG')
+    image_bytes.seek(0)
+    return image_bytes
 
 
 def recorta_imagem(image, coords, pil=False):
@@ -24,14 +30,10 @@ def recorta_imagem(image, coords, pil=False):
         pil_image = Image.open(io.BytesIO(image))
     else:
         pil_image = image
-
     pil_image = pil_image.crop((coords[1], coords[0], coords[3], coords[2]))
     if pil:
         return pil_image
-    image_bytes = io.BytesIO()
-    pil_image.save(image_bytes, 'JPEG')
-    image_bytes.seek(0)
-    return image_bytes
+    return PIL_tobytes(pil_image)
 
 
 def mongo_image(db, image_id):
@@ -62,7 +64,7 @@ def get_imagens_recortadas(db, _id):
                 bbox = pred.get('bbox')
                 if bbox:
                     try:
-                        recorte = recorta_imagem(image, bbox, True)
+                        recorte = recorta_imagem(image, bbox, pil=True)
                         images.append(recorte)
                     except Exception as err:
                         logger.info('Erro em get_imagens_recortadas ' +

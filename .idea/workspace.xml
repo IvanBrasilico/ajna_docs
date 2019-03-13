@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b773ee2a-6cd7-40a7-adb2-389db9aa2415" name="Default Changelist" comment="" />
+    <list default="true" id="b773ee2a-6cd7-40a7-adb2-389db9aa2415" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ajna.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ajna.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bhadrasana" beforeDir="false" afterPath="$PROJECT_DIR$/bhadrasana" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/padma" beforeDir="false" afterPath="$PROJECT_DIR$/padma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/virasana" beforeDir="false" afterPath="$PROJECT_DIR$/virasana" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,7 +19,7 @@
     <session id="1710658239">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="8" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.0" value="3" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.2" value="1" />
@@ -46,17 +53,23 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="452">
-              <caret line="133" column="7" selection-start-line="133" selection-start-column="7" selection-end-line="133" selection-end-column="7" />
+              <caret line="134" column="7" selection-start-line="134" selection-start-column="7" selection-end-line="134" selection-end-column="7" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>commo</find>
+      <find>ajna</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -64,16 +77,28 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/setup.py" />
+        <option value="$PROJECT_DIR$/INSTALL.md" />
+        <option value="$PROJECT_DIR$/install_bhadrasana.sh" />
+        <option value="$PROJECT_DIR$/install_virasana.sh" />
+        <option value="$PROJECT_DIR$/install_padma.sh" />
+        <option value="$PROJECT_DIR$/configure_bhadrasana.sh" />
+        <option value="$PROJECT_DIR$/configure_padma.sh" />
+        <option value="$PROJECT_DIR$/configure_virasana.sh" />
+        <option value="$PROJECT_DIR$/install_requisites.sh" />
+        <option value="$PROJECT_DIR$/install_core.sh" />
+        <option value="$PROJECT_DIR$/commons/ajna_commons/flask/login.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="10" />
-    <option name="y" value="20" />
-    <option name="width" value="1260" />
-    <option name="height" value="944" />
+    <option name="x" value="292" />
+    <option name="y" value="24" />
+    <option name="width" value="1400" />
+    <option name="height" value="1028" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -84,8 +109,8 @@
         <subPane>
           <expand>
             <path>
-              <item name="ajna_docs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ajna_docs" type="462c0819:PsiDirectoryNode" />
+              <item name="ajna" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ajna" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -94,7 +119,14 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="TEXT" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/padma" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -113,26 +145,160 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b773ee2a-6cd7-40a7-adb2-389db9aa2415" name="Default Changelist" comment="" />
-      <created>1535483763113</created>
+      <changelist id="9957e15b-5c7a-468c-a322-fe7ee3c0d71c" name="Default Changelist" comment="" />
+      <created>1548940914363</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1535483763113</updated>
+      <updated>1548940914363</updated>
     </task>
-    <task id="LOCAL-00001" summary="Memes">
-      <created>1536611751700</created>
+    <task id="LOCAL-00001" summary="reestruturacao">
+      <created>1548941709295</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1536611751700</updated>
+      <updated>1548941709295</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="inclusao commons no ajna_docs (virou ajna_core)">
+      <created>1548942061259</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1548942061259</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Scripts de instalacao">
+      <created>1548943987536</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1548943987536</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Scripts de instalacao">
+      <created>1548944310265</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1548944310265</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Scripts de instalacao">
+      <created>1548958520190</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1548958520190</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Scripts de instalacao">
+      <created>1549028189079</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1549028189079</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Continuidade dos scripts de instalacao e configuracao">
+      <created>1549031259662</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1549031259662</updated>
+    </task>
+    <task id="LOCAL-00008" summary="pycharm">
+      <created>1549059366333</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1549059366333</updated>
+    </task>
+    <task id="LOCAL-00009" summary="pycharm">
+      <created>1549059389691</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1549059389691</updated>
+    </task>
+    <task id="LOCAL-00010" summary="pycharm">
+      <created>1549059477558</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1549059477558</updated>
+    </task>
+    <task id="LOCAL-00011" summary="confs supervisor">
+      <created>1549416227680</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1549416227680</updated>
+    </task>
+    <task id="LOCAL-00012" summary="confs supervisor&#10;&#10;Script que indica/instala configurações do supervisor e nginx para módulos padma e bhadrasana">
+      <created>1549462931412</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1549462931412</updated>
+    </task>
+    <task id="LOCAL-00013" summary="sed home no conf">
+      <created>1549629756600</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1549629756600</updated>
+    </task>
+    <task id="LOCAL-00014" summary="sed home no conf">
+      <created>1549629821145</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1549629821145</updated>
+    </task>
+    <task id="LOCAL-00015" summary="ajustes DBUser (bugs)">
+      <created>1550942675309</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1550942675309</updated>
+    </task>
+    <task id="LOCAL-00016" summary="ajustes DBUser (bugs)">
+      <created>1551107379279</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1551107379279</updated>
+    </task>
+    <task id="LOCAL-00017" summary="--">
+      <created>1551144044661</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1551144044661</updated>
+    </task>
+    <task id="LOCAL-00018" summary="--">
+      <created>1551144173834</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1551144173834</updated>
+    </task>
+    <task id="LOCAL-00019" summary="--">
+      <created>1551191854648</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1551191854648</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Merge branch 'master' of https://github.com/IvanBrasilico/ajna_docs&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <created>1552304681618</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1552304681618</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27912623" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27912623" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -142,29 +308,146 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.32949308" />
+      <window_info anchor="bottom" id="Version Control" order="7" visible="true" weight="0.32949308" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="bottom" id="Messages" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="R Graphics" order="3" />
-      <window_info anchor="right" id="R Packages" order="4" />
     </layout>
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Memes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Memes" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/ajna_commons/ajna_commons" />
+      <path value="$PROJECT_DIR$/padma/padma" />
+      <path value="$PROJECT_DIR$/padma/padma/models" />
+      <path value="$PROJECT_DIR$/padma_erro/models" />
+      <path value="$PROJECT_DIR$/padma_erro/padma" />
+      <path value="$PROJECT_DIR$/avatar" />
+    </ignored-roots>
+    <MESSAGE value="reestruturacao" />
+    <MESSAGE value="inclusao commons no ajna_docs (virou ajna_core)" />
+    <MESSAGE value="Scripts de instalacao" />
+    <MESSAGE value="Continuidade dos scripts de instalacao e configuracao" />
+    <MESSAGE value="pycharm" />
+    <MESSAGE value="confs supervisor" />
+    <MESSAGE value="confs supervisor&#10;&#10;Script que indica/instala configurações do supervisor e nginx para módulos padma e bhadrasana" />
+    <MESSAGE value="merge" />
+    <MESSAGE value="sed home no conf" />
+    <MESSAGE value="ajustes DBUser (bugs)" />
+    <MESSAGE value="--" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/IvanBrasilico/ajna_docs&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/IvanBrasilico/ajna_docs&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/ajna_commons/ajna_commons/.gitignore" />
+    <entry file="file://$PROJECT_DIR$/ajna_commons/ajna_commons/.travis.yml" />
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajna_commons/ajna_commons/scripts/access.log" />
+    <entry file="file://$PROJECT_DIR$/ajna_commons/ajna_commons/conf.py" />
+    <entry file="file://$PROJECT_DIR$/ajna_commons/ajna_commons/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/commons/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="482">
+          <caret line="45" selection-start-line="30" selection-end-line="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="57" selection-start-line="57" selection-end-line="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shell-comands-history">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install_bhadrasana.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install_virasana.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="13" lean-forward="true" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/INSTALL.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="557">
+            <caret line="138" selection-start-line="138" selection-end-line="138" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configure_virasana.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="32" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install_requisites.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configure_bhadrasana.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="48" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install_padma.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configure_padma.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install_core.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="452">
-          <caret line="133" column="7" selection-start-line="133" selection-start-column="7" selection-end-line="133" selection-end-column="7" />
+          <caret line="134" column="7" selection-start-line="134" selection-start-column="7" selection-end-line="134" selection-end-column="7" />
         </state>
       </provider>
     </entry>
