@@ -136,6 +136,21 @@ class DBUser():
         return DBUser.get(username, password)
 
     @classmethod
+    def change_password(cls, username, password):
+        """Cria usuário ou muda senha se ele existe."""
+        if not cls.dbsession:
+            raise Exception('Sem conexão com o Banco de Dados!')
+        username, password = cls.sanitize(username, password)
+        encripted = cls.encript(password)
+        cursor = cls.dbsession.users.update_one(
+            {'username': username},
+            {"$set": {'username': username,
+             'password': encripted}}
+        )
+        logger.debug('cursor', cursor)
+        return True
+
+    @classmethod
     def encript(cls, password):
         """Recebe senha plana, retorna versão criptografada."""
         if password is None:
@@ -195,6 +210,9 @@ class User(UserMixin):
         """Instancia User."""
         self.id = id
         self.name = str(id)
+
+    def change_password(self, newpassword):
+        self.user_database.change_password(self.id, newpassword)
 
     @classmethod
     def get(cls, username, password=None):
