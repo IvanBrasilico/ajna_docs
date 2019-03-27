@@ -83,7 +83,8 @@ def get_cursor(db, filtro, projection=None, limit=None):
     return cursor
 
 
-def generate_batch(db, filtro, projection=None, batch_size=32, limit=None):
+def generate_batch(db, filtro, projection=None, batch_size=32,
+                   limit=None, recorta=True):
     """a generator for batches, so model.fit_generator can be used. """
     cursor = get_cursor(db, filtro, projection, limit)
     while True:
@@ -95,7 +96,10 @@ def generate_batch(db, filtro, projection=None, batch_size=32, limit=None):
                 row = next(cursor)
             except StopIteration:
                 break
-            imgs = get_imagens_recortadas(db, row['_id'])
+            if recorta:
+                imgs = get_imagens_recortadas(db, row['_id'])
+            else:
+                imgs = [Image.open(io.BytesIO(mongo_image(db, row['_id'])))]
             images.append(imgs)
             rows.append(row)
             i += 1
