@@ -12,10 +12,13 @@ def equalize(pil_image: PIL.Image) -> PIL.Image:
 
 
 def expand_tocolor(pil_image: PIL.Image,
-                   alpha: float = 1.33,
-                   beta: float = 1.4) -> PIL.Image:
+                   alpha: float = 1.2,
+                   beta: float = 1.0,
+                   equalize: bool = True) -> PIL.Image:
+    if equalize:
+        pil_image = ImageOps.equalize(pil_image)
     imgarray = np.asarray(pil_image)
-    gray = np.array(imgarray[:, :,  0] * 3. * alpha ** beta, dtype=np.float32)
+    gray = np.array((imgarray[:, :,  0] * 3. * alpha) ** beta, dtype=np.float32)
     enhanced_R = gray.copy()
     enhanced_R[enhanced_R > 254] = 254
     enhanced_G = (gray - 255)
