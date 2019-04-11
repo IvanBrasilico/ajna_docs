@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ajna.iml" filepath="$PROJECT_DIR$/.idea/ajna.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ajna_docs.iml" filepath="$PROJECT_DIR$/.idea/ajna_docs.iml" />
     </modules>
   </component>
 </project>
