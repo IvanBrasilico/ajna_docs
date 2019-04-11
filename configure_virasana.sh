@@ -1,6 +1,7 @@
 #!/bin/sh
 # Precisa ser executado com sudo
 set -x 
+sudo yum install libXext libSM libXrender
 
 # Copiar diretorio static para Servidor WEB
 sudo mkdir /var/www/html/static
