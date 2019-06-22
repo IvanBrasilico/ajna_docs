@@ -31,7 +31,7 @@ class TestModel(unittest.TestCase):
 
     def test_mongo_sanitizar(self):
         teste = '{$where: \'atacking\': "DANGEROUS! Test. 2.53"}function();}'
-        esperado = 'where atacking DANGEROUS! Test. 2.53function'
+        esperado = 'where: atacking: DANGEROUS! Test. 2.53function'
         resultado = mongo_sanitizar(teste)
         print(resultado)
         assert resultado == esperado
