@@ -1,4 +1,4 @@
-## Links to presentations, PDFs and other documentation sites
+## Links to presentations, PDFs and other documentation
 
 
 ### English

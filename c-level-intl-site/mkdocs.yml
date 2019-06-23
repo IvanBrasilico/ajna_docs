@@ -6,10 +6,15 @@ nav:
     - "Architecture": Architecture.md
     - "Workflow": Workflow.md
     - "Modules": Modules.md
-    - "who": who.md
-    - "references and other docs": media.md
-    - "roadmap": roadmap.md
+    - "Who": who.md
+    - "References and other docs": media.md
+    - "Roadmap": roadmap.md
 
 
-theme: material
-
+theme:
+  name: 'material'
+  language: 'en'
+  palette:
+    primary: 'indigo'
+    accent: 'Green'
+  logo: 'images/material_logo.svg'
