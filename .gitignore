@@ -135,4 +135,4 @@ padma*/*
 
 *risco.csv
 *.class
-site/*
+*site/site/*
