@@ -1,0 +1,15 @@
+site_name: AJNA - X-Ray Images for Customs
+site_description: Cargo X-Ray image acquisiton, storage, integration, retrieval and analysis
+
+nav:
+    - Home: index.md
+    - "Architecture": Architecture.md
+    - "Workflow": Workflow.md
+    - "Modules": Modules.md
+    - "who": who.md
+    - "references and other docs": media.md
+    - "roadmap": roadmap.md
+
+
+theme: material
+
