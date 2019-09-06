@@ -1,0 +1,20 @@
+site_name: AJNA - X-Ray Images for Customs
+site_description: Cargo X-Ray image acquisiton, storage, integration, retrieval and analysis
+
+nav:
+    - Home: index.md
+    - "Architecture": Architecture.md
+    - "Workflow": Workflow.md
+    - "Modules": Modules.md
+    - "Who": who.md
+    - "References and other docs": media.md
+    - "Roadmap": roadmap.md
+
+
+theme:
+  name: 'material'
+  language: 'en'
+  palette:
+    primary: 'indigo'
+    accent: 'Green'
+  logo: 'images/material_logo.svg'
