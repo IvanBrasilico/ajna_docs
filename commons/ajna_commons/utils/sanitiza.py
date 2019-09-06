@@ -33,7 +33,7 @@ def mongo_sanitizar(text):
     """Remove todo caractere que pode ser usado em ataque MongoDB injection."""
     LETRAS = u'abcdefghijklmnopqrstuvwxyz'
     NUMEROS = u'0123456789'
-    SINAIS = u'*.,+&%@! _-:'
+    SINAIS = u'*.,+&%@! _-:/'
     secure = LETRAS + LETRAS.upper() + NUMEROS + SINAIS
     if not text:
         return None
