@@ -34,10 +34,10 @@ tree.html
 */db.sqlite*
 image_aq/covimgaq/db.sqlite3.old
 image_aq/covimgaq/db.sqlite3
-bhadrasana/*
-padma/*
-virasana/*
-bhadrasana
+bhadrasana*
+padma*
+virasana*
+bhadrasana\
 virasana
 padma*/*
 .idea/*
