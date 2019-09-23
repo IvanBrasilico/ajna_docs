@@ -37,7 +37,7 @@ def configure(app: Flask):
     @api.route('/api/login', methods=['POST'])
     def login():
         """Endpoint para efetuar login (obter token)."""
-        if not request.is_json:
+        if not request.json or not request.is_json:
             return jsonify({"msg": "JSON requerido"}), 400
 
         username = request.json.get('username', None)
