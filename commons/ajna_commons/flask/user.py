@@ -7,8 +7,7 @@ DBUser.dbsession deve receber a conexão com o BD.
 
 from ajna_commons.flask.log import logger
 from ajna_commons.utils.sanitiza import mongo_sanitizar
-from flask_login import (current_user, LoginManager, UserMixin, login_required,
-                         login_user, logout_user)
+from flask_login import UserMixin
 from werkzeug.security import check_password_hash, generate_password_hash
 
 
