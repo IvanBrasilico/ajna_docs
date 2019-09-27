@@ -21,6 +21,7 @@ setup(
         'Flask-nav',
         'Flask-session',
         'Flask-wtf',
+        'flask_jwt_extended',
         'imageio',
         'keras',
         'pandas',

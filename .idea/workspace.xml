@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b773ee2a-6cd7-40a7-adb2-389db9aa2415" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bhadrasana" beforeDir="false" afterPath="$PROJECT_DIR$/bhadrasana" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/padma" beforeDir="false" afterPath="$PROJECT_DIR$/padma" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/virasana" beforeDir="false" afterPath="$PROJECT_DIR$/virasana" afterDir="false" />
     </list>
@@ -23,18 +21,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="292" />
-    <option name="y" value="24" />
-    <option name="width" value="1400" />
-    <option name="height" value="1028" />
-  </component>
   <component name="ProjectId" id="1QTd6lQ6Yqfw1hb3015y4uexQq5" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="TEXT" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -239,7 +231,35 @@
       <option name="project" value="LOCAL" />
       <updated>1567798383179</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="/ em sanitiza">
+      <created>1569011110345</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1569011110345</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Tentar resolver redirect no login">
+      <created>1569011280334</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1569011280334</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Tests do Login da API">
+      <created>1569267594008</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1569267594008</updated>
+    </task>
+    <task id="LOCAL-00029" summary="adduser -&gt; novo caminho User">
+      <created>1569432349906</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1569432349906</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -282,6 +302,9 @@
     <MESSAGE value="Merge branch 'master' of https://github.com/IvanBrasilico/ajna_docs&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
     <MESSAGE value="Apresentação para comitê" />
     <MESSAGE value="/ em sanitiza" />
-    <option name="LAST_COMMIT_MESSAGE" value="/ em sanitiza" />
+    <MESSAGE value="Tentar resolver redirect no login" />
+    <MESSAGE value="Tests do Login da API" />
+    <MESSAGE value="adduser -&gt; novo caminho User" />
+    <option name="LAST_COMMIT_MESSAGE" value="adduser -&gt; novo caminho User" />
   </component>
 </project>
