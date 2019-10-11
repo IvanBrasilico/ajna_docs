@@ -67,7 +67,8 @@ def configure(app: Flask):
                 name = name.get('CN').split(':')[-1]
             logger.info('%s ofereceu certificado digital' % name)
             if name:
-                registered_user = authenticate(name)
+                name = name.strip()
+                registered_user = User.get(name)
                 if registered_user is not None:
                     flash('Usuário autenticado.')
                     login_user(registered_user)
