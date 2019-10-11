@@ -109,7 +109,7 @@ def configure(app: Flask):
     app.register_blueprint(commons)
 
 
-def authenticate(username, password):
+def authenticate(username, password=None):
     """Método padrão do flask-login. Repassa responsabilidade a User."""
     if password is None:
         return None
