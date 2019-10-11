@@ -62,6 +62,7 @@ def configure(app: Flask):
         logger.info('s_dn %s' % s_dn)
         if s_dn:
             name = dict([x.split('=') for x in s_dn.split(',')[1:]])
+            logger.info('name %s' % name)
             if name:
                 name = name.get('CN').split(':')[-1]
             logger.info('%s ofereceu certificado digital' % name)
