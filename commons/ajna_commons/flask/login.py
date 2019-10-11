@@ -54,6 +54,31 @@ def configure(app: Flask):
                 flash(message)
             return render_template('login.html', form=request.form)
 
+    @commons.route('/login_certificado', methods=['GET'])
+    @commons.route('/virana/login_certificado', methods=['GET'])
+    def login_certificado():
+        """View para efetuar login via certificado digital."""
+        s_dn = request.environ.get('HTTP_SSL_CLIENT_S_DN')
+        logger.info('s_dn %s' % s_dn)
+        if s_dn:
+            name = dict([x.split('=') for x in s_dn.split(',')[1:]])
+            if name:
+                name = name.get('CN').split(':')[-1]
+            logger.info('%s ofereceu certificado digital' % name)
+            if not name:
+                flash('Certificado não encontrado %s' % s_dn)
+                return abort(401)
+            registered_user = authenticate(name)
+            if registered_user is not None:
+                flash('Usuário autenticado.')
+                login_user(registered_user)
+                logger.info('Usuário %s autenticou' % current_user.name)
+                return redirect(url_for('index'))
+            else:
+                flash('Usuário não encontrado %s' % name)
+                return abort(404)
+
+
     @commons.route('/logout')
     @login_required
     def logout():
