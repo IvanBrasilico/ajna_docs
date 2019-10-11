@@ -61,7 +61,7 @@ def configure(app: Flask):
         s_dn = request.environ.get('HTTP_SSL_CLIENT_S_DN')
         logger.info('s_dn %s' % s_dn)
         if s_dn:
-            name = dict([x.split('=') for x in s_dn.split(',')[1:]])
+            name = dict([x.split('=') for x in s_dn.split(',')])
             logger.info('name %s' % name)
             if name:
                 name = name.get('CN').split(':')[-1]
