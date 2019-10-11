@@ -65,18 +65,18 @@ def configure(app: Flask):
             if name:
                 name = name.get('CN').split(':')[-1]
             logger.info('%s ofereceu certificado digital' % name)
-            if not name:
-                flash('Certificado não encontrado %s' % s_dn)
-                return abort(401)
-            registered_user = authenticate(name)
-            if registered_user is not None:
-                flash('Usuário autenticado.')
-                login_user(registered_user)
-                logger.info('Usuário %s autenticou' % current_user.name)
-                return redirect(url_for('index'))
-            else:
-                flash('Usuário não encontrado %s' % name)
-                return abort(404)
+            if name:
+                registered_user = authenticate(name)
+                if registered_user is not None:
+                    flash('Usuário autenticado.')
+                    login_user(registered_user)
+                    logger.info('Usuário %s autenticou' % current_user.name)
+                    return redirect(url_for('index'))
+                else:
+                    flash('Usuário não encontrado %s' % name)
+                    return abort(404)
+        flash('Certificado não encontrado %s' % s_dn)
+        return abort(401)
 
 
     @commons.route('/logout')
