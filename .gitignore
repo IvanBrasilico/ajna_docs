@@ -50,3 +50,5 @@ venv/*
 .eggs/*
 *.log
 *.egg-info
+ajna-venv/*
+avatar*
