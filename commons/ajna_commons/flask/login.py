@@ -32,7 +32,7 @@ def configure(app: Flask):
     custom_messages.configure(commons)
 
     @commons.route('/login', methods=['GET', 'POST'])
-    @commons.route('/virana/login', methods=['GET', 'POST'])
+    # @commons.route('/virana/login', methods=['GET', 'POST'])
     def login():
         """View para efetuar login."""
         message = request.args.get('message')

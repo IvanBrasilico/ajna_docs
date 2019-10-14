@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e71673d3-10c5-4d6f-8a86-193fb468b673" name="Default" comment="Login de API via JWT">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="e71673d3-10c5-4d6f-8a86-193fb468b673" name="Default" comment="Login via Certificad">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ajna_commons/flask/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/ajna_commons/flask/login.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bhadrasana" beforeDir="false" afterPath="$PROJECT_DIR$/bhadrasana" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commons/ajna_commons/flask/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/commons/ajna_commons/flask/login.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/ajna_commons/flask/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/commons/ajna_commons/flask/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/padma" beforeDir="false" afterPath="$PROJECT_DIR$/padma" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virasana" beforeDir="false" afterPath="$PROJECT_DIR$/virasana" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -257,7 +254,21 @@
       <option name="project" value="LOCAL" />
       <updated>1569432349906</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Login de API via JWT">
+      <created>1570887760759</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1570887760759</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Login via Certificado">
+      <created>1570887859904</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1570887859904</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -303,6 +314,8 @@
     <MESSAGE value="Tentar resolver redirect no login" />
     <MESSAGE value="Tests do Login da API" />
     <MESSAGE value="adduser -&gt; novo caminho User" />
-    <option name="LAST_COMMIT_MESSAGE" value="adduser -&gt; novo caminho User" />
+    <MESSAGE value="Login de API via JWT" />
+    <MESSAGE value="Login via Certificado" />
+    <option name="LAST_COMMIT_MESSAGE" value="Login via Certificado" />
   </component>
 </project>
