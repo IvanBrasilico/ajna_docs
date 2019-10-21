@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e71673d3-10c5-4d6f-8a86-193fb468b673" name="Default" comment="Login via Certificad">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajna_commons/flask/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/ajna_commons/flask/login.py" afterDir="false" />
+    <list default="true" id="e71673d3-10c5-4d6f-8a86-193fb468b673" name="Default" comment="Configuração caminhos">
       <change beforePath="$PROJECT_DIR$/bhadrasana" beforeDir="false" afterPath="$PROJECT_DIR$/bhadrasana" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/ajna_commons/flask/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/commons/ajna_commons/flask/login.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -268,7 +265,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570887859904</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Configuração caminhos">
+      <created>1571056505082</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1571056505082</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -316,6 +320,7 @@
     <MESSAGE value="adduser -&gt; novo caminho User" />
     <MESSAGE value="Login de API via JWT" />
     <MESSAGE value="Login via Certificado" />
-    <option name="LAST_COMMIT_MESSAGE" value="Login via Certificado" />
+    <MESSAGE value="Configuração caminhos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Configuração caminhos" />
   </component>
 </project>
