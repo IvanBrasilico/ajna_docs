@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e71673d3-10c5-4d6f-8a86-193fb468b673" name="Default" comment="Configuração caminhos">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bhadrasana" beforeDir="false" afterPath="$PROJECT_DIR$/bhadrasana" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/ajna_commons/utils/images.py" beforeDir="false" afterPath="$PROJECT_DIR$/commons/ajna_commons/utils/images.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/virasana" beforeDir="false" afterPath="$PROJECT_DIR$/virasana" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +45,6 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b773ee2a-6cd7-40a7-adb2-389db9aa2415" name="Default Changelist" comment="" />
       <created>1548940914363</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -272,7 +274,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571056505082</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Configuração caminhos">
+      <created>1571677930872</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1571677930872</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
