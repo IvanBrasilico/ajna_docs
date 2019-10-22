@@ -5,6 +5,11 @@ nav:
     - Home: index.md
     - "Exemplos de uso":
         - "Detecção de anomalia em lote": exemplos/anomalia.md
+        - "Analisar Lote": exemplos/pesquisar_lote.md
+        - "Procurar escaneamento": exemplos/pesquisar_imagens.md
+        - "Pesquisar contêiners vazios com carga": exemplos/pesquisar_vazios_com_carga.md
+        - "Pesquisar contêineres com carga vazios": exemplos/pesquisar_containers_com_carga_vazios.md
+        - "Auditar diferenças de peso": exemplos/pesquisar_diferancas_de_peso.md
     - "Arquitetura e Fluxo": arquitetura.md
 
 
