@@ -5,7 +5,7 @@ nav:
     - Home: index.md
     - "Exemplos de uso":
         - "Detecção de anomalia em lote": exemplos/anomalia.md
-    - "Arquitetura e Fluxo": Arquitetura.md
+    - "Arquitetura e Fluxo": arquitetura.md
 
 
 theme:

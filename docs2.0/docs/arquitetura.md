@@ -1,14 +1,14 @@
+# Arquitetura
 
-## Módulos 
+## Visão geral
 
 AJNA foi concebido em vários módulos com função especializada.
 
 ![Arquitetura geral](images/overview2.png)
 
+## Worklow
 
-# Worklow
-
-## Data Workflow
+### Data Workflow
 
 First, the images need to be captured by AVATAR, or provided by terminals APIs. On the 
 AVATAR case, it also captures some Operational Systems information (file name and path, data, etc)
@@ -27,7 +27,7 @@ scripts have to be designed and added to the integration folder.
 The integration module is now part of Virasana module, but is intended to become a separate and
 more decoupled module, probably managed by an Apache Workflow configuration.  
 
-## Prediction Workflow
+### Prediction Workflow
 
 After the images are on database, the computer vision and machine learning models can be used.
 

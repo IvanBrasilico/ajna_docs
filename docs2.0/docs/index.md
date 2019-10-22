@@ -2,12 +2,7 @@
 
 ## Visão computacional aplicada - Aduana Brasileira
 
-
-
-
-# Welcome to MkDocs
-
-For full documentation visit [mkdocs.org](https://mkdocs.org).
+Manual de usuário
 
 ## Commands
 
@@ -16,9 +11,3 @@ For full documentation visit [mkdocs.org](https://mkdocs.org).
 * `mkdocs build` - Build the documentation site.
 * `mkdocs help` - Print this help message.
 
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
