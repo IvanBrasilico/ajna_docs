@@ -1,1 +1,18 @@
-site_name: My Docs
+site_name: AJNA - Visão computacional para Aduana
+site_description: Aquisição de imagens, integração, busca, interpretação e análise
+
+nav:
+    - Home: index.md
+    - "Exemplos de uso":
+        - "Detecção de anomalia em lote": exemplos/anomalia.md
+    - "Arquitetura e Fluxo": Arquitetura.md
+
+
+theme:
+  name: 'material'
+  language: 'en'
+  palette:
+    primary: 'indigo'
+    accent: 'Green'
+  logo: 'images/material_logo.svg'
+

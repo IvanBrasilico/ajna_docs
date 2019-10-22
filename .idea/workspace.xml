@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e71673d3-10c5-4d6f-8a86-193fb468b673" name="Default" comment="Configuração caminhos">
+    <list default="true" id="e71673d3-10c5-4d6f-8a86-193fb468b673" name="Default" comment="Nova documentação">
+      <change afterPath="$PROJECT_DIR$/docs2.0/docs/arquitetura.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs2.0/docs/exemplos/anomalia.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs2.0/docs/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs2.0/docs/images/logo2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs2.0/docs/images/material_logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs2.0/docs/images/objdetect3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs2.0/docs/images/overview.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs2.0/docs/images/overview2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bhadrasana" beforeDir="false" afterPath="$PROJECT_DIR$/bhadrasana" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/ajna_commons/utils/images.py" beforeDir="false" afterPath="$PROJECT_DIR$/commons/ajna_commons/utils/images.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c-level-intl-site/docs/Architecture.md" beforeDir="false" afterPath="$PROJECT_DIR$/c-level-intl-site/docs/Architecture.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c-level-intl-site/docs/media/Apresentacao201904(Gerencial).odp" beforeDir="false" afterPath="$PROJECT_DIR$/c-level-intl-site/docs/media/Apresentacao201904(Gerencial).odp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/ajna_commons/flask/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/commons/ajna_commons/flask/conf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs2.0/docs/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs2.0/docs/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs2.0/mkdocs.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docs2.0/mkdocs.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/virasana" beforeDir="false" afterPath="$PROJECT_DIR$/virasana" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,12 +31,15 @@
   <component name="ProjectId" id="1QTd6lQ6Yqfw1hb3015y4uexQq5" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="TEXT" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/docs2.0/docs/images" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docs2.0/docs/images" />
+      <recent name="$PROJECT_DIR$/docs2.0/docs" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -281,7 +296,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571677930872</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Nova documentação">
+      <created>1571678302306</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1571678302306</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -330,6 +352,7 @@
     <MESSAGE value="Login de API via JWT" />
     <MESSAGE value="Login via Certificado" />
     <MESSAGE value="Configuração caminhos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Configuração caminhos" />
+    <MESSAGE value="Nova documentação" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nova documentação" />
   </component>
 </project>
