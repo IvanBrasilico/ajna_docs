@@ -6,37 +6,38 @@ AJNA foi concebido em vários módulos com função especializada.
 
 ![Arquitetura geral](images/overview2.png)
 
-## Worklow
+## Fluxo
 
-### Data Workflow
+### Fluxo de dados
 
-First, the images need to be captured by AVATAR, or provided by terminals APIs. On the 
-AVATAR case, it also captures some Operational Systems information (file name and path, data, etc)
 
-Beside the image, the scanning equipment produces a XML file, that contains aditional information.
+Primeiro, as imagens precisam ser capturadas pelo AVATAR ou fornecidas pelas APIs dos terminais. No
+caso do AVATAR, ele também captura algumas informações do Sistema Operacional
+ (nome e caminho do arquivo, data de modificação, etc.)
 
-On old equipment, that is no pattern for the XML, what is a problem for the integration. On future
-equipment, there is the WCO proposed UFF file format. 
+Ao lado da imagem, o equipamento de digitalização produz um arquivo XML, que contém informações adicionais.
 
-AJNA is aware of WCO UFF file format and is being designed to import and export UFF, allowing
-easy comunication with compliant equipment and customs administrations around the world.
+Em equipamentos antigos, não há padrão para o XML, o que é um problema para a integração. Para novos equipamentos,
+ existe o formato de arquivo UFF proposto pela WCO.
 
-After these initial steps, any source of information can be added to the images database. For this,
-scripts have to be designed and added to the integration folder.
+O AJNA está ciente do formato de arquivo WCO UFF e está sendo projetado para importar e exportar UFF, permitindo
+comunicação fácil com equipamentos compatíveis e administrações aduaneiras em todo o mundo.
 
-The integration module is now part of Virasana module, but is intended to become a separate and
-more decoupled module, probably managed by an Apache Workflow configuration.  
+Após essas etapas iniciais, qualquer fonte de informação pode ser adicionada ao banco de dados de imagens. Para isto,
+Os scripts devem ser projetados e adicionados à pasta de integração.
 
-### Prediction Workflow
+O módulo de integração agora faz parte do módulo Virasana, mas pretende se tornar um módulo separado e
+mais desacoplado, provavelmente gerenciado por uma configuração do Apache Workflow.
 
-After the images are on database, the computer vision and machine learning models can be used.
+### Fluxo de trabalho de previsão
 
-For data crossing and for better performance, the models can be included in the
- periodic tasks (on integration module) workflow and their results saved on image metada on DataBase.
+Depois que as imagens estão no banco de dados, os modelos de visão computacional e aprendizado de máquina podem ser usados.
+
+Para cruzamento de dados e para melhor desempenho, os modelos podem ser incluídos nas
+ tarefas periódicas (no módulo de integração) e seus resultados salvos nos metadados da imagem no Banco.
  
-Also, some models can be trained on the complete image (that includes cargo and 
-parts of vehicle and some more noise), but the majority of models are better suited to
-run only on cargo/container area. So, a object detection model has to be run first to
-register the coordinates of the cargo on original image, like on example above:
-
+Além disso, alguns modelos podem ser treinados na imagem completa (que inclui carga e
+partes do veículo mais ruído), mas para a maioria dos modelos é mais adequado selecionar apenas a área da carga/contêiner.
+ Portanto, um modelo de detecção de objeto deve ser executado primeiro para
+registrar as coordenadas da carga na imagem original, como no exemplo abaixo:
 ![Container detection](images/objdetect3.png)
