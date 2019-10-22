@@ -32,7 +32,7 @@ def configure(app: Flask):
     custom_messages.configure(commons)
 
     @commons.route('/login', methods=['GET', 'POST'])
-    @commons.route('/virana/login', methods=['GET', 'POST'])
+    # @commons.route('/virana/login', methods=['GET', 'POST'])
     def login():
         """View para efetuar login."""
         message = request.args.get('message')
@@ -53,6 +53,33 @@ def configure(app: Flask):
             if message:
                 flash(message)
             return render_template('login.html', form=request.form)
+
+    @commons.route('/login_certificado', methods=['GET'])
+    @commons.route('/virana/login_certificado', methods=['GET'])
+    def login_certificado():
+        """View para efetuar login via certificado digital."""
+        s_dn = request.environ.get('HTTP_SSL_CLIENT_S_DN')
+        logger.info('s_dn %s' % s_dn)
+        if s_dn:
+            name = dict([x.split('=') for x in s_dn.split(',')])
+            logger.info('name %s' % name)
+            if name:
+                name = name.get('CN').split(':')[-1]
+            logger.info('%s ofereceu certificado digital' % name)
+            if name:
+                name = name.strip().lower()
+                registered_user = User.get(name)
+                if registered_user is not None:
+                    flash('Usuário autenticado.')
+                    login_user(registered_user)
+                    logger.info('Usuário %s autenticou' % current_user.name)
+                    return redirect(url_for('index'))
+                else:
+                    flash('Usuário não encontrado %s' % name)
+                    return abort(404)
+        flash('Certificado não encontrado %s' % s_dn)
+        return abort(401)
+
 
     @commons.route('/logout')
     @login_required
@@ -83,7 +110,7 @@ def configure(app: Flask):
     app.register_blueprint(commons)
 
 
-def authenticate(username, password):
+def authenticate(username, password=None):
     """Método padrão do flask-login. Repassa responsabilidade a User."""
     if password is None:
         return None

@@ -20,7 +20,7 @@ import redis
 from dominate.tags import img
 
 tmpdir = tempfile.mkdtemp()
-logo = img(src='/static/css/images/logo.png')
+logo = img(src='/static/material_logo.svg', height='40')
 
 try:
     with open('SECRET', 'rb') as secret:

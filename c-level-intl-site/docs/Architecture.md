@@ -5,4 +5,4 @@
 
 AJNA is made of many modules and microservices with specialized behavior.
 
-![Architeture overview](images/overview.png)
+![Architeture overview](images/overview2.png)

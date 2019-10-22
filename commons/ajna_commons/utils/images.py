@@ -1,7 +1,6 @@
 """Funções para tratamento de imagens."""
 import io
-
-from PIL import Image
+from PIL import Image, ImageDraw
 from ajna_commons.flask.log import logger
 from bson.objectid import ObjectId
 from gridfs import GridFS
@@ -36,13 +35,28 @@ def recorta_imagem(image, coords, pil=False):
     return PIL_tobytes(pil_image)
 
 
-def mongo_image(db, image_id):
+def draw_bboxes(image_bytes: bytes, bboxes: list):
+    pil_img = Image.open(io.BytesIO(image_bytes))
+    draw = ImageDraw.Draw(pil_img)
+    for coords in bboxes:
+        draw.rectangle((coords[1] - 2, coords[0] - 2, coords[3] + 2, coords[2] + 2),
+                       outline='#2288EE', width=4)
+        # image.draw()
+    return PIL_tobytes(pil_img)
+
+
+def mongo_image(db, image_id, bboxes=False):
     """Lê imagem do Banco MongoDB. Retorna None se ID não encontrado."""
     fs = GridFS(db)
     _id = ObjectId(image_id)
     if fs.exists(_id):
         grid_out = fs.get(_id)
         image = grid_out.read()
+        if bboxes:
+            predictions = grid_out.metadata.get('predictions')
+            if predictions:
+                bboxes = [pred.get('bbox') for pred in predictions]
+                image = draw_bboxes(image, bboxes)
         return image
     return None
 
