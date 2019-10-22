@@ -4,10 +4,6 @@
     <list default="true" id="e71673d3-10c5-4d6f-8a86-193fb468b673" name="Default" comment="Novo site - atualização do desenho da arquitetura na documentação">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bhadrasana" beforeDir="false" afterPath="$PROJECT_DIR$/bhadrasana" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs2.0/docs/arquitetura.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs2.0/docs/arquitetura.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs2.0/docs/exemplos/anomalia.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs2.0/docs/exemplos/anomalia.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs2.0/docs/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs2.0/docs/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs2.0/mkdocs.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docs2.0/mkdocs.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -307,7 +303,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571746702254</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Novo site - atualização do desenho da arquitetura na documentação">
+      <created>1571748971854</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1571748971854</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
