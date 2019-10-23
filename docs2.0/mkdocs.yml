@@ -10,6 +10,7 @@ nav:
         - "Pesquisar contêiners vazios com carga": exemplos/pesquisar_vazios_com_carga.md
         - "Pesquisar contêineres com carga vazios": exemplos/pesquisar_containers_com_carga_vazios.md
         - "Auditar diferenças de peso": exemplos/pesquisar_diferancas_de_peso.md
+        - "Buscar imagens similares": exemplos/busca_imagem_similar.md
     - "Arquitetura e Fluxo": arquitetura.md
 
 
