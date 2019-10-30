@@ -49,6 +49,8 @@ setup(
             'flake8-quotes',
             'flask-webtest',
             'isort',
+            'mkdocs',
+            'mkdocs-material',
             'pylint',
             'pytest',
             'pytest-cov',
