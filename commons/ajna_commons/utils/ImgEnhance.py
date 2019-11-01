@@ -19,14 +19,14 @@ def expand_tocolor(pil_image: PIL.Image,
         pil_image = ImageOps.equalize(pil_image)
     imgarray = np.asarray(pil_image)
     gray = np.array((imgarray[:, :,  0] * 3. * alpha) ** beta, dtype=np.float32)
-    enhanced_R = gray.copy()
-    enhanced_R[enhanced_R > 254] = 254
-    enhanced_G = (gray - 255)
-    enhanced_G[enhanced_G > 254] = 254
-    enhanced_G[enhanced_G < 0] = 0
-    enhanced_B = (gray - 511)
-    enhanced_B[enhanced_B < 0] = 0
+    enhanced_B = gray.copy()
     enhanced_B[enhanced_B > 254] = 254
+    enhanced_G = (gray - 200)
+    enhanced_G[enhanced_G > 254] = 254
+    enhanced_G[enhanced_G < 0] = 40
+    enhanced_R = (gray - 480)
+    enhanced_R[enhanced_R < 0] = 0
+    enhanced_R[enhanced_R > 254] = 254
     enhanced_RGB = np.dstack((enhanced_R, enhanced_G, enhanced_B)).astype(np.uint8)
     enhanced_color = PIL.Image.fromarray(enhanced_RGB)
     return enhanced_color
