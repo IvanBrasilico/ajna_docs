@@ -6,6 +6,9 @@ from bson.objectid import ObjectId
 from gridfs import GridFS
 
 
+def bytes_toPIL(img: io.BytesIO) -> Image:
+    return Image.open(img)
+
 def PIL_tobytes(pil_image: Image) -> io.BytesIO:
     image_bytes = io.BytesIO()
     pil_image.save(image_bytes, 'JPEG')
