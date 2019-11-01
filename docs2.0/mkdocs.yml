@@ -4,13 +4,18 @@ site_description: Aquisição de imagens, integração, busca, interpretação e
 nav:
     - Home: index.md
     - "Exemplos de uso":
-        - "Detecção de anomalia em lote": exemplos/anomalia.md
-        - "Analisar Lote": exemplos/pesquisar_lote.md
+        - "Analisar estatísticas": exemplos/estatisticas.md
         - "Procurar escaneamento": exemplos/pesquisar_imagens.md
-        - "Pesquisar contêiners vazios com carga": exemplos/pesquisar_vazios_com_carga.md
-        - "Pesquisar contêineres com carga vazios": exemplos/pesquisar_containers_com_carga_vazios.md
-        - "Auditar diferenças de peso": exemplos/pesquisar_diferancas_de_peso.md
+        - "Visualizar imagem e dados": exemplos/view_file.md
+        - "Analisar ou baixar imagem": exemplos/view_file.md
         - "Buscar imagens similares": exemplos/busca_imagem_similar.md
+        - "Analisar Lote (CE)": exemplos/pesquisar_lote.md
+        - "Detecção de anomalia em lote": exemplos/anomalia.md
+        - "Pesquisar contêiners vazios mas declarados com carga": exemplos/pesquisar_vazios_com_carga.md
+        - "Pesquisar contêineres declarados com carga mas vazios": exemplos/pesquisar_containers_com_carga_vazios.md
+        - "Auditar diferenças de peso": exemplos/pesquisar_diferancas_de_peso.md
+        - "Auditar contêineres com um ou dois NCMs":  exemplos/auditoria_ncm.md
+        - "Gerenciar alertas e ocorrências":  exemplos/alertas_ocorrencias.md
     - "Arquitetura e Fluxo": arquitetura.md
 
 
