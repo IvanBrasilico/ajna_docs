@@ -5,10 +5,14 @@ from PIL import ImageOps
 
 
 def autocontrast(pil_image: PIL.Image, cutoff: int = 15,
-                 colorize=False, equalize=False) -> PIL.Image:
+                 colorize=False, equalize=False,
+                 cv2=False) -> PIL.Image:
     if equalize:
         pil_image = ImageOps.equalize(pil_image)
-    pil_image = ImageOps.autocontrast(pil_image, cutoff=cutoff)
+    if cv2:
+        pil_image = enhancedcontrast_cv2(pil_image)
+    elif cutoff > 0.:
+        pil_image = ImageOps.autocontrast(pil_image, cutoff=cutoff)
     if colorize:
         pil_image = pil_image.convert('L')
         pil_image = ImageOps.colorize(pil_image, 'magenta', 'darkblue')
