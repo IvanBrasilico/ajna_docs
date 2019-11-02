@@ -3,11 +3,15 @@ import PIL
 import numpy as np
 from PIL import ImageOps
 
-def autocontrast(pil_image: PIL.Image, cutoff: int = 15) -> PIL.Image:
-    pil_image = pil_image.convert('L')
-    pil_image = ImageOps.equalize(pil_image)
+
+def autocontrast(pil_image: PIL.Image, cutoff: int = 15,
+                 colorize=False, equalize=False) -> PIL.Image:
+    if equalize:
+        pil_image = ImageOps.equalize(pil_image)
     pil_image = ImageOps.autocontrast(pil_image, cutoff=cutoff)
-    pil_image = ImageOps.colorize(pil_image, 'magenta', 'darkblue')
+    if colorize:
+        pil_image = pil_image.convert('L')
+        pil_image = ImageOps.colorize(pil_image, 'magenta', 'darkblue')
     return pil_image
 
 
