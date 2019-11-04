@@ -45,7 +45,7 @@ def mongo_sanitizar(text):
     return unicodedata.normalize('NFC', shaved)
 
 
-def sanitizar(text, norm_function=unicode_sanitizar):
+def sanitizar(text: str, norm_function=unicode_sanitizar)-> str:
     """Faz uma sequência de acões de normalização/sanitização de texto.
 
     Remove espaços à direita e esquerda, passa para "casefold"(caixa baixa),

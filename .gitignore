@@ -36,6 +36,7 @@ image_aq/covimgaq/db.sqlite3.old
 image_aq/covimgaq/db.sqlite3
 bhadrasana*
 padma*
+padma/*
 virasana*
 bhadrasana\
 virasana
@@ -51,4 +52,4 @@ venv/*
 *.log
 *.egg-info
 ajna-venv/*
-avatar*
+avatar/*

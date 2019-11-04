@@ -3,8 +3,20 @@ import PIL
 import numpy as np
 from PIL import ImageOps
 
-def autocontrast(pil_image: PIL.Image, cutoff: int = 15) -> PIL.Image:
-    return ImageOps.autocontrast(pil_image, cutoff=cutoff)
+
+def autocontrast(pil_image: PIL.Image, cutoff: int = 15,
+                 colorize=False, equalize=False,
+                 cv2=False) -> PIL.Image:
+    if equalize:
+        pil_image = ImageOps.equalize(pil_image)
+    if cv2:
+        pil_image = enhancedcontrast_cv2(pil_image)
+    elif cutoff > 0.:
+        pil_image = ImageOps.autocontrast(pil_image, cutoff=cutoff)
+    if colorize:
+        pil_image = pil_image.convert('L')
+        pil_image = ImageOps.colorize(pil_image, 'magenta', 'darkblue')
+    return pil_image
 
 
 def equalize(pil_image: PIL.Image) -> PIL.Image:
@@ -17,15 +29,18 @@ def expand_tocolor(pil_image: PIL.Image,
                    equalize: bool = True) -> PIL.Image:
     if equalize:
         pil_image = ImageOps.equalize(pil_image)
+
+    pil_image = pil_image.convert('L')
     imgarray = np.asarray(pil_image)
-    gray = np.array((imgarray[:, :,  0] * 3. * alpha) ** beta, dtype=np.float32)
+    # gray = np.array((imgarray[:, :,  0] * 3. * alpha) ** beta, dtype=np.float32)
+    gray = np.array((imgarray * 3. * alpha) ** beta, dtype=np.float32)
     enhanced_B = gray.copy()
     enhanced_B[enhanced_B > 254] = 254
-    enhanced_G = (gray - 200)
+    enhanced_G = (gray - 250)
     enhanced_G[enhanced_G > 254] = 254
-    enhanced_G[enhanced_G < 0] = 40
-    enhanced_R = (gray - 480)
-    enhanced_R[enhanced_R < 0] = 0
+    enhanced_G[enhanced_G <= 40] = 40
+    enhanced_R = (gray - 510)
+    enhanced_R[enhanced_R <= 20] = 20
     enhanced_R[enhanced_R > 254] = 254
     enhanced_RGB = np.dstack((enhanced_R, enhanced_G, enhanced_B)).astype(np.uint8)
     enhanced_color = PIL.Image.fromarray(enhanced_RGB)

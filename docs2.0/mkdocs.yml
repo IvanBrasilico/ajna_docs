@@ -7,7 +7,7 @@ nav:
         - "Analisar estatísticas": exemplos/estatisticas.md
         - "Procurar escaneamento": exemplos/pesquisar_imagens.md
         - "Visualizar imagem e dados": exemplos/view_file.md
-        - "Analisar ou baixar imagem": exemplos/view_file.md
+        - "Analisar ou baixar imagem": exemplos/view_file2.md
         - "Buscar imagens similares": exemplos/busca_imagem_similar.md
         - "Analisar Lote (CE)": exemplos/pesquisar_lote.md
         - "Detecção de anomalia em lote": exemplos/anomalia.md
@@ -16,6 +16,11 @@ nav:
         - "Auditar diferenças de peso": exemplos/pesquisar_diferancas_de_peso.md
         - "Auditar contêineres com um ou dois NCMs":  exemplos/auditoria_ncm.md
         - "Gerenciar alertas e ocorrências":  exemplos/alertas_ocorrencias.md
+    - "Uso do Avatar":
+        - "Instalando e configurando fontes de imagens": avatardoc/iniciando.md
+        - "Copiando imagens para o Servidor do AJNA": avatardoc/copiando.md
+        - "Carregando imagens de coleção local": avatardoc/colecao.md
+
     - "Arquitetura e Fluxo": arquitetura.md
 
 
