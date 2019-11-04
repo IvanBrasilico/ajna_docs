@@ -52,4 +52,4 @@ venv/*
 *.log
 *.egg-info
 ajna-venv/*
-avatar*
+avatar/*

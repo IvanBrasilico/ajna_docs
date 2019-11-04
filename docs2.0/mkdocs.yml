@@ -17,9 +17,9 @@ nav:
         - "Auditar contêineres com um ou dois NCMs":  exemplos/auditoria_ncm.md
         - "Gerenciar alertas e ocorrências":  exemplos/alertas_ocorrencias.md
     - "Uso do Avatar":
-        - "Instalando e configurando fontes de imagens": avatar/iniciando.md
-        - "Copiando imagens para o Servidor do AJNA": avatar/copiando.md
-        - "Carregando imagens de coleção local": avatar/colecao.md
+        - "Instalando e configurando fontes de imagens": avatardoc/iniciando.md
+        - "Copiando imagens para o Servidor do AJNA": avatardoc/copiando.md
+        - "Carregando imagens de coleção local": avatardoc/colecao.md
 
     - "Arquitetura e Fluxo": arquitetura.md
 
