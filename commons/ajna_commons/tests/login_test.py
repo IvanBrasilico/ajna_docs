@@ -9,6 +9,7 @@ from flask_nav.elements import Navbar, View
 from flask_wtf.csrf import CSRFProtect
 from pymongo import MongoClient
 
+from ajna_commons.flask.user import DBUser
 import ajna_commons.flask.login as login
 from ajna_commons.flask.conf import MONGODB_URI
 
@@ -40,8 +41,8 @@ class FlaskTestCase(unittest.TestCase):
         self.client = app.test_client()
         self.db = MongoClient(host=MONGODB_URI).unit_test
         login.configure(app)
-        login.DBUser.dbsession = self.db
-        login.DBUser.add('ajna', 'ajna')
+        DBUser.dbsession = self.db
+        DBUser.add('ajna', 'ajna')
 
     def tearDown(self):
         self.db.drop_collection('users')
@@ -82,15 +83,15 @@ class FlaskTestCase(unittest.TestCase):
         assert b'OK' in rv.data
 
     def test_DBuser(self):
-        auser = login.DBUser.get('ajna')
+        auser = DBUser.get('ajna')
         assert auser.name == 'ajna'
-        auser2 = login.DBUser.get('ajna', 'ajna')
+        auser2 = DBUser.get('ajna', 'ajna')
         assert auser2.name == 'ajna'
         # Testa mundança de senha
-        login.DBUser.add('ajna', '1234')
-        auser3 = login.DBUser.get('ajna', 'ajna')
+        DBUser.add('ajna', '1234')
+        auser3 = DBUser.get('ajna', 'ajna')
         assert auser3 is None
-        auser4 = login.DBUser.get('ajna', '1234')
+        auser4 = DBUser.get('ajna', '1234')
         assert auser4.name == 'ajna'
 
     def test_404(self):
