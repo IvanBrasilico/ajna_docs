@@ -56,6 +56,8 @@ def configure(app: Flask):
 
     @commons.route('/login_certificado', methods=['GET'])
     @commons.route('/virana/login_certificado', methods=['GET'])
+    @commons.route('/bhadrasana/login_certificado', methods=['GET'])
+    @commons.route('/bhadrasana2/login_certificado', methods=['GET'])
     def login_certificado():
         """View para efetuar login via certificado digital."""
         s_dn = request.environ.get('HTTP_SSL_CLIENT_S_DN')
