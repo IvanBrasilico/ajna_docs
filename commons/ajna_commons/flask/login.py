@@ -24,7 +24,7 @@ def configure(app: Flask):
 
     """
     login_manager = LoginManager()
-    login_manager.login_view = '/virasana/login'
+    login_manager.login_view = '/login'
     login_manager.session_protection = 'strong'
     login_manager.init_app(app)
 
