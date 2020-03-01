@@ -15,6 +15,8 @@ from flask import (Blueprint, Flask, abort, flash, redirect,
 from flask_login import (current_user, LoginManager, login_required,
                          login_user, logout_user)
 
+login_manager = LoginManager()
+
 
 def configure(app: Flask):
     """Insere as views de login e logout na app.
@@ -23,7 +25,6 @@ def configure(app: Flask):
     em uma aplicação Flask.
 
     """
-    login_manager = LoginManager()
     login_manager.login_view = '/virasana/login'
     login_manager.session_protection = 'strong'
     login_manager.init_app(app)

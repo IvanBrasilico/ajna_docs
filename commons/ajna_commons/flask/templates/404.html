@@ -1,4 +1,8 @@
 {% extends "layout.html" %} {% block content %}{{super()}}
+<div id="404" class="row col-sm-12">
+    Página não encontrada.
+</div>
+
 <div id="404modal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -18,8 +22,6 @@
 {% endblock %} {% block scripts %} {{super()}}
 <script type="text/javascript">
     $(document).ready(function () {
-        {% if not current_user.is_authenticated %}
         $('#404modal').modal();
-        {% endif %}
     })
 </script> {% endblock %}
