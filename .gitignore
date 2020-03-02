@@ -46,7 +46,7 @@ padma*/*
 *risco.csv
 *.class
 
-venv/*
+*venv/*
 */site/*
 .eggs/*
 *.log

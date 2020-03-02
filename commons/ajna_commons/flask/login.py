@@ -25,7 +25,7 @@ def configure(app: Flask):
     em uma aplicação Flask.
 
     """
-    login_manager.login_view = '/virasana/login'
+    login_manager.login_view = '/login'
     login_manager.session_protection = 'strong'
     login_manager.init_app(app)
 
@@ -57,15 +57,18 @@ def configure(app: Flask):
 
     @commons.route('/login_certificado', methods=['GET'])
     @commons.route('/virana/login_certificado', methods=['GET'])
+    @commons.route('/bhadrasana/login_certificado', methods=['GET'])
+    @commons.route('/bhadrasana2/login_certificado', methods=['GET'])
     def login_certificado():
         """View para efetuar login via certificado digital."""
         s_dn = request.environ.get('HTTP_SSL_CLIENT_S_DN')
-        logger.info('s_dn %s' % s_dn)
+        logger.info('URL %s - s_dn %s' % (request.url, s_dn))
         if s_dn:
-            name = dict([x.split('=') for x in s_dn.split(',')])
-            logger.info('name %s' % name)
-            if name:
-                name = name.get('CN').split(':')[-1]
+            name = None
+            names = dict([x.split('=') for x in s_dn.split(',')])
+            logger.info('name %s' % names)
+            if names:
+                name = names.get('CN').split(':')[-1]
             logger.info('%s ofereceu certificado digital' % name)
             if name:
                 name = name.strip().lower()
