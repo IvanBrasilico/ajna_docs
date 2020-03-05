@@ -17,6 +17,27 @@ from flask_login import (current_user, LoginManager, login_required,
 
 login_manager = LoginManager()
 
+def login_view(request):
+    """View para efetuar login."""
+    message = request.args.get('message')
+    if request.method == 'POST':
+        username = mongo_sanitizar(request.form.get('username'))
+        # Não aceitar senha vazia!!
+        password = mongo_sanitizar(request.form.get('senha', '*'))
+        registered_user = authenticate(username, password)
+        if registered_user is not None:
+            flash('Usuário autenticado.')
+            login_user(registered_user)
+            logger.info('Usuário %s autenticou' % current_user.name)
+            # g['username'] = current_user.name
+            return redirect(url_for('index'))
+        else:
+            return abort(401)
+    else:
+        if message:
+            flash(message)
+        return render_template('login.html', form=request.form)
+
 
 def configure(app: Flask):
     """Insere as views de login e logout na app.
@@ -35,7 +56,6 @@ def configure(app: Flask):
     @commons.route('/login', methods=['GET', 'POST'])
     @commons.route('/virana/login', methods=['GET', 'POST'])
     @commons.route('/bhadrasana/login', methods=['GET', 'POST'])
-    @commons.route('/bhadrasana2/login', methods=['GET', 'POST'])
     def login():
         """View para efetuar login."""
         message = request.args.get('message')
