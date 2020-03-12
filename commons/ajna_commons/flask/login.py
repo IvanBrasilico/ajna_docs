@@ -16,6 +16,8 @@ from flask_login import (current_user, LoginManager, login_required,
                          login_user, logout_user)
 
 login_manager = LoginManager()
+login_manager.login_view = '/login'
+
 
 def login_view(request):
     """View para efetuar login."""
@@ -46,7 +48,6 @@ def configure(app: Flask):
     em uma aplicação Flask.
 
     """
-    login_manager.login_view = '/login'
     login_manager.session_protection = 'strong'
     login_manager.init_app(app)
 
@@ -115,7 +116,7 @@ def configure(app: Flask):
         next = request.args.get('next')
         if not is_safe_url(next):
             next = None
-        return redirect(url_for('index'))
+        return redirect(url_for(login_manager.login_view))
 
     # @login_manager.unauthorized_handler
     @app.errorhandler(401)
@@ -124,7 +125,7 @@ def configure(app: Flask):
         logger.debug(args)
         message = 'Não autorizado! ' + \
                   'Efetue login novamente com usuário e senha válidos.'
-        return redirect(url_for('commons.login',
+        return redirect(url_for(login_manager.login_view,
                                 message=message))
 
     @login_manager.user_loader
