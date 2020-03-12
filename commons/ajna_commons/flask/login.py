@@ -108,8 +108,8 @@ def configure(app: Flask):
         flash('Certificado não encontrado %s' % s_dn)
         return abort(401)
 
-    def get_next_url_login():
-        next_url = url_for(login_manager.login_view)
+    def get_next_url_login(message=''):
+        next_url = url_for(login_manager.login_view, message=message)
         parts = next_url.split('/')  # Eliminar caminho base se repetido
         cleaned_parts = set(parts)
         next_url = '/'.join(cleaned_parts)
@@ -131,11 +131,9 @@ def configure(app: Flask):
         logger.debug(args)
         message = 'Não autorizado! ' + \
                   'Efetue login novamente com usuário e senha válidos.'
-        return redirect(get_next_url_login(),
-                        message=message)
+        return redirect(get_next_url_login())
 
-        @login_manager.user_loader
-
+    @login_manager.user_loader
     def load_user(userid):
         """Método padrão do flask-login. Repassa responsabilidade a User."""
         user_entry = User.get(userid)
