@@ -110,9 +110,15 @@ def configure(app: Flask):
 
     def get_next_url_login(message=''):
         next_url = url_for(login_manager.login_view, message=message)
+        print(next_url)
         parts = next_url.split('/')  # Eliminar caminho base se repetido
-        cleaned_parts = set(parts)
-        next_url = '/'.join(cleaned_parts)
+        print(parts)
+        cleaned_parts = []
+        for part in parts:
+            if part not in cleaned_parts:
+                cleaned_parts.append(part)
+        print(cleaned_parts)
+        return '/'.join(cleaned_parts)
 
     @commons.route('/logout')
     @login_required
