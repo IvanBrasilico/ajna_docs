@@ -6,14 +6,15 @@ Funções e classes para gerenciar login e usuários (Flask Login)
 """
 from urllib.parse import urljoin, urlparse
 
-import ajna_commons.flask.custom_messages as custom_messages
-from ajna_commons.flask.log import logger
-from ajna_commons.flask.user import User
-from ajna_commons.utils.sanitiza import mongo_sanitizar
 from flask import (Blueprint, Flask, abort, flash, redirect,
                    render_template, request, url_for)
 from flask_login import (current_user, LoginManager, login_required,
                          login_user, logout_user)
+
+import ajna_commons.flask.custom_messages as custom_messages
+from ajna_commons.flask.log import logger
+from ajna_commons.flask.user import User
+from ajna_commons.utils.sanitiza import mongo_sanitizar
 
 login_manager = LoginManager()
 login_manager.login_view = '/login'
@@ -107,6 +108,11 @@ def configure(app: Flask):
         flash('Certificado não encontrado %s' % s_dn)
         return abort(401)
 
+    def get_next_url_login():
+        next_url = url_for(login_manager.login_view)
+        parts = next_url.split('/')  # Eliminar caminho base se repetido
+        cleaned_parts = set(parts)
+        next_url = '/'.join(cleaned_parts)
 
     @commons.route('/logout')
     @login_required
@@ -116,7 +122,7 @@ def configure(app: Flask):
         next = request.args.get('next')
         if not is_safe_url(next):
             next = None
-        return redirect(url_for(login_manager.login_view))
+        return redirect(get_next_url_login())
 
     # @login_manager.unauthorized_handler
     @app.errorhandler(401)
@@ -125,10 +131,11 @@ def configure(app: Flask):
         logger.debug(args)
         message = 'Não autorizado! ' + \
                   'Efetue login novamente com usuário e senha válidos.'
-        return redirect(url_for(login_manager.login_view,
-                                message=message))
+        return redirect(get_next_url_login(),
+                        message=message)
 
-    @login_manager.user_loader
+        @login_manager.user_loader
+
     def load_user(userid):
         """Método padrão do flask-login. Repassa responsabilidade a User."""
         user_entry = User.get(userid)
