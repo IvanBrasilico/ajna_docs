@@ -240,7 +240,21 @@
       <option name="project" value="LOCAL" />
       <updated>1553426866564</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="generate_batch">
+      <created>1586961630687</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1586961630687</updated>
+    </task>
+    <task id="LOCAL-00027" summary="--">
+      <created>1586961750183</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1586961750183</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -265,18 +279,22 @@
     <MESSAGE value="Merge branch 'master' of https://github.com/IvanBrasilico/ajna_docs&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
     <MESSAGE value="Métodos para mudança de senha e atualização opencv-python no tratamento de imagem" />
     <MESSAGE value="Classes para tratamento de imagens para visualização&#10;&#10;Atualização opencv-python no tratamento de imagem" />
-    <MESSAGE value="--" />
     <MESSAGE value="generate_batch" />
-    <option name="LAST_COMMIT_MESSAGE" value="generate_batch" />
+    <MESSAGE value="--" />
+    <option name="LAST_COMMIT_MESSAGE" value="--" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="350" y="0" key="CommitChangelistDialog2" timestamp="1586961626284">
+    <state x="350" y="0" key="CommitChangelistDialog2" timestamp="1586961745387">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="350" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1586961626284" />
-    <state x="402" y="168" key="git4idea.merge.GitPullDialog" timestamp="1586961634841">
+    <state x="350" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1586961745387" />
+    <state x="460" y="79" key="RollbackChangesDialog" timestamp="1586961857963">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="402" y="168" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1586961634841" />
+    <state x="460" y="79" key="RollbackChangesDialog/0.0.1366.728@0.0.1366.728" timestamp="1586961857963" />
+    <state x="402" y="168" key="git4idea.merge.GitPullDialog" timestamp="1586961759732">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="402" y="168" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1586961759732" />
   </component>
 </project>
