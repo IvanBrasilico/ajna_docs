@@ -270,9 +270,13 @@
     <option name="LAST_COMMIT_MESSAGE" value="generate_batch" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="402" y="168" key="git4idea.merge.GitPullDialog" timestamp="1586953419777">
+    <state x="350" y="0" key="CommitChangelistDialog2" timestamp="1586961626284">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="402" y="168" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1586953419777" />
+    <state x="350" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1586961626284" />
+    <state x="402" y="168" key="git4idea.merge.GitPullDialog" timestamp="1586961634841">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="402" y="168" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1586961634841" />
   </component>
 </project>
