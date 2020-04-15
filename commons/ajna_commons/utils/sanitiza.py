@@ -29,14 +29,17 @@ def unicode_sanitizar(text):
     return unicodedata.normalize('NFC', shaved)
 
 
-def mongo_sanitizar(text):
+def mongo_sanitizar(text: str):
     """Remove todo caractere que pode ser usado em ataque MongoDB injection."""
+    if not isinstance(text, str):
+        return text
     LETRAS = u'abcdefghijklmnopqrstuvwxyz'
     NUMEROS = u'0123456789'
-    SINAIS = u'*.,+&%@! _-:'
+    SINAIS = u'*.,+&%@! _-:/'
     secure = LETRAS + LETRAS.upper() + NUMEROS + SINAIS
     if not text:
         return None
+
     norm_txt = unicodedata.normalize('NFD', text)
     shaved = ''.join(char for char in norm_txt
                      if char in secure)
@@ -45,7 +48,7 @@ def mongo_sanitizar(text):
     return unicodedata.normalize('NFC', shaved)
 
 
-def sanitizar(text, norm_function=unicode_sanitizar):
+def sanitizar(text: str, norm_function=unicode_sanitizar)-> str:
     """Faz uma sequência de acões de normalização/sanitização de texto.
 
     Remove espaços à direita e esquerda, passa para "casefold"(caixa baixa),

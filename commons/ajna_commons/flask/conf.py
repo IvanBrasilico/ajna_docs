@@ -20,7 +20,7 @@ import redis
 from dominate.tags import img
 
 tmpdir = tempfile.mkdtemp()
-logo = img(src='/static/css/images/logo.png')
+logo = img(src='/static/material_logo.svg', height='40')
 
 try:
     with open('SECRET', 'rb') as secret:
@@ -51,15 +51,14 @@ if MONGODB_URI:
 else:
     DATABASE = 'test'
 
+SQL_URI = os.environ.get('SQL_URI', 'mysql+pymysql://ivan@localhost:3306/mercante')
 
 SENTRY_DSN = os.environ.get('SENTRY_DSN')
-
 
 # initialize constants used for server queuing
 TIMEOUT = 10
 BATCH_SIZE = 1000
 ALLOWED_EXTENSIONS = set(['csv', 'zip', 'txt', 'png', 'jpg', 'jpeg', 'sch'])
-
 
 # Address of MicroServices from ajna modules
 # Devem ser definidas em variáveis de ambiente no Servidor de Deploy

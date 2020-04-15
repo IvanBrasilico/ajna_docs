@@ -114,7 +114,6 @@ class BsonImage():
 
         Checa se arquivo existe antes de gravar.
         Se existir, retorna _id correspondente ao MD5 do conteúdo
-        E nome do arquivo.
 
         **IMPORTANTE**
         A checagem é realizada

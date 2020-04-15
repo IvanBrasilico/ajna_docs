@@ -8,7 +8,7 @@ import click
 from pymongo import MongoClient
 
 from ajna_commons.flask.conf import DATABASE, MONGODB_URI
-from ajna_commons.flask.login import DBUser
+from ajna_commons.flask.user import DBUser
 
 
 @click.command()
