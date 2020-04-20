@@ -123,7 +123,7 @@ def generate_batch(db, filtro, projection=None, batch_size=32,
         yield images, rows
 
 
-class ImageBytesTansFormations:
+class ImageBytesTansformations:
 
     @classmethod
     def get_tranformation(cls, name):
