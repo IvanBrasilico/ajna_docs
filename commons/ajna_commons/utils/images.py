@@ -1,6 +1,6 @@
 """Funções para tratamento de imagens."""
 import io
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageOps
 from ajna_commons.flask.log import logger
 from bson.objectid import ObjectId
 from gridfs import GridFS
@@ -121,3 +121,39 @@ def generate_batch(db, filtro, projection=None, batch_size=32,
             rows.append(row)
             i += 1
         yield images, rows
+
+
+class ImageBytesTansFormations:
+
+    @classmethod
+    def get_tranformation(cls, name):
+        return getattr(cls, name)
+
+    @classmethod
+    def get_available_transformations(cls):
+        return [method for method in dir(cls) if '_' not in method]
+
+    @classmethod
+    def rotate90(cls, image_bytes):
+        pil_img = Image.open(io.BytesIO(image_bytes))
+        pil_img = pil_img.transpose(Image.ROTATE_90)
+        return PIL_tobytes(pil_img)
+
+    @classmethod
+    def rotate270(cls, image_bytes):
+        pil_img = Image.open(io.BytesIO(image_bytes))
+        pil_img = pil_img.transpose(Image.ROTATE_270)
+        return PIL_tobytes(pil_img)
+
+    @classmethod
+    def equalize(cls, image_bytes):
+        pil_img = Image.open(io.BytesIO(image_bytes))
+        pil_img = ImageOps.equalize(pil_img)
+        return PIL_tobytes(pil_img)
+
+
+    @classmethod
+    def crop10(cls, image_bytes):
+        pil_img = Image.open(io.BytesIO(image_bytes))
+        pil_img = ImageOps.crop(pil_img, int(pil_img.size[0] / 10))
+        return PIL_tobytes(pil_img)
