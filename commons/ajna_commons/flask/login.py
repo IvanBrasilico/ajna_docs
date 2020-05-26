@@ -57,7 +57,7 @@ def configure(app: Flask):
 
     @commons.route('/login', methods=['GET', 'POST'])
     # @commons.route('/virana/login', methods=['GET', 'POST'])
-    # @commons.route('/bhadrasana/login', methods=['GET', 'POST'])
+    # @commons.route('/bhadrasana2/login', methods=['GET', 'POST'])
     def login():
         """View para efetuar login."""
         message = request.args.get('message')
@@ -109,7 +109,7 @@ def configure(app: Flask):
         return abort(401)
 
     def get_next_url_login(message=''):
-        next_url = url_for(login_manager.login_view, message=message)
+        next_url = url_for('commons.login', message=message)
         print(next_url)
         parts = next_url.split('/')  # Eliminar caminho base se repetido
         print(parts)
