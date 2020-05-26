@@ -53,6 +53,27 @@ def configure(app: Flask):
         access_token = create_access_token(identity=user.id)
         return jsonify(access_token=access_token), 200
 
+    @api.route('/api/login_certificado', methods=['GET', 'POST'])
+    def login_certificado():
+        """View para efetuar login via certificado digital."""
+        s_dn = request.environ.get('HTTP_SSL_CLIENT_S_DN')
+        logger.info('URL %s - s_dn %s' % (request.url, s_dn))
+        if s_dn:
+            name = None
+            names = dict([x.split('=') for x in s_dn.split(',')])
+            logger.info('name %s' % names)
+            if names:
+                name = names.get('CN').split(':')[-1]
+            logger.info('%s ofereceu certificado digital' % name)
+            if name:
+                name = name.strip().lower()
+                user = verify_password(name, name)
+                if user is None:
+                    return jsonify({"msg": "username ou password invalidos"}), 401
+                access_token = create_access_token(identity=user.id)
+                return jsonify(access_token=access_token), 200
+        return jsonify({"msg": "Cabeçalhos com info do certificado não encontrados"}), 401
+
     @api.route('/api/logout', methods=['DELETE'])
     @jwt_required
     def logout():

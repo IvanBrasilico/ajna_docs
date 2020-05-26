@@ -21,10 +21,11 @@
                     <button class="btn btn-block btn-primary btn-default" id="btnlogin">
                         <i class="fa fa-save"></i>&nbsp;Entrar
                     </button>
-                    <button class="btn btn-block btn-primary btn-default" id="btnlogincertificado">
-                        <i class="fa fa-save"></i>&nbsp;Entrar com certificado digital
-                    </button>
                 </form>
+                &nbsp;<br>
+                <button onclick="login_certificado()" class="btn btn-block btn-primary btn-default" id="btnlogin_certificado">
+                    <img src="/static/certificadoOff.png"></img>&nbsp;Entrar com certificado digital
+                </button>
             </div>
         </div>
     </div>
@@ -40,4 +41,8 @@
         
         {% endif %}
     })
+    function login_certificado(campo) {
+        window.location.assign('api/login_certificado')
+    }
+
 </script> {% endblock %}
