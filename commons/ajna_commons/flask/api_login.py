@@ -67,9 +67,11 @@ def configure(app: Flask):
             logger.info('%s ofereceu certificado digital' % name)
             if name:
                 name = name.strip().lower()
-                user = verify_password(name, name)
+                user = User.get(name)
                 if user is None:
-                    return jsonify({"msg": "username ou password invalidos"}), 401
+                    return jsonify(
+                        {"msg": "Username invalido (usuário %s não cadastrado" % name}
+                    ), 401
                 access_token = create_access_token(identity=user.id)
                 return jsonify(access_token=access_token), 200
         return jsonify({"msg": "Cabeçalhos com info do certificado não encontrados"}), 401
@@ -106,7 +108,7 @@ def configure(app: Flask):
                 current_user = 'no user'
         finally:
             app.logger.info('API LOG url: %s %s IP:%s User: %s' %
-                        (path, method, ip, current_user))
+                            (path, method, ip, current_user))
             return response
 
     def verify_password(username, password):
