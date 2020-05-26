@@ -6,6 +6,7 @@ Funções e classes para gerenciar login e tokens (Flask jwt)
 from ajna_commons.flask.conf import SECRET
 from ajna_commons.flask.log import logger
 from ajna_commons.flask.login import authenticate
+from ajna_commons.flask.user import User
 from ajna_commons.utils.sanitiza import mongo_sanitizar
 from flask import Blueprint, Flask, jsonify
 from flask import Flask, jsonify, request
