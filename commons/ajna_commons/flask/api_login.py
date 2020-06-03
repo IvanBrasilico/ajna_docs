@@ -92,7 +92,6 @@ def configure(app: Flask):
         return jsonify({'user.id': current_user}), 200
 
     @api.after_request
-    @jwt_required
     def after_request_callback(response):
         path = None
         method = None
