@@ -40,17 +40,16 @@ def configure(app: Flask):
         """Endpoint para efetuar login (obter token)."""
         if not request.json or not request.is_json:
             return jsonify({"msg": "JSON requerido"}), 400
-
         username = request.json.get('username', None)
         password = request.json.get('password', None)
         if not username:
             return jsonify({"msg": "Parametro username requerido"}), 400
         if not password:
             return jsonify({"msg": "Parametro password requerido"}), 400
-
         user = verify_password(username, password)
         if user is None:
             return jsonify({"msg": "username ou password invalidos"}), 401
+        logger.info('Entrando com usuário %s' % username)
         access_token = create_access_token(identity=user.id)
         return jsonify(access_token=access_token), 200
 
@@ -93,22 +92,25 @@ def configure(app: Flask):
         return jsonify({'user.id': current_user}), 200
 
     @api.after_request
+    @jwt_required
     def after_request_callback(response):
         path = None
         method = None
         ip = None
-        current_user = None
+        try:
+            current_user = get_jwt_identity()
+        except Exception as err:
+            logger.info(str(err), exc_info=True)
+            current_user = 'no user' + str(err)
+        logger.info('Usuário %s' % current_user)
+
         try:
             path = request.path
             method = request.method
             ip = request.environ.get('HTTP_X_REAL_IP',
                                      request.remote_addr)
-            try:
-                current_user = get_jwt_identity()
-            except:
-                current_user = 'no user'
         finally:
-            app.logger.info('API LOG url: %s %s IP:%s User: %s' %
+            logger.info('API LOG url: %s %s IP:%s User: %s' %
                             (path, method, ip, current_user))
             return response
 
