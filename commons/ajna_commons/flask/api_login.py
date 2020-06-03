@@ -91,9 +91,7 @@ def configure(app: Flask):
         current_user = get_jwt_identity()
         return jsonify({'user.id': current_user}), 200
 
-
-    @app.before_request
-    def before_request_callback():
+    def make_log():
         path = None
         method = None
         ip = None
@@ -111,11 +109,15 @@ def configure(app: Flask):
                                      request.remote_addr)
         finally:
             logger.info('API LOG url: %s %s IP:%s User: %s' %
-                            (path, method, ip, current_user))
+                        (path, method, ip, current_user))
+
+    # @app.before_request
+    # def before_request_callback():
+    #    make_log()
 
     @app.after_request
     def after_request_callback(response):
-        before_request_callback()
+        make_log()
         return response
 
     def verify_password(username, password):
