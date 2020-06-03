@@ -113,7 +113,7 @@ def configure(app: Flask):
             logger.info('API LOG url: %s %s IP:%s User: %s' %
                             (path, method, ip, current_user))
 
-    @api.after_request
+    @app.after_request
     def after_request_callback(response):
         before_request_callback()
         return response
