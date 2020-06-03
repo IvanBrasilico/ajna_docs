@@ -91,9 +91,9 @@ def configure(app: Flask):
         current_user = get_jwt_identity()
         return jsonify({'user.id': current_user}), 200
 
-    @api.after_request
+
     @api.before_request
-    def after_request_callback(response):
+    def before_request_callback():
         path = None
         method = None
         ip = None
@@ -112,7 +112,11 @@ def configure(app: Flask):
         finally:
             logger.info('API LOG url: %s %s IP:%s User: %s' %
                             (path, method, ip, current_user))
-            return response
+
+    @api.after_request
+    def after_request_callback(response):
+        before_request_callback()
+        return response
 
     def verify_password(username, password):
         username = mongo_sanitizar(username)
