@@ -92,7 +92,7 @@ def configure(app: Flask):
         return jsonify({'user.id': current_user}), 200
 
 
-    @api.before_request
+    @app.before_request
     def before_request_callback():
         path = None
         method = None
