@@ -4,17 +4,79 @@ Classes para acessar os usuários das aplicações
 DBUser.dbsession deve receber a conexão com o BD.
 
 """
+from enum import Enum
 
-from ajna_commons.flask.log import logger
-from ajna_commons.utils.sanitiza import mongo_sanitizar
+import pymongo
 from flask_login import UserMixin
 from werkzeug.security import check_password_hash, generate_password_hash
 
+from ajna_commons.flask.log import logger
+from ajna_commons.utils.sanitiza import mongo_sanitizar
+
+
+class DBType(Enum):
+    mongo = 1
+    sqlalchemy = 2
+
+
+class UserDBComunication():
+    def __init__(self, dbsession, alchemy_class=None):
+        self.dbsession = dbsession
+        if isinstance(dbsession, pymongo.database.Database):
+            self.type = DBType.mongo
+        else:
+            self.type = DBType.sqlalchemy
+        self.alchemy_class = alchemy_class
+
+    def insert(self, username, encripted, password):
+        if self.type == DBType.mongo:
+            cursor = self.dbsession.users.update_one(
+                {'username': username},
+                {"$set": {'username': username,
+                          'password': encripted}},
+                upsert=True)
+            logger.debug('cursor', cursor)
+        elif self.type == DBType.sqlalchemy:
+            user = self.dbsession.query(self.alchemy_class). \
+                filter(self.alchemy_class.cpf == username).one_or_none()
+            if user is None:
+                user = self.alchemy_class()
+                user.cpf = username
+            user.password = password
+            self.dbsession.add(user)
+            self.dbsession.commit()
+
+    def update(self, username, encripted, password):
+        if self.type == DBType.mongo:
+            cursor = self.dbsession.users.update_one(
+                {'username': username},
+                {"$set": {'username': username,
+                          'password': encripted}},
+                upsert=True)
+            logger.debug('cursor', cursor)
+        elif self.type == DBType.sqlalchemy:
+            user = self.dbsession.query(self.alchemy_class). \
+                filter(self.alchemy_class.cpf == username).one()
+            user.password = password
+            self.dbsession.add(user)
+            self.dbsession.commit()
+
+    def get(self, username):
+        user = None
+        if self.type == DBType.mongo:
+            user = self.dbsession.users.find_one(
+                {'username': username})
+        elif self.type == DBType.sqlalchemy:
+            usuario = self.dbsession.query(self.alchemy_class). \
+                filter(self.alchemy_class.cpf == username).one_or_none()
+            user = {'password': usuario.password, 'nome': usuario.nome}
+        return user
+
 
 class DBUser():
-    """Classe que valida o usuário em uma base MongoDB.
+    """Classe que valida o usuário em uma base.
 
-    A conexão à base MongoDB deve ser informada antes do uso da classe.
+    A conexão à base deve ser informada antes do uso da classe.
     Se dbsession for None, get retorna usuario caso username==senha
     (Comportamento utilizado para testes unitários)
     Podem ser passadas outras conexões a outros BD caso implementem os métodos
@@ -32,6 +94,7 @@ class DBUser():
     """
 
     dbsession = None
+    alchemy_class = None
 
     def __init__(self, id, password=None):
         """Apenas monta uma instância."""
@@ -51,12 +114,8 @@ class DBUser():
             raise Exception('Sem conexão com o Banco de Dados!')
         username, password = cls.sanitize(username, password)
         encripted = cls.encript(password)
-        cursor = cls.dbsession.users.update_one(
-            {'username': username},
-            {"$set": {'username': username,
-                      'password': encripted}},
-            upsert=True)
-        logger.debug('cursor', cursor)
+        dbcomunicator = UserDBComunication(cls.dbsession, cls.alchemy_class)
+        dbcomunicator.insert(username, encripted, password)
         return DBUser.get(username, password)
 
     @classmethod
@@ -66,12 +125,8 @@ class DBUser():
             raise Exception('Sem conexão com o Banco de Dados!')
         username, password = cls.sanitize(username, password)
         encripted = cls.encript(password)
-        cursor = cls.dbsession.users.update_one(
-            {'username': username},
-            {"$set": {'username': username,
-                      'password': encripted}}
-        )
-        logger.debug('cursor', cursor)
+        dbcomunicator = UserDBComunication(cls.dbsession, cls.alchemy_class)
+        dbcomunicator.insert(username, encripted, password)
         return True
 
     @classmethod
@@ -83,7 +138,7 @@ class DBUser():
 
     def check(self, encripted):
         """Verifica senha informada contra a versão criptograda do BD."""
-        if self._password is None:
+        if self._password is None or encripted is None:
             return False
         return check_password_hash(encripted, self._password)
 
@@ -100,12 +155,10 @@ class DBUser():
             username, password = cls.sanitize(username, password)
             # logger.debug('DBSEssion %s' % cls.dbsession)
             dbuser = DBUser(username, password)
-            user = cls.dbsession.users.find_one(
-                {'username': username})
+            dbcomunicator = UserDBComunication(cls.dbsession, cls.alchemy_class)
+            user = dbcomunicator.get(username)
             if user is None:
                 return None
-            # logger.debug('***username %s, passed password %s ' % \
-            #             (username, password))
             if password is not None:
                 encripted = user['password']
                 logger.debug('encripted %s' % encripted)
