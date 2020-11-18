@@ -15,7 +15,10 @@ import os
 import pickle
 import tempfile
 
-import redis
+try:
+    import redis
+except ImportError:
+    pass
 # from ajna_commons.flask.log import logger
 from dominate.tags import img
 
@@ -42,7 +45,10 @@ REDIS_URL = os.environ.get('REDIS_URL')
 if not REDIS_URL:
     REDIS_URL = 'redis://localhost:6379'
 BACKEND = BROKER = REDIS_URL
-redisdb = redis.StrictRedis.from_url(REDIS_URL)
+try:
+    redisdb = redis.StrictRedis.from_url(REDIS_URL)
+except NameError:
+    pass
 
 MONGODB_URI = os.environ.get('MONGODB_URI')
 if MONGODB_URI:
