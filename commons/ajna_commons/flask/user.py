@@ -67,9 +67,11 @@ class UserDBComunication():
             user = self.dbsession.users.find_one(
                 {'username': username})
         elif self.type == DBType.sqlalchemy:
+            user = None
             usuario = self.dbsession.query(self.alchemy_class). \
                 filter(self.alchemy_class.cpf == username).one_or_none()
-            user = {'password': usuario.password, 'nome': usuario.nome}
+            if usuario:
+                user = {'password': usuario.password, 'nome': usuario.nome}
         return user
 
 

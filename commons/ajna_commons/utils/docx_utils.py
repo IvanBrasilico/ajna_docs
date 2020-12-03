@@ -49,7 +49,7 @@ def edit_table_tag(text: str, paragraph: Paragraph, conteudo: dict, document: Do
             # print(row)
             for ind_col, key in enumerate(tags[1:]):
                 content = row.get(key)
-                row_cells[ind_col].text = content
+                row_cells[ind_col].text = str(content)
 
 
 def edit_paragraph_tag(text: str, paragraph: Paragraph, conteudo: dict, document: Document):
@@ -111,11 +111,22 @@ def paragraph_text_replace(paragraph: Paragraph, conteudo: dict, document: Docum
         edit_table_tag(text, paragraph, conteudo, document)
 
 
+
 def docx_replacein(document: Document, conteudo: dict, user_name: str):
     agora = datetime.strftime(datetime.now(), '%d/%m/%Y %H:%M')
     footer = f'Emitido por {user_name} em {agora} pelo gerador de docx do sistema Ajna'
     section = document.sections[0]
     section.footer.paragraphs[0].text = footer
+    for paragraph in section.header.paragraphs:
+        try:
+            paragraph_text_replace(paragraph, conteudo, document)
+        except Exception as err:
+            logger.error(err, exc_info=True)
+    for table in section.header.tables:
+        for row in table.rows:
+            for cell in row.cells:
+                for paragraph in cell.paragraphs:
+                    paragraph_text_replace(paragraph, conteudo, document)
     for paragraph in document.paragraphs:
         try:
             paragraph_text_replace(paragraph, conteudo, document)
