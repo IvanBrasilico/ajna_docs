@@ -80,7 +80,7 @@ def configure(app: Flask):
             return render_template('login.html', form=request.form)
 
     @commons.route('/login_certificado', methods=['GET'])
-    @commons.route('/virana/login_certificado', methods=['GET'])
+    @commons.route('/virasana/login_certificado', methods=['GET'])
     @commons.route('/bhadrasana/login_certificado', methods=['GET'])
     @commons.route('/bhadrasana2/login_certificado', methods=['GET'])
     def login_certificado():

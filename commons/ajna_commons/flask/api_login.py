@@ -46,7 +46,7 @@ def configure(app: Flask):
             return jsonify({"msg": "Parametro username requerido"}), 400
         if not password:
             return jsonify({"msg": "Parametro password requerido"}), 400
-        user = verify_password(username, password)
+        user = authenticate(username, password)
         if user is None:
             return jsonify({"msg": "username ou password invalidos"}), 401
         logger.info('Entrando com usuário %s' % username)
