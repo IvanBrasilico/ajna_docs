@@ -153,7 +153,7 @@ class DBUser():
 
         """
         logger.debug('Getting user. dbsession= %s' % cls.dbsession)
-        if cls.dbsession:
+        if cls.dbsession is not None:
             username, password = cls.sanitize(username, password)
             # logger.debug('DBSEssion %s' % cls.dbsession)
             dbuser = DBUser(username, password)
