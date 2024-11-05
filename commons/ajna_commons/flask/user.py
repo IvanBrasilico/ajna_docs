@@ -22,10 +22,7 @@ class DBType(Enum):
 class UserDBComunication():
     def __init__(self, dbsession, alchemy_class=None):
         self.dbsession = dbsession
-        if isinstance(dbsession, pymongo.database.Database):
-            self.type = DBType.mongo
-        else:
-            self.type = DBType.sqlalchemy
+        self.type = DBType.sqlalchemy
         self.alchemy_class = alchemy_class
 
     def insert(self, username, encripted, password):
