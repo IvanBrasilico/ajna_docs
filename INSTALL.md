@@ -1,9 +1,10 @@
 * [Módulos](#Módulos)
   * [Geral](#Geral)
   * [Desenvolvimento](#Desenvolvimento)
+  * [Produção](#Produção)
   * [core](#Core)
   * [virasana](#virasana)
-  * [bhadrasana](#bhadrasana)
+  * [bhadrasana2](#bhadrasana2)
   * [padma](#padma)
 
 * [Estrutura] (#Estrutura)
@@ -13,24 +14,110 @@
 
 ## Geral
 
-Os arquivos install_*.sh podem ser utilizados para instalação automática dos módulos ou como guia.
+Os arquivos install_*.sh podem ser utilizados para instalação automática
+dos módulos ou como guia (necessário atualizar).
 
-Os requisitos do Sistema são Python3.5+, Redis, MongoDB  
+Os requisitos do Sistema são Python3.9+, MongoDB, MySQL  
 
-Para instalação em Servidor, é necessário instalar um Servidor WEB (Nginx ou Apache) e habilitar o mod_proxy para
-os servidores AJNA. Para inicializar os serviços AJNA, é recomendado o uso do Supervisor. São fornecidos exemplos
-e scripts para estas configurações nos arquivos configure_*.sh e supervisor_*.sh. 
+Para instalação em Servidor, é necessário instalar um Servidor Apache e habilitar 
+o mod_proxy e mod_ssl para os servidores AJNA. Para inicializar os serviços AJNA, 
+é recomendado o uso do Supervisor. São fornecidos exemplos e scripts para estas 
+configurações nos arquivos configure_*.sh e supervisor_*.sh. 
 
 ## Desenvolvimento
 
-Recomenda-se clonar primeiro o "core" ajna na pasta ´home/user/ajna´ e depois todos os repositórios
- dentro da pasta ajna.
- 
-Depois, dentro de cada pasta de cada módulo e com venv ativo, digitar:
+Recomenda-se clonar primeiro o "core" ajna_docs na pasta ´home/user/ajna´ e depois todos os repositórios
+(virasana, bhadrasana2, ajna_api, ajna_bot) dentro da pasta ajna.
+
+As pastas ficarão assim
+
+* ajna
+  * ajna_docs
+  * virasana
+  * bhadrasana2
+
+Exemplo: 
+Dentro de cada pasta de cada módulo e *com venv ativo*, após instalação, rodar os testes
+e tentar rodar a app. Podem ter arquivos de configuração e variáveis de ambiente a serem 
+adicionadas (que por motivos de segurança não estão no git e na documentação)
+```
+$ mkdir ajna
+$ cd ajna
+$ git clone https://github.com/IvanBrasilico/ajna_docs/
+$ git clone https://github.com/IvanBrasilico/virasana/
+$ cd virasana
+$ python3 -m venv virasana-venv
+$ . virasana-venv/bin/activate
+(virasana-venv)$ pip install -e .[dev]
+(virasana-venv)$ ln -s ../ajna_docs/commons/ajna_commons ajna_commons
+(virasana-venv)$ ln -s ../bhadrasana2/bhadrasana bhadrasana
+(virasana-venv)$ python -m pytest --cov=virasana  virasana/tests
+(virasana-venv)$ tox
+```
+
+### Variáveis de ambiente
+É necessário setar as variáveis de ambiente para configuração, senhas de Banco de Dados, etc.
 
 ```
-(venv)$ ln -s ../commons/ajna_commons .
-(venv)$ pip install -e .[dev]
+export SQL_URI=mysql+pymysql://usuario:senha@servidor:3306/dbmercante
+export SQL_USER=True
+export MONGODB_URI=mongodb://usuario:senha@servidor:1352/ajna
+```
+
+No Servidor, estas variáveis podem ser setadas no prompt para testes, para produção colocá-las
+na configuração do supervisor.
+
+No desenvolvimento, é possível usar recursos da IDE ou bibliotecas como o python-dotenv.
+
+## Produção
+
+### Instalar e configurar apache
+```
+sudo dnf install httpd mod_proxy mod_ssl
+sudo systemctl enable httpd
+sudo systemctl start httpd
+curl localhost
+sudo firewall-cmd --permanent --zone=public --add-service=http
+sudo firewall-cmd --permanent --zone=public --add-service=https
+sudo firewall-cmd --reload
+cat /etc/httpd/conf/httpd.conf
+sudo nano /etc/httpd/conf.d/sites.conf (Adicionar caminho para o Servidor python/gunicorn)
+EX:
+<VirtualHost *:80>
+
+ProxyPreserveHost On
+ProxyPass /virasana/ http://127.0.0.1:5001/virasana/
+ProxyPassReverse /virasana/ http://127.0.0.1:5001/virasana/
+
+</VirtualHost> (Ctrl+X Salvar)
+
+sudo httpd -t
+sudo systemctl httpd reload
+sudo systemctl restart httpd.service
+````
+(Ver no arquivo configuração_apache.md a **configuração do ssl**)
+
+### Instalação dos módulos
+
+Seguir os passos acima em desenvolvimento. Para testar, rodar o comando:
+´´´
+(virasana-venv)$ gunicorn wsgi_production:application -b localhost:5001
+´´´
+
+O comando acima deixa o gunicorn com a aplicação Flask virasana rodando na porta 5001. 
+Ao acessar o endereço do Servidor apache (Ex: http://ajna1.rfoc.srf/virasana) o Apache
+redirecionará as requisições para esta porta. A aplicação estará funcionando, mas sem 
+a apresentação css e javascript. Copiar o index.html e a pasta static do Ajna para /var/www/html
+(home do Apache). Será necessário certificar que o usuário do Apache tem permissão nas pastas.
+
+### SELinux
+
+Em máquinas com SELinux é necessário rodar também os comandos abaixo:
+
+```
+$ sudo /usr/sbin/setsebool -P httpd_can_network_connect 1
+$ sudo chcon -R -v -t httpd_sys_rw_content_t /var/www/html/index.html
+$ sudo chcon -R -v -t httpd_sys_rw_content_t /var/www/html/static
 ```
 
 ## core
@@ -43,8 +130,8 @@ Clonar o módulo raiz ajna e rodar install_*.sh no projeto ajna.
 Automático:
 
 ```
-$git clone https://github.com/IvanBrasilico/ajna.git
-$cd ajna
+$git clone https://github.com/IvanBrasilico/ajna_docs
+$cd ajna_docs
 $./install_requisites.sh
 $./install_core.sh
 ```
@@ -52,7 +139,7 @@ $./install_core.sh
 Manual (presumindo que requisitos estão instalados e atualizados):
 
 ```
-$git clone https://github.com/IvanBrasilico/ajna.git
+$git clone https://github.com/IvanBrasilico/ajna_docs
 $cd ajna
 $python3 -m venv ajna-venv
 $. ajna-venv/bin/activate
@@ -72,17 +159,11 @@ Rodar configure_virasana.sh para instalar as configurações do supervisor e do 
  editar os arquivos virasana/supervisor_* e revisar as configurações do apache/nginx manualmente para adaptar 
  ao ambiente utilizado. 
 
-## bhadrasana
+## bhadrasana2
 
 Controla o data_aq, permite cruzamento de dados e gerenciamento, manual ou automático, de parâmetros de risco.
 
-A instalação segue exatamente os mesmos passos do virasana:
-
-Rodar install_bhadrasana.sh no diretório raiz do ajna.
-
-Ir para diretório bhadrasana e rodar "./celery.sh" e "python wsgi_sentinela_debug.py" para testar instalação. 
-
-Rodar configure_bhadrasana.sh para instalar as configurações do supervisor e do apache/nginx.
+Contém também a aplicação Fichas
 
 ## padma
 
@@ -124,7 +205,7 @@ A estrutura de diretórios ficará assim:
 <pre>/ajna  
  ┬  
  ├  commons
- ├  bhadrasana
+ ├  bhadrasana2
  ├  padma
  └  virasana
 </pre>
@@ -134,5 +215,5 @@ dentro de cada diretório/módulo, com o venv respectivo ativo, digite:
 
 ```
 $ pip uninstall ajna_commons
-$ ln -s ../ajna_commons/ajna_commons .
+$ ln -s ../ajna_docs/commons/ajna_commons ajna_commons
 ```
