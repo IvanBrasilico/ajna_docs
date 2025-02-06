@@ -5,7 +5,7 @@
 
 Visão computacional e aprendizado de máquina aplicados à vigilância e repressão aduaneira
 
-
+**Para instruções** detalhadas de **instalação** e configuração, ver INSTALL.md 
 
 * [Documentação](http://ajna-mod.readthedocs.io/pt_BR/latest/)
 * [Módulos](#Módulos)
@@ -118,7 +118,7 @@ Para poder editar o ajna_commons num local único (pois será instalada uma cóp
 
 ```
 $ pip uninstall ajna_commons
-$ ln -s ../ajna_commons/ajna_commons .
+$ ln -s ../ajna_docs/commons/ajna_commons ajna_commons
 ```
 
 Porque um venv para cada projeto???
