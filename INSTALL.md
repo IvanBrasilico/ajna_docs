@@ -110,6 +110,42 @@ redirecionará as requisições para esta porta. A aplicação estará funcionan
 a apresentação css e javascript. Copiar o index.html e a pasta static do Ajna para /var/www/html
 (home do Apache). Será necessário certificar que o usuário do Apache tem permissão nas pastas.
 
+### Instalação do supervisor
+
+````
+sudo dnf install supervisor.noarch
+sudo touch /etc/supervisord.conf
+sudo echo_supervisord_conf > /etc/supervisord.conf
+sudo nano /etc/supervisord.conf
+#incluir as linhas "[supervisord]
+#environment=" com as variáveis de ambiente e 
+#"[include]
+#files = /etc/supervisord.d/*conf"
+sudo systemctl enable supervisord
+sudo systemctl start supervisord
+#copiar do módulo do ajna o arquivo do supervisor para /etc/supervisord.d/ fazendo as adaptações necessárias
+sudo supervisorctl reload  # É possível configurar supervisor para não precisar de sudo no seu usuário
+sudo supervisorctl restart
+sudo supervisorctl status  
+````
+
+### MariaDB
+
+````
+sudo dnf install mariadb-server
+sudo systemctl start mariadb
+sudo mysql_secure_installation  # Siga as instruções
+mysql -u root -p
+# Criar o banco de dados e usuário
+# CREATE DATABASE db_mercante;
+# CREATE USER 'adm'@'%' IDENTIFIED BY 'your_secure_password';
+# GRANT ALL PRIVILEGES ON db_mercante.* TO 'adm'@'%';
+# FLUSH PRIVILEGES;
+#
+sudo firewall-cmd --permanent --add-service=mysql
+sudo firewall-cmd --reload
+````
+
 ### SELinux
 
 Em máquinas com SELinux é necessário rodar também os comandos abaixo:
@@ -118,6 +154,7 @@ Em máquinas com SELinux é necessário rodar também os comandos abaixo:
 $ sudo /usr/sbin/setsebool -P httpd_can_network_connect 1
 $ sudo chcon -R -v -t httpd_sys_rw_content_t /var/www/html/index.html
 $ sudo chcon -R -v -t httpd_sys_rw_content_t /var/www/html/static
+$ sudo setsebool -P mysql_connect_any on
 ```
 
 ## core
