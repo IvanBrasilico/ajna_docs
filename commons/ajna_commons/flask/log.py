@@ -42,15 +42,17 @@ try:
 except AttributeError:
     root_path = os.path.dirname(__file__)
 
-log_file = os.path.join(root_path, 'error.log')
-print('Fazendo log de erros e alertas no arquivo ', log_file)
-error_handler = logging.FileHandler(log_file)
+#log_file = os.path.join(root_path, 'error.log')
+#print('Fazendo log de erros e alertas no arquivo ', log_file)
+#error_handler = logging.FileHandler(log_file)
 
-activity_file = os.path.join(root_path, 'access.log')
-print('Fazendo log de atividade no arquivo ', activity_file)
-activity_handler = logging.FileHandler(activity_file)
+#activity_file = os.path.join(root_path, 'access.log')
+#print('Fazendo log de atividade no arquivo ', activity_file)
+#activity_handler = logging.FileHandler(activity_file)
 
 out_handler = logging.StreamHandler(sys.stdout)
+error_handler = logging.StreamHandler(sys.stderr)
+activity_handler = logging.StreamHandler(sys.stdout)
 
 formatter = logging.Formatter(
     fmt=FORMAT_STRING,
