@@ -12,7 +12,7 @@ from flask import Blueprint, Flask, jsonify
 from flask import Flask, jsonify, request
 from flask_jwt_extended import (
     JWTManager, jwt_required, create_access_token,
-    get_jwt_identity, get_raw_jwt
+    get_jwt_identity, get_jwt
 )
 
 
@@ -23,19 +23,19 @@ def configure(app: Flask):
     em uma aplicação Flask.
 
     """
-    api = Blueprint('/api', __name__)
+    api = Blueprint('api', __name__, url_prefix='/api')
     app.config['JWT_SECRET_KEY'] = SECRET
     app.config['JWT_BLACKLIST_ENABLED'] = True
     jwt = JWTManager(app)
 
     blacklist = set()
 
-    @jwt.token_in_blacklist_loader
+    @jwt.token_in_blocklist_loader
     def check_if_token_in_blacklist(decrypted_token):
         jti = decrypted_token['jti']
         return jti in blacklist
 
-    @api.route('/api/login', methods=['POST'])
+    @api.route('/login', methods=['POST'])
     def login():
         """Endpoint para efetuar login (obter token)."""
         if not request.json or not request.is_json:
@@ -53,7 +53,7 @@ def configure(app: Flask):
         access_token = create_access_token(identity=user.id)
         return jsonify(access_token=access_token), 200
 
-    @api.route('/api/login_certificado', methods=['GET', 'POST'])
+    @api.route('/login_certificado', methods=['GET', 'POST'])
     def login_certificado():
         """View para efetuar login via certificado digital."""
         s_dn = request.environ.get('HTTP_SSL_CLIENT_S_DN')
@@ -76,17 +76,17 @@ def configure(app: Flask):
                 return jsonify(access_token=access_token), 200
         return jsonify({"msg": "Cabeçalhos com info do certificado não encontrados"}), 401
 
-    @api.route('/api/logout', methods=['DELETE'])
-    @jwt_required
+    @api.route('/logout', methods=['DELETE'])
+    @jwt_required()
     def logout():
-        jti = get_raw_jwt()['jti']
+        jti = get_jwt()['jti']
         blacklist.add(jti)
         current_user = get_jwt_identity()
         logger.info('Usuário %s efetuou logout' % current_user)
         return jsonify({"msg": "Logout efetuado"}), 200
 
-    @api.route('/api/test')
-    @jwt_required
+    @api.route('/test')
+    @jwt_required()
     def get_resource():
         current_user = get_jwt_identity()
         return jsonify({'user.id': current_user}), 200
