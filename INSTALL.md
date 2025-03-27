@@ -225,15 +225,49 @@ $pip install .
 Ex:
 
 ```
+$cd /home/ajna/
+$mkdir apps
+$cd apps
+$mkdir ajna
+$cd ajna
+$git clone https://github.com/IvanBrasilico/ajna_docs.git
+$cd ajna_docs
+$python3 -m venv commons-venv
+$. commons-venv/bin/activate
+(commons-venv)$pip install .
+(commons-venv)$python -m pytest (roda os testes automatizados)
+```
+
+
+```
+$cd ..
 $git clone https://github.com/IvanBrasilico/virasana.git
 $cd virasana
+$ln -s ../ajna_docs/commons/ajna_commons ajna_commons
 $python3 -m venv virasana-venv
 $. virasana-venv/bin/activate
 (virasana-venv)$pip install .
 (virasana-venv)$python -m pytest (roda os testes automatizados)
-(virasana-venv)$./virasana/celery.sh (inicia os workers do serviço celery)
-(virasana-venv)$ python virasana/app.py (inicia o servidor web/api)
+(virasana-venv)$ python virasana/wsgi_debug.py (inicia o servidor web/api)
 ```
+
+```
+$git clone https://github.com/IvanBrasilico/bhadrasana.git
+$cd bhadrasana
+$ln -s ../ajna_docs/commons/ajna_commons ajna_commons
+$python3 -m venv bhadrasana-venv
+$. bhadrasana-venv/bin/activate
+(bhadrasana-venv)$pip install .
+(bhadrasana-venv)$export NLTK_DATA=/home/ajna/apps/ajna/bhadrasana2/bhadrasana-venv/nltk_data/
+(bhadrasana-venv)$python
+>>>>>>import nltk
+>>>>>>nltk.download('stopwords')
+(bhadrasana-venv)$python -m pytest (roda os testes automatizados)
+(bhadrasana-venv)$python bhadrasana/wsgi_debug.py (inicia o servidor web/api)
+```
+
+
+
 
 ## Estrutura
 
