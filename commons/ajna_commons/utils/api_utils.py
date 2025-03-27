@@ -4,7 +4,7 @@ from dateutil import parser
 from flask import current_app, jsonify
 from ruamel import yaml
 from sqlalchemy import select, and_
-from sqlalchemy.engine import RowProxy
+from sqlalchemy.engine import Row
 from sqlalchemy.orm.attributes import InstrumentedAttribute
 
 
@@ -15,7 +15,7 @@ def exclude_from_dict(dict, exclude: list = None):
                 dict.pop(key)
 
 
-def dump_rowproxy(rowproxy: RowProxy, exclude: list = None):
+def dump_rowproxy(rowproxy: Row, exclude: list = None):
     dump = dict([(k, v) for k, v in rowproxy.items() if not k.startswith('_')])
     exclude_from_dict(dump, exclude)
     return dump
