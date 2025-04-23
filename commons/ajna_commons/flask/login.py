@@ -86,14 +86,14 @@ def configure(app: Flask):
     def login_certificado():
         """View para efetuar login via certificado digital."""
         s_dn = request.environ.get('HTTP_SSL_CLIENT_S_DN')
-        logger.info('URL %s - s_dn %s' % (request.url, s_dn))
+        logger.info('login_certificado: URL %s - s_dn %s' % (request.url, s_dn))
         if s_dn:
             name = None
             names = dict([x.split('=') for x in s_dn.split(',')])
-            logger.info('name %s' % names)
+            logger.info('login_certificado: name %s' % names)
             if names:
                 name = names.get('CN').split(':')[-1]
-            logger.info('%s ofereceu certificado digital' % name)
+            logger.info('login_certificado: %s ofereceu certificado digital' % name)
             if name:
                 name = name.strip().lower()
                 registered_user = User.get(name)

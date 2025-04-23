@@ -137,7 +137,7 @@ class BsonImage():
                     self._filename +
                     ' MD5(' + m.hexdigest() + ')' +
                     ' tentativa de inserir pela segunda vez!!')
-                # File exists, abort!
+                # File exists, abort inserting file, just return _id!
                 return grid_out._id
         # Insert File
         return fs.put(self._content, filename=self._filename,

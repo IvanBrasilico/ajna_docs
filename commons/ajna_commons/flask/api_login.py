@@ -98,8 +98,7 @@ def configure(app: Flask):
         try:
             current_user = get_jwt_identity()
         except Exception as err:
-            logger.info(str(err), exc_info=True)
-            current_user = 'no user' + str(err)
+            current_user = 'API LOG - no user' + str(err)
         logger.info('Usuário %s' % current_user)
 
         try:
@@ -115,7 +114,7 @@ def configure(app: Flask):
     # def before_request_callback():
     #    make_log()
 
-    @app.after_request
+    @api.after_request
     def after_request_callback(response):
         make_log()
         return response
