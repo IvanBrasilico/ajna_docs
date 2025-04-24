@@ -86,6 +86,8 @@ def configure(app: Flask):
     def login_certificado():
         """View para efetuar login via certificado digital."""
         s_dn = request.environ.get('HTTP_SSL_CLIENT_S_DN')
+        if s_dn is None:
+            s_dn = request.environ.get('HTTP_X_SSL_CLIENT_DN')
         logger.info('login_certificado: URL %s - s_dn %s' % (request.url, s_dn))
         if s_dn:
             name = None
