@@ -131,7 +131,7 @@ class BsonImage():
         m = md5()
         m.update(self._content)
         grid_out = fs.find_one({'md5': m.hexdigest()})
-        if grid_out:
+        if grid_out is not None:
             if grid_out.filename == self._filename:
                 logger.warning(
                     self._filename +
