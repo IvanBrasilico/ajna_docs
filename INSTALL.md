@@ -62,6 +62,7 @@ $ . virasana-venv/bin/activate
 export SQL_URI=mysql+pymysql://usuario:senha@servidor:3306/dbmercante
 export SQL_USER=True
 export MONGODB_URI=mongodb://usuario:senha@servidor:1352/ajna
+export EMBARCACOES_SECRET_KEY="umasenha_aleatoria_gerada_por_uma_ferramenta"
 ```
 
 No Servidor, estas variáveis podem ser setadas no prompt para testes, para produção colocá-las
