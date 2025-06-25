@@ -11,10 +11,9 @@ setup(
     packages=find_packages(),
     install_requires=[
         'click',
-        'Celery',
         'defusedxml',
         'dominate',
-        'Flask',
+        'Flask==2.3.3',
         'Flask-BootStrap',
         'Flask-Login',
         'Flask-cors',
@@ -23,15 +22,9 @@ setup(
         'Flask-wtf',
         'flask_jwt_extended',
         'imageio',
-        'keras',
-        'pandas',
         'plotly',
         'pymongo',
-        'raven',
-        'redis',
-        'sklearn',
-        'sqlalchemy',
-        'tensorflow'
+        'sqlalchemy==1.4.54'
     ],
     setup_requires=['pytest-runner'],
     tests_require=['pytest'],
