@@ -13,7 +13,7 @@ setup(
         'click',
         'defusedxml',
         'dominate',
-        'Flask==2.3.3',
+        'Flask==3.1.3',
         'Flask-BootStrap',
         'Flask-Login',
         'Flask-cors',
