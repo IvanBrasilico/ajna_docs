@@ -28,12 +28,13 @@ def configure(app: Flask):
     app.config['JWT_BLACKLIST_ENABLED'] = True
     jwt = JWTManager(app)
 
-    blacklist = set()
+    blocklist = set()
 
     @jwt.token_in_blocklist_loader
-    def check_if_token_in_blacklist(decrypted_token):
-        jti = decrypted_token['jti']
-        return jti in blacklist
+    def check_if_token_in_blocklist(jwt_header, jwt_payload):
+        jti = jwt_payload["jti"]
+        return jti in blocklist
+
 
     @api.route('/login', methods=['POST'])
     def login():
@@ -80,7 +81,7 @@ def configure(app: Flask):
     @jwt_required()
     def logout():
         jti = get_jwt()['jti']
-        blacklist.add(jti)
+        blocklist.add(jti)
         current_user = get_jwt_identity()
         logger.info('Usuário %s efetuou logout' % current_user)
         return jsonify({"msg": "Logout efetuado"}), 200

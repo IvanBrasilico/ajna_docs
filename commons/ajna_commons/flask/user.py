@@ -20,9 +20,9 @@ class DBType(Enum):
 
 
 class UserDBComunication():
-    def __init__(self, dbsession, alchemy_class=None):
+    def __init__(self, dbsession, alchemy_class=None, dbtype=DBType.sqlalchemy):
         self.dbsession = dbsession
-        self.type = DBType.sqlalchemy
+        self.type = dbtype
         self.alchemy_class = alchemy_class
 
     def insert(self, username, encripted, password):
@@ -94,6 +94,7 @@ class DBUser():
 
     dbsession = None
     alchemy_class = None
+    dbtype = DBType.sqlalchemy
 
     def __init__(self, id, password=None):
         """Apenas monta uma instância."""
@@ -109,7 +110,7 @@ class DBUser():
     @classmethod
     def add(cls, username, password):
         """Cria usuário ou muda senha se ele existe."""
-        if not cls.dbsession:
+        if cls.dbsession is None:
             raise Exception('Sem conexão com o Banco de Dados!')
         username, password = cls.sanitize(username, password)
         encripted = cls.encript(password)
@@ -154,7 +155,7 @@ class DBUser():
             username, password = cls.sanitize(username, password)
             # logger.debug('DBSEssion %s' % cls.dbsession)
             dbuser = DBUser(username, password)
-            dbcomunicator = UserDBComunication(cls.dbsession, cls.alchemy_class)
+            dbcomunicator = UserDBComunication(cls.dbsession, cls.alchemy_class, cls.dbtype)
             user = dbcomunicator.get(username)
             if user is None:
                 return None
